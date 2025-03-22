@@ -1,0 +1,61 @@
+---
+export interface Props {
+  title: string;
+  price: string;
+  period?: string;
+  description: string;
+  features: string[];
+  buttonText: string;
+  buttonUrl: string;
+  highlighted?: boolean;
+}
+
+const { 
+  title, 
+  price, 
+  period = null, 
+  description, 
+  features, 
+  buttonText, 
+  buttonUrl, 
+  highlighted = false 
+} = Astro.props;
+
+const contactUrl = buttonUrl.includes('?')
+	? `${buttonUrl}&plan=${encodeURIComponent(title)}`
+	: `${buttonUrl}?plan=${encodeURIComponent(title)}`;
+---
+
+<div class={`pricing-card ${highlighted ? 'highlighted' : ''}`}>
+  <h3 class={`text-xl font-bold mb-4 ${highlighted}`}>{title}</h3>
+  
+  <div class="mb-6">
+    <span class={`text-4xl font-bold ${highlighted}`}>{price}</span>
+    {period && (
+      <span class={`text-lg ${highlighted}`}>/{period}</span>
+    )}
+  </div>
+  
+  <p class={`mb-6 ${highlighted}`}>{description}</p>
+  
+  <ul class="mb-8 space-y-3">
+    {features.map(feature => (
+      <li class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" 
+             class={`w-5 h-5 flex-shrink-0 ${highlighted}`}>
+          <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+        </svg>
+        <span class={'text-gray-600'}>{feature}</span>
+      </li>
+    ))}
+  </ul>
+  
+  <a 
+    href={contactUrl} 
+    class={`block w-full py-3 px-4 text-center rounded-lg font-medium transition-transform duration-200 ${
+      'bg-primary-600 text-blue-800 hover:bg-blue-200 hover:scale-105'
+    }`}
+  >
+    {buttonText}
+  </a>
+</div>

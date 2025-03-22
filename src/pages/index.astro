@@ -1,11 +1,119 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const testimonials = [
+  {
+    quote: "Il nostro sito vetrina è stato pronto in soli 3 giorni! Molto soddisfatti del risultato e del servizio.",
+    author: "Marco Bianchi",
+    company: "Ristorante Il Gusto",
+    image: "https://randomuser.me/api/portraits/men/32.jpg"
+  },
+  {
+    quote: "Professionalità e rapidità. Il mio studio legale ora ha un sito web moderno e funzionale.",
+    author: "Laura Rossi",
+    company: "Studio Legale Rossi",
+    image: "https://randomuser.me/api/portraits/women/44.jpg"
+  },
+  {
+    quote: "Avevo bisogno di un sito per il mio negozio in tempi stretti. SitAI ha superato le mie aspettative!",
+    author: "Andrea Verdi",
+    company: "Verdi Ceramiche",
+    image: "https://randomuser.me/api/portraits/men/65.jpg"
+  }
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home - Siti Vetrina in Tempi Record">
+  <Hero />
+  
+  <Features />
+  
+  <!-- Process Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Come Funziona</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Realizziamo il tuo sito web in soli 4 semplici passaggi
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+          <h3 class="text-xl font-semibold mb-2">Consulenza</h3>
+          <p class="text-gray-600">Analisi delle tue esigenze e scelta del template più adatto.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+          <h3 class="text-xl font-semibold mb-2">Personalizzazione</h3>
+          <p class="text-gray-600">Adattiamo il template al tuo brand e alle tue esigenze.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+          <h3 class="text-xl font-semibold mb-2">Revisione</h3>
+          <p class="text-gray-600">Verifica e approvazione del sito prima della pubblicazione.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+          <h3 class="text-xl font-semibold mb-2">Pubblicazione</h3>
+          <p class="text-gray-600">Messa online del sito con dominio e hosting configurati.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Cosa Dicono i Nostri Clienti</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Ecco alcune testimonianze di clienti soddisfatti
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {testimonials.map(testimonial => (
+          <div class="p-6 bg-gray-50 rounded-xl">
+            <div class="flex items-center mb-4">
+              <img 
+                src={testimonial.image} 
+                alt={testimonial.author}
+                class="w-12 h-12 rounded-full mr-4 object-cover"
+              />
+              <div>
+                <h4 class="font-semibold">{testimonial.author}</h4>
+                <p class="text-sm text-gray-600">{testimonial.company}</p>
+              </div>
+            </div>
+            <p class="text-gray-600 italic">"{testimonial.quote}"</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-primary-600 to-secondary-700">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Pronto per Avere il Tuo Sito Web?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Contattaci oggi stesso per una consulenza gratuita e scopri come possiamo aiutarti.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/prezzi" class="px-6 py-3 border rounded-lg font-medium hover:bg-blue-200">
+          Scopri i Prezzi
+        </a>
+        <a href="/contattaci" class="px-6 py-3 border rounded-lg font-medium hover:bg-blue-400">
+          Contattaci
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>

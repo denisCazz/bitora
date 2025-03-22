@@ -1,0 +1,58 @@
+---
+const navItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Chi Siamo', url: '/chi-siamo' },
+  { name: 'Prezzi', url: '/prezzi' },
+  { name: 'Contattaci', url: '/contattaci' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-white shadow-sm">
+  <div class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+        SitAI
+      </a>
+      
+      <nav class="hidden md:flex gap-6">
+        {navItems.map(item => (
+          <a 
+            href={item.url} 
+            class={`py-2 hover:text-primary-600 transition-colors ${currentPath === item.url ? 'text-primary-600 font-medium' : 'text-gray-600'}`}
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+      <nav class="flex flex-col gap-3">
+        {navItems.map(item => (
+          <a 
+            href={item.url} 
+            class={`py-2 hover:text-primary-600 transition-colors ${currentPath === item.url ? 'text-primary-600 font-medium' : 'text-gray-600'}`}
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.getElementById('menu-toggle')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+  });
+</script>

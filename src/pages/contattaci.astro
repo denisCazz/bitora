@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout title="Contattaci - Richiedi Informazioni">
+  <!-- Header Section -->
+  <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Contattaci</h1>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Siamo qui per aiutarti a realizzare il tuo progetto web. Scrivici per ricevere informazioni o un preventivo personalizzato.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Form & Info Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 flex flex-col lg:flex-row gap-12">
+      <div class="lg:w-1/2">
+        <h2 class="text-3xl font-bold mb-6">Invia un Messaggio</h2>
+        <p class="text-gray-700 mb-8 leading-relaxed">
+          Compila il modulo qui sotto e ti risponderemo entro 24 ore lavorative.
+        </p>
+        <ContactForm />
+      </div>
+      
+      <div class="lg:w-1/2">
+        <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-shadow duration-200">
+          <h2 class="text-3xl font-bold mb-6">I Nostri Recapiti</h2>
+          <div class="space-y-6 text-gray-700 leading-relaxed">
+            <div class="flex items-center gap-4 hover:underline">
+              <!-- ...icon email... -->
+              <div>
+                <h3 class="font-semibold mb-1">Email</h3>
+                <p>info@sitai.it</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 hover:underline">
+              <!-- ...icon telefono... -->
+              <div>
+                <h3 class="font-semibold mb-1">Telefono</h3>
+                <p>+39 123 456 7890</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 hover:underline">
+              <!-- ...icon indirizzo... -->
+              <div>
+                <h3 class="font-semibold mb-1">Indirizzo</h3>
+                <p>Via Roma 123, 00100 Roma, Italia</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 hover:underline">
+              <!-- ...icon orari... -->
+              <div>
+                <h3 class="font-semibold mb-1">Orari</h3>
+                <p>Lun - Ven: 9:00 - 18:00<br />Sab - Dom: Chiuso</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8">
+            <h3 class="font-semibold mb-4">Seguici</h3>
+            <div class="flex gap-4">
+              <!-- Icon Facebook -->
+              <a href="#" class="text-gray-500 hover:text-primary-600 transition-colors"><span class="sr-only">Facebook</span><!-- ...icon... --></a>
+              <!-- Icon Instagram -->
+              <a href="#" class="text-gray-500 hover:text-primary-600 transition-colors"><span class="sr-only">Instagram</span><!-- ...icon... --></a>
+              <!-- Icon LinkedIn -->
+              <a href="#" class="text-gray-500 hover:text-primary-600 transition-colors"><span class="sr-only">LinkedIn</span><!-- ...icon... --></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
