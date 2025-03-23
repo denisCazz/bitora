@@ -20,7 +20,7 @@ const currentPath = Astro.url.pathname;
         {navItems.map(item => (
           <a 
             href={item.url} 
-            class={`py-2 hover:text-primary-600 transition-colors ${currentPath === item.url ? 'text-primary-600 font-medium' : 'text-gray-600'}`}
+            class={`py-2 hover:text-blue-600 transition-colors ${currentPath === item.url ? 'text-blue-600 font-medium' : 'text-gray-600'}`}
           >
             {item.name}
           </a>
@@ -41,7 +41,7 @@ const currentPath = Astro.url.pathname;
         {navItems.map(item => (
           <a 
             href={item.url} 
-            class={`py-2 hover:text-primary-600 transition-colors ${currentPath === item.url ? 'text-primary-600 font-medium' : 'text-gray-600'}`}
+            class={`py-2 hover:text-blue-600 transition-colors ${currentPath === item.url ? 'text-blue-600 font-medium' : 'text-gray-600'}`}
           >
             {item.name}
           </a>

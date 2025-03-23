@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Servizi - Cosa Offriamo">
+    <main class="container mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold mb-8 text-center">I Nostri Servizi</h1>
+        
+        <nav class="flex justify-center gap-6 mb-10">
+            <a href="#siti-vetrina" class="text-blue-600 hover:text-blue-800 transition-colors">Siti Vetrina</a>
+            <a href="#registrazione-domini" class="text-blue-600 hover:text-blue-800 transition-colors">Registrazione Domini</a>
+            <a href="#hosting" class="text-blue-600 hover:text-blue-800 transition-colors">Hosting</a>
+            <a href="#soluzioni-enterprise" class="text-blue-600 hover:text-blue-800 transition-colors">Soluzioni Enterprise</a>
+        </nav>
+
+        <section id="siti-vetrina" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h2 class="text-2xl font-semibold mb-4">Siti Vetrina</h2>
+            <ul class="list-disc ml-5 space-y-2">
+                <li>Presentazione aziendale online con design curato.</li>
+                <li>Facile navigazione e contenuti SEO friendly.</li>
+                <li>Compatibilità mobile e desktop.</li>
+            </ul>
+        </section>
+
+        <section id="registrazione-domini" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h2 class="text-2xl font-semibold mb-4">Registrazione Domini</h2>
+            <ul class="list-disc ml-5 space-y-2">
+                <li>Acquisizione e gestione del nome online.</li>
+                <li>Servizi di supporto per la configurazione DNS.</li>
+                <li>Monitoraggio continuo e rinnovo automatico.</li>
+            </ul>
+        </section>
+
+        <section id="hosting" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h2 class="text-2xl font-semibold mb-4">Hosting</h2>
+            <ul class="list-disc ml-5 space-y-2">
+                <li>Soluzioni di hosting affidabili e sicure.</li>
+                <li>Scalabilità per siti in crescita.</li>
+                <li>Assistenza 24/7 per garantire uptime costante.</li>
+            </ul>
+        </section>
+
+        <section id="soluzioni-enterprise" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h2 class="text-2xl font-semibold mb-4">Soluzioni Enterprise</h2>
+            <ul class="list-disc ml-5 space-y-2">
+                <li>Servizi su misura per grandi aziende.</li>
+                <li>Infrastrutture dedicate e personalizzate.</li>
+                <li>Supporto tecnico avanzato e consulenza specialistica.</li>
+            </ul>
+        </section>
+    </main>
+</Layout>

@@ -5,23 +5,17 @@ import Features from '../components/Features.astro';
 
 const testimonials = [
   {
-    quote: "Il nostro sito vetrina è stato pronto in soli 3 giorni! Molto soddisfatti del risultato e del servizio.",
-    author: "Marco Bianchi",
-    company: "Ristorante Il Gusto",
-    image: "https://randomuser.me/api/portraits/men/32.jpg"
+    quote: "Il mio sito vetrina è stato pronto in soli 3 giorni! Molto soddisfatti del risultato e del servizio.",
+    author: "Kristina",
+    company: "Sartoria Kristina",
+    image: "../../src/assets/sartoria_kristina.png"
   },
   {
-    quote: "Professionalità e rapidità. Il mio studio legale ora ha un sito web moderno e funzionale.",
-    author: "Laura Rossi",
-    company: "Studio Legale Rossi",
-    image: "https://randomuser.me/api/portraits/women/44.jpg"
+    quote: "Professionalità e rapidità. La mia guesthouse ora ha un sito web moderno e funzionale.",
+    author: "Elisa",
+    company: "Langamore Guesthouse",
+    image: "../../src/assets/langamore.jpg"
   },
-  {
-    quote: "Avevo bisogno di un sito per il mio negozio in tempi stretti. SitAI ha superato le mie aspettative!",
-    author: "Andrea Verdi",
-    company: "Verdi Ceramiche",
-    image: "https://randomuser.me/api/portraits/men/65.jpg"
-  }
 ];
 ---
 
@@ -32,42 +26,57 @@ const testimonials = [
   
   <!-- Process Section -->
   <section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Come Funziona</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Realizziamo il tuo sito web in soli 4 semplici passaggi
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center">
-          <div class="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-          <h3 class="text-xl font-semibold mb-2">Consulenza</h3>
-          <p class="text-gray-600">Analisi delle tue esigenze e scelta del template più adatto.</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-          <h3 class="text-xl font-semibold mb-2">Personalizzazione</h3>
-          <p class="text-gray-600">Adattiamo il template al tuo brand e alle tue esigenze.</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-          <h3 class="text-xl font-semibold mb-2">Revisione</h3>
-          <p class="text-gray-600">Verifica e approvazione del sito prima della pubblicazione.</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
-          <h3 class="text-xl font-semibold mb-2">Pubblicazione</h3>
-          <p class="text-gray-600">Messa online del sito con dominio e hosting configurati.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+	<div class="container mx-auto px-4">
+	  <div class="text-center mb-16">
+		<h2 class="text-3xl md:text-4xl font-bold mb-4">Come Funziona</h2>
+		<p class="text-lg text-gray-600 max-w-2xl mx-auto">
+		  Realizziamo il tuo sito web in soli 4 semplici passaggi
+		</p>
+	  </div>
   
+	  <div class="relative flex flex-col md:flex-row items-center justify-between">
+		<!-- Linea temporale -->
+		<div class="absolute hidden md:block top-8 left-0 right-0 h-1 bg-blue-300 w-10/12 mx-auto"></div>
+  
+		<!-- Step 1 -->
+		<div class="relative text-center group">
+		  <div class="w-16 h-16 text-white rounded-full bg-blue-800 flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+			1
+		  </div>
+		  <h3 class="text-xl font-semibold mb-2">Consulenza</h3>
+		  <p class="text-gray-600">Analisi delle tue esigenze e scelta del template più adatto.</p>
+		</div>
+  
+		<!-- Step 2 -->
+		<div class="relative text-center group">
+		  <div class="w-16 h-16 text-white rounded-full bg-blue-800 flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+			2
+		  </div>
+		  <h3 class="text-xl font-semibold mb-2">Personalizzazione</h3>
+		  <p class="text-gray-600">Adattiamo il template al tuo brand e alle tue esigenze.</p>
+		</div>
+  
+		<!-- Step 3 -->
+		<div class="relative text-center group">
+		  <div class="w-16 h-16 text-white rounded-full bg-blue-800 flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+			3
+		  </div>
+		  <h3 class="text-xl font-semibold mb-2">Revisione</h3>
+		  <p class="text-gray-600">Verifica e approvazione del sito prima della pubblicazione.</p>
+		</div>
+  
+		<!-- Step 4 -->
+		<div class="relative text-center group">
+		  <div class="w-16 h-16 text-white rounded-full bg-blue-800 flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+			4
+		  </div>
+		  <h3 class="text-xl font-semibold mb-2">Pubblicazione</h3>
+		  <p class="text-gray-600">Messa online del sito con dominio e hosting configurati.</p>
+		</div>
+	  </div>
+	</div>
+  </section>
+
   <!-- Testimonials Section -->
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
@@ -78,7 +87,7 @@ const testimonials = [
         </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 gap-8">
         {testimonials.map(testimonial => (
           <div class="p-6 bg-gray-50 rounded-xl">
             <div class="flex items-center mb-4">

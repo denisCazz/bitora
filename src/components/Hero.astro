@@ -1,4 +1,6 @@
 ---
+import Image from "astro/components/Image.astro"
+import heroFoto from "../assets/heroFoto.jpeg"
 ---
 
 <section class="py-20 bg-gradient-to-b from-white to-gray-50">
@@ -22,11 +24,7 @@
         </div>
       </div>
       <div class="md:w-1/2">
-        <img 
-          src="https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
-          alt="Sito web responsive moderno"
-          class="rounded-lg shadow-xl"
-        />
+        <Image src={heroFoto} alt="Sito web responsive moderno" class="rounded-lg shadow-xl" height={200} width={600} />
       </div>
     </div>
   </div>
