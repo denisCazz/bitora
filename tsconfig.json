@@ -9,8 +9,6 @@
   ],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "moduleResolution": "node",
-    "allowJs": true
+    "jsxImportSource": "react"
   }
 }
