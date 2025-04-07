@@ -9,5 +9,4 @@ export default defineConfig({
   vite: {
     plugins: []
   },
-  output: 'server',
 });

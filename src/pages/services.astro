@@ -1,51 +1,54 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { FaGlobe, FaServer, FaCloud, FaBuilding } from "react-icons/fa";
 ---
 
 <Layout title="Servizi - Cosa Offriamo">
-    <main class="container mx-auto px-4 py-10">
-        <h1 class="text-3xl font-bold mb-8 text-center">I Nostri Servizi</h1>
-        
-        <nav class="flex justify-center gap-6 mb-10">
-            <a href="#siti-vetrina" class="text-blue-600 hover:text-blue-800 transition-colors">Siti Vetrina</a>
-            <a href="#registrazione-domini" class="text-blue-600 hover:text-blue-800 transition-colors">Registrazione Domini</a>
-            <a href="#hosting" class="text-blue-600 hover:text-blue-800 transition-colors">Hosting</a>
-            <a href="#soluzioni-enterprise" class="text-blue-600 hover:text-blue-800 transition-colors">Soluzioni Enterprise</a>
-        </nav>
+  <main class="container mx-auto px-4 py-10">
+    <h1 class="text-4xl font-extrabold mb-12 text-center text-gray-800">
+      I Nostri Servizi
+    </h1>
 
-        <section id="siti-vetrina" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h2 class="text-2xl font-semibold mb-4">Siti Vetrina</h2>
-            <ul class="list-disc ml-5 space-y-2">
-                <li>Presentazione aziendale online con design curato.</li>
-                <li>Facile navigazione e contenuti SEO friendly.</li>
-                <li>Compatibilità mobile e desktop.</li>
-            </ul>
-        </section>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="p-6 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center justify-center mb-4">
+          <FaGlobe size={40} />
+        </div>
+        <h2 class="text-2xl font-semibold mb-2">Siti Vetrina</h2>
+        <p class="text-sm leading-relaxed">
+          Presentazione aziendale online con design curato, facile navigazione e contenuti SEO friendly.
+        </p>
+      </div>
 
-        <section id="registrazione-domini" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h2 class="text-2xl font-semibold mb-4">Registrazione Domini</h2>
-            <ul class="list-disc ml-5 space-y-2">
-                <li>Acquisizione e gestione del nome online.</li>
-                <li>Servizi di supporto per la configurazione DNS.</li>
-                <li>Monitoraggio continuo e rinnovo automatico.</li>
-            </ul>
-        </section>
+      <div class="p-6 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center justify-center mb-4">
+          <FaServer size={40} />
+        </div>
+        <h2 class="text-2xl font-semibold mb-2">Registrazione Domini</h2>
+        <p class="text-sm leading-relaxed">
+          Acquisizione e gestione del nome online con supporto per configurazione DNS e rinnovo automatico.
+        </p>
+      </div>
 
-        <section id="hosting" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h2 class="text-2xl font-semibold mb-4">Hosting</h2>
-            <ul class="list-disc ml-5 space-y-2">
-                <li>Soluzioni di hosting affidabili e sicure.</li>
-                <li>Scalabilità per siti in crescita.</li>
-            </ul>
-        </section>
+      <div class="p-6 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center justify-center mb-4">
+          <FaCloud size={40} />
+        </div>
+        <h2 class="text-2xl font-semibold mb-2">Hosting</h2>
+        <p class="text-sm leading-relaxed">
+          Soluzioni di hosting affidabili e sicure, scalabili per siti in crescita.
+        </p>
+      </div>
 
-        <section id="soluzioni-enterprise" class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h2 class="text-2xl font-semibold mb-4">Soluzioni Enterprise</h2>
-            <ul class="list-disc ml-5 space-y-2">
-                <li>Servizi su misura per grandi aziende.</li>
-                <li>Infrastrutture dedicate e personalizzate.</li>
-                <li>Supporto tecnico avanzato e consulenza specialistica.</li>
-            </ul>
-        </section>
-    </main>
+      <div class="p-6 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center justify-center mb-4">
+          <FaBuilding size={40} />
+        </div>
+        <h2 class="text-2xl font-semibold mb-2">Soluzioni Enterprise</h2>
+        <p class="text-sm leading-relaxed">
+          Servizi su misura per grandi aziende con infrastrutture dedicate e supporto tecnico avanzato.
+        </p>
+      </div>
+    </div>
+  </main>
 </Layout>

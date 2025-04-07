@@ -3,39 +3,31 @@ import Layout from '../layouts/Layout.astro';
 import Image from 'astro/components/Image.astro';
 
 import startup from '../assets/startup.jpeg';
-
-const team = [
-  {
-    name: "Denis Cazzulo",
-    role: "Fondatore & CEO",
-    bio: "Laureato in Informatica e con un Master in AI presso il Politecnico di Torino. Ho fondato SitAI nel 2025 per avviare un processo di digitalizzazione in Italia.",
-  }
-];
 ---
 
 <Layout title="Chi Siamo - La Nostra Storia">
   <!-- Intro Section -->
-  <section class="py-20 bg-gradient-to-b from-white to-gray-100 text-center">
+  <section class="py-20 bg-gradient-to-b from-gray-50 to-gray-100 text-center">
     <div class="container mx-auto px-6 max-w-3xl">
-      <h1 class="text-5xl font-bold mb-6">Chi Siamo</h1>
-      <p class="text-lg text-gray-700 leading-relaxed">
+      <h1 class="text-5xl font-extrabold mb-6 text-gray-800">Chi Siamo</h1>
+      <p class="text-lg text-gray-600 leading-relaxed">
         Siamo un team di professionisti appassionati, impegnati a creare soluzioni digitali innovative. La nostra missione è rendere il digitale accessibile a tutte le imprese, grandi e piccole.
       </p>
     </div>
   </section>
-  
-<!-- Storia Section -->
-<section class="py-20 bg-white">
+
+  <!-- Storia Section -->
+  <section class="py-20 bg-white">
     <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 class="text-3xl font-bold mb-6">La Nostra Storia</h2>
-        <p class="text-gray-700 mb-4 leading-relaxed">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">La Nostra Storia</h2>
+        <p class="text-gray-600 mb-4 leading-relaxed">
           SitAI è stata fondata nel 2025 per accelerare la digitalizzazione in Italia. Nasce con l’idea di offrire soluzioni web moderne, veloci e di alta qualità.
         </p>
-        <p class="text-gray-700 mb-4 leading-relaxed">
+        <p class="text-gray-600 mb-4 leading-relaxed">
           Fin dall'inizio, il nostro obiettivo è stato coniugare innovazione e semplicità, rendendo la tecnologia accessibile a tutte le imprese. Per raggiungere questo scopo, integriamo l'intelligenza artificiale nei nostri processi, automatizzando attività ripetitive e ottimizzando la gestione delle risorse aziendali.
         </p>
-        <p class="text-gray-700 leading-relaxed">
+        <p class="text-gray-600 leading-relaxed">
           Grazie all'AI, aiutiamo le aziende a migliorare l'efficienza operativa, ridurre i costi e prendere decisioni più informate. Il nostro approccio combina tecnologia all'avanguardia e competenze professionali per garantire soluzioni scalabili e personalizzate.
         </p>
       </div>
@@ -44,22 +36,17 @@ const team = [
       </div>
     </div>
   </section>
-  
- <!-- Team Section -->
- <section class="py-20 bg-gray-50">
+
+  <!-- Perche sceglierci -->
+  <section class="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
     <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6">Il Nostro Team</h2>
-      <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-12">
-        Scopri le persone dietro SitAI, impegnate a portare l'innovazione alle aziende.
+      <h2 class="text-3xl font-bold mb-6 text-gray-800">Perché Sceglierci</h2>
+      <p class="text-lg text-gray-600 mb-4 leading-relaxed">
+        Scegliere SitAI significa scegliere un partner affidabile e innovativo. La nostra esperienza e la nostra passione per la tecnologia ci permettono di offrire soluzioni su misura per ogni esigenza.
       </p>
-      <div class="flex flex-col md:flex-row justify-center gap-12">
-        <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm mx-auto relative overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-10"></div>
-          <h3 class="text-xl font-semibold relative z-10">{team[0].name}</h3>
-          <p class="text-blue-600 mb-2 font-medium relative z-10">{team[0].role}</p>
-          <p class="text-gray-700 text-sm leading-relaxed relative z-10">{team[0].bio}</p>
-        </div>
-      </div>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        Con noi, non solo avrai un sito web professionale, ma anche un team dedicato che ti supporterà in ogni fase del processo.
+      </p>
     </div>
   </section>
 </Layout>
