@@ -5,24 +5,23 @@ const navItems = [
   { name: 'Prezzi', url: '/prezzi' },
   { name: 'Servizi', url: '/services' },
   { name: 'Contattaci', url: '/contattaci' },
- // { name: 'Shop', url: '/shop' },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="bg-white shadow-sm">
-  <div class="container mx-auto px-4 py-6">
+<header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-4">
     <div class="flex justify-between items-center">
-      <a href="/" class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-        SitAI
+      <a href="/" class="text-2xl font-bold text-black hover:text-gray-800 transition-colors duration-300">
+        <span class="tracking-tighter">bitora</span><span class="text-gray-500">.it</span>
       </a>
       
-      <nav class="hidden md:flex gap-6">
+      <nav class="hidden md:flex gap-8">
         {navItems.map(item => (
           <a 
             href={item.url} 
-            class={`py-2 hover:text-blue-600 transition-colors ${currentPath === item.url ? 'text-blue-600 font-medium' : 'text-gray-600'}`}
+            class={`py-2 hover:text-black transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300 ${currentPath === item.url ? 'text-black font-medium after:w-full' : 'text-gray-600'}`}
           >
             {item.name}
           </a>
@@ -30,7 +29,7 @@ const currentPath = Astro.url.pathname;
       </nav>
 
       <div class="md:hidden">
-        <button id="menu-toggle" class="text-gray-600">
+        <button id="menu-toggle" class="text-black p-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
@@ -39,11 +38,11 @@ const currentPath = Astro.url.pathname;
     </div>
     
     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-      <nav class="flex flex-col gap-3">
+      <nav class="flex flex-col gap-4">
         {navItems.map(item => (
           <a 
             href={item.url} 
-            class={`py-2 hover:text-blue-600 transition-colors ${currentPath === item.url ? 'text-blue-600 font-medium' : 'text-gray-600'}`}
+            class={`py-2 hover:text-black transition-colors ${currentPath === item.url ? 'text-black font-medium' : 'text-gray-600'}`}
           >
             {item.name}
           </a>

@@ -1,13 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PricingCard from '../components/PricingCard.astro';
 
 const pricingPlans = [
   {
-    title: "Sito Vetrina",
+    title: "Sito Essenziale",
     price: "€20",
     period: "mese",
-    description: "Adatto per piccole imprese che desiderano una presenza professionale online.",
+    description: "La soluzione ideale per piccole imprese che cercano una presenza professionale online.",
     features: [
       "Fino a 5 pagine",
       "Design responsive",
@@ -21,10 +20,10 @@ const pricingPlans = [
     highlighted: false
   },
   {
-    title: "Sito Vetrina Premium",
+    title: "Sito Premium",
     price: "€500",
     period: null,
-    description: "Pagamento una tantum per un sito web professionale, senza canoni mensili.",
+    description: "Pagamento unico per un sito web sofisticato ed elegante, senza canoni mensili.",
     features: [
       "Fino a 5 pagine",
       "Design personalizzato",
@@ -38,13 +37,13 @@ const pricingPlans = [
     highlighted: true
   },
   {
-    title: "Enterprise",
+    title: "Soluzione Business",
     price: "Su misura",
     period: null,
-    description: "Soluzioni flessibili per progetti complessi con esigenze specifiche.",
+    description: "Per progetti complessi che richiedono funzionalità e personalizzazione avanzate.",
     features: [
       "Pagine illimitate",
-      "Design totalmente personalizzato",
+      "Design esclusivo",
       "Funzionalità avanzate",
       "E-commerce opzionale",
       "Strategia SEO completa",
@@ -58,75 +57,98 @@ const pricingPlans = [
 
 const faqs = [
   {
-    question: "Quanto tempo serve per creare il sito?",
-    answer: "La realizzazione del sito vetrina standard avviene in 3-5 giorni lavorativi. Progetti personalizzati possono richiedere tempi variabili."
+    question: "Quanto tempo richiede la realizzazione del sito?",
+    answer: "I nostri siti essenziali sono pronti in 3-5 giorni lavorativi. I progetti Premium e Business possono richiedere 7-10 giorni, in base alla complessità e alle personalizzazioni richieste."
   },
   {
-    question: "Posso modificare il sito in autonomia?",
-    answer: "Tutti i piani comprendono un massimo di 10 modifiche gratuite. Per modifiche più complesse, o dopo avere esaurito il limite, è possibile richiedere un preventivo."
+    question: "Posso aggiornare autonomamente i contenuti?",
+    answer: "Tutti i piani includono 10 modifiche gratuite. Per modifiche aggiuntive o l'implementazione di un sistema di gestione dei contenuti, possiamo fornirti un preventivo personalizzato."
   },
   {
-    question: "Cosa include l'ottimizzazione SEO?",
-    answer: "Il piano base prevede meta tag, sitemap e contenuti ottimizzati; quello avanzato include analisi delle parole chiave e report dettagliati."
+    question: "Cosa comprende l'ottimizzazione SEO?",
+    answer: "Il piano base include meta tag, sitemap e contenuti ottimizzati. Il SEO avanzato aggiunge analisi delle parole chiave, ottimizzazione della struttura e report periodici di performance."
   },
   {
-    question: "Come funziona il passaggio da un piano a un altro?",
-    answer: "È possibile passare dal piano mensile a quello Premium in qualsiasi momento, con addebito della differenza."
+    question: "È possibile passare da un piano all'altro?",
+    answer: "Certamente! Puoi passare dal piano mensile a quello Premium in qualsiasi momento, con un calcolo proporzionale dell'investimento già effettuato."
   }
 ];
 ---
 
-<Layout title="Prezzi - I Nostri Piani">
+<Layout title="Prezzi - Investimenti Trasparenti">
   <!-- Header Section -->
-  <section class="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
+  <section class="py-24 bg-white">
     <div class="container mx-auto px-4 max-w-3xl text-center">
-      <h1 class="text-5xl font-extrabold mb-4 text-gray-800">Piani e Prezzi</h1>
-      <p class="text-lg text-gray-600 leading-relaxed">
-        Scegli il piano più adatto alla tua impresa. Chiarezza e trasparenza sono la nostra priorità.
+      <h1 class="text-5xl md:text-6xl font-bold mb-8">I Nostri Piani</h1>
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Soluzioni trasparenti e senza sorprese, progettate per adattarsi alle esigenze di ogni business.
       </p>
     </div>
   </section>
   
   <!-- Pricing Cards Section -->
-  <section class="py-20 bg-white">
+  <section class="py-24 bg-gray-50">
     <div class="container mx-auto px-4">
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {pricingPlans.map(plan => (
-          <PricingCard
-            title={plan.title}
-            price={plan.price}
-            period={plan.period ?? undefined}
-            description={plan.description}
-            features={plan.features}
-            buttonText={plan.buttonText}
-            buttonUrl={plan.buttonUrl}
-            highlighted={plan.highlighted}
-          />
+          <div class={`bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 ${plan.highlighted ? 'border-2 border-black relative' : 'border border-gray-100'}`}>
+            {plan.highlighted && (
+              <div class="absolute top-0 right-0 bg-black text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">
+                Più popolare
+              </div>
+            )}
+            <div class="p-8">
+              <h3 class="text-2xl font-bold mb-4">{plan.title}</h3>
+              <div class="mb-4">
+                <span class="text-4xl font-bold">{plan.price}</span>
+                {plan.period && <span class="text-gray-500">/{plan.period}</span>}
+              </div>
+              <p class="text-gray-600 mb-6">{plan.description}</p>
+              
+              <ul class="space-y-3 mb-8">
+                {plan.features.map(feature => (
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-gray-600">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <a 
+                href={plan.buttonUrl}
+                class={`block w-full py-3 px-4 text-center font-bold rounded-md transition-colors ${plan.highlighted ? 'bg-black text-white hover:bg-gray-900' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+              >
+                {plan.buttonText}
+              </a>
+            </div>
+          </div>
         ))}
       </div>
       <div class="mt-12 text-center">
         <p class="text-gray-600">
-          Per esigenze particolari, <a href="/contattaci" class="text-blue-600 font-medium hover:underline">contattaci</a> e realizzeremo una soluzione su misura.
+          Hai esigenze particolari? <a href="/contattaci" class="font-medium text-black border-b border-black hover:border-transparent transition-colors">Contattaci</a> per una soluzione su misura.
         </p>
       </div>
     </div>
   </section>
   
   <!-- FAQ Section -->
-  <section class="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
+  <section class="py-24 bg-white">
     <div class="container mx-auto px-4 max-w-3xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4 text-gray-800">Domande Frequenti</h2>
-        <p class="text-lg text-gray-600 leading-relaxed">
-          Risposte chiare alle domande più comuni sui nostri piani.
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-8">Domande Frequenti</h2>
+        <p class="text-xl text-gray-600">
+          Hai domande? Probabilmente abbiamo già la risposta
         </p>
       </div>
       <div class="space-y-6">
         {faqs.map((faq, index) => (
           <div class="border border-gray-200 rounded-lg overflow-hidden">
             <details class="group">
-              <summary class="flex justify-between items-center p-6 cursor-pointer">
-                <h3 class="text-lg font-medium text-gray-800">{faq.question}</h3>
+              <summary class="flex justify-between items-center p-6 cursor-pointer bg-white">
+                <h3 class="text-lg font-bold">{faq.question}</h3>
                 <svg class="w-6 h-6 text-gray-500 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>

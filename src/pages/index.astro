@@ -5,103 +5,103 @@ import Features from '../components/Features.astro';
 
 const testimonials = [
   {
-    quote: "Il mio sito vetrina è stato pronto in soli 3 giorni! Molto soddisfatti del risultato e del servizio.",
+    quote: "Il mio sito è stato consegnato in soli 3 giorni! Design elegante e professionale che rispecchia perfettamente la mia attività.",
     author: "Kristina",
     company: "Sartoria Kristina",
-    image: "../../src/assets/sartoria_kristina.png"
+    image: "../assets/sartoria_kristina.png"
   },
   {
-    quote: "Servizio impeccabile e grande professionalità. Il nostro sito è moderno e funzionale.",
+    quote: "Soluzione impeccabile e assistenza professionale. Il nostro sito è moderno, pulito e la nostra clientela è aumentata sensibilmente.",
     author: "Eros",
     company: "Monviso Multiservizi",
-    image: "../../src/assets/startup.jpeg"
+    image: "../assets/monviso.jpg"
   },
 ];
 ---
 
-<Layout title="Home - Siti Vetrina in Tempi Record">
+<Layout title="Home - Web Design Minimalista & Professionale">
   <Hero />
 
   <Features />
 
   <!-- Process Section -->
-  <section class="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
+  <section class="py-24 bg-gray-50">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Come Funziona</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Realizziamo il tuo sito web in soli 4 semplici passaggi
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Come Lavoriamo</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Un processo semplificato in 4 passaggi per ottenere il tuo sito in tempi record
         </p>
       </div>
 
-      <div class="relative flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="relative flex flex-col md:flex-row items-center justify-between gap-12 max-w-5xl mx-auto">
         <!-- Linea temporale -->
-        <div class="absolute hidden md:block top-8 left-0 right-0 h-1 bg-blue-300 w-10/12 mx-auto"></div>
+        <div class="absolute hidden md:block top-8 left-0 right-0 h-0.5 bg-gray-200 w-10/12 mx-auto"></div>
 
         <!-- Step 1 -->
         <div class="relative text-center group">
-          <div class="w-16 h-16 text-white rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+          <div class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10">
             1
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-gray-800">Consulenza</h3>
-          <p class="text-gray-600">Analisi delle tue esigenze e scelta del template più adatto.</p>
+          <h3 class="text-xl font-bold mb-3">Consulenza</h3>
+          <p class="text-gray-600">Analizziamo le tue esigenze e definiamo il progetto ideale.</p>
         </div>
 
         <!-- Step 2 -->
         <div class="relative text-center group">
-          <div class="w-16 h-16 text-white rounded-full bg-gradient-to-r from-green-500 to-green-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+          <div class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10">
             2
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-gray-800">Personalizzazione</h3>
-          <p class="text-gray-600">Adattiamo il template al tuo brand e alle tue esigenze.</p>
+          <h3 class="text-xl font-bold mb-3">Design</h3>
+          <p class="text-gray-600">Creiamo un design su misura che rispecchia la tua identità.</p>
         </div>
 
         <!-- Step 3 -->
         <div class="relative text-center group">
-          <div class="w-16 h-16 text-white rounded-full bg-gradient-to-r from-purple-500 to-purple-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+          <div class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10">
             3
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-gray-800">Revisione</h3>
-          <p class="text-gray-600">Verifica e approvazione del sito prima della pubblicazione.</p>
+          <h3 class="text-xl font-bold mb-3">Sviluppo</h3>
+          <p class="text-gray-600">Realizziamo il sito con tecnologie moderne e performanti.</p>
         </div>
 
         <!-- Step 4 -->
         <div class="relative text-center group">
-          <div class="w-16 h-16 text-white rounded-full bg-gradient-to-r from-red-500 to-red-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
+          <div class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10">
             4
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-gray-800">Pubblicazione</h3>
-          <p class="text-gray-600">Messa online del sito con dominio e hosting configurati.</p>
+          <h3 class="text-xl font-bold mb-3">Lancio</h3>
+          <p class="text-gray-600">Pubblichiamo il sito e ti guidiamo nei primi passi online.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Testimonials Section -->
-  <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+  <section class="py-24 bg-white">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Cosa Dicono i Nostri Clienti</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Ecco alcune testimonianze di clienti soddisfatti
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Le Opinioni dei Clienti</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Scopri cosa dicono le aziende che hanno scelto bitora.it
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
         {testimonials.map(testimonial => (
-          <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div class="flex items-center mb-4">
+          <div class="p-8 bg-white border border-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="flex items-center mb-6">
               <img 
                 src={testimonial.image} 
                 alt={testimonial.author}
-                class="w-12 h-12 rounded-full mr-4 object-cover"
+                class="w-14 h-14 rounded-full mr-4 object-cover border-2 border-gray-100"
               />
               <div>
-                <h4 class="font-semibold text-gray-800">{testimonial.author}</h4>
-                <p class="text-sm text-gray-600">{testimonial.company}</p>
+                <h4 class="font-bold text-lg">{testimonial.author}</h4>
+                <p class="text-gray-500">{testimonial.company}</p>
               </div>
             </div>
-            <p class="text-gray-600 italic">"{testimonial.quote}"</p>
+            <p class="text-gray-700 italic leading-relaxed">"{testimonial.quote}"</p>
           </div>
         ))}
       </div>
@@ -109,32 +109,32 @@ const testimonials = [
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20 bg-blue-400 text-white">
+  <section class="py-24 bg-black text-white">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-extrabold mb-6">Pronto per Avere il Tuo Sito Web?</h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto">
-        Contattaci oggi stesso per una consulenza gratuita e scopri come possiamo aiutarti.
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Pronto a Distinguerti Online?</h2>
+      <p class="text-xl mb-10 max-w-2xl mx-auto text-gray-300">
+        Contattaci oggi stesso per una consulenza gratuita e scopri come possiamo valorizzare il tuo business.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/prezzi" class="px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-gray-100 hover:text-black transition-colors">
-          <span class="font-bold">Scopri i Prezzi</span>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="/prezzi" class="px-8 py-4 bg-white text-black rounded-md font-bold shadow-lg hover:bg-gray-100 transition-colors">
+          Scopri i Piani
         </a>
-        <a href="/contattaci" class="px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-gray-100 hover:text-black transition-colors">
-          <span class="font-bold">Contattaci</span>
+        <a href="/contattaci" class="px-8 py-4 border border-white text-white rounded-md font-bold hover:bg-white hover:text-black transition-colors">
+          Parliamo del Tuo Progetto
         </a>
       </div>
     </div>
   </section>
 
   <!-- NFC CTA Section -->
-  <section class="py-20 bg-gray-100">
+  <section class="py-24 bg-gray-50">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-extrabold text-gray-800 mb-6">Tessere NFC Personalizzate</h2>
-      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-        Scopri come le nostre tessere NFC possono migliorare la tua attività, ideali per recensioni, menu digitali e molto altro.
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Tessere NFC Premium</h2>
+      <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+        Scopri le nostre soluzioni NFC eleganti e minimaliste: il modo perfetto per collegare il mondo fisico a quello digitale.
       </p>
-      <a href="/shop" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium shadow-lg hover:bg-blue-700 transition-colors">
-        Scopri di Più
+      <a href="/shop" class="px-8 py-4 bg-black text-white rounded-md font-bold shadow-md hover:bg-gray-900 transition-colors">
+        Esplora le Soluzioni NFC
       </a>
     </div>
   </section>

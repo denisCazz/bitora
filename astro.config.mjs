@@ -9,4 +9,5 @@ export default defineConfig({
   vite: {
     plugins: []
   },
+  site: 'https://bitora.vercel.app/',
 });
