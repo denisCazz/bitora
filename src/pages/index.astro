@@ -8,14 +8,23 @@ const testimonials = [
     quote: "Il mio sito è stato consegnato in soli 3 giorni! Design elegante e professionale che rispecchia perfettamente la mia attività.",
     author: "Kristina",
     company: "Sartoria Kristina",
-    image: "/sartoria_kristina.png"
+    image: "/sartoria_kristina.png",
+    site: "https://sartoriakristina.it"
   },
   {
-    quote: "Soluzione impeccabile e assistenza professionale. Il nostro sito è moderno, pulito e la nostra clientela è aumentata sensibilmente.",
-    author: "Eros",
-    company: "Monviso Multiservizi",
-    image: "/monviso.jpg"
+    quote: "Soluzione impeccabile e assistenza professionale. Il nostro sito è moderno, pulito e il nostro bar è finalmente online.",
+    author: "Karen ed Enrico",
+    company: "Il Portico",
+    image: "/ilportico.png",
+    site: "https://ilportico-one.vercel.app/"
   },
+  {
+    quote: "Mistral Impianti SRL ha scelto bitora.it per il nostro sito web e non potremmo essere più soddisfatti!",
+    author: "Gabriele",
+    company: "Mistral Impianti SRL",
+    image: "/mistral.jpg",
+    site: "https://mistralimpianti.it"
+  }
 ];
 ---
 
@@ -89,20 +98,22 @@ const testimonials = [
 
       <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
         {testimonials.map(testimonial => (
-          <div class="p-8 bg-white border border-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div class="flex items-center mb-6">
-              <img 
-                src={testimonial.image} 
-                alt={testimonial.author}
-                class="w-14 h-14 rounded-full mr-4 object-cover border-2 border-gray-100"
-              />
-              <div>
-                <h4 class="font-bold text-lg">{testimonial.author}</h4>
-                <p class="text-gray-500">{testimonial.company}</p>
+          <a href={testimonial.site} target="_blank" rel="noopener noreferrer" class="group">
+            <div class="p-8 bg-white border border-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex items-center mb-6">
+                <img 
+                  src={testimonial.image} 
+                  alt={testimonial.author}
+                  class="w-14 h-14 rounded-full mr-4 object-cover border-2 border-gray-100"
+                />
+                <div>
+                  <h4 class="font-bold text-lg">{testimonial.author}</h4>
+                  <p class="text-gray-500">{testimonial.company}</p>
+                </div>
               </div>
+              <p class="text-gray-700 italic leading-relaxed">"{testimonial.quote}"</p>
             </div>
-            <p class="text-gray-700 italic leading-relaxed">"{testimonial.quote}"</p>
-          </div>
+          </a>
         ))}
       </div>
     </div>
