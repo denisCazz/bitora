@@ -3,18 +3,88 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Shop - Tessere NFC Personalizzate">
-  <!-- Hero Section -->
-  <section class="py-20 bg-gradient-to-b from-white to-gray-50">
-    <div class="container mx-auto px-4 text-center">
-      <div class="mb-10">
-        <div class="w-full h-64 bg-gray-200 flex items-center justify-center rounded-lg">
-          <p class="text-gray-500">Video Placeholder</p>
-        </div>
+  <!-- Hero 3D Card Section -->
+  <section class="relative py-20 bg-gradient-to-b from-blue-50 to-white">
+    <div class="container mx-auto px-4 flex flex-col items-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-8 text-blue-900 drop-shadow-lg">
+        Tessere NFC Personalizzate
+      </h1>
+      <div
+        id="nfc-card"
+        class="w-80 h-48 bg-white rounded-2xl shadow-2xl flex items-center justify-center transition-transform duration-300"
+        style="perspective: 1000px;"
+      >
+        <img
+          src="/nfc.png"
+          alt="Tessera NFC"
+          class="w-64 h-40 object-contain rounded-xl pointer-events-none select-none"
+          draggable="false"
+        />
       </div>
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Tessere NFC Personalizzate</h1>
-      <p class="text-lg text-gray-700 leading-relaxed">
+      <p class="mt-8 text-lg text-gray-700 max-w-2xl text-center">
         Scopri le nostre tessere NFC personalizzate, ideali per recensioni, menu digitali e molto altro. Perfette per migliorare l'esperienza dei tuoi clienti e ottimizzare la tua attività.
       </p>
+    </div>
+    <script type="module" is:inline>
+      const card = document.getElementById('nfc-card');
+      if (card) {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * 10;
+          const rotateY = ((x - centerX) / centerX) * 15;
+          card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        });
+      }
+    </script>
+  </section>
+
+  <!-- Sezione Vantaggi Moderne -->
+  <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-900">Perché scegliere le nostre tessere NFC?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex flex-col items-center bg-white rounded-xl shadow-lg p-8 hover:scale-105 transition-transform">
+          <svg class="w-14 h-14 text-blue-500 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 8v4l3 3"></path>
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <h3 class="text-xl font-semibold mb-2">Connessione Istantanea</h3>
+          <p class="text-gray-600 text-center">Condividi informazioni, link e recensioni con un semplice tocco. Niente più QR code o app complicate!</p>
+        </div>
+        <div class="flex flex-col items-center bg-white rounded-xl shadow-lg p-8 hover:scale-105 transition-transform">
+          <svg class="w-14 h-14 text-green-500 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 13l4 4L19 7"></path>
+            <rect width="20" height="20" x="2" y="2" rx="5"></rect>
+          </svg>
+          <h3 class="text-xl font-semibold mb-2">Personalizzazione Totale</h3>
+          <p class="text-gray-600 text-center">Grafica, logo e dati personalizzati per rappresentare al meglio la tua attività o il tuo brand.</p>
+        </div>
+        <div class="flex flex-col items-center bg-white rounded-xl shadow-lg p-8 hover:scale-105 transition-transform">
+          <svg class="w-14 h-14 text-purple-500 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 4v16m8-8H4"></path>
+          </svg>
+          <h3 class="text-xl font-semibold mb-2">Esperienza WOW</h3>
+          <p class="text-gray-600 text-center">Sorprendi i tuoi clienti con una tecnologia innovativa e un design moderno che non passa inosservato.</p>
+        </div>
+      </div>
+      <div class="mt-16 flex flex-col items-center">
+        <span class="inline-block bg-blue-100 text-blue-800 text-lg font-semibold px-6 py-3 rounded-full shadow">
+          Porta la tua attività nel futuro, oggi stesso!
+        </span>
+        <a
+          href="/contattaci"
+          class="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold px-10 py-4 rounded-full shadow-lg transition-colors duration-200"
+        >
+          Richiedi la tua tessera ora
+        </a>
+      </div>
     </div>
   </section>
 </Layout>
