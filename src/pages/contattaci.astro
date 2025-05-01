@@ -22,7 +22,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="flex flex-col gap-8 mb-10">
           <div>
             <h3 class="text-xl font-semibold mb-3">Email</h3>
-            <a id="email-link" href="mailto:deniscazzulo@icloud.com" class="text-lg text-gray-600 hover:text-black transition-colors">deniscazzulo@icloud.com</a>
+            <a id="email-link" href="mailto:info@bitora.it" class="text-lg text-gray-600 hover:text-black transition-colors">info@bitora.it</a>
           </div>
           
           <div>
@@ -64,7 +64,7 @@ import Layout from '../layouts/Layout.astro';
       const whatsappText = encodeURIComponent(`Ciao, sarei interessato/a al piano "${plan}". Vorrei ricevere maggiori informazioni.`);
 
       if (emailLink) {
-        (emailLink as HTMLAnchorElement).href = `mailto:deniscazzulo@icloud.com?subject=${subject}&body=${body}`;
+        (emailLink as HTMLAnchorElement).href = `mailto:info@bitora.it?subject=${subject}&body=${body}`;
       }
       if (whatsappLinkText) {
         (whatsappLinkText as HTMLAnchorElement).href = `https://wa.me/393247787644?text=${whatsappText}`;
