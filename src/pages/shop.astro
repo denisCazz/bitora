@@ -3,88 +3,213 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Shop - Tessere NFC Personalizzate">
-  <!-- Hero 3D Card Section -->
-  <section class="relative py-20 bg-gradient-to-b from-blue-50 to-white">
+  <!-- Hero Section -->
+  <section class="relative py-12 md:py-20 bg-neutral-900">
     <div class="container mx-auto px-4 flex flex-col items-center">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-8 text-blue-900 drop-shadow-lg">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-white tracking-tight text-center">
         Tessere NFC Personalizzate
       </h1>
-      <div
-        id="nfc-card"
-        class="w-80 h-48 bg-white rounded-2xl shadow-2xl flex items-center justify-center transition-transform duration-300"
-        style="perspective: 1000px;"
-      >
+      <div class="relative mb-6">
         <img
           src="/nfc.png"
           alt="Tessera NFC"
-          class="w-64 h-40 object-contain rounded-xl pointer-events-none select-none"
+          class="w-64 h-40 md:w-80 md:h-48 object-contain rounded-xl shadow-lg border border-neutral-800 bg-neutral-950"
           draggable="false"
         />
       </div>
-      <p class="mt-8 text-lg text-gray-700 max-w-2xl text-center">
-        Scopri le nostre tessere NFC personalizzate, ideali per recensioni, menu digitali e molto altro. Perfette per migliorare l'esperienza dei tuoi clienti e ottimizzare la tua attività.
+      <p class="mt-2 text-base md:text-lg text-neutral-200 max-w-xl text-center font-normal">
+        Condividi informazioni, link, recensioni o menù digitali con un semplice tocco. Le nostre tessere NFC sono facili da usare, personalizzabili e compatibili con la maggior parte degli smartphone. Nessuna app richiesta.
       </p>
+      <ul class="mt-6 text-left text-neutral-300 max-w-md space-y-2 text-base font-normal">
+        <li class="flex items-center gap-2"><span class="inline-block w-2 h-2 bg-neutral-500 rounded-full"></span>Facile da usare: basta avvicinare la tessera allo smartphone.</li>
+        <li class="flex items-center gap-2"><span class="inline-block w-2 h-2 bg-neutral-500 rounded-full"></span>Personalizzabile: grafica, logo o design su richiesta.</li>
+        <li class="flex items-center gap-2"><span class="inline-block w-2 h-2 bg-neutral-500 rounded-full"></span>Resistente: PVC di qualità, pensata per durare.</li>
+        <li class="flex items-center gap-2"><span class="inline-block w-2 h-2 bg-neutral-500 rounded-full"></span>Compatibile con Android e iPhone.</li>
+      </ul>
+      <button
+        id="open-modal"
+        class="mt-10 bg-neutral-800 hover:bg-neutral-700 text-white text-lg font-semibold px-8 py-3 rounded-lg shadow transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-neutral-600"
+        onclick="document.getElementById('modal').classList.remove('hidden')"
+      >
+        Prenota ora
+      </button>
     </div>
-    <script type="module" is:inline>
-      const card = document.getElementById('nfc-card');
-      if (card) {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * 10;
-          const rotateY = ((x - centerX) / centerX) * 15;
-          card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-        });
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-        });
-      }
-    </script>
   </section>
 
-  <!-- Sezione Vantaggi Moderne -->
-  <section class="py-20 bg-gradient-to-b from-white to-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-900">Perché scegliere le nostre tessere NFC?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="flex flex-col items-center bg-white rounded-xl shadow-lg p-8 hover:scale-105 transition-transform">
-          <svg class="w-14 h-14 text-blue-500 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 8v4l3 3"></path>
-            <circle cx="12" cy="12" r="10"></circle>
-          </svg>
-          <h3 class="text-xl font-semibold mb-2">Connessione Istantanea</h3>
-          <p class="text-gray-600 text-center">Condividi informazioni, link e recensioni con un semplice tocco. Niente più QR code o app complicate!</p>
+  <!-- Modal Prenotazione -->
+  <div
+    id="modal"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden"
+    onclick="if(event.target === this){this.classList.add('hidden')}"
+  >
+    <div class="bg-neutral-900 rounded-2xl shadow-2xl p-6 w-full max-w-md mx-2 relative animate-fade-in">
+      <button
+        class="absolute top-4 right-4 text-neutral-400 hover:text-white text-2xl font-bold transition"
+        onclick="document.getElementById('modal').classList.add('hidden')"
+        aria-label="Chiudi"
+        type="button"
+      >&times;</button>
+      <h2 class="text-2xl font-bold mb-4 text-white text-center">Prenota la tua tessera NFC</h2>
+      <form
+        id="nfc-form"
+        class="space-y-4"
+        action="https://formspree.io/f/xqaqqdzn"
+        method="POST"
+        target="hidden_iframe"
+        onsubmit="document.getElementById('form-success').classList.remove('hidden'); setTimeout(() => { document.getElementById('modal').classList.add('hidden'); document.getElementById('form-success').classList.add('hidden'); document.getElementById('nfc-form').reset(); }, 2500);"
+      >
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold text-neutral-200" for="nome">Nome</label>
+          <input type="text" id="nome" name="Nome" required class="w-full border border-neutral-700 bg-neutral-800 text-white rounded-lg px-3 py-2 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-600 transition" autocomplete="given-name" />
         </div>
-        <div class="flex flex-col items-center bg-white rounded-xl shadow-lg p-8 hover:scale-105 transition-transform">
-          <svg class="w-14 h-14 text-green-500 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M5 13l4 4L19 7"></path>
-            <rect width="20" height="20" x="2" y="2" rx="5"></rect>
-          </svg>
-          <h3 class="text-xl font-semibold mb-2">Personalizzazione Totale</h3>
-          <p class="text-gray-600 text-center">Grafica, logo e dati personalizzati per rappresentare al meglio la tua attività o il tuo brand.</p>
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold text-neutral-200" for="cognome">Cognome</label>
+          <input type="text" id="cognome" name="Cognome" required class="w-full border border-neutral-700 bg-neutral-800 text-white rounded-lg px-3 py-2 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-600 transition" autocomplete="family-name" />
         </div>
-        <div class="flex flex-col items-center bg-white rounded-xl shadow-lg p-8 hover:scale-105 transition-transform">
-          <svg class="w-14 h-14 text-purple-500 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 4v16m8-8H4"></path>
-          </svg>
-          <h3 class="text-xl font-semibold mb-2">Esperienza WOW</h3>
-          <p class="text-gray-600 text-center">Sorprendi i tuoi clienti con una tecnologia innovativa e un design moderno che non passa inosservato.</p>
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold text-neutral-200" for="email">Email</label>
+          <input type="email" id="email" name="Email" required class="w-full border border-neutral-700 bg-neutral-800 text-white rounded-lg px-3 py-2 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-600 transition" autocomplete="email" />
         </div>
-      </div>
-      <div class="mt-16 flex flex-col items-center">
-        <span class="inline-block bg-blue-100 text-blue-800 text-lg font-semibold px-6 py-3 rounded-full shadow">
-          Porta la tua attività nel futuro, oggi stesso!
-        </span>
-        <a
-          href="/contattaci"
-          class="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold px-10 py-4 rounded-full shadow-lg transition-colors duration-200"
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold text-neutral-200" for="descrizione">Descrizione utilizzo tessera</label>
+          <textarea id="descrizione" name="Descrizione utilizzo tessera" required class="w-full border border-neutral-700 bg-neutral-800 text-white rounded-lg px-3 py-2 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-600 transition" rows="2" placeholder="Es: Recensioni Google, menù digitale, biglietto da visita..."></textarea>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold text-neutral-200" for="grafica">Hai già la grafica/logo?</label>
+          <select id="grafica" name="Grafica/logo" required class="w-full border border-neutral-700 bg-neutral-800 text-white rounded-lg px-3 py-2 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-600 transition">
+            <option value="">Seleziona...</option>
+            <option value="Ho già il logo/grafica pronta">Ho già il logo/grafica pronta</option>
+            <option value="Ho bisogno di aiuto per la grafica">Ho bisogno di aiuto per la grafica</option>
+          </select>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="font-semibold text-neutral-200" for="note">Note aggiuntive</label>
+          <textarea id="note" name="Note aggiuntive" class="w-full border border-neutral-700 bg-neutral-800 text-white rounded-lg px-3 py-2 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-600 transition" rows="2"></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-neutral-800 hover:bg-neutral-700 text-white font-semibold py-3 rounded-lg shadow transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-neutral-600"
         >
-          Richiedi la tua tessera ora
-        </a>
+          Invia richiesta
+        </button>
+      </form>
+      <iframe name="hidden_iframe" style="display:none;"></iframe>
+      <div id="form-success" class="hidden text-green-500 font-semibold mt-4 text-center">Richiesta inviata! Ti ricontatteremo a breve via mail o telefono.</div>
+      <div id="form-error" class="hidden text-red-500 font-semibold mt-2 text-center">Errore nell'invio. Riprova o scrivi a info@bitora.it</div>
+    </div>
+    <style>
+      @keyframes fade-in {
+        from { opacity: 0; transform: scale(0.96);}
+        to { opacity: 1; transform: scale(1);}
+      }
+      .animate-fade-in { animation: fade-in 0.2s cubic-bezier(.4,0,.2,1);}
+    </style>
+  </div>
+
+  <!-- Sezione Vantaggi Moderne -->
+  <section class="py-12 md:py-20 bg-neutral-950">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-10 text-white tracking-tight">Perché scegliere le nostre tessere NFC?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="flex flex-col items-center bg-neutral-900 rounded-xl shadow-lg p-6 border border-neutral-800 hover:scale-105 transition-transform duration-150">
+          <div class="mb-3">
+            <svg class="w-10 h-10 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 8v4l3 3"></path>
+              <circle cx="12" cy="12" r="10"></circle>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2 text-white">Connessione Istantanea</h3>
+          <p class="text-neutral-300 text-center text-base">Condividi informazioni, link e recensioni con un semplice tocco. Niente più QR code o app complicate!</p>
+        </div>
+        <div class="flex flex-col items-center bg-neutral-900 rounded-xl shadow-lg p-6 border border-neutral-800 hover:scale-105 transition-transform duration-150">
+          <div class="mb-3">
+            <svg class="w-10 h-10 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 13l4 4L19 7"></path>
+              <rect width="20" height="20" x="2" y="2" rx="5"></rect>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2 text-white">Personalizzazione Totale</h3>
+          <p class="text-neutral-300 text-center text-base">Grafica, logo e dati personalizzati per rappresentare al meglio la tua attività o il tuo brand.</p>
+        </div>
+        <div class="flex flex-col items-center bg-neutral-900 rounded-xl shadow-lg p-6 border border-neutral-800 hover:scale-105 transition-transform duration-150">
+          <div class="mb-3">
+            <svg class="w-10 h-10 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2 text-white">Esperienza WOW</h3>
+          <p class="text-neutral-300 text-center text-base">Sorprendi i tuoi clienti con una tecnologia innovativa e un design moderno che non passa inosservato.</p>
+        </div>
       </div>
+      <div class="mt-12 flex flex-col items-center">
+        <p class="text-neutral-400 text-center text-lg md:text-xl font-medium max-w-xl">
+          Porta la tua attività nel futuro: la semplicità incontra la tecnologia, per clienti sempre connessi.
+        </p>
+      </div>
+
+      <!-- Elenco nascondibile -->
+      <div class="mt-16 max-w-xl mx-auto">
+        <button
+          id="toggle-nfc-list"
+          type="button"
+          class="w-full flex items-center justify-between bg-neutral-900 border border-neutral-800 rounded-lg px-5 py-4 text-left text-white font-semibold text-lg hover:bg-neutral-800 transition"
+          onclick="const l=document.getElementById('nfc-list');l.classList.toggle('hidden');this.querySelector('svg').classList.toggle('rotate-180')"
+        >
+          Cosa puoi programmare in una tessera NFC?
+          <svg class="w-5 h-5 ml-2 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <ul id="nfc-list" class="hidden mt-4 bg-neutral-900 border border-neutral-800 rounded-lg px-5 py-4 text-neutral-200 space-y-2 text-base">
+          <li>• Aprire un link (sito web, social, menù digitale, landing page, ecc.)</li>
+          <li>• Far lasciare una recensione Google/MyBusiness</li>
+          <li>• Salvare un contatto (vCard, biglietto da visita digitale)</li>
+          <li>• Inviare una mail precompilata</li>
+          <li>• Avviare una chiamata telefonica</li>
+          <li>• Condividere il WiFi (Android)</li>
+          <li>• Aprire una posizione su Google Maps</li>
+          <li>• Aprire WhatsApp, Telegram, Instagram, Facebook, LinkedIn, ecc.</li>
+          <li>• Mostrare un PDF, un menù digitale, un catalogo</li>
+          <li>• Automatizzare azioni (solo Android, es: attivare/disattivare WiFi, aprire app, ecc.)</li>
+          <li>• ...e molto altro!</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guida utilizzo tessere NFC -->
+  <section class="py-12 md:py-20 bg-neutral-900 border-t border-neutral-800">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-10 text-white tracking-tight">Come si usano le tessere NFC?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-neutral-950 rounded-xl p-6 border border-neutral-800">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <svg class="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+            Android
+          </h3>
+          <ol class="list-decimal list-inside text-neutral-200 space-y-2 text-base">
+            <li>Assicurati che l’NFC sia attivo nelle impostazioni del telefono.</li>
+            <li>Avvicina la tessera NFC alla parte posteriore del telefono (di solito vicino alla fotocamera).</li>
+            <li>Riceverai una notifica o si aprirà automaticamente il contenuto programmato (link, contatto, ecc.).</li>
+            <li>Se non succede nulla, prova a spostare leggermente la tessera o verifica che il telefono supporti NFC.</li>
+          </ol>
+        </div>
+        <div class="bg-neutral-950 rounded-xl p-6 border border-neutral-800">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <svg class="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+            Apple (iPhone)
+          </h3>
+          <ol class="list-decimal list-inside text-neutral-200 space-y-2 text-base">
+            <li>iPhone XS e successivi: l’NFC è sempre attivo, non serve attivare nulla.</li>
+            <li>Avvicina la tessera NFC alla parte superiore del telefono (vicino alla fotocamera frontale).</li>
+            <li>Apparirà una notifica in alto: toccala per aprire il contenuto programmato.</li>
+            <li>Per iPhone 7/8/X: serve l’app “NFC Tools” o simili per leggere le tessere.</li>
+          </ol>
+        </div>
+      </div>
+      <p class="mt-10 text-neutral-400 text-center text-base">
+        Le tessere NFC funzionano senza batteria e sono ri-programmabili. Per modificare una tessera puoi rivolgerti a noi.
+      </p>
     </div>
   </section>
 </Layout>
