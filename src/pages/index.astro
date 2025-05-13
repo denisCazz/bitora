@@ -29,22 +29,6 @@ const testimonials = [
 
   <Features />
 
-  <!-- NFC CTA Section -->
-  <section class="py-24 bg-black text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-5xl md:text-6xl font-extrabold mb-8 tracking-tight">
-        Tessere NFC Personalizzate
-      </h2>
-      <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-medium">
-        Il modo più semplice e moderno per collegare il mondo fisico a quello digitale. <br />
-        Recensioni, menù, contatti, link: tutto con un solo tocco.
-      </p>
-      <a href="/shop" class="inline-block px-10 py-5 bg-white text-black rounded-full font-bold text-xl shadow-lg hover:bg-neutral-200 transition-colors duration-150">
-        Scopri lo Shop NFC
-      </a>
-    </div>
-  </section>
-
   <!-- Process Section -->
   <section class="py-24 bg-gray-50">
     <div class="container mx-auto px-4">
@@ -98,37 +82,34 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <!-- Portfolio/Lavori CTA Section -->
   <section class="py-24 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">Le Opinioni dei Clienti</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Scopri cosa dicono le aziende che hanno scelto bitora.it
-        </p>
-      </div>
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+        Guarda i Nostri Progetti di Successo
+      </h2>
+      <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+        Scopri come abbiamo aiutato aziende come la tua a raggiungere i loro obiettivi con siti web performanti e dal design curato.
+      </p>
+      <a href="/lavori" class="inline-block px-10 py-4 bg-black text-white rounded-md font-bold text-lg shadow-md hover:bg-gray-800 transition-colors duration-300">
+        Esplora i Nostri Lavori
+      </a>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-        {testimonials.map(testimonial => (
-          <a href={testimonial.site} target="_blank" rel="noopener noreferrer" class="group">
-            <div class="p-8 bg-white border border-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div class="flex items-center mb-6">
-                <img 
-                  src={testimonial.image} 
-                  alt={`Foto di ${testimonial.author} - ${testimonial.company}`}
-                  class="w-14 h-14 rounded-full mr-4 object-cover border-2 border-gray-100"
-                  loading="lazy"
-                />
-                <div>
-                  <h4 class="font-bold text-lg">{testimonial.author}</h4>
-                  <p class="text-gray-500">{testimonial.company}</p>
-                </div>
-              </div>
-              <p class="text-gray-700 italic leading-relaxed">"{testimonial.quote}"</p>
-            </div>
-          </a>
-        ))}
-      </div>
+  <!-- NFC CTA Section -->
+  <section class="py-24 bg-black text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-5xl md:text-6xl font-extrabold mb-8 tracking-tight">
+        Tessere NFC Personalizzate
+      </h2>
+      <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-medium">
+        Il modo più semplice e moderno per collegare il mondo fisico a quello digitale. <br />
+        Recensioni, menù, contatti, link: tutto con un solo tocco.
+      </p>
+      <a href="/shop" class="inline-block px-10 py-5 bg-white text-black rounded-full font-bold text-xl shadow-lg hover:bg-neutral-200 transition-colors duration-150">
+        Scopri lo Shop NFC
+      </a>
     </div>
   </section>
 
