@@ -1,22 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const testimonials = [
-  {
-    quote: "Il mio sito è stato consegnato in soli 3 giorni! Design elegante e professionale che rispecchia perfettamente la mia attività.",
-    author: "Kristina",
-    company: "Sartoria Kristina",
-    image: "/sartoria_kristina.png",
-    site: "https://sartoriakristina.it"
-  },
-  {
-    quote: "Mistral Impianti SRL ha scelto bitora.it per il nostro sito web e non potremmo essere più soddisfatti!",
-    author: "Gabriele",
-    company: "Mistral Impianti SRL",
-    image: "/mistral.jpg",
-    site: "https://mistralimpianti.it"
-  }
-];
+import { testimonials } from '../data/testimonials';
 ---
 
 <Layout title="Bitora.it - Siti Web che Fanno Crescere il Tuo Business">
@@ -25,9 +9,13 @@ const testimonials = [
     <div class="container mx-auto px-4">
       <h1 class="text-5xl font-bold mb-6">Fai Crescere il Tuo Business Online</h1>
       <p class="text-xl mb-8 max-w-2xl mx-auto text-gray-300">
-        Siti web professionali, veloci e su misura per attrarre nuovi clienti e valorizzare la tua attività.
+        Siti web professionali, veloci e su misura per attrarre nuovi clienti e valorizzare la tua
+        attività.
       </p>
-      <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-md font-bold shadow-lg hover:bg-gray-100 transition-colors">
+      <a
+        href="/contattaci"
+        class="px-8 py-4 bg-white text-black rounded-md font-bold shadow-lg hover:bg-gray-100 transition-colors"
+      >
         Richiedi una Consulenza Gratuita
       </a>
     </div>
@@ -62,20 +50,29 @@ const testimonials = [
     <div class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-center mb-12">Cosa Dicono i Nostri Clienti</h2>
       <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-        {testimonials.map(t => (
-          <a href={t.site} target="_blank" rel="noopener noreferrer" class="group">
-            <div class="p-8 bg-gray-50 border border-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div class="flex items-center mb-4">
-                <img src={t.image} alt={t.author} class="w-14 h-14 rounded-full mr-4 object-cover border-2 border-gray-200" />
-                <div>
-                  <h4 class="font-bold">{t.author}</h4>
-                  <p class="text-gray-500">{t.company}</p>
+        {
+          testimonials.map(t => (
+            <a href={t.site} target="_blank" rel="noopener noreferrer" class="group">
+              <div class="p-8 bg-gray-50 border border-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                  <img
+                    src={t.image}
+                    alt={t.author}
+                    class="w-14 h-14 rounded-full mr-4 object-cover border-2 border-gray-200"
+                    loading="lazy"
+                    width="56"
+                    height="56"
+                  />
+                  <div>
+                    <h4 class="font-bold">{t.author}</h4>
+                    <p class="text-gray-500">{t.company}</p>
+                  </div>
                 </div>
+                <p class="italic text-gray-700">"{t.quote}"</p>
               </div>
-              <p class="italic text-gray-700">"{t.quote}"</p>
-            </div>
-          </a>
-        ))}
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -87,7 +84,10 @@ const testimonials = [
       <p class="text-xl mb-8 max-w-2xl mx-auto text-gray-300">
         Compila il modulo e ricevi una consulenza gratuita e senza impegno!
       </p>
-      <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-md font-bold shadow-lg hover:bg-gray-100 transition-colors">
+      <a
+        href="/contattaci"
+        class="px-8 py-4 bg-white text-black rounded-md font-bold shadow-lg hover:bg-gray-100 transition-colors"
+      >
         Parla con un Esperto
       </a>
     </div>

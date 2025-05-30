@@ -1,86 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const pricingPlans = [
-  {
-    title: "Sito Essenziale",
-    price: "€20",
-    period: "mese",
-    description: "La soluzione ideale per piccole imprese che cercano una presenza professionale online.",
-    features: [
-      "Fino a 5 pagine",
-      "Design responsive",
-      "Dominio personalizzato",
-      "Hosting incluso",
-      "SEO base",
-      "Supporto via email"
-    ],
-    buttonText: "Inizia ora",
-    buttonUrl: "https://buy.stripe.com/bIY28sfFw28M6ti289",
-    highlighted: false
-  },
-  {
-    title: "Sito Premium",
-    price: "€500",
-    period: null,
-    description: "Pagamento unico per un sito web sofisticato ed elegante, senza canoni mensili.",
-    features: [
-      "Fino a 5 pagine",
-      "Design personalizzato",
-      "Dominio (1° anno incluso)",
-      "Hosting (1° anno incluso)",
-      "SEO avanzato",
-      "Assistenza prioritaria"
-    ],
-    buttonText: "Scegli questo piano",
-    buttonUrl: "https://buy.stripe.com/14kbJ2fFwbJmg3S4gg",
-    highlighted: true
-  },
-  {
-    title: "Soluzione Business",
-    price: "Su misura",
-    period: null,
-    description: "Per progetti complessi che richiedono funzionalità e personalizzazione avanzate.",
-    features: [
-      "Pagine illimitate",
-      "Design esclusivo",
-      "Funzionalità avanzate",
-      "E-commerce opzionale",
-      "Strategia SEO completa",
-      "Account manager dedicato"
-    ],
-    buttonText: "Richiedi preventivo",
-    buttonUrl: "/contattaci?plan=Soluzione%20Business",
-    highlighted: false
-  }
-];
-
-const faqs = [
-  {
-    question: "Quanto tempo richiede la realizzazione del sito?",
-    answer: "I nostri siti essenziali sono pronti in 3-5 giorni lavorativi. I progetti Premium e Business possono richiedere più tempo, in base alla complessità e alle personalizzazioni richieste."
-  },
-  {
-    question: "Posso aggiornare autonomamente i contenuti?",
-    answer: "Tutti i piani includono 5 modifiche gratuite. Per modifiche aggiuntive o l'implementazione di un sistema di gestione dei contenuti, possiamo fornirti un preventivo personalizzato."
-  },
-  {
-    question: "È possibile passare da un piano all'altro?",
-    answer: "Certamente! Puoi passare dal piano mensile a quello Premium in qualsiasi momento, con un calcolo proporzionale dell'investimento già effettuato."
-  },
-  {
-    question: "Cosa succede se non sono soddisfatto del sito?",
-    answer: "Offriamo una garanzia di rimborso entro 30 giorni dalla consegna. Se non sei soddisfatto, ti rimborseremo l'intero importo. Salvo per i costi di registrazione del dominio e hosting, che non sono rimborsabili."
-  },
-  {
-    question: "Il sito è ottimizzato per i motori di ricerca?",
-    answer: "Sì, tutti i nostri siti sono progettati con le migliori pratiche SEO in mente. Offriamo anche servizi SEO avanzati per migliorare la tua visibilità online."
-  },
-  {
-    question: "Cosa include il supporto?",
-    answer: "Il supporto via email è incluso in tutti i piani. Per assistenza prioritaria o consulenze personalizzate, puoi contattarci per un preventivo."
-  }
-];
+import { pricingPlans } from '../data/pricing';
+import { faqs } from '../data/faq';
+import { icons } from '../components/Icons';
 ---
 
 <Layout title="Prezzi - Investimenti Trasparenti">
@@ -89,86 +11,182 @@ const faqs = [
     <div class="container mx-auto px-4 max-w-3xl text-center">
       <h1 class="text-5xl md:text-6xl font-bold mb-8">I Nostri Piani</h1>
       <p class="text-xl text-gray-600 leading-relaxed">
-        Soluzioni trasparenti e senza sorprese, progettate per adattarsi alle esigenze di ogni business.
+        Soluzioni trasparenti e senza sorprese, progettate per adattarsi alle esigenze di ogni
+        business.
       </p>
     </div>
   </section>
-  
+
   <!-- Pricing Cards Section -->
   <section class="py-24 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {pricingPlans.map(plan => (
-          <div class={`bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 ${plan.highlighted ? 'border-2 border-black relative' : 'border border-gray-100'}`}>
-            {plan.highlighted && (
-              <div class="absolute top-0 right-0 bg-black text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">
-                Più popolare
+        {
+          pricingPlans.map(plan => (
+            <div
+              class={`bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${plan.highlighted ? 'border-2 border-black relative' : 'border border-gray-100'}`}
+            >
+              {plan.highlighted && (
+                <div class="absolute top-0 right-0 bg-black text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">
+                  Più popolare
+                </div>
+              )}
+              <div class="p-8">
+                <h3 class="text-2xl font-bold mb-4">{plan.title}</h3>
+                <div class="mb-4">
+                  <span class="text-4xl font-bold">{plan.price}</span>
+                  {plan.period && <span class="text-gray-500">/{plan.period}</span>}
+                </div>
+                <p class="text-gray-600 mb-6">{plan.description}</p>
+
+                <ul class="space-y-3 mb-8">
+                  {plan.features.map(feature => (
+                    <li class="flex items-center">
+                      <div class="w-5 h-5 mr-2 text-black">
+                        <Fragment set:html={icons.check} />
+                      </div>
+                      <span class="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={plan.buttonUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`block w-full py-3 px-4 text-center font-bold rounded-md transition-all duration-300 ${plan.highlighted ? 'bg-black text-white hover:bg-gray-900 transform hover:scale-105' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+                >
+                  {plan.buttonText}
+                </a>
               </div>
-            )}
-            <div class="p-8">
-              <h3 class="text-2xl font-bold mb-4">{plan.title}</h3>
-              <div class="mb-4">
-                <span class="text-4xl font-bold">{plan.price}</span>
-                {plan.period && <span class="text-gray-500">/{plan.period}</span>}
-              </div>
-              <p class="text-gray-600 mb-6">{plan.description}</p>
-              
-              <ul class="space-y-3 mb-8">
-                {plan.features.map(feature => (
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 mr-2 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="text-gray-600">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <a 
-                href={plan.buttonUrl}
-                target="_blank"
-                class={`block w-full py-3 px-4 text-center font-bold rounded-md transition-colors ${plan.highlighted ? 'bg-black text-white hover:bg-gray-900' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
-              >
-                {plan.buttonText}
-              </a>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
       <div class="mt-12 text-center">
         <p class="text-gray-600">
-          Hai esigenze particolari? <a href="/contattaci" class="font-medium text-black border-b border-black hover:border-transparent transition-colors">Contattaci</a> per una soluzione su misura.
+          Hai esigenze particolari? <a
+            href="/contattaci"
+            class="font-medium text-black border-b border-black hover:border-transparent transition-colors"
+            >Contattaci</a
+          > per una soluzione su misura.
         </p>
       </div>
     </div>
   </section>
-  
+
   <!-- FAQ Section -->
   <section class="py-24 bg-white">
     <div class="container mx-auto px-4 max-w-3xl">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-bold mb-8">Domande Frequenti</h2>
-        <p class="text-xl text-gray-600">
-          Hai domande? Probabilmente abbiamo già la risposta
-        </p>
+        <p class="text-xl text-gray-600">Hai domande? Probabilmente abbiamo già la risposta</p>
       </div>
       <div class="space-y-6">
-        {faqs.map((faq, index) => (
-          <div class="border border-gray-200 rounded-lg overflow-hidden">
-            <details class="group">
-              <summary class="flex justify-between items-center p-6 cursor-pointer bg-white">
-                <h3 class="text-lg font-bold">{faq.question}</h3>
-                <svg class="w-6 h-6 text-gray-500 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
-              </summary>
-              <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                <p>{faq.answer}</p>
-              </div>
-            </details>
-          </div>
-        ))}
+        {
+          faqs.map(faq => (
+            <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+              <details class="group">
+                <summary class="flex justify-between items-center p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+                  <h3 class="text-lg font-semibold text-gray-800">{faq.question}</h3>
+                  <div class="text-gray-500 transition-transform duration-200 group-open:rotate-180">
+                    <Fragment set:html={icons.chevronDown} />
+                  </div>
+                </summary>
+                <div class="px-6 pb-6">
+                  <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+                </div>
+              </details>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 </Layout>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Web Design Services - Bitora.it",
+    "description": "Professional web design and development services with transparent pricing plans",
+    "provider": {
+      "@type": "Organization",
+      "name": "Bitora.it",
+      "url": "https://bitora.it"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Sito Web Base",
+        "description": "Sito web professionale con design responsive e ottimizzazione SEO di base",
+        "price": "590",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Basic Website Design"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Sito Web Professionale",
+        "description": "Sito web avanzato con funzionalità e-commerce e gestionale integrato",
+        "price": "990",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Professional Website Design"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Soluzione Enterprise",
+        "description": "Soluzione completa su misura per grandi aziende",
+        "price": "1990",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-01-01",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Enterprise Website Solution"
+        }
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "Italy"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Design Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Responsive Web Design"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "SEO Optimization"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "E-commerce Development"
+          }
+        }
+      ]
+    }
+  }
+</script>

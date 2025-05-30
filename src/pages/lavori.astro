@@ -1,91 +1,100 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { FaBriefcase, FaExternalLinkAlt } from 'react-icons/fa';
+import { icons } from '../components/Icons';
 
 // Placeholder for projects - replace with your actual project data
 const projects = [
   {
-    title: "Sito Web per Sartoria Kristina",
-    description: "Design elegante e responsive per una sartoria artigianale, focalizzato sulla presentazione dei servizi e sulla facilità di contatto.",
-    imageUrl: "/sartoria_kristina.png", // Replace with actual image path
-    siteUrl: "https://sartoriakristina.it",
-    tags: ["Web Design", "Responsive", "Portfolio"]
+    title: 'Sito Web per Sartoria Kristina',
+    description:
+      'Design elegante e responsive per una sartoria artigianale, focalizzato sulla presentazione dei servizi e sulla facilità di contatto.',
+    imageUrl: '/sartoria_kristina.png', // Replace with actual image path
+    siteUrl: 'https://sartoriakristina.it',
+    tags: ['Web Design', 'Responsive', 'Portfolio'],
   },
   {
-    title: "Piattaforma Web per Mistral Impianti SRL",
-    description: "Sviluppo di un sito per un'azienda di impianti specializzati, con focus sulla chiarezza delle informazioni e sull'affidabilità.",
-    imageUrl: "/mistral.jpg", // Replace with actual image path
-    siteUrl: "https://mistralimpianti.it",
-    tags: ["Sviluppo Web", "Aziendale", "Servizi"]
+    title: 'Piattaforma Web per Mistral Impianti SRL',
+    description:
+      "Sviluppo di un sito per un'azienda di impianti specializzati, con focus sulla chiarezza delle informazioni e sull'affidabilità.",
+    imageUrl: '/mistral.jpg', // Replace with actual image path
+    siteUrl: 'https://mistralimpianti.it',
+    tags: ['Sviluppo Web', 'Aziendale', 'Servizi'],
   },
   // Add more projects here
 ];
 ---
 
-<Layout 
+<Layout
   title="I Nostri Lavori - Progetti Realizzati da Bitora"
   description="Esplora una selezione dei siti web e delle soluzioni digitali che abbiamo creato per i nostri clienti. Scopri la qualità e l'efficacia del nostro lavoro."
 >
   <main class="container mx-auto px-4 py-16">
     <header class="text-center mb-16">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-gray-800">
-        I Nostri Lavori
-      </h1>
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-gray-800">I Nostri Lavori</h1>
       <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Siamo orgogliosi di presentare una selezione dei progetti che abbiamo curato, trasformando le visioni dei nostri clienti in realtà digitali di successo.
+        Siamo orgogliosi di presentare una selezione dei progetti che abbiamo curato, trasformando
+        le visioni dei nostri clienti in realtà digitali di successo.
       </p>
     </header>
 
-    {projects.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {projects.map(project => (
-          <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl group">
-            <div class="relative h-56">
-              <img 
-                src={project.imageUrl} 
-                alt={`Immagine del progetto ${project.title}`} 
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-opacity duration-300"></div>
-            </div>
-            <div class="p-6">
-              <h2 class="text-2xl font-bold mb-3 text-gray-800">{project.title}</h2>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                {project.description}
-              </p>
-              <div class="mb-4">
-                {project.tags.map(tag => (
-                  <span class="inline-block bg-gray-100 text-gray-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-1">
-                    {tag}
-                  </span>
-                ))}
+    {
+      projects.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {projects.map(project => (
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl group">
+              <div class="relative h-56">
+                <img
+                  src={project.imageUrl}
+                  alt={`Immagine del progetto ${project.title}`}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-opacity duration-300" />
               </div>
-              <a 
-                href={project.siteUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="inline-flex items-center text-sm font-medium text-black hover:text-gray-700 transition-colors duration-300 group"
-              >
-                Visita il sito
-                <FaExternalLinkAlt className="ml-2 h-4 w-4 opacity-70 group-hover:opacity-100 transition-opacity" />
-              </a>
+              <div class="p-6">
+                <h2 class="text-2xl font-bold mb-3 text-gray-800">{project.title}</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">{project.description}</p>
+                <div class="mb-4">
+                  {project.tags.map(tag => (
+                    <span class="inline-block bg-gray-100 text-gray-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-1">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={project.siteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center text-sm font-medium text-black hover:text-gray-700 transition-colors duration-300 group"
+                >
+                  Visita il sito
+                  <div class="ml-2 w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity">
+                    <Fragment set:html={icons.externalLink} />
+                  </div>
+                </a>
+              </div>
             </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <div class="w-15 h-15 mx-auto text-gray-400 mb-6">
+            <Fragment set:html={icons.briefcase} />
           </div>
-        ))}
-      </div>
-    ) : (
-      <div class="text-center py-12">
-        <FaBriefcase size={60} className="mx-auto text-gray-400 mb-6" />
-        <h2 class="text-3xl font-semibold mb-4 text-gray-700">Portfolio in Aggiornamento</h2>
-        <p class="text-gray-500 max-w-lg mx-auto mb-8">
-          Stiamo selezionando i nostri migliori lavori per mostrarteli. Torna presto per scoprire i progetti che abbiamo realizzato!
-        </p>
-        <a href="/contattaci" class="inline-block px-8 py-3 bg-black text-white rounded-md font-semibold hover:bg-gray-800 transition-colors">
-          Contattaci per Esempi
-        </a>
-      </div>
-    )}
+          <h2 class="text-3xl font-semibold mb-4 text-gray-700">Portfolio in Aggiornamento</h2>
+          <p class="text-gray-500 max-w-lg mx-auto mb-8">
+            Stiamo selezionando i nostri migliori lavori per mostrarteli. Torna presto per scoprire
+            i progetti che abbiamo realizzato!
+          </p>
+          <a
+            href="/contattaci"
+            class="inline-block px-8 py-3 bg-black text-white rounded-md font-semibold hover:bg-gray-800 transition-colors"
+          >
+            Contattaci per Esempi
+          </a>
+        </div>
+      )
+    }
 
     <section class="mt-20 py-16 bg-gray-50 rounded-lg">
       <div class="container mx-auto px-4 text-center">
@@ -93,7 +102,10 @@ const projects = [
         <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
           Siamo pronti ad ascoltare le tue idee e a trasformarle in una soluzione digitale efficace.
         </p>
-        <a href="/contattaci" class="px-8 py-4 bg-black text-white rounded-md font-bold shadow-lg hover:bg-gray-800 transition-colors">
+        <a
+          href="/contattaci"
+          class="px-8 py-4 bg-black text-white rounded-md font-bold shadow-lg hover:bg-gray-800 transition-colors"
+        >
           Parliamone Insieme
         </a>
       </div>

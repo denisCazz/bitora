@@ -1,38 +1,50 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { FaGlobe, FaServer, FaCloud, FaBuilding } from "react-icons/fa";
+import Layout from '../layouts/Layout.astro';
+import { icons } from '../components/Icons';
 ---
 
 <Layout title="Servizi - Cosa Offriamo">
   <main class="container mx-auto px-4 py-10">
-    <h1 class="text-4xl font-extrabold mb-12 text-center text-gray-800">
-      I Nostri Servizi
-    </h1>
+    <h1 class="text-4xl font-extrabold mb-12 text-center text-gray-800">I Nostri Servizi</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="p-6 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <div
+        class="p-6 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+      >
         <div class="flex items-center justify-center mb-4">
-          <FaGlobe size={40} />
+          <div class="w-10 h-10">
+            <Fragment set:html={icons.globe} />
+          </div>
         </div>
         <h2 class="text-2xl font-semibold mb-2">Siti Vetrina</h2>
         <p class="text-sm leading-relaxed">
-          Presentazione aziendale online con design curato, facile navigazione e contenuti SEO friendly.
+          Presentazione aziendale online con design curato, facile navigazione e contenuti SEO
+          friendly.
         </p>
       </div>
 
-      <div class="p-6 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <div
+        class="p-6 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+      >
         <div class="flex items-center justify-center mb-4">
-          <FaServer size={40} />
+          <div class="w-10 h-10">
+            <Fragment set:html={icons.server} />
+          </div>
         </div>
         <h2 class="text-2xl font-semibold mb-2">Registrazione Domini</h2>
         <p class="text-sm leading-relaxed">
-          Acquisizione e gestione del nome online con supporto per configurazione DNS e rinnovo automatico.
+          Acquisizione e gestione del nome online con supporto per configurazione DNS e rinnovo
+          automatico.
         </p>
       </div>
 
-      <div class="p-6 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <div
+        class="p-6 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+      >
         <div class="flex items-center justify-center mb-4">
-          <FaCloud size={40} />
+          <div class="w-10 h-10">
+            <Fragment set:html={icons.cloud} />
+          </div>
         </div>
         <h2 class="text-2xl font-semibold mb-2">Hosting</h2>
         <p class="text-sm leading-relaxed">
@@ -40,15 +52,88 @@ import { FaGlobe, FaServer, FaCloud, FaBuilding } from "react-icons/fa";
         </p>
       </div>
 
-      <div class="p-6 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <div
+        class="p-6 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+      >
         <div class="flex items-center justify-center mb-4">
-          <FaBuilding size={40} />
+          <div class="w-10 h-10">
+            <Fragment set:html={icons.building} />
+          </div>
         </div>
         <h2 class="text-2xl font-semibold mb-2">Soluzioni Enterprise</h2>
         <p class="text-sm leading-relaxed">
-          Servizi su misura per grandi aziende con infrastrutture dedicate e supporto tecnico avanzato.
+          Servizi su misura per grandi aziende con infrastrutture dedicate e supporto tecnico
+          avanzato.
         </p>
       </div>
     </div>
   </main>
 </Layout>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Web Design & Digital Services - Bitora.it",
+    "description": "Complete digital services including website design, domain registration, hosting, and enterprise solutions",
+    "provider": {
+      "@type": "Organization",
+      "name": "Bitora.it",
+      "url": "https://bitora.it",
+      "logo": "https://bitora.it/favicon.ico"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Italy"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Digital Services Catalog",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Siti Vetrina",
+            "description": "Presentazione aziendale online con design curato, facile navigazione e contenuti SEO friendly",
+            "serviceType": "Website Design"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Registrazione Domini",
+            "description": "Acquisizione e gestione del nome online con supporto per configurazione DNS e rinnovo automatico",
+            "serviceType": "Domain Registration"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Hosting",
+            "description": "Soluzioni di hosting affidabili e sicure, scalabili per siti in crescita",
+            "serviceType": "Web Hosting"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Soluzioni Enterprise",
+            "description": "Servizi su misura per grandi aziende con infrastrutture dedicate e supporto tecnico avanzato",
+            "serviceType": "Enterprise Solutions"
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "50",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+</script>

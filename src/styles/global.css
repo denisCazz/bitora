@@ -1,19 +1,122 @@
 #popup {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.1); /* Bianco traslucido */
-    backdrop-filter: blur(10px); /* Effetto sfocato */
-    -webkit-backdrop-filter: blur(10px); /* Supporto Safari */
-    visibility: hidden; /* Nasconde il popup */
-    opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1); /* Bianco traslucido */
+  backdrop-filter: blur(10px); /* Effetto sfocato */
+  -webkit-backdrop-filter: blur(10px); /* Supporto Safari */
+  visibility: hidden; /* Nasconde il popup */
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+#popup.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Enhanced Focus Indicators and Accessibility */
+:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Enhanced button focus states */
+button:focus-visible,
+[role='button']:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced link focus states */
+a:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+
+/* Form element focus states */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+  border-color: #000;
+}
+
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Improved contrast for better readability */
+.text-gray-600 {
+  color: #4a5568 !important;
+}
+
+.text-gray-500 {
+  color: #718096 !important;
+}
+
+/* Enhanced hover states for better UX */
+.hover-lift {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-gray-600 {
+    color: #000 !important;
   }
-  
-  #popup.show {
-    visibility: visible;
-    opacity: 1;
+
+  .text-gray-500 {
+    color: #333 !important;
   }
-  
+
+  .border-gray-100 {
+    border-color: #000 !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

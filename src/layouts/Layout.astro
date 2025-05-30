@@ -1,48 +1,86 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import "../styles/global.css";
+import '../styles/global.css';
 
 export interface Props {
   title: string;
-  description?: string; // aggiungi la descrizione opzionale
+  description?: string;
 }
 
 const { title, description } = Astro.props;
 const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
   <head>
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="2adbf0f8-a9d3-47bd-9a32-61ac932f9640"></script>
+    <!-- Analytics -->
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="2adbf0f8-a9d3-47bd-9a32-61ac932f9640"></script>
+
+    <!-- Essential Meta -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="htmx-config" content='{"disableAllHeaders": true}' />
+
+    <!-- SEO -->
     <title>{title}</title>
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="description" content={description ?? "Siti web minimalisti e professionali per aziende e freelance. Bitora crea soluzioni digitali rapide, eleganti e su misura per il tuo business."} />
+    <meta
+      name="description"
+      content={description ??
+        'Siti web minimalisti e professionali per aziende e freelance. Bitora crea soluzioni digitali rapide, eleganti e su misura per il tuo business.'}
+    />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/bitora.png" />
+
+    <!-- Fonts with optimized loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      /></noscript
+    >
+
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bitora.it/" />
-    <meta property="og:title" content="Web Design Minimalista & Professionale" />
-    <meta property="og:description" content="Siti web minimalisti, professionali e veloci. Bitora realizza soluzioni digitali su misura per aziende e professionisti che vogliono distinguersi online." />
-    <meta property="og:image" content="https://bitora.it/bitora.jpg "/>
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content={description ??
+        'Siti web minimalisti, professionali e veloci. Bitora realizza soluzioni digitali su misura per aziende e professionisti che vogliono distinguersi online.'}
+    />
+    <meta property="og:image" content="https://bitora.it/bitora.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://bitora.it/" />
-    <meta name="twitter:title" content="Web Design Minimalista & Professionale" />
-    <meta name="twitter:description" content="Siti web minimalisti, professionali e veloci. Bitora realizza soluzioni digitali su misura per aziende e professionisti che vogliono distinguersi online." />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content={description ??
+        'Siti web minimalisti, professionali e veloci. Bitora realizza soluzioni digitali su misura per aziende e professionisti che vogliono distinguersi online.'}
+    />
     <meta name="twitter:image" content="https://bitora.it/bitora.jpg" />
+
+    <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -55,8 +93,8 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
           "https://www.facebook.com/people/Bitora-Italia/pfbid0JubiVqBfxyM2nY6CoHLW3P5vQkjhUGE5UF5Pa16f491fzGsneW512MdMTiEpgvJCl/?mibextid=wwXIfr&rdid=xyslEd78VfiU5dPK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BTziLdEef%2F%3Fmibextid%3DwwXIfr"
         ]
       }
-      </script>
-      
+    </script>
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -69,22 +107,13 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
         }
       }
     </script>
-      
   </head>
   <body class="flex flex-col min-h-screen font-['Inter',sans-serif] bg-white text-gray-900">
+    <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
     <Header />
-    <main class="flex-grow">
+    <main id="main-content" class="flex-grow" tabindex="-1">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>

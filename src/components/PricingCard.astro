@@ -10,24 +10,28 @@ export interface Props {
   highlighted: boolean;
 }
 
-const { 
-  title, 
-  price, 
-  period, 
-  description, 
-  features, 
-  buttonText, 
+const {
+  title,
+  price,
+  period,
+  description,
+  features,
+  buttonText,
   buttonUrl,
-  highlighted = false
+  highlighted = false,
 } = Astro.props;
 ---
 
-<div class={`bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 ${highlighted ? 'border-2 border-black relative' : 'border border-gray-100'}`}>
-  {highlighted && (
-    <div class="absolute top-0 right-0 bg-black text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">
-      Più popolare
-    </div>
-  )}
+<div
+  class={`bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 ${highlighted ? 'border-2 border-black relative' : 'border border-gray-100'}`}
+>
+  {
+    highlighted && (
+      <div class="absolute top-0 right-0 bg-black text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">
+        Più popolare
+      </div>
+    )
+  }
   <div class="p-8">
     <h3 class="text-2xl font-bold mb-4">{title}</h3>
     <div class="mb-4">
@@ -35,19 +39,30 @@ const {
       {period && <span class="text-gray-500">/{period}</span>}
     </div>
     <p class="text-gray-600 mb-6">{description}</p>
-    
+
     <ul class="space-y-3 mb-8">
-      {features.map(feature => (
-        <li class="flex items-center">
-          <svg class="w-5 h-5 mr-2 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-          </svg>
-          <span class="text-gray-600">{feature}</span>
-        </li>
-      ))}
+      {
+        features.map(feature => (
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 mr-2 text-black"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="text-gray-600">{feature}</span>
+          </li>
+        ))
+      }
     </ul>
-    
-    <a 
+
+    <a
       href={buttonUrl}
       class={`block w-full py-3 px-4 text-center font-bold rounded-md transition-colors ${highlighted ? 'bg-black text-white hover:bg-gray-900' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
     >

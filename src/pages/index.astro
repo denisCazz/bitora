@@ -2,29 +2,41 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Features from '../components/Features.astro';
-
-const testimonials = [
-  {
-    quote: "Il mio sito è stato consegnato in soli 3 giorni! Design elegante e professionale che rispecchia perfettamente la mia attività.",
-    author: "Kristina",
-    company: "Sartoria Kristina",
-    image: "/sartoria_kristina.png",
-    site: "https://sartoriakristina.it"
-  },
-  {
-    quote: "Mistral Impianti SRL ha scelto bitora.it per il nostro sito web e non potremmo essere più soddisfatti!",
-    author: "Gabriele",
-    company: "Mistral Impianti SRL",
-    image: "/mistral.jpg",
-    site: "https://mistralimpianti.it"
-  }
-];
+import { testimonials } from '../data/testimonials';
 ---
 
 <Layout
   title="Web Design Minimalista & Professionale"
   description="Siti web minimalisti, professionali e veloci. Bitora realizza soluzioni digitali su misura per aziende e professionisti che vogliono distinguersi online."
 >
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Bitora",
+      "url": "https://bitora.it",
+      "logo": "https://bitora.it/bitora.jpg",
+      "description": "Siti web minimalisti, professionali e veloci. Bitora realizza soluzioni digitali su misura per aziende e professionisti che vogliono distinguersi online.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IT"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+39-324-778-7644",
+        "contactType": "Customer Service",
+        "email": "info@bitora.it"
+      },
+      "sameAs": ["https://wa.me/393247787644"],
+      "offers": {
+        "@type": "Offer",
+        "description": "Servizi di web design e sviluppo siti web professionali",
+        "category": "Web Design"
+      }
+    }
+  </script>
+
   <Hero />
 
   <Features />
@@ -39,13 +51,20 @@ const testimonials = [
         </p>
       </div>
 
-      <div class="relative flex flex-col md:flex-row items-center justify-between gap-12 max-w-5xl mx-auto">
+      <div
+        class="relative flex flex-col md:flex-row items-center justify-between gap-12 max-w-5xl mx-auto"
+      >
         <!-- Linea temporale -->
-        <div class="absolute hidden md:block top-8 left-0 right-0 h-0.5 bg-gray-200 w-10/12 mx-auto"></div>
+        <div
+          class="absolute hidden md:block top-8 left-0 right-0 h-0.5 bg-gray-200 w-10/12 mx-auto"
+        >
+        </div>
 
         <!-- Step 1 -->
         <div class="relative text-center group">
-          <div class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10">
+          <div
+            class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10"
+          >
             1
           </div>
           <h3 class="text-xl font-bold mb-3">Consulenza</h3>
@@ -54,7 +73,9 @@ const testimonials = [
 
         <!-- Step 2 -->
         <div class="relative text-center group">
-          <div class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10">
+          <div
+            class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10"
+          >
             2
           </div>
           <h3 class="text-xl font-bold mb-3">Design</h3>
@@ -63,7 +84,9 @@ const testimonials = [
 
         <!-- Step 3 -->
         <div class="relative text-center group">
-          <div class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10">
+          <div
+            class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10"
+          >
             3
           </div>
           <h3 class="text-xl font-bold mb-3">Sviluppo</h3>
@@ -72,7 +95,9 @@ const testimonials = [
 
         <!-- Step 4 -->
         <div class="relative text-center group">
-          <div class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10">
+          <div
+            class="w-16 h-16 text-white rounded-full bg-black flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10"
+          >
             4
           </div>
           <h3 class="text-xl font-bold mb-3">Lancio</h3>
@@ -89,9 +114,13 @@ const testimonials = [
         Guarda i Nostri Progetti di Successo
       </h2>
       <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-        Scopri come abbiamo aiutato aziende come la tua a raggiungere i loro obiettivi con siti web performanti e dal design curato.
+        Scopri come abbiamo aiutato aziende come la tua a raggiungere i loro obiettivi con siti web
+        performanti e dal design curato.
       </p>
-      <a href="/lavori" class="inline-block px-10 py-4 bg-black text-white rounded-md font-bold text-lg shadow-md hover:bg-gray-800 transition-colors duration-300">
+      <a
+        href="/lavori"
+        class="inline-block px-10 py-4 bg-black text-white rounded-md font-bold text-lg shadow-md hover:bg-gray-800 transition-colors duration-300"
+      >
         Esplora i Nostri Lavori
       </a>
     </div>
@@ -107,7 +136,10 @@ const testimonials = [
         Il modo più semplice e moderno per collegare il mondo fisico a quello digitale. <br />
         Recensioni, menù, contatti, link: tutto con un solo tocco.
       </p>
-      <a href="/shop" class="inline-block px-10 py-5 bg-white text-black rounded-full font-bold text-xl shadow-lg hover:bg-neutral-200 transition-colors duration-150">
+      <a
+        href="/shop"
+        class="inline-block px-10 py-5 bg-white text-black rounded-full font-bold text-xl shadow-lg hover:bg-neutral-200 transition-colors duration-150"
+      >
         Scopri lo Shop NFC
       </a>
     </div>
@@ -118,13 +150,20 @@ const testimonials = [
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-4xl md:text-5xl font-bold mb-8">Pronto a Distinguerti Online?</h2>
       <p class="text-xl mb-10 max-w-2xl mx-auto text-gray-300">
-        Contattaci oggi stesso per una consulenza gratuita e scopri come possiamo valorizzare il tuo business.
+        Contattaci oggi stesso per una consulenza gratuita e scopri come possiamo valorizzare il tuo
+        business.
       </p>
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="/prezzi" class="px-8 py-4 bg-white text-black rounded-md font-bold shadow-lg hover:bg-gray-100 transition-colors">
+        <a
+          href="/prezzi"
+          class="px-8 py-4 bg-white text-black rounded-md font-bold shadow-lg hover:bg-gray-100 transition-colors"
+        >
           Scopri i Piani
         </a>
-        <a href="/contattaci" class="px-8 py-4 border border-white text-white rounded-md font-bold hover:bg-white hover:text-black transition-colors">
+        <a
+          href="/contattaci"
+          class="px-8 py-4 border border-white text-white rounded-md font-bold hover:bg-white hover:text-black transition-colors"
+        >
           Parliamo del Tuo Progetto
         </a>
       </div>
