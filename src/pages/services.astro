@@ -3,71 +3,300 @@ import Layout from '../layouts/Layout.astro';
 import { icons } from '../components/Icons';
 ---
 
-<Layout title="Servizi - Cosa Offriamo">
-  <main class="container mx-auto px-4 py-10">
-    <h1 class="text-4xl font-extrabold mb-12 text-center text-gray-800">I Nostri Servizi</h1>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div
-        class="p-6 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-      >
-        <div class="flex items-center justify-center mb-4">
-          <div class="w-10 h-10">
-            <Fragment set:html={icons.globe} />
-          </div>
+<Layout title="Servizi - Ecosistema Digitale Innovativo">
+  <!-- Hero Section -->
+  <section class="py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div class="container mx-auto px-4 text-center">
+      <div class="inline-flex items-center bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium mb-8">
+        <div class="w-4 h-4 mr-2">
+          <Fragment set:html={icons.chip} />
         </div>
-        <h2 class="text-2xl font-semibold mb-2">Siti Vetrina</h2>
-        <p class="text-sm leading-relaxed">
-          Presentazione aziendale online con design curato, facile navigazione e contenuti SEO
-          friendly.
+        Innovazione digitale al servizio del tuo business
+      </div>
+      <h1 class="text-5xl md:text-6xl font-bold mb-8">
+        <span class="text-gray-900">Ecosistema Digitale</span><br>
+        <span class="text-indigo-600">Intelligente</span>
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+        Rivoluziona il modo in cui i tuoi clienti interagiscono con il tuo business attraverso carte NFC intelligenti, 
+        mini landing pages dinamiche e AI personalizzata.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core NFC Services -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Servizi Ecosistema NFC</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          La nostra specializzazione: trasformare il contatto fisico in esperienze digitali memorabili
         </p>
       </div>
-
-      <div
-        class="p-6 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-      >
-        <div class="flex items-center justify-center mb-4">
-          <div class="w-10 h-10">
-            <Fragment set:html={icons.server} />
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Smart NFC Cards -->
+        <div class="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="flex items-center justify-center mb-6">
+            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+              <div class="w-8 h-8 text-white">
+                <Fragment set:html={icons.chip} />
+              </div>
+            </div>
           </div>
+          <h3 class="text-2xl font-bold mb-4">Carte NFC Intelligenti</h3>
+          <p class="text-indigo-100 mb-6">
+            Carte personalizzate che si trasformano in gateway digitali per il tuo business, 
+            con tecnologia NFC di ultima generazione.
+          </p>
+          <ul class="space-y-2 text-sm text-indigo-100">
+            <li>• Design personalizzato e brandizzato</li>
+            <li>• Connessione istantanea al tuo ecosistema</li>
+            <li>• Resistenti e durevoli nel tempo</li>
+            <li>• Compatibili con tutti gli smartphone</li>
+          </ul>
         </div>
-        <h2 class="text-2xl font-semibold mb-2">Registrazione Domini</h2>
-        <p class="text-sm leading-relaxed">
-          Acquisizione e gestione del nome online con supporto per configurazione DNS e rinnovo
-          automatico.
-        </p>
-      </div>
 
-      <div
-        class="p-6 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-      >
-        <div class="flex items-center justify-center mb-4">
-          <div class="w-10 h-10">
-            <Fragment set:html={icons.cloud} />
+        <!-- Dynamic Landing Pages -->
+        <div class="bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="flex items-center justify-center mb-6">
+            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+              <div class="w-8 h-8 text-white">
+                <Fragment set:html={icons.globe} />
+              </div>
+            </div>
           </div>
+          <h3 class="text-2xl font-bold mb-4">Mini Landing Pages</h3>
+          <p class="text-purple-100 mb-6">
+            Pagine dinamiche settoriali che si adattano al tuo business e offrono esperienze 
+            personalizzate ai tuoi clienti.
+          </p>
+          <ul class="space-y-2 text-sm text-purple-100">
+            <li>• Design responsive e ottimizzato</li>
+            <li>• Contenuti dinamici e aggiornabili</li>
+            <li>• Integrazione con sistemi aziendali</li>
+            <li>• Analytics e monitoraggio utenti</li>
+          </ul>
         </div>
-        <h2 class="text-2xl font-semibold mb-2">Hosting</h2>
-        <p class="text-sm leading-relaxed">
-          Soluzioni di hosting affidabili e sicure, scalabili per siti in crescita.
-        </p>
-      </div>
 
-      <div
-        class="p-6 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-      >
-        <div class="flex items-center justify-center mb-4">
-          <div class="w-10 h-10">
-            <Fragment set:html={icons.building} />
+        <!-- AI Chatbot Integration -->
+        <div class="bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="flex items-center justify-center mb-6">
+            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+              <div class="w-8 h-8 text-white">
+                <Fragment set:html={icons.briefcase} />
+              </div>
+            </div>
           </div>
+          <h3 class="text-2xl font-bold mb-4">AI Chatbot Personalizzato</h3>
+          <p class="text-green-100 mb-6">
+            Assistenti virtuali intelligenti che forniscono supporto 24/7 e migliorano l'esperienza 
+            cliente automaticamente.
+          </p>
+          <ul class="space-y-2 text-sm text-green-100">
+            <li>• Risposte immediate e accurate</li>
+            <li>• Apprendimento continuo dal settore</li>
+            <li>• Integrazione con i tuoi servizi</li>
+            <li>• Supporto multilingue disponibile</li>
+          </ul>
         </div>
-        <h2 class="text-2xl font-semibold mb-2">Soluzioni Enterprise</h2>
-        <p class="text-sm leading-relaxed">
-          Servizi su misura per grandi aziende con infrastrutture dedicate e supporto tecnico
-          avanzato.
-        </p>
+
+        <!-- Self-Service Dashboard -->
+        <div class="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="flex items-center justify-center mb-6">
+            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+              <div class="w-8 h-8 text-white">
+                <Fragment set:html={icons.server} />
+              </div>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Dashboard Self-Service</h3>
+          <p class="text-orange-100 mb-6">
+            Pannello di controllo intuitivo per gestire autonomamente contenuti, analytics 
+            e configurazioni del tuo ecosistema.
+          </p>
+          <ul class="space-y-2 text-sm text-orange-100">
+            <li>• Gestione contenuti in tempo reale</li>
+            <li>• Analytics e statistiche dettagliate</li>
+            <li>• Configurazione chatbot AI</li>
+            <li>• Monitoraggio performance</li>
+          </ul>
+        </div>
+
+        <!-- API Integrations -->
+        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="flex items-center justify-center mb-6">
+            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+              <div class="w-8 h-8 text-white">
+                <Fragment set:html={icons.cloud} />
+              </div>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Integrazioni API</h3>
+          <p class="text-blue-100 mb-6">
+            Connessioni seamless con i tuoi sistemi esistenti: CRM, gestionali, 
+            e-commerce e piattaforme di pagamento.
+          </p>
+          <ul class="space-y-2 text-sm text-blue-100">
+            <li>• Sincronizzazione dati automatica</li>
+            <li>• Connettori pre-configurati</li>
+            <li>• API custom su richiesta</li>
+            <li>• Sicurezza enterprise-grade</li>
+          </ul>
+        </div>
+
+        <!-- Analytics & Insights -->
+        <div class="bg-gradient-to-br from-gray-600 to-gray-800 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="flex items-center justify-center mb-6">
+            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+              <div class="w-8 h-8 text-white">
+                <Fragment set:html={icons.check} />
+              </div>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Analytics Avanzate</h3>
+          <p class="text-gray-300 mb-6">
+            Insights dettagliati sul comportamento dei clienti e performance del tuo 
+            ecosistema digitale per decisioni data-driven.
+          </p>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li>• Tracking interazioni NFC</li>
+            <li>• Analisi comportamento utenti</li>
+            <li>• Report automatici periodici</li>
+            <li>• Metriche ROI e conversioni</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- Traditional Web Services -->
+  <section class="py-24 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Servizi Web Tradizionali</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Manteniamo la nostra esperienza consolidata nel web design, ora potenziata dall'innovazione NFC
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-blue-500">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-10 h-10 text-blue-500">
+              <Fragment set:html={icons.globe} />
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-gray-900">Siti Web Professionali</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Design moderni e responsive, ottimizzati per conversioni e posizionamento SEO.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-green-500">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-10 h-10 text-green-500">
+              <Fragment set:html={icons.server} />
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-gray-900">Hosting & Domini</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Soluzioni hosting sicure e performanti con gestione domini completa.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-purple-500">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-10 h-10 text-purple-500">
+              <Fragment set:html={icons.cloud} />
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-gray-900">E-commerce</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Piattaforme di vendita online integrate con sistemi di pagamento sicuri.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-red-500">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-10 h-10 text-red-500">
+              <Fragment set:html={icons.building} />
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-gray-900">Soluzioni Enterprise</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Architetture scalabili per grandi organizzazioni con supporto dedicato.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integration Benefits -->
+  <section class="py-24 bg-gradient-to-r from-indigo-600 to-purple-600">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold text-white mb-8">
+        Il Futuro è l'Integrazione
+      </h2>
+      <p class="text-xl text-indigo-100 mb-12 max-w-4xl mx-auto">
+        Combiniamo il meglio del web design tradizionale con l'innovazione NFC per creare 
+        esperienze digitali che connettono il mondo fisico e digitale.
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div class="w-8 h-8 text-white">
+              <Fragment set:html={icons.globe} />
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Presenza Web Completa</h3>
+          <p class="text-indigo-100">
+            Sito web professionale integrato perfettamente con l'ecosistema NFC
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div class="w-8 h-8 text-white">
+              <Fragment set:html={icons.chip} />
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Interazione Fisica</h3>
+          <p class="text-indigo-100">
+            Carte NFC che trasformano ogni contatto in un'opportunità digitale
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div class="w-8 h-8 text-white">
+              <Fragment set:html={icons.briefcase} />
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">AI Intelligente</h3>
+          <p class="text-indigo-100">
+            Assistenza automatizzata che apprende e migliora continuamente
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-12">
+        <a
+          href="/prezzi"
+          class="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-md hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 mr-4"
+        >
+          Scopri i Prezzi
+        </a>
+        <a
+          href="/nfc-ecosystem"
+          class="inline-block border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-indigo-600 transition-all duration-300"
+        >
+          Vedi l'Ecosistema
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <script type="application/ld+json">
@@ -132,6 +361,116 @@ import { icons } from '../components/Icons';
       "@type": "AggregateRating",
       "ratingValue": "4.9",
       "reviewCount": "50",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Ecosistema Digitale NFC - Bitora.it",
+    "description": "Servizi innovativi di ecosistema digitale NFC con carte intelligenti, landing pages dinamiche e AI integrata",
+    "provider": {
+      "@type": "Organization",
+      "name": "Bitora.it",
+      "url": "https://bitora.it",
+      "logo": "https://bitora.it/favicon.ico",
+      "sameAs": [
+        "https://www.linkedin.com/company/bitora",
+        "https://www.facebook.com/bitora.it"
+      ]
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Italy"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Digital Innovation Services Catalog",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Carte NFC Intelligenti",
+            "description": "Carte personalizzate con tecnologia NFC per connessioni istantanee all'ecosistema digitale",
+            "serviceType": "NFC Technology"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mini Landing Pages Dinamiche",
+            "description": "Pagine responsive settoriali con contenuti dinamici e integrazione sistemi aziendali",
+            "serviceType": "Dynamic Web Pages"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Chatbot Personalizzato",
+            "description": "Assistenti virtuali intelligenti con supporto 24/7 e apprendimento continuo",
+            "serviceType": "Artificial Intelligence"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Dashboard Self-Service",
+            "description": "Pannello di controllo per gestione autonoma contenuti e analytics",
+            "serviceType": "Management Platform"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Integrazioni API",
+            "description": "Connessioni con CRM, gestionali, e-commerce e sistemi di pagamento",
+            "serviceType": "API Integration"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Analytics Avanzate",
+            "description": "Insights dettagliati su comportamento clienti e performance ecosistema",
+            "serviceType": "Business Analytics"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Siti Web Professionali",
+            "description": "Design moderni responsive ottimizzati per conversioni e SEO",
+            "serviceType": "Website Design"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Hosting & Domini",
+            "description": "Soluzioni hosting sicure e performanti con gestione domini",
+            "serviceType": "Web Hosting"
+          }
+        }
+      ]
+    },
+    "serviceType": "Digital Ecosystem Solutions",
+    "category": "Technology Services",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "75",
       "bestRating": "5",
       "worstRating": "1"
     }

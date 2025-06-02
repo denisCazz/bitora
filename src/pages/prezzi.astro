@@ -1,36 +1,146 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { pricingPlans } from '../data/pricing';
+import { nfcEcosystemPlans, comboPlans, webDesignPlans } from '../data/pricing';
 import { faqs } from '../data/faq';
 import { icons } from '../components/Icons';
 ---
 
-<Layout title="Prezzi - Investimenti Trasparenti">
+<Layout title="Prezzi - Ecosistema Digitale NFC">
   <!-- Header Section -->
-  <section class="py-24 bg-white">
-    <div class="container mx-auto px-4 max-w-3xl text-center">
-      <h1 class="text-5xl md:text-6xl font-bold mb-8">I Nostri Piani</h1>
+  <section class="py-24 bg-gradient-to-b from-indigo-50 to-white">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+      <div class="inline-flex items-center bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium mb-8">
+        <div class="w-4 h-4 mr-2">
+          <Fragment set:html={icons.chip} />
+        </div>
+        Rivoluziona il tuo business con la tecnologia NFC
+      </div>
+      <h1 class="text-5xl md:text-6xl font-bold mb-8">
+        Ecosistema Digitale <span class="text-indigo-600">Intelligente</span>
+      </h1>
       <p class="text-xl text-gray-600 leading-relaxed">
-        Soluzioni trasparenti e senza sorprese, progettate per adattarsi alle esigenze di ogni
-        business.
+        Combina il potere del web design con l'innovazione NFC. Crea esperienze digitali uniche che connettono il mondo fisico a quello digitale.
       </p>
     </div>
   </section>
 
-  <!-- Pricing Cards Section -->
-  <section class="py-24 bg-gray-50">
+  <!-- NFC Ecosystem Plans Section -->
+  <section class="py-24 bg-white">
     <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Ecosistema NFC</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Carte intelligenti che si trasformano in mini landing pages dinamiche con AI integrata
+        </p>
+      </div>
       <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {
-          pricingPlans.map(plan => (
+          nfcEcosystemPlans.map(plan => (
             <div
-              class={`bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${plan.highlighted ? 'border-2 border-black relative' : 'border border-gray-100'}`}
+              class={`bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border-2 ${plan.highlighted ? 'border-indigo-500 relative' : 'border-gray-100'}`}
             >
-              {plan.highlighted && (
-                <div class="absolute top-0 right-0 bg-black text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">
-                  Più popolare
+              {plan.badge && (
+                <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">
+                  {plan.badge}
                 </div>
               )}
+              <div class="p-8">
+                <h3 class="text-2xl font-bold mb-4">{plan.title}</h3>
+                <div class="mb-4">
+                  <span class="text-4xl font-bold text-indigo-600">{plan.price}</span>
+                  {plan.period && <span class="text-gray-500 text-sm">/{plan.period}</span>}
+                </div>
+                <p class="text-gray-600 mb-6">{plan.description}</p>
+
+                <ul class="space-y-3 mb-8">
+                  {plan.features.map(feature => (
+                    <li class="flex items-center">
+                      <div class="w-5 h-5 mr-2 text-indigo-600">
+                        <Fragment set:html={icons.check} />
+                      </div>
+                      <span class="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={plan.buttonUrl}
+                  class={`block w-full py-3 px-4 text-center font-bold rounded-md transition-all duration-300 ${plan.highlighted ? 'bg-indigo-600 text-white hover:bg-indigo-700 transform hover:scale-105' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+                >
+                  {plan.buttonText}
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Combo Solution Section -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4 text-gray-900">Soluzione Integrata</h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+          La combinazione perfetta tra presenza web professionale e innovazione NFC
+        </p>
+      </div>
+      <div class="max-w-md mx-auto">
+        {
+          comboPlans.map(plan => (
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden border-2 border-purple-500 relative">
+              <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-sm font-bold px-6 py-2 rounded-full">
+                  {plan.badge}
+                </div>
+              </div>
+              <div class="p-8 pt-12">
+                <h3 class="text-2xl font-bold mb-4 text-center text-gray-900">{plan.title}</h3>
+                <div class="mb-4 text-center">
+                  <span class="text-4xl font-bold text-purple-600">{plan.price}</span>
+                  {plan.period && <span class="text-gray-700 text-sm">/{plan.period}</span>}
+                </div>
+                <p class="text-gray-700 mb-6 text-center font-medium">{plan.description}</p>
+
+                <ul class="space-y-3 mb-8">
+                  {plan.features.map(feature => (
+                    <li class="flex items-center">
+                      <div class="w-5 h-5 mr-2 text-purple-600">
+                        <Fragment set:html={icons.check} />
+                      </div>
+                      <span class="text-gray-800">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={plan.buttonUrl}
+                  class="block w-full py-3 px-4 text-center font-bold rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  {plan.buttonText}
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Traditional Web Design Section -->
+  <section class="py-24 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Web Design Tradizionale</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          I nostri servizi classici di web design per chi preferisce un approccio tradizionale
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {
+          webDesignPlans.map(plan => (
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100">
               <div class="p-8">
                 <h3 class="text-2xl font-bold mb-4">{plan.title}</h3>
                 <div class="mb-4">
@@ -54,7 +164,7 @@ import { icons } from '../components/Icons';
                   href={plan.buttonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class={`block w-full py-3 px-4 text-center font-bold rounded-md transition-all duration-300 ${plan.highlighted ? 'bg-black text-white hover:bg-gray-900 transform hover:scale-105' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+                  class="block w-full py-3 px-4 text-center font-bold rounded-md bg-gray-100 text-gray-800 hover:bg-gray-200 transition-all duration-300"
                 >
                   {plan.buttonText}
                 </a>
@@ -63,14 +173,31 @@ import { icons } from '../components/Icons';
           ))
         }
       </div>
-      <div class="mt-12 text-center">
-        <p class="text-gray-600">
-          Hai esigenze particolari? <a
-            href="/contattaci"
-            class="font-medium text-black border-b border-black hover:border-transparent transition-colors"
-            >Contattaci</a
-          > per una soluzione su misura.
-        </p>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-24 bg-gradient-to-r from-indigo-600 to-purple-600">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold text-white mb-8">
+        Pronto a rivoluzionare il tuo business?
+      </h2>
+      <p class="text-xl text-indigo-100 mb-12 max-w-3xl mx-auto">
+        Combina la presenza web con l'innovazione NFC. Offri ai tuoi clienti un'esperienza digitale che li stupirà.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contattaci"
+          class="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-md hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+        >
+          Richiedi una consulenza gratuita
+        </a>
+        <a
+          href="/nfc-ecosystem#demo"
+          class="inline-block border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-indigo-600 transition-all duration-300"
+        >
+          Vedi le demo
+        </a>
       </div>
     </div>
   </section>
@@ -109,8 +236,8 @@ import { icons } from '../components/Icons';
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Web Design Services - Bitora.it",
-    "description": "Professional web design and development services with transparent pricing plans",
+    "name": "Ecosistema Digitale NFC - Bitora.it",
+    "description": "Servizi innovativi di web design e ecosistema NFC con carte intelligenti e AI integrata",
     "provider": {
       "@type": "Organization",
       "name": "Bitora.it",
@@ -119,41 +246,41 @@ import { icons } from '../components/Icons';
     "offers": [
       {
         "@type": "Offer",
-        "name": "Sito Web Base",
-        "description": "Sito web professionale con design responsive e ottimizzazione SEO di base",
-        "price": "590",
+        "name": "NFC Starter",
+        "description": "Il primo passo nell'ecosistema digitale NFC con carta intelligente e mini landing page",
+        "price": "99",
         "priceCurrency": "EUR",
         "availability": "https://schema.org/InStock",
         "validFrom": "2024-01-01",
         "itemOffered": {
           "@type": "Service",
-          "name": "Basic Website Design"
+          "name": "NFC Digital Ecosystem Starter"
         }
       },
       {
         "@type": "Offer",
-        "name": "Sito Web Professionale",
-        "description": "Sito web avanzato con funzionalità e-commerce e gestionale integrato",
-        "price": "990",
+        "name": "NFC Professional",
+        "description": "Soluzione NFC completa per business con AI chatbot personalizzato e analytics avanzate",
+        "price": "199",
         "priceCurrency": "EUR",
         "availability": "https://schema.org/InStock",
         "validFrom": "2024-01-01",
         "itemOffered": {
           "@type": "Service",
-          "name": "Professional Website Design"
+          "name": "Professional NFC Solution"
         }
       },
       {
         "@type": "Offer",
-        "name": "Soluzione Enterprise",
-        "description": "Soluzione completa su misura per grandi aziende",
-        "price": "1990",
+        "name": "Ecosistema Completo",
+        "description": "Sito web professionale integrato con ecosistema NFC intelligente",
+        "price": "399",
         "priceCurrency": "EUR",
         "availability": "https://schema.org/InStock",
         "validFrom": "2024-01-01",
         "itemOffered": {
           "@type": "Service",
-          "name": "Enterprise Website Solution"
+          "name": "Complete Digital Ecosystem"
         }
       }
     ],
@@ -163,27 +290,34 @@ import { icons } from '../components/Icons';
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Web Design Services",
+      "name": "Digital Innovation Services",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Responsive Web Design"
+            "name": "Smart NFC Cards"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "SEO Optimization"
+            "name": "AI Chatbot Integration"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "E-commerce Development"
+            "name": "Dynamic Landing Pages"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Professional Web Design"
           }
         }
       ]
