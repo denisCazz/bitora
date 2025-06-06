@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
+import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
       sitemap: true,
       host: 'bitora.it',
     }),
+    react(),
   ],
   site: 'https://bitora.it/',
   compressHTML: true,

@@ -36,20 +36,23 @@ import { icons } from '../components/Icons';
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Smart NFC Cards -->
-        <div class="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="flex items-center justify-center mb-6">
-            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-              <div class="w-8 h-8 text-white">
-                <Fragment set:html={icons.chip} />
-              </div>
-            </div>
+        <div class="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg p-10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-8">
+            <span class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48">
+                <rect x="6" y="14" width="36" height="20" rx="6" fill="#fff" fill-opacity="0.18"/>
+                <rect x="14" y="22" width="4" height="4" rx="2" fill="#fff"/>
+                <rect x="30" y="22" width="4" height="4" rx="2" fill="#fff"/>
+                <rect x="22" y="22" width="4" height="4" rx="2" fill="#fff"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-2xl font-bold mb-4">Carte NFC Intelligenti</h3>
-          <p class="text-indigo-100 mb-6">
+          <h3 class="text-2xl font-bold mb-4 text-center">Carte NFC Intelligenti</h3>
+          <p class="text-indigo-100 mb-6 text-center">
             Carte personalizzate che si trasformano in gateway digitali per il tuo business, 
             con tecnologia NFC di ultima generazione.
           </p>
-          <ul class="space-y-2 text-sm text-indigo-100">
+          <ul class="space-y-2 text-sm text-indigo-100 text-left">
             <li>• Design personalizzato e brandizzato</li>
             <li>• Connessione istantanea al tuo ecosistema</li>
             <li>• Resistenti e durevoli nel tempo</li>
@@ -58,20 +61,21 @@ import { icons } from '../components/Icons';
         </div>
 
         <!-- Dynamic Landing Pages -->
-        <div class="bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="flex items-center justify-center mb-6">
-            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-              <div class="w-8 h-8 text-white">
-                <Fragment set:html={icons.globe} />
-              </div>
-            </div>
+        <div class="bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-lg p-10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-8">
+            <span class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="20" stroke="#fff" stroke-width="2"/>
+                <path d="M4 24h40M24 4a30.6 30.6 0 010 40M24 4a30.6 30.6 0 000 40" stroke="#fff" stroke-width="2"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-2xl font-bold mb-4">Mini Landing Pages</h3>
-          <p class="text-purple-100 mb-6">
+          <h3 class="text-2xl font-bold mb-4 text-center">Mini Landing Pages</h3>
+          <p class="text-purple-100 mb-6 text-center">
             Pagine dinamiche settoriali che si adattano al tuo business e offrono esperienze 
             personalizzate ai tuoi clienti.
           </p>
-          <ul class="space-y-2 text-sm text-purple-100">
+          <ul class="space-y-2 text-sm text-purple-100 text-left">
             <li>• Design responsive e ottimizzato</li>
             <li>• Contenuti dinamici e aggiornabili</li>
             <li>• Integrazione con sistemi aziendali</li>
@@ -80,20 +84,23 @@ import { icons } from '../components/Icons';
         </div>
 
         <!-- AI Chatbot Integration -->
-        <div class="bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="flex items-center justify-center mb-6">
-            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-              <div class="w-8 h-8 text-white">
-                <Fragment set:html={icons.briefcase} />
-              </div>
-            </div>
+        <div class="bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-lg p-10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-8">
+            <span class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48">
+                <rect x="8" y="18" width="32" height="12" rx="6" fill="#fff" fill-opacity="0.18"/>
+                <circle cx="16" cy="24" r="3" fill="#fff"/>
+                <circle cx="32" cy="24" r="3" fill="#fff"/>
+                <rect x="20" y="32" width="8" height="4" rx="2" fill="#fff"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-2xl font-bold mb-4">AI Chatbot Personalizzato</h3>
-          <p class="text-green-100 mb-6">
+          <h3 class="text-2xl font-bold mb-4 text-center">AI Chatbot Personalizzato</h3>
+          <p class="text-green-100 mb-6 text-center">
             Assistenti virtuali intelligenti che forniscono supporto 24/7 e migliorano l'esperienza 
             cliente automaticamente.
           </p>
-          <ul class="space-y-2 text-sm text-green-100">
+          <ul class="space-y-2 text-sm text-green-100 text-left">
             <li>• Risposte immediate e accurate</li>
             <li>• Apprendimento continuo dal settore</li>
             <li>• Integrazione con i tuoi servizi</li>
@@ -102,20 +109,22 @@ import { icons } from '../components/Icons';
         </div>
 
         <!-- Self-Service Dashboard -->
-        <div class="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="flex items-center justify-center mb-6">
-            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-              <div class="w-8 h-8 text-white">
-                <Fragment set:html={icons.server} />
-              </div>
-            </div>
+        <div class="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-lg p-10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-8">
+            <span class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48">
+                <rect x="6" y="14" width="36" height="20" rx="6" fill="#fff" fill-opacity="0.18"/>
+                <rect x="14" y="22" width="20" height="4" rx="2" fill="#fff"/>
+                <rect x="14" y="30" width="12" height="4" rx="2" fill="#fff"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-2xl font-bold mb-4">Dashboard Self-Service</h3>
-          <p class="text-orange-100 mb-6">
+          <h3 class="text-2xl font-bold mb-4 text-center">Dashboard Self-Service</h3>
+          <p class="text-orange-100 mb-6 text-center">
             Pannello di controllo intuitivo per gestire autonomamente contenuti, analytics 
             e configurazioni del tuo ecosistema.
           </p>
-          <ul class="space-y-2 text-sm text-orange-100">
+          <ul class="space-y-2 text-sm text-orange-100 text-left">
             <li>• Gestione contenuti in tempo reale</li>
             <li>• Analytics e statistiche dettagliate</li>
             <li>• Configurazione chatbot AI</li>
@@ -124,20 +133,21 @@ import { icons } from '../components/Icons';
         </div>
 
         <!-- API Integrations -->
-        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="flex items-center justify-center mb-6">
-            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-              <div class="w-8 h-8 text-white">
-                <Fragment set:html={icons.cloud} />
-              </div>
-            </div>
+        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-lg p-10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-8">
+            <span class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48">
+                <path d="M8 34v-4a8 8 0 018-8h16a8 8 0 018 8v4" stroke="#fff" stroke-width="2"/>
+                <rect x="16" y="6" width="16" height="8" rx="4" fill="#fff" fill-opacity="0.18"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-2xl font-bold mb-4">Integrazioni API</h3>
-          <p class="text-blue-100 mb-6">
+          <h3 class="text-2xl font-bold mb-4 text-center">Integrazioni API</h3>
+          <p class="text-blue-100 mb-6 text-center">
             Connessioni seamless con i tuoi sistemi esistenti: CRM, gestionali, 
             e-commerce e piattaforme di pagamento.
           </p>
-          <ul class="space-y-2 text-sm text-blue-100">
+          <ul class="space-y-2 text-sm text-blue-100 text-left">
             <li>• Sincronizzazione dati automatica</li>
             <li>• Connettori pre-configurati</li>
             <li>• API custom su richiesta</li>
@@ -146,20 +156,23 @@ import { icons } from '../components/Icons';
         </div>
 
         <!-- Analytics & Insights -->
-        <div class="bg-gradient-to-br from-gray-600 to-gray-800 text-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-          <div class="flex items-center justify-center mb-6">
-            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-              <div class="w-8 h-8 text-white">
-                <Fragment set:html={icons.check} />
-              </div>
-            </div>
+        <div class="bg-gradient-to-br from-gray-600 to-gray-800 text-white rounded-lg p-10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-8">
+            <span class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48">
+                <rect x="6" y="26" width="6" height="12" rx="2" fill="#fff"/>
+                <rect x="16" y="18" width="6" height="20" rx="2" fill="#fff"/>
+                <rect x="26" y="10" width="6" height="28" rx="2" fill="#fff"/>
+                <rect x="36" y="4" width="6" height="34" rx="2" fill="#fff"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-2xl font-bold mb-4">Analytics Avanzate</h3>
-          <p class="text-gray-300 mb-6">
+          <h3 class="text-2xl font-bold mb-4 text-center">Analytics Avanzate</h3>
+          <p class="text-gray-300 mb-6 text-center">
             Insights dettagliati sul comportamento dei clienti e performance del tuo 
             ecosistema digitale per decisioni data-driven.
           </p>
-          <ul class="space-y-2 text-sm text-gray-300">
+          <ul class="space-y-2 text-sm text-gray-300 text-left">
             <li>• Tracking interazioni NFC</li>
             <li>• Analisi comportamento utenti</li>
             <li>• Report automatici periodici</li>
@@ -181,51 +194,67 @@ import { icons } from '../components/Icons';
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-blue-500">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-10 h-10 text-blue-500">
-              <Fragment set:html={icons.globe} />
-            </div>
+        <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-blue-500 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-6">
+            <span class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center">
+              <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M6 8h12M6 12h8"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-gray-900">Siti Web Professionali</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">
+          <h3 class="text-xl font-semibold mb-3 text-gray-900 text-center">Siti Web Professionali</h3>
+          <p class="text-gray-600 text-sm leading-relaxed text-center">
             Design moderni e responsive, ottimizzati per conversioni e posizionamento SEO.
           </p>
         </div>
 
-        <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-green-500">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-10 h-10 text-green-500">
-              <Fragment set:html={icons.server} />
-            </div>
+        <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-green-500 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-6">
+            <span class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center">
+              <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                <circle cx="12" cy="12" r="2"/>
+                <path d="M12 2v4M12 18v4"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-gray-900">Hosting & Domini</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Soluzioni hosting sicure e performanti con gestione domini completa.
+          <h3 class="text-xl font-semibold mb-3 text-gray-900 text-center">Hosting & Domini</h3>
+          <p class="text-gray-600 text-sm leading-relaxed text-center">
+            Soluzioni hosting sicure, performanti e scalabili, con gestione domini completa e assistenza dedicata.
           </p>
         </div>
 
-        <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-purple-500">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-10 h-10 text-purple-500">
-              <Fragment set:html={icons.cloud} />
-            </div>
+        <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-purple-500 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-6">
+            <span class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center">
+              <svg class="w-10 h-10 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-gray-900">E-commerce</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Piattaforme di vendita online integrate con sistemi di pagamento sicuri.
+          <h3 class="text-xl font-semibold mb-3 text-gray-900 text-center">E-commerce</h3>
+          <p class="text-gray-600 text-sm leading-relaxed text-center">
+            Piattaforme di vendita online moderne, integrate con sistemi di pagamento sicuri e automazioni per la crescita.
           </p>
         </div>
 
-        <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-red-500">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-10 h-10 text-red-500">
-              <Fragment set:html={icons.building} />
-            </div>
+        <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-red-500 flex flex-col items-center">
+          <div class="flex items-center justify-center mb-6">
+            <span class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center">
+              <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-gray-900">Soluzioni Enterprise</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Architetture scalabili per grandi organizzazioni con supporto dedicato.
+          <h3 class="text-xl font-semibold mb-3 text-gray-900 text-center">Soluzioni Enterprise</h3>
+          <p class="text-gray-600 text-sm leading-relaxed text-center">
+            Architetture scalabili, personalizzate per grandi organizzazioni, con supporto tecnico avanzato e sicurezza enterprise.
           </p>
         </div>
       </div>
@@ -245,10 +274,11 @@ import { icons } from '../components/Icons';
       
       <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         <div class="text-center">
-          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-8 h-8 text-white">
-              <Fragment set:html={icons.globe} />
-            </div>
+          <div class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="20" stroke="#fff" stroke-width="2"/>
+              <path d="M4 24h40M24 4a30.6 30.6 0 010 40M24 4a30.6 30.6 0 000 40" stroke="#fff" stroke-width="2"/>
+            </svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-2">Presenza Web Completa</h3>
           <p class="text-indigo-100">
@@ -257,10 +287,13 @@ import { icons } from '../components/Icons';
         </div>
         
         <div class="text-center">
-          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-8 h-8 text-white">
-              <Fragment set:html={icons.chip} />
-            </div>
+          <div class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48">
+              <rect x="6" y="14" width="36" height="20" rx="6" fill="#fff" fill-opacity="0.18"/>
+              <rect x="14" y="22" width="4" height="4" rx="2" fill="#fff"/>
+              <rect x="30" y="22" width="4" height="4" rx="2" fill="#fff"/>
+              <rect x="22" y="22" width="4" height="4" rx="2" fill="#fff"/>
+            </svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-2">Interazione Fisica</h3>
           <p class="text-indigo-100">
@@ -269,10 +302,13 @@ import { icons } from '../components/Icons';
         </div>
         
         <div class="text-center">
-          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-8 h-8 text-white">
-              <Fragment set:html={icons.briefcase} />
-            </div>
+          <div class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 48 48">
+              <rect x="8" y="18" width="32" height="12" rx="6" fill="#fff" fill-opacity="0.18"/>
+              <circle cx="16" cy="24" r="3" fill="#fff"/>
+              <circle cx="32" cy="24" r="3" fill="#fff"/>
+              <rect x="20" y="32" width="8" height="4" rx="2" fill="#fff"/>
+            </svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-2">AI Intelligente</h3>
           <p class="text-indigo-100">

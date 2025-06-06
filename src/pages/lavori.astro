@@ -20,6 +20,22 @@ const projects = [
     siteUrl: 'https://mistralimpianti.it',
     tags: ['Sviluppo Web', 'Aziendale', 'Servizi'],
   },
+  {
+    title: 'Sito web per pizzeria Speedy Pizza',
+    description:
+      'Un sito web dinamico e accattivante per una pizzeria, con menu interattivo e opzioni di prenotazione online.',
+    imageUrl: 'https://www.speedy-pizza.it/logo.jpeg', // Replace with actual image path
+    siteUrl: 'https://speedy-pizza.it',
+    tags: ['Ristorazione', 'E-commerce', 'Interattivo'],
+  },
+  {
+    title: 'Sito portfolio per Developer Freelance',
+    description:
+      'Un sito portfolio minimalista e professionale per me, proprietario di bitora.it, che mostra le mie competenze e progetti realizzati.',
+    imageUrl: '/code.jpg', // Replace with actual image path
+    siteUrl: 'https://aboutdenis.eu',
+    tags: ['Portfolio', 'Minimal', 'Personale'],
+  },
   // Add more projects here
 ];
 ---
@@ -55,7 +71,7 @@ const projects = [
                 <h2 class="text-2xl font-bold mb-3 text-gray-800">{project.title}</h2>
                 <p class="text-gray-600 text-sm leading-relaxed mb-4">{project.description}</p>
                 <div class="mb-4">
-                  {project.tags.map(tag => (
+                  {project.tags?.map(tag => (
                     <span class="inline-block bg-gray-100 text-gray-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-1">
                       {tag}
                     </span>
