@@ -105,10 +105,40 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
           "target": "https://bitora.it/?s={search_term_string}",
           "query-input": "required name=search_term_string"
         }
-      }
+      }    </script>
+
+    <!-- Theme initialization script (must be in head to prevent flash) -->
+    <script is:inline>
+      // Prevent flash of incorrect theme
+      (function() {
+        function getStoredTheme() {
+          if (typeof localStorage !== 'undefined') {
+            return localStorage.getItem('theme');
+          }
+          return null;
+        }
+
+        function getSystemTheme() {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        const storedTheme = getStoredTheme();
+        const theme = storedTheme || 'system';
+        
+        const root = document.documentElement;
+        root.classList.remove('light', 'dark');
+        
+        if (theme === 'dark') {
+          root.classList.add('dark');
+        } else if (theme === 'light') {
+          root.classList.add('light');
+        } else if (theme === 'system') {
+          root.classList.add(getSystemTheme());
+        }
+      })();
     </script>
   </head>
-  <body class="flex flex-col min-h-screen font-['Inter',sans-serif] bg-white text-gray-900">
+  <body class="flex flex-col min-h-screen font-['Inter',sans-serif] bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
     <Header />
     <main id="main-content" class="flex-grow" tabindex="-1">

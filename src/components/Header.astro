@@ -13,33 +13,29 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+<header class="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 sticky top-0 z-50 transition-colors duration-300">
   <div class="container mx-auto px-4 py-4 relative">
     <div class="flex justify-between items-center">
       <a
         href="/"
-        class="text-2xl font-bold text-black hover:text-gray-800 transition-colors duration-300 z-10"
+        class="text-2xl font-bold text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300 z-10"
       >
-        <span class="tracking-tighter">bitora</span><span class="text-gray-500">.it</span>
-      </a>
-
-      <nav class="hidden md:flex gap-8">
+        <span class="tracking-tighter">bitora</span><span class="text-gray-500 dark:text-gray-400">.it</span>
+      </a>      <nav class="hidden md:flex gap-8">
         {
           navItems.map(item => (
             <a
               href={item.url}
-              class={`py-2 hover:text-black transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black hover:after:w-full after:transition-all after:duration-300 ${currentPath === item.url ? 'text-black font-medium after:w-full' : 'text-gray-600'}`}
+              class={`py-2 hover:text-black dark:hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white hover:after:w-full after:transition-all after:duration-300 ${currentPath === item.url ? 'text-black dark:text-white font-medium after:w-full' : 'text-gray-600 dark:text-gray-300'}`}
             >
               {item.name}
             </a>
           ))
         }
-      </nav>
-
-      <div class="md:hidden">
+      </nav>      <div class="md:hidden">
         <button
           id="menu-toggle"
-          class="text-black p-3 hover:bg-gray-50 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-200 z-10 relative"
+          class="text-black dark:text-white p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 z-10 relative"
           aria-label="Toggle mobile menu"
           aria-expanded="false"
         >
@@ -50,12 +46,10 @@ const currentPath = Astro.url.pathname;
           </div>
         </button>
       </div>
-    </div>
-
-    <!-- Mobile Menu Dropdown (New Compact Version) -->
+    </div>    <!-- Mobile Menu Dropdown (New Compact Version) -->
     <div
       id="mobile-menu"
-      class="absolute top-full left-0 right-0 bg-white shadow-2xl z-50 transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out md:hidden border-t border-gray-100"
+      class="absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-2xl z-50 transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out md:hidden border-t border-gray-100 dark:border-gray-800"
     >
       <nav class="px-4 py-3 max-h-[80vh] overflow-y-auto">
         <ul class="space-y-1">
@@ -66,8 +60,8 @@ const currentPath = Astro.url.pathname;
                   href={item.url}
                   class={`block py-2.5 px-3 text-sm rounded-md transition-all duration-200 ${
                     currentPath === item.url
-                      ? 'text-black font-semibold bg-gray-50 border-l-3 border-black'
-                      : 'text-gray-600 hover:text-black hover:bg-gray-50'
+                      ? 'text-black dark:text-white font-semibold bg-gray-50 dark:bg-gray-800 border-l-3 border-black dark:border-white'
+                      : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
                   }`}
                 >
                   {item.name}
@@ -76,10 +70,10 @@ const currentPath = Astro.url.pathname;
             ))
           }
         </ul>
-        <div class="mt-3 pt-3 border-t border-gray-100">
+        <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
           <a
             href="/contattaci"
-            class="block w-full py-2 px-3 bg-black text-white text-center text-sm font-semibold rounded-md hover:bg-gray-800 transition-colors"
+            class="block w-full py-2 px-3 bg-black dark:bg-white text-white dark:text-black text-center text-sm font-semibold rounded-md hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
           >
             Iniziamo il Progetto
           </a>
