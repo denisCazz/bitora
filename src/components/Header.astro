@@ -14,11 +14,11 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
-  <div class="container mx-auto px-4 py-4">
+  <div class="container mx-auto px-4 py-4 relative">
     <div class="flex justify-between items-center">
       <a
         href="/"
-        class="text-2xl font-bold text-black hover:text-gray-800 transition-colors duration-300"
+        class="text-2xl font-bold text-black hover:text-gray-800 transition-colors duration-300 z-10"
       >
         <span class="tracking-tighter">bitora</span><span class="text-gray-500">.it</span>
       </a>
@@ -39,7 +39,7 @@ const currentPath = Astro.url.pathname;
       <div class="md:hidden">
         <button
           id="menu-toggle"
-          class="text-black p-3 hover:bg-gray-50 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-200"
+          class="text-black p-3 hover:bg-gray-50 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-200 z-10 relative"
           aria-label="Toggle mobile menu"
           aria-expanded="false"
         >
@@ -52,71 +52,39 @@ const currentPath = Astro.url.pathname;
       </div>
     </div>
 
-    <!-- Mobile Menu Overlay -->
-    <div
-      id="mobile-menu-overlay"
-      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity duration-300"
-    >
-    </div>
-
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu Dropdown (New Compact Version) -->
     <div
       id="mobile-menu"
-      class="fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+      class="absolute top-full left-0 right-0 bg-white shadow-2xl z-50 transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out md:hidden border-t border-gray-100"
     >
-      <div class="flex flex-col h-full">
-        <div class="flex justify-between items-center p-6 border-b border-gray-100">
-          <span class="text-xl font-bold text-black">
-            <span class="tracking-tighter">bitora</span><span class="text-gray-500">.it</span>
-          </span>
-          <button
-            id="menu-close"
-            class="text-gray-500 hover:text-black p-2 hover:bg-gray-50 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-200"
-            aria-label="Close mobile menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-        </div>
-
-        <nav class="flex-1 px-6 py-4">
-          <ul class="space-y-2">
-            {
-              navItems.map(item => (
-                <li>
-                  <a
-                    href={item.url}
-                    class={`block py-4 px-4 text-lg rounded-lg transition-all duration-200 ${
-                      currentPath === item.url
-                        ? 'text-black font-semibold bg-gray-50 border-l-4 border-black'
-                        : 'text-gray-600 hover:text-black hover:bg-gray-50'
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </nav>
-
-        <div class="p-6 border-t border-gray-100">
+      <nav class="px-4 py-3 max-h-[80vh] overflow-y-auto">
+        <ul class="space-y-1">
+          {
+            navItems.map(item => (
+              <li>
+                <a
+                  href={item.url}
+                  class={`block py-2.5 px-3 text-sm rounded-md transition-all duration-200 ${
+                    currentPath === item.url
+                      ? 'text-black font-semibold bg-gray-50 border-l-3 border-black'
+                      : 'text-gray-600 hover:text-black hover:bg-gray-50'
+                  }`}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="mt-3 pt-3 border-t border-gray-100">
           <a
             href="/contattaci"
-            class="block w-full py-3 px-4 bg-black text-white text-center font-semibold rounded-lg hover:bg-gray-800 transition-colors"
+            class="block w-full py-2 px-3 bg-black text-white text-center text-sm font-semibold rounded-md hover:bg-gray-800 transition-colors"
           >
             Iniziamo il Progetto
           </a>
         </div>
-      </div>
+      </nav>
     </div>
   </div>
 </header>
@@ -124,40 +92,52 @@ const currentPath = Astro.url.pathname;
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
-    const menuClose = document.getElementById('menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const body = document.body;
 
     function openMenu() {
-      mobileMenu?.classList.remove('translate-x-full');
-      mobileMenuOverlay?.classList.remove('hidden');
+      mobileMenu?.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
+      mobileMenu?.classList.add('translate-y-0', 'opacity-100', 'visible');
       menuToggle?.setAttribute('aria-expanded', 'true');
       menuToggle?.querySelector('.hamburger')?.classList.add('open');
       body.style.overflow = 'hidden'; // Prevent body scroll
     }
 
     function closeMenu() {
-      mobileMenu?.classList.add('translate-x-full');
-      mobileMenuOverlay?.classList.add('hidden');
+      mobileMenu?.classList.add('-translate-y-full', 'opacity-0', 'invisible');
+      mobileMenu?.classList.remove('translate-y-0', 'opacity-100', 'visible');
       menuToggle?.setAttribute('aria-expanded', 'false');
       menuToggle?.querySelector('.hamburger')?.classList.remove('open');
       body.style.overflow = ''; // Restore body scroll
     }
 
-    menuToggle?.addEventListener('click', openMenu);
-    menuClose?.addEventListener('click', closeMenu);
-    mobileMenuOverlay?.addEventListener('click', closeMenu);
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = menuToggle?.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
 
     // Close menu when clicking on nav links
     const navLinks = mobileMenu?.querySelectorAll('a');
     navLinks?.forEach(link => {
       link.addEventListener('click', closeMenu);
+    });    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as Node;
+      const isClickInsideMenu = mobileMenu?.contains(target);
+      const isClickOnToggle = menuToggle?.contains(target);
+      
+      if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu?.classList.contains('invisible')) {
+        closeMenu();
+      }
     });
 
     // Close menu on Escape key
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && !mobileMenu?.classList.contains('translate-x-full')) {
+      if (e.key === 'Escape' && !mobileMenu?.classList.contains('invisible')) {
         closeMenu();
       }
     });
