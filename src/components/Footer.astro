@@ -126,8 +126,7 @@ const currentYear = new Date().getFullYear();
       <div class="flex flex-col md:flex-row items-center gap-4">
         <p class="text-gray-400 text-sm">
           &copy; {currentYear} bitora.it. Tutti i diritti riservati.
-        </p>
-        <div class="flex gap-4 text-xs">
+        </p>        <div class="flex gap-4 text-xs">
           <a href="/privacy-policy" class="text-gray-400 hover:text-white transition-colors">
             Privacy Policy
           </a>
@@ -135,6 +134,13 @@ const currentYear = new Date().getFullYear();
           <a href="/cookie-policy" class="text-gray-400 hover:text-white transition-colors">
             Cookie Policy
           </a>
+          <span class="text-gray-600">•</span>
+          <button 
+            id="footer-cookie-settings" 
+            class="text-gray-400 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0 underline"
+          >
+            Gestisci Cookie
+          </button>
         </div>
       </div>
       <div class="flex gap-6 mt-6 md:mt-0">
@@ -170,3 +176,32 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<script>
+  // Handle cookie settings button in footer
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('footer-cookie-settings')?.addEventListener('click', () => {
+      // Try to use the global function
+      if (typeof (window as any).showCookieSettings === 'function') {
+        (window as any).showCookieSettings();
+      } else {
+        // Dispatch custom event as fallback
+        window.dispatchEvent(new CustomEvent('openCookieSettings'));
+        
+        // If nothing works, show helpful message
+        setTimeout(() => {
+          const modal = document.getElementById('cookie-settings-modal');
+          if (!modal || modal.classList.contains('hidden')) {
+            // Try to show the banner first if modal isn't available
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+              banner.classList.remove('translate-y-full');
+            } else {
+              alert('Impostazioni cookie non disponibili al momento. Ricarica la pagina e riprova.');
+            }
+          }
+        }, 200);
+      }
+    });
+  });
+</script>

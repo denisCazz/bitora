@@ -144,12 +144,13 @@
       this.cookieName = 'bitora_cookie_consent';
       this.cookieExpiry = 365; // giorni
       this.init();
-    }
-
-    init() {
+    }    init() {
       // Check if consent already given
       if (!this.hasConsent()) {
         this.showBanner();
+      } else {
+        // Hide banner if consent already exists
+        this.hideBanner();
       }
       
       this.bindEvents();
@@ -340,8 +341,7 @@
       document.cookie = `${this.cookieName}=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/`;
       location.reload();
     }
-  }
-  // Initialize cookie manager when DOM is loaded
+  }  // Initialize cookie manager when DOM is loaded
   document.addEventListener('DOMContentLoaded', () => {
     const cookieManager = new CookieManager();
     
@@ -349,6 +349,16 @@
     (window as any).resetCookieConsent = () => {
       cookieManager.resetConsent();
     };
+    
+    // Expose show settings method for cookie policy page
+    (window as any).showCookieSettings = () => {
+      cookieManager.showSettings();
+    };
+    
+    // Listen for global events to show cookie settings
+    window.addEventListener('openCookieSettings', () => {
+      cookieManager.showSettings();
+    });
   });
 </script>
 

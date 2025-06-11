@@ -203,17 +203,33 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   // Open cookie settings from the cookie policy page
-  document.getElementById('open-cookie-settings')?.addEventListener('click', () => {
-    // Try to trigger the cookie settings modal
-    const event = new CustomEvent('openCookieSettings');
-    window.dispatchEvent(event);
-    
-    // Fallback: show alert if cookie banner is not available
-    setTimeout(() => {
-      if (!document.getElementById('cookie-settings-modal')?.classList.contains('hidden')) {
-        alert('Le impostazioni dei cookie sono gestite tramite il banner dei cookie. Torna alla homepage per gestire le tue preferenze.');
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('open-cookie-settings')?.addEventListener('click', () => {
+      // Check if cookie settings modal exists
+      const modal = document.getElementById('cookie-settings-modal');
+      
+      if (modal) {
+        // If modal exists, show it directly
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        // Try to use the global function
+        if (typeof (window as any).showCookieSettings === 'function') {
+          (window as any).showCookieSettings();
+        } else {
+          // Dispatch custom event as fallback
+          window.dispatchEvent(new CustomEvent('openCookieSettings'));
+          
+          // If still nothing works, show helpful message
+          setTimeout(() => {
+            const modalAfterEvent = document.getElementById('cookie-settings-modal');
+            if (!modalAfterEvent || modalAfterEvent.classList.contains('hidden')) {
+              alert('Per gestire le preferenze sui cookie, visita la homepage dove troverai il banner dei cookie con le opzioni di gestione.');
+            }
+          }, 200);
+        }
       }
-    }, 100);
+    });
   });
 </script>
 
