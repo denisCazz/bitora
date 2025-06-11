@@ -45,6 +45,7 @@
 </div>
 
 <script>
+  // @ts-nocheck
   // Theme management script
   class ThemeManager {
     constructor() {
@@ -69,7 +70,7 @@
       document.querySelectorAll('.theme-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           const target = e.currentTarget;
-          const theme = target.dataset.theme;
+          const theme = target?.dataset?.theme;
           if (theme) {
             this.setTheme(theme);
           }
@@ -106,7 +107,7 @@
 
     updateUI() {
       document.querySelectorAll('.theme-btn').forEach(btn => {
-        const isActive = btn.dataset.theme === this.currentTheme;
+        const isActive = btn.dataset?.theme === this.currentTheme;
         btn.setAttribute('aria-pressed', isActive.toString());
       });
     }

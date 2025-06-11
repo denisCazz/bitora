@@ -43,21 +43,19 @@ const projects = [
 <Layout
   title="I Nostri Lavori - Progetti Realizzati da Bitora"
   description="Esplora una selezione dei siti web e delle soluzioni digitali che abbiamo creato per i nostri clienti. Scopri la qualità e l'efficacia del nostro lavoro."
->
-  <main class="container mx-auto px-4 py-16">
+>  <main class="container mx-auto px-4 py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
     <header class="text-center mb-16">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-gray-800">I Nostri Lavori</h1>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-gray-800 dark:text-white">I Nostri Lavori</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
         Siamo orgogliosi di presentare una selezione dei progetti che abbiamo curato, trasformando
         le visioni dei nostri clienti in realtà digitali di successo.
       </p>
     </header>
 
     {
-      projects.length > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      projects.length > 0 ? (        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map(project => (
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl group">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl dark:hover:shadow-gray-900/50 group border border-gray-100 dark:border-gray-700">
               <div class="relative h-56">
                 <img
                   src={project.imageUrl}
@@ -68,11 +66,11 @@ const projects = [
                 <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-opacity duration-300" />
               </div>
               <div class="p-6">
-                <h2 class="text-2xl font-bold mb-3 text-gray-800">{project.title}</h2>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">{project.description}</p>
+                <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-white">{project.title}</h2>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">{project.description}</p>
                 <div class="mb-4">
                   {project.tags?.map(tag => (
-                    <span class="inline-block bg-gray-100 text-gray-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-1">
+                    <span class="inline-block bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-1">
                       {tag}
                     </span>
                   ))}
@@ -81,7 +79,7 @@ const projects = [
                   href={project.siteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center text-sm font-medium text-black hover:text-gray-700 transition-colors duration-300 group"
+                  class="inline-flex items-center text-sm font-medium text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300 group"
                 >
                   Visita il sito
                   <div class="ml-2 w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity">
@@ -93,33 +91,31 @@ const projects = [
           ))}
         </div>
       ) : (        <div class="text-center py-12">
-          <div class="w-16 h-16 mx-auto text-gray-400 mb-6">
+          <div class="w-16 h-16 mx-auto text-gray-400 dark:text-gray-500 mb-6">
             <Fragment set:html={icons.portfolio} />
           </div>
-          <h2 class="text-3xl font-semibold mb-4 text-gray-700">Portfolio in Aggiornamento</h2>
-          <p class="text-gray-500 max-w-lg mx-auto mb-8">
+          <h2 class="text-3xl font-semibold mb-4 text-gray-700 dark:text-gray-300">Portfolio in Aggiornamento</h2>
+          <p class="text-gray-500 dark:text-gray-400 max-w-lg mx-auto mb-8">
             Stiamo selezionando i nostri migliori lavori per mostrarteli. Torna presto per scoprire
             i progetti che abbiamo realizzato!
           </p>
           <a
             href="/contattaci"
-            class="inline-block px-8 py-3 bg-black text-white rounded-md font-semibold hover:bg-gray-800 transition-colors"
+            class="inline-block px-8 py-3 bg-black dark:bg-white text-white dark:text-black rounded-md font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
           >
             Contattaci per Esempi
           </a>
         </div>
       )
-    }
-
-    <section class="mt-20 py-16 bg-gray-50 rounded-lg">
+    }    <section class="mt-20 py-16 bg-gray-50 dark:bg-gray-800 rounded-lg transition-colors duration-300">
       <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Hai un Progetto in Mente?</h2>
-        <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Hai un Progetto in Mente?</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto">
           Siamo pronti ad ascoltare le tue idee e a trasformarle in una soluzione digitale efficace.
         </p>
         <a
           href="/contattaci"
-          class="px-8 py-4 bg-black text-white rounded-md font-bold shadow-lg hover:bg-gray-800 transition-colors"
+          class="px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-md font-bold shadow-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
         >
           Parliamone Insieme
         </a>

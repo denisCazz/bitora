@@ -3,21 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import { icons } from '../components/Icons';
 ---
 
-<Layout title="Servizi - Ecosistema Digitale Innovativo">
-  <!-- Hero Section -->
-  <section class="py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+<Layout title="Servizi - Ecosistema Digitale Innovativo">  <!-- Hero Section -->
+  <section class="py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-indigo-900/20 dark:via-gray-900 dark:to-purple-900/20 transition-colors duration-300">
     <div class="container mx-auto px-4 text-center">
-      <div class="inline-flex items-center bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium mb-8">
+      <div class="inline-flex items-center bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 px-4 py-2 rounded-full text-sm font-medium mb-8">
         <div class="w-4 h-4 mr-2">
           <Fragment set:html={icons.chip} />
         </div>
         Innovazione digitale al servizio del tuo business
       </div>
       <h1 class="text-5xl md:text-6xl font-bold mb-8">
-        <span class="text-gray-900">Ecosistema Digitale</span><br>
-        <span class="text-indigo-600">Intelligente</span>
+        <span class="text-gray-900 dark:text-white">Ecosistema Digitale</span><br>
+        <span class="text-indigo-600 dark:text-indigo-400">Intelligente</span>
       </h1>
-      <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+      <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
         Rivoluziona il modo in cui i tuoi clienti interagiscono con il tuo business attraverso carte NFC intelligenti, 
         mini landing pages dinamiche e AI personalizzata.
       </p>
@@ -25,11 +24,11 @@ import { icons } from '../components/Icons';
   </section>
 
   <!-- Core NFC Services -->
-  <section class="py-24 bg-white">
+  <section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4">Servizi Ecosistema NFC</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Servizi Ecosistema NFC</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           La nostra specializzazione: trasformare il contatto fisico in esperienze digitali memorabili
         </p>
       </div>
@@ -182,69 +181,67 @@ import { icons } from '../components/Icons';
       </div>
     </div>
   </section>
-
   <!-- Traditional Web Services -->
-  <section class="py-24 bg-gray-50">
+  <section class="py-24 bg-gray-50 dark:bg-gray-800">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4">Servizi Web Tradizionali</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Servizi Web Tradizionali</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           Manteniamo la nostra esperienza consolidata nel web design, ora potenziata dall'innovazione NFC
         </p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-blue-500 flex flex-col items-center">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">        <div class="bg-white dark:bg-gray-900 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-blue-500 flex flex-col items-center">
           <div class="flex items-center justify-center mb-6">
-            <span class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center">
-              <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <span class="w-16 h-16 bg-blue-50 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
+              <svg class="w-10 h-10 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <rect x="2" y="4" width="20" height="16" rx="2"/>
                 <path d="M6 8h12M6 12h8"/>
               </svg>
             </span>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-gray-900 text-center">Siti Web Professionali</h3>
-          <p class="text-gray-600 text-sm leading-relaxed text-center">
+          <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center">Siti Web Professionali</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center">
             Design moderni e responsive, ottimizzati per conversioni e posizionamento SEO.
           </p>
         </div>
 
-        <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-green-500 flex flex-col items-center">
+        <div class="bg-white dark:bg-gray-900 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-green-500 flex flex-col items-center">
           <div class="flex items-center justify-center mb-6">
-            <span class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center">
-              <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <span class="w-16 h-16 bg-green-50 dark:bg-green-900/30 rounded-2xl flex items-center justify-center">
+              <svg class="w-10 h-10 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <rect x="2" y="6" width="20" height="12" rx="2"/>
                 <circle cx="12" cy="12" r="2"/>
                 <path d="M12 2v4M12 18v4"/>
               </svg>
             </span>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-gray-900 text-center">Hosting & Domini</h3>
-          <p class="text-gray-600 text-sm leading-relaxed text-center">
+          <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center">Hosting & Domini</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center">
             Soluzioni hosting sicure, performanti e scalabili, con gestione domini completa e assistenza dedicata.
           </p>
         </div>
 
-        <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-purple-500 flex flex-col items-center">
+        <div class="bg-white dark:bg-gray-900 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-purple-500 flex flex-col items-center">
           <div class="flex items-center justify-center mb-6">
-            <span class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center">
-              <svg class="w-10 h-10 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <span class="w-16 h-16 bg-purple-50 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center">
+              <svg class="w-10 h-10 text-purple-500 dark:text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="9" cy="21" r="1"/>
                 <circle cx="20" cy="21" r="1"/>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
               </svg>
             </span>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-gray-900 text-center">E-commerce</h3>
-          <p class="text-gray-600 text-sm leading-relaxed text-center">
+          <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center">E-commerce</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center">
             Piattaforme di vendita online moderne, integrate con sistemi di pagamento sicuri e automazioni per la crescita.
           </p>
         </div>
 
-        <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-red-500 flex flex-col items-center">
+        <div class="bg-white dark:bg-gray-900 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-red-500 flex flex-col items-center">
           <div class="flex items-center justify-center mb-6">
-            <span class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center">
-              <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <span class="w-16 h-16 bg-red-50 dark:bg-red-900/30 rounded-2xl flex items-center justify-center">
+              <svg class="w-10 h-10 text-red-500 dark:text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                 <circle cx="9" cy="7" r="4"/>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -252,8 +249,8 @@ import { icons } from '../components/Icons';
               </svg>
             </span>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-gray-900 text-center">Soluzioni Enterprise</h3>
-          <p class="text-gray-600 text-sm leading-relaxed text-center">
+          <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center">Soluzioni Enterprise</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center">
             Architetture scalabili, personalizzate per grandi organizzazioni, con supporto tecnico avanzato e sicurezza enterprise.
           </p>
         </div>
@@ -315,12 +312,10 @@ import { icons } from '../components/Icons';
             Assistenza automatizzata che apprende e migliora continuamente
           </p>
         </div>
-      </div>
-
-      <div class="mt-12">
+      </div>      <div class="mt-12">
         <a
           href="/prezzi"
-          class="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-md hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 mr-4"
+          class="inline-block bg-white dark:bg-gray-200 text-indigo-600 dark:text-indigo-700 font-bold py-3 px-8 rounded-md hover:bg-gray-100 dark:hover:bg-gray-300 transition-all duration-300 transform hover:scale-105 mr-4"
         >
           Scopri i Prezzi
         </a>

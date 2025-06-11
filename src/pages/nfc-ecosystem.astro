@@ -5,32 +5,30 @@ import Layout from '../layouts/Layout.astro';
 <Layout 
   title="Ecosistema NFC Digitale - Bitora.it"
   description="Tessere NFC intelligenti, mini landing page dinamiche, AI chatbot integrata e gestione self-service. L'evoluzione del business digitale inizia qui."
->
-  <!-- Hero Section -->
-  <section class="relative py-16 md:py-24 bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden">
+>  <!-- Hero Section -->
+  <section class="relative py-16 md:py-24 bg-gradient-to-br from-gray-900 via-black to-gray-800 dark:from-gray-950 dark:via-black dark:to-gray-900 overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
     
     <div class="container mx-auto px-4 relative z-10">
       <div class="text-center max-w-4xl mx-auto">
-        <div class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-500/20 px-6 py-3 rounded-full text-sm font-medium text-blue-300 mb-8">
+        <div class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-500/20 px-6 py-3 rounded-full text-sm font-medium text-blue-300 dark:text-blue-200 mb-8">
           <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
           L'Evoluzione del Business Digitale
         </div>
         
         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 text-white">
           Ecosistema <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">NFC</span><br>
-          <span class="text-gray-300">Intelligente</span>
+          <span class="text-gray-300 dark:text-gray-200">Intelligente</span>
         </h1>
         
-        <p class="text-xl md:text-2xl text-gray-300 leading-relaxed mb-12 max-w-3xl mx-auto">
+        <p class="text-xl md:text-2xl text-gray-300 dark:text-gray-200 leading-relaxed mb-12 max-w-3xl mx-auto">
           Non più semplici tessere NFC. Un <strong class="text-white">sistema completo</strong> che unisce tessere intelligenti, 
           mini landing dinamiche, AI integrata e gestione autonoma per far crescere il tuo business.
         </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <a 
             href="#come-funziona" 
-            class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+            class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
           >
             Scopri Come Funziona
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
           </a>
           <a 
             href="#esempi" 
-            class="inline-flex items-center gap-3 border-2 border-gray-600 hover:border-gray-500 text-gray-300 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+            class="inline-flex items-center gap-3 border-2 border-gray-600 hover:border-gray-500 dark:border-gray-400 dark:hover:border-gray-300 text-gray-300 hover:text-white dark:text-gray-200 dark:hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
           >
             Vedi Esempi Live
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,20 +46,19 @@ import Layout from '../layouts/Layout.astro';
             </svg>
           </a>
         </div>
-        
-        <!-- Stats -->
+          <!-- Stats -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
           <div class="text-center">
-            <div class="text-3xl md:text-4xl font-bold text-blue-400 mb-2">347%</div>
-            <div class="text-gray-400">Aumento visite medie</div>
+            <div class="text-3xl md:text-4xl font-bold text-blue-400 dark:text-blue-300 mb-2">347%</div>
+            <div class="text-gray-400 dark:text-gray-300">Aumento visite medie</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl md:text-4xl font-bold text-purple-400 mb-2">24/7</div>
-            <div class="text-gray-400">AI Assistant attivo</div>
+            <div class="text-3xl md:text-4xl font-bold text-purple-400 dark:text-purple-300 mb-2">24/7</div>
+            <div class="text-gray-400 dark:text-gray-300">AI Assistant attivo</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl md:text-4xl font-bold text-green-400 mb-2">100%</div>
-            <div class="text-gray-400">Gestione autonoma</div>
+            <div class="text-3xl md:text-4xl font-bold text-green-400 dark:text-green-300 mb-2">100%</div>
+            <div class="text-gray-400 dark:text-gray-300">Gestione autonoma</div>
           </div>
         </div>
       </div>
@@ -75,28 +72,26 @@ import Layout from '../layouts/Layout.astro';
       <div class="w-20 h-14 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg"></div>
     </div>
   </section>
-
   <!-- Come Funziona -->
-  <section id="come-funziona" class="py-16 md:py-24 bg-white">
+  <section id="come-funziona" class="py-16 md:py-24 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Come Funziona</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Come Funziona</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           Un sistema in 3 livelli che trasforma una semplice tessera NFC in un potente strumento di business
         </p>
       </div>
 
-      <div class="grid lg:grid-cols-3 gap-12">
-        <!-- Livello 1: Tessera NFC Smart -->
+      <div class="grid lg:grid-cols-3 gap-12">        <!-- Livello 1: Tessera NFC Smart -->
         <div class="relative">
-          <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
-            <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 dark:bg-gray-800 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-blue-600 dark:bg-blue-500 rounded-xl flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 text-gray-900">1. Tessera NFC Smart</h3>
-            <p class="text-gray-600 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">1. Tessera NFC Smart</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
               Non una semplice tessera, ma un dispositivo intelligente che raccoglie dati, 
               monitora le interazioni e si aggiorna automaticamente.
             </p>
@@ -107,7 +102,7 @@ import Layout from '../layouts/Layout.astro';
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                   </svg>
                 </div>
-                <span class="text-gray-700">Statistiche real-time</span>
+                <span class="text-gray-700 dark:text-gray-300">Statistiche real-time</span>
               </li>
               <li class="flex items-center gap-3">
                 <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -115,7 +110,7 @@ import Layout from '../layouts/Layout.astro';
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                   </svg>
                 </div>
-                <span class="text-gray-700">Geolocalizzazione</span>
+                <span class="text-gray-700 dark:text-gray-300">Geolocalizzazione</span>
               </li>
               <li class="flex items-center gap-3">
                 <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -123,40 +118,37 @@ import Layout from '../layouts/Layout.astro';
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                   </svg>
                 </div>
-                <span class="text-gray-700">Design personalizzato</span>
+                <span class="text-gray-700 dark:text-gray-300">Design personalizzato</span>
               </li>
             </ul>
           </div>
           
           <!-- Connector Arrow -->
           <div class="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2">
-            <svg class="w-12 h-8 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-12 h-8 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
             </svg>
           </div>
-        </div>
-
-        <!-- Livello 2: Mini Landing Dinamica -->
+        </div>        <!-- Livello 2: Mini Landing Dinamica -->
         <div class="relative">
-          <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
-            <div class="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center mb-6">
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 dark:bg-gray-800 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-purple-600 dark:bg-purple-500 rounded-xl flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 text-gray-900">2. Mini Landing Dinamica</h3>
-            <p class="text-gray-600 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">2. Mini Landing Dinamica</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
               Una pagina web intelligente che si adatta al settore, mostra contenuti personalizzati 
               e si aggiorna in base alle interazioni.
-            </p>
-            <ul class="space-y-3">
+            </p>            <ul class="space-y-3">
               <li class="flex items-center gap-3">
                 <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
                   <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                   </svg>
                 </div>
-                <span class="text-gray-700">Template per settore</span>
+                <span class="text-gray-700 dark:text-gray-300">Template per settore</span>
               </li>
               <li class="flex items-center gap-3">
                 <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -164,7 +156,7 @@ import Layout from '../layouts/Layout.astro';
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                   </svg>
                 </div>
-                <span class="text-gray-700">Contenuti dinamici</span>
+                <span class="text-gray-700 dark:text-gray-300">Contenuti dinamici</span>
               </li>
               <li class="flex items-center gap-3">
                 <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -172,14 +164,14 @@ import Layout from '../layouts/Layout.astro';
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                   </svg>
                 </div>
-                <span class="text-gray-700">Analytics avanzate</span>
+                <span class="text-gray-700 dark:text-gray-300">Analytics avanzate</span>
               </li>
             </ul>
           </div>
           
           <!-- Connector Arrow -->
           <div class="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2">
-            <svg class="w-12 h-8 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-12 h-8 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
             </svg>
           </div>
@@ -187,14 +179,14 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Livello 3: AI + Self-Service -->
         <div class="relative">
-          <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
-            <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-6">
+          <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 dark:bg-gray-800 rounded-2xl p-8 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-green-600 dark:bg-green-500 rounded-xl flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 text-gray-900">3. AI + Self-Service</h3>
-            <p class="text-gray-600 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">3. AI + Self-Service</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
               Intelligenza artificiale che risponde ai clienti 24/7 e un pannello 
               dove gestisci tutto autonomamente, senza competenze tecniche.
             </p>
@@ -205,7 +197,14 @@ import Layout from '../layouts/Layout.astro';
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                   </svg>
                 </div>
-                <span class="text-gray-700">Chatbot AI settoriale</span>
+                <span class="text-gray-700 dark:text-gray-300">Chatbot AI settoriale</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                  </svg>
+                </div>                <span class="text-gray-700 dark:text-gray-300">Dashboard self-service</span>
               </li>
               <li class="flex items-center gap-3">
                 <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -213,15 +212,7 @@ import Layout from '../layouts/Layout.astro';
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                   </svg>
                 </div>
-                <span class="text-gray-700">Dashboard self-service</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                  </svg>
-                </div>
-                <span class="text-gray-700">Aggiornamenti real-time</span>
+                <span class="text-gray-700 dark:text-gray-300">Aggiornamenti real-time</span>
               </li>
             </ul>
           </div>
@@ -229,20 +220,18 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
-
   <!-- Esempi per Settore -->
-  <section id="esempi" class="py-16 md:py-24 bg-gray-50">
+  <section id="esempi" class="py-16 md:py-24 bg-gray-50 dark:bg-gray-800">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Esempi per Settore</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Esempi per Settore</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           Ogni settore ha esigenze diverse. I nostri template si adattano perfettamente al tuo business
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Ristoranti -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">        <!-- Ristoranti -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
           <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 relative overflow-hidden">
             <div class="absolute inset-0 flex items-center justify-center">
               <svg class="w-16 h-16 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,36 +243,34 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-3 text-gray-900">Ristoranti</h3>
-            <p class="text-gray-600 mb-4">
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Ristoranti</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
               Menu digitale dinamico, prenotazioni online, recensioni automatiche, 
               chatbot per disponibilità tavoli.
             </p>
             <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-sm text-gray-600">
+              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span class="w-2 h-2 bg-orange-400 rounded-full"></span>
                 Menu aggiornabile in real-time
               </div>
-              <div class="flex items-center gap-2 text-sm text-gray-600">
+              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span class="w-2 h-2 bg-red-400 rounded-full"></span>
                 Sistema prenotazioni integrato
               </div>
-              <div class="flex items-center gap-2 text-sm text-gray-600">
+              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
                 AI: "Hai tavoli liberi stasera?"
               </div>
             </div>
             <a 
               href="/demo/ristorante" 
-              class="block w-full bg-gradient-to-r from-orange-500 to-red-500 text-white text-center py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+              class="block w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300"
             >
               Prova Demo
             </a>
           </div>
-        </div>
-
-        <!-- Hotel & B&B -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+        </div>        <!-- Hotel & B&B -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
           <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 relative overflow-hidden">
             <div class="absolute inset-0 flex items-center justify-center">
               <svg class="w-16 h-16 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -295,36 +282,34 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-3 text-gray-900">Hotel & B&B</h3>
-            <p class="text-gray-600 mb-4">
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Hotel & B&B</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
               Informazioni struttura, servizi, prenotazioni dirette, 
               assistente AI per informazioni turistiche.
             </p>
             <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-sm text-gray-600">
+              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
                 Check-in/out digitale
               </div>
-              <div class="flex items-center gap-2 text-sm text-gray-600">
+              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
                 Servizi e attrazioni locali
               </div>
-              <div class="flex items-center gap-2 text-sm text-gray-600">
+              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span class="w-2 h-2 bg-indigo-400 rounded-full"></span>
                 AI: "Dove mangiare nelle vicinanze?"
               </div>
             </div>
             <a 
               href="/demo/hotel" 
-              class="block w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+              class="block w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300"
             >
               Prova Demo
             </a>
           </div>
-        </div>
-
-        <!-- Negozi & Retail -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+        </div>        <!-- Negozi & Retail -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
           <div class="h-48 bg-gradient-to-br from-green-400 to-teal-500 relative overflow-hidden">
             <div class="absolute inset-0 flex items-center justify-center">
               <svg class="w-16 h-16 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -336,40 +321,37 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-3 text-gray-900">Negozi & Retail</h3>
-            <p class="text-gray-600 mb-4">
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Negozi & Retail</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
               Catalogo prodotti, promozioni, programma fedeltà, 
               assistente per consigli e disponibilità.
             </p>
             <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-sm text-gray-600">
+              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span class="w-2 h-2 bg-green-400 rounded-full"></span>
                 Catalogo sempre aggiornato
               </div>
-              <div class="flex items-center gap-2 text-sm text-gray-600">
+              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span class="w-2 h-2 bg-teal-400 rounded-full"></span>
                 Offerte e promozioni
               </div>
-              <div class="flex items-center gap-2 text-sm text-gray-600">
+              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
                 AI: "Hai la mia taglia?"
               </div>
-            </div>
-            <a 
-              href="/demo/negozio" 
-              class="block w-full bg-gradient-to-r from-green-500 to-teal-500 text-white text-center py-3 rounded-lg font-semibold hover:from-green-600 hover:to-teal-600 transition-all duration-300"
+            </div>            <a 
+              href="/demo/negozio"
+              class="block w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300"
             >
               Prova Demo
             </a>
           </div>
         </div>
-      </div>
-
-      <div class="text-center mt-12">
-        <p class="text-gray-600 mb-6">Il tuo settore non è qui? Nessun problema!</p>
+      </div><div class="text-center mt-12">
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Il tuo settore non è qui? Nessun problema!</p>
         <a 
           href="/contattaci" 
-          class="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-800 transition-all duration-300"
+          class="inline-flex items-center gap-3 bg-black hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
         >
           Richiedi Template Personalizzato
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -379,27 +361,25 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
-
   <!-- Prezzi Ecosistema -->
-  <section class="py-16 md:py-24 bg-white">
+  <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Investimento nell'Ecosistema</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Investimento nell'Ecosistema</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           Non più costi nascosti o sorprese. Un investimento chiaro per un sistema completo
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <!-- Starter -->
-        <div class="bg-white border-2 border-gray-200 rounded-2xl p-8 relative hover:shadow-lg transition-all duration-300">
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">        <!-- Starter -->
+        <div class="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl p-8 relative hover:shadow-lg transition-all duration-300">
           <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold mb-4 text-gray-900">NFC Starter</h3>
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">NFC Starter</h3>
             <div class="mb-4">
-              <span class="text-4xl font-bold text-gray-900">€290</span>
-              <span class="text-gray-500">/setup</span>
+              <span class="text-4xl font-bold text-gray-900 dark:text-white">€290</span>
+              <span class="text-gray-500 dark:text-gray-400">/setup</span>
             </div>
-            <p class="text-gray-600">Perfetto per iniziare con l'ecosistema NFC</p>
+            <p class="text-gray-600 dark:text-gray-300">Perfetto per iniziare con l'ecosistema NFC</p>
           </div>
           
           <ul class="space-y-4 mb-8">
@@ -409,7 +389,14 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">1 Tessera NFC Smart</span>
+              <span class="text-gray-700 dark:text-gray-300">1 Tessera NFC Smart</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                </svg>
+              </div>              <span class="text-gray-700 dark:text-gray-300">Mini Landing Base</span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -417,47 +404,38 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">Mini Landing Base</span>
+              <span class="text-gray-700 dark:text-gray-300">Analytics di base</span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
                 <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
-              </div>
-              <span class="text-gray-700">Analytics di base</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                </svg>
-              </div>
-              <span class="text-gray-700">Dashboard self-service</span>
+              </div>              <span class="text-gray-700 dark:text-gray-300">Dashboard self-service</span>
             </li>
           </ul>
           
           <a 
             href="/contattaci?piano=starter" 
-            class="block w-full bg-gray-900 text-white text-center py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300"
+            class="block w-full bg-gray-900 hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300"
           >
             Inizia Ora
           </a>
         </div>
 
         <!-- Professional -->
-        <div class="bg-white border-2 border-blue-500 rounded-2xl p-8 relative hover:shadow-xl transition-all duration-300">
+        <div class="bg-white dark:bg-gray-800 border-2 border-blue-500 dark:border-blue-400 rounded-2xl p-8 relative hover:shadow-xl transition-all duration-300">
           <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-            <span class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold">Più Popolare</span>
+            <span class="bg-blue-500 dark:bg-blue-400 text-white dark:text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">Più Popolare</span>
           </div>
           
           <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold mb-4 text-gray-900">NFC Professional</h3>
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">NFC Professional</h3>
             <div class="mb-4">
-              <span class="text-4xl font-bold text-gray-900">€590</span>
-              <span class="text-gray-500">/setup</span>
+              <span class="text-4xl font-bold text-gray-900 dark:text-white">€590</span>
+              <span class="text-gray-500 dark:text-gray-400">/setup</span>
             </div>
-            <p class="text-gray-600">L'ecosistema completo con AI integrata</p>
+            <p class="text-gray-600 dark:text-gray-300">L'ecosistema completo con AI integrata</p>
           </div>
           
           <ul class="space-y-4 mb-8">
@@ -467,7 +445,7 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">5 Tessere NFC Smart</span>
+              <span class="text-gray-700 dark:text-gray-300">5 Tessere NFC Smart</span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -475,7 +453,7 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">Mini Landing Avanzata</span>
+              <span class="text-gray-700 dark:text-gray-300">Mini Landing Avanzata</span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -483,7 +461,7 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700"><strong>Chatbot AI Settoriale</strong></span>
+              <span class="text-gray-700 dark:text-gray-300"><strong>Chatbot AI Settoriale</strong></span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -491,7 +469,7 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">Analytics Avanzate</span>
+              <span class="text-gray-700 dark:text-gray-300">Analytics Avanzate</span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -499,27 +477,25 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">Template personalizzato</span>
+              <span class="text-gray-700 dark:text-gray-300">Template personalizzato</span>
             </li>
           </ul>
           
           <a 
             href="/contattaci?piano=professional" 
-            class="block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300"
+            class="block w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300"
           >
             Scegli Professional
           </a>
-        </div>
-
-        <!-- Enterprise -->
-        <div class="bg-white border-2 border-gray-200 rounded-2xl p-8 relative hover:shadow-lg transition-all duration-300">
+        </div>        <!-- Enterprise -->
+        <div class="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl p-8 relative hover:shadow-lg transition-all duration-300">
           <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold mb-4 text-gray-900">NFC Enterprise</h3>
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">NFC Enterprise</h3>
             <div class="mb-4">
-              <span class="text-4xl font-bold text-gray-900">€1290</span>
-              <span class="text-gray-500">/setup</span>
+              <span class="text-4xl font-bold text-gray-900 dark:text-white">€1290</span>
+              <span class="text-gray-500 dark:text-gray-400">/setup</span>
             </div>
-            <p class="text-gray-600">Soluzione completa + sito web integrato</p>
+            <p class="text-gray-600 dark:text-gray-300">Soluzione completa + sito web integrato</p>
           </div>
           
           <ul class="space-y-4 mb-8">
@@ -529,7 +505,7 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">Tessere NFC illimitate</span>
+              <span class="text-gray-700 dark:text-gray-300">Tessere NFC illimitate</span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -537,7 +513,7 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700"><strong>Sito Web Completo</strong></span>
+              <span class="text-gray-700 dark:text-gray-300"><strong>Sito Web Completo</strong></span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -545,7 +521,7 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">AI Custom Training</span>
+              <span class="text-gray-700 dark:text-gray-300">AI Custom Training</span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -553,7 +529,7 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">Integrazione sistemi esistenti</span>
+              <span class="text-gray-700 dark:text-gray-300">Integrazione sistemi esistenti</span>
             </li>
             <li class="flex items-center gap-3">
               <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -561,38 +537,36 @@ import Layout from '../layouts/Layout.astro';
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
               </div>
-              <span class="text-gray-700">Supporto dedicato</span>
+              <span class="text-gray-700 dark:text-gray-300">Supporto dedicato</span>
             </li>
           </ul>
           
           <a 
             href="/contattaci?piano=enterprise" 
-            class="block w-full bg-gray-900 text-white text-center py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300"
+            class="block w-full bg-gray-900 hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300"
           >
             Contattaci
           </a>
         </div>
       </div>
-      
-      <div class="text-center mt-12">
-        <p class="text-gray-600 mb-6">
+        <div class="text-center mt-12">
+        <p class="text-gray-600 dark:text-gray-400 mb-6">
           <strong>Nessun costo mensile nascosto.</strong> Paghi una volta, usi per sempre.
         </p>
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
           Costi aggiuntivi solo per tessere extra (€29/cad) o modifiche major al design.
         </p>
       </div>
     </div>
   </section>
-
   <!-- CTA Finale -->
-  <section class="py-16 md:py-24 bg-gradient-to-br from-black via-gray-900 to-black">
+  <section class="py-16 md:py-24 bg-gradient-to-br from-black via-gray-900 to-black dark:from-gray-950 dark:via-black dark:to-gray-900">
     <div class="container mx-auto px-4 text-center">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
           Pronto a Rivoluzionare il Tuo Business?
         </h2>
-        <p class="text-xl text-gray-300 leading-relaxed mb-12 max-w-3xl mx-auto">
+        <p class="text-xl text-gray-300 dark:text-gray-200 leading-relaxed mb-12 max-w-3xl mx-auto">
           Non lasciare che i tuoi competitor ti superino. L'ecosistema NFC intelligente 
           ti dà il vantaggio competitivo che cercavi.
         </p>
@@ -600,7 +574,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <a 
             href="/contattaci?source=nfc-ecosystem" 
-            class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+            class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -609,7 +583,7 @@ import Layout from '../layouts/Layout.astro';
           </a>
           <a 
             href="/dashboard-demo" 
-            class="inline-flex items-center gap-3 bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+            class="inline-flex items-center gap-3 bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
