@@ -9,6 +9,7 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
@@ -22,13 +23,18 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Astro check (opzionale)
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      # (opzionale) Astro static analysis
+      - name: Run Astro check
         run: npm run check
-        continue-on-error: true  # Se vuoi che fallisca solo se necessario
+        continue-on-error: true
 
-      - name: Build Astro site
+      - name: Build Astro project
         run: npm run build --if-present
 
       - name: Run tests
