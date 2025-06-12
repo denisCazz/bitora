@@ -47,52 +47,52 @@ import { icons } from '../components/Icons';
   </section>
 
   <!-- Quick Navigation Menu -->
-  <nav class="sticky top-0 z-40 bg-white/98 dark:bg-gray-900/98 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-lg">
+  <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-lg">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col items-center py-8">
-        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">Naviga tra le nostre soluzioni</h3>
-        <div class="flex flex-wrap gap-4 md:gap-8 justify-center">
+      <div class="flex flex-col items-center py-4 md:py-6">
+        <h3 class="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4 md:mb-6">Naviga tra le nostre soluzioni</h3>
+        <div class="flex flex-wrap gap-2 md:gap-4 lg:gap-6 justify-center max-w-4xl">
           <a 
             href="#nfc-ecosystem" 
-            class="px-6 py-3 rounded-lg bg-indigo-100 text-indigo-800 hover:bg-indigo-200 transition-all duration-200 text-sm font-semibold flex items-center shadow-sm hover:shadow-md"
+            class="px-3 py-2 md:px-4 md:py-3 lg:px-6 lg:py-3 rounded-lg bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 hover:bg-indigo-200 dark:hover:bg-indigo-800/70 transition-all duration-200 text-xs md:text-sm font-semibold flex items-center shadow-sm hover:shadow-md border border-indigo-200 dark:border-indigo-700"
           >
-            <div class="w-4 h-4 mr-2">
+            <div class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2">
               <Fragment set:html={icons.chip} />
             </div>
-            Ecosistema NFC
+            <span class="hidden sm:inline">Ecosistema</span> NFC
           </a>
           <a 
             href="#portfolio-web" 
-            class="px-6 py-3 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition-all duration-200 text-sm font-semibold flex items-center shadow-sm hover:shadow-md"
+            class="px-3 py-2 md:px-4 md:py-3 lg:px-6 lg:py-3 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-200 text-xs md:text-sm font-semibold flex items-center shadow-sm hover:shadow-md border border-blue-200 dark:border-blue-700"
           >
-            <div class="w-4 h-4 mr-2">
+            <div class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2">
               <Fragment set:html={icons.portfolio} />
             </div>
-            Portfolio Web
+            Portfolio<span class="hidden sm:inline"> Web</span>
           </a>
           <a 
             href="#combo-solutions" 
-            class="px-6 py-3 rounded-lg bg-purple-100 text-purple-800 hover:bg-purple-200 transition-all duration-200 text-sm font-semibold flex items-center shadow-sm hover:shadow-md"
+            class="px-3 py-2 md:px-4 md:py-3 lg:px-6 lg:py-3 rounded-lg bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-800/70 transition-all duration-200 text-xs md:text-sm font-semibold flex items-center shadow-sm hover:shadow-md border border-purple-200 dark:border-purple-700"
           >
-            <div class="w-4 h-4 mr-2">
+            <div class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2">
               <Fragment set:html={icons.briefcase} />
             </div>
-            Soluzioni Combo
+            <span class="hidden sm:inline">Soluzioni</span> Combo
           </a>
           <a 
             href="#testimonials" 
-            class="px-6 py-3 rounded-lg bg-green-100 text-green-800 hover:bg-green-200 transition-all duration-200 text-sm font-semibold flex items-center shadow-sm hover:shadow-md"
+            class="px-3 py-2 md:px-4 md:py-3 lg:px-6 lg:py-3 rounded-lg bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800/70 transition-all duration-200 text-xs md:text-sm font-semibold flex items-center shadow-sm hover:shadow-md border border-green-200 dark:border-green-700"
           >
-            <div class="w-4 h-4 mr-2">
+            <div class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2">
               <Fragment set:html={icons.check} />
             </div>
-            Testimonial
+            Testimon<span class="hidden sm:inline">ial</span>
           </a>
           <a 
             href="#faq" 
-            class="px-6 py-3 rounded-lg bg-gray-100 text-gray-800 hover:bg-gray-200 transition-all duration-200 text-sm font-semibold flex items-center shadow-sm hover:shadow-md"
+            class="px-3 py-2 md:px-4 md:py-3 lg:px-6 lg:py-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 text-xs md:text-sm font-semibold flex items-center shadow-sm hover:shadow-md border border-gray-200 dark:border-gray-600"
           >
-            <div class="w-4 h-4 mr-2">
+            <div class="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2">
               <Fragment set:html={icons.chevronDown} />
             </div>
             FAQ
@@ -103,7 +103,7 @@ import { icons } from '../components/Icons';
   </nav>
 
   <!-- NFC Ecosystem Plans Section -->
-  <section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+  <section id="nfc-ecosystem" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300 scroll-mt-40">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Ecosistema NFC</h2>
@@ -185,7 +185,7 @@ import { icons } from '../components/Icons';
     </div>
   </section>
   <!-- Combo Solution Section -->
-  <section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+  <section id="combo-solutions" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300 scroll-mt-40">
     <div class="container mx-auto px-4">      <div class="text-center mb-16">
         <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Soluzione Integrata</h2>
         <p class="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
@@ -266,7 +266,7 @@ import { icons } from '../components/Icons';
     </div>
   </section>
   <!-- Traditional Web Design Section -->
-  <section class="py-24 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+  <section id="portfolio-web" class="py-24 bg-gray-50 dark:bg-gray-800 transition-colors duration-300 scroll-mt-40">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Web Design Tradizionale</h2>
@@ -312,7 +312,7 @@ import { icons } from '../components/Icons';
   </section>
 
   <!-- Social Proof Section -->
-  <section id="testimonials" class="py-16 bg-gradient-to-r from-gray-50 to-indigo-50 dark:from-gray-800 dark:to-indigo-900/30">
+  <section id="testimonials" class="py-16 bg-gradient-to-r from-gray-50 to-indigo-50 dark:from-gray-800 dark:to-indigo-900/30 scroll-mt-40">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Clienti Soddisfatti</h2>
@@ -406,7 +406,7 @@ import { icons } from '../components/Icons';
     </div>
   </section>
   <!-- FAQ Section -->
-  <section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+  <section id="faq" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300 scroll-mt-40">
     <div class="container mx-auto px-4 max-w-3xl">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">Domande Frequenti</h2>
@@ -435,95 +435,39 @@ import { icons } from '../components/Icons';
   </section>
 </Layout>
 
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Ecosistema Digitale NFC - Bitora.it",
-    "description": "Servizi innovativi di web design e ecosistema NFC con carte intelligenti e AI integrata",
-    "provider": {
-      "@type": "Organization",
-      "name": "Bitora.it",
-      "url": "https://bitora.it"
-    },
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "NFC Starter",
-        "description": "Il primo passo nell'ecosistema digitale NFC con carta intelligente e mini landing page",
-        "price": "99",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2024-01-01",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "NFC Digital Ecosystem Starter"
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "NFC Professional",
-        "description": "Soluzione NFC completa per business con AI chatbot personalizzato e analytics avanzate",
-        "price": "199",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2024-01-01",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Professional NFC Solution"
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "Ecosistema Completo",
-        "description": "Sito web professionale integrato con ecosistema NFC intelligente",
-        "price": "399",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2024-01-01",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Complete Digital Ecosystem"
-        }
-      }
-    ],
-    "areaServed": {
-      "@type": "Country",
-      "name": "Italy"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Digital Innovation Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Smart NFC Cards"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "AI Chatbot Integration"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Dynamic Landing Pages"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Professional Web Design"
-          }
-        }
-      ]
-    }
+<style>
+  html {
+    scroll-behavior: smooth;
   }
+  
+  /* Ensure sections are properly offset when navigating */
+  section[id] {
+    scroll-margin-top: 10rem;
+  }
+</style>
+
+<script>
+  // Handle smooth scrolling with proper offset
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const headerOffset = 160; // Account for both headers height
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
 </script>
