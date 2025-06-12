@@ -115,5 +115,49 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
       <slot />
     </main>
     <Footer />
+    
+    <!-- Back to Top Button -->
+    <button 
+      id="back-to-top" 
+      class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      aria-label="Torna in cima"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+      </svg>
+    </button>
+
+    <script>
+      // Back to Top functionality
+      const backToTopButton = document.getElementById('back-to-top');
+      
+      if (backToTopButton) {
+        // Show/hide button based on scroll position
+        function toggleBackToTop() {
+          if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+          } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+          }
+        }
+        
+        // Smooth scroll to top
+        function scrollToTop() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+        
+        // Add event listeners
+        window.addEventListener('scroll', toggleBackToTop);
+        backToTopButton.addEventListener('click', scrollToTop);
+        
+        // Initial check
+        toggleBackToTop();
+      }
+    </script>
   </body>
 </html>
