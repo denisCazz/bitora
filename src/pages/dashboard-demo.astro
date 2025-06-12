@@ -3,27 +3,26 @@ import Layout from '../layouts/Layout.astro';
 import { icons } from '../components/Icons';
 ---
 
-<Layout title="Dashboard - Gestione Ecosistema NFC">
-  <!-- Navigation Breadcrumb -->
-  <nav class="bg-gray-50 py-4 border-b">
+<Layout title="Dashboard - Gestione Ecosistema NFC">  <!-- Navigation Breadcrumb -->
+  <nav class="bg-gray-50 dark:bg-gray-800 py-4 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
     <div class="container mx-auto px-4">
-      <div class="flex items-center space-x-2 text-sm text-gray-600">
-        <a href="/" class="hover:text-indigo-600">Home</a>
+      <div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+        <a href="/" class="hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
         <span>/</span>
-        <a href="/nfc-ecosystem" class="hover:text-indigo-600">Ecosistema NFC</a>
+        <a href="/nfc-ecosystem" class="hover:text-indigo-600 dark:hover:text-indigo-400">Ecosistema NFC</a>
         <span>/</span>
-        <span class="text-gray-900 font-medium">Dashboard Demo</span>
+        <span class="text-gray-900 dark:text-white font-medium">Dashboard Demo</span>
       </div>
     </div>
   </nav>
 
   <!-- Header -->
-  <header class="bg-white shadow-sm border-b">
+  <header class="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
     <div class="container mx-auto px-4 py-6">
       <div class="flex items-center justify-between">
         <div>
-          <h1 class="text-3xl font-bold text-gray-900">Dashboard Ecosistema NFC</h1>
-          <p class="text-gray-600 mt-1">Gestisci il tuo ecosistema digitale in completa autonomia</p>
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Dashboard Ecosistema NFC</h1>
+          <p class="text-gray-600 dark:text-gray-300 mt-1">Gestisci il tuo ecosistema digitale in completa autonomia</p>
         </div>
         <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg">
           <span class="text-sm font-medium">Piano Professional</span>
@@ -31,22 +30,21 @@ import { icons } from '../components/Icons';
       </div>
     </div>
   </header>
-
   <!-- Stats Overview -->
-  <section class="py-8 bg-gray-50">
+  <section class="py-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-lg p-6 shadow-sm border">
+        <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm font-medium text-gray-600">Interazioni NFC</p>
-              <p class="text-3xl font-bold text-gray-900">2,847</p>
-              <p class="text-sm text-green-600 mt-1">
+              <p class="text-sm font-medium text-gray-600 dark:text-gray-300">Interazioni NFC</p>
+              <p class="text-3xl font-bold text-gray-900 dark:text-white">2,847</p>
+              <p class="text-sm text-green-600 dark:text-green-400 mt-1">
                 <span class="font-medium">+12%</span> vs settimana scorsa
               </p>
             </div>
-            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-              <div class="w-6 h-6 text-indigo-600">
+            <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center">
+              <div class="w-6 h-6 text-indigo-600 dark:text-indigo-400">
                 <Fragment set:html={icons.chip} />
               </div>
             </div>

@@ -17,11 +17,13 @@
   --shadow-primary: rgba(0, 0, 0, 0.3);
 }
 
-/* Smooth transitions for theme changes */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-duration: 300ms;
-  transition-timing-function: ease;
+/* Smooth transitions only for theme-specific properties */
+html {
+  transition: background-color 0.3s ease;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #popup {
@@ -122,15 +124,6 @@ select:focus-visible {
   top: 6px;
 }
 
-/* Improved contrast for better readability */
-.text-gray-600 {
-  color: #4a5568 !important;
-}
-
-.text-gray-500 {
-  color: #718096 !important;
-}
-
 /* Enhanced hover states for better UX */
 .hover-lift {
   transition:
@@ -143,19 +136,9 @@ select:focus-visible {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* High contrast mode support */
+/* High contrast mode support - removed override rules that conflict with Tailwind */
 @media (prefers-contrast: high) {
-  .text-gray-600 {
-    color: #000 !important;
-  }
-
-  .text-gray-500 {
-    color: #333 !important;
-  }
-
-  .border-gray-100 {
-    border-color: #000 !important;
-  }
+  /* Let Tailwind handle contrast modes */
 }
 
 /* Reduced motion support */
