@@ -1,8 +1,10 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
+
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-black text-white py-16">
+<footer class="bg-black dark:bg-gray-950 text-white py-16 transition-colors duration-300">
   <div class="container mx-auto px-4">
     <div class="grid md:grid-cols-4 gap-8">
       <div>
@@ -120,10 +122,10 @@ const currentYear = new Date().getFullYear();
           </li>
         </ul>
       </div>
-    </div>    <div
-      class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
-    >
-      <div class="flex flex-col md:flex-row items-center gap-4">
+    </div>
+    
+    <div class="border-t border-gray-800 dark:border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex flex-col md:flex-row items-center gap-6">
         <p class="text-gray-400 text-sm">
           &copy; {currentYear} bitora.it. Tutti i diritti riservati.
         </p>
@@ -136,13 +138,18 @@ const currentYear = new Date().getFullYear();
             Cookie Policy
           </a>
         </div>
+        <div class="flex items-center gap-3">
+          <span class="text-gray-400 text-sm">Tema:</span>
+          <ThemeToggle />
+        </div>
       </div>
-      <div class="flex gap-6 mt-6 md:mt-0">
+      
+      <div class="flex gap-6">
         <a
           href="https://www.facebook.com/people/Bitora-Italia/pfbid0JubiVqBfxyM2nY6CoHLW3P5vQkjhUGE5UF5Pa16f491fzGsneW512MdMTiEpgvJCl/?mibextid=wwXIfr&rdid=xyslEd78VfiU5dPK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BTziLdEef%2F%3Fmibextid%3DwwXIfr"
           rel="noopener noreferrer"
           target="_blank"
-          class="text-gray-400 hover:text-white transition-colors"
+          class="text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors"
         >
           <span class="sr-only">Facebook</span>
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -152,11 +159,12 @@ const currentYear = new Date().getFullYear();
               clip-rule="evenodd"></path>
           </svg>
         </a>
+        
         <a
           href="https://www.instagram.com/bitorait/"
           rel="noopener noreferrer"
           target="_blank"
-          class="text-gray-400 hover:text-white transition-colors"
+          class="text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors"
         >
           <span class="sr-only">Instagram</span>
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

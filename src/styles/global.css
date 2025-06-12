@@ -1,3 +1,29 @@
+/* Dark mode variables and base styles */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-primary: #e5e7eb;
+  --shadow-primary: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --border-primary: #374151;
+  --shadow-primary: rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
 #popup {
   position: fixed;
   inset: 0;
@@ -14,6 +40,10 @@
     visibility 0.3s ease;
 }
 
+.dark #popup {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 #popup.show {
   visibility: visible;
   opacity: 1;
@@ -24,6 +54,10 @@
   outline: 2px solid #000;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+.dark :focus-visible {
+  outline: 2px solid #fff;
 }
 
 /* Remove default outline for mouse users */
@@ -39,11 +73,21 @@ button:focus-visible,
   box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
+.dark button:focus-visible,
+.dark [role='button']:focus-visible {
+  outline: 2px solid #fff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
 /* Enhanced link focus states */
 a:focus-visible {
   outline: 2px solid #000;
   outline-offset: 2px;
   text-decoration: underline;
+}
+
+.dark a:focus-visible {
+  outline: 2px solid #fff;
 }
 
 /* Form element focus states */
@@ -67,6 +111,11 @@ select:focus-visible {
   text-decoration: none;
   z-index: 100;
   transition: top 0.3s;
+}
+
+.dark .skip-link {
+  background: #fff;
+  color: #000;
 }
 
 .skip-link:focus {
