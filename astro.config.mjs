@@ -5,17 +5,14 @@ import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 import react from '@astrojs/react';
 
+import compressor from 'astro-compressor';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    tailwind(),
-    sitemap(),
-    robotsTxt({
-      sitemap: true,
-      host: 'bitora.it',
-    }),
-    react(),
-  ],
+  integrations: [tailwind(), sitemap(), robotsTxt({
+    sitemap: true,
+    host: 'bitora.it',
+  }), react(), compressor()],
   site: 'https://bitora.it/',
   compressHTML: true,
   build: {
