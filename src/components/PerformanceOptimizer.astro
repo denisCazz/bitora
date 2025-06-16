@@ -17,12 +17,16 @@
 <meta name="color-scheme" content="light dark">
 
 <!-- Critical CSS inline per above-the-fold -->
-<style>
-  /* Critical CSS per eliminare layout shift */
+<style>  /* Critical CSS per eliminare layout shift */
   body {
     margin: 0;
     font-family: system-ui, -apple-system, sans-serif;
     line-height: 1.6;
+  }
+  
+  /* Fix per deprecated API: h1 dentro elementi semantici */
+  section h1, article h1, aside h1, nav h1 {
+    font-size: inherit;
   }
     /* Prevenire layout shift delle immagini */
   img {
