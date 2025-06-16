@@ -76,6 +76,68 @@ export const webDesignPlans: PricingPlan[] = [
   },
 ];
 
+// NFC Single Cards Plans
+export const nfcSingleCardPlans: PricingPlan[] = [
+  {
+    title: 'Carta NFC Basic',
+    price: '€15',
+    description: '🎯 Carta NFC semplice ma efficace. Design essenziale per iniziare subito la rivoluzione digitale.',
+    features: [
+      'Carta NFC personalizzata con logo',
+      'Design essenziale professionale',
+      'Chip NFC di qualità premium',
+      'Resistente ad acqua e urti',
+      'Compatibile con tutti i dispositivi',
+      'Setup rapido in 24h',
+    ],
+    benefits: [
+      'Soluzione economica per testare la tecnologia NFC',
+      'Perfetta per eventi e networking',
+      'Prima impressione professionale garantita'
+    ],
+    useCases: [
+      'Biglietti da visita digitali',
+      'Menu semplici per bar',
+      'Collegamenti rapidi ai social'
+    ],
+    roi: 'Investimento minimo, impatto massimo',
+    buttonText: 'Ordina la tua carta NFC',
+    buttonUrl: '/contattaci?product=nfc-basic',
+    highlighted: false,
+    category: 'nfc',
+  },
+  {
+    title: 'Carte NFC Custom',
+    price: 'Da €20',
+    description: '✨ Carte NFC con grafica personalizzata. Design su misura che riflette perfettamente il tuo brand.',
+    features: [
+      'Design grafico completamente personalizzato',
+      'Colori e stile coordinati al tuo brand',
+      'Logo e informazioni in alta risoluzione',
+      'Materiali premium di lunga durata',
+      'Chip NFC ultima generazione',
+      'Sconti su quantità (5+ carte)',
+    ],
+    benefits: [
+      'Rivoluziona menu di ristoranti e bar',
+      'Elimina costi di ristampa continui',
+      'Aggiornamenti instant senza limiti'
+    ],
+    useCases: [
+      'Menu digitali per ristoranti',
+      'Cataloghi prodotti per negozi',
+      'Presentazioni aziendali innovative',
+      'Check-in automatico per hotel'
+    ],
+    roi: 'Ammortizza i costi in 2-3 mesi vs stampa tradizionale',
+    buttonText: 'Personalizza le tue carte',
+    buttonUrl: '/contattaci?product=nfc-custom',
+    highlighted: true,
+    category: 'nfc',
+    badge: 'Personalizzabile',
+  },
+];
+
 // NFC Ecosystem Plans
 export const nfcEcosystemPlans: PricingPlan[] = [
   {
@@ -141,10 +203,10 @@ export const nfcEcosystemPlans: PricingPlan[] = [
   {
     title: 'NFC Enterprise',
     price: 'Su misura',
-    description: '🌟 Soluzione enterprise per aziende visionarie. Ecosistema NFC white-label completamente personalizzato.',
-    features: [
+    description: '🌟 Soluzione enterprise per aziende visionarie. Ecosistema NFC white-label completamente personalizzato.',    features: [
       'Carte NFC illimitate + design custom',
-      'Piattaforma brandizzata white-label',      'AI personalizzata per settore specifico',
+      'Piattaforma brandizzata white-label',
+      'AI personalizzata per settore specifico',
       'Dashboard analytics enterprise completa',
       'Integrazioni custom con qualsiasi sistema',
       'White-label completo con il tuo brand',
@@ -208,6 +270,7 @@ export const comboPlans: PricingPlan[] = [
 
 // All plans combined for backward compatibility
 export const pricingPlans: PricingPlan[] = [
+  ...nfcSingleCardPlans,
   ...nfcEcosystemPlans,
   ...comboPlans,
   ...webDesignPlans,

@@ -23,8 +23,7 @@ export const testimonials: Testimonial[] = [
     results: '+35% prenotazioni in 3 mesi',
     rating: 5,
     category: 'web'
-  },
-  {
+  },  {
     quote:
       'Mistral Impianti SRL ha scelto bitora.it per il nostro sito web e non potremmo essere più soddisfatti! Professionalità, velocità e risultati concreti. Il nostro sito ora genera lead qualificati ogni settimana.',
     author: 'Gabriele',
@@ -33,6 +32,30 @@ export const testimonials: Testimonial[] = [
     image: '/mistral.jpg',
     site: 'https://mistralimpianti.it',
     results: '12 lead qualificati/mese',
+    rating: 5,
+    category: 'web'
+  },
+  {
+    quote:
+      'Sito consegnato in tempi record! Design minimale e perfettamente mirato alla mia clientela. Interfaccia intuitiva che rende l\'ordinazione semplice per tutti i clienti, dalle nonne ai giovani. Ordini online aumentati del 60%!',
+    author: 'Adele',
+    company: 'Speedy Pizza',
+    role: 'Proprietario',
+    image: 'https://www.speedy-pizza.it/logo.jpeg',
+    site: 'https://speedypizza.it',
+    results: '+60% ordini online',
+    rating: 5,
+    category: 'web'
+  },
+  {
+    quote:
+      'Il portfolio sviluppato da bitora.it ha trasformato completamente la mia presenza online. Design elegante, performance eccellenti e perfetta ottimizzazione SEO. Ora i clienti mi trovano facilmente e il mio lavoro parla da solo.',
+    author: 'Denis Cazzulo',
+    company: 'Portfolio Professionale',
+    role: 'Creative Developer',
+    image: '/code.jpg',
+    site: 'https://aboutdenis.eu',
+    results: '+80% visibilità online',
     rating: 5,
     category: 'web'
   }

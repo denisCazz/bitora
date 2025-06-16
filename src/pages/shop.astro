@@ -107,8 +107,7 @@ import { FaAndroid, FaApple, FaGlobe } from 'react-icons/fa';
             <h3 class="text-lg font-bold text-white mb-2">Durabilità Premium</h3>
             <p class="text-orange-200 text-sm leading-relaxed">Realizzata in PVC di qualità, resistente all'uso quotidiano</p>
           </div>
-        </div>
-      </div>
+        </div>      </div>
       
       <!-- CTA Button -->
       <button
@@ -124,6 +123,171 @@ import { FaAndroid, FaApple, FaGlobe } from 'react-icons/fa';
         </span>
         <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out"></div>
       </button>
+    </div>
+  </section>
+
+  <!-- Carte NFC Singole Section -->
+  <section class="py-20 bg-gradient-to-br from-orange-900/30 via-slate-900 to-red-900/30">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-300 px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-orange-400/30">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          Carte NFC Singole Disponibili
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black text-center mb-6 text-white">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
+            Soluzioni NFC
+          </span> 
+          per Ogni Esigenza
+        </h2>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Dalle semplici carte da visita ai menu digitali rivoluzionari. Scegli la soluzione NFC che fa per te.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+        <!-- Carta NFC Basic -->
+        <div class="group relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+          <div class="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8 hover:border-blue-500/50 transition-all duration-300 h-full">
+            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-2xl p-6 mb-8">
+              <h3 class="text-2xl font-bold mb-2">Carta NFC Basic</h3>
+              <div class="flex items-baseline gap-2">
+                <span class="text-4xl font-black">€15</span>
+                <span class="text-blue-200">cad.</span>
+              </div>
+            </div>
+            
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center text-gray-300">
+                <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Carta personalizzata con logo
+              </li>
+              <li class="flex items-center text-gray-300">
+                <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Design essenziale professionale
+              </li>
+              <li class="flex items-center text-gray-300">
+                <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Chip NFC qualità premium
+              </li>
+              <li class="flex items-center text-gray-300">
+                <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Setup rapido in 24h
+              </li>
+            </ul>
+            
+            <div class="bg-slate-700/50 rounded-xl p-4 mb-6">
+              <p class="text-blue-300 text-sm font-semibold mb-2">💡 Perfetta per:</p>
+              <p class="text-gray-300 text-sm">Biglietti da visita digitali, networking, primi test NFC</p>
+            </div>
+            
+            <button 
+              onclick="openNFCForm('basic')"
+              class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+            >
+              Ordina Carta Basic
+            </button>
+          </div>
+        </div>
+
+        <!-- Carte NFC Custom -->
+        <div class="group relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+          <div class="relative bg-slate-800/50 backdrop-blur-sm border border-orange-500/50 rounded-3xl p-8 hover:border-orange-400/70 transition-all duration-300 h-full">
+            <div class="bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-2xl p-6 mb-8 relative overflow-hidden">
+              <div class="absolute top-3 right-3 bg-white/20 text-white text-xs font-bold px-2 py-1 rounded-full">
+                BEST SELLER
+              </div>
+              <h3 class="text-2xl font-bold mb-2">Carte NFC Custom</h3>
+              <div class="flex items-baseline gap-2">
+                <span class="text-xl">Da </span>
+                <span class="text-4xl font-black">€20</span>
+                <span class="text-orange-200">cad.</span>
+              </div>
+            </div>
+            
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-center text-gray-300">
+                <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Design completamente personalizzato
+              </li>
+              <li class="flex items-center text-gray-300">
+                <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Colori coordinati al tuo brand
+              </li>
+              <li class="flex items-center text-gray-300">
+                <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Materiali premium durevoli
+              </li>
+              <li class="flex items-center text-gray-300">
+                <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Sconti su quantità (5+ carte)
+              </li>
+            </ul>
+            
+            <div class="bg-gradient-to-r from-orange-900/50 to-red-900/50 rounded-xl p-4 mb-6 border border-orange-500/30">
+              <p class="text-orange-300 text-sm font-semibold mb-3">🚀 Rivoluziona il tuo business:</p>
+              <div class="space-y-2 text-sm text-gray-300">
+                <div><strong class="text-orange-300">Menu digitali:</strong> Elimina ristampe, aggiornamenti instant</div>
+                <div><strong class="text-orange-300">Cataloghi prodotti:</strong> Inventario sempre aggiornato</div>
+                <div><strong class="text-orange-300">Check-in hotel:</strong> Servizi accessibili con un tap</div>
+              </div>
+            </div>
+            
+            <button 
+              onclick="openNFCForm('custom')"
+              class="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+            >
+              Personalizza le Tue Carte
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Section -->
+      <div class="bg-gradient-to-r from-emerald-900/40 to-teal-900/40 rounded-3xl p-8 border border-emerald-500/30 max-w-4xl mx-auto">
+        <div class="text-center">
+          <h3 class="text-3xl font-bold text-white mb-4">
+            💰 ROI Garantito per Ristoranti & Bar
+          </h3>
+          <div class="grid md:grid-cols-3 gap-6 text-center">
+            <div>
+              <div class="text-2xl font-bold text-emerald-400 mb-2">Menu tradizionale</div>
+              <div class="text-gray-300">€50-100/mese di ristampe</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-emerald-400 mb-2">Menu NFC</div>
+              <div class="text-gray-300">€20 una tantum</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-emerald-400 mb-2">Risparmio</div>
+              <div class="text-gray-300">Ammortizzi in 2-3 mesi</div>
+            </div>
+          </div>
+          <p class="text-gray-400 mt-4 text-sm">
+            *Calcolo basato su ristorante medio con aggiornamenti menu mensili
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -770,6 +934,36 @@ import { FaAndroid, FaApple, FaGlobe } from 'react-icons/fa';
       "reviewCount": "25",
       "bestRating": "5",
       "worstRating": "1"
+    }  }
+</script>
+
+<script>
+  function openNFCForm(cardType) {
+    // Apri il modal esistente
+    document.getElementById('modal').classList.remove('hidden');
+    
+    // Aggiungi un campo nascosto per specificare il tipo di carta
+    const form = document.getElementById('nfc-form');
+    
+    // Rimuovi eventuali campi del tipo esistenti
+    const existingTypeField = form.querySelector('input[name="TipoCarta"]');
+    if (existingTypeField) {
+      existingTypeField.remove();
+    }
+    
+    // Aggiungi il nuovo campo tipo
+    const typeField = document.createElement('input');
+    typeField.type = 'hidden';
+    typeField.name = 'TipoCarta';
+    typeField.value = cardType === 'basic' ? 'Carta NFC Basic (€15)' : 'Carte NFC Custom (da €20)';
+    form.appendChild(typeField);
+    
+    // Aggiorna il titolo del modal in base al tipo
+    const modalTitle = document.querySelector('#modal h2');
+    if (cardType === 'basic') {
+      modalTitle.textContent = 'Ordina Carta NFC Basic - €15';
+    } else {
+      modalTitle.textContent = 'Personalizza le Tue Carte NFC - da €20';
     }
   }
 </script>
