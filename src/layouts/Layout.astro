@@ -2,6 +2,8 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import Analytics from '../components/Analytics.astro';
+import PerformanceMonitorSimple from '../components/PerformanceMonitorSimple.astro';
 import '../styles/global.css';
 
 export interface Props {
@@ -14,8 +16,13 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
 ---
 
 <!doctype html>
-<html lang="it">
-  <head>    <!-- Analytics - Load conditionally based on consent -->
+<html lang="it">  <head>
+    <!-- Analytics (caricato condizionalmente) -->
+    <Analytics />
+      <!-- Performance Monitoring -->
+    <PerformanceMonitorSimple />
+    
+    <!-- Analytics - Load conditionally based on consent -->
     <script is:inline>
       // Check cookie consent before loading analytics
       function getCookieConsent() {

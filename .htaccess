@@ -1,0 +1,165 @@
+# Configurazione .htaccess per Aruba Hosting
+# Ottimizzazioni performance, sicurezza e SEO
+
+# ===== SICUREZZA =====
+
+# Headers di sicurezza HSTS per HTTPS
+<IfModule mod_headers.c>
+    # HSTS (HTTP Strict Transport Security)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Protezione XSS
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Prevenzione MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Protezione clickjacking
+    Header always set X-Frame-Options "DENY"
+    
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cloud.umami.is https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://cloud.umami.is"
+    
+    # Permissions Policy
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Blocca accesso a file sensibili
+<FilesMatch "\.(env|git|htaccess|htpasswd|ini|log|sh|sql|txt)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Nasconde informazioni server (su Aruba potrebbe essere limitato)
+ServerTokens Prod
+ServerSignature Off
+
+# ===== PERFORMANCE & CACHE =====
+
+# Abilita compressione Gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Cache Headers ottimizzati per Aruba
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Assets con hash (cache lunga)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+    
+    # Font files
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/eot "access plus 1 year"
+    
+    # Immagini
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # HTML/XML
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType text/xml "access plus 1 hour"
+    ExpiresByType application/xml "access plus 1 hour"
+    
+    # Sitemap e robots
+    ExpiresByType application/xml "access plus 1 day"
+    ExpiresByType text/plain "access plus 1 day"
+</IfModule>
+
+# Cache Control headers aggiuntivi
+<IfModule mod_headers.c>
+    # Assets con hash - cache immutabile
+    <FilesMatch "\.(css|js|woff2|woff|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # Immagini
+    <FilesMatch "\.(jpg|jpeg|png|webp|svg|ico)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+    
+    # HTML
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+</IfModule>
+
+# ===== SEO & URL OPTIMIZATION =====
+
+# URL Rewrite per SEO
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Forza HTTPS (su Aruba)
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Rimuovi trailing slash per consistency
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{THE_REQUEST} /+[^?\s]*?/?(\?[^\s]*)?(\s|\?)
+    RewriteRule ^(.+?)/?$ /$1 [R=301,L]
+    
+    # Redirects legacy URLs
+    RewriteRule ^blog/(.*)$ /lavori [R=301,L]
+    RewriteRule ^portfolio/?$ /lavori [R=301,L]
+    RewriteRule ^servizi/?$ /services [R=301,L]
+    RewriteRule ^contatti/?$ /contattaci [R=301,L]
+    
+    # Blocca tentativi di accesso bot/spam
+    RewriteRule ^wp-admin - [R=404,L]
+    RewriteRule ^wp-content - [R=404,L]
+    RewriteRule ^wordpress - [R=404,L]
+    RewriteRule ^admin - [R=404,L]
+    RewriteRule ^phpmyadmin - [R=404,L]
+    RewriteRule ^\.git - [R=404,L]
+    RewriteRule ^\.env - [R=404,L]
+</IfModule>
+
+# ===== ARUBA SPECIFIC =====
+
+# Ottimizzazioni specifiche per hosting Aruba
+<IfModule mod_env.c>
+    # Disabilita server signature se possibile
+    SetEnv SERVER_ADMIN ""
+</IfModule>
+
+# Gestione errori personalizzati
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html
+
+# MIME Types aggiuntivi per Aruba
+<IfModule mod_mime.c>
+    AddType font/woff2 .woff2
+    AddType font/woff .woff
+    AddType application/javascript .mjs
+    AddType text/css .css
+</IfModule>
+
+# Prevenzione hotlinking (opzionale)
+# <IfModule mod_rewrite.c>
+#     RewriteCond %{HTTP_REFERER} !^$
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?bitora\.it [NC]
+#     RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F,L]
+# </IfModule>

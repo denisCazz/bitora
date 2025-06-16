@@ -1,0 +1,189 @@
+---
+// Google Analytics 4 + Search Console setup
+const GA_ID = 'G-EL32YTDTYH'; // Il tuo ID GA4 attuale
+---
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EL32YTDTYH"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  
+  gtag('config', 'G-EL32YTDTYH', {
+    page_title: document.title,
+    page_location: window.location.href,
+    send_page_view: true,
+    custom_map: {
+      'custom_parameter_1': 'conversion_type',
+      'custom_parameter_2': 'user_engagement'
+    }
+  });
+
+  // Eventi personalizzati per il funnel
+  window.trackEvent = function(eventName, parameters = {}) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', eventName, {
+        event_category: parameters.category || 'engagement',
+        event_label: parameters.label || '',
+        value: parameters.value || 0,
+        custom_parameter: parameters.custom || '',
+        ...parameters
+      });
+    }
+  };
+  // Tracking automatico di interazioni importanti
+  document.addEventListener('DOMContentLoaded', function() {
+    // Tracking click sui CTA
+    const ctaButtons = document.querySelectorAll('[data-track="cta"]');
+    ctaButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        const ctaType = this.getAttribute('data-cta-type') || 'unknown';
+        const ctaText = this.textContent.trim();
+        if (typeof window.trackEvent === 'function') {
+          window.trackEvent('cta_click', {
+            category: 'conversion',
+            label: ctaType,
+            custom: ctaText
+          });
+        }
+      });
+    });
+
+    // Tracking scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', function() {
+      const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      if (scrollPercent > maxScroll && scrollPercent % 25 === 0 && scrollPercent <= 100) {
+        maxScroll = scrollPercent;
+        if (typeof window.trackEvent === 'function') {
+          window.trackEvent('scroll_depth', {
+            category: 'engagement',
+            value: scrollPercent,
+            label: scrollPercent + '%'
+          });
+        }
+      }
+    });
+
+    // Tracking form submissions
+    const forms = document.querySelectorAll('form');
+    forms.forEach(function(form) {
+      form.addEventListener('submit', function() {
+        const formId = this.getAttribute('id') || 'unnamed_form';
+        if (typeof window.trackEvent === 'function') {
+          window.trackEvent('form_submit', {
+            category: 'conversion',
+            label: formId
+          });
+        }
+      });
+    });
+
+    // Tracking outbound links
+    const outboundLinks = document.querySelectorAll('a[href^="http"]');
+    outboundLinks.forEach(function(link) {
+      if (link.href && !link.href.includes(window.location.hostname)) {
+        link.addEventListener('click', function() {
+          if (typeof window.trackEvent === 'function') {
+            window.trackEvent('outbound_click', {
+              category: 'engagement',
+              label: this.href
+            });
+          }
+        });
+      }
+    });
+
+    // Tracking download links
+    const downloadLinks = document.querySelectorAll('a[href$=".pdf"], a[href$=".doc"], a[href$=".docx"], a[href*="download"]');
+    downloadLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (typeof window.trackEvent === 'function') {
+          window.trackEvent('file_download', {
+            category: 'engagement',
+            label: this.href
+          });
+        }
+      });
+    });
+  });
+</script>
+
+<!-- Google Search Console -->
+<meta name="google-site-verification" content="YOUR_SEARCH_CONSOLE_CODE" />
+
+<!-- Schema.org per SEO avanzato -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://bitora.it/#organization",
+      "name": "Bitora",
+      "url": "https://bitora.it/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bitora.it/bitora.png"
+      },
+      "description": "Soluzioni NFC innovative per hotel, ristoranti e negozi. Digitalizza la tua attività con Bitora.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IT"
+      },
+      "sameAs": [
+        "https://www.facebook.com/bitora",
+        "https://www.linkedin.com/company/bitora",
+        "https://www.instagram.com/bitora_official"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bitora.it/#website",
+      "url": "https://bitora.it/",
+      "name": "Bitora - Soluzioni NFC per Business",
+      "description": "Digitalizza la tua attività con le soluzioni NFC di Bitora. Hotel, ristoranti, negozi - scopri l'ecosistema NFC più avanzato.",
+      "publisher": {
+        "@id": "https://bitora.it/#organization"
+      },
+      "potentialAction": [
+        {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://bitora.it/search?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Facebook Pixel (opzionale) -->
+<!-- <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'YOUR_PIXEL_ID');
+  fbq('track', 'PageView');
+</script> -->
+
+<!-- Hotjar (opzionale per heatmaps) -->
+<!-- <script>
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:YOUR_HOTJAR_ID,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script> -->
