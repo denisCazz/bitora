@@ -1,0 +1,156 @@
+---
+// Preload delle risorse critiche per migliorare LCP e CLS
+---
+
+<!-- Preload Font critici -->
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Preload CSS critico -->
+<link rel="modulepreload" href="/src/styles/global.css">
+
+<!-- DNS Prefetch per risorse esterne -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+
+<!-- Preconnect per risorse critiche -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Resource hints per performance -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+
+<!-- Critical CSS inline per above-the-fold -->
+<style>
+  /* Critical CSS per eliminare layout shift */
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Prevenire layout shift delle immagini */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Hero section - dimensioni fisse per prevenire CLS */
+  .hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Navigation - altezza fissa */
+  nav {
+    height: 4rem;
+  }
+  
+  /* Prevenire flash di contenuto non stilizzato */
+  .loading {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  
+  /* Ottimizzazione animazioni per compositing */
+  .animate {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+  
+  /* Button hover ottimizzato */
+  .btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    will-change: transform;
+  }
+  
+  /* Browser compatibility fixes */
+  /* Ensure h1 has consistent font-size in sections */
+  article h1, aside h1, nav h1, section h1 {
+    font-size: 2rem !important;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+  
+  /* Progressive enhancement for CSS features */
+  @supports (backdrop-filter: blur(10px)) {
+    .backdrop-blur {
+      backdrop-filter: blur(10px);
+    }
+  }
+  
+  /* Fallback for older browsers */
+  @supports not (backdrop-filter: blur(10px)) {
+    .backdrop-blur {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  /* Enhanced accessibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* High contrast mode improvements */
+  @media (prefers-contrast: high) {
+    .btn {
+      border: 2px solid;
+    }
+  }
+</style>
+
+<!-- Script per lazy loading ottimizzato -->
+<script is:inline>
+  // Intersection Observer per lazy loading migliorato
+  if ('IntersectionObserver' in window) {
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px'
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+  }
+  
+  // Preload risorse al hover (instant loading)
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a[href^="/"]');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        const prefetchLink = document.createElement('link');
+        prefetchLink.rel = 'prefetch';
+        prefetchLink.href = link.href;
+        document.head.appendChild(prefetchLink);
+      }, { once: true });
+    });
+  });
+</script>
