@@ -19,6 +19,9 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
 <!doctype html>
 <html lang="it">
   <head>
+    <!-- Charset declaration - deve essere prima di tutto -->
+    <meta charset="UTF-8">
+    
     <!-- Performance Optimizer - Critical Resources -->
     <PerformanceOptimizer />
     
