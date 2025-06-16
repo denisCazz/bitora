@@ -152,10 +152,3 @@ select:focus-visible {
     scroll-behavior: auto !important;
   }
 }
-
-/* Ensure consistent font size for <h1> in specific sections */
-article h1, aside h1, nav h1, section h1 {
-  font-size: 2rem; /* Example size, adjust as needed */
-  line-height: 1.2;
-  font-weight: bold;
-}
