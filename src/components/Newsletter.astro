@@ -56,10 +56,9 @@
           
           showMessage('Iscrizione completata! Controlla la tua email.', 'success');
           emailInput.value = '';
-          
-          // Track event for analytics
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'newsletter_signup', {
+            // Track event for analytics
+          if (typeof window.gtag !== 'undefined') {
+            window.gtag('event', 'newsletter_signup', {
               'event_category': 'engagement',
               'event_label': 'blog_newsletter'
             });
