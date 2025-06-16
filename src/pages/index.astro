@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Features from '../components/Features.astro';
+import { testimonials } from '../data/testimonials';
 ---
 
 <Layout
@@ -89,90 +90,173 @@ import Features from '../components/Features.astro';
     }
   </script>
 
-  <Hero />
-
-  <!-- Numbers Section -->
-  <section class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
-    <div class="container mx-auto px-4">
+  <Hero />  <!-- Numbers Section - Design Moderno e Pulito -->
+  <section class="py-20 relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <!-- Background semplificato -->
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-64 h-64 bg-purple-500/15 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
       <div class="text-center mb-16">
-        <div class="inline-flex items-center bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-8">
-          <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mr-2 animate-pulse"></div>
-          I nostri risultati in numeri
+        <!-- Badge semplificato -->
+        <div class="inline-flex items-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+          <div class="w-2 h-2 bg-blue-500 rounded-full mr-3 animate-pulse"></div>
+          <span class="text-gray-700 dark:text-gray-200">I nostri risultati</span>
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-          Il Successo di Bitora in Cifre
+        
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          Il <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Successo</span><br>
+          di <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Bitora</span>
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Questi numeri raccontano la storia del nostro impatto nel territorio piemontese
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Numeri che dimostrano la qualità del nostro lavoro nel territorio piemontese
         </p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">        <!-- Visite Totali -->
-        <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300">
-          <div class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2" id="total-views">
+      <!-- Stats Grid Semplificato -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <!-- Visite Totali -->
+        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
             <span class="counter" data-target="3247">0</span>+
           </div>
-          <div class="text-gray-600 dark:text-gray-300 font-medium">Visite Totali</div>
-          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Dal lancio</div>
+          <div class="text-sm font-medium text-gray-700 dark:text-gray-200">Visite Totali</div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Dal lancio</div>
         </div>
 
         <!-- Visitatori Unici -->
-        <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300">
-          <div class="text-4xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2" id="unique-visitors">
+        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
             <span class="counter" data-target="1156">0</span>+
           </div>
-          <div class="text-gray-600 dark:text-gray-300 font-medium">Visitatori</div>
-          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Unici</div>
+          <div class="text-sm font-medium text-gray-700 dark:text-gray-200">Visitatori</div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Unici</div>
         </div>
 
         <!-- Progetti Completati -->
-        <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300">
-          <div class="text-4xl md:text-5xl font-bold text-green-600 dark:text-green-400 mb-2" id="projects-count">
+        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
             <span class="counter" data-target="12">0</span>+
           </div>
-          <div class="text-gray-600 dark:text-gray-300 font-medium">Progetti</div>
-          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Completati</div>
+          <div class="text-sm font-medium text-gray-700 dark:text-gray-200">Progetti</div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Completati</div>
         </div>
 
         <!-- Clienti Soddisfatti -->
-        <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300">
-          <div class="text-4xl md:text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2" id="clients-count">
+        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <div class="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2">
             <span class="counter" data-target="23">0</span>+
           </div>
-          <div class="text-gray-600 dark:text-gray-300 font-medium">Clienti</div>
-          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Soddisfatti</div>
-        </div>
-      </div>
+          <div class="text-sm font-medium text-gray-700 dark:text-gray-200">Clienti</div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Soddisfatti</div>
+        </div>      </div>
 
-      <!-- Tessere NFC - Riga separata -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto mt-8">
-        <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300">
-          <div class="text-4xl md:text-5xl font-bold text-orange-600 dark:text-orange-400 mb-2" id="nfc-count">
+      <!-- Tessere NFC - Card Ultra-Speciale -->
+      <div class="max-w-3xl mx-auto mt-16">
+        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
+          <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <div class="text-5xl font-bold text-orange-600 dark:text-orange-400 mb-4">
             <span class="counter" data-target="34">0</span>+
           </div>
-          <div class="text-gray-600 dark:text-gray-300 font-medium">Tessere NFC</div>
-          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Attivate</div>
+          <div class="text-xl font-bold text-gray-700 dark:text-gray-200 mb-2">Tessere NFC</div>
+          <div class="text-sm text-gray-500 dark:text-gray-400">Attivate e Funzionanti</div>
         </div>
-      <!-- Stats aggiuntive sotto -->
-      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-12 pt-12 border-t border-gray-200 dark:border-gray-700">
-        <div class="text-center">
-          <div class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            <span class="counter" data-target="98">0</span>%
+      </div>
+    </div>
+  </section>  <!-- Testimonials Section -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <!-- Badge semplificato -->
+        <div class="inline-flex items-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+          <div class="w-6 h-6 mr-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
           </div>
-          <div class="text-gray-600 dark:text-gray-300">Soddisfazione Clienti</div>
+          <span class="text-gray-700 dark:text-gray-200">Testimonianze reali</span>
         </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            <span class="counter" data-target="24">0</span>h
+        
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+          Cosa Dicono i<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Nostri Clienti</span>
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Le testimonianze autentiche di chi ha scelto Bitora per trasformare la propria presenza digitale
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {testimonials.slice(0, 4).map((testimonial, index) => (
+          <div class="testimonial-card bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 dark:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+            <!-- Rating -->
+            <div class="flex text-yellow-400 space-x-1 mb-6">
+              {Array.from({ length: testimonial.rating || 5 }).map((_, i) => (
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}            </div>
+
+            <!-- Quote -->
+            <div class="mb-6">
+              <blockquote class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                "{testimonial.quote}"
+              </blockquote>
+            </div>
+
+            <!-- Author info -->
+            <div class="flex items-center pt-4 border-t border-gray-200/50 dark:border-gray-600/50">
+              <img 
+                src={testimonial.image} 
+                alt={testimonial.author}
+                class="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-gray-600 shadow-lg"
+              />
+              <div class="ml-4 flex-1">
+                <div class="font-bold text-gray-900 dark:text-white">{testimonial.author}</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                  {testimonial.role} • {testimonial.company}
+                </div>
+              </div>
+              {testimonial.site && (
+                <a 
+                  href={testimonial.site} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg text-sm font-medium transition-colors duration-200"
+                >
+                  Visita
+                </a>
+              )}
+            </div>
           </div>
-          <div class="text-gray-600 dark:text-gray-300">Tempo Medio Consegna</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            <span class="counter" data-target="12">0</span>
-          </div>
-          <div class="text-gray-600 dark:text-gray-300">Mesi di Esperienza</div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -312,7 +396,115 @@ import Features from '../components/Features.astro';
   </section>
 </Layout>
 
+<style>
+  /* Animazioni essenziali */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes countUp {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Stats Cards */
+  .stats-card {
+    transition: all 0.3s ease;
+  }
+
+  .stats-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .stats-card:hover {
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Counter animation */
+  .counter {
+    font-variant-numeric: tabular-nums;
+    transition: all 0.3s ease;
+  }
+
+  .counter.animating {
+    animation: countUp 0.5s ease;
+  }
+
+  /* Testimonial cards */
+  .testimonial-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+
+  .testimonial-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.8s ease;
+  }
+
+  /* Responsive improvements */
+  @media (max-width: 768px) {
+    .stats-card {
+      padding: 1rem;
+    }
+    
+    .stats-card .text-3xl {
+      font-size: 1.875rem;
+    }
+  }
+
+  /* Focus states for accessibility */
+  .stats-card:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
 <script>
+  // Definizioni delle funzioni
+  function updateCounterTarget(id, newValue) {
+    const element = document.querySelector(`#${id} .counter`);
+    if (element) {
+      element.setAttribute('data-target', newValue);
+    }
+  }
+
+  function animateCounter(counter) {
+    const target = parseInt(counter.getAttribute('data-target') || '0');
+    const duration = 2000; // 2 secondi
+    const step = target / (duration / 16); // 60 FPS
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        counter.textContent = target.toLocaleString();
+        clearInterval(timer);
+      } else {
+        counter.textContent = Math.floor(current).toLocaleString();
+      }
+    }, 16);
+  }
+
   // Counter animation
   document.addEventListener('DOMContentLoaded', function() {
     const counters = document.querySelectorAll('.counter');
@@ -331,33 +523,16 @@ import Features from '../components/Features.astro';
           observer.unobserve(counter); // Anima solo una volta
         }
       });
-    }, observerOptions);
-
-    counters.forEach(counter => {
+    }, observerOptions);    counters.forEach(counter => {
       observer.observe(counter);
     });
 
-    function animateCounter(counter) {
-      const target = parseInt(counter.getAttribute('data-target'));
-      const duration = 2000; // 2 secondi
-      const step = target / (duration / 16); // 60 FPS
-      let current = 0;
-
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-          counter.textContent = target.toLocaleString();
-          clearInterval(timer);
-        } else {
-          counter.textContent = Math.floor(current).toLocaleString();
-        }
-      }, 16);
-    }    // Opzionale: Carica dati reali da Umami se disponibile
+    // Opzionale: Carica dati reali da Umami se disponibile
     loadUmamiStats();
     
     // Debug: controlla se i contatori si stanno animando
     setTimeout(() => {
-      console.log('🎯 Stato contatori dopo 3 secondi:', 
+      console.log('🎯 Stato contatori dopo 3 secondi:',
         document.querySelector('#total-views .counter')?.textContent);
     }, 3000);
   });  async function loadUmamiStats() {
@@ -375,23 +550,90 @@ import Features from '../components/Features.astro';
     // Aggiorna tutti i contatori con dati reali
     updateCounterTarget('total-views', realStats.pageviews);
     updateCounterTarget('projects-count', realStats.projects);
-    updateCounterTarget('clients-count', realStats.clients);
-    updateCounterTarget('nfc-count', realStats.nfcCards);    console.log('✅ Contatori aggiornati con dati reali:', realStats);
+    updateCounterTarget('clients-count', realStats.clients);    updateCounterTarget('nfc-count', realStats.nfcCards);
+    console.log('✅ Contatori aggiornati con dati reali:', realStats);
     
     // Prova API Umami solo in produzione (CORS blocca in localhost)
     if (window.location.hostname !== 'localhost') {
       console.log('🌐 Ambiente produzione: tentativo API Umami...');
       const success = await tryUmamiAPI();
       if (success) {
-        console.log('🎯 API Umami riuscita in produzione!');
-        return;
+        console.log('✅ Dati Umami caricati con successo');
+      } else {
+        console.log('ℹ️ Fallback su dati statici');
       }
-    } else {
-      console.log('🏠 Ambiente locale: CORS attivo, usando dati statici');
     }
-    
   }
 
+  // Intersection Observer per animazioni di scroll
+  function initScrollAnimations() {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animazione counter
+          if (entry.target.querySelector('.counter')) {
+            const counters = entry.target.querySelectorAll('.counter');
+            counters.forEach(counter => {
+              animateCounter(counter);
+              counter.classList.add('animated');
+            });
+          }
+
+          // Animazione testimonial
+          if (entry.target.classList.contains('testimonial-card')) {
+            entry.target.classList.add('visible');
+          }          // Animazione glass cards
+          if (entry.target.classList.contains('glass-card')) {
+            if (entry.target instanceof HTMLElement) {
+              entry.target.style.animationDelay = `${Math.random() * 0.5}s`;
+            }
+            entry.target.classList.add('animate-bounce-in');
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Osserva gli elementi
+    document.querySelectorAll('.glass-card, .testimonial-card, [class*="counter"]').forEach(el => {
+      observer.observe(el);
+    });
+  }
+  // Effetti parallax leggeri
+  function initParallax() {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.morph-blob, .particle');      parallaxElements.forEach((element, index) => {
+        const speed = 0.5 + (index * 0.1);
+        const yPos = -(scrolled * speed);
+        if (element instanceof HTMLElement) {
+          element.style.transform = `translateY(${yPos}px)`;
+        }
+      });
+    });
+  }
+  // Hover effects avanzati
+  function initHoverEffects() {
+    document.querySelectorAll('.glass-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        if (this instanceof HTMLElement) {
+          this.style.transform = 'translateY(-12px) scale(1.02) rotateX(2deg)';
+        }
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        if (this instanceof HTMLElement) {
+          this.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+        }
+      });
+    });
+  }
+
+  // Funzioni per gestire API e contatori
   async function tryUmamiAPI() {
     try {
       console.log('📊 Tentativo API Umami...');
@@ -461,7 +703,9 @@ import Features from '../components/Features.astro';
     // Fallback finale: dati statici aggiornati
     console.log('📈 Usando dati statici ottimizzati');
     updateStaticCounters();
-  }  function updateStaticCounters() {
+  }
+
+  function updateStaticCounters() {
     // Usa i dati reali aggiornati
     const realStats = {
       pageviews: 3247,
@@ -478,14 +722,14 @@ import Features from '../components/Features.astro';
     updateCounterTarget('projects-count', realStats.projects);
     updateCounterTarget('clients-count', realStats.clients);
     updateCounterTarget('nfc-count', realStats.nfcCards);
-    
-    console.log('📊 Contatori aggiornati con dati reali:', realStats);
+      console.log('📊 Contatori aggiornati con dati reali:', realStats);
   }
 
-  function updateCounterTarget(id, newValue) {
-    const element = document.querySelector(`#${id} .counter`);
-    if (element) {
-      element.setAttribute('data-target', newValue);
-    }
-  }
+  // Inizializza tutto
+  document.addEventListener('DOMContentLoaded', function() {
+    updateStaticCounters();
+    initScrollAnimations();
+    initParallax();
+    initHoverEffects();
+  });
 </script>

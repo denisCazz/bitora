@@ -42,7 +42,7 @@ export const testimonials: Testimonial[] = [
     company: 'Speedy Pizza',
     role: 'Proprietario',
     image: 'https://www.speedy-pizza.it/logo.jpeg',
-    site: 'https://speedypizza.it',
+    site: 'https://speedy-pizza.it',
     results: '+60% ordini online',
     rating: 5,
     category: 'web'
