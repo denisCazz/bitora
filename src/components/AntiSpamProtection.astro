@@ -1,0 +1,157 @@
+---
+// Componente honeypot e protezione antispam per form
+interface Props {
+  formId: string;
+  className?: string;
+}
+
+const { formId, className = '' } = Astro.props;
+---
+
+<!-- Honeypot field - nascosto ai veri utenti, visibile ai bot -->
+<div class="honeypot-container" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;">
+  <label for={`honeypot-${formId}`}>Leave this field empty</label>
+  <input 
+    type="text" 
+    id={`honeypot-${formId}`}
+    name="honeypot" 
+    tabindex="-1" 
+    autocomplete="off"
+    aria-hidden="true"
+  />
+</div>
+
+<!-- Timestamp field per rate limiting -->
+<input 
+  type="hidden" 
+  name="form_timestamp" 
+  id={`timestamp-${formId}`}
+  value={Date.now().toString()}
+/>
+
+<!-- Token CSRF dinamico -->
+<input 
+  type="hidden" 
+  name="csrf_token" 
+  id={`csrf-${formId}`}
+  value=""
+/>
+
+<script define:vars={{ formId }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Genera token CSRF unico per sessione
+    function generateCSRFToken() {
+      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
+
+    // Imposta token CSRF
+    const csrfField = document.getElementById(`csrf-${formId}`);
+    if (csrfField) {
+      csrfField.value = generateCSRFToken();
+    }
+
+    // Trova il form parent
+    const form = document.querySelector(`form[data-form-id="${formId}"], #${formId}`);
+    if (!form) return;
+
+    // Validazione antispam al submit
+    form.addEventListener('submit', function(e) {
+      // Controlla honeypot
+      const honeypot = document.getElementById(`honeypot-${formId}`);
+      if (honeypot && honeypot.value.trim() !== '') {
+        e.preventDefault();
+        console.warn('Spam detection: honeypot triggered');
+          // Log per analytics
+        if (window.trackEvent) {
+          window.trackEvent('spam_blocked', {
+            category: 'security',
+            label: 'honeypot'
+          });
+        }
+        
+        // Mostra messaggio generico (non rivelare che è spam)
+        alert('Si è verificato un errore. Riprova più tardi.');
+        return false;
+      }
+
+      // Controlla timing (troppo veloce = bot)
+      const timestamp = document.getElementById(`timestamp-${formId}`);
+      if (timestamp) {
+        const submissionTime = Date.now();
+        const formLoadTime = parseInt(timestamp.value);
+        const timeDiff = submissionTime - formLoadTime;
+        
+        if (timeDiff < 2000) { // Meno di 2 secondi = sospetto
+          e.preventDefault();
+          console.warn('Spam detection: submission too fast');
+            if (window.trackEvent) {
+            window.trackEvent('spam_blocked', {
+              category: 'security', 
+              label: 'fast_submission'
+            });
+          }
+          
+          alert('Per favore compila il form con più attenzione.');
+          return false;
+        }
+      }
+
+      // Rate limiting (max 3 submit per minuto)
+      const submitKey = `form_submit_${formId}`;
+      const submitHistory = JSON.parse(localStorage.getItem(submitKey) || '[]');
+      const now = Date.now();
+      const recentSubmits = submitHistory.filter(time => now - time < 60000); // Ultimo minuto
+
+      if (recentSubmits.length >= 3) {
+        e.preventDefault();
+        console.warn('Spam detection: rate limit exceeded');
+          if (window.trackEvent) {
+          window.trackEvent('spam_blocked', {
+            category: 'security',
+            label: 'rate_limit'
+          });
+        }
+        
+        alert('Troppi tentativi. Attendi un minuto prima di riprovare.');
+        return false;
+      }
+
+      // Salva timestamp del submit
+      recentSubmits.push(now);
+      localStorage.setItem(submitKey, JSON.stringify(recentSubmits));      // Log submit valido
+      if (window.trackEvent) {
+        window.trackEvent('form_submit_valid', {
+          category: 'conversion',
+          label: formId
+        });
+      }
+    });
+
+    // Aggiorna timestamp quando l'utente inizia a digitare (comportamento umano)
+    const inputs = form.querySelectorAll('input[type="text"], input[type="email"], textarea');
+    let firstInteraction = true;
+    
+    inputs.forEach(input => {
+      input.addEventListener('input', function() {
+        if (firstInteraction) {
+          const timestampField = document.getElementById(`timestamp-${formId}`);
+          if (timestampField) {
+            timestampField.value = Date.now().toString();
+          }
+          firstInteraction = false;
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .honeypot-container {
+    position: absolute !important;
+    left: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+</style>

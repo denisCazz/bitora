@@ -1,16 +1,30 @@
-# 🌟 Bitora.it - Web Design & Digital Solutions
+# 🌟 Bitora.it - Web Design Carmagnola & Digital Solutions Piemonte
 
-Bitora.it is a modern, high-performance static website built with Astro, offering professional web design services, digital solutions, and innovative NFC business cards.
+Bitora.it è un sito web moderno e ad alte prestazioni costruito con Astro, che offre servizi professionali di web design, soluzioni digitali innovative e tessere NFC smart per aziende di Carmagnola e del territorio piemontese.
+
+## 🌍 SEO Locale Implementato
+
+- **Geolocalizzazione Carmagnola** - Ottimizzato specificamente per Carmagnola e province limitrofe
+- **Schema Markup Locale** - Struttura dati LocalBusiness per Google
+- **Contenuti Geo-targetizzati** - Pagine dedicate al territorio piemontese
+- **Sitemap Geografica** - Include coordinate GPS e dati di localizzazione
+- **Meta Tags Locali** - Ottimizzati per ricerche "Carmagnola", "Piemonte", "Provincia Torino"
 
 ## 🚀 Features
 
-- **Modern Web Design Services** - Comprehensive web development solutions
-- **Competitive Pricing Plans** - Transparent pricing for different business needs
-- **NFC Business Cards** - Innovative digital business card solutions
-- **Client Testimonials** - Showcase of successful projects and satisfied clients
-- **Responsive Design** - Optimized for all devices and screen sizes
-- **SEO Optimized** - Built with performance and search engine optimization in mind
-- **Accessibility First** - WCAG compliant design and navigation
+- **Servizi Web Design Locali** - Soluzioni complete per aziende del territorio
+- **Ecosistemi Digitali NFC** - Carte smart innovative per ristoranti, hotel, negozi
+- **Landing Page ad Alta Conversione** - Ottimizzate per il mercato locale
+- **Blog Specializzato** - Contenuti su web design e tecnologie per il Piemonte
+- **Supporto Territorio** - Assistenza dedicata per Carmagnola e zone limitrofe
+
+## 📍 Aree Servite
+
+- **Carmagnola** (sede principale)
+- **Provincia di Torino**
+- **Carignano, Villastellone, Pancalieri**
+- **Racconigi, Lombriasco, Osasio**
+- **Tutto il territorio piemontese**
 
 ## 🛠️ Tech Stack
 

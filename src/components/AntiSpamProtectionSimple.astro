@@ -1,0 +1,95 @@
+---
+// Componente honeypot e protezione antispam per form - Versione semplificata
+interface Props {
+  formId: string;
+}
+
+const { formId } = Astro.props;
+---
+
+<!-- Honeypot field - nascosto ai veri utenti, visibile ai bot -->
+<div class="honeypot-container" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;">
+  <label for={`honeypot-${formId}`}>Leave this field empty</label>
+  <input 
+    type="text" 
+    id={`honeypot-${formId}`}
+    name="honeypot" 
+    tabindex="-1" 
+    autocomplete="off"
+    aria-hidden="true"
+  />
+</div>
+
+<!-- Timestamp field per rate limiting -->
+<input 
+  type="hidden" 
+  name="form_timestamp" 
+  id={`timestamp-${formId}`}
+  value={Date.now().toString()}
+/>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Trova tutti i form con antispam protection
+    const forms = document.querySelectorAll('form[data-antispam]');
+    
+    forms.forEach(function(form) {
+      const formId = form.getAttribute('data-antispam');
+      if (!formId) return;
+      
+      // Validazione al submit
+      form.addEventListener('submit', function(e) {
+        // Controlla honeypot
+        const honeypot = document.getElementById('honeypot-' + formId);
+        if (honeypot && honeypot.value.trim() !== '') {
+          e.preventDefault();
+          alert('Si è verificato un errore. Riprova più tardi.');
+          return false;
+        }
+
+        // Controlla timing (troppo veloce = bot)
+        const timestamp = document.getElementById('timestamp-' + formId);
+        if (timestamp) {
+          const submissionTime = Date.now();
+          const formLoadTime = parseInt(timestamp.value) || 0;
+          const timeDiff = submissionTime - formLoadTime;
+          
+          if (timeDiff < 2000) { // Meno di 2 secondi = sospetto
+            e.preventDefault();
+            alert('Per favore compila il form con più attenzione.');
+            return false;
+          }
+        }
+
+        // Rate limiting (max 3 submit per minuto)
+        const submitKey = 'form_submit_' + formId;
+        const submitHistory = JSON.parse(localStorage.getItem(submitKey) || '[]');
+        const now = Date.now();
+        const recentSubmits = submitHistory.filter(function(time) { 
+          return now - time < 60000; 
+        });
+
+        if (recentSubmits.length >= 3) {
+          e.preventDefault();
+          alert('Troppi tentativi. Attendi un minuto prima di riprovare.');
+          return false;
+        }
+
+        // Salva timestamp del submit
+        recentSubmits.push(now);
+        localStorage.setItem(submitKey, JSON.stringify(recentSubmits));
+      });
+    });
+  });
+</script>
+
+<style>
+  .honeypot-container {
+    position: absolute !important;
+    left: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+</style>

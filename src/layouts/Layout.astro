@@ -2,6 +2,9 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import Analytics from '../components/Analytics.astro';
+import PerformanceMonitorSimple from '../components/PerformanceMonitorSimple.astro';
+import PerformanceOptimizer from '../components/PerformanceOptimizer.astro';
 import '../styles/global.css';
 
 export interface Props {
@@ -15,7 +18,17 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
 
 <!doctype html>
 <html lang="it">
-  <head>    <!-- Analytics - Load conditionally based on consent -->
+  <head>
+    <!-- Performance Optimizer - Critical Resources -->
+    <PerformanceOptimizer />
+    
+    <!-- Analytics (caricato condizionalmente) -->
+    <Analytics />
+    
+    <!-- Performance Monitoring -->
+    <PerformanceMonitorSimple />
+    
+    <!-- Analytics - Load conditionally based on consent -->
     <script is:inline>
       // Check cookie consent before loading analytics
       function getCookieConsent() {
@@ -61,13 +74,19 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->
-    <title>{title}</title>
-    <meta
+    <title>{title}</title>    <meta
       name="description"
       content={description ??
-        'Siti web minimalisti e professionali per aziende e freelance. Bitora crea soluzioni digitali rapide, eleganti e su misura per il tuo business.'}
+        'Siti web minimalisti e professionali per aziende di Carmagnola e Piemonte. Bitora crea soluzioni digitali rapide, eleganti e su misura per il tuo business locale.'}
     />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    <!-- Geo Tags per SEO locale -->
+    <meta name="geo.region" content="IT-21" />
+    <meta name="geo.placename" content="Carmagnola" />
+    <meta name="geo.position" content="44.8477;7.6833" />
+    <meta name="ICBM" content="44.8477, 7.6833" />
+    <meta name="keywords" content="siti web Carmagnola, web design Piemonte, tessere NFC Torino, landing page Carmagnola, ecosistema digitale Piemonte" />
 
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -90,18 +109,18 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
     >
 
     <!-- Sitemap -->
-    <link rel="sitemap" href="/sitemap-index.xml" />
-
-    <!-- Open Graph / Facebook -->
+    <link rel="sitemap" href="/sitemap-index.xml" />    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bitora.it/" />
     <meta property="og:title" content={title} />
     <meta
       property="og:description"
       content={description ??
-        'Siti web minimalisti, professionali e veloci. Bitora realizza soluzioni digitali su misura per aziende e professionisti che vogliono distinguersi online.'}
+        'Siti web minimalisti, professionali e veloci a Carmagnola. Bitora realizza soluzioni digitali su misura per aziende e professionisti del Piemonte che vogliono distinguersi online.'}
     />
     <meta property="og:image" content="https://bitora.it/bitora.jpg" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="Bitora - Web Design Carmagnola Piemonte" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -173,7 +192,6 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
     </script>
   </head>
   <body class="flex flex-col min-h-screen font-['Inter',sans-serif] bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-    <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
     <Header />
     <main id="main-content" class="flex-grow" tabindex="-1">
       <slot />

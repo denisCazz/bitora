@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Newsletter from '../../components/Newsletter.astro';
+---
+
+<Layout 
+  title="Blog Web Design Carmagnola | Bitora - Consigli e Tendenze"
+  description="Blog su web design, tecnologie NFC e digital marketing per aziende di Carmagnola e Piemonte. Consigli, tendenze e strategie per il successo digitale delle imprese locali."
+>
+  <!-- Blog Index Page -->
+  <section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+          Blog Bitora
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Consigli, tendenze e strategie digitali per aziende di Carmagnola e Piemonte. 
+          Scopri come far crescere la tua presenza online nel territorio locale.
+        </p>
+      </div>
+
+      <!-- Featured Article -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <article class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+          <div class="inline-flex items-center bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-medium mb-4">
+            <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mr-2 animate-pulse"></div>
+            Articolo in evidenza
+          </div>
+          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+            <a href="/blog/web-design-carmagnola-2025" class="hover:text-blue-600 transition-colors">
+              Tendenze Web Design 2025 per Aziende di Carmagnola
+            </a>
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Scopri le strategie web design più efficaci per le aziende del territorio piemontese. 
+            Dalle tecnologie NFC all'ottimizzazione SEO locale, tutti i segreti per il successo digitale.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+              <time datetime="2025-06-16">16 Giugno 2025</time>
+              <span>•</span>
+              <span>8 min di lettura</span>
+            </div>
+            <a href="/blog/web-design-carmagnola-2025" class="text-blue-600 hover:text-blue-700 font-medium">
+              Leggi di più →
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Blog Categories -->
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">
+          Categorie del Blog
+        </h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <!-- Web Design Locale -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Web Design Locale</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Tendenze, consigli e best practice per il web design di aziende del territorio piemontese.
+            </p>
+            <span class="text-blue-600 font-medium">5 articoli</span>
+          </div>
+
+          <!-- Tecnologie NFC -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Tecnologie NFC</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Come implementare tessere NFC smart per ristoranti, hotel e negozi di Carmagnola.
+            </p>
+            <span class="text-purple-600 font-medium">3 articoli</span>
+          </div>
+
+          <!-- SEO Locale -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">SEO Locale</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Strategie SEO specifiche per essere trovati dai clienti di Carmagnola e dintorni.
+            </p>
+            <span class="text-green-600 font-medium">4 articoli</span>
+          </div>
+        </div>        <!-- Newsletter Signup -->
+        <Newsletter />
+      </div>
+    </div>
+  </section>
+
+</Layout>

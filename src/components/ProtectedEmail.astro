@@ -1,0 +1,88 @@
+---
+// Component per proteggere email da spam e bot
+interface Props {
+  email: string;
+  subject?: string;
+  className?: string;
+  children: any;
+}
+
+const { email, subject = '', className = '', children } = Astro.props;
+
+// Offusca l'email per protezione spam
+const parts = email.split('@');
+const encodedEmail = btoa(email); // Base64 encoding
+---
+
+<a 
+  href="#" 
+  class={`protected-email ${className}`}
+  data-email={encodedEmail}
+  data-subject={subject}
+  onclick="sendSecureEmail(this); return false;"
+  onmouseover="showEmailPreview(this)"
+  onmouseout="hideEmailPreview(this)"
+  aria-label={`Invia email a ${parts[0]} presso ${parts[1]}`}
+>
+  <slot />
+</a>
+
+<script>
+  // Funzione per decodificare e aprire email client
+  function sendSecureEmail(element) {
+    try {
+      const encodedEmail = element.getAttribute('data-email');
+      const subject = element.getAttribute('data-subject') || '';
+      const email = atob(encodedEmail);
+        // Log per analytics (se disponibile)
+      if (window.trackEvent) {
+        window.trackEvent('email_click', {
+          category: 'contact',
+          label: 'protected_email'
+        });
+      }
+      
+      // Crea mailto link
+      const mailtoLink = `mailto:${email}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
+      window.location.href = mailtoLink;
+    } catch (error) {
+      console.error('Errore nell\'apertura email:', error);
+      // Fallback: mostra alert con email
+      const encodedEmail = element.getAttribute('data-email');
+      const email = atob(encodedEmail);
+      alert(`Email: ${email}`);
+    }
+  }
+
+  // Preview email al hover (opzionale)
+  function showEmailPreview(element) {
+    try {
+      const encodedEmail = element.getAttribute('data-email');
+      const email = atob(encodedEmail);
+      element.title = `Clicca per inviare email a: ${email}`;
+    } catch (error) {
+      // Silently fail
+    }
+  }
+
+  function hideEmailPreview(element) {
+    element.title = '';
+  }
+  // Proteggi da bot che potrebbero eseguire onclick
+  if (typeof window !== 'undefined') {
+    (window as any).sendSecureEmail = sendSecureEmail;
+    (window as any).showEmailPreview = showEmailPreview;
+    (window as any).hideEmailPreview = hideEmailPreview;
+  }
+</script>
+
+<style>
+  .protected-email {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .protected-email:hover {
+    opacity: 0.8;
+  }
+</style>

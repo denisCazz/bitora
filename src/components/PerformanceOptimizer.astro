@@ -1,0 +1,108 @@
+---
+// Preload delle risorse critiche per migliorare LCP e CLS
+---
+
+<!-- DNS Prefetch per risorse esterne -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+
+<!-- Preconnect per risorse critiche -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Resource hints per performance -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+
+<!-- Critical CSS inline per above-the-fold -->
+<style>
+  /* Critical CSS per eliminare layout shift */
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Prevenire layout shift delle immagini */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Hero section - dimensioni fisse per prevenire CLS */
+  .hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Navigation - altezza fissa */
+  nav {
+    height: 4rem;
+  }
+  
+  /* Prevenire flash di contenuto non stilizzato */
+  .loading {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  
+  /* Ottimizzazione animazioni per compositing */
+  .animate {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+  
+  /* Button hover ottimizzato */
+  .btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    will-change: transform;
+  }
+</style>
+
+<!-- Script per lazy loading ottimizzato -->
+<script is:inline>
+  // Intersection Observer per lazy loading migliorato
+  if ('IntersectionObserver' in window) {
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px'
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+  }
+  
+  // Preload risorse al hover (instant loading)
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a[href^="/"]');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        const prefetchLink = document.createElement('link');
+        prefetchLink.rel = 'prefetch';
+        prefetchLink.href = link.href;
+        document.head.appendChild(prefetchLink);
+      }, { once: true });
+    });
+  });
+</script>
