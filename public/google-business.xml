@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessInfo xmlns="http://www.google.com/localservices/businessinfo">
+  <name>Bitora - Web Design Carmagnola</name>
+  <description>
+    Servizi professionali di web design, sviluppo siti web e ecosistemi digitali NFC 
+    per aziende di Carmagnola e provincia di Torino. Specializzati in landing page 
+    ad alta conversione e soluzioni innovative per il territorio piemontese.
+  </description>
+  <address>
+    <locality>Carmagnola</locality>
+    <region>Piemonte</region>
+    <postalCode>10022</postalCode>
+    <country>IT</country>
+  </address>
+  <geo>
+    <latitude>44.8477</latitude>
+    <longitude>7.6833</longitude>
+  </geo>
+  <categories>
+    <category>Web Design Agency</category>
+    <category>Website Developer</category>
+    <category>Digital Marketing Service</category>
+    <category>Technology Company</category>
+  </categories>
+  <serviceAreas>
+    <area>Carmagnola</area>
+    <area>Torino</area>
+    <area>Carignano</area>
+    <area>Villastellone</area>
+    <area>Pancalieri</area>
+    <area>Racconigi</area>
+    <area>Lombriasco</area>
+    <area>Osasio</area>
+    <area>Provincia di Torino</area>
+    <area>Piemonte</area>
+  </serviceAreas>
+  <services>
+    <service>Progettazione siti web</service>
+    <service>Landing page professionali</service>
+    <service>Tessere NFC smart</service>
+    <service>SEO locale</service>
+    <service>E-commerce</service>
+    <service>Ecosistemi digitali</service>
+  </services>
+  <contact>
+    <phone>+39 324 778 7644</phone>
+    <email>info@bitora.it</email>
+    <website>https://bitora.it</website>
+    <whatsapp>https://wa.me/393247787644</whatsapp>
+  </contact>
+  <hours>
+    <day name="Monday">09:00-18:00</day>
+    <day name="Tuesday">09:00-18:00</day>
+    <day name="Wednesday">09:00-18:00</day>
+    <day name="Thursday">09:00-18:00</day>
+    <day name="Friday">09:00-18:00</day>
+    <day name="Saturday">Closed</day>
+    <day name="Sunday">Closed</day>
+  </hours>
+</BusinessInfo>

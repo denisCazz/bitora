@@ -6,44 +6,85 @@ import { testimonials } from '../data/testimonials';
 ---
 
 <Layout
-  title="Ecosistema Digitale NFC | Bitora - Tessere Smart & Landing Page AI"
-  description="Ecosistema digitale completo con tessere NFC intelligenti, landing page dinamiche con AI, chatbot integrati e dashboard self-service. Trasforma ogni interazione in opportunità di business."
->
-  <!-- Structured Data -->
-  <script type="application/ld+json">
+  title="Ecosistema Digitale NFC Carmagnola | Bitora - Tessere Smart & Landing Page AI Piemonte"
+  description="Ecosistema digitale completo a Carmagnola e provincia di Torino. Tessere NFC intelligenti, landing page dinamiche con AI per aziende del Piemonte. Servizi web professionali a Carmagnola, Torino e zone limitrofe."
+>  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "LocalBusiness",
       "name": "Bitora",
       "url": "https://bitora.it",
       "logo": "https://bitora.it/bitora.jpg",
-      "description": "Ecosistema digitale completo con tessere NFC intelligenti, landing page dinamiche con AI, chatbot integrati e dashboard self-service. Trasforma ogni interazione in opportunità di business.",
+      "description": "Ecosistema digitale completo con tessere NFC intelligenti, landing page dinamiche con AI per aziende di Carmagnola e Piemonte. Servizi web professionali e soluzioni NFC innovative.",
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": "IT"
+        "addressLocality": "Carmagnola",
+        "addressRegion": "Piemonte",
+        "postalCode": "10022",
+        "addressCountry": "IT",
+        "streetAddress": "Carmagnola"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "44.8477",
+        "longitude": "7.6833"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Carmagnola"
+        },
+        {
+          "@type": "City", 
+          "name": "Torino"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Provincia di Torino"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Piemonte"
+        }
+      ],
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "44.8477",
+          "longitude": "7.6833"
+        },
+        "geoRadius": "50000"
       },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+39-324-778-7644",
         "contactType": "Customer Service",
-        "email": "info@bitora.it"
+        "email": "info@bitora.it",
+        "areaServed": "IT",
+        "availableLanguage": "Italian"
       },
       "sameAs": ["https://wa.me/393247787644"],
+      "priceRange": "€€",
+      "openingHours": "Mo-Fr 09:00-18:00",
       "offers": [
         {
           "@type": "Offer",
-          "description": "Tessere NFC Smart con landing page dinamiche e AI integrata",
-          "category": "NFC Technology"
+          "description": "Tessere NFC Smart con landing page dinamiche per aziende di Carmagnola e Piemonte",
+          "category": "NFC Technology",
+          "areaServed": "Carmagnola, Torino, Piemonte"
         },
         {
           "@type": "Offer",
-          "description": "Ecosistema digitale completo per business moderni",
-          "category": "Digital Ecosystem"
+          "description": "Ecosistema digitale completo per business del territorio piemontese",
+          "category": "Digital Ecosystem",
+          "areaServed": "Carmagnola, Torino, Piemonte"
         },
         {
           "@type": "Offer",
-          "description": "Servizi di web design e sviluppo siti web professionali",
-          "category": "Web Design"
+          "description": "Servizi di web design e sviluppo siti web professionali a Carmagnola e provincia",
+          "category": "Web Design",
+          "areaServed": "Carmagnola, Torino, Piemonte"
         }
       ]
     }

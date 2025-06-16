@@ -1,13 +1,28 @@
 ---
+import { icons } from './Icons';
+
 const navItems = [
   { name: 'Home', url: '/' },
-  { name: 'Ecosistema NFC', url: '/nfc-ecosystem' },
-  { name: 'Chi Siamo', url: '/chi-siamo' },
-  { name: 'Lavori', url: '/lavori' },
+  { 
+    name: 'Servizi',
+    url: '/services',
+    dropdown: [
+      { name: 'Ecosistema NFC', url: '/nfc-ecosystem' },
+      { name: 'Web Design', url: '/services' },
+      { name: 'Servizi Carmagnola', url: '/carmagnola' }
+    ]
+  },
+  { 
+    name: 'Azienda',
+    url: '/chi-siamo',
+    dropdown: [
+      { name: 'Chi Siamo', url: '/chi-siamo' },
+      { name: 'Lavori', url: '/lavori' },
+      { name: 'Blog', url: '/blog' }
+    ]
+  },
   { name: 'Prezzi', url: '/prezzi' },
-  { name: 'Servizi', url: '/services' },
-  { name: 'Shop', url: '/shop' },
-  { name: 'Contattaci', url: '/contattaci' },
+  { name: 'Contatti', url: '/contattaci' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -21,18 +36,41 @@ const currentPath = Astro.url.pathname;
         class="text-2xl font-bold text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300 z-10"
       >
         <span class="tracking-tighter">bitora</span><span class="text-gray-500 dark:text-gray-400">.it</span>
-      </a>      <nav class="hidden md:flex gap-8">
+      </a>      <nav class="hidden md:flex gap-6">
         {
           navItems.map(item => (
-            <a
-              href={item.url}
-              class={`py-2 hover:text-black dark:hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white hover:after:w-full after:transition-all after:duration-300 ${currentPath === item.url ? 'text-black dark:text-white font-medium after:w-full' : 'text-gray-600 dark:text-gray-300'}`}
-            >
-              {item.name}
-            </a>
+            item.dropdown ? (
+              <div class="relative group">
+                <button class={`py-2 px-3 hover:text-black dark:hover:text-white transition-all duration-300 relative flex items-center gap-1 ${currentPath === item.url || item.dropdown.some(d => d.url === currentPath) ? 'text-black dark:text-white font-medium' : 'text-gray-600 dark:text-gray-300'}`}>
+                  {item.name}
+                  <div class="w-4 h-4">
+                    <Fragment set:html={icons.chevronDown} />
+                  </div>
+                </button>
+                <div class="absolute top-full left-0 bg-white dark:bg-gray-900 shadow-lg rounded-lg border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-48">
+                  <div class="py-2">
+                    {item.dropdown.map(dropItem => (
+                      <a 
+                        href={dropItem.url}
+                        class={`block px-4 py-2 text-sm transition-colors hover:bg-gray-50 dark:hover:bg-gray-800 ${currentPath === dropItem.url ? 'text-black dark:text-white font-medium bg-gray-50 dark:bg-gray-800' : 'text-gray-600 dark:text-gray-300'}`}
+                      >
+                        {dropItem.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a
+                href={item.url}
+                class={`py-2 px-3 hover:text-black dark:hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black dark:after:bg-white hover:after:w-full after:transition-all after:duration-300 ${currentPath === item.url ? 'text-black dark:text-white font-medium after:w-full' : 'text-gray-600 dark:text-gray-300'}`}
+              >
+                {item.name}
+              </a>
+            )
           ))
         }
-      </nav>      <div class="md:hidden">
+      </nav><div class="md:hidden">
         <button
           id="menu-toggle"
           class="text-black dark:text-white p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 z-10 relative"
@@ -50,23 +88,46 @@ const currentPath = Astro.url.pathname;
     <div
       id="mobile-menu"
       class="absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-2xl z-50 transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out md:hidden border-t border-gray-100 dark:border-gray-800"
-    >
-      <nav class="px-4 py-3 max-h-[80vh] overflow-y-auto">
+    >      <nav class="px-4 py-3 max-h-[80vh] overflow-y-auto">
         <ul class="space-y-1">
           {
             navItems.map(item => (
-              <li>
-                <a
-                  href={item.url}
-                  class={`block py-2.5 px-3 text-sm rounded-md transition-all duration-200 ${
-                    currentPath === item.url
-                      ? 'text-black dark:text-white font-semibold bg-gray-50 dark:bg-gray-800 border-l-3 border-black dark:border-white'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  {item.name}
-                </a>
-              </li>
+              item.dropdown ? (
+                <li>
+                  <div class="block py-2.5 px-3 text-sm font-medium text-gray-800 dark:text-gray-200 border-b border-gray-100 dark:border-gray-700">
+                    {item.name}
+                  </div>
+                  <ul class="ml-4 mt-1 space-y-1">
+                    {item.dropdown.map(dropItem => (
+                      <li>
+                        <a
+                          href={dropItem.url}
+                          class={`block py-2 px-3 text-sm rounded-md transition-all duration-200 ${
+                            currentPath === dropItem.url
+                              ? 'text-black dark:text-white font-semibold bg-gray-50 dark:bg-gray-800 border-l-2 border-blue-500'
+                              : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                          }`}
+                        >
+                          {dropItem.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : (
+                <li>
+                  <a
+                    href={item.url}
+                    class={`block py-2.5 px-3 text-sm rounded-md transition-all duration-200 ${
+                      currentPath === item.url
+                        ? 'text-black dark:text-white font-semibold bg-gray-50 dark:bg-gray-800 border-l-3 border-black dark:border-white'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              )
             ))
           }
         </ul>

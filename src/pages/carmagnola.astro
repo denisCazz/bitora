@@ -1,0 +1,287 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { icons } from '../components/Icons';
+---
+
+<Layout 
+  title="Web Design Carmagnola | Bitora - Siti Web Professionali Piemonte"
+  description="Web design professionale a Carmagnola e provincia di Torino. Creiamo siti web, landing page e ecosistemi digitali NFC per aziende del Piemonte. Servizi locali di qualità per il territorio piemontese."
+>
+  <!-- Schema Markup Specifico per Carmagnola -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Bitora Web Design Carmagnola",
+      "url": "https://bitora.it/carmagnola",
+      "description": "Web design professionale e servizi digitali per aziende di Carmagnola e provincia di Torino",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Carmagnola",
+        "addressRegion": "Piemonte",
+        "postalCode": "10022",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "44.8477",
+        "longitude": "7.6833"
+      },
+      "areaServed": [
+        "Carmagnola",
+        "Carignano",
+        "Villastellone",
+        "Pancalieri",
+        "Osasio",
+        "Lombriasco",
+        "Ceresole Alba",
+        "Racconigi",
+        "Sommariva del Bosco"
+      ],
+      "serviceType": [
+        "Web Design",
+        "Sviluppo Siti Web",
+        "Landing Page",
+        "Tessere NFC",
+        "Ecosistemi Digitali"
+      ]
+    }
+  </script>
+
+  <!-- Hero Section -->
+  <section class="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-blue-900/20 dark:via-gray-900 dark:to-indigo-900/20 transition-colors duration-300">
+    <div class="container mx-auto px-4 text-center">
+      <div class="inline-flex items-center bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-8">
+        <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mr-2 animate-pulse"></div>
+        Servizi Web Professionali per Carmagnola
+      </div>
+      <h1 class="text-5xl md:text-6xl font-bold mb-8">
+        <span class="text-gray-900 dark:text-white">Web Design</span><br>
+        <span class="text-blue-600 dark:text-blue-400">Carmagnola</span>
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
+        La tua web agency di fiducia a Carmagnola. Creiamo siti web professionali, landing page efficaci 
+        e ecosistemi digitali innovativi per aziende del territorio piemontese.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/contattaci" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl">
+          Richiedi Preventivo Gratuito
+        </a>
+        <a href="tel:+393247787644" class="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+          Chiamaci: 324 778 7644
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servizi Locali -->
+  <section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Servizi per Aziende di Carmagnola</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Soluzioni digitali complete per far crescere la tua attività nel territorio piemontese
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Siti Web Professionali -->
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
+            <div class="w-6 h-6 text-blue-600 dark:text-blue-400">
+              <Fragment set:html={icons.globe} />
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Siti Web Carmagnola</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Siti web responsive e professionali per aziende di Carmagnola. Design moderno, velocità ottimizzata e SEO locale per essere trovati dai tuoi clienti del territorio.
+          </p>
+          <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+            <li>• Design responsive per mobile</li>
+            <li>• Ottimizzazione SEO locale</li>
+            <li>• Velocità di caricamento ottimizzata</li>
+            <li>• Gestione contenuti semplificata</li>
+          </ul>
+        </div>
+
+        <!-- Landing Page Localizzate -->
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-6">
+            <div class="w-6 h-6 text-green-600 dark:text-green-400">
+              <Fragment set:html={icons.target} />
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Landing Page Efficaci</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Landing page ad alta conversione per campagne pubblicitarie locali. Cattura l'attenzione dei clienti di Carmagnola e zona con messaggi mirati.
+          </p>
+          <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+            <li>• Design focalizzato sulla conversione</li>
+            <li>• Messaggi personalizzati per il territorio</li>
+            <li>• Integrazione con sistemi CRM</li>
+            <li>• Analytics e tracking avanzati</li>
+          </ul>
+        </div>
+
+        <!-- Tessere NFC Smart -->
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-6">
+            <div class="w-6 h-6 text-purple-600 dark:text-purple-400">
+              <Fragment set:html={icons.chip} />
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Tessere NFC Innovative</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Tecnologia NFC all'avanguardia per ristoranti, hotel e negozi di Carmagnola. Menù digitali, recensioni automatiche e engagement clienti.
+          </p>
+          <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+            <li>• Menù digitali interattivi</li>
+            <li>• Sistema recensioni automatico</li>
+            <li>• Branded per la tua attività</li>
+            <li>• Analytics comportamento clienti</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perché Scegliere Bitora a Carmagnola -->
+  <section class="py-24 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Perché Scegliere Bitora a Carmagnola</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            Il partner digitale che conosce il territorio e le esigenze delle aziende locali
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="space-y-8">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                  <div class="w-4 h-4 text-blue-600 dark:text-blue-400">
+                    <Fragment set:html={icons.mapPin} />
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Conoscenza del Territorio</h3>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    Comprendiamo le dinamiche del mercato locale di Carmagnola e Piemonte, creando strategie digitali mirate per il territorio.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                  <div class="w-4 h-4 text-green-600 dark:text-green-400">
+                    <Fragment set:html={icons.users} />
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Supporto Locale</h3>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    Assistenza diretta e personalizzata per le aziende del territorio. Siamo qui quando hai bisogno di noi.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                  <div class="w-4 h-4 text-purple-600 dark:text-purple-400">
+                    <Fragment set:html={icons.trending} />
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Tecnologie Innovative</h3>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    Portiamo l'innovazione tecnologica alle aziende di Carmagnola con soluzioni all'avanguardia come NFC e AI.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <img 
+              src="/carmagnola-digital.jpg" 
+              alt="Web design professionale Carmagnola Piemonte"
+              class="rounded-2xl shadow-2xl w-full"
+              loading="lazy"
+              onerror="this.style.display='none'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-2xl"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comuni Serviti -->
+  <section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Comuni del Piemonte che Serviamo</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300">
+          I nostri servizi web coprono tutto il territorio della provincia di Torino e oltre
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Carmagnola</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Sede principale</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Torino</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Capoluogo</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Carignano</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Limitrofo</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Villastellone</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Limitrofo</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Racconigi</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Zona Sud</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Pancalieri</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Zona Sud</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Lombriasco</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Limitrofo</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Osasio</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Limitrofo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Finale -->
+  <section class="py-24 bg-blue-600 dark:bg-blue-800 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-6">Pronto a Far Crescere la Tua Azienda a Carmagnola?</h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+        Contattaci oggi stesso per una consulenza gratuita. Scopri come possiamo trasformare 
+        la presenza online della tua attività nel territorio piemontese.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contattaci" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-colors">
+          Consulenza Gratuita
+        </a>
+        <a href="https://wa.me/393247787644" class="border border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg font-semibold transition-colors">
+          WhatsApp: 324 778 7644
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

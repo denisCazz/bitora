@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://bitora.it/sitemap.xml
+
+# Important pages for local SEO
+Allow: /carmagnola
+Allow: /chi-siamo
+Allow: /services
+Allow: /contattaci
+
+# Block admin areas if any
+Disallow: /admin/
+Disallow: /.well-known/
+
+# Crawl delay
+Crawl-delay: 1
