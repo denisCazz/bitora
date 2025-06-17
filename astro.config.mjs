@@ -22,6 +22,9 @@ export default defineConfig({
     })
   ],
   site: 'https://bitora.it/',
+  base: '/',
+  trailingSlash: 'ignore',
+  output: 'static',
   compressHTML: true,
   prefetch: {
     prefetchAll: true,
