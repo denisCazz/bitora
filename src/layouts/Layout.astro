@@ -13,7 +13,11 @@ export interface Props {
 }
 
 const { title, description } = Astro.props;
-const canonicalUrl = new URL(Astro.url.pathname, 'https://bitora.it').toString();
+// Costruisci l'URL canonico corretto - più robusto
+const pathname = Astro.url.pathname || '/';
+const canonicalUrl = pathname === '/' 
+  ? 'https://bitora.it/' 
+  : `https://bitora.it${pathname.endsWith('/') ? pathname : pathname + '/'}`;
 ---
 
 <!doctype html>
