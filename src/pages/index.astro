@@ -535,7 +535,7 @@ import { testimonials } from '../data/testimonials';
       console.log('🎯 Stato contatori dopo 3 secondi:',
         document.querySelector('#total-views .counter')?.textContent);
     }, 3000);
-  });  async function loadUmamiStats() {
+  });  function loadUmamiStats() {
     console.log('� Caricamento statistiche aggiornate...');
       // Dati reali aggiornati - NUMERI REALI DI BITORA
     const realStats = {
@@ -546,23 +546,13 @@ import { testimonials } from '../data/testimonials';
       clients: 23,       // 20+ clienti soddisfatti
       nfcCards: 34       // 30+ tessere NFC attivate
     };
-    
-    // Aggiorna tutti i contatori con dati reali
+      // Aggiorna tutti i contatori con dati reali
     updateCounterTarget('total-views', realStats.pageviews);
     updateCounterTarget('projects-count', realStats.projects);
-    updateCounterTarget('clients-count', realStats.clients);    updateCounterTarget('nfc-count', realStats.nfcCards);
-    console.log('✅ Contatori aggiornati con dati reali:', realStats);
+    updateCounterTarget('clients-count', realStats.clients);
+    updateCounterTarget('nfc-count', realStats.nfcCards);
     
-    // Prova API Umami solo in produzione (CORS blocca in localhost)
-    if (window.location.hostname !== 'localhost') {
-      console.log('🌐 Ambiente produzione: tentativo API Umami...');
-      const success = await tryUmamiAPI();
-      if (success) {
-        console.log('✅ Dati Umami caricati con successo');
-      } else {
-        console.log('ℹ️ Fallback su dati statici');
-      }
-    }
+    console.log('✅ Contatori aggiornati con dati reali:', realStats);
   }
 
   // Intersection Observer per animazioni di scroll
@@ -632,102 +622,10 @@ import { testimonials } from '../data/testimonials';
       });
     });
   }
-
-  // Funzioni per gestire API e contatori
-  async function tryUmamiAPI() {
-    try {
-      console.log('📊 Tentativo API Umami...');
-      
-      const websiteId = '2adbf0f8-a9d3-47bd-9a32-61ac932f9640';
-      
-      // Prova diversi endpoint Umami
-      const endpoints = [
-        `https://cloud.umami.is/api/websites/${websiteId}/stats`,
-        `https://cloud.umami.is/api/websites/${websiteId}/pageviews`,
-        `https://cloud.umami.is/api/websites/${websiteId}/metrics`
-      ];
-      
-      for (const endpoint of endpoints) {
-        try {
-          const response = await fetch(endpoint, {
-            method: 'GET',
-            headers: {
-              'Authorization': 'Bearer api_g7xWhCJnq6U8AvM5do0PK5aUlRi2ZrRP',
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            }
-          });
-
-          console.log(`📡 ${endpoint} - Status:`, response.status);
-          
-          if (response.ok) {
-            const data = await response.json();
-            console.log('✅ Dati ricevuti:', data);
-            
-            // Aggiorna contatori con dati reali
-            if (data.pageviews) updateCounterTarget('total-views', data.pageviews);
-            if (data.visitors) updateCounterTarget('unique-visitors', data.visitors);
-            if (data.sessions) updateCounterTarget('sessions', data.sessions);
-            
-            return true;
-          }
-        } catch (err) {
-          console.log(`❌ Errore endpoint ${endpoint}:`, err.message);
-        }
-      }
-      
-      return false;
-    } catch (error) {
-      console.error('❌ Errore generale API Umami:', error);
-      return false;
-    }
-  }
-
-  async function tryServerEndpoint() {
-    try {
-      console.log('🌐 Tentativo endpoint server locale...');
-      
-      // Se hai un endpoint sul tuo server che proxy i dati Umami
-      const response = await fetch('/api/stats');
-      if (response.ok) {
-        const data = await response.json();
-        console.log('✅ Dati server ricevuti:', data);
-        
-        if (data.pageviews) updateCounterTarget('total-views', data.pageviews);
-        return true;
-      }
-    } catch (error) {
-      console.log('ℹ️ Endpoint server non disponibile, usando dati statici');
-    }
-    
-    // Fallback finale: dati statici aggiornati
-    console.log('📈 Usando dati statici ottimizzati');
-    updateStaticCounters();
-  }
-
-  function updateStaticCounters() {
-    // Usa i dati reali aggiornati
-    const realStats = {
-      pageviews: 3247,
-      visitors: 1156,
-      sessions: 2341,
-      projects: 12,
-      clients: 23,
-      nfcCards: 34
-    };
-    
-    // Aggiorna i contatori con i dati reali
-    updateCounterTarget('total-views', realStats.pageviews);
-    updateCounterTarget('unique-visitors', realStats.visitors);
-    updateCounterTarget('projects-count', realStats.projects);
-    updateCounterTarget('clients-count', realStats.clients);
-    updateCounterTarget('nfc-count', realStats.nfcCards);
-      console.log('📊 Contatori aggiornati con dati reali:', realStats);
-  }
-
+  // Funzioni per gestire contatori (semplificato per sito statico)
   // Inizializza tutto
   document.addEventListener('DOMContentLoaded', function() {
-    updateStaticCounters();
+    loadUmamiStats();
     initScrollAnimations();
     initParallax();
     initHoverEffects();
