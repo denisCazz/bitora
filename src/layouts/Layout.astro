@@ -13,7 +13,7 @@ export interface Props {
 }
 
 const { title, description } = Astro.props;
-const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+const canonicalUrl = new URL(Astro.url.pathname, 'https://bitora.it').toString();
 ---
 
 <!doctype html>
@@ -66,11 +66,8 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
       
       // Listen for consent changes
       window.addEventListener('cookieConsentChanged', loadAnalyticsScript);
-    </script>
-
-    <!-- Essential Meta -->
+    </script>    <!-- Essential Meta -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->
@@ -79,7 +76,7 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
       content={description ??
         'Siti web minimalisti e professionali per aziende di Carmagnola e Piemonte. Bitora crea soluzioni digitali rapide, eleganti e su misura per il tuo business locale.'}
     />
-    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Geo Tags per SEO locale -->
     <meta name="geo.region" content="IT-21" />
