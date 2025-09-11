@@ -192,7 +192,7 @@ const canonicalUrl = pathname === '/'
       })();
     </script>
   </head>
-  <body class="flex flex-col min-h-screen font-['Inter',sans-serif] bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+  <body class="flex flex-col min-h-screen font-['Inter',sans-serif] transition-colors duration-300" style="background-color: var(--bg-primary); color: var(--text-primary);">
     <Header />
     <main id="main-content" class="flex-grow" tabindex="-1">
       <slot />

@@ -2,27 +2,31 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
+---
+import Layout from '../layouts/Layout.astro';
+---
+
 <Layout title="Per Settore | Bitora" description="Soluzioni su misura per ristoranti, turismo e professionisti in Piemonte.">
-  <section class="py-20 bg-white">
+  <section class="py-20 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4 text-center mb-10">
-      <h1 class="text-4xl md:text-5xl font-bold">Soluzioni per il tuo settore</h1>
-      <p class="text-lg text-gray-600 mt-4">Scegli l’esperienza pensata per le tue esigenze.</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Soluzioni per il tuo settore</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mt-4">Scegli l'esperienza pensata per le tue esigenze.</p>
     </div>
     <div class="container mx-auto px-4 grid md:grid-cols-3 gap-6 max-w-6xl">
-      <a href="/settori/ristoranti" class="bg-gray-50 p-8 rounded-xl shadow hover:shadow-lg transition hover:-translate-y-1 block">
-        <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">🍕</div>
-        <h3 class="text-xl font-semibold mb-2">Ristoranti</h3>
-        <p class="text-gray-600">Menu NFC/QR, recensioni e prenotazioni.</p>
+      <a href="/settori/ristoranti" class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl shadow hover:shadow-lg transition hover:-translate-y-1 block">
+        <div class="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center mb-4">🍕</div>
+        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Ristoranti</h3>
+        <p class="text-gray-600 dark:text-gray-300">Menu NFC/QR, recensioni e prenotazioni.</p>
       </a>
-      <a href="/settori/turismo" class="bg-gray-50 p-8 rounded-xl shadow hover:shadow-lg transition hover:-translate-y-1 block">
-        <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">🏨</div>
-        <h3 class="text-xl font-semibold mb-2">Turismo</h3>
-        <p class="text-gray-600">Info ospiti, check‑in smart, upsell.</p>
+      <a href="/settori/turismo" class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl shadow hover:shadow-lg transition hover:-translate-y-1 block">
+        <div class="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center mb-4">🏨</div>
+        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Turismo</h3>
+        <p class="text-gray-600 dark:text-gray-300">Info ospiti, check‑in smart, upsell.</p>
       </a>
-      <a href="/settori/professionisti" class="bg-gray-50 p-8 rounded-xl shadow hover:shadow-lg transition hover:-translate-y-1 block">
-        <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">💼</div>
-        <h3 class="text-xl font-semibold mb-2">Professionisti</h3>
-        <p class="text-gray-600">Biglietto digitale e contatti automatici.</p>
+      <a href="/settori/professionisti" class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl shadow hover:shadow-lg transition hover:-translate-y-1 block">
+        <div class="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center mb-4">💼</div>
+        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Professionisti</h3>
+        <p class="text-gray-600 dark:text-gray-300">Biglietto digitale e contatti automatici.</p>
       </a>
     </div>
   </section>

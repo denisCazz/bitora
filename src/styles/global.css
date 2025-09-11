@@ -1,49 +1,121 @@
 /* Dark mode variables and base styles */
 :root {
+  /* Light mode colors */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
   --text-primary: #1f2937;
   --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
   --border-primary: #e5e7eb;
+  --border-secondary: #d1d5db;
   --shadow-primary: rgba(0, 0, 0, 0.1);
+  --shadow-secondary: rgba(0, 0, 0, 0.05);
+  --overlay: rgba(255, 255, 255, 0.1);
+  
+  /* Brand colors */
+  --primary-bg: #fef7ed;
+  --primary-border: #fdedd3;
+  --secondary-bg: #f0f1ff;
+  --secondary-border: #e0e2ff;
+  --accent-bg: #fdf2f8;
+  --accent-border: #fce7f3;
 }
 
 .dark {
+  /* Dark mode colors */
   --bg-primary: #111827;
   --bg-secondary: #1f2937;
+  --bg-tertiary: #374151;
   --text-primary: #f9fafb;
   --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
   --border-primary: #374151;
+  --border-secondary: #4b5563;
   --shadow-primary: rgba(0, 0, 0, 0.3);
+  --shadow-secondary: rgba(0, 0, 0, 0.2);
+  --overlay: rgba(0, 0, 0, 0.1);
+  
+  /* Brand colors for dark mode */
+  --primary-bg: #78350f;
+  --primary-border: #92400e;
+  --secondary-bg: #312e81;
+  --secondary-border: #3730a3;
+  --accent-bg: #831843;
+  --accent-border: #9d174d;
 }
 
-/* Smooth transitions only for theme-specific properties */
+/* Smooth transitions for theme switching */
+* {
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
 html {
   transition: background-color 0.3s ease;
 }
 
 body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Utility classes for consistent theming */
+.bg-surface {
+  background-color: var(--bg-secondary);
+}
+
+.bg-surface-elevated {
+  background-color: var(--bg-tertiary);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.border-primary {
+  border-color: var(--border-primary);
+}
+
+.border-secondary {
+  border-color: var(--border-secondary);
+}
+
+.shadow-custom {
+  box-shadow: 0 1px 3px 0 var(--shadow-primary), 0 1px 2px 0 var(--shadow-secondary);
+}
+
+.shadow-custom-lg {
+  box-shadow: 0 10px 15px -3px var(--shadow-primary), 0 4px 6px -2px var(--shadow-secondary);
+}
+
+/* Popup and modal styles */
 #popup {
   position: fixed;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1); /* Bianco traslucido */
-  backdrop-filter: blur(10px); /* Effetto sfocato */
-  -webkit-backdrop-filter: blur(10px); /* Supporto Safari */
-  visibility: hidden; /* Nasconde il popup */
+  background: var(--overlay);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  visibility: hidden;
   opacity: 0;
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
-}
-
-.dark #popup {
-  background: rgba(0, 0, 0, 0.1);
 }
 
 #popup.show {
