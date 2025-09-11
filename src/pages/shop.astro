@@ -3,51 +3,410 @@ import Layout from '../layouts/Layout.astro';
 import { FaAndroid, FaApple, FaGlobe } from 'react-icons/fa';
 ---
 
-<Layout title="Shop - Bridge NFC Personalizzati">
+<Layout 
+  title="Tessere NFC Personalizzate Piemonte | Shop Bitora - Torino, Carmagnola"
+  description="Acquista tessere NFC personalizzate per ristoranti, hotel e negozi in Piemonte. Configuratore online, consegna rapida a Torino, Carmagnola, Cuneo."
+>
+
+<Layout 
+  title="Shop NFC Bitora | Tessere NFC Personalizzate per il tuo Business"
+  description="Acquista tessere NFC personalizzate per il tuo business in Piemonte. Design su misura, qualità premium, setup in 24h."
+>
   <!-- Hero Section -->
-  <section class="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-neutral-900 to-black overflow-hidden">
-    <!-- Animated background elements -->
-    <div class="absolute inset-0">
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/30"></div>
+  <section class="py-20 md:py-28 bg-gradient-to-br from-purple-50 via-white to-blue-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+          🛍️ Shop ufficiale Bitora
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+          Tessere NFC <span class="text-primary">premium</span><br/>
+          per il tuo business
+        </h1>
+        
+        <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+          Acquista tessere NFC di qualità professionale, personalizzate con il tuo brand. 
+          Spedizione gratuita in tutto il Piemonte, setup incluso.
+        </p>
+        
+        <!-- Trust indicators -->
+        <div class="grid md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+          <div class="text-center">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-green-600 font-bold">✓</span>
+            </div>
+            <div class="text-sm font-medium">Setup incluso</div>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-green-600 font-bold">🚚</span>
+            </div>
+            <div class="text-sm font-medium">Spedizione gratuita</div>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-green-600 font-bold">⚡</span>
+            </div>
+            <div class="text-sm font-medium">Consegna 48h</div>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-green-600 font-bold">🔒</span>
+            </div>
+            <div class="text-sm font-medium">Pagamento sicuro</div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="container mx-auto px-4 flex flex-col items-center relative z-10">
-      <!-- Badge -->
-      <div class="inline-flex items-center bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-semibold mb-8 border border-primary/30 backdrop-blur-sm animate-slide-up shadow-lg">
-        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-        </svg>
-        Tecnologia NFC di Nuova Generazione
+  </section>
+
+  <!-- Configuratore Tessere -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Preview tessera -->
+          <div class="order-2 md:order-1">
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 text-white relative overflow-hidden">
+              <div class="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                <span class="text-xs">NFC</span>
+              </div>
+              
+              <div class="relative z-10">
+                <div class="text-2xl font-bold mb-2" id="preview-name">Il Tuo Business</div>
+                <div class="text-sm opacity-80 mb-6" id="preview-tagline">Descrizione della tua attività</div>
+                
+                <div class="space-y-2 text-sm">
+                  <div class="flex items-center gap-2">
+                    <span>📍</span>
+                    <span id="preview-address">Via Example, 123 - Carmagnola (TO)</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span>📞</span>
+                    <span id="preview-phone">+39 123 456 7890</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span>🌐</span>
+                    <span id="preview-website">www.tuobusiness.it</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Animazione tocco -->
+              <div class="absolute bottom-4 right-4 w-16 h-16 border-2 border-white/30 rounded-full flex items-center justify-center animate-pulse">
+                <span class="text-xs">TOCCA</span>
+              </div>
+            </div>
+            
+            <div class="mt-6 text-center">
+              <div class="text-sm text-gray-600 mb-2">Anteprima tessera personalizzata</div>
+              <div class="text-xs text-gray-500">Design finale potrebbe variare leggermente</div>
+            </div>
+          </div>
+          
+          <!-- Configuratore -->
+          <div class="order-1 md:order-2">
+            <h2 class="text-3xl font-bold mb-8">Configura la tua tessera</h2>
+            
+            <form class="space-y-6" id="nfc-config-form">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Nome attività *</label>
+                <input 
+                  type="text" 
+                  id="business-name"
+                  placeholder="es. Ristorante Da Mario"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Tagline/Descrizione</label>
+                <input 
+                  type="text" 
+                  id="business-tagline"
+                  placeholder="es. Cucina tradizionale piemontese"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Indirizzo completo *</label>
+                <input 
+                  type="text" 
+                  id="business-address"
+                  placeholder="es. Via Roma, 15 - Carmagnola (TO)"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Telefono *</label>
+                <input 
+                  type="tel" 
+                  id="business-phone"
+                  placeholder="es. +39 011 123 4567"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Sito web</label>
+                <input 
+                  type="url" 
+                  id="business-website"
+                  placeholder="es. https://www.iltuosito.it"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Quantità</label>
+                <select id="quantity" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                  <option value="1">1 tessera - €20</option>
+                  <option value="5">5 tessere - €90 (sconto 10%)</option>
+                  <option value="10">10 tessere - €160 (sconto 20%)</option>
+                  <option value="20">20 tessere - €300 (sconto 25%)</option>
+                </select>
+              </div>
+              
+              <div class="border-t pt-6">
+                <div class="text-center mb-6">
+                  <div class="text-3xl font-bold text-primary" id="total-price">€20</div>
+                  <div class="text-sm text-gray-600">Prezzo totale (IVA inclusa)</div>
+                </div>
+                
+                <button 
+                  type="submit"
+                  class="w-full py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600 transition-colors text-lg"
+                >
+                  Procedi all'acquisto
+                </button>
+                
+                <div class="text-xs text-gray-500 text-center mt-3">
+                  Dopo l'acquisto ti contatteremo per finalizzare design e setup
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Esempi d'uso -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Perfette per ogni business</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Le tessere NFC Bitora si adattano a qualsiasi tipo di attività, dal ristorante all'hotel, dal negozio al professionista.</p>
       </div>
       
-      <!-- Main Heading -->
-      <h1 class="text-5xl md:text-7xl font-black mb-8 text-white tracking-tight text-center max-w-5xl animate-slide-up leading-tight">
-        Bridge NFC 
-        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-500 animate-gradient">
-          Smart & Personalizzati
-        </span>
-      </h1>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Ristoranti -->
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🍽️</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Ristoranti & Bar</h3>
+          <ul class="space-y-2 text-gray-700 mb-6">
+            <li>• Menu digitale sempre aggiornato</li>
+            <li>• Prenotazioni dirette</li>
+            <li>• Raccolta recensioni automatica</li>
+            <li>• Info allergeni e ingredienti</li>
+          </ul>
+          <div class="text-sm text-primary font-semibold">
+            Risultato: +35% prenotazioni in media
+          </div>
+        </div>
+        
+        <!-- Hotel -->
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🏨</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Hotel & B&B</h3>
+          <ul class="space-y-2 text-gray-700 mb-6">
+            <li>• Check-in digitale veloce</li>
+            <li>• Info servizi e orari</li>
+            <li>• Consigli su territorio</li>
+            <li>• Upsell servizi aggiuntivi</li>
+          </ul>
+          <div class="text-sm text-primary font-semibold">
+            Risultato: +50% upsell servizi
+          </div>
+        </div>
+        
+        <!-- Professionisti -->
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-2xl">💼</span>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Professionisti</h3>
+          <ul class="space-y-2 text-gray-700 mb-6">
+            <li>• Biglietto da visita smart</li>
+            <li>• Portfolio e competenze</li>
+            <li>• Prenotazione appuntamenti</li>
+            <li>• Contatti automatici</li>
+          </ul>
+          <div class="text-sm text-primary font-semibold">
+            Risultato: +8 lead/settimana
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Domande frequenti</h2>
+        
+        <div class="space-y-6">
+          <div class="border border-gray-200 rounded-xl p-6">
+            <h3 class="font-bold text-lg mb-3">Come funziona una tessera NFC?</h3>
+            <p class="text-gray-700">Basta avvicinare un telefono (Android o iPhone) alla tessera per aprire automaticamente la tua landing page. Non serve app, funziona su tutti i dispositivi moderni.</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-xl p-6">
+            <h3 class="font-bold text-lg mb-3">Quanto tempo serve per il setup?</h3>
+            <p class="text-gray-700">Dopo l'acquisto ti contatteremo entro 24h per configurare la tua landing page. Le tessere vengono spedite entro 48h e sono subito pronte all'uso.</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-xl p-6">
+            <h3 class="font-bold text-lg mb-3">Posso modificare i contenuti dopo?</h3>
+            <p class="text-gray-700">Sì, hai accesso alla dashboard per modificare contenuti, orari, menu e informazioni quando vuoi. Le modifiche sono immediate.</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-xl p-6">
+            <h3 class="font-bold text-lg mb-3">Le tessere sono resistenti?</h3>
+            <p class="text-gray-700">Sì, sono realizzate in PVC premium resistente ad acqua, graffi e uso intensivo. Durano anni anche in ambienti impegnativi come cucine.</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-xl p-6">
+            <h3 class="font-bold text-lg mb-3">C'è un costo mensile?</h3>
+            <p class="text-gray-700">No, le tessere base non hanno costi ricorrenti. Per funzioni avanzate come chatbot AI e analytics, puoi aggiungere il piano Pro a €29/mese.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA finale -->
+  <section class="py-20 bg-gradient-to-r from-primary to-purple-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Pronto a innovare il tuo business?
+        </h2>
+        
+        <p class="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
+          Unisciti a centinaia di attività piemontesi che hanno scelto le tessere NFC Bitora per stupire i propri clienti.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <a href="#nfc-config-form" class="px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-gray-100 transition-colors text-lg">
+            Configura la tua tessera
+          </a>
+          
+          <a href="/contattaci" class="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors text-lg">
+            Hai domande? Contattaci
+          </a>
+        </div>
+        
+        <div class="mt-8 text-sm opacity-80">
+          🚚 Spedizione gratuita in Piemonte | ⚡ Setup in 24h | 💰 Soddisfatti o rimborsati
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script per configuratore -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('nfc-config-form');
+      const businessName = document.getElementById('business-name');
+      const businessTagline = document.getElementById('business-tagline');
+      const businessAddress = document.getElementById('business-address');
+      const businessPhone = document.getElementById('business-phone');
+      const businessWebsite = document.getElementById('business-website');
+      const quantity = document.getElementById('quantity');
+      const totalPrice = document.getElementById('total-price');
       
-      <!-- Subtitle -->
-      <p class="text-xl md:text-2xl text-gray-300 max-w-4xl text-center font-light mb-12 animate-slide-up leading-relaxed">
-        Trasforma ogni interazione in un'<strong class="text-primary">esperienza digitale memorabile</strong>. 
-        Un semplice tocco apre infinite possibilità per il tuo business.
-      </p>
+      const previewName = document.getElementById('preview-name');
+      const previewTagline = document.getElementById('preview-tagline');
+      const previewAddress = document.getElementById('preview-address');
+      const previewPhone = document.getElementById('preview-phone');
+      const previewWebsite = document.getElementById('preview-website');
       
-      <!-- Interactive NFC Visualization -->
-      <div class="relative mb-12 animate-fade-in">
-        <div class="bg-primary/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12 max-w-2xl">
-          <div class="text-center">
-            <div class="relative inline-flex items-center justify-center mb-6">
-              <!-- NFC Icon with pulse animation -->
-              <div class="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-2xl animate-pulse-glow">
-                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
-                </svg>
-              </div>
-              <!-- Connection waves -->
+      // Update preview in real-time
+      businessName.addEventListener('input', function() {
+        previewName.textContent = this.value || 'Il Tuo Business';
+      });
+      
+      businessTagline.addEventListener('input', function() {
+        previewTagline.textContent = this.value || 'Descrizione della tua attività';
+      });
+      
+      businessAddress.addEventListener('input', function() {
+        previewAddress.textContent = this.value || 'Via Example, 123 - Carmagnola (TO)';
+      });
+      
+      businessPhone.addEventListener('input', function() {
+        previewPhone.textContent = this.value || '+39 123 456 7890';
+      });
+      
+      businessWebsite.addEventListener('input', function() {
+        previewWebsite.textContent = this.value || 'www.tuobusiness.it';
+      });
+      
+      // Update price based on quantity
+      quantity.addEventListener('change', function() {
+        const qty = parseInt(this.value);
+        let price;
+        
+        switch(qty) {
+          case 1:
+            price = 20;
+            break;
+          case 5:
+            price = 90;
+            break;
+          case 10:
+            price = 160;
+            break;
+          case 20:
+            price = 300;
+            break;
+          default:
+            price = 20;
+        }
+        
+        totalPrice.textContent = `€${price}`;
+      });
+      
+      // Handle form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const data = {
+          businessName: businessName.value,
+          businessTagline: businessTagline.value,
+          businessAddress: businessAddress.value,
+          businessPhone: businessPhone.value,
+          businessWebsite: businessWebsite.value,
+          quantity: quantity.value
+        };
+        
+        // Redirect to contact page with pre-filled data
+        const params = new URLSearchParams(data);
+        window.location.href = `/contattaci?product=nfc-tessere&${params.toString()}`;
+      });
+    });
+  </script>
+</Layout>
               <div class="absolute inset-0 -m-4">
               <div class="absolute inset-0 border-2 border-primary/30 rounded-full animate-ping"></div>
                 <div class="absolute inset-0 border-2 border-primary/20 rounded-full animate-ping delay-75"></div>

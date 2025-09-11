@@ -14,218 +14,188 @@ export interface PricingPlan {
   roi?: string;
 }
 
-// Traditional Web Design Plans
+// Updated Web Design Plans
 export const webDesignPlans: PricingPlan[] = [
   {
     title: 'Sito Essenziale',
     price: '€20',
     period: 'mese',
     description:
-      '🚀 Presenza digitale professionale che converte visitatori in clienti. Perfetto per iniziare a crescere online.',
+      '🚀 Presenza digitale professionale che converte visitatori in clienti. Perfetto per iniziare a crescere online in Piemonte.',
     features: [
       'Fino a 5 pagine ottimizzate',
       'Design responsive mobile-first',
-      'Dominio personalizzato professionale',
+      'Dominio .it personalizzato',
       'Hosting veloce e sicuro incluso',
-      'SEO ottimizzato per Google',
+      'SEO ottimizzato per ricerche locali',
+      'Certificato SSL e backup automatici',
       'Supporto dedicato via email',
     ],
     benefits: [
       'Aumenta la credibilità del tuo business',
-      'Attira nuovi clienti 24/7',
-      'Risparmia sui costi di marketing tradizionale'
+      'Attrai nuovi clienti 24/7',
+      'Risultati misurabili con analytics inclusi'
     ],
     useCases: [
       'Piccole imprese locali',
       'Professionisti e freelance',
-      'Startup in fase iniziale'
+      'Attività commerciali in Piemonte'
     ],
     roi: 'ROI medio: 300% in 6 mesi',
-    buttonText: 'Inizia ora - Solo €20/mese',
-    buttonUrl: 'https://buy.stripe.com/bIY28sfFw28M6ti289',
+    buttonText: 'Inizia ora',
+    buttonUrl: '/contattaci?plan=WebEssenziale',
     highlighted: false,
+    category: 'web',
+  },
+  {
+    title: 'Sito Business',
+    price: '€49',
+    period: 'mese',
+    description: '� Soluzione completa per aziende che vogliono dominare online. E-commerce, automazioni e lead generation.',
+    features: [
+      'Pagine illimitate + blog integrato',
+      'E-commerce con pagamenti Stripe/PayPal',
+      'Sistema prenotazioni/appuntamenti',
+      'Integrazione CRM e email marketing',
+      'SEO avanzato + Google Ads',
+      'Analytics e reportistica dettagliata',
+      'Supporto prioritario e consulenza',
+    ],
+    benefits: [
+      'Vendi online H24 senza limitazioni',
+      'Automatizza acquisizione clienti',
+      'Domina i risultati di ricerca locali'
+    ],
+    useCases: [
+      'E-commerce e negozi online',
+      'Aziende con servizi complessi',
+      'Attività con team commerciale'
+    ],
+    roi: 'ROI medio: 400% primi 12 mesi',
+    buttonText: 'Potenzia il business',
+    buttonUrl: '/contattaci?plan=WebBusiness',
+    highlighted: true,
     category: 'web',
   },
   {
     title: 'Sito Premium',
-    price: '€500',
-    description: '💎 Investimento una tantum per un sito web che lavora per te per anni. Nessun canone mensile, massimo impatto.',
+    price: 'Su misura',
+    description: '💎 Soluzione enterprise completamente personalizzata. Design unico, funzioni avanzate, supporto dedicato.',
     features: [
-      'Fino a 5 pagine + landing page personalizzate',
-      'Design unico su misura per il tuo brand',
-      'Dominio premium (1° anno incluso)',
-      'Hosting enterprise (1° anno incluso)',
-      'SEO avanzato con monitoraggio performance',
-      'Assistenza prioritaria e consulenza strategica',
+      'Design 100% su misura per il brand',
+      'Funzionalità custom sviluppate ad hoc',
+      'Integrazioni API avanzate',
+      'Sistema multi-utente e permessi',
+      'Backup e sicurezza enterprise',
+      'Consulenza strategica digitale',
+      'Account manager dedicato',
     ],
     benefits: [
-      'Distinguiti dalla concorrenza con design unico',
-      'Massimizza le conversioni con UX ottimizzata',
-      'Zero preoccupazioni: tutto incluso per il primo anno'
+      'Distinguiti completamente dalla concorrenza',
+      'Funzionalità uniche per il tuo settore',
+      'Crescita digitale strategica assistita'
     ],
     useCases: [
-      'Aziende consolidate',
-      'E-commerce in crescita',
-      'Servizi professionali premium'
+      'Grandi aziende e franchising',
+      'Portali complessi multi-utente',
+      'Progetti con esigenze specifiche'
     ],
-    roi: 'Costo ammortizzato: meno di €10/mese nel primo biennio',
-    buttonText: 'Investi nel tuo futuro digitale',
-    buttonUrl: 'https://buy.stripe.com/14kbJ2fFwbJmg3S4gg',
+    roi: 'ROI personalizzato basato su obiettivi',
+    buttonText: 'Richiedi preventivo',
+    buttonUrl: '/contattaci?plan=WebPremium',
     highlighted: false,
     category: 'web',
   },
 ];
 
-// NFC Single Cards Plans
-export const nfcSingleCardPlans: PricingPlan[] = [
-  {
-    title: 'Carta NFC Basic',
-    price: '€15',
-    description: '🎯 Carta NFC semplice ma efficace. Design essenziale per iniziare subito la rivoluzione digitale.',
-    features: [
-      'Carta NFC personalizzata con logo',
-      'Design essenziale professionale',
-      'Chip NFC di qualità premium',
-      'Resistente ad acqua e urti',
-      'Compatibile con tutti i dispositivi',
-      'Setup rapido in 24h',
-    ],
-    benefits: [
-      'Soluzione economica per testare la tecnologia NFC',
-      'Perfetta per eventi e networking',
-      'Prima impressione professionale garantita'
-    ],
-    useCases: [
-      'Biglietti da visita digitali',
-      'Menu semplici per bar',
-      'Collegamenti rapidi ai social'
-    ],
-    roi: 'Investimento minimo, impatto massimo',
-    buttonText: 'Ordina la tua carta NFC',
-    buttonUrl: '/contattaci?product=nfc-basic',
-    highlighted: false,
-    category: 'nfc',
-  },
-  {
-    title: 'Carte NFC Custom',
-    price: 'Da €20',
-    description: '✨ Carte NFC con grafica personalizzata. Design su misura che riflette perfettamente il tuo brand.',
-    features: [
-      'Design grafico completamente personalizzato',
-      'Colori e stile coordinati al tuo brand',
-      'Logo e informazioni in alta risoluzione',
-      'Materiali premium di lunga durata',
-      'Chip NFC ultima generazione',
-      'Sconti su quantità (5+ carte)',
-    ],
-    benefits: [
-      'Rivoluziona menu di ristoranti e bar',
-      'Elimina costi di ristampa continui',
-      'Aggiornamenti instant senza limiti'
-    ],
-    useCases: [
-      'Menu digitali per ristoranti',
-      'Cataloghi prodotti per negozi',
-      'Presentazioni aziendali innovative',
-      'Check-in automatico per hotel'
-    ],
-    roi: 'Ammortizza i costi in 2-3 mesi vs stampa tradizionale',
-    buttonText: 'Personalizza le tue carte',
-    buttonUrl: '/contattaci?product=nfc-custom',
-    highlighted: true,
-    category: 'nfc',
-    badge: 'Personalizzabile',
-  },
-];
+
 
 // NFC Ecosystem Plans
 export const nfcEcosystemPlans: PricingPlan[] = [
   {
-    title: 'NFC Starter',
-    price: '€99',
-    period: 'setup + €29/mese',
-    description: '⚡ Entra nel futuro del business digitale. La tecnologia NFC che sorprende i clienti e ti fa ricordare.',
+    title: 'NFC Start',
+    price: '€49',
+    description: '⚡ Inizia subito con l\'ecosistema NFC. Una tessera intelligente che apre un mondo di possibilità.',
     features: [
-      '1 carta NFC intelligente personalizzata',
+      '1 tessera NFC personalizzata premium',
       'Mini landing page mobile-optimized',
-      'Chatbot AI sempre disponibile',
-      'Analytics in tempo reale',
-      'Dashboard intuitiva self-service',
-      'Supporto specializzato NFC',
+      'Setup completo in 24h',
+      'Dashboard semplice e intuitiva',
+      'QR code di backup incluso',
+      'Supporto email per configurazione',
     ],
     benefits: [
       'Wow effect garantito sui clienti',
-      'Genera lead qualificati istantaneamente',
-      'Tracking preciso delle interazioni'
+      'Setup rapido e senza complicazioni',
+      'Prima impressione digitale professionale'
     ],
     useCases: [
-      'Agenti immobiliari',
-      'Consulenti e professionisti',
-      'Piccoli negozi fisici'
+      'Biglietti da visita intelligenti',
+      'Menu base per bar e locali',
+      'Info point per piccole attività'
     ],
-    roi: 'Recuperi l\'investimento con soli 3 nuovi clienti',
-    buttonText: 'Inizia la rivoluzione NFC',
-    buttonUrl: '/contattaci?plan=NFC%20Starter',
+    roi: 'Si ripaga con 3-5 nuovi contatti',
+    buttonText: 'Inizia con NFC',
+    buttonUrl: '/contattaci?plan=NFCStart',
     highlighted: false,
     category: 'nfc',
   },
   {
-    title: 'NFC Professional',
-    price: '€199',
-    period: 'setup + €59/mese',
-    description: '🏆 L\'ecosistema completo per business innovativi. Tecnologia avanzata che accelera la crescita aziendale.',
+    title: 'NFC Pro',
+    price: '€29',
+    period: 'mese',
+    description: '🚀 Ecosistema NFC completo con automazioni AI. Il futuro del customer engagement è qui.',
     features: [
-      '3 carte NFC intelligenti multi-scenario',
-      'Landing page settoriale high-converting',
-      'AI chatbot 24/7 addestrato per il tuo business',
-      'Analytics avanzate con insights predittivi',
-      'Integrazioni API con i tuoi sistemi',
-      'Gestione team multi-utente',
-      'Supporto prioritario con consulenza strategica',
+      '3 tessere NFC personalizzate incluse',
+      'Landing dinamiche con chatbot AI',
+      'Sistema prenotazioni integrato',
+      'Raccolta recensioni automatica',
+      'Analytics avanzate e reportistica',
+      'Integrazioni social e WhatsApp',
+      'Supporto prioritario specializzato',
     ],
     benefits: [
-      'Automatizza la generazione di lead',
-      'Aumenta il tasso di conversione del 40%+',
-      'Insights actionable per decisioni data-driven'
+      'Automatizza acquisizione clienti',
+      'Incrementa recensioni e rating',
+      'Dati e insights per crescere'
     ],
     useCases: [
-      'Ristoranti e hotel',
-      'Centri estetici e wellness',
-      'Aziende B2B innovative'
+      'Ristoranti e locali',
+      'Hotel e strutture ricettive',
+      'Professionisti con clientela'
     ],
-    roi: 'ROI medio 250% in 12 mesi documentato',
-    buttonText: 'Scelgo il Professional - ROI garantito',
-    buttonUrl: '/contattaci?plan=NFC%20Professional',
+    roi: 'ROI medio: +35% fatturato in 6 mesi',
+    buttonText: 'Attiva NFC Pro',
+    buttonUrl: '/contattaci?plan=NFCPro',
     highlighted: true,
     category: 'nfc',
-    badge: 'Più richiesto',
   },
   {
-    title: 'NFC Enterprise',
+    title: 'NFC Business',
     price: 'Su misura',
-    description: '🌟 Soluzione enterprise per aziende visionarie. Ecosistema NFC white-label completamente personalizzato.',    features: [
-      'Carte NFC illimitate + design custom',
-      'Piattaforma brandizzata white-label',
-      'AI personalizzata per settore specifico',
-      'Dashboard analytics enterprise completa',
-      'Integrazioni custom con qualsiasi sistema',
-      'White-label completo con il tuo brand',
-      'Account manager dedicato H24',
-      'SLA garantito 99.9% uptime',
+    description: '💎 Soluzione NFC enterprise su misura. Integrazioni avanzate, multi-location, dashboard personalizzata.',
+    features: [
+      'Tessere NFC illimitate',
+      'Integrazioni ERP/CRM custom',
+      'Multi-location e multi-utente',
+      'Branding completo white-label',
+      'API custom per sviluppatori',
+      'Training team e consulenza',
+      'Account manager dedicato',
     ],
     benefits: [
-      'Differenziazione totale dalla concorrenza',
-      'Scalabilità illimitata per crescita aziendale',
-      'Control room completo delle performance digitali'
+      'Soluzione scalabile per growth',
+      'Integrazione perfetta con sistemi esistenti',
+      'Controllo totale dell\'esperienza'
     ],
     useCases: [
       'Catene e franchising',
-      'Aziende multinazionali',
-      'Grandi strutture ricettive'
+      'Grandi eventi e fiere',
+      'Aziende con esigenze specifiche'
     ],
-    roi: 'ROI personalizzato: analisi gratuita pre-vendita',
-    buttonText: 'Richiedi demo enterprise esclusiva',
-    buttonUrl: '/contattaci?plan=NFC%20Enterprise',
+    roi: 'ROI personalizzato su KPI aziendali',
+    buttonText: 'Richiedi demo',
+    buttonUrl: '/contattaci?plan=NFCBusiness',
     highlighted: false,
     category: 'nfc',
   },
@@ -234,37 +204,126 @@ export const nfcEcosystemPlans: PricingPlan[] = [
 // Combo Plans (Web + NFC)
 export const comboPlans: PricingPlan[] = [
   {
-    title: 'Ecosistema Completo',
-    price: '€399',
-    period: 'setup + €49/mese',
-    description: '🎯 La formula vincente: sito professionale + rivoluzione NFC. Il meglio di entrambi i mondi per dominare il mercato.',
+    title: 'Combo Start',
+    price: '€39',
+    period: 'mese',
+    description: '🔥 La combinazione vincente: sito web + NFC in un unico pacchetto conveniente.',
     features: [
-      'Sito web professionale (5-10 pagine) + SEO avanzato',
-      '2 carte NFC intelligenti strategiche',
-      'Landing page NFC perfettamente integrata',
-      'AI chatbot trained sul tuo business',
-      'Dashboard unificata web + NFC',
-      'Analytics complete con cross-tracking',
-      'SEO avanzato con local optimization',
-      'Supporto prioritario + consulenza mensile',
+      'Sito web essenziale 5 pagine',
+      '1 tessera NFC personalizzata',
+      'Integrazione automatica web-NFC',
+      'Dashboard unificata',
+      'SEO locale ottimizzato',
+      'Analytics cross-platform',
+      'Supporto prioritario',
     ],
     benefits: [
-      'Presenza digitale completa e professionale',
-      'Lead generation automatizzata 24/7',
-      'Sinergia perfetta tra online e offline'
+      'Risparmi €10/mese vs piani separati',
+      'Esperienza cliente omnichannel',
+      'Gestione semplificata in unica dashboard'
     ],
     useCases: [
-      'Ristoranti moderni',
-      'Hotel boutique',
-      'Centri benessere premium',
-      'Negozi di design'
+      'Piccole attività locali',
+      'Professionisti innovativi',
+      'Negozi con presenza online e offline'
     ],
-    roi: 'ROI medio 350% in 12 mesi - Caso studio disponibile',
-    buttonText: 'Soluzione Completa - Domina il mercato',
-    buttonUrl: '/contattaci?plan=Ecosistema%20Completo',
+    roi: 'ROI combinato: +40% vs singole soluzioni',
+    buttonText: 'Attiva Combo',
+    buttonUrl: '/contattaci?plan=ComboStart',
+    highlighted: false,
+    category: 'combo',
+  },
+  {
+    title: 'Combo Pro',
+    price: '€59',
+    period: 'mese',
+    description: '💎 Il massimo dell\'innovazione: sito business + ecosistema NFC completo.',
+    features: [
+      'Sito web business completo',
+      '3 tessere NFC personalizzate',
+      'E-commerce integrato con NFC',
+      'Chatbot AI unificato',
+      'Sistema prenotazioni cross-channel',
+      'Automazioni marketing avanzate',
+      'Account manager dedicato',
+    ],
+    benefits: [
+      'Risparmi €120/anno vs piani separati',
+      'Massima efficacia: online + offline',
+      'Automazioni che lavorano 24/7'
+    ],
+    useCases: [
+      'Ristoranti e hotel',
+      'Aziende innovative',
+      'Attività con alto volume clienti'
+    ],
+    roi: 'ROI documentato: +50% fatturato in 12 mesi',
+    buttonText: 'Scegli Pro - Più richiesto',
+    buttonUrl: '/contattaci?plan=ComboPro',
     highlighted: true,
     category: 'combo',
-    badge: 'Miglior valore',
+    badge: 'Più conveniente',
+  },
+];
+
+// Single NFC Cards (Products)
+export const nfcSingleCardPlans: PricingPlan[] = [
+  {
+    title: 'Tessera NFC Basic',
+    price: '€15',
+    description: '🎯 Tessera NFC semplice ma efficace. Design essenziale per iniziare subito la rivoluzione digitale.',
+    features: [
+      'Tessera NFC personalizzata con logo',
+      'Design essenziale professionale',
+      'Chip NFC di qualità premium',
+      'Resistente ad acqua e urti',
+      'Compatibile con tutti i dispositivi',
+      'Setup rapido in 24h',
+    ],
+    benefits: [
+      'Soluzione economica per testare NFC',
+      'Perfetta per eventi e networking',
+      'Prima impressione professionale'
+    ],
+    useCases: [
+      'Biglietti da visita digitali',
+      'Menu semplici per bar',
+      'Collegamenti rapidi ai social'
+    ],
+    roi: 'Investimento minimo, impatto massimo',
+    buttonText: 'Ordina tessera',
+    buttonUrl: '/shop?product=nfc-basic',
+    highlighted: false,
+    category: 'nfc',
+  },
+  {
+    title: 'Tessera NFC Custom',
+    price: 'Da €20',
+    description: '✨ Tessere NFC con grafica personalizzata. Design su misura che riflette perfettamente il tuo brand.',
+    features: [
+      'Design grafico completamente personalizzato',
+      'Colori e stile coordinati al brand',
+      'Logo e informazioni in alta risoluzione',
+      'Materiali premium di lunga durata',
+      'Chip NFC ultima generazione',
+      'Sconti su quantità (5+ tessere)',
+    ],
+    benefits: [
+      'Design unico che rappresenta il brand',
+      'Qualità premium per durare nel tempo',
+      'Sconti vantaggiosi per quantità'
+    ],
+    useCases: [
+      'Menu digitali per ristoranti',
+      'Cataloghi prodotti per negozi',
+      'Presentazioni aziendali innovative'
+    ],
+    roi: 'Si ammortizza in 2-3 mesi vs stampa tradizionale',
+    buttonText: 'Personalizza tessere',
+    buttonUrl: '/shop?product=nfc-custom',
+    highlighted: true,
+    category: 'nfc',
+    badge: 'Personalizzabile',
   },
 ];
 

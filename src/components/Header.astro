@@ -4,16 +4,25 @@ import { icons } from './Icons';
 const navItems = [
   { name: 'Home', url: '/' },
   {
+    name: 'Soluzioni',
+    url: '/soluzioni',
+    dropdown: [
+      { name: 'Web Design', url: '/soluzioni/web-design' },
+      { name: 'Ecosistema NFC', url: '/soluzioni/nfc-ecosystem' },
+      { name: 'Combo Web + NFC', url: '/soluzioni/combo' },
+    ],
+  },
+  {
     name: 'Per Settore',
     url: '/settori',
     dropdown: [
-      { name: 'Per Ristoranti', url: '/settori/ristoranti' },
-      { name: 'Per Turismo', url: '/settori/turismo' },
-      { name: 'Per Professionisti', url: '/settori/professionisti' },
+      { name: 'Ristoranti & Bar', url: '/settori/ristoranti' },
+      { name: 'Hotel & Turismo', url: '/settori/turismo' },
+      { name: 'Professionisti', url: '/settori/professionisti' },
     ],
   },
+  { name: 'Portfolio', url: '/lavori' },
   { name: 'Prezzi', url: '/prezzi' },
-  { name: 'Lavori', url: '/lavori' },
   { name: 'Blog', url: '/blog' },
   { name: 'Contatti', url: '/contattaci' },
 ];
@@ -66,7 +75,8 @@ const currentPath = Astro.url.pathname;
         }
       </nav>
       <div class="hidden md:flex items-center gap-3">
-        <a href="/contattaci?plan=Starter" class="hidden lg:inline-flex px-4 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-primary-600 transition-colors">Prova ora</a>
+        <a href="/demo/ristorante" class="hidden lg:inline-flex px-4 py-2 rounded-lg text-primary border border-primary hover:bg-primary hover:text-white transition-colors">Demo</a>
+        <a href="/contattaci?plan=Start" class="hidden lg:inline-flex px-4 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-primary-600 transition-colors">Inizia ora</a>
       </div>
       <div class="md:hidden">
         <button
