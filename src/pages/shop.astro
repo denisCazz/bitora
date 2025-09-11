@@ -5,17 +5,17 @@ import { FaAndroid, FaApple, FaGlobe } from 'react-icons/fa';
 
 <Layout title="Shop - Bridge NFC Personalizzati">
   <!-- Hero Section -->
-  <section class="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 overflow-hidden">
+  <section class="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-neutral-900 to-black overflow-hidden">
     <!-- Animated background elements -->
     <div class="absolute inset-0">
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/30"></div>
     </div>
     
     <div class="container mx-auto px-4 flex flex-col items-center relative z-10">
       <!-- Badge -->
-      <div class="inline-flex items-center bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 px-6 py-3 rounded-full text-sm font-semibold mb-8 border border-blue-400/30 backdrop-blur-sm animate-slide-up shadow-lg">
+      <div class="inline-flex items-center bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-semibold mb-8 border border-primary/30 backdrop-blur-sm animate-slide-up shadow-lg">
         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
         </svg>
@@ -25,32 +25,32 @@ import { FaAndroid, FaApple, FaGlobe } from 'react-icons/fa';
       <!-- Main Heading -->
       <h1 class="text-5xl md:text-7xl font-black mb-8 text-white tracking-tight text-center max-w-5xl animate-slide-up leading-tight">
         Bridge NFC 
-        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient">
+        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-500 animate-gradient">
           Smart & Personalizzati
         </span>
       </h1>
       
       <!-- Subtitle -->
       <p class="text-xl md:text-2xl text-gray-300 max-w-4xl text-center font-light mb-12 animate-slide-up leading-relaxed">
-        Trasforma ogni interazione in un'<strong class="text-blue-300">esperienza digitale memorabile</strong>. 
+        Trasforma ogni interazione in un'<strong class="text-primary">esperienza digitale memorabile</strong>. 
         Un semplice tocco apre infinite possibilità per il tuo business.
       </p>
       
       <!-- Interactive NFC Visualization -->
       <div class="relative mb-12 animate-fade-in">
-        <div class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12 max-w-2xl">
+        <div class="bg-primary/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 md:p-12 max-w-2xl">
           <div class="text-center">
             <div class="relative inline-flex items-center justify-center mb-6">
               <!-- NFC Icon with pulse animation -->
-              <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl animate-pulse-glow">
+              <div class="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-2xl animate-pulse-glow">
                 <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
                 </svg>
               </div>
               <!-- Connection waves -->
               <div class="absolute inset-0 -m-4">
-                <div class="absolute inset-0 border-2 border-blue-400/30 rounded-full animate-ping"></div>
-                <div class="absolute inset-0 border-2 border-purple-400/20 rounded-full animate-ping delay-75"></div>
+              <div class="absolute inset-0 border-2 border-primary/30 rounded-full animate-ping"></div>
+                <div class="absolute inset-0 border-2 border-primary/20 rounded-full animate-ping delay-75"></div>
               </div>
             </div>
             <h3 class="text-2xl font-bold text-white mb-3">Tocca & Connetti</h3>
@@ -188,13 +188,13 @@ import { FaAndroid, FaApple, FaGlobe } from 'react-icons/fa';
             </ul>
             
             <div class="bg-slate-700/50 rounded-xl p-4 mb-6">
-              <p class="text-blue-300 text-sm font-semibold mb-2">💡 Perfetta per:</p>
+              <p class="text-primary text-sm font-semibold mb-2">💡 Perfetta per:</p>
               <p class="text-gray-300 text-sm">Biglietti da visita digitali, networking, primi test NFC</p>
             </div>
             
             <button 
               onclick="openNFCForm('basic')"
-              class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+              class="w-full bg-primary hover:bg-primary-600 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
             >
               Ordina Carta Basic
             </button>

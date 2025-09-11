@@ -62,8 +62,8 @@ const features = [
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
       {
         features.map(feature => (
-          <div class="p-8 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md dark:hover:shadow-gray-900/50 hover:-translate-y-1 transition-all duration-300">
-            <div class="text-black dark:text-white mb-6 w-12 h-12 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <div class="p-8 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl shadow-sm hover:shadow-md dark:hover:shadow-gray-900/50 hover:-translate-y-1 transition-all duration-300">
+            <div class="mb-6 w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-lg">
               <Fragment set:html={feature.icon} />
             </div>
             <h3 class="text-xl font-bold mb-4 text-black dark:text-white">{feature.title}</h3>

@@ -49,25 +49,25 @@ import { icons } from '../components/Icons';
   </script>
 
   <!-- Hero Section -->
-  <section class="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-blue-900/20 dark:via-gray-900 dark:to-indigo-900/20 transition-colors duration-300">
+  <section class="py-24 bg-gradient-to-br from-orange-50 via-white to-amber-50 dark:from-orange-900/10 dark:via-gray-900 dark:to-amber-900/10 transition-colors duration-300">
     <div class="container mx-auto px-4 text-center">
-      <div class="inline-flex items-center bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-8">
-        <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mr-2 animate-pulse"></div>
+      <div class="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8">
+        <div class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></div>
         Servizi Web Professionali per Carmagnola
       </div>
       <h1 class="text-5xl md:text-6xl font-bold mb-8">
         <span class="text-gray-900 dark:text-white">Web Design</span><br>
-        <span class="text-blue-600 dark:text-blue-400">Carmagnola</span>
+        <span class="text-primary">Carmagnola</span>
       </h1>
       <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
         La tua web agency di fiducia a Carmagnola. Creiamo siti web professionali, landing page efficaci 
         e ecosistemi digitali innovativi per aziende del territorio piemontese.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="/contattaci" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl">
+        <a href="/contattaci" class="bg-primary hover:bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl">
           Richiedi Preventivo Gratuito
         </a>
-        <a href="tel:+393247787644" class="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+        <a href="tel:+393247787644" class="border border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-lg font-semibold transition-colors">
           Chiamaci: 324 778 7644
         </a>
       </div>
@@ -87,8 +87,8 @@ import { icons } from '../components/Icons';
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Siti Web Professionali -->
         <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-            <div class="w-6 h-6 text-blue-600 dark:text-blue-400">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <div class="w-6 h-6 text-primary">
               <Fragment set:html={icons.globe} />
             </div>
           </div>
@@ -125,8 +125,8 @@ import { icons } from '../components/Icons';
 
         <!-- Tessere NFC Smart -->
         <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-6">
-            <div class="w-6 h-6 text-purple-600 dark:text-purple-400">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+            <div class="w-6 h-6 text-primary">
               <Fragment set:html={icons.chip} />
             </div>
           </div>
@@ -160,8 +160,8 @@ import { icons } from '../components/Icons';
           <div>
             <div class="space-y-8">
               <div class="flex items-start space-x-4">
-                <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                  <div class="w-4 h-4 text-blue-600 dark:text-blue-400">
+                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                  <div class="w-4 h-4 text-primary">
                     <Fragment set:html={icons.mapPin} />
                   </div>
                 </div>
@@ -188,8 +188,8 @@ import { icons } from '../components/Icons';
               </div>
 
               <div class="flex items-start space-x-4">
-                <div class="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                  <div class="w-4 h-4 text-purple-600 dark:text-purple-400">
+                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                  <div class="w-4 h-4 text-primary">
                     <Fragment set:html={icons.trending} />
                   </div>
                 </div>
@@ -211,7 +211,7 @@ import { icons } from '../components/Icons';
               loading="lazy"
               onerror="this.style.display='none'"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-2xl"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-orange-900/20 to-transparent rounded-2xl"></div>
           </div>
         </div>
       </div>
@@ -266,7 +266,7 @@ import { icons } from '../components/Icons';
   </section>
 
   <!-- CTA Finale -->
-  <section class="py-24 bg-blue-600 dark:bg-blue-800 text-white">
+  <section class="py-24 bg-primary text-white">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-4xl font-bold mb-6">Pronto a Far Crescere la Tua Azienda a Carmagnola?</h2>
       <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
@@ -274,10 +274,10 @@ import { icons } from '../components/Icons';
         la presenza online della tua attività nel territorio piemontese.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contattaci" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-colors">
+        <a href="/contattaci" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-colors">
           Consulenza Gratuita
         </a>
-        <a href="https://wa.me/393247787644" class="border border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg font-semibold transition-colors">
+        <a href="https://wa.me/393247787644" class="border border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold transition-colors">
           WhatsApp: 324 778 7644
         </a>
       </div>

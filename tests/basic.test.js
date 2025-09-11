@@ -27,15 +27,15 @@ test.describe('Bitora.it Basic Functionality', () => {
   test('navigation works on desktop', async ({ page }) => {
     await page.goto('/');
 
-    // Test navigation links
-    await page.click('a[href="/chi-siamo"]');
-    await expect(page).toHaveURL(/.*chi-siamo/);
+    // Test navigation links (aggiornati)
+    await page.click('a[href="/settori"]');
+    await expect(page).toHaveURL(/.*settori/);
 
     await page.click('a[href="/prezzi"]');
     await expect(page).toHaveURL(/.*prezzi/);
 
-    await page.click('a[href="/services"]');
-    await expect(page).toHaveURL(/.*services/);
+    await page.click('a[href="/contattaci"]');
+    await expect(page).toHaveURL(/.*contattaci/);
   });
 
   test('mobile navigation works', async ({ page }) => {
@@ -88,7 +88,7 @@ test.describe('Bitora.it Basic Functionality', () => {
 
     // Check for structured data scripts
     const structuredData = page.locator('script[type="application/ld+json"]');
-    await expect(structuredData).toHaveCount(3); // Homepage should have 3 structured data scripts
+    await expect(structuredData).toHaveCount(3); // 2 in Layout + 1 su Home
   });
 
   test('images have proper attributes', async ({ page }) => {

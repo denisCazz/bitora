@@ -1,630 +1,164 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import Features from '../components/Features.astro';
 import { testimonials } from '../data/testimonials';
 ---
 
 <Layout
-  title="Tessere NFC e Web Design Carmagnola | Bitora Piemonte"
-  description="Tessere NFC intelligenti e siti web professionali a Carmagnola. Ecosistema digitale completo per aziende del Piemonte con AI e landing page dinamiche."
-><script type="application/ld+json">
+  title="Più clienti. Meno complicazioni. | Bitora"
+  description="Soluzioni digitali per ristoranti, turismo e professionisti in Piemonte: NFC/QR con mini‑landing, chatbot AI e dashboard self‑service."
+>
+  <!-- Structured Data (adds to the 2 in Layout to make 3 total) -->
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Bitora",
-      "url": "https://bitora.it",
-      "logo": "https://bitora.it/bitora.jpg",
-      "description": "Ecosistema digitale completo con tessere NFC intelligenti, landing page dinamiche con AI per aziende di Carmagnola e Piemonte. Servizi web professionali e soluzioni NFC innovative.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Carmagnola",
-        "addressRegion": "Piemonte",
-        "postalCode": "10022",
-        "addressCountry": "IT",
-        "streetAddress": "Carmagnola"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "44.8477",
-        "longitude": "7.6833"
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Carmagnola"
-        },
-        {
-          "@type": "City", 
-          "name": "Torino"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Provincia di Torino"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Piemonte"
-        }
-      ],
-      "serviceArea": {
-        "@type": "GeoCircle",
-        "geoMidpoint": {
-          "@type": "GeoCoordinates",
-          "latitude": "44.8477",
-          "longitude": "7.6833"
-        },
-        "geoRadius": "50000"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+39-324-778-7644",
-        "contactType": "Customer Service",
-        "email": "info@bitora.it",
-        "areaServed": "IT",
-        "availableLanguage": "Italian"
-      },
-      "sameAs": ["https://wa.me/393247787644"],
-      "priceRange": "€€",
-      "openingHours": "Mo-Fr 09:00-18:00",
-      "offers": [
-        {
-          "@type": "Offer",
-          "description": "Tessere NFC Smart con landing page dinamiche per aziende di Carmagnola e Piemonte",
-          "category": "NFC Technology",
-          "areaServed": "Carmagnola, Torino, Piemonte"
-        },
-        {
-          "@type": "Offer",
-          "description": "Ecosistema digitale completo per business del territorio piemontese",
-          "category": "Digital Ecosystem",
-          "areaServed": "Carmagnola, Torino, Piemonte"
-        },
-        {
-          "@type": "Offer",
-          "description": "Servizi di web design e sviluppo siti web professionali a Carmagnola e provincia",
-          "category": "Web Design",
-          "areaServed": "Carmagnola, Torino, Piemonte"
-        }
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bitora.it/"},
+        {"@type": "ListItem", "position": 2, "name": "Per Settore", "item": "https://bitora.it/settori"}
       ]
     }
   </script>
-
-  <Hero />  <!-- Numbers Section - Design Moderno e Pulito -->
-  <section class="py-20 relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-    <!-- Background semplificato -->
-    <div class="absolute inset-0 opacity-30">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 right-10 w-64 h-64 bg-purple-500/15 rounded-full blur-3xl"></div>
-    </div>
-    
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="text-center mb-16">
-        <!-- Badge semplificato -->
-        <div class="inline-flex items-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
-          <div class="w-2 h-2 bg-blue-500 rounded-full mr-3 animate-pulse"></div>
-          <span class="text-gray-700 dark:text-gray-200">I nostri risultati</span>
-        </div>
-          <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
-          Il <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Successo</span><br>
-          di <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Bitora</span>
-        </h3>
-        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Numeri che dimostrano la qualità del nostro lavoro nel territorio piemontese
+  <!-- Hero -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+          Più clienti. <span class="text-primary">Meno complicazioni.</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Tessere NFC e QR che aprono mini‑landing su misura, chatbot AI per rispondere 24/7 e una dashboard per gestire tutto in autonomia.
         </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/nfc-ecosystem#come-funziona" class="px-6 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600 transition-colors">Guarda come funziona</a>
+          <a href="/contattaci?plan=Starter" class="px-6 py-4 border border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors">Prova ora</a>
+        </div>
       </div>
-
-      <!-- Stats Grid Semplificato -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-        <!-- Visite Totali -->
-        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-            </svg>
-          </div>
-          <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-            <span class="counter" data-target="3247">0</span>+
-          </div>
-          <div class="text-sm font-medium text-gray-700 dark:text-gray-200">Visite Totali</div>
-          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Dal lancio</div>
-        </div>
-
-        <!-- Visitatori Unici -->
-        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-            </svg>
-          </div>
-          <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-            <span class="counter" data-target="1156">0</span>+
-          </div>
-          <div class="text-sm font-medium text-gray-700 dark:text-gray-200">Visitatori</div>
-          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Unici</div>
-        </div>
-
-        <!-- Progetti Completati -->
-        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
-            <span class="counter" data-target="12">0</span>+
-          </div>
-          <div class="text-sm font-medium text-gray-700 dark:text-gray-200">Progetti</div>
-          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Completati</div>
-        </div>
-
-        <!-- Clienti Soddisfatti -->
-        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-            </svg>
-          </div>
-          <div class="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2">
-            <span class="counter" data-target="23">0</span>+
-          </div>
-          <div class="text-sm font-medium text-gray-700 dark:text-gray-200">Clienti</div>
-          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Soddisfatti</div>
-        </div>      </div>
-
-      <!-- Tessere NFC - Card Ultra-Speciale -->
-      <div class="max-w-3xl mx-auto mt-16">
-        <div class="stats-card bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
-          <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
-          </div>
-          <div class="text-5xl font-bold text-orange-600 dark:text-orange-400 mb-4">
-            <span class="counter" data-target="34">0</span>+
-          </div>
-          <div class="text-xl font-bold text-gray-700 dark:text-gray-200 mb-2">Tessere NFC</div>
-          <div class="text-sm text-gray-500 dark:text-gray-400">Attivate e Funzionanti</div>
-        </div>
+      <div class="relative">
+        <img src="/nfc.png" alt="Cliente che avvicina il telefono alla tessera NFC" class="w-full rounded-2xl shadow-2xl" loading="lazy" />
       </div>
     </div>
-  </section>  <!-- Testimonials Section -->
-  <section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+  </section>
+
+  <!-- Per Settore -->
+  <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <!-- Badge semplificato -->
-        <div class="inline-flex items-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
-          <div class="w-6 h-6 mr-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-          </div>
-          <span class="text-gray-700 dark:text-gray-200">Testimonianze reali</span>
-        </div>
-          <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
-          Cosa Dicono i<br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Nostri Clienti</span>
-        </h3>
-        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Le testimonianze autentiche di chi ha scelto Bitora per trasformare la propria presenza digitale
-        </p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Pensato per il tuo settore</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <a href="/settori/ristoranti" class="bg-white p-8 rounded-xl shadow hover:shadow-lg transition hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">🍕</div>
+          <h3 class="text-xl font-semibold mb-2">Per ristoranti</h3>
+          <p class="text-gray-600">Menu NFC/QR aggiornabile, recensioni e prenotazioni in un tocco.</p>
+        </a>
+        <a href="/settori/turismo" class="bg-white p-8 rounded-xl shadow hover:shadow-lg transition hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">🏨</div>
+          <h3 class="text-xl font-semibold mb-2">Per turismo</h3>
+          <p class="text-gray-600">Informazioni per ospiti, check‑in smart e upsell dei servizi.</p>
+        </a>
+        <a href="/settori/professionisti" class="bg-white p-8 rounded-xl shadow hover:shadow-lg transition hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">💼</div>
+          <h3 class="text-xl font-semibold mb-2">Per professionisti</h3>
+          <p class="text-gray-600">Biglietto digitale, appuntamenti e contatti automatici.</p>
+        </a>
       </div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {testimonials.slice(0, 4).map((testimonial, index) => (
-          <div class="testimonial-card bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 dark:border-gray-600/50 hover:shadow-xl transition-all duration-300">
-            <!-- Rating -->
-            <div class="flex text-yellow-400 space-x-1 mb-6">
-              {Array.from({ length: testimonial.rating || 5 }).map((_, i) => (
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                </svg>
-              ))}            </div>
+  <!-- Come funziona -->
+  <section id="come-funziona" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Come funziona</h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="text-center bg-gray-50 p-8 rounded-xl">
+          <div class="w-14 h-14 rounded-full bg-primary text-white mx-auto mb-4 flex items-center justify-center font-bold">1</div>
+          <h3 class="font-semibold mb-2">Scansiona</h3>
+          <p class="text-gray-600">Il cliente tocca la tessera NFC o scansiona il QR.</p>
+        </div>
+        <div class="text-center bg-gray-50 p-8 rounded-xl">
+          <div class="w-14 h-14 rounded-full bg-primary text-white mx-auto mb-4 flex items-center justify-center font-bold">2</div>
+          <h3 class="font-semibold mb-2">Apri la mini‑landing</h3>
+          <p class="text-gray-600">Una pagina veloce e personalizzata con le azioni utili.</p>
+        </div>
+        <div class="text-center bg-gray-50 p-8 rounded-xl">
+          <div class="w-14 h-14 rounded-full bg-primary text-white mx-auto mb-4 flex items-center justify-center font-bold">3</div>
+          <h3 class="font-semibold mb-2">Ricevi clienti</h3>
+          <p class="text-gray-600">Chatbot, prenotazioni e contatti arrivano direttamente a te.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <!-- Quote -->
-            <div class="mb-6">
-              <blockquote class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-                "{testimonial.quote}"
-              </blockquote>
-            </div>
+  <!-- Pacchetti & Prezzi (sintesi) -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Pacchetti & Prezzi</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="bg-white p-8 rounded-xl shadow">
+          <h3 class="text-xl font-bold mb-2">Starter</h3>
+          <p class="text-gray-600 mb-4">Per iniziare subito</p>
+          <div class="text-4xl font-bold mb-4">€15</div>
+          <ul class="text-gray-700 space-y-2 mb-6">
+            <li>1 tessera NFC personalizzata</li>
+            <li>Mini‑landing base</li>
+            <li>Setup in 24h</li>
+          </ul>
+          <a href="/contattaci?plan=Starter" class="block w-full text-center py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600">Attiva ora</a>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow border-2 border-primary">
+          <h3 class="text-xl font-bold mb-2">Business</h3>
+          <p class="text-gray-600 mb-4">Per crescere con automazioni</p>
+          <div class="text-4xl font-bold mb-4">€20/mese</div>
+          <ul class="text-gray-700 space-y-2 mb-6">
+            <li>Sito essenziale 5 pagine</li>
+            <li>SEO locale + analytics</li>
+            <li>Chatbot AI base</li>
+          </ul>
+          <a href="/contattaci?plan=Business" class="block w-full text-center py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600">Attiva ora</a>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow">
+          <h3 class="text-xl font-bold mb-2">Pro</h3>
+          <p class="text-gray-600 mb-4">Per risultati al massimo</p>
+          <div class="text-4xl font-bold mb-4">Su misura</div>
+          <ul class="text-gray-700 space-y-2 mb-6">
+            <li>Design premium su brand</li>
+            <li>AI avanzata e integrazioni</li>
+            <li>Supporto prioritario</li>
+          </ul>
+          <a href="/contattaci?plan=Pro" class="block w-full text-center py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600">Attiva ora</a>
+        </div>
+      </div>
+      <div class="text-center mt-6">
+        <a href="/prezzi" class="text-primary font-semibold hover:underline">Vedi dettagli piani →</a>
+      </div>
+    </div>
+  </section>
 
-            <!-- Author info -->
-            <div class="flex items-center pt-4 border-t border-gray-200/50 dark:border-gray-600/50">
-              <img 
-                src={testimonial.image} 
-                alt={testimonial.author}
-                class="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-gray-600 shadow-lg"
-              />
-              <div class="ml-4 flex-1">
-                <div class="font-bold text-gray-900 dark:text-white">{testimonial.author}</div>
-                <div class="text-sm text-gray-600 dark:text-gray-400">
-                  {testimonial.role} • {testimonial.company}
-                </div>
+  <!-- Casi di successo -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Casi di successo</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {testimonials.slice(0,3).map(t => (
+          <a href={t.site} class="bg-gray-50 p-6 rounded-xl hover:shadow-lg transition block" target="_blank" rel="noopener">
+            <div class="flex items-center gap-4 mb-4">
+              <img src={t.image} alt={t.company} class="w-14 h-14 rounded-lg object-cover" loading="lazy" />
+              <div>
+                <div class="font-semibold">{t.company}</div>
+                <div class="text-sm text-gray-500">{t.results}</div>
               </div>
-              {testimonial.site && (
-                <a 
-                  href={testimonial.site} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg text-sm font-medium transition-colors duration-200"
-                >
-                  Visita
-                </a>
-              )}
             </div>
-          </div>
+            <p class="text-gray-700">“{t.quote}”</p>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <Features />
-  <!-- Process Section -->
-  <section class="py-24 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+  <!-- CTA finale -->
+  <section class="py-20 bg-primary text-white text-center">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-20">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Come Funziona l'Ecosistema</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Dalla tessera NFC al tuo business digitale completo in 4 semplici passaggi
-        </p>
-      </div>
-
-      <div
-        class="relative flex flex-col md:flex-row items-center justify-between gap-12 max-w-5xl mx-auto"
-      >
-        <!-- Linea temporale -->
-        <div
-          class="absolute hidden md:block top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 w-10/12 mx-auto"
-        >
-        </div>
-
-        <!-- Step 1 -->
-        <div class="relative text-center group">
-          <div
-            class="w-16 h-16 text-white rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10"
-          >
-            1
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Setup NFC</h3>
-          <p class="text-gray-600 dark:text-gray-300">Configuriamo le tue tessere NFC smart con branding personalizzato.</p>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="relative text-center group">
-          <div
-            class="w-16 h-16 text-white rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10"
-          >
-            2
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Landing Dinamica</h3>
-          <p class="text-gray-600 dark:text-gray-300">Creiamo la tua landing page con contenuti gestibili autonomamente.</p>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="relative text-center group">
-          <div
-            class="w-16 h-16 text-white rounded-full bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10"
-          >
-            3
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">AI & Analytics</h3>
-          <p class="text-gray-600 dark:text-gray-300">Integriamo chatbot AI e sistema di monitoraggio avanzato.</p>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="relative text-center group">
-          <div
-            class="w-16 h-16 text-white rounded-full bg-gradient-to-r from-red-500 to-orange-500 flex items-center justify-center text-2xl font-bold mx-auto mb-6 transition-transform duration-300 group-hover:scale-110 z-10"
-          >
-            4
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Gestione Autonoma</h3>
-          <p class="text-gray-600 dark:text-gray-300">Accedi alla dashboard e gestisci tutto in completa autonomia.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Portfolio/Lavori CTA Section -->
-  <section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
-    <div class="container mx-auto px-4 text-center">      <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800 dark:text-white">
-        Guarda i Nostri Progetti di Successo
-      </h3>
-      <p class="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
-        Scopri come abbiamo aiutato aziende come la tua a raggiungere i loro obiettivi con siti web
-        performanti e dal design curato.
-      </p>
-      <a
-        href="/lavori"
-        class="inline-block px-10 py-4 bg-black dark:bg-white text-white dark:text-black rounded-md font-bold text-lg shadow-md hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-300"
-      >
-        Esplora i Nostri Lavori
-      </a>
-    </div>
-  </section>
-
-  <!-- NFC CTA Section -->
-  <section class="py-24 bg-black text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-5xl md:text-6xl font-extrabold mb-8 tracking-tight">
-        Tessere NFC Personalizzate
-      </h2>
-      <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-medium">
-        Il modo più semplice e moderno per collegare il mondo fisico a quello digitale. <br />
-        Recensioni, menù, contatti, link: tutto con un solo tocco.
-      </p>
-      <a
-        href="/shop"
-        class="inline-block px-10 py-5 bg-white text-black rounded-full font-bold text-xl shadow-lg hover:bg-neutral-200 transition-colors duration-150"
-      >
-        Scopri lo Shop NFC
-      </a>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-24 bg-black text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-8">Pronto per la Rivoluzione Digitale?</h2>
-      <p class="text-xl mb-10 max-w-2xl mx-auto text-gray-300">
-        Inizia il tuo percorso verso un ecosistema digitale completo. Tessere NFC, AI integrata e gestione autonoma ti aspettano.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a
-          href="/nfc-ecosystem"
-          class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-md font-bold shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105"
-        >
-          Scopri l'Ecosistema NFC
-        </a>
-        <a
-          href="/prezzi"
-          class="px-8 py-4 bg-white text-black rounded-md font-bold shadow-lg hover:bg-gray-100 transition-colors"
-        >
-          Scopri i Piani
-        </a>
-        <a
-          href="/dashboard-demo"
-          class="px-8 py-4 border border-white text-white rounded-md font-bold hover:bg-white hover:text-black transition-colors"
-        >
-          Vedi la Dashboard
-        </a>
-      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Pronto ad attirare più clienti?</h2>
+      <p class="text-lg mb-8 opacity-95">Attiva Bitora oggi: semplice da usare, risultati concreti.</p>
+      <a href="/contattaci" class="inline-block px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-gray-100">Parla con noi</a>
     </div>
   </section>
 </Layout>
-
-<style>
-  /* Animazioni essenziali */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes countUp {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* Stats Cards */
-  .stats-card {
-    transition: all 0.3s ease;
-  }
-
-  .stats-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-  }
-
-  .dark .stats-card:hover {
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Counter animation */
-  .counter {
-    font-variant-numeric: tabular-nums;
-    transition: all 0.3s ease;
-  }
-
-  .counter.animating {
-    animation: countUp 0.5s ease;
-  }
-
-  /* Testimonial cards */
-  .testimonial-card {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-  }
-
-  .testimonial-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-    animation: fadeInUp 0.8s ease;
-  }
-
-  /* Responsive improvements */
-  @media (max-width: 768px) {
-    .stats-card {
-      padding: 1rem;
-    }
-    
-    .stats-card .text-3xl {
-      font-size: 1.875rem;
-    }
-  }
-
-  /* Focus states for accessibility */
-  .stats-card:focus {
-    outline: 2px solid #3b82f6;
-    outline-offset: 2px;
-  }
-
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
-
-<script>
-  // Definizioni delle funzioni
-  function updateCounterTarget(id, newValue) {
-    const element = document.querySelector(`#${id} .counter`);
-    if (element) {
-      element.setAttribute('data-target', newValue);
-    }
-  }
-
-  function animateCounter(counter) {
-    const target = parseInt(counter.getAttribute('data-target') || '0');
-    const duration = 2000; // 2 secondi
-    const step = target / (duration / 16); // 60 FPS
-    let current = 0;
-
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        counter.textContent = target.toLocaleString();
-        clearInterval(timer);
-      } else {
-        counter.textContent = Math.floor(current).toLocaleString();
-      }
-    }, 16);
-  }
-
-  // Counter animation
-  document.addEventListener('DOMContentLoaded', function() {
-    const counters = document.querySelectorAll('.counter');
-    
-    // Intersection Observer per attivare l'animazione quando la sezione è visibile
-    const observerOptions = {
-      threshold: 0.5,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const counter = entry.target;
-          animateCounter(counter);
-          observer.unobserve(counter); // Anima solo una volta
-        }
-      });
-    }, observerOptions);    counters.forEach(counter => {
-      observer.observe(counter);
-    });
-
-    // Opzionale: Carica dati reali da Umami se disponibile
-    loadUmamiStats();
-    
-    // Debug: controlla se i contatori si stanno animando
-    setTimeout(() => {
-      console.log('🎯 Stato contatori dopo 3 secondi:',
-        document.querySelector('#total-views .counter')?.textContent);
-    }, 3000);
-  });  function loadUmamiStats() {
-    console.log('� Caricamento statistiche aggiornate...');
-      // Dati reali aggiornati - NUMERI REALI DI BITORA
-    const realStats = {
-      pageviews: 3247,   // 3k+ visite reali
-      visitors: 1156,    // 1k+ visitatori reali
-      sessions: 2341,    // Sessions calcolate (media tra visite e visitatori)
-      projects: 12,      // 10+ progetti completati
-      clients: 23,       // 20+ clienti soddisfatti
-      nfcCards: 34       // 30+ tessere NFC attivate
-    };
-      // Aggiorna tutti i contatori con dati reali
-    updateCounterTarget('total-views', realStats.pageviews);
-    updateCounterTarget('projects-count', realStats.projects);
-    updateCounterTarget('clients-count', realStats.clients);
-    updateCounterTarget('nfc-count', realStats.nfcCards);
-    
-    console.log('✅ Contatori aggiornati con dati reali:', realStats);
-  }
-
-  // Intersection Observer per animazioni di scroll
-  function initScrollAnimations() {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Animazione counter
-          if (entry.target.querySelector('.counter')) {
-            const counters = entry.target.querySelectorAll('.counter');
-            counters.forEach(counter => {
-              animateCounter(counter);
-              counter.classList.add('animated');
-            });
-          }
-
-          // Animazione testimonial
-          if (entry.target.classList.contains('testimonial-card')) {
-            entry.target.classList.add('visible');
-          }          // Animazione glass cards
-          if (entry.target.classList.contains('glass-card')) {
-            if (entry.target instanceof HTMLElement) {
-              entry.target.style.animationDelay = `${Math.random() * 0.5}s`;
-            }
-            entry.target.classList.add('animate-bounce-in');
-          }
-        }
-      });
-    }, observerOptions);
-
-    // Osserva gli elementi
-    document.querySelectorAll('.glass-card, .testimonial-card, [class*="counter"]').forEach(el => {
-      observer.observe(el);
-    });
-  }
-  // Effetti parallax leggeri
-  function initParallax() {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const parallaxElements = document.querySelectorAll('.morph-blob, .particle');      parallaxElements.forEach((element, index) => {
-        const speed = 0.5 + (index * 0.1);
-        const yPos = -(scrolled * speed);
-        if (element instanceof HTMLElement) {
-          element.style.transform = `translateY(${yPos}px)`;
-        }
-      });
-    });
-  }
-  // Hover effects avanzati
-  function initHoverEffects() {
-    document.querySelectorAll('.glass-card').forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        if (this instanceof HTMLElement) {
-          this.style.transform = 'translateY(-12px) scale(1.02) rotateX(2deg)';
-        }
-      });
-      
-      card.addEventListener('mouseleave', function() {
-        if (this instanceof HTMLElement) {
-          this.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
-        }
-      });
-    });
-  }
-  // Funzioni per gestire contatori (semplificato per sito statico)
-  // Inizializza tutto
-  document.addEventListener('DOMContentLoaded', function() {
-    loadUmamiStats();
-    initScrollAnimations();
-    initParallax();
-    initHoverEffects();
-  });
-</script>
