@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",    
-    "build": "astro build && npm run copy-deploy-files",
-    "copy-deploy-files": "powershell -Command \"Copy-Item web.config dist/\"",
-    "build:aruba": "astro build && powershell -Command \"Copy-Item web.config dist/\"",
+    "build": "astro build",
     "build:production": "npm run build && npm run optimize",
     "optimize": "echo Running post-build optimizations...",
     "preview": "astro preview",
