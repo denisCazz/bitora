@@ -21,7 +21,7 @@ import { testimonials } from '../data/testimonials';
       
       <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
         <!-- Case Study 1 -->
-        <div class="bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-xl border border-orange-200 hover:shadow-xl transition-all">
+        <div class="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 p-8 rounded-xl border border-orange-200 dark:border-orange-800 hover:shadow-xl transition-all">
           <div class="flex items-center gap-4 mb-6">
             <img src="/mistral.jpg" alt="Mistral Impianti" class="w-16 h-16 rounded-xl object-cover shadow-md" loading="lazy" />
             <div>
@@ -49,7 +49,7 @@ import { testimonials } from '../data/testimonials';
         </div>
 
         <!-- Case Study 2 -->
-        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl border border-blue-200 hover:shadow-xl transition-all">
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-8 rounded-xl border border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all">
           <div class="flex items-center gap-4 mb-6">
             <img src="/ilportico.png" alt="Il Portico" class="w-16 h-16 rounded-xl object-cover shadow-md" loading="lazy" />
             <div>
@@ -77,7 +77,7 @@ import { testimonials } from '../data/testimonials';
         </div>
 
         <!-- Case Study 3 -->
-        <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-xl border border-purple-200 hover:shadow-xl transition-all">
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-8 rounded-xl border border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all">
           <div class="flex items-center gap-4 mb-6">
             <img src="/sartoria_kristina.png" alt="Sartoria Kristina" class="w-16 h-16 rounded-xl object-cover shadow-md" loading="lazy" />
             <div>
@@ -139,13 +139,13 @@ import { testimonials } from '../data/testimonials';
     }
   </script>
   <!-- Hero -->
-  <section class="py-20 md:py-28 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+  <section class="py-20 md:py-28 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
     <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
       <div>
         <div class="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
           🚀 Risultati concreti in Piemonte
         </div>
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white">
           Siti web & NFC che <span class="text-primary">trasformano contatti in clienti</span> in Piemonte
         </h1>
         <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
@@ -153,25 +153,25 @@ import { testimonials } from '../data/testimonials';
         </p>
         <div class="grid grid-cols-2 gap-4 mb-8 text-sm">
           <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <div class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">✓</div>
+            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
             Setup in 24h
           </div>
           <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <div class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">✓</div>
+            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
             Supporto locale
           </div>
           <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <div class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">✓</div>
+            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
             ROI garantito
           </div>
           <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <div class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">✓</div>
+            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
             30 giorni soddisfatti o rimborsati
           </div>
         </div>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="#soluzioni" class="px-6 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600 transition-colors shadow-lg">Scopri le soluzioni</a>
-          <a href="/demo/ristorante" class="px-6 py-4 border border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors">Guarda la demo</a>
+          <a href="/demo/ristorante" class="px-6 py-4 border border-primary text-primary hover:bg-primary hover:text-white dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-400 dark:hover:text-white rounded-lg font-semibold transition-colors">Guarda la demo</a>
         </div>
       </div>
       <div class="relative">
@@ -195,9 +195,9 @@ import { testimonials } from '../data/testimonials';
         <!-- Web Design -->
         <div class="relative group">
           <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl opacity-25 group-hover:opacity-40 transition-opacity blur-lg"></div>
-          <div class="relative bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all">
+          <div class="relative bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all">
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center">
+              <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center">
                 <span class="text-2xl">🌐</span>
               </div>
               <div>
@@ -237,9 +237,9 @@ import { testimonials } from '../data/testimonials';
         <!-- Ecosistema NFC -->
         <div class="relative group">
           <div class="absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-25 group-hover:opacity-40 transition-opacity blur-lg"></div>
-          <div class="relative bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all">
+          <div class="relative bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all">
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center">
+              <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-xl flex items-center justify-center">
                 <span class="text-2xl">📱</span>
               </div>
               <div>
@@ -443,17 +443,17 @@ import { testimonials } from '../data/testimonials';
           🎯 Prova subito l'esperienza
         </div>
         <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          <a href="/demo/ristorante" class="block p-6 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl border border-orange-200 hover:shadow-lg transition-all group">
+          <a href="/demo/ristorante" class="block p-6 bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl border border-orange-200 dark:border-orange-800 hover:shadow-lg transition-all group">
             <div class="text-2xl mb-2">🍽️</div>
             <div class="font-semibold text-gray-900 dark:text-white group-hover:text-orange-600 transition-colors">Demo Ristorante</div>
             <div class="text-sm text-gray-600 dark:text-gray-300">Vedi come funziona per menu e prenotazioni</div>
           </a>
-          <a href="/demo/hotel" class="block p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200 hover:shadow-lg transition-all group">
+          <a href="/demo/hotel" class="block p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200 dark:border-blue-800 hover:shadow-lg transition-all group">
             <div class="text-2xl mb-2">🏨</div>
             <div class="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">Demo Hotel</div>
             <div class="text-sm text-gray-600 dark:text-gray-300">Scopri i servizi per ospiti e turismo</div>
           </a>
-          <a href="/demo/negozio" class="block p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-200 hover:shadow-lg transition-all group">
+          <a href="/demo/negozio" class="block p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl border border-purple-200 dark:border-purple-800 hover:shadow-lg transition-all group">
             <div class="text-2xl mb-2">🛍️</div>
             <div class="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 transition-colors">Demo Negozio</div>
             <div class="text-sm text-gray-600 dark:text-gray-300">Esplora le funzioni per retail e vendite</div>
