@@ -27,22 +27,22 @@ import { faqs } from '../data/faq';
         </p>
         
         <!-- Quick Stats -->
-        <div class="grid md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg text-center">
-            <div class="text-2xl font-bold text-primary mb-1">150+</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Progetti attivi</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-3xl mx-auto">
+          <div class="bg-white dark:bg-gray-800 p-3 md:p-4 rounded-xl shadow-lg text-center">
+            <div class="text-xl md:text-2xl font-bold text-primary mb-1">150+</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Progetti attivi</div>
           </div>
-          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg text-center">
-            <div class="text-2xl font-bold text-green-600 mb-1">24h</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Setup medio</div>
+          <div class="bg-white dark:bg-gray-800 p-3 md:p-4 rounded-xl shadow-lg text-center">
+            <div class="text-xl md:text-2xl font-bold text-green-600 mb-1">24h</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Setup medio</div>
           </div>
-          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg text-center">
-            <div class="text-2xl font-bold text-blue-600 mb-1">+35%</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Clienti medi</div>
+          <div class="bg-white dark:bg-gray-800 p-3 md:p-4 rounded-xl shadow-lg text-center">
+            <div class="text-xl md:text-2xl font-bold text-blue-600 mb-1">+35%</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Clienti medi</div>
           </div>
-          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg text-center">
-            <div class="text-2xl font-bold text-purple-600 mb-1">30gg</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Garanzia</div>
+          <div class="bg-white dark:bg-gray-800 p-3 md:p-4 rounded-xl shadow-lg text-center">
+            <div class="text-xl md:text-2xl font-bold text-purple-600 mb-1">30gg</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Garanzia</div>
           </div>
         </div>
       </div>
@@ -53,56 +53,60 @@ import { faqs } from '../data/faq';
   <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-lg">
     <div class="container mx-auto px-4">
       <div class="flex justify-center py-3">
-        <div class="inline-flex items-center gap-1 bg-gray-50 dark:bg-gray-800 rounded-xl p-1 shadow-lg border border-gray-200 dark:border-gray-700">
-          <a 
-            href="#web-design" 
-            class="nav-link px-4 py-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
-          >
-            <span>🌐</span>
-            Web Design
-          </a>
-          <a 
-            href="#nfc-ecosystem" 
-            class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-300"
-          >
-            <span>📱</span>
-            Ecosistema NFC
-          </a>
-          <a 
-            href="#combo-solutions" 
-            class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-300"
-          >
-            <span>🔥</span>
-            Combo
-          </a>
-          <a 
-            href="#faq" 
-            class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-300"
-          >
-            <span>❓</span>
-            FAQ
-          </a>
+        <div class="overflow-x-auto w-full max-w-4xl">
+          <div class="inline-flex items-center gap-1 md:gap-2 bg-gray-50 dark:bg-gray-800 rounded-xl p-1 shadow-lg border border-gray-200 dark:border-gray-700 min-w-max mx-auto">
+            <a 
+              href="#web-design" 
+              class="nav-link px-3 md:px-4 py-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-200 text-xs md:text-sm font-semibold flex items-center gap-1 md:gap-2 whitespace-nowrap"
+            >
+              <span>🌐</span>
+              <span class="hidden sm:inline">Web Design</span>
+              <span class="sm:hidden">Web</span>
+            </a>
+            <a 
+              href="#nfc-ecosystem" 
+              class="nav-link px-3 md:px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-xs md:text-sm font-semibold flex items-center gap-1 md:gap-2 text-gray-700 dark:text-gray-300 whitespace-nowrap"
+            >
+              <span>📱</span>
+              <span class="hidden sm:inline">Ecosistema NFC</span>
+              <span class="sm:hidden">NFC</span>
+            </a>
+            <a 
+              href="#combo-solutions" 
+              class="nav-link px-3 md:px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-xs md:text-sm font-semibold flex items-center gap-1 md:gap-2 text-gray-700 dark:text-gray-300 whitespace-nowrap"
+            >
+              <span>🔥</span>
+              <span>Combo</span>
+            </a>
+            <a 
+              href="#faq" 
+              class="nav-link px-3 md:px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-xs md:text-sm font-semibold flex items-center gap-1 md:gap-2 text-gray-700 dark:text-gray-300 whitespace-nowrap"
+            >
+              <span>❓</span>
+              <span>FAQ</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- Web Design Plans -->
-  <section id="web-design" class="py-20 bg-white dark:bg-gray-900 scroll-mt-20">
+  <section id="web-design" class="py-12 md:py-20 bg-white dark:bg-gray-900 scroll-mt-20">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+      <div class="text-center mb-12 md:mb-16">
+        <div class="inline-flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-4 md:mb-6">
           🌐 Opzione 1: Solo Web Design
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
           Siti Web <span class="text-blue-600 dark:text-blue-400">Professionali</span>
         </h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
           Siti responsive, veloci e ottimizzati per convertire visitatori in clienti
         </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
         {webDesignPlans.map((plan, index) => (
           <div class={`relative bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${plan.highlighted ? 'ring-2 ring-blue-500 dark:ring-blue-400' : ''}`}>
             {plan.badge && (
@@ -111,19 +115,19 @@ import { faqs } from '../data/faq';
               </div>
             )}
             
-            <div class="p-6">
-              <div class="text-center mb-6">
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{plan.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">{plan.description}</p>
-                <div class="mb-4">
-                  <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">{plan.price}</span>
-                  {plan.period && <span class="text-gray-500 dark:text-gray-400 text-sm">/{plan.period}</span>}
+            <div class="p-4 md:p-6">
+              <div class="text-center mb-4 md:mb-6">
+                <h3 class="text-base md:text-lg font-bold text-gray-900 dark:text-white mb-2">{plan.title}</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-3 md:mb-4">{plan.description}</p>
+                <div class="mb-3 md:mb-4">
+                  <span class="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400">{plan.price}</span>
+                  {plan.period && <span class="text-gray-500 dark:text-gray-400 text-xs md:text-sm">/{plan.period}</span>}
                 </div>
               </div>
               
-              <ul class="space-y-2 mb-6">
+              <ul class="space-y-1 md:space-y-2 mb-4 md:mb-6">
                 {plan.features.map(feature => (
-                  <li class="flex items-start gap-2 text-sm">
+                  <li class="flex items-start gap-2 text-xs md:text-sm">
                     <span class="text-green-500 dark:text-green-400 font-bold mt-0.5 flex-shrink-0">✓</span>
                     <span class="text-gray-700 dark:text-gray-300">{feature}</span>
                   </li>
@@ -132,7 +136,7 @@ import { faqs } from '../data/faq';
               
               <a 
                 href={`/contattaci?plan=${plan.title}`}
-                class={`block w-full text-center py-3 rounded-lg font-semibold transition-all duration-300 text-sm ${
+                class={`block w-full text-center py-2 md:py-3 rounded-lg font-semibold transition-all duration-300 text-xs md:text-sm ${
                   plan.highlighted 
                     ? 'bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 shadow-lg' 
                     : 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 border dark:border-blue-800'
@@ -148,21 +152,21 @@ import { faqs } from '../data/faq';
   </section>
 
   <!-- NFC Ecosystem Plans -->
-  <section id="nfc-ecosystem" class="py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
+  <section id="nfc-ecosystem" class="py-12 md:py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+      <div class="text-center mb-12 md:mb-16">
+        <div class="inline-flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-4 md:mb-6">
           📱 Opzione 2: Solo Ecosistema NFC
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-          Tessere <span class="text-purple-600 dark:text-purple-400">Smart NFC</span>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
+          Ecosistema <span class="text-green-600 dark:text-green-400">NFC Smart</span>
         </h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Biglietti digitali intelligenti che trasformano ogni contatto in un'opportunità
+        <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
+          Tessere NFC intelligenti per rivoluzionare l'interazione con i tuoi clienti
         </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
         {nfcEcosystemPlans.map((plan, index) => (
           <div class={`relative bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${plan.highlighted ? 'ring-2 ring-purple-500 dark:ring-purple-400' : ''}`}>
             {plan.badge && (
@@ -208,21 +212,21 @@ import { faqs } from '../data/faq';
   </section>
 
   <!-- Combo Solutions -->
-  <section id="combo-solutions" class="py-20 bg-white dark:bg-gray-900 scroll-mt-20">
+  <section id="combo-solutions" class="py-12 md:py-20 bg-white dark:bg-gray-900 scroll-mt-20">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center bg-gradient-to-r from-primary to-orange-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+      <div class="text-center mb-12 md:mb-16">
+        <div class="inline-flex items-center bg-gradient-to-r from-primary to-orange-500 text-white px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-4 md:mb-6">
           🔥 Opzione 3: Combo (Più Richiesta)
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
           Soluzioni <span class="text-primary dark:text-primary-400">Complete</span>
         </h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
           La combinazione perfetta: sito web + ecosistema NFC per massimizzare i risultati
         </p>
       </div>
       
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
         {comboPlans.map((plan, index) => (
           <div class={`relative bg-gradient-to-br from-primary/5 to-orange-500/5 dark:from-primary/10 dark:to-orange-500/10 rounded-xl shadow-lg border border-primary/20 dark:border-primary/30 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${plan.highlighted ? 'ring-2 ring-primary dark:ring-primary-400' : ''}`}>
             {plan.badge && (
@@ -231,9 +235,9 @@ import { faqs } from '../data/faq';
               </div>
             )}
             
-            <div class="p-8">
-              <div class="text-center mb-8">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{plan.title}</h3>
+            <div class="p-6 md:p-8">
+              <div class="text-center mb-6 md:mb-8">
+                <h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-2 md:mb-3">{plan.title}</h3>
                 <p class="text-gray-600 dark:text-gray-400 mb-6">{plan.description}</p>
                 <div class="mb-6">
                   <span class="text-3xl font-bold text-primary dark:text-primary-400">{plan.price}</span>
@@ -280,7 +284,7 @@ import { faqs } from '../data/faq';
           Perché scegliere i nostri piani?
         </h2>
         
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="text-center">
             <div class="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl">⚡</span>
@@ -310,14 +314,14 @@ import { faqs } from '../data/faq';
   </section>
 
   <!-- FAQ Section -->
-  <section id="faq" class="py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
+  <section id="faq" class="py-12 md:py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
             Domande Frequenti
           </h2>
-          <p class="text-lg text-gray-600 dark:text-gray-300">
+          <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 px-4">
             Tutto quello che devi sapere sui nostri servizi e prezzi
           </p>
         </div>
@@ -345,21 +349,21 @@ import { faqs } from '../data/faq';
   </section>
 
   <!-- CTA finale -->
-  <section class="py-20 bg-gradient-to-r from-primary to-orange-500 text-white">
+  <section class="py-16 md:py-20 bg-gradient-to-r from-primary to-orange-500 text-white">
     <div class="container mx-auto px-4 text-center">
       <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
           Pronto per iniziare?
         </h2>
         
-        <p class="text-xl mb-8 opacity-95">
+        <p class="text-lg md:text-xl mb-6 md:mb-8 opacity-95 px-4">
           Scegli il piano perfetto per la tua attività e inizia a vedere risultati concreti in pochi giorni.
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
             href="/contattaci" 
-            class="px-8 py-4 bg-white text-primary rounded-xl font-semibold hover:bg-gray-100 transition-colors text-lg shadow-lg"
+            class="px-6 md:px-8 py-3 md:py-4 bg-white text-primary rounded-xl font-semibold hover:bg-gray-100 transition-colors text-base md:text-lg shadow-lg"
           >
             Richiedi consulenza gratuita
           </a>

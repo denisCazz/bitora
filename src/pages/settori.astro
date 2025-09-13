@@ -175,14 +175,14 @@ const settori = [
         </p>
         
         <!-- Quick sector navigation -->
-        <div class="flex flex-wrap justify-center gap-4 mb-8">
-          <a href="#ristoranti" class="px-6 py-3 bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-300 rounded-xl font-semibold hover:bg-orange-200 dark:hover:bg-orange-800/70 transition-all duration-300">
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
+          <a href="#ristoranti" class="px-4 sm:px-6 py-2 sm:py-3 bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-300 rounded-xl font-semibold hover:bg-orange-200 dark:hover:bg-orange-800/70 transition-all duration-300 text-sm sm:text-base">
             🍕 Ristoranti & Bar
           </a>
-          <a href="#turismo" class="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 rounded-xl font-semibold hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-300">
+          <a href="#turismo" class="px-4 sm:px-6 py-2 sm:py-3 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 rounded-xl font-semibold hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-300 text-sm sm:text-base">
             🏨 Hotel & B&B
           </a>
-          <a href="#professionisti" class="px-6 py-3 bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 rounded-xl font-semibold hover:bg-purple-200 dark:hover:bg-purple-800/70 transition-all duration-300">
+          <a href="#professionisti" class="px-4 sm:px-6 py-2 sm:py-3 bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 rounded-xl font-semibold hover:bg-purple-200 dark:hover:bg-purple-800/70 transition-all duration-300 text-sm sm:text-base">
             💼 Professionisti
           </a>
         </div>
@@ -195,7 +195,7 @@ const settori = [
     <section id={settore.id} class={`py-20 scroll-mt-20 ${index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800'}`}>
       <div class="container mx-auto px-4">
         <div class="max-w-7xl mx-auto">
-          <div class={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+          <div class={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
             
             <!-- Content -->
             <div class={index % 2 === 1 ? 'lg:col-start-2' : ''}>
@@ -214,7 +214,7 @@ const settori = [
               <!-- Features -->
               <div class="mb-8">
                 <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Cosa include:</h3>
-                <div class="grid md:grid-cols-2 gap-3">
+                <div class="grid sm:grid-cols-2 gap-3">
                   {settore.features.map(feature => (
                     <div class="flex items-start gap-3">
                       <span class="text-green-500 dark:text-green-400 font-bold mt-1 flex-shrink-0">✓</span>
@@ -225,24 +225,24 @@ const settori = [
               </div>
               
               <!-- Stats -->
-              <div class="grid grid-cols-3 gap-4 mb-8">
+              <div class="grid grid-cols-3 gap-3 lg:gap-4 mb-8">
                 {settore.stats.map(stat => (
-                  <div class="text-center p-4 bg-white dark:bg-gray-900 rounded-xl shadow-md border dark:border-gray-700">
-                    <div class={`text-2xl font-bold ${colorMap[settore.color].statTextLight} ${colorMap[settore.color].statTextDark} mb-1`}>{stat.value}</div>
+                  <div class="text-center p-3 lg:p-4 bg-white dark:bg-gray-900 rounded-xl shadow-md border dark:border-gray-700">
+                    <div class={`text-lg lg:text-2xl font-bold ${colorMap[settore.color].statTextLight} ${colorMap[settore.color].statTextDark} mb-1`}>{stat.value}</div>
                     <div class="text-xs text-gray-600 dark:text-gray-400">{stat.label}</div>
                   </div>
                 ))}
               </div>
               
               <!-- CTA -->
-              <div class="flex flex-wrap gap-4">
+              <div class="flex flex-col sm:flex-row flex-wrap gap-4">
                 <a 
                   href={`/settori/${settore.id}`} 
-                  class={`px-6 py-3 ${colorMap[settore.color].btnBg} ${colorMap[settore.color].btnHover} text-white rounded-lg font-semibold transition-colors shadow-lg`}
+                  class={`px-6 py-3 ${colorMap[settore.color].btnBg} ${colorMap[settore.color].btnHover} text-white rounded-lg font-semibold transition-colors shadow-lg text-center`}
                 >
                   Scopri le soluzioni per {settore.title}
                 </a>
-                <div class={`px-6 py-3 border ${colorMap[settore.color].borderAccentLight} ${colorMap[settore.color].borderAccentDark} ${colorMap[settore.color].pillTextLight.replace('800','700')} ${colorMap[settore.color].pillTextDark}`}>
+                <div class={`px-6 py-3 border ${colorMap[settore.color].borderAccentLight} ${colorMap[settore.color].borderAccentDark} ${colorMap[settore.color].pillTextLight.replace('800','700')} ${colorMap[settore.color].pillTextDark} text-center sm:text-left font-semibold`}>
                   {settore.pricing}
                 </div>
               </div>
@@ -250,13 +250,13 @@ const settori = [
             
             <!-- Case Study Card -->
             <div class={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-              <div class={`bg-gradient-to-br ${colorMap[settore.color].gradientFromLight} ${colorMap[settore.color].gradientToLight} ${colorMap[settore.color].gradientFromDark} ${colorMap[settore.color].gradientToDark} p-8 rounded-2xl shadow-xl border ${colorMap[settore.color].borderLight} ${colorMap[settore.color].borderDark}`}>
+              <div class={`bg-gradient-to-br ${colorMap[settore.color].gradientFromLight} ${colorMap[settore.color].gradientToLight} ${colorMap[settore.color].gradientFromDark} ${colorMap[settore.color].gradientToDark} p-6 lg:p-8 rounded-2xl shadow-xl border ${colorMap[settore.color].borderLight} ${colorMap[settore.color].borderDark}`}>
                 <div class="text-center mb-6">
                   <div class={`inline-flex items-center ${colorMap[settore.color].pillBgLight} ${colorMap[settore.color].pillBgDark} ${colorMap[settore.color].pillTextLight} ${colorMap[settore.color].pillTextDark} px-3 py-1 rounded-full text-sm font-medium mb-4`}>
                     📊 Case Study
                   </div>
-                  <h3 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{settore.caseStudy.title}</h3>
-                  <div class={`text-3xl font-bold ${colorMap[settore.color].textAccentLight} ${colorMap[settore.color].textAccentDark} mb-4`}>
+                  <h3 class="text-xl lg:text-2xl font-bold mb-2 text-gray-900 dark:text-white">{settore.caseStudy.title}</h3>
+                  <div class={`text-2xl lg:text-3xl font-bold ${colorMap[settore.color].textAccentLight} ${colorMap[settore.color].textAccentDark} mb-4`}>
                     {settore.caseStudy.result}
                   </div>
                 </div>
@@ -297,58 +297,58 @@ const settori = [
           </p>
         </div>
         
-        <div class="overflow-x-auto">
-          <table class="w-full bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+        <div class="overflow-x-auto -mx-4 px-4">
+          <table class="w-full min-w-[600px] bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
             <thead class="bg-gray-50 dark:bg-gray-800">
               <tr>
-                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Caratteristiche</th>
-                <th class="px-6 py-4 text-center text-sm font-semibold text-orange-600 dark:text-orange-400">🍕 Ristoranti</th>
-                <th class="px-6 py-4 text-center text-sm font-semibold text-blue-600 dark:text-blue-400">🏨 Hotel</th>
-                <th class="px-6 py-4 text-center text-sm font-semibold text-purple-600 dark:text-purple-400">💼 Professionisti</th>
+                <th class="px-3 lg:px-6 py-3 lg:py-4 text-left text-xs lg:text-sm font-semibold text-gray-900 dark:text-white">Caratteristiche</th>
+                <th class="px-3 lg:px-6 py-3 lg:py-4 text-center text-xs lg:text-sm font-semibold text-orange-600 dark:text-orange-400">🍕 Ristoranti</th>
+                <th class="px-3 lg:px-6 py-3 lg:py-4 text-center text-xs lg:text-sm font-semibold text-blue-600 dark:text-blue-400">🏨 Hotel</th>
+                <th class="px-3 lg:px-6 py-3 lg:py-4 text-center text-xs lg:text-sm font-semibold text-purple-600 dark:text-purple-400">💼 Professionisti</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
               <tr>
-                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Menu/Catalogo Digitale</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 font-medium text-gray-900 dark:text-white text-sm">Menu/Catalogo Digitale</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
               </tr>
               <tr class="bg-gray-50 dark:bg-gray-800">
-                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Sistema Prenotazioni</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 font-medium text-gray-900 dark:text-white text-sm">Sistema Prenotazioni</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
               </tr>
               <tr>
-                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Tessere NFC</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 font-medium text-gray-900 dark:text-white text-sm">Tessere NFC</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
               </tr>
               <tr class="bg-gray-50 dark:bg-gray-800">
-                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Check-in Contactless</td>
-                <td class="px-6 py-4 text-center text-gray-400">—</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
-                <td class="px-6 py-4 text-center text-gray-400">—</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 font-medium text-gray-900 dark:text-white text-sm">Check-in Contactless</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-gray-400">—</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-gray-400">—</td>
               </tr>
               <tr>
-                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Digital Concierge AI</td>
-                <td class="px-6 py-4 text-center text-gray-400">—</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
-                <td class="px-6 py-4 text-center text-gray-400">—</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 font-medium text-gray-900 dark:text-white text-sm">Digital Concierge AI</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-gray-400">—</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-gray-400">—</td>
               </tr>
               <tr class="bg-gray-50 dark:bg-gray-800">
-                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Lead Generation Automatico</td>
-                <td class="px-6 py-4 text-center text-gray-400">—</td>
-                <td class="px-6 py-4 text-center text-gray-400">—</td>
-                <td class="px-6 py-4 text-center text-green-600 dark:text-green-400">✓</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 font-medium text-gray-900 dark:text-white text-sm">Lead Generation Automatico</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-gray-400">—</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-gray-400">—</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center text-green-600 dark:text-green-400">✓</td>
               </tr>
               <tr>
-                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Prezzo di partenza</td>
-                <td class="px-6 py-4 text-center font-semibold text-orange-600 dark:text-orange-400">€39/mese</td>
-                <td class="px-6 py-4 text-center font-semibold text-blue-600 dark:text-blue-400">€49/mese</td>
-                <td class="px-6 py-4 text-center font-semibold text-purple-600 dark:text-purple-400">€29/mese</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 font-medium text-gray-900 dark:text-white text-sm">Prezzo di partenza</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center font-semibold text-orange-600 dark:text-orange-400 text-sm">€39/mese</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center font-semibold text-blue-600 dark:text-blue-400 text-sm">€49/mese</td>
+                <td class="px-3 lg:px-6 py-3 lg:py-4 text-center font-semibold text-purple-600 dark:text-purple-400 text-sm">€29/mese</td>
               </tr>
             </tbody>
           </table>
@@ -385,7 +385,7 @@ const settori = [
           </a>
         </div>
         
-        <div class="grid md:grid-cols-3 gap-6 text-sm opacity-80">
+        <div class="grid sm:grid-cols-3 gap-6 text-sm opacity-80">
           <div class="flex items-center justify-center gap-2">
             <span>⚡</span>
             <span>Setup in 48h</span>

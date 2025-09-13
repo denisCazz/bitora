@@ -173,32 +173,34 @@ const stats = [
   </section>
 
   <!-- Filtri e Categorie -->
-  <section class="py-12 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
+  <section class="py-8 md:py-12 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
     <div class="container mx-auto px-4">
-      <div class="flex flex-wrap justify-center gap-4">
-        <button class="filter-btn active px-6 py-3 rounded-full border-2 border-primary bg-primary text-white font-semibold transition-all duration-300" data-filter="all">
-          Tutti i progetti
-        </button>
-        <button class="filter-btn px-6 py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary font-semibold transition-all duration-300" data-filter="featured">
-          🏆 In evidenza
-        </button>
-        <button class="filter-btn px-6 py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary font-semibold transition-all duration-300" data-filter="ristoranti">
-          🍕 Ristoranti
-        </button>
-        <button class="filter-btn px-6 py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary font-semibold transition-all duration-300" data-filter="servizi">
-          💼 Servizi
-        </button>
-        <button class="filter-btn px-6 py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary font-semibold transition-all duration-300" data-filter="wip">
-          🚧 Work in Progress
-        </button>
+      <div class="overflow-x-auto">
+        <div class="flex gap-3 md:gap-4 justify-center min-w-max px-4 md:px-0">
+          <button class="filter-btn active px-4 md:px-6 py-2 md:py-3 rounded-full border-2 border-primary bg-primary text-white font-semibold transition-all duration-300 text-sm md:text-base whitespace-nowrap" data-filter="all">
+            Tutti i progetti
+          </button>
+          <button class="filter-btn px-4 md:px-6 py-2 md:py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary font-semibold transition-all duration-300 text-sm md:text-base whitespace-nowrap" data-filter="featured">
+            🏆 In evidenza
+          </button>
+          <button class="filter-btn px-4 md:px-6 py-2 md:py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary font-semibold transition-all duration-300 text-sm md:text-base whitespace-nowrap" data-filter="ristoranti">
+            🍕 Ristoranti
+          </button>
+          <button class="filter-btn px-4 md:px-6 py-2 md:py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary font-semibold transition-all duration-300 text-sm md:text-base whitespace-nowrap" data-filter="servizi">
+            💼 Servizi
+          </button>
+          <button class="filter-btn px-4 md:px-6 py-2 md:py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary font-semibold transition-all duration-300 text-sm md:text-base whitespace-nowrap" data-filter="wip">
+            🚧 Work in Progress
+          </button>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Griglia Progetti -->
-  <section class="py-20 bg-gray-50 dark:bg-gray-800">
+  <section class="py-12 md:py-20 bg-gray-50 dark:bg-gray-800">
     <div class="container mx-auto px-4">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
         {caseStudies.map(caseStudy => (
           <div class={`project-card bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden ${caseStudy.featured ? 'featured' : ''} ${caseStudy.category.includes('Ristorazione') || caseStudy.category.includes('Food') ? 'ristoranti' : ''} ${caseStudy.category.includes('B2B') || caseStudy.category.includes('Artigianato') ? 'servizi' : ''} ${caseStudy.isWip ? 'wip' : ''}`}>
             
@@ -236,19 +238,19 @@ const stats = [
             </div>
             
             {/* Content */}
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white">{caseStudy.title}</h3>
-                <span class="text-sm text-gray-500 dark:text-gray-400">📍 {caseStudy.location}</span>
+            <div class="p-4 md:p-6">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
+                <h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white">{caseStudy.title}</h3>
+                <span class="text-xs md:text-sm text-gray-500 dark:text-gray-400 self-start sm:self-auto">📍 {caseStudy.location}</span>
               </div>
               
-              <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">{caseStudy.subtitle}</p>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm md:text-base">{caseStudy.subtitle}</p>
               
               {/* Risultati rapidi */}
-              <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="grid grid-cols-2 gap-2 md:gap-3 mb-4 md:mb-6">
                 {caseStudy.results.slice(0, 4).map(result => (
-                  <div class="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <div class="text-lg font-bold text-primary mb-1">{result.metric}</div>
+                  <div class="text-center p-2 md:p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <div class="text-sm md:text-lg font-bold text-primary mb-1">{result.metric}</div>
                     <div class="text-xs text-gray-600 dark:text-gray-400">{result.description}</div>
                   </div>
                 ))}
@@ -256,35 +258,35 @@ const stats = [
               
               {/* ROI e Investment */}
               {caseStudy.monthlyValue && (
-                <div class="flex justify-between items-center mb-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                <div class="flex justify-between items-center mb-4 p-2 md:p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
                   <div class="text-center">
-                    <div class="text-sm text-green-600 dark:text-green-400 font-medium">Valore Generato</div>
-                    <div class="text-lg font-bold text-green-700 dark:text-green-300">{caseStudy.monthlyValue}/mese</div>
+                    <div class="text-xs md:text-sm text-green-600 dark:text-green-400 font-medium">Valore Generato</div>
+                    <div class="text-sm md:text-lg font-bold text-green-700 dark:text-green-300">{caseStudy.monthlyValue}/mese</div>
                   </div>
                   <div class="text-center">
-                    <div class="text-sm text-gray-600 dark:text-gray-400">Investimento</div>
-                    <div class="text-lg font-bold text-gray-700 dark:text-gray-300">{caseStudy.initialInvestment}</div>
+                    <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Investimento</div>
+                    <div class="text-sm md:text-lg font-bold text-gray-700 dark:text-gray-300">{caseStudy.initialInvestment}</div>
                   </div>
                 </div>
               )}
               
               {/* Timeline */}
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                <div class="flex items-center gap-2 text-xs md:text-sm text-gray-600 dark:text-gray-400">
                   <span>⏱️</span>
                   <span>Timeline: {caseStudy.timeline}</span>
                 </div>
-                <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                <div class="flex items-center gap-2 text-xs md:text-sm text-gray-600 dark:text-gray-400">
                   <span>⭐</span>
                   <span>{caseStudy.clientName}</span>
                 </div>
               </div>
               
               {/* CTA Buttons */}
-              <div class="flex gap-2">
+              <div class="flex flex-col sm:flex-row gap-2">
                 <a 
                   href={caseStudy.caseStudyUrl || `/progetti/${caseStudy.id}`} 
-                  class="flex-1 px-4 py-2 bg-primary text-white text-center rounded-lg font-semibold hover:bg-primary-600 transition-colors text-sm"
+                  class="flex-1 px-3 md:px-4 py-2 bg-primary text-white text-center rounded-lg font-semibold hover:bg-primary-600 transition-colors text-xs md:text-sm"
                 >
                   Case Study
                 </a>
@@ -293,7 +295,7 @@ const stats = [
                     href={caseStudy.siteUrl} 
                     target="_blank" 
                     rel="noopener" 
-                    class="px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-semibold transition-colors text-sm"
+                    class="px-3 md:px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white rounded-lg font-semibold transition-colors text-xs md:text-sm text-center"
                   >
                     Visita
                   </a>
@@ -305,33 +307,33 @@ const stats = [
       </div>
       
       <!-- Testimonianza in evidenza -->
-      <div class="mt-16 max-w-4xl mx-auto">
-        <div class="bg-gradient-to-r from-primary/10 to-purple-500/10 dark:from-primary/20 dark:to-purple-500/20 p-8 rounded-2xl border border-primary/20 dark:border-primary/30">
+      <div class="mt-12 md:mt-16 max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-primary/10 to-purple-500/10 dark:from-primary/20 dark:to-purple-500/20 p-6 md:p-8 rounded-2xl border border-primary/20 dark:border-primary/30">
           <div class="text-center mb-6">
-            <h3 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Cosa dicono i nostri clienti</h3>
-            <p class="text-gray-600 dark:text-gray-300">Risultati reali da attività piemontesi</p>
+            <h3 class="text-xl md:text-2xl font-bold mb-2 text-gray-900 dark:text-white">Cosa dicono i nostri clienti</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base">Risultati reali da attività piemontesi</p>
           </div>
           
-          <div class="grid md:grid-cols-3 gap-6">
-            <blockquote class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md">
-              <p class="text-gray-700 dark:text-gray-300 mb-4 italic">"Abbiamo digitalizzato i nostri processi e il ROI è stato straordinario."</p>
-              <footer class="text-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <blockquote class="bg-white dark:bg-gray-900 p-4 md:p-6 rounded-xl shadow-md">
+              <p class="text-gray-700 dark:text-gray-300 mb-4 italic text-sm md:text-base">"Abbiamo digitalizzato i nostri processi e il ROI è stato straordinario."</p>
+              <footer class="text-xs md:text-sm">
                 <strong class="text-primary">Gabriele Ferrero</strong><br/>
                 <span class="text-gray-600 dark:text-gray-400">Mistral Impianti</span>
               </footer>
             </blockquote>
             
-            <blockquote class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md">
-              <p class="text-gray-700 dark:text-gray-300 mb-4 italic">"Le tessere NFC hanno rivoluzionato il nostro servizio clienti."</p>
-              <footer class="text-sm">
+            <blockquote class="bg-white dark:bg-gray-900 p-4 md:p-6 rounded-xl shadow-md">
+              <p class="text-gray-700 dark:text-gray-300 mb-4 italic text-sm md:text-base">"Le tessere NFC hanno rivoluzionato il nostro servizio clienti."</p>
+              <footer class="text-xs md:text-sm">
                 <strong class="text-primary">Giuseppe Alberti</strong><br/>
                 <span class="text-gray-600 dark:text-gray-400">Il Portico Restaurant</span>
               </footer>
             </blockquote>
             
-            <blockquote class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md">
-              <p class="text-gray-700 dark:text-gray-300 mb-4 italic">"Il biglietto NFC mi ha permesso di distinguermi completamente."</p>
-              <footer class="text-sm">
+            <blockquote class="bg-white dark:bg-gray-900 p-4 md:p-6 rounded-xl shadow-md sm:col-span-2 lg:col-span-1">
+              <p class="text-gray-700 dark:text-gray-300 mb-4 italic text-sm md:text-base">"Il biglietto NFC mi ha permesso di distinguermi completamente."</p>
+              <footer class="text-xs md:text-sm">
                 <strong class="text-primary">Kristina Rossi</strong><br/>
                 <span class="text-gray-600 dark:text-gray-400">Sartoria Kristina</span>
               </footer>
@@ -343,28 +345,28 @@ const stats = [
   </section>
 
   <!-- Metriche Aggregate -->
-  <section class="py-16 bg-white dark:bg-gray-900">
+  <section class="py-12 md:py-16 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">I numeri del successo</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 mb-12">Dati aggregati dei nostri clienti negli ultimi 18 mesi</p>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">I numeri del successo</h2>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 md:mb-12">Dati aggregati dei nostri clienti negli ultimi 18 mesi</p>
         
-        <div class="grid md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           <div class="text-center">
-            <div class="text-4xl font-bold text-primary mb-2">€127k+</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Fatturato aggiuntivo generato</div>
+            <div class="text-2xl md:text-4xl font-bold text-primary mb-2">€127k+</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Fatturato aggiuntivo generato</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl font-bold text-green-600 mb-2">+28%</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Crescita media fatturato</div>
+            <div class="text-2xl md:text-4xl font-bold text-green-600 mb-2">+28%</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Crescita media fatturato</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl font-bold text-blue-600 mb-2">1.840+</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Nuovi clienti acquisiti</div>
+            <div class="text-2xl md:text-4xl font-bold text-blue-600 mb-2">1.840+</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Nuovi clienti acquisiti</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl font-bold text-purple-600 mb-2">4.6★</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Rating medio Google</div>
+            <div class="text-2xl md:text-4xl font-bold text-purple-600 mb-2">4.6★</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Rating medio Google</div>
           </div>
         </div>
       </div>
@@ -372,29 +374,29 @@ const stats = [
   </section>
 
   <!-- CTA finale -->
-  <section class="py-20 bg-gradient-to-r from-primary to-purple-600 text-white">
+  <section class="py-16 md:py-20 bg-gradient-to-r from-primary to-purple-600 text-white">
     <div class="container mx-auto px-4 text-center">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
           Il tuo progetto potrebbe essere il prossimo
         </h2>
         
-        <p class="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
+        <p class="text-lg md:text-xl mb-6 md:mb-8 opacity-95 max-w-2xl mx-auto">
           Abbiamo l'esperienza e le competenze per trasformare la tua idea in un progetto di successo. 
           Parliamone insieme!
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci" class="px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-gray-100 transition-colors text-lg">
+        <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
+          <a href="/contattaci" class="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white text-primary rounded-lg font-semibold hover:bg-gray-100 transition-colors text-base md:text-lg">
             Inizia il tuo progetto
           </a>
           
-          <a href="/prezzi" class="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors text-lg">
+          <a href="/prezzi" class="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors text-base md:text-lg">
             Vedi i prezzi
           </a>
         </div>
         
-        <div class="mt-8 text-sm opacity-80">
+        <div class="mt-6 md:mt-8 text-xs md:text-sm opacity-80">
           💬 Consulenza gratuita • 🚀 Setup in 24h • 💰 ROI garantito
         </div>
       </div>
@@ -422,7 +424,7 @@ const stats = [
       
       // Filter projects
       projectCards.forEach(card => {
-        const htmlCard = card;
+        const htmlCard = card as HTMLElement;
         if (filter === 'all') {
           htmlCard.style.display = 'block';
           htmlCard.style.animation = 'fadeIn 0.5s ease-in-out';

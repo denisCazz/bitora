@@ -208,6 +208,36 @@ select:focus-visible {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* Mobile-first responsive tables */
+@media (max-width: 640px) {
+  .responsive-table {
+    font-size: 0.875rem;
+  }
+  
+  .responsive-table th,
+  .responsive-table td {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .responsive-text-lg {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .responsive-text-xl {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .responsive-text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
 /* High contrast mode support - removed override rules that conflict with Tailwind */
 @media (prefers-contrast: high) {
   /* Let Tailwind handle contrast modes */

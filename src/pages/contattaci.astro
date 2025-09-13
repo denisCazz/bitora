@@ -4,7 +4,12 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Contattaci - Web Design Carmagnola | Bitora Piemonte" 
        description="Contatta Bitora per i tuoi progetti web a Carmagnola e Piemonte. Consulenza gratuita per siti web, landing page e tessere NFC. Il tuo partner digitale locale di fiducia nel territorio piemontese.">  <!-- Header Section -->
-  <section class="py-24 bg-white dark:bg-gray-900 dark:bg-gray-900 transition-colors duration-300">
+  <section class="py-24 bg-white dark:bg-gray-900 dark:bg-gray-900 transition-colors      } finally {
+        // Reset loading state
+        (submitBtn as HTMLButtonElement).disabled = false;
+        submitText?.classList.remove('hidden');
+        loadingText?.classList.add('hidden');
+      }ion-300">
     <div class="container mx-auto px-4 max-w-3xl text-center">      <h1 class="text-5xl md:text-6xl font-bold mb-8 text-gray-900 dark:text-white dark:text-white">Contattaci</h1>
       <p class="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 leading-relaxed">
         Hai un progetto digitale a Carmagnola o in Piemonte? Siamo qui per trasformarlo in realtà. 
@@ -16,12 +21,12 @@ import Layout from '../layouts/Layout.astro';
   <!-- Contact Info Section -->
   <section class="py-24 bg-gray-50 dark:bg-gray-800 dark:bg-gray-800 transition-colors duration-300">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="grid lg:grid-cols-2 gap-12">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
         <!-- Contact Information -->
-        <div class="bg-white dark:bg-gray-900 dark:bg-gray-900 p-12 rounded-lg shadow-md">
-          <h2 class="text-3xl font-bold mb-10 text-gray-900 dark:text-white dark:text-white">Parliamo del Tuo Progetto</h2>
+        <div class="bg-white dark:bg-gray-900 dark:bg-gray-900 p-8 lg:p-12 rounded-lg shadow-md">
+          <h2 class="text-2xl lg:text-3xl font-bold mb-8 lg:mb-10 text-gray-900 dark:text-white dark:text-white">Parliamo del Tuo Progetto</h2>
 
-          <div class="flex flex-col gap-8 mb-10">
+          <div class="flex flex-col gap-6 lg:gap-8 mb-8 lg:mb-10">
             <div>
               <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white dark:text-white">Email</h3>
               <a
@@ -263,21 +268,21 @@ import Layout from '../layouts/Layout.astro';
       );
 
       if (emailLink) {
-        emailLink.href = `mailto:info@bitora.it?subject=${subject}&body=${body}`;
+        (emailLink as HTMLAnchorElement).href = `mailto:info@bitora.it?subject=${subject}&body=${body}`;
       }
       if (whatsappLinkText) {
-        whatsappLinkText.href = `https://wa.me/393247787644?text=${whatsappText}`;
+        (whatsappLinkText as HTMLAnchorElement).href = `https://wa.me/393247787644?text=${whatsappText}`;
       }
       if (whatsappButton) {
-        whatsappButton.href = `https://wa.me/393247787644?text=${whatsappText}`;
+        (whatsappButton as HTMLAnchorElement).href = `https://wa.me/393247787644?text=${whatsappText}`;
       }
 
       // Pre-fill form fields
       if (subjectSelect) {
-        subjectSelect.value = 'Nuovo Sito Web';
+        (subjectSelect as HTMLSelectElement).value = 'Nuovo Sito Web';
       }
       if (messageTextarea) {
-        messageTextarea.value = `Ciao, sarei interessato/a al piano "${plan}". Vorrei ricevere maggiori informazioni sui tempi e dettagli del servizio.`;
+        (messageTextarea as HTMLTextAreaElement).value = `Ciao, sarei interessato/a al piano "${plan}". Vorrei ricevere maggiori informazioni sui tempi e dettagli del servizio.`;
       }
     }
 
@@ -337,12 +342,12 @@ import Layout from '../layouts/Layout.astro';
       clearAllErrors();
       let isValid = true;
 
-      const nome = document.getElementById('nome')?.value?.trim() || '';
-      const email = document.getElementById('email')?.value?.trim() || '';
-      const phone = document.getElementById('phone')?.value?.trim() || '';
-      const subject = document.getElementById('subject')?.value || '';
-      const messaggio = document.getElementById('messaggio')?.value?.trim() || '';
-      const privacy = document.getElementById('privacy')?.checked || false;
+      const nome = (document.getElementById('nome') as HTMLInputElement)?.value?.trim() || '';
+      const email = (document.getElementById('email') as HTMLInputElement)?.value?.trim() || '';
+      const phone = (document.getElementById('phone') as HTMLInputElement)?.value?.trim() || '';
+      const subject = (document.getElementById('subject') as HTMLSelectElement)?.value || '';
+      const messaggio = (document.getElementById('messaggio') as HTMLTextAreaElement)?.value?.trim() || '';
+      const privacy = (document.getElementById('privacy') as HTMLInputElement)?.checked || false;
 
       if (!nome) {
         showFieldError('nome', 'Il nome è obbligatorio');
@@ -388,14 +393,14 @@ import Layout from '../layouts/Layout.astro';
       const field = document.getElementById(fieldId);
       field?.addEventListener('blur', () => {
         if (fieldId === 'email') {
-          const email = field.value.trim();
+          const email = (field as HTMLInputElement).value.trim();
           if (email && !validateEmail(email)) {
             showFieldError(fieldId, "Inserisci un'email valida");
           } else if (email) {
             clearFieldError(fieldId);
           }
         } else if (fieldId === 'phone') {
-          const phone = field.value.trim();
+          const phone = (field as HTMLInputElement).value.trim();
           if (phone && !validatePhone(phone)) {
             showFieldError(fieldId, 'Inserisci un numero di telefono valido');
           } else {
@@ -422,15 +427,15 @@ import Layout from '../layouts/Layout.astro';
       }
 
       // Show loading state
-      submitBtn.disabled = true;
+      (submitBtn as HTMLButtonElement).disabled = true;
       submitText?.classList.add('hidden');
       loadingText?.classList.remove('hidden');
       successMessage?.classList.add('hidden');
       errorMessage?.classList.add('hidden');
 
       try {
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
+        const formData = new FormData(form as HTMLFormElement);
+        const response = await fetch((form as HTMLFormElement).action, {
           method: 'POST',
           body: formData,
           headers: {
@@ -440,7 +445,7 @@ import Layout from '../layouts/Layout.astro';
 
         if (response.ok) {
           successMessage?.classList.remove('hidden');
-          form.reset();
+          (form as HTMLFormElement).reset();
           // Scroll to success message
           successMessage?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
@@ -452,7 +457,7 @@ import Layout from '../layouts/Layout.astro';
         errorMessage?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } finally {
         // Reset button state
-        submitBtn.disabled = false;
+        (submitBtn as HTMLButtonElement).disabled = false;
         submitText?.classList.remove('hidden');
         loadingText?.classList.add('hidden');
       }

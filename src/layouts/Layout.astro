@@ -89,6 +89,9 @@ const canonicalUrl = pathname === '/'
     <meta name="ICBM" content="44.8477, 7.6833" />
     <meta name="keywords" content="siti web Carmagnola, web design Piemonte, tessere NFC Torino, landing page Carmagnola, ecosistema digitale Piemonte" />
 
+    <!-- Responsive Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/bitora.png" />
@@ -202,10 +205,10 @@ const canonicalUrl = pathname === '/'
     <!-- Back to Top Button -->
     <button 
       id="back-to-top" 
-      class="fixed bottom-6 right-6 z-50 bg-primary hover:bg-primary-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-primary hover:bg-primary-600 text-white p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       aria-label="Torna in cima"
     >
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
       </svg>
     </button>

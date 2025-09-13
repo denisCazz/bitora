@@ -8,10 +8,101 @@ import { testimonials } from '../data/testimonials';
   description="Web Design e Ecosistemi NFC per ristoranti, turismo e professionisti in Piemonte. Soluzioni digitali a Torino, Carmagnola, Cuneo. +35% clienti garantiti."
 >
   <!-- Structured Data (adds to the 2 in Layout to make 3 total) -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Br  <!-- Casi di successo -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bitora.it/"},
+      {"@type": "ListItem", "position": 2, "name": "Per Settore", "item": "https://bitora.it/settori"}
+    ]
+  })}></script>
+  
+  <!-- Hero -->
+  <section class="py-16 md:py-20 lg:py-28 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+          🚀 Risultati concreti in Piemonte
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white">
+          Siti web & NFC che <span class="text-primary">trasformano contatti in clienti</span> in Piemonte
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+          Tessere NFC, landing dinamiche, AI e siti professionali su misura per ristoranti, negozi e professionisti del territorio. Da Carmagnola a Torino, da Cuneo alle Langhe.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-sm">
+          <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
+            Setup in 24h
+          </div>
+          <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
+            Supporto locale
+          </div>
+          <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
+            ROI garantito
+          </div>
+          <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
+            30 giorni soddisfatti o rimborsati
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#soluzioni" class="px-6 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600 transition-colors shadow-lg">Scopri le soluzioni</a>
+          <a href="/demo/ristorante" class="px-6 py-4 border border-primary text-primary hover:bg-primary hover:text-white dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-400 dark:hover:text-white rounded-lg font-semibold transition-colors">Guarda la demo</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-2xl blur-xl"></div>
+        <img src="/nfc.png" alt="Cliente che avvicina il telefone alla tessera NFC" class="relative w-full rounded-2xl shadow-2xl" loading="lazy" />
+        <div class="absolute -bottom-4 -right-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg">
+          <div class="text-sm font-semibold text-gray-900 dark:text-white">+35% prenotazioni</div>
+          <div class="text-xs text-gray-600 dark:text-gray-300">media clienti NFC</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Navigation Menu -->
+  <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-lg">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center py-3">
+        <div class="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-xl p-2 shadow-lg border border-gray-200 dark:border-gray-700 overflow-x-auto">
+          <a 
+            href="#soluzioni" 
+            class="px-3 sm:px-4 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary hover:bg-primary/20 dark:hover:bg-primary/30 transition-all duration-200 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap"
+          >
+            <span>🚀</span>
+            Soluzioni
+          </a>
+          <a 
+            href="#prezzi-sintesi" 
+            class="px-3 sm:px-4 py-2 rounded-lg bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800/70 transition-all duration-200 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap"
+          >
+            <span>💰</span>
+            Prezzi
+          </a>
+          <a 
+            href="#testimonianze" 
+            class="px-3 sm:px-4 py-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-200 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap"
+          >
+            <span>⭐</span>
+            Testimonianze
+          </a>
+          <a 
+            href="#settori" 
+            class="px-3 sm:px-4 py-2 rounded-lg bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-800/70 transition-all duration-200 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap"
+          >
+            <span>🎯</span>
+            Settori
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Casi di successo -->
   <section class="py-20 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
@@ -19,12 +110,12 @@ import { testimonials } from '../data/testimonials';
         <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Storie reali di attività piemontesi che hanno trasformato il loro business con Bitora</p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-16">
         <!-- Case Study 1 -->
-        <div class="bg-orange-50 dark:bg-orange-900/10 p-8 rounded-xl border border-orange-200 dark:border-orange-800 hover:shadow-xl transition-all">
-          <div class="flex items-center gap-4 mb-6">
-            <img src="/mistral.jpg" alt="Mistral Impianti" class="w-16 h-16 rounded-xl object-cover shadow-md" loading="lazy" />
-            <div>
+        <div class="bg-orange-50 dark:bg-orange-900/10 p-6 lg:p-8 rounded-xl border border-orange-200 dark:border-orange-800 hover:shadow-xl transition-all">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
+            <img src="/mistral.jpg" alt="Mistral Impianti" class="w-16 h-16 rounded-xl object-cover shadow-md flex-shrink-0" loading="lazy" />
+            <div class="min-w-0">
               <div class="font-bold text-lg">Mistral Impianti</div>
               <div class="text-sm text-gray-600 dark:text-gray-300">Idraulica • Carmagnola (TO)</div>
             </div>
@@ -34,13 +125,13 @@ import { testimonials } from '../data/testimonials';
             "Abbiamo digitalizzato completamente i nostri processi. Ora i clienti ci trovano facilmente online e possiamo gestire preventivi e appuntamenti in automatico."
           </blockquote>
           
-          <div class="grid grid-cols-2 gap-4 mb-6">
-            <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
-              <div class="text-2xl font-bold text-primary">+60%</div>
+          <div class="grid grid-cols-2 gap-3 lg:gap-4 mb-6">
+            <div class="text-center p-2 lg:p-3 bg-white dark:bg-gray-900 rounded-lg">
+              <div class="text-xl lg:text-2xl font-bold text-primary">+60%</div>
               <div class="text-xs text-gray-600 dark:text-gray-300">Richieste preventivi</div>
             </div>
-            <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
-              <div class="text-2xl font-bold text-primary">15h</div>
+            <div class="text-center p-2 lg:p-3 bg-white dark:bg-gray-900 rounded-lg">
+              <div class="text-xl lg:text-2xl font-bold text-primary">15h</div>
               <div class="text-xs text-gray-600 dark:text-gray-300">Risparmiate/settimana</div>
             </div>
           </div>
@@ -49,10 +140,10 @@ import { testimonials } from '../data/testimonials';
         </div>
 
         <!-- Case Study 2 -->
-        <div class="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-xl border border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all">
-          <div class="flex items-center gap-4 mb-6">
-            <img src="/ilportico.png" alt="Il Portico" class="w-16 h-16 rounded-xl object-cover shadow-md" loading="lazy" />
-            <div>
+        <div class="bg-blue-50 dark:bg-blue-900/10 p-6 lg:p-8 rounded-xl border border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
+            <img src="/ilportico.png" alt="Il Portico" class="w-16 h-16 rounded-xl object-cover shadow-md flex-shrink-0" loading="lazy" />
+            <div class="min-w-0">
               <div class="font-bold text-lg">Il Portico</div>
               <div class="text-sm text-gray-600 dark:text-gray-300">Ristorante • Torino</div>
             </div>
@@ -62,13 +153,13 @@ import { testimonials } from '../data/testimonials';
             "Le tessere NFC hanno rivoluzionato il nostro servizio. I clienti accedono al menu istantaneamente e le prenotazioni online sono raddoppiate."
           </blockquote>
           
-          <div class="grid grid-cols-2 gap-4 mb-6">
-            <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
-              <div class="text-2xl font-bold text-primary">+35%</div>
+          <div class="grid grid-cols-2 gap-3 lg:gap-4 mb-6">
+            <div class="text-center p-2 lg:p-3 bg-white dark:bg-gray-900 rounded-lg">
+              <div class="text-xl lg:text-2xl font-bold text-primary">+35%</div>
               <div class="text-xs text-gray-600 dark:text-gray-300">Prenotazioni</div>
             </div>
-            <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
-              <div class="text-2xl font-bold text-primary">4.8★</div>
+            <div class="text-center p-2 lg:p-3 bg-white dark:bg-gray-900 rounded-lg">
+              <div class="text-xl lg:text-2xl font-bold text-primary">4.8★</div>
               <div class="text-xs text-gray-600 dark:text-gray-300">Rating Google</div>
             </div>
           </div>
@@ -77,10 +168,10 @@ import { testimonials } from '../data/testimonials';
         </div>
 
         <!-- Case Study 3 -->
-        <div class="bg-purple-50 dark:bg-purple-900/10 p-8 rounded-xl border border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all">
-          <div class="flex items-center gap-4 mb-6">
-            <img src="/sartoria_kristina.png" alt="Sartoria Kristina" class="w-16 h-16 rounded-xl object-cover shadow-md" loading="lazy" />
-            <div>
+        <div class="bg-purple-50 dark:bg-purple-900/10 p-6 lg:p-8 rounded-xl border border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
+            <img src="/sartoria_kristina.png" alt="Sartoria Kristina" class="w-16 h-16 rounded-xl object-cover shadow-md flex-shrink-0" loading="lazy" />
+            <div class="min-w-0">
               <div class="font-bold text-lg">Sartoria Kristina</div>
               <div class="text-sm text-gray-600 dark:text-gray-300">Sartoria • Cuneo</div>
             </div>
@@ -90,13 +181,13 @@ import { testimonials } from '../data/testimonials';
             "Il biglietto NFC professionale mi distingue dalla concorrenza. I clienti accedono al mio portfolio e prenotano appuntamenti direttamente."
           </blockquote>
           
-          <div class="grid grid-cols-2 gap-4 mb-6">
-            <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
-              <div class="text-2xl font-bold text-primary">+8</div>
+          <div class="grid grid-cols-2 gap-3 lg:gap-4 mb-6">
+            <div class="text-center p-2 lg:p-3 bg-white dark:bg-gray-900 rounded-lg">
+              <div class="text-xl lg:text-2xl font-bold text-primary">+8</div>
               <div class="text-xs text-gray-600 dark:text-gray-300">Lead/settimana</div>
             </div>
-            <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
-              <div class="text-2xl font-bold text-primary">90%</div>
+            <div class="text-center p-2 lg:p-3 bg-white dark:bg-gray-900 rounded-lg">
+              <div class="text-xl lg:text-2xl font-bold text-primary">90%</div>
               <div class="text-xs text-gray-600 dark:text-gray-300">Conversione portfolio</div>
             </div>
           </div>
@@ -112,32 +203,37 @@ import { testimonials } from '../data/testimonials';
           <p class="text-gray-300">Dati aggregati degli ultimi 12 mesi</p>
         </div>
         
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           <div class="text-center">
-            <div class="text-3xl font-bold text-primary mb-2">150+</div>
+            <div class="text-2xl md:text-3xl font-bold text-primary mb-2">150+</div>
             <div class="text-sm text-gray-300">Clienti attivi</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-primary mb-2">35%</div>
+            <div class="text-2xl md:text-3xl font-bold text-primary mb-2">35%</div>
             <div class="text-sm text-gray-300">Incremento medio lead</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-primary mb-2">4.9★</div>
+            <div class="text-2xl md:text-3xl font-bold text-primary mb-2">4.9★</div>
             <div class="text-sm text-gray-300">Soddisfazione clienti</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-primary mb-2">24h</div>
+            <div class="text-2xl md:text-3xl font-bold text-primary mb-2">24h</div>
             <div class="text-sm text-gray-300">Tempo medio setup</div>
           </div>
         </div>
       </div>
     </div>
-  </section> "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bitora.it/"},
-        {"@type": "ListItem", "position": 2, "name": "Per Settore", "item": "https://bitora.it/settori"}
-      ]
-    }
-  </script>
+  </section>
+
+  <!-- Structured Data (adds to the 2 in Layout to make 3 total) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bitora.it/"},
+      {"@type": "ListItem", "position": 2, "name": "Per Settore", "item": "https://bitora.it/settori"}
+    ]
+  })}></script>
   <!-- Hero -->
   <section class="py-16 md:py-20 lg:py-28 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
     <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
@@ -185,43 +281,6 @@ import { testimonials } from '../data/testimonials';
     </div>
   </section>
 
-  <!-- Quick Navigation Menu -->
-  <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-lg">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-center py-3">
-        <div class="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-xl p-2 shadow-lg border border-gray-200 dark:border-gray-700">
-          <a 
-            href="#soluzioni" 
-            class="px-4 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary hover:bg-primary/20 dark:hover:bg-primary/30 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
-          >
-            <span>🚀</span>
-            Soluzioni
-          </a>
-          <a 
-            href="#prezzi-sintesi" 
-            class="px-4 py-2 rounded-lg bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800/70 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
-          >
-            <span>💰</span>
-            Prezzi
-          </a>
-          <a 
-            href="#testimonianze" 
-            class="px-4 py-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
-          >
-            <span>⭐</span>
-            Testimonianze
-          </a>
-          <a 
-            href="#settori" 
-            class="px-4 py-2 rounded-lg bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-800/70 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
-          >
-            <span>🎯</span>
-            Settori
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
 
   <!-- Soluzioni Principali -->
   <section id="soluzioni" class="py-20 bg-white dark:bg-gray-900 scroll-mt-20">

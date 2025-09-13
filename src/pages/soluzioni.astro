@@ -23,7 +23,7 @@ import Layout from '../layouts/Layout.astro';
         </p>
         
         <!-- Quick Navigation -->
-        <div class="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto">
           <a href="#web-design" class="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-xl hover:bg-blue-200 dark:hover:bg-blue-800/40 transition-colors group">
             <div class="text-2xl mb-2">🌐</div>
             <div class="font-semibold text-blue-900 dark:text-blue-300 group-hover:text-blue-700 dark:group-hover:text-blue-200">Web Design</div>
@@ -32,7 +32,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="text-2xl mb-2">📱</div>
             <div class="font-semibold text-purple-900 dark:text-purple-300 group-hover:text-purple-700 dark:group-hover:text-purple-200">Ecosistema NFC</div>
           </a>
-          <a href="#combo" class="p-4 bg-gradient-to-r from-primary/20 to-purple-500/20 dark:from-primary/30 dark:to-purple-500/30 rounded-xl hover:from-primary/30 hover:to-purple-500/30 dark:hover:from-primary/40 dark:hover:to-purple-500/40 transition-colors group">
+          <a href="#combo" class="p-4 bg-gradient-to-r from-primary/20 to-purple-500/20 dark:from-primary/30 dark:to-purple-500/30 rounded-xl hover:from-primary/30 hover:to-purple-500/30 dark:hover:from-primary/40 dark:hover:to-purple-500/40 transition-colors group sm:col-span-2 lg:col-span-1">
             <div class="text-2xl mb-2">🔥</div>
             <div class="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-gray-700 dark:group-hover:text-gray-200">Combo</div>
           </a>
@@ -45,7 +45,7 @@ import Layout from '../layouts/Layout.astro';
   <section id="web-design" class="py-20 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div class="inline-flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
               🌐 Soluzione 1
@@ -59,10 +59,10 @@ import Layout from '../layouts/Layout.astro';
               Siti web professionali, e-commerce integrati e landing page ottimizzate per il territorio piemontese. Perfetti per chi vuole una presenza digitale solida e performante.
             </p>
             
-            <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="grid sm:grid-cols-2 gap-6 mb-8">
               <div>
                 <h4 class="font-semibold text-gray-900 dark:text-white mb-3">✅ Cosa include:</h4>
-                <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-sm lg:text-base">
                   <li>• Sito responsive mobile-first</li>
                   <li>• SEO ottimizzato per Piemonte</li>
                   <li>• E-commerce con pagamenti</li>
@@ -122,8 +122,8 @@ import Layout from '../layouts/Layout.astro';
   <section id="nfc-ecosystem" class="py-20 bg-gray-50 dark:bg-gray-800">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="order-2 md:order-1 relative">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="order-2 lg:order-1 relative">
             <div class="absolute -inset-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-2xl blur-xl"></div>
             <div class="relative bg-white dark:bg-gray-700 rounded-2xl shadow-2xl p-8">
               <div class="text-center mb-6">
@@ -161,10 +161,10 @@ import Layout from '../layouts/Layout.astro';
               Tessere NFC intelligenti che collegano il mondo fisico a quello digitale. Landing dinamiche, chatbot AI e automazioni che stupiscono i tuoi clienti.
             </p>
             
-            <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="grid sm:grid-cols-2 gap-6 mb-8">
               <div>
                 <h4 class="font-semibold text-gray-900 dark:text-white mb-3">✅ Cosa include:</h4>
-                <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-sm lg:text-base">
                   <li>• Tessere NFC personalizzate</li>
                   <li>• Landing dinamiche mobile</li>
                   <li>• Chatbot AI integrato</li>
@@ -211,7 +211,7 @@ import Layout from '../layouts/Layout.astro';
           Unisci la solidità di un sito web professionale con l'innovazione dell'ecosistema NFC. La soluzione più completa per dominare online e offline.
         </p>
         
-        <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="grid lg:grid-cols-2 gap-8 mb-12">
           <div class="bg-white/10 dark:bg-gray-800/30 backdrop-blur rounded-xl p-8">
             <h3 class="text-2xl font-bold mb-6">Cosa ottieni</h3>
             <ul class="space-y-3 text-left">
@@ -290,7 +290,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">La nostra esperienza locale e la tecnologia più avanzata al servizio del tuo business</p>
         </div>
         
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="text-center p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-6">
               <span class="text-2xl">🏢</span>
