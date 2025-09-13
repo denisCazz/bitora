@@ -2,118 +2,129 @@
 import Layout from '../layouts/Layout.astro';
 import { nfcEcosystemPlans, comboPlans, webDesignPlans } from '../data/pricing';
 import { faqs } from '../data/faq';
-import { testimonials } from '../data/testimonials';
-import { icons } from '../components/Icons';
 ---
 
-<Layout title="Prezzi Siti Web e Tessere NFC Piemonte | Bitora - Torino, Carmagnola, Cuneo" description="Prezzi trasparenti per siti web e ecosistemi NFC in Piemonte. Piani da €20/mese per ristoranti, hotel e professionisti a Torino, Carmagnola, Cuneo.">
-
+<Layout 
+  title="Prezzi Siti Web e Tessere NFC Piemonte | Bitora - Da €20/mese" 
+  description="Prezzi trasparenti per siti web e ecosistemi NFC in Piemonte. Piani da €20/mese per ristoranti, hotel e professionisti. Setup gratuito e supporto incluso."
+>
   <!-- Hero Section -->
-  <section class="py-20 md:py-28 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-blue-900/20 dark:via-gray-900 dark:to-purple-900/20">
+  <section class="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <div class="inline-flex items-center bg-primary/10 dark:bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-          💰 Prezzi trasparenti e chiari
+        <div class="inline-flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          💰 Prezzi fissi • Setup gratuito • Nessun costo nascosto
         </div>
         
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white">
-          Investi nel <span class="text-primary">futuro digitale</span><br/>
-          del tuo business
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white">
+          Investimenti <span class="text-primary">trasparenti</span><br/>
+          per risultati <span class="text-green-600">garantiti</span>
         </h1>
         
-        <p class="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
-          Soluzioni complete per ogni esigenza e budget. Scegli tra Web Design professionale, 
-          Ecosistema NFC innovativo o la potente combinazione di entrambi.
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          Scegli il piano perfetto per la tua attività. Tutti i piani includono setup completo, 
+          supporto tecnico e garanzia "soddisfatti o rimborsati" di 30 giorni.
         </p>
         
         <!-- Quick Stats -->
-        <div class="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto mb-12">
-          <div class="text-center">
-            <div class="text-3xl font-bold text-primary mb-2">150+</div>
-            <div class="text-gray-600 dark:text-gray-400">Progetti completati</div>
+        <div class="grid md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg text-center">
+            <div class="text-2xl font-bold text-primary mb-1">150+</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Progetti attivi</div>
           </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-primary mb-2">€20</div>
-            <div class="text-gray-600 dark:text-gray-400">Prezzo di partenza</div>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg text-center">
+            <div class="text-2xl font-bold text-green-600 mb-1">24h</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Setup medio</div>
           </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-primary mb-2">24h</div>
-            <div class="text-gray-600 dark:text-gray-400">Setup medio</div>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg text-center">
+            <div class="text-2xl font-bold text-blue-600 mb-1">+35%</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Clienti medi</div>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg text-center">
+            <div class="text-2xl font-bold text-purple-600 mb-1">30gg</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Garanzia</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Quick Navigation Menu -->
+  <!-- Navigation Menu -->
   <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-lg">
     <div class="container mx-auto px-4">
-      <div class="flex justify-center">
-        <div class="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-xl p-2 shadow-lg border border-gray-200 dark:border-gray-700">
+      <div class="flex justify-center py-3">
+        <div class="inline-flex items-center gap-1 bg-gray-50 dark:bg-gray-800 rounded-xl p-1 shadow-lg border border-gray-200 dark:border-gray-700">
           <a 
             href="#web-design" 
-            class="px-4 py-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
+            class="nav-link px-4 py-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
           >
             <span>🌐</span>
             Web Design
           </a>
           <a 
             href="#nfc-ecosystem" 
-            class="px-4 py-2 rounded-lg bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-800/70 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
+            class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-300"
           >
             <span>📱</span>
             Ecosistema NFC
           </a>
           <a 
             href="#combo-solutions" 
-            class="px-4 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary hover:bg-primary/20 dark:hover:bg-primary/30 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
+            class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-300"
           >
             <span>🔥</span>
             Combo
+          </a>
+          <a 
+            href="#faq" 
+            class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-300"
+          >
+            <span>❓</span>
+            FAQ
           </a>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Web Design Plans Section -->
+  <!-- Web Design Plans -->
   <section id="web-design" class="py-20 bg-white dark:bg-gray-900 scroll-mt-20">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
-          🌐 Soluzione 1
+          🌐 Opzione 1: Solo Web Design
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-          <span class="text-blue-600">Web Design</span> Professionale
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+          Siti Web <span class="text-blue-600 dark:text-blue-400">Professionali</span>
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Siti web professionali, e-commerce integrati e landing page ottimizzate per il territorio piemontese
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Siti responsive, veloci e ottimizzati per convertire visitatori in clienti
         </p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {webDesignPlans.map((plan, index) => (
-          <div class={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${plan.highlighted ? 'ring-2 ring-blue-500 scale-105' : ''}`}>
+          <div class={`relative bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${plan.highlighted ? 'ring-2 ring-blue-500 dark:ring-blue-400' : ''}`}>
             {plan.badge && (
-              <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+              <div class="absolute top-0 right-0 bg-blue-600 dark:bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
                 {plan.badge}
               </div>
             )}
             
-            <div class="p-8">
-              <div class="text-center mb-8">
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">{plan.title}</h3>
-                <p class="text-gray-600 dark:text-gray-300 mb-6">{plan.description}</p>
-                <div class="mb-6">
-                  <span class="text-4xl font-bold text-blue-600">{plan.price}</span>
-                  {plan.period && <span class="text-gray-500 dark:text-gray-400">/{plan.period}</span>}
+            <div class="p-6">
+              <div class="text-center mb-6">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{plan.title}</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">{plan.description}</p>
+                <div class="mb-4">
+                  <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">{plan.price}</span>
+                  {plan.period && <span class="text-gray-500 dark:text-gray-400 text-sm">/{plan.period}</span>}
                 </div>
               </div>
               
-              <ul class="space-y-4 mb-8">
+              <ul class="space-y-2 mb-6">
                 {plan.features.map(feature => (
-                  <li class="flex items-start gap-3">
-                    <span class="text-green-500 font-bold mt-1">✓</span>
+                  <li class="flex items-start gap-2 text-sm">
+                    <span class="text-green-500 dark:text-green-400 font-bold mt-0.5 flex-shrink-0">✓</span>
                     <span class="text-gray-700 dark:text-gray-300">{feature}</span>
                   </li>
                 ))}
@@ -121,13 +132,13 @@ import { icons } from '../components/Icons';
               
               <a 
                 href={`/contattaci?plan=${plan.title}`}
-                class={`block w-full text-center py-4 rounded-xl font-semibold transition-all duration-300 ${
+                class={`block w-full text-center py-3 rounded-lg font-semibold transition-all duration-300 text-sm ${
                   plan.highlighted 
-                    ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl' 
-                    : 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70'
+                    ? 'bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 shadow-lg' 
+                    : 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 border dark:border-blue-800'
                 }`}
               >
-                Inizia ora
+                Scegli {plan.title}
               </a>
             </div>
           </div>
@@ -136,374 +147,289 @@ import { icons } from '../components/Icons';
     </div>
   </section>
 
-  <!-- NFC Ecosystem Plans Section -->
-
-  <!-- NFC Ecosystem Plans Section -->
-  <section id="nfc-ecosystem" class="py-24 bg-white dark:bg-gray-900 dark:bg-gray-900 transition-colors duration-300 scroll-mt-40">
+  <!-- NFC Ecosystem Plans -->
+  <section id="nfc-ecosystem" class="py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white dark:text-white">Ecosistema NFC</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
-          Carte intelligenti che si trasformano in mini landing pages dinamiche con AI integrata
+        <div class="inline-flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          📱 Opzione 2: Solo Ecosistema NFC
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+          Tessere <span class="text-purple-600 dark:text-purple-400">Smart NFC</span>
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Biglietti digitali intelligenti che trasformano ogni contatto in un'opportunità
         </p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {
-          nfcEcosystemPlans.map(plan => (
-            <div
-              class={`bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-gray-900/50 border-2 ${plan.highlighted ? 'border-indigo-500 dark:border-indigo-400 relative' : 'border-gray-100 dark:border-gray-700'}`}
-            >
-              {plan.badge && (
-                <div class="absolute top-0 right-0 bg-indigo-600 dark:bg-indigo-500 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">
-                  {plan.badge}
-                </div>
-              )}
-              <div class="p-8">
-                <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white dark:text-white">{plan.title}</h3>
-                <div class="mb-4">
-                  <span class="text-4xl font-bold text-indigo-600 dark:text-indigo-400">{plan.price}</span>
-                  {plan.period && <span class="text-gray-500 dark:text-gray-400 text-sm">/{plan.period}</span>}
-                </div>                <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-6">{plan.description}</p>
-
-                <ul class="space-y-3 mb-8">
-                  {plan.features.map(feature => (
-                    <li class="flex items-center">
-                      <div class="w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400">
-                        <Fragment set:html={icons.check} />
-                      </div>
-                      <span class="text-gray-600 dark:text-gray-300 dark:text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={plan.buttonUrl}
-                  class={`block w-full py-3 px-4 text-center font-bold rounded-md transition-all duration-300 ${plan.highlighted ? 'bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white transform hover:scale-105' : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200'}`}
-                >
-                  {plan.buttonText}
-                </a>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-
-      <!-- Value Proposition Cards -->
-      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-16">
-        <div class="text-center p-6">
-          <div class="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-6 h-6 text-green-600 dark:text-green-400">
-              <Fragment set:html={icons.check} />
-            </div>
-          </div>
-          <h4 class="font-bold mb-2 text-gray-900 dark:text-white dark:text-white">ROI Immediato</h4>
-          <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-sm">I clienti vedono risultati tangibili fin dal primo utilizzo</p>
-        </div>
-        <div class="text-center p-6">
-          <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-6 h-6 text-blue-600 dark:text-blue-400">
-              <Fragment set:html={icons.chip} />
-            </div>
-          </div>
-          <h4 class="font-bold mb-2 text-gray-900 dark:text-white dark:text-white">Tecnologia Avanzata</h4>
-          <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-sm">AI integrata e analytics per ottimizzare ogni interazione</p>
-        </div>
-        <div class="text-center p-6">
-          <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-6 h-6 text-purple-600 dark:text-purple-400">
-              <Fragment set:html={icons.briefcase} />
-            </div>
-          </div>
-          <h4 class="font-bold mb-2 text-gray-900 dark:text-white dark:text-white">Supporto Completo</h4>
-          <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-sm">Ti accompagniamo in ogni fase dell'implementazione</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Combo Solution Section -->
-  <section id="combo-solutions" class="py-24 bg-white dark:bg-gray-900 dark:bg-gray-900 transition-colors duration-300 scroll-mt-40">
-    <div class="container mx-auto px-4">      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white dark:text-white">Soluzione Integrata</h2>
-        <p class="text-xl text-gray-700 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
-          La combinazione perfetta tra presenza web professionale e innovazione NFC
-        </p>
-      </div>
-      <div class="max-w-2xl mx-auto">
-        {
-          comboPlans.map(plan => (
-            <div class="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-lg shadow-xl overflow-visible border-2 border-purple-500 dark:border-purple-400 relative">
-              <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-                <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-sm font-bold px-8 py-3 rounded-full shadow-xl">
-                  {plan.badge}
-                </div>
-              </div>
-              <div class="p-8 pt-20">
-                <h3 class="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-white dark:text-white">{plan.title}</h3>
-                <div class="mb-4 text-center">
-                  <span class="text-4xl font-bold text-purple-600 dark:text-purple-400">{plan.price}</span>
-                  {plan.period && <span class="text-gray-700 dark:text-gray-300 dark:text-gray-300 text-sm">/{plan.period}</span>}
-                </div>
-                <p class="text-gray-700 dark:text-gray-300 dark:text-gray-300 mb-6 text-center font-medium">{plan.description}</p>
-                <ul class="space-y-3 mb-8">
-                  {plan.features.map(feature => (
-                    <li class="flex items-center">
-                      <div class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400">
-                        <Fragment set:html={icons.check} />
-                      </div>
-                      <span class="text-gray-800 dark:text-gray-200">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={plan.buttonUrl}
-                  class="block w-full py-4 px-6 text-center font-bold text-lg rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                >
-                  {plan.buttonText}
-                </a>
-              </div>
-            </div>
-          ))
-        }
       </div>
       
-      <!-- Why Choose Combo -->
-      <div class="mt-16 text-center">
-        <h3 class="text-2xl font-bold mb-8 text-gray-900 dark:text-white dark:text-white">Perché scegliere la soluzione integrata?</h3>
-        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div class="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <div class="w-6 h-6 text-purple-600 dark:text-purple-400">
-                <Fragment set:html={icons.globe} />
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {nfcEcosystemPlans.map((plan, index) => (
+          <div class={`relative bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${plan.highlighted ? 'ring-2 ring-purple-500 dark:ring-purple-400' : ''}`}>
+            {plan.badge && (
+              <div class="absolute top-0 right-0 bg-purple-600 dark:bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                {plan.badge}
               </div>
-            </div>
-            <h4 class="font-bold mb-2 text-gray-900 dark:text-white dark:text-white">Coerenza Totale</h4>
-            <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-sm">Brand identity perfettamente allineata tra web e NFC</p>
-          </div>
-          <div class="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-            <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <div class="w-6 h-6 text-indigo-600 dark:text-indigo-400">
-                <Fragment set:html={icons.chip} />
-              </div>
-            </div>
-            <h4 class="font-bold mb-2 text-gray-900 dark:text-white dark:text-white">Un Solo Partner</h4>
-            <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-sm">Gestione semplificata con un unico punto di contatto</p>
-          </div>
-          <div class="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-            <div class="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <div class="w-6 h-6 text-green-600 dark:text-green-400">
-                <Fragment set:html={icons.check} />
-              </div>
-            </div>
-            <h4 class="font-bold mb-2 text-gray-900 dark:text-white dark:text-white">Valore Superiore</h4>
-            <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300 text-sm">Investimento ottimizzato per il massimo ritorno</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Traditional Web Design Section -->
-  <section id="portfolio-web" class="py-24 bg-gray-50 dark:bg-gray-800 dark:bg-gray-800 transition-colors duration-300 scroll-mt-40">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white dark:text-white">Web Design Tradizionale</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300 max-w-3xl mx-auto">
-          I nostri servizi classici di web design per chi preferisce un approccio tradizionale
-        </p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {
-          webDesignPlans.map(plan => (
-            <div class="bg-white dark:bg-gray-900 dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-gray-900/50 border border-gray-100 dark:border-gray-700">
-              <div class="p-8">
-                <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white dark:text-white">{plan.title}</h3>
+            )}
+            
+            <div class="p-6">
+              <div class="text-center mb-6">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{plan.title}</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">{plan.description}</p>
                 <div class="mb-4">
-                  <span class="text-4xl font-bold text-gray-900 dark:text-white dark:text-white">{plan.price}</span>
-                  {plan.period && <span class="text-gray-500 dark:text-gray-400">/{plan.period}</span>}
+                  <span class="text-2xl font-bold text-purple-600 dark:text-purple-400">{plan.price}</span>
+                  {plan.period && <span class="text-gray-500 dark:text-gray-400 text-sm">/{plan.period}</span>}
                 </div>
-                <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300 mb-6">{plan.description}</p>
-
-                <ul class="space-y-3 mb-8">
-                  {plan.features.map(feature => (
-                    <li class="flex items-center">
-                      <div class="w-5 h-5 mr-2 text-black dark:text-white">
-                        <Fragment set:html={icons.check} />
-                      </div>
-                      <span class="text-gray-600 dark:text-gray-300 dark:text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>                <a
-                  href={plan.buttonUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="block w-full py-3 px-4 text-center font-bold rounded-md bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 transition-all duration-300"
-                >
-                  Richiedi il tuo portfolio
-                </a>
               </div>
+              
+              <ul class="space-y-2 mb-6">
+                {plan.features.map(feature => (
+                  <li class="flex items-start gap-2 text-sm">
+                    <span class="text-green-500 dark:text-green-400 font-bold mt-0.5 flex-shrink-0">✓</span>
+                    <span class="text-gray-700 dark:text-gray-300">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <a 
+                href={`/contattaci?plan=${plan.title}`}
+                class={`block w-full text-center py-3 rounded-lg font-semibold transition-all duration-300 text-sm ${
+                  plan.highlighted 
+                    ? 'bg-purple-600 dark:bg-purple-500 text-white hover:bg-purple-700 dark:hover:bg-purple-600 shadow-lg' 
+                    : 'bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-900/40 border dark:border-purple-800'
+                }`}
+              >
+                Scegli {plan.title}
+              </a>
             </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- Social Proof Section -->
-  <section id="testimonials" class="py-16 bg-gradient-to-r from-gray-50 to-indigo-50 dark:from-gray-800 dark:to-indigo-900/30 scroll-mt-40">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white dark:text-white">Clienti Soddisfatti</h2>
-        <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300">Ecco cosa dicono i professionisti che hanno scelto le nostre soluzioni</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {testimonials.map(testimonial => (
-          <div class="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl dark:hover:shadow-gray-900/50 transition-shadow border border-gray-200 dark:border-gray-700">
-            <div class="flex items-start mb-4">
-              <img 
-                src={testimonial.image} 
-                alt={testimonial.author}
-                class="w-12 h-12 rounded-full object-cover mr-4"
-              />
-              <div>
-                <h4 class="font-semibold text-gray-800 dark:text-white">{testimonial.author}</h4>
-                <p class="text-sm text-gray-600 dark:text-gray-300 dark:text-gray-400">{testimonial.company}</p>
-              </div>
-            </div>
-            <blockquote class="text-gray-700 dark:text-gray-300 dark:text-gray-300 italic mb-4">
-              "{testimonial.quote}"
-            </blockquote>
-            <a 
-              href={testimonial.site} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 text-sm font-medium"
-            >
-              Visita il sito
-              <div class="w-4 h-4 ml-1">
-                <Fragment set:html={icons.externalLink} />
-              </div>
-            </a>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Results & Trust Section -->
-  <section class="py-16 bg-gradient-to-r from-indigo-600 to-purple-600">
+  <!-- Combo Solutions -->
+  <section id="combo-solutions" class="py-20 bg-white dark:bg-gray-900 scroll-mt-20">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-white mb-4">Risultati Concreti</h2>
-        <p class="text-indigo-100 max-w-2xl mx-auto">I nostri clienti vedono miglioramenti significativi nel loro business</p>
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-gradient-to-r from-primary to-orange-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+          🔥 Opzione 3: Combo (Più Richiesta)
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+          Soluzioni <span class="text-primary dark:text-primary-400">Complete</span>
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          La combinazione perfetta: sito web + ecosistema NFC per massimizzare i risultati
+        </p>
       </div>
-      <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-        <div class="text-center">
-          <div class="text-4xl font-bold text-white mb-2">150%</div>
-          <div class="text-indigo-100 text-sm">Aumento engagement medio</div>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl font-bold text-white mb-2">48h</div>
-          <div class="text-indigo-100 text-sm">Tempo medio di consegna</div>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl font-bold text-white mb-2">98%</div>
-          <div class="text-indigo-100 text-sm">Clienti soddisfatti</div>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl font-bold text-white mb-2">24/7</div>
-          <div class="text-indigo-100 text-sm">Supporto dedicato</div>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {comboPlans.map((plan, index) => (
+          <div class={`relative bg-gradient-to-br from-primary/5 to-orange-500/5 dark:from-primary/10 dark:to-orange-500/10 rounded-xl shadow-lg border border-primary/20 dark:border-primary/30 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${plan.highlighted ? 'ring-2 ring-primary dark:ring-primary-400' : ''}`}>
+            {plan.badge && (
+              <div class="absolute top-0 right-0 bg-gradient-to-r from-primary to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                {plan.badge}
+              </div>
+            )}
+            
+            <div class="p-8">
+              <div class="text-center mb-8">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{plan.title}</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-6">{plan.description}</p>
+                <div class="mb-6">
+                  <span class="text-3xl font-bold text-primary dark:text-primary-400">{plan.price}</span>
+                  {plan.period && <span class="text-gray-500 dark:text-gray-400">/{plan.period}</span>}
+                </div>
+                {plan.highlighted && plan.title === 'Combo Pro' && (
+                  <div class="inline-flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium">
+                    💰 Risparmi €120/anno
+                  </div>
+                )}
+              </div>
+              
+              <ul class="space-y-3 mb-8">
+                {plan.features.map(feature => (
+                  <li class="flex items-start gap-3">
+                    <span class="text-green-500 dark:text-green-400 font-bold mt-1 flex-shrink-0">✓</span>
+                    <span class="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <a 
+                href={`/contattaci?plan=${plan.title}`}
+                class={`block w-full text-center py-4 rounded-lg font-semibold transition-all duration-300 ${
+                  plan.highlighted 
+                    ? 'bg-gradient-to-r from-primary to-orange-500 text-white hover:shadow-lg transform hover:scale-[1.02]' 
+                    : 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-400 hover:bg-primary/20 dark:hover:bg-primary/30 border dark:border-primary/30'
+                }`}
+              >
+                Scegli {plan.title}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition -->
+  <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">
+          Perché scegliere i nostri piani?
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <h3 class="font-semibold mb-2">Setup Rapido</h3>
+            <p class="text-blue-100 dark:text-blue-200 text-sm">Il tuo progetto sarà online in 24-48 ore. Nessuna attesa, massima efficienza.</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">🎯</span>
+            </div>
+            <h3 class="font-semibold mb-2">Risultati Garantiti</h3>
+            <p class="text-blue-100 dark:text-blue-200 text-sm">30 giorni soddisfatti o rimborsati. Ci impegniamo per il tuo successo.</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">🏠</span>
+            </div>
+            <h3 class="font-semibold mb-2">Supporto Locale</h3>
+            <p class="text-blue-100 dark:text-blue-200 text-sm">Team in Piemonte, sempre disponibile per assistenza e consulenza.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action Section -->
-  <section class="py-24 bg-gradient-to-r from-indigo-600 to-purple-600">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold text-white mb-8">
-        Pronto a rivoluzionare il tuo business?
-      </h2>
-      <p class="text-xl text-indigo-100 mb-12 max-w-3xl mx-auto">
-        Combina la presenza web con l'innovazione NFC. Offri ai tuoi clienti un'esperienza digitale che li stupirà.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/contattaci"
-          class="inline-block bg-white dark:bg-gray-900 text-indigo-600 font-bold py-3 px-8 rounded-md hover:bg-gray-100 dark:bg-gray-700 transition-all duration-300 transform hover:scale-105"
-        >
-          Richiedi una consulenza gratuita
-        </a>
-        <a
-          href="/nfc-ecosystem#demo"
-          class="inline-block border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white dark:bg-gray-900 hover:text-indigo-600 transition-all duration-300"
-        >
-          Vedi le demo
-        </a>
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            Domande Frequenti
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300">
+            Tutto quello che devi sapere sui nostri servizi e prezzi
+          </p>
+        </div>
+        
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+              <button 
+                class="w-full p-6 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
+                onclick={`toggleFaq(${index})`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="font-semibold text-gray-900 dark:text-white pr-4">{faq.question}</h3>
+                  <span class="text-primary dark:text-primary-400 font-bold text-xl faq-icon" id={`faq-icon-${index}`}>+</span>
+                </div>
+              </button>
+              <div class="faq-content hidden p-6 pt-0 text-gray-600 dark:text-gray-300" id={`faq-content-${index}`}>
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
-  <!-- FAQ Section -->
-  <section id="faq" class="py-24 bg-white dark:bg-gray-900 dark:bg-gray-900 transition-colors duration-300 scroll-mt-40">
-    <div class="container mx-auto px-4 max-w-3xl">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white dark:text-white">Domande Frequenti</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 dark:text-gray-300">Hai domande? Probabilmente abbiamo già la risposta</p>
-      </div>
-      <div class="space-y-6">
-        {
-          faqs.map(faq => (
-            <div class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-md dark:hover:shadow-gray-900/50 transition-shadow">
-              <details class="group">
-                <summary class="flex justify-between items-center p-6 cursor-pointer hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors">
-                  <h3 class="text-lg font-semibold text-gray-800 dark:text-white">{faq.question}</h3>
-                  <div class="text-gray-500 dark:text-gray-400 transition-transform duration-200 group-open:rotate-180">
-                    <Fragment set:html={icons.chevronDown} />
-                  </div>
-                </summary>
-                <div class="px-6 pb-6">
-                  <p class="text-gray-600 dark:text-gray-300 dark:text-gray-300 leading-relaxed">{faq.answer}</p>
-                </div>
-              </details>
-            </div>
-          ))
-        }
+
+  <!-- CTA finale -->
+  <section class="py-20 bg-gradient-to-r from-primary to-orange-500 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Pronto per iniziare?
+        </h2>
+        
+        <p class="text-xl mb-8 opacity-95">
+          Scegli il piano perfetto per la tua attività e inizia a vedere risultati concreti in pochi giorni.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contattaci" 
+            class="px-8 py-4 bg-white text-primary rounded-xl font-semibold hover:bg-gray-100 transition-colors text-lg shadow-lg"
+          >
+            Richiedi consulenza gratuita
+          </a>
+          
+          <a 
+            href="https://wa.me/+393123456789?text=Ciao,%20vorrei%20informazioni%20sui%20vostri%20piani" 
+            class="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-primary transition-colors text-lg"
+          >
+            Scrivici su WhatsApp
+          </a>
+        </div>
+        
+        <div class="mt-6 text-sm opacity-80">
+          💡 Consulenza gratuita • ⚡ Setup in 24h • 🎯 Risultati garantiti
+        </div>
       </div>
     </div>
   </section>
 </Layout>
 
-<style>
-  html {
-    scroll-behavior: smooth;
+<script>
+  function toggleFaq(index) {
+    const content = document.getElementById(`faq-content-${index}`);
+    const icon = document.getElementById(`faq-icon-${index}`);
+    
+    if (content && icon) {
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.textContent = '−';
+      } else {
+        content.classList.add('hidden');
+        icon.textContent = '+';
+      }
+    }
   }
   
-  /* Ensure sections are properly offset when navigating */
-  section[id] {
-    scroll-margin-top: 10rem;
-  }
-</style>
-
-<script>
-  // Handle smooth scrolling with proper offset
-  document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-          const headerOffset = 160; // Account for both headers height
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
+  // Smooth scrolling for navigation
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
     });
+  });
+  
+  // Active section highlighting
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.classList.remove('bg-blue-100', 'dark:bg-blue-900/50', 'text-blue-800', 'dark:text-blue-300');
+          link.classList.add('hover:bg-gray-100', 'dark:hover:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+        });
+        
+        const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (activeLink) {
+          activeLink.classList.add('bg-blue-100', 'dark:bg-blue-900/50', 'text-blue-800', 'dark:text-blue-300');
+          activeLink.classList.remove('hover:bg-gray-100', 'dark:hover:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('section[id]').forEach(section => {
+    observer.observe(section);
   });
 </script>

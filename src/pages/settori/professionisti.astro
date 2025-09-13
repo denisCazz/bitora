@@ -5,16 +5,48 @@ import Layout from '../../layouts/Layout.astro';
 <Layout title="Soluzioni per Professionisti | Bitora" description="Biglietto da visita digitale con contatti automatici e mini‑landing su misura.">
   <section class="py-20 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4 max-w-4xl">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Per Professionisti</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-300 mb-10">Presentati in modo moderno e raccogli contatti in automatico.</p>
-      <ul class="grid md:grid-cols-2 gap-6">
-        <li class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">Biglietto NFC/QR personalizzato</li>
-        <li class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">Mini‑landing con portfolio e contatti</li>
-        <li class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">Integrazione calendario per appuntamenti</li>
-        <li class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">Analytics delle interazioni</li>
+      <div class="inline-flex items-center bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-4 py-2 rounded-full text-sm font-medium mb-4">💼 Professionisti</div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-3 text-gray-900 dark:text-white">Per Professionisti</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Presentati in modo moderno e raccogli contatti in automatico.</p>
+
+      <!-- Micro‑stats -->
+      <div class="grid grid-cols-3 gap-4 mb-10">
+        <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-purple-200 dark:border-purple-800">
+          <div class="text-2xl font-bold text-purple-600">+45%</div>
+          <div class="text-xs text-gray-600 dark:text-gray-400">Nuovi contatti</div>
+        </div>
+        <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-purple-200 dark:border-purple-800">
+          <div class="text-2xl font-bold text-purple-600">72%</div>
+          <div class="text-xs text-gray-600 dark:text-gray-400">Conversione lead</div>
+        </div>
+        <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-purple-200 dark:border-purple-800">
+          <div class="text-2xl font-bold text-purple-600">€1.5k</div>
+          <div class="text-xs text-gray-600 dark:text-gray-400">Valore extra/mese</div>
+        </div>
+      </div>
+
+      <ul class="grid md:grid-cols-2 gap-4">
+        <li class="bg-gray-50 dark:bg-gray-800 p-5 rounded-xl flex items-start gap-3">
+          <span class="text-green-600 dark:text-green-400 mt-0.5">✓</span>
+          <span class="text-gray-800 dark:text-gray-200">Biglietto da visita NFC premium</span>
+        </li>
+        <li class="bg-gray-50 dark:bg-gray-800 p-5 rounded-xl flex items-start gap-3">
+          <span class="text-green-600 dark:text-green-400 mt-0.5">✓</span>
+          <span class="text-gray-800 dark:text-gray-200">Mini‑landing con portfolio e contatti</span>
+        </li>
+        <li class="bg-gray-50 dark:bg-gray-800 p-5 rounded-xl flex items-start gap-3">
+          <span class="text-green-600 dark:text-green-400 mt-0.5">✓</span>
+          <span class="text-gray-800 dark:text-gray-200">Integrazione calendario per appuntamenti</span>
+        </li>
+        <li class="bg-gray-50 dark:bg-gray-800 p-5 rounded-xl flex items-start gap-3">
+          <span class="text-green-600 dark:text-green-400 mt-0.5">✓</span>
+          <span class="text-gray-800 dark:text-gray-200">Analytics delle interazioni</span>
+        </li>
       </ul>
-      <div class="mt-10">
+      
+      <div class="mt-10 flex flex-wrap gap-4">
         <a href="/contattaci?plan=Starter" class="inline-block px-6 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600">Inizia ora</a>
+        <a href="/settori#professionisti" class="inline-block px-6 py-4 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800">Vedi soluzioni settore</a>
       </div>
     </div>
   </section>
