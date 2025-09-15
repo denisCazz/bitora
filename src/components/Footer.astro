@@ -90,37 +90,8 @@ const currentYear = new Date().getFullYear();
             </a>
           </li>
           <li>
-            <a href="/shop" class="text-gray-300 hover:text-blue-400 transition-colors">
-              Shop Tessere NFC
-            </a>
-          </li>
-          <li>
             <a href="/prezzi" class="text-gray-300 hover:text-blue-400 transition-colors">
               Prezzi
-            </a>
-          </li>
-        </ul>
-
-        <h4 class="font-bold text-white text-lg mb-6 mt-8">Demo</h4>
-        <ul class="space-y-3">
-          <li>
-            <a href="/dashboard-demo" class="text-gray-300 hover:text-green-400 transition-colors">
-              Dashboard Demo
-            </a>
-          </li>
-          <li>
-            <a href="/demo/ristorante" class="text-gray-300 hover:text-green-400 transition-colors">
-              Demo Ristorante
-            </a>
-          </li>
-          <li>
-            <a href="/demo/hotel" class="text-gray-300 hover:text-green-400 transition-colors">
-              Demo Hotel
-            </a>
-          </li>
-          <li>
-            <a href="/demo/negozio" class="text-gray-300 hover:text-green-400 transition-colors">
-              Demo Negozio
             </a>
           </li>
         </ul>
@@ -242,25 +213,27 @@ const currentYear = new Date().getFullYear();
     // Add hover effects to social links
     const socialLinks = document.querySelectorAll('footer a[aria-label]');
     socialLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        link.style.transform = 'scale(1.1)';
+      const el = link as HTMLElement;
+      el.addEventListener('mouseenter', () => {
+        el.style.transform = 'scale(1.1)';
       });
       
-      link.addEventListener('mouseleave', () => {
-        link.style.transform = 'scale(1)';
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = 'scale(1)';
       });
     });
 
     // Smooth scroll for internal footer links
     const internalLinks = document.querySelectorAll('footer a[href^="/"]');
     internalLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
+      const el = link as HTMLElement;
+      el.addEventListener('click', () => {
+        const href = el.getAttribute('href');
         if (href && href.startsWith('/') && !href.includes('#')) {
           // Add a subtle loading effect
-          link.style.opacity = '0.7';
+          el.style.opacity = '0.7';
           setTimeout(() => {
-            link.style.opacity = '1';
+            el.style.opacity = '1';
           }, 200);
         }
       });

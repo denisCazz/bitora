@@ -11,7 +11,6 @@ export interface PricingPlan {
   badge?: string;
   benefits?: string[];
   useCases?: string[];
-  roi?: string;
 }
 
 // Updated Web Design Plans
@@ -41,7 +40,6 @@ export const webDesignPlans: PricingPlan[] = [
       'Professionisti e freelance',
       'Attività commerciali in Piemonte'
     ],
-    roi: 'ROI medio: 300% in 6 mesi',
     buttonText: 'Inizia ora',
     buttonUrl: '/contattaci?plan=WebEssenziale',
     highlighted: false,
@@ -71,7 +69,6 @@ export const webDesignPlans: PricingPlan[] = [
       'Aziende con servizi complessi',
       'Attività con team commerciale'
     ],
-    roi: 'ROI medio: 400% primi 12 mesi',
     buttonText: 'Potenzia il business',
     buttonUrl: '/contattaci?plan=WebBusiness',
     highlighted: true,
@@ -100,7 +97,6 @@ export const webDesignPlans: PricingPlan[] = [
       'Portali complessi multi-utente',
       'Progetti con esigenze specifiche'
     ],
-    roi: 'ROI personalizzato basato su obiettivi',
     buttonText: 'Richiedi preventivo',
     buttonUrl: '/contattaci?plan=WebPremium',
     highlighted: false,
@@ -134,7 +130,6 @@ export const nfcEcosystemPlans: PricingPlan[] = [
       'Menu base per bar e locali',
       'Info point per piccole attività'
     ],
-    roi: 'Si ripaga con 3-5 nuovi contatti',
     buttonText: 'Inizia con NFC',
     buttonUrl: '/contattaci?plan=NFCStart',
     highlighted: false,
@@ -164,7 +159,6 @@ export const nfcEcosystemPlans: PricingPlan[] = [
       'Hotel e strutture ricettive',
       'Professionisti con clientela'
     ],
-    roi: 'ROI medio: +35% fatturato in 6 mesi',
     buttonText: 'Attiva NFC Pro',
     buttonUrl: '/contattaci?plan=NFCPro',
     highlighted: true,
@@ -193,8 +187,7 @@ export const nfcEcosystemPlans: PricingPlan[] = [
       'Grandi eventi e fiere',
       'Aziende con esigenze specifiche'
     ],
-    roi: 'ROI personalizzato su KPI aziendali',
-    buttonText: 'Richiedi demo',
+    buttonText: 'Richiedi preventivo',
     buttonUrl: '/contattaci?plan=NFCBusiness',
     highlighted: false,
     category: 'nfc',
@@ -227,7 +220,6 @@ export const comboPlans: PricingPlan[] = [
       'Professionisti innovativi',
       'Negozi con presenza online e offline'
     ],
-    roi: 'ROI combinato: +40% vs singole soluzioni',
     buttonText: 'Attiva Combo',
     buttonUrl: '/contattaci?plan=ComboStart',
     highlighted: false,
@@ -257,7 +249,6 @@ export const comboPlans: PricingPlan[] = [
       'Aziende innovative',
       'Attività con alto volume clienti'
     ],
-    roi: 'ROI documentato: +50% fatturato in 12 mesi',
     buttonText: 'Scegli Pro - Più richiesto',
     buttonUrl: '/contattaci?plan=ComboPro',
     highlighted: true,
@@ -290,9 +281,8 @@ export const nfcSingleCardPlans: PricingPlan[] = [
       'Menu semplici per bar',
       'Collegamenti rapidi ai social'
     ],
-    roi: 'Investimento minimo, impatto massimo',
     buttonText: 'Ordina tessera',
-    buttonUrl: '/shop?product=nfc-basic',
+    buttonUrl: '/contattaci?product=nfc-basic',
     highlighted: false,
     category: 'nfc',
   },
@@ -318,9 +308,8 @@ export const nfcSingleCardPlans: PricingPlan[] = [
       'Cataloghi prodotti per negozi',
       'Presentazioni aziendali innovative'
     ],
-    roi: 'Si ammortizza in 2-3 mesi vs stampa tradizionale',
     buttonText: 'Personalizza tessere',
-    buttonUrl: '/shop?product=nfc-custom',
+    buttonUrl: '/contattaci?product=nfc-custom',
     highlighted: true,
     category: 'nfc',
     badge: 'Personalizzabile',

@@ -5,57 +5,31 @@ import Layout from '../layouts/Layout.astro';
 const caseStudies = [
   {
     id: 'mistral-impianti',
-    title: 'Mistral Impianti SRL',
-    subtitle: 'Digitalizzazione completa per azienda idraulica',
-    category: 'B2B • Servizi',
+    title: 'Mistral Impianti Elettrici',
+    subtitle: 'Digitalizzazione completa per azienda di impianti elettrici',
+    category: 'B2B • Impianti Elettrici',
     location: 'Roreto (TO)',
     imageUrl: '/mistral.jpg',
     siteUrl: 'https://mistralimpianti.it',
-    challenge: 'Mistral Impianti aveva difficoltà a gestire le richieste di preventivi e a essere trovata online dai clienti locali.',
+    challenge: 'Mistral Impianti Elettrici aveva difficoltà a gestire le richieste di preventivi e a essere trovata online dai clienti locali.',
     solution: 'Sito web responsive + sistema CRM integrato + SEO locale avanzata + tessera NFC per i tecnici.',
     results: [
       { metric: '+40%', description: 'Richieste preventivi online' },
       { metric: '8h', description: 'Risparmiate per settimana' },
-      { metric: 'Top 3', description: 'Su Google per "idraulico Roreto"' },
+      { metric: 'Top 3', description: 'Su Google per "elettricista Roreto"' },
       { metric: '4.6★', description: 'Rating Google con 23 recensioni' }
     ],
     technologies: ['Astro', 'Tailwind CSS', 'Contact Forms', 'Google Analytics', 'NFC Cards'],
-    testimonial: "Abbiamo digitalizzato completamente i nostri processi. Ora i clienti ci trovano facilmente online e possiamo gestire preventivi e appuntamenti in automatico. Il ROI è stato straordinario.",
-    clientName: 'Gabriele Ferrero',
+    testimonial: "Abbiamo digitalizzato completamente i nostri processi. Ora i clienti ci trovano facilmente online e possiamo gestire preventivi e appuntamenti in automatico. I risultati sono stati straordinari.",
+    clientName: 'Roberto',
     clientRole: 'Titolare',
     timeline: '3 settimane',
     featured: true,
-    monthlyValue: '€2.800',
-    initialInvestment: '€890'
+    
   },
   {
-    id: 'il-portico',
-    title: 'Il Portico Restaurant',
-    subtitle: 'Rivoluzione digitale per ristorante tradizionale',
-    category: 'Ristorazione • NFC',
-    location: 'Torino',
-    imageUrl: '/ilportico.png',
-    siteUrl: '#',
-    challenge: 'Ristorante tradizionale con menu cartaceo, difficoltà nella gestione prenotazioni e scarsa presenza online.',
-    solution: 'Sito web + Menu NFC digitale + Sistema prenotazioni + Raccolta recensioni automatica.',
-    results: [
-      { metric: '+25%', description: 'Prenotazioni mensili' },
-      { metric: '+60%', description: 'Interazioni menu digitale' },
-      { metric: '4.7★', description: 'Rating migliorato con 34 recensioni' },
-      { metric: '€1.2k', description: 'Fatturato extra mensile' }
-    ],
-    technologies: ['Menu NFC', 'Booking System', 'Review Automation', 'Social Integration'],
-    testimonial: "Le tessere NFC hanno rivoluzionato il nostro servizio. I clienti accedono al menu istantaneamente e le prenotazioni online sono aumentate significativamente. Un investimento che si è ripagato in 3 mesi.",
-    clientName: 'Giuseppe Alberti',
-    clientRole: 'Chef & Owner',
-    timeline: '2 settimane',
-    featured: false,
-    monthlyValue: '€1.200',
-    initialInvestment: '€490'
-  },
-  {
-    id: 'sartoria-kristina',
-    title: 'Sartoria Kristina',
+    id: 'kristina',
+    title: 'Kristina',
     subtitle: 'Portfolio digitale per sartoria artigianale',
     category: 'Artigianato • Portfolio',
     location: 'Carmagnola (TO)',
@@ -67,16 +41,15 @@ const caseStudies = [
       { metric: '+5', description: 'Nuovi clienti/settimana' },
       { metric: '75%', description: 'Conversione da portfolio digitale' },
       { metric: '+85%', description: 'Visibilità su social media' },
-      { metric: '€650', description: 'Valore medio ordine' }
+      { metric: '4.7★', description: 'Soddisfazione clienti' }
     ],
     technologies: ['Portfolio Gallery', 'Appointment Booking', 'NFC Business Card', 'Social Integration'],
     testimonial: "Il biglietto NFC professionale mi ha permesso di distinguermi completamente. Ora i clienti accedono al mio portfolio istantaneamente e posso mostrare tutti i miei lavori.",
-    clientName: 'Kristina Rossi',
+    clientName: 'Kristina',
     clientRole: 'Sarta & Designer',
     timeline: '2 settimane',
     featured: true,
-    monthlyValue: '€1.800',
-    initialInvestment: '€690'
+    
   },
   {
     id: 'speedy-pizza',
@@ -90,19 +63,18 @@ const caseStudies = [
     solution: 'E-commerce su misura + Menu NFC + Sistema ordini + Integrazione delivery.',
     results: [
       { metric: '+80%', description: 'Ordini online' },
-      { metric: '€8.5k', description: 'Fatturato mensile da web' },
+      { metric: '450+', description: 'Ordini mensili' },
       { metric: '28min', description: 'Tempo medio consegna' },
       { metric: '4.5★', description: 'Soddisfazione clienti' }
     ],
     technologies: ['E-commerce', 'Payment Gateway', 'Order Management', 'Delivery Tracking'],
     testimonial: "Il sito di Bitora ci ha permesso di avere il nostro canale di vendita indipendente. Non dipendiamo più solo dalle piattaforme esterne e i margini sono molto migliori.",
-    clientName: 'Adele Veloce',
+    clientName: 'Adele',
     clientRole: 'Titolare',
     timeline: '4 settimane',
     featured: true,
     caseStudyUrl: '/progetti/speedy-pizza',
-    monthlyValue: '€3.200',
-    initialInvestment: '€1.290'
+    
   },
   {
     id: 'bar-chantilly',
@@ -121,7 +93,7 @@ const caseStudies = [
       { metric: 'Q1 2025', description: 'Launch previsto' }
     ],
     technologies: ['Menu NFC', 'Mobile App', 'Loyalty System', 'Booking Platform'],
-    testimonial: "Stiamo lavorando con Bitora per rivoluzionare completamente l'esperienza del nostro bar. Le prime demo sono molto promettenti!",
+    testimonial: "Stiamo lavorando con Bitora per rivoluzionare completamente l'esperienza del nostro bar. I primi test sono molto promettenti!",
     clientName: 'Marco Chantilly',
     clientRole: 'Titolare',
     timeline: 'In corso - 6 settimane',
@@ -133,7 +105,7 @@ const caseStudies = [
 const stats = [
   { number: '87+', label: 'Progetti completati' },
   { number: '96%', label: 'Clienti soddisfatti' },
-  { number: '+28%', label: 'Crescita media fatturato' },
+  { number: '+45%', label: 'Incremento lead medi' },
   { number: '48h', label: 'Tempo medio setup' }
 ];
 ---
@@ -156,7 +128,7 @@ const stats = [
         </h1>
         
         <p class="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
-          Scopri come abbiamo aiutato oltre 87 attività in Piemonte a crescere online e offline con risultati misurabili e ROI documentato
+          Scopri come abbiamo aiutato oltre 87 attività in Piemonte a crescere online e offline con risultati misurabili
         </p>
         
         <!-- Stats rapide -->
@@ -173,7 +145,7 @@ const stats = [
   </section>
 
   <!-- Filtri e Categorie -->
-  <section class="py-6 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-16 z-40">
+  <section class="py-6 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 top-16 z-40">
     <div class="container mx-auto px-4">
       <div class="flex justify-center">
         <div class="flex gap-2 bg-gray-50 dark:bg-gray-800 rounded-xl p-1 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -256,19 +228,7 @@ const stats = [
                 ))}
               </div>
               
-              {/* ROI e Investment */}
-              {caseStudy.monthlyValue && (
-                <div class="flex justify-between items-center mb-4 p-2 md:p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-                  <div class="text-center">
-                    <div class="text-xs md:text-sm text-green-600 dark:text-green-400 font-medium">Valore Generato</div>
-                    <div class="text-sm md:text-lg font-bold text-green-700 dark:text-green-300">{caseStudy.monthlyValue}/mese</div>
-                  </div>
-                  <div class="text-center">
-                    <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Investimento</div>
-                    <div class="text-sm md:text-lg font-bold text-gray-700 dark:text-gray-300">{caseStudy.initialInvestment}</div>
-                  </div>
-                </div>
-              )}
+              
               
               {/* Timeline */}
               <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
@@ -314,28 +274,20 @@ const stats = [
             <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base">Risultati reali da attività piemontesi</p>
           </div>
           
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             <blockquote class="bg-white dark:bg-gray-900 p-4 md:p-6 rounded-xl shadow-md">
-              <p class="text-gray-700 dark:text-gray-300 mb-4 italic text-sm md:text-base">"Abbiamo digitalizzato i nostri processi e il ROI è stato straordinario."</p>
+              <p class="text-gray-700 dark:text-gray-300 mb-4 italic text-sm md:text-base">"Abbiamo digitalizzato i nostri processi e i risultati sono stati straordinari."</p>
               <footer class="text-xs md:text-sm">
-                <strong class="text-primary">Gabriele Ferrero</strong><br/>
-                <span class="text-gray-600 dark:text-gray-400">Mistral Impianti</span>
+                <strong class="text-primary">Roberto</strong><br/>
+                <span class="text-gray-600 dark:text-gray-400">Mistral Impianti Elettrici</span>
               </footer>
             </blockquote>
             
             <blockquote class="bg-white dark:bg-gray-900 p-4 md:p-6 rounded-xl shadow-md">
-              <p class="text-gray-700 dark:text-gray-300 mb-4 italic text-sm md:text-base">"Le tessere NFC hanno rivoluzionato il nostro servizio clienti."</p>
-              <footer class="text-xs md:text-sm">
-                <strong class="text-primary">Giuseppe Alberti</strong><br/>
-                <span class="text-gray-600 dark:text-gray-400">Il Portico Restaurant</span>
-              </footer>
-            </blockquote>
-            
-            <blockquote class="bg-white dark:bg-gray-900 p-4 md:p-6 rounded-xl shadow-md sm:col-span-2 lg:col-span-1">
               <p class="text-gray-700 dark:text-gray-300 mb-4 italic text-sm md:text-base">"Il biglietto NFC mi ha permesso di distinguermi completamente."</p>
               <footer class="text-xs md:text-sm">
-                <strong class="text-primary">Kristina Rossi</strong><br/>
-                <span class="text-gray-600 dark:text-gray-400">Sartoria Kristina</span>
+                <strong class="text-primary">Kristina</strong><br/>
+                <span class="text-gray-600 dark:text-gray-400">Kristina - Sartoria</span>
               </footer>
             </blockquote>
           </div>
@@ -353,12 +305,12 @@ const stats = [
         
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           <div class="text-center">
-            <div class="text-2xl md:text-4xl font-bold text-primary mb-2">€127k+</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Fatturato aggiuntivo generato</div>
+            <div class="text-2xl md:text-4xl font-bold text-primary mb-2">2.840+</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Lead qualificati generati</div>
           </div>
           <div class="text-center">
-            <div class="text-2xl md:text-4xl font-bold text-green-600 mb-2">+28%</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Crescita media fatturato</div>
+            <div class="text-2xl md:text-4xl font-bold text-green-600 mb-2">+45%</div>
+            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Incremento medio visite</div>
           </div>
           <div class="text-center">
             <div class="text-2xl md:text-4xl font-bold text-blue-600 mb-2">1.840+</div>
@@ -397,7 +349,7 @@ const stats = [
         </div>
         
         <div class="mt-6 md:mt-8 text-xs md:text-sm opacity-80">
-          💬 Consulenza gratuita • 🚀 Setup in 24h • 💰 ROI garantito
+          💬 Consulenza gratuita • 🚀 Setup in 24h • ✅ Risultati misurabili
         </div>
       </div>
     </div>

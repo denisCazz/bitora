@@ -14,12 +14,13 @@ const navItems = [
     ],
   },
   {
-    name: 'Per Settore',
+    name: 'Settori',
     url: '/settori',
     dropdown: [
-      { name: 'Ristoranti & Bar', url: '/settori/ristoranti' },
-      { name: 'Hotel & Turismo', url: '/settori/turismo' },
-      { name: 'Professionisti', url: '/settori/professionisti' },
+      { name: 'Tutti i Settori', url: '/settori' },
+      { name: '🍽️ Ristoranti & Bar', url: '/settori/ristoranti' },
+      { name: '🏨 Hotel & Turismo', url: '/settori/turismo' },
+      { name: '💼 Professionisti', url: '/settori/professionisti' },
     ],
   },
   { name: 'Portfolio', url: '/lavori' },
@@ -77,7 +78,6 @@ const currentPath = Astro.url.pathname;
       </nav>
       <div class="hidden md:flex items-center gap-3">
         <ThemeToggle />
-        <a href="/demo/ristorante" class="hidden lg:inline-flex px-4 py-2 rounded-lg text-primary border border-primary hover:bg-primary hover:text-white transition-colors">Demo</a>
         <a href="/contattaci?plan=Start" class="hidden lg:inline-flex px-4 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-primary-600 transition-colors">Inizia ora</a>
       </div>
       <div class="md:hidden">
