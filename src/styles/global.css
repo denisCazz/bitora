@@ -1,67 +1,64 @@
-/* Dark mode variables and base styles */
+/* Design tokens for light & dark mode */
 :root {
-  /* Light mode colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --text-muted: #9ca3af;
-  --border-primary: #e5e7eb;
-  --border-secondary: #d1d5db;
-  --shadow-primary: rgba(0, 0, 0, 0.1);
-  --shadow-secondary: rgba(0, 0, 0, 0.05);
-  --overlay: rgba(255, 255, 255, 0.1);
-  
-  /* Brand colors */
-  --primary-bg: #fef7ed;
-  --primary-border: #fdedd3;
-  --secondary-bg: #f0f1ff;
-  --secondary-border: #e0e2ff;
-  --accent-bg: #fdf2f8;
-  --accent-border: #fce7f3;
+  --bg-primary: #f5f5f7;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e7e7ed;
+  --text-primary: #0a0a0b;
+  --text-secondary: #4f4f58;
+  --text-muted: #7a7a85;
+  --border-primary: #dcdcde;
+  --border-secondary: #c2c2c7;
+  --shadow-primary: rgba(15, 15, 20, 0.08);
+  --shadow-secondary: rgba(15, 15, 20, 0.04);
+  --overlay: rgba(245, 245, 247, 0.7);
+  --surface-glass: rgba(255, 255, 255, 0.78);
+  --surface-glass-border: rgba(10, 10, 12, 0.08);
+  --focus-ring: rgba(9, 86, 210, 0.32);
+  --link-color: #de7800;
+  --link-color-dark: #ff9a3d;
 }
 
 .dark {
-  /* Dark mode colors */
-  --bg-primary: #111827;
-  --bg-secondary: #1f2937;
-  --bg-tertiary: #374151;
-  --text-primary: #f9fafb;
-  --text-secondary: #d1d5db;
-  --text-muted: #9ca3af;
-  --border-primary: #374151;
-  --border-secondary: #4b5563;
-  --shadow-primary: rgba(0, 0, 0, 0.3);
-  --shadow-secondary: rgba(0, 0, 0, 0.2);
-  --overlay: rgba(0, 0, 0, 0.1);
-  
-  /* Brand colors for dark mode */
-  --primary-bg: #78350f;
-  --primary-border: #92400e;
-  --secondary-bg: #312e81;
-  --secondary-border: #3730a3;
-  --accent-bg: #831843;
-  --accent-border: #9d174d;
+  --bg-primary: #08080a;
+  --bg-secondary: #111114;
+  --bg-tertiary: #1a1a1f;
+  --text-primary: #f5f5f7;
+  --text-secondary: #d1d1da;
+  --text-muted: #9f9fb1;
+  --border-primary: rgba(255, 255, 255, 0.08);
+  --border-secondary: rgba(255, 255, 255, 0.12);
+  --shadow-primary: rgba(0, 0, 0, 0.45);
+  --shadow-secondary: rgba(0, 0, 0, 0.3);
+  --overlay: rgba(8, 8, 10, 0.7);
+  --surface-glass: rgba(17, 17, 22, 0.72);
+  --surface-glass-border: rgba(255, 255, 255, 0.08);
+  --focus-ring: rgba(255, 154, 61, 0.28);
 }
 
-/* Smooth transitions for theme switching */
+/* Smooth transitions with reduced motion awareness */
 * {
-  transition: 
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease,
-    box-shadow 0.3s ease;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
-  transition: background-color 0.3s ease;
+  background-color: var(--bg-primary);
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-feature-settings: "liga";
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(222, 120, 0, 0.15);
+  color: var(--text-primary);
 }
 
 /* Utility classes for consistent theming */
@@ -125,52 +122,51 @@ body {
 
 /* Enhanced Focus Indicators and Accessibility */
 :focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+  border-radius: 12px;
 }
 
-.dark :focus-visible {
-  outline: 2px solid #fff;
+button:focus-visible,
+[role='button']:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  border-color: var(--link-color);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.dark button:focus-visible,
+.dark [role='button']:focus-visible,
+.dark input:focus-visible,
+.dark textarea:focus-visible,
+.dark select:focus-visible {
+  border-color: var(--link-color-dark);
 }
 
 /* Remove default outline for mouse users */
 :focus:not(:focus-visible) {
   outline: none;
+  box-shadow: none;
 }
 
-/* Enhanced button focus states */
-button:focus-visible,
-[role='button']:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+/* Link styling */
+a {
+  color: var(--link-color);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
-.dark button:focus-visible,
-.dark [role='button']:focus-visible {
-  outline: 2px solid #fff;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+.dark a {
+  color: var(--link-color-dark);
 }
 
-/* Enhanced link focus states */
-a:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-  text-decoration: underline;
+a:hover {
+  color: #ff8a26;
 }
 
-.dark a:focus-visible {
-  outline: 2px solid #fff;
-}
-
-/* Form element focus states */
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-  border-color: #000;
+.dark a:hover {
+  color: #ffb36e;
 }
 
 /* Skip link for screen readers */
@@ -204,8 +200,16 @@ select:focus-visible {
 }
 
 .hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px -18px var(--shadow-primary);
+}
+
+/* Glass effect helper */
+.glass-panel {
+  background-color: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 /* Mobile-first responsive tables */

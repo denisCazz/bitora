@@ -1,342 +1,137 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { nfcEcosystemPlans, comboPlans, webDesignPlans } from '../data/pricing';
 import { faqs } from '../data/faq';
 ---
 
-<Layout 
-  title="Prezzi Siti Web e Tessere NFC Piemonte | Bitora - Da €20/mese" 
-  description="Prezzi trasparenti per siti web e ecosistemi NFC in Piemonte. Piani da €20/mese per ristoranti, hotel e professionisti. Setup gratuito e supporto incluso."
+<Layout
+  title="Percorsi di partnership e consulenza digitale | Bitora Piemonte"
+  description="Scopri come Bitora accompagna aziende e professionisti in Piemonte con consulenze digitali su misura. Roadmap condivisa, supporto continuativo e pochi investimenti fissi: tessere NFC, sito vetrina e landing page."
 >
-  <!-- Hero Section -->
-  <section class="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+  <section class="py-24 md:py-28">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="inline-flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
-          💰 Prezzi fissi • Setup gratuito • Nessun costo nascosto
-        </div>
-        
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white">
-          Investimenti <span class="text-primary">trasparenti</span><br/>
-          per risultati <span class="text-green-600">garantiti</span>
+      <div class="max-w-4xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">
+          Partnership digitale in Piemonte
+        </p>
+        <h1 class="mt-6 text-4xl font-semibold text-gray-900 dark:text-white md:text-5xl">
+          Consulenza mirata, roadmap condivisa, supporto continuo.
         </h1>
-        
-        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-          Scegli il piano perfetto per la tua attività. Tutti i piani includono setup completo, 
-          supporto tecnico e garanzia "soddisfatti o rimborsati" di 30 giorni.
+        <p class="mt-6 max-w-3xl text-lg text-gray-600 dark:text-gray-300">
+          Dal primo audit fino alla crescita costante: Bitora diventa il tuo partner digitale a Carmagnola, Torino e in tutto il Piemonte. Lavoriamo su strategia, design, contenuti, automazioni e visibilità su motori di ricerca e answer engine AI.
         </p>
-        
-        <!-- Quick Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-3xl mx-auto">
-          <div class="bg-white dark:bg-gray-800 p-3 md:p-4 rounded-xl shadow-lg text-center">
-            <div class="text-xl md:text-2xl font-bold text-primary mb-1">150+</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Progetti attivi</div>
-          </div>
-          <div class="bg-white dark:bg-gray-800 p-3 md:p-4 rounded-xl shadow-lg text-center">
-            <div class="text-xl md:text-2xl font-bold text-green-600 mb-1">24h</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Setup medio</div>
-          </div>
-          <div class="bg-white dark:bg-gray-800 p-3 md:p-4 rounded-xl shadow-lg text-center">
-            <div class="text-xl md:text-2xl font-bold text-blue-600 mb-1">+35%</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Clienti medi</div>
-          </div>
-          <div class="bg-white dark:bg-gray-800 p-3 md:p-4 rounded-xl shadow-lg text-center">
-            <div class="text-xl md:text-2xl font-bold text-purple-600 mb-1">30gg</div>
-            <div class="text-xs md:text-sm text-gray-600 dark:text-gray-400">Garanzia</div>
-          </div>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="/contattaci"
+            class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-custom-lg transition-colors hover:bg-primary-600"
+          >
+            Prenota la consulenza introduttiva
+          </a>
+          <a
+            href="https://wa.me/393247787644"
+            class="inline-flex items-center justify-center rounded-full border border-primary/40 px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Scrivici su WhatsApp
+          </a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Navigation Menu -->
-  <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-lg">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-center py-3">
-        <div class="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 rounded-xl p-1 shadow-lg border border-gray-200 dark:border-gray-700">
-          <a 
-            href="#web-design" 
-            class="nav-link px-4 py-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-200 text-sm font-semibold flex items-center gap-2"
-          >
-            <span>🌐</span>
-            <span>Web Design</span>
-          </a>
-          <a 
-            href="#nfc-ecosystem" 
-            class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-300"
-          >
-            <span>📱</span>
-            <span>Ecosistema NFC</span>
-          </a>
-          <a 
-            href="#combo-solutions" 
-            class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-300"
-          >
-            <span>🔥</span>
-            <span>Combo</span>
-          </a>
-          <a 
-            href="#faq" 
-            class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-300"
-          >
-            <span>❓</span>
-            <span>FAQ</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Web Design Plans -->
-  <section id="web-design" class="py-12 md:py-20 bg-white dark:bg-gray-900 scroll-mt-20">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12 md:mb-16">
-        <div class="inline-flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-4 md:mb-6">
-          🌐 Opzione 1: Solo Web Design
-        </div>
-        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
-          Siti Web <span class="text-blue-600 dark:text-blue-400">Professionali</span>
-        </h2>
-        <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-          Siti responsive, veloci e ottimizzati per convertire visitatori in clienti
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-        {webDesignPlans.map((plan, index) => (
-          <div class={`relative bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${plan.highlighted ? 'ring-2 ring-blue-500 dark:ring-blue-400' : ''}`}>
-            {plan.badge && (
-              <div class="absolute top-0 right-0 bg-blue-600 dark:bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                {plan.badge}
-              </div>
-            )}
-            
-            <div class="p-4 md:p-6">
-              <div class="text-center mb-4 md:mb-6">
-                <h3 class="text-base md:text-lg font-bold text-gray-900 dark:text-white mb-2">{plan.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-3 md:mb-4">{plan.description}</p>
-                <div class="mb-3 md:mb-4">
-                  <span class="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400">{plan.price}</span>
-                  {plan.period && <span class="text-gray-500 dark:text-gray-400 text-xs md:text-sm">/{plan.period}</span>}
-                </div>
-              </div>
-              
-              <ul class="space-y-1 md:space-y-2 mb-4 md:mb-6">
-                {plan.features.map(feature => (
-                  <li class="flex items-start gap-2 text-xs md:text-sm">
-                    <span class="text-green-500 dark:text-green-400 font-bold mt-0.5 flex-shrink-0">✓</span>
-                    <span class="text-gray-700 dark:text-gray-300">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <a 
-                href={`/contattaci?plan=${plan.title}`}
-                class={`block w-full text-center py-2 md:py-3 rounded-lg font-semibold transition-all duration-300 text-xs md:text-sm ${
-                  plan.highlighted 
-                    ? 'bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 shadow-lg' 
-                    : 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 border dark:border-blue-800'
-                }`}
-              >
-                Scegli {plan.title}
-              </a>
-            </div>
-          </div>
+      <div class="mt-16 grid gap-6 md:grid-cols-3">
+        {[
+          {
+            title: 'Scoperta e insight',
+            description:
+              'Colloquio con i referenti, analisi della presenza digitale attuale, reputazione locale e visibilità su Google, Bing, ChatGPT e Gemini.'
+          },
+          {
+            title: 'Blueprint operativo',
+            description:
+              'Roadmap con priorità condivise, proposte di investimento, KPI e timeline. Identifichiamo asset chiave: sito, landing, NFC, campagne.'
+          },
+          {
+            title: 'Partnership attiva',
+            description:
+              'Sviluppo, copywriting, SEO locale e ottimizzazioni per answer engine. Report mensili e supporto diretto del team Bitora.'
+          }
+        ].map(({ title, description }, index) => (
+          <article class="rounded-3xl border border-gray-200/60 bg-white/80 p-6 shadow-sm transition hover:border-primary/40 dark:border-white/10 dark:bg-black/40">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{title}</h3>
+            <p class="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-300">{description}</p>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- NFC Ecosystem Plans -->
-  <section id="nfc-ecosystem" class="py-12 md:py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
+  <section class="py-20">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-12 md:mb-16">
-        <div class="inline-flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-4 md:mb-6">
-          📱 Opzione 2: Solo Ecosistema NFC
-        </div>
-        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
-          Ecosistema <span class="text-green-600 dark:text-green-400">NFC Smart</span>
+      <div class="text-center">
+        <p class="text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">Investimenti già definiti</p>
+        <h2 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">
+          Tre acceleratori con prezzo trasparente. Tutto il resto è personalizzato.
         </h2>
-        <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-          Tessere NFC intelligenti per rivoluzionare l'interazione con i tuoi clienti
-        </p>
       </div>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-        {nfcEcosystemPlans.map((plan, index) => (
-          <div class={`relative bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${plan.highlighted ? 'ring-2 ring-purple-500 dark:ring-purple-400' : ''}`}>
-            {plan.badge && (
-              <div class="absolute top-0 right-0 bg-purple-600 dark:bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                {plan.badge}
-              </div>
-            )}
-            
-            <div class="p-6">
-              <div class="text-center mb-6">
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{plan.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">{plan.description}</p>
-                <div class="mb-4">
-                  <span class="text-2xl font-bold text-purple-600 dark:text-purple-400">{plan.price}</span>
-                  {plan.period && <span class="text-gray-500 dark:text-gray-400 text-sm">/{plan.period}</span>}
-                </div>
-              </div>
-              
-              <ul class="space-y-2 mb-6">
-                {plan.features.map(feature => (
-                  <li class="flex items-start gap-2 text-sm">
-                    <span class="text-green-500 dark:text-green-400 font-bold mt-0.5 flex-shrink-0">✓</span>
-                    <span class="text-gray-700 dark:text-gray-300">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <a 
-                href={`/contattaci?plan=${plan.title}`}
-                class={`block w-full text-center py-3 rounded-lg font-semibold transition-all duration-300 text-sm ${
-                  plan.highlighted 
-                    ? 'bg-purple-600 dark:bg-purple-500 text-white hover:bg-purple-700 dark:hover:bg-purple-600 shadow-lg' 
-                    : 'bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-900/40 border dark:border-purple-800'
-                }`}
-              >
-                Scegli {plan.title}
-              </a>
-            </div>
-          </div>
-        ))}
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        <article class="rounded-3xl border border-gray-200/60 bg-white/80 p-6 shadow-sm dark:border-white/10 dark:bg-black/40">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Tessera NFC premium</h3>
+          <p class="mt-3 text-3xl font-semibold text-primary">€20 <span class="text-base font-normal text-gray-500">cad.</span></p>
+          <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">Materiale resistente, grafica personalizzata, programmazione e landing rapida incluse.</p>
+          <ul class="mt-4 space-y-2 text-xs text-gray-500 dark:text-gray-400">
+            <li>• Consegna in 5-7 giorni lavorativi</li>
+            <li>• QR di backup incluso</li>
+            <li>• Aggiornamenti illimitati alla landing</li>
+          </ul>
+        </article>
+        <article class="rounded-3xl border border-gray-200/60 bg-white/80 p-6 shadow-sm dark:border-white/10 dark:bg-black/40">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Sito vetrina su misura</h3>
+          <p class="mt-3 text-3xl font-semibold text-primary">€500</p>
+          <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">Fino a quattro pagine ottimizzate per mobile, SEO locale e answer engine. Design minimal, contenuti in italiano e tracciamento analytics.</p>
+          <p class="mt-4 text-sm font-medium text-gray-600 dark:text-gray-300">Pagine extra: +€100 cad.</p>
+        </article>
+        <article class="rounded-3xl border border-gray-200/60 bg-white/80 p-6 shadow-sm dark:border-white/10 dark:bg-black/40">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Landing page ad alta conversione</h3>
+          <p class="mt-3 text-3xl font-semibold text-primary">€300</p>
+          <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">Pensata per campagne mirate, con copywriting persuasivo, CTA chiare, moduli ottimizzati e misurazione lead.</p>
+          <p class="mt-4 text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">Delivery entro 10 giorni lavorativi</p>
+        </article>
+      </div>
+
+      <div class="mt-10 rounded-3xl border border-primary/20 bg-primary/10 p-6 text-center text-sm text-primary dark:border-primary/30 dark:bg-primary/20">
+        Tutti gli altri servizi (ecommerce, automazioni, CRM, formazione, campagne) vengono preventivati in consulenza dopo la definizione della roadmap.
       </div>
     </div>
   </section>
 
-  <!-- Combo Solutions -->
-  <section id="combo-solutions" class="py-12 md:py-20 bg-white dark:bg-gray-900 scroll-mt-20">
+  <section class="py-20 bg-gray-50/70 dark:bg-white/5">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-12 md:mb-16">
-        <div class="inline-flex items-center bg-gradient-to-r from-primary to-orange-500 text-white px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-4 md:mb-6">
-          🔥 Opzione 3: Combo (Più Richiesta)
+      <div class="rounded-3xl border border-gray-200/60 bg-white/80 p-10 shadow-sm dark:border-white/10 dark:bg-black/40">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">Partnership in pratica</p>
+            <h2 class="mt-3 text-2xl font-semibold text-gray-900 dark:text-white md:text-3xl">
+              Cosa ricevi collaborando con Bitora
+            </h2>
+          </div>
+          <a href="/contattaci" class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-white/20 dark:text-white dark:hover:bg-white/10">
+            Parla con un consulente ↗
+          </a>
         </div>
-        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
-          Soluzioni <span class="text-primary dark:text-primary-400">Complete</span>
-        </h2>
-        <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-          La combinazione perfetta: sito web + ecosistema NFC per massimizzare i risultati
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
-        {comboPlans.map((plan, index) => (
-          <div class={`relative bg-gradient-to-br from-primary/5 to-orange-500/5 dark:from-primary/10 dark:to-orange-500/10 rounded-xl shadow-lg border border-primary/20 dark:border-primary/30 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${plan.highlighted ? 'ring-2 ring-primary dark:ring-primary-400' : ''}`}>
-            {plan.badge && (
-              <div class="absolute top-0 right-0 bg-gradient-to-r from-primary to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                {plan.badge}
-              </div>
-            )}
-            
-            <div class="p-6 md:p-8">
-              <div class="text-center mb-6 md:mb-8">
-                <h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-2 md:mb-3">{plan.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">{plan.description}</p>
-                <div class="mb-6">
-                  <span class="text-3xl font-bold text-primary dark:text-primary-400">{plan.price}</span>
-                  {plan.period && <span class="text-gray-500 dark:text-gray-400">/{plan.period}</span>}
-                </div>
-                {plan.highlighted && plan.title === 'Combo Pro' && (
-                  <div class="inline-flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium">
-                    💰 Risparmi €120/anno
-                  </div>
-                )}
-              </div>
-              
-              <ul class="space-y-3 mb-8">
-                {plan.features.map(feature => (
-                  <li class="flex items-start gap-3">
-                    <span class="text-green-500 dark:text-green-400 font-bold mt-1 flex-shrink-0">✓</span>
-                    <span class="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <a 
-                href={`/contattaci?plan=${plan.title}`}
-                class={`block w-full text-center py-4 rounded-lg font-semibold transition-all duration-300 ${
-                  plan.highlighted 
-                    ? 'bg-gradient-to-r from-primary to-orange-500 text-white hover:shadow-lg transform hover:scale-[1.02]' 
-                    : 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-400 hover:bg-primary/20 dark:hover:bg-primary/30 border dark:border-primary/30'
-                }`}
-              >
-                Scegli {plan.title}
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Value Proposition -->
-  <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 text-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl md:text-3xl font-bold mb-6">
-          Perché scegliere i nostri piani?
-        </h2>
-        
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="text-center">
-            <div class="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">⚡</span>
-            </div>
-            <h3 class="font-semibold mb-2">Setup Rapido</h3>
-            <p class="text-blue-100 dark:text-blue-200 text-sm">Il tuo progetto sarà online in 24-48 ore. Nessuna attesa, massima efficienza.</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">🎯</span>
-            </div>
-            <h3 class="font-semibold mb-2">Risultati Garantiti</h3>
-            <p class="text-blue-100 dark:text-blue-200 text-sm">30 giorni soddisfatti o rimborsati. Ci impegniamo per il tuo successo.</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-white/20 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">🏠</span>
-            </div>
-            <h3 class="font-semibold mb-2">Supporto Locale</h3>
-            <p class="text-blue-100 dark:text-blue-200 text-sm">Team in Piemonte, sempre disponibile per assistenza e consulenza.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section id="faq" class="py-12 md:py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
-            Domande Frequenti
-          </h2>
-          <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 px-4">
-            Tutto quello che devi sapere sui nostri servizi e prezzi
-          </p>
-        </div>
-        
-        <div class="space-y-4">
-          {faqs.map((faq, index) => (
-            <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-              <button 
-                class="w-full p-6 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50"
-                onclick={`toggleFaq(${index})`}
-              >
-                <div class="flex justify-between items-center">
-                  <h3 class="font-semibold text-gray-900 dark:text-white pr-4">{faq.question}</h3>
-                  <span class="text-primary dark:text-primary-400 font-bold text-xl faq-icon" id={`faq-icon-${index}`}>+</span>
-                </div>
-              </button>
-              <div class="faq-content hidden p-6 pt-0 text-gray-600 dark:text-gray-300" id={`faq-content-${index}`}>
-                <p>{faq.answer}</p>
-              </div>
+        <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {[
+            'Un partner unico per strategia, sviluppo, contenuti e analisi',
+            'Documentazione chiara: roadmap, backlog e report mensili',
+            'Supporto on-demand via Slack, email e WhatsApp Business',
+            'Ottimizzazioni SEO locali e answer engine optimization',
+            'Testing performance e accessibilità su dispositivi reali',
+            'Formazione del personale su nuovi flussi digitali'
+          ].map(item => (
+            <div class="rounded-2xl border border-gray-200/60 bg-white p-5 text-sm text-gray-600 dark:border-white/10 dark:bg-black/60 dark:text-gray-300">
+              <span class="text-primary">•</span> {item}
             </div>
           ))}
         </div>
@@ -344,92 +139,83 @@ import { faqs } from '../data/faq';
     </div>
   </section>
 
-  <!-- CTA finale -->
-  <section class="py-16 md:py-20 bg-gradient-to-r from-primary to-orange-500 text-white">
-    <div class="container mx-auto px-4 text-center">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
-          Pronto per iniziare?
-        </h2>
-        
-        <p class="text-lg md:text-xl mb-6 md:mb-8 opacity-95 px-4">
-          Scegli il piano perfetto per la tua attività e inizia a vedere risultati concreti in pochi giorni.
+  <section id="faq" class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center">
+        <p class="text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">Domande frequenti</p>
+        <h2 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">Dubbi sulla partnership? Rispondiamo qui.</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-gray-600 dark:text-gray-300">
+          Una selezione delle domande che riceviamo più spesso da ristoranti, hotel, professionisti e PMI piemontesi.
         </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/contattaci" 
-            class="px-6 md:px-8 py-3 md:py-4 bg-white text-primary rounded-xl font-semibold hover:bg-gray-100 transition-colors text-base md:text-lg shadow-lg"
+      </div>
+
+      <div class="mx-auto mt-10 max-w-3xl space-y-4">
+        {faqs.slice(0, 6).map((faq, index) => (
+          <div class="rounded-3xl border border-gray-200/60 bg-white/80 shadow-sm dark:border-white/10 dark:bg-black/40">
+            <button
+              class="faq-trigger flex w-full items-center justify-between px-6 py-4 text-left text-sm font-semibold text-gray-900 transition-colors hover:text-primary focus:outline-none dark:text-white"
+              data-target={`faq-${index}`}
+            >
+              <span>{faq.question}</span>
+              <span class="faq-icon text-primary">+</span>
+            </button>
+            <div id={`faq-${index}`} class="faq-content hidden px-6 pb-6 text-sm leading-6 text-gray-600 dark:text-gray-300">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-24">
+    <div class="container mx-auto px-4">
+      <div class="glass-panel rounded-3xl px-6 py-12 text-center md:px-12">
+        <h2 class="text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">
+          Raccontaci le tue priorità. Disegniamo insieme il percorso migliore.
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-gray-600 dark:text-gray-300">
+          Prenota una call oppure scrivici su WhatsApp: prepareremo una valutazione gratuita con esempi, tempistiche e possibili scenari di investimento.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="/contattaci"
+            class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-custom-lg transition-colors hover:bg-primary-600"
           >
-            Richiedi consulenza gratuita
+            Prenota la consulenza introduttiva
           </a>
-          
-          <a 
-            href="https://wa.me/+393123456789?text=Ciao,%20vorrei%20informazioni%20sui%20vostri%20piani" 
-            class="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-primary transition-colors text-lg"
+          <a
+            href="https://wa.me/393247787644"
+            class="inline-flex items-center justify-center rounded-full border border-primary/40 px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Scrivici su WhatsApp
           </a>
         </div>
-        
-        <div class="mt-6 text-sm opacity-80">
-          💡 Consulenza gratuita • ⚡ Setup in 24h • 🎯 Risultati garantiti
-        </div>
       </div>
     </div>
   </section>
-</Layout>
 
-<script>
-  function toggleFaq(index) {
-    const content = document.getElementById(`faq-content-${index}`);
-    const icon = document.getElementById(`faq-icon-${index}`);
-    
-    if (content && icon) {
-      if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        icon.textContent = '−';
-      } else {
-        content.classList.add('hidden');
-        icon.textContent = '+';
-      }
-    }
-  }
-  
-  // Smooth scrolling for navigation
-  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-  
-  // Active section highlighting
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-          link.classList.remove('bg-blue-100', 'dark:bg-blue-900/50', 'text-blue-800', 'dark:text-blue-300');
-          link.classList.add('hover:bg-gray-100', 'dark:hover:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
-        });
-        
-        const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-        if (activeLink) {
-          activeLink.classList.add('bg-blue-100', 'dark:bg-blue-900/50', 'text-blue-800', 'dark:text-blue-300');
-          activeLink.classList.remove('hover:bg-gray-100', 'dark:hover:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+  <script is:inline>
+    const triggers = document.querySelectorAll('.faq-trigger');
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const targetId = trigger.getAttribute('data-target');
+        const content = targetId ? document.getElementById(targetId) : null;
+        const icon = trigger.querySelector('.faq-icon');
+
+        if (!content || !icon) return;
+
+        const isOpen = !content.classList.contains('hidden');
+        document.querySelectorAll('.faq-content').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.faq-icon').forEach(el => (el.textContent = '+'));
+
+        if (!isOpen) {
+          content.classList.remove('hidden');
+          icon.textContent = '−';
         }
-      }
+      });
     });
-  }, { threshold: 0.5 });
-  
-  document.querySelectorAll('section[id]').forEach(section => {
-    observer.observe(section);
-  });
-</script>
+  </script>
+</Layout>

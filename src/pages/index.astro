@@ -4,764 +4,279 @@ import { testimonials } from '../data/testimonials';
 ---
 
 <Layout
-  title="Soluzioni Digitali Professionali per Aziende Moderne | Bitora"
-  description="Ecosistemi digitali completi con siti web professionali, tessere NFC intelligenti e strategie di conversione per ristoranti, hotel e aziende innovative."
+  title="Partner tecnologico per aziende e professionisti in Piemonte | Bitora"
+  description="Bitora è il partner tecnologico di riferimento a Carmagnola, Torino e in tutto il Piemonte: consulenza digitale su misura, siti web ad alte prestazioni, ecosistemi NFC e strategie SEO ottimizzate anche per motori AI."
 >
-  <!-- Structured Data (adds to the 2 in Layout to make 3 total) -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bitora.it/"},
-      {"@type": "ListItem", "position": 2, "name": "Per Settore", "item": "https://bitora.it/settori"}
-    ]
-  })}></script>
-  
-  <!-- Hero -->
-  <section class="py-16 md:py-20 lg:py-28 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <div class="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-          🚀 Soluzioni digitali innovative
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: 'Bitora',
+      image: 'https://bitora.it/bitora.jpg',
+      url: 'https://bitora.it',
+      areaServed: ['Carmagnola', 'Torino', 'Piemonte'],
+      makesOffer: {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Consulenza digitale su misura',
+          provider: 'Bitora',
+          areaServed: 'Provincia di Torino'
+        },
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          priceCurrency: 'EUR',
+          price: '500',
+          description: 'Sito vetrina iniziale, valutazione estesa in consulenza'
+        }
+      }
+    })}
+  ></script>
+
+  <section class="py-24 md:py-32">
+    <div class="container mx-auto grid gap-12 px-4 lg:grid-cols-[1.1fr,0.9fr]">
+      <div class="space-y-8">
+        <div class="inline-flex items-center gap-2 rounded-full bg-black/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-gray-600 dark:bg-white/10 dark:text-gray-300">
+          Partner tecnologico • Piemonte
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white">
-          Ecosistemi digitali che <span class="text-primary">generano risultati concreti</span> per il tuo business
+        <h1 class="text-4xl font-semibold leading-tight tracking-tight text-gray-900 dark:text-white md:text-5xl">
+          Cresci con un partner digitale che progetta, costruisce e ottimizza ogni interazione con i tuoi clienti
         </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
-          Piattaforme web professionali, tessere NFC intelligenti e strategie digitali integrate per aziende moderne che vogliono distinguersi e crescere.
+        <p class="max-w-xl text-lg text-gray-600 dark:text-gray-300">
+          Bitora affianca ristorazione, hospitality e professionisti di Carmagnola e Torino con un approccio consulenziale: diagnosi strategica, sviluppo su misura, ottimizzazione SEO locale e presenza nelle risposte AI di strumenti come ChatGPT e Google Gemini.
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-sm">
-          <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
-            Setup in 24h
+        <div class="flex flex-col gap-3 text-sm text-gray-600 dark:text-gray-300 md:flex-row md:items-center md:gap-6">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">1</span>
+            Analisi dedicata al tuo modello di business
           </div>
-          <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
-            Supporto locale
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">2</span>
+            Roadmap digitale personalizzata
           </div>
-          <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-            <div class="w-5 h-5 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">✓</div>
-            30 giorni soddisfatti o rimborsati
-          </div>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#soluzioni" class="px-6 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600 transition-colors shadow-lg">Scopri le soluzioni</a>
-          
-        </div>
-      </div>
-      <div class="relative">
-        <!-- Effetti di sfondo animati -->
-        <div class="absolute -inset-8 opacity-20">
-          <div class="absolute top-0 -left-4 w-24 h-24 bg-primary rounded-full mix-blend-multiply animate-blob"></div>
-          <div class="absolute top-0 -right-4 w-24 h-24 bg-purple-500 rounded-full mix-blend-multiply animate-blob animation-delay-2000"></div>
-          <div class="absolute -bottom-8 left-20 w-24 h-24 bg-pink-500 rounded-full mix-blend-multiply animate-blob animation-delay-4000"></div>
-        </div>
-        
-        <!-- Gradiente principale migliorato -->
-        <div class="absolute -inset-4 bg-gradient-to-r from-primary/30 via-purple-500/30 to-pink-500/30 rounded-3xl blur-xl animate-pulse-slow"></div>
-        <!-- Container della tessera con effetto 3D -->
-        <div class="relative group perspective-1000">
-          <!-- Mock-up della tessera NFC con animazioni -->
-          <div class="relative transform-gpu transition-all duration-700 ease-out group-hover:rotateY-12 group-hover:scale-105">
-            <!-- Tessera NFC -->
-            <div class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-2xl shadow-2xl p-6 mb-6 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-              <!-- Effetto ologramma -->
-              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
-              
-              <!-- Contenuto tessera -->
-              <div class="relative z-10">
-                <div class="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 class="text-white font-bold text-lg">Ristorante Locale</h3>
-                    <p class="text-gray-300 text-sm">Menu & Prenotazioni</p>
-                  </div>
-                  <!-- Simbolo NFC animato -->
-                  <div class="relative">
-                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center animate-pulse">
-                      <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20 2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM8 20H4V4h4v16zm6-12h-2v8h2V8zm6 12h-4V4h4v16z"/>
-                      </svg>
-                    </div>
-                    <!-- Onde NFC animate -->
-                    <div class="absolute inset-0 rounded-full border-2 border-primary animate-ping"></div>
-                    <div class="absolute inset-0 rounded-full border border-primary/50 animate-ping" style="animation-delay: 0.5s;"></div>
-                  </div>
-                </div>
-                
-                <!-- QR Code simulato -->
-                <div class="grid grid-cols-8 gap-0.5 w-16 h-16 bg-white rounded-lg p-1 opacity-80">
-                  <div class="bg-black rounded-sm"></div>
-                  <div class="bg-white"></div>
-                  <div class="bg-black rounded-sm"></div>
-                  <div class="bg-black rounded-sm"></div>
-                  <div class="bg-white"></div>
-                  <div class="bg-black rounded-sm"></div>
-                  <div class="bg-white"></div>
-                  <div class="bg-black rounded-sm"></div>
-                  <!-- Più pattern QR -->
-                  <div class="bg-white"></div>
-                  <div class="bg-black rounded-sm"></div>
-                  <div class="bg-white"></div>
-                  <div class="bg-black rounded-sm"></div>
-                  <div class="bg-black rounded-sm"></div>
-                  <div class="bg-white"></div>
-                  <div class="bg-black rounded-sm"></div>
-                  <div class="bg-white"></div>
-                </div>
-                
-                <p class="text-xs text-gray-400 mt-2">Tocca con il telefono</p>
-              </div>
-            </div>
-            
-            <!-- Smartphone mock-up -->
-            <div class="relative transform -rotate-2 hover:rotate-1 transition-transform duration-500">
-              <!-- Ombra del telefono -->
-              <div class="absolute inset-0 bg-black/20 rounded-3xl blur-lg transform translate-y-4 scale-95"></div>
-              
-              <!-- Smartphone -->
-              <div class="relative bg-gray-900 rounded-3xl p-2 shadow-2xl">
-                <!-- Schermo -->
-                <div class="bg-gradient-to-b from-blue-50 to-white rounded-2xl p-4 relative overflow-hidden">
-                  <!-- Status bar -->
-                  <div class="flex justify-between items-center text-xs text-gray-600 mb-3">
-                    <span>9:41</span>
-                    <div class="flex gap-1">
-                      <div class="w-1 h-1 bg-gray-400 rounded-full"></div>
-                      <div class="w-1 h-1 bg-gray-400 rounded-full"></div>
-                      <div class="w-1 h-1 bg-green-500 rounded-full"></div>
-                    </div>
-                  </div>
-                  
-                  <!-- Contenuto app -->
-                  <div class="text-center">
-                    <div class="w-12 h-12 bg-primary rounded-xl mx-auto mb-3 flex items-center justify-center shadow-lg">
-                      <span class="text-white text-xl">🍕</span>
-                    </div>
-                    <h4 class="font-bold text-gray-800 text-sm mb-1">Ristorante Locale</h4>
-                    <p class="text-xs text-gray-600 mb-3">Menu del giorno disponibile</p>
-                    
-                    <!-- Bottoni azione -->
-                    <div class="space-y-2">
-                      <div class="bg-primary text-white text-xs py-2 px-3 rounded-lg shadow-md">
-                        📋 Vedi Menu
-                      </div>
-                      <div class="bg-green-500 text-white text-xs py-2 px-3 rounded-lg shadow-md">
-                        📞 Prenota Tavolo
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Effetto di caricamento -->
-                  <div class="absolute inset-0 bg-gradient-to-t from-transparent via-white/50 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Particelle fluttuanti -->
-          <div class="absolute top-10 left-10 w-2 h-2 bg-primary rounded-full animate-float"></div>
-          <div class="absolute top-20 right-10 w-1 h-1 bg-purple-500 rounded-full animate-float animation-delay-1000"></div>
-          <div class="absolute bottom-20 left-5 w-1.5 h-1.5 bg-pink-500 rounded-full animate-float animation-delay-2000"></div>
-        </div>
-        <!-- Badge risultati animato migliorato -->
-        <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 rounded-2xl shadow-xl transform rotate-6 hover:rotate-3 transition-all duration-300 animate-bounce-slow">
-          <div class="text-center">
-            <div class="text-lg font-bold">+35%</div>
-            <div class="text-xs opacity-90">conversioni</div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">3</span>
+            Implementazione e crescita continuativa
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quick Navigation Menu -->
-  <nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-lg">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-center py-3">
-        <div class="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-xl p-2 shadow-lg border border-gray-200 dark:border-gray-700 overflow-x-auto">
-          <a 
-            href="#soluzioni" 
-            class="px-3 sm:px-4 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary hover:bg-primary/20 dark:hover:bg-primary/30 transition-all duration-200 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap"
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a
+            href="/contattaci"
+            class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-orange/30 dark:text-orange dark:hover:bg-orange/10"
           >
-            <span>🚀</span>
-            Soluzioni
+            Prenota una consulenza gratuita
           </a>
-          <a 
-            href="#prezzi-sintesi" 
-            class="px-3 sm:px-4 py-2 rounded-lg bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800/70 transition-all duration-200 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap"
+          <a
+            href="#percorso"
+            class="inline-flex items-center justify-center rounded-full border border-primary/40 px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
           >
-            <span>💰</span>
-            Prezzi
-          </a>
-          <a 
-            href="#testimonianze" 
-            class="px-3 sm:px-4 py-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/70 transition-all duration-200 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap"
-          >
-            <span>⭐</span>
-            Testimonianze
-          </a>
-          <a 
-            href="#settori" 
-            class="px-3 sm:px-4 py-2 rounded-lg bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-800/70 transition-all duration-200 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap"
-          >
-            <span>🎯</span>
-            Settori
+            Scopri il nostro metodo
           </a>
         </div>
       </div>
-    </div>
-  </nav>
-
-  <!-- Casi di successo -->
-  <section class="py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">I nostri clienti ottengono <span class="text-primary">risultati concreti</span></h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Storie reali di attività piemontesi che hanno trasformato il loro business con Bitora</p>
-      </div>
-      
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-16">
-        <!-- Case Study 1 -->
-        <div class="bg-orange-50 dark:bg-orange-900/10 p-6 lg:p-8 rounded-xl border border-orange-200 dark:border-orange-800 hover:shadow-xl transition-all">
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-            <img src="/mistral.jpg" alt="Mistral Impianti Elettrici" class="w-16 h-16 rounded-xl object-cover shadow-md flex-shrink-0" loading="lazy" />
-            <div class="min-w-0">
-              <div class="font-bold text-lg">Mistral Impianti Elettrici</div>
-              <div class="text-sm text-gray-600 dark:text-gray-300">Impianti Elettrici • Roreto (TO)</div>
+      <div class="glass-panel rounded-3xl p-8">
+        <div class="space-y-6 text-sm text-gray-600 dark:text-gray-300">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-gray-400 dark:text-gray-500">Statistiche 2024</p>
+            <div class="mt-3 flex items-baseline gap-2 text-3xl font-semibold text-gray-900 dark:text-white">
+              92%
+              <span class="text-sm font-normal text-gray-500">clienti riconferma partnership</span>
             </div>
           </div>
-          
-          <blockquote class="text-gray-700 dark:text-gray-300 mb-6">
-            "Abbiamo digitalizzato completamente i nostri processi. Ora i clienti ci trovano facilmente online e possiamo gestire preventivi e appuntamenti in automatico."
-          </blockquote>
-          
-          <a href="/progetti/mistral-impianti" class="text-orange-600 font-semibold text-sm hover:underline">Leggi il case study completo →</a>
-        </div>
-
-        <!-- Case Study 2 -->
-        <div class="bg-purple-50 dark:bg-purple-900/10 p-6 lg:p-8 rounded-xl border border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all">
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-            <img src="/sartoria_kristina.png" alt="Kristina Sartoria" class="w-16 h-16 rounded-xl object-cover shadow-md flex-shrink-0" loading="lazy" />
-            <div class="min-w-0">
-              <div class="font-bold text-lg">Kristina</div>
-              <div class="text-sm text-gray-600 dark:text-gray-300">Sartoria • Carmagnola (TO)</div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/70 p-4 shadow-sm dark:bg-black/40">
+              <p class="text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">AI Ready</p>
+              <p class="mt-2 text-sm font-medium text-gray-900 dark:text-white">Contenuti ottimizzati per risposte su ChatGPT, Gemini e motori di ricerca generativi.</p>
+            </div>
+            <div class="rounded-2xl bg-white/70 p-4 shadow-sm dark:bg-black/40">
+              <p class="text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">Performance</p>
+              <p class="mt-2 text-sm font-medium text-gray-900 dark:text-white">Siti sotto 1,2s di caricamento reale su rete mobile in Piemonte.</p>
             </div>
           </div>
-          
-          <blockquote class="text-gray-700 dark:text-gray-300 mb-6">
-            "Il biglietto NFC professionale mi distingue dalla concorrenza. I clienti accedono al mio portfolio e prenotano appuntamenti direttamente."
-          </blockquote>
-          
-          <a href="/progetti/kristina" class="text-purple-600 font-semibold text-sm hover:underline">Leggi il case study completo →</a>
-        </div>
-      </div>
-      
-      <!-- Metriche aggregate -->
-      <div class="bg-gradient-to-r from-gray-900 to-gray-800 text-white p-8 rounded-2xl max-w-4xl mx-auto">
-        <div class="text-center mb-8">
-          <h3 class="text-2xl font-bold mb-2">Risultati dei nostri clienti in Piemonte</h3>
-          <p class="text-gray-300">Dati aggregati degli ultimi 12 mesi</p>
-        </div>
-        
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          <div class="text-center">
-            <div class="text-2xl md:text-3xl font-bold text-primary mb-2">150+</div>
-            <div class="text-sm text-gray-300">Clienti attivi</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl md:text-3xl font-bold text-primary mb-2">35%</div>
-            <div class="text-sm text-gray-300">Incremento medio lead</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl md:text-3xl font-bold text-primary mb-2">4.9★</div>
-            <div class="text-sm text-gray-300">Soddisfazione clienti</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl md:text-3xl font-bold text-primary mb-2">24h</div>
-            <div class="text-sm text-gray-300">Tempo medio setup</div>
+          <div class="flex items-center gap-3 text-xs text-gray-500">
+            <span class="h-2 w-2 rounded-full bg-success-500"></span>
+            Nessuna demo generica: ogni progetto nasce da una consulenza dedicata.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Structured Data (adds to the 2 in Layout to make 3 total) -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bitora.it/"},
-      {"@type": "ListItem", "position": 2, "name": "Per Settore", "item": "https://bitora.it/settori"}
-    ]
-  })}></script>
-
-
-  <!-- Soluzioni Principali -->
-  <section id="soluzioni" class="py-20 bg-white dark:bg-gray-900 scroll-mt-20">
+  <section id="percorso" class="py-20">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">Due percorsi, un obiettivo: <span class="text-primary">più clienti</span></h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Scegli la soluzione perfetta per la tua attività o combinale per risultati straordinari</p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        <!-- Web Design -->
-        <div class="relative group">
-          <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl opacity-25 group-hover:opacity-40 transition-opacity blur-lg"></div>
-          <div class="relative bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center">
-                <span class="text-2xl">🌐</span>
-              </div>
-              <div>
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Web Design</h3>
-                <p class="text-gray-600 dark:text-gray-300">Siti professionali che convertono</p>
-              </div>
-            </div>
-            
-            <ul class="space-y-3 mb-8">
-              <li class="flex items-center gap-3">
-                <span class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center text-xs">✓</span>
-                <span>Siti web responsive e velocissimi</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center text-xs">✓</span>
-                <span>E-commerce integrato con pagamenti</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center text-xs">✓</span>
-                <span>SEO ottimizzato per Piemonte</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center text-xs">✓</span>
-                <span>Analytics e monitoraggio performance</span>
-              </li>
-            </ul>
-            
-            <div class="mb-6">
-              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">A partire da</div>
-              <div class="text-3xl font-bold text-gray-900 dark:text-white">€20<span class="text-lg text-gray-600 dark:text-gray-300">/mese</span></div>
-            </div>
-            
-            <a href="/prezzi#web-design" class="block w-full text-center py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">Scopri i piani Web</a>
-          </div>
+      <div class="flex flex-col gap-6 text-center md:text-left md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-400 dark:text-gray-500">Metodo Bitora</p>
+          <h2 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">
+            Una partnership strutturata in tre fasi, con feedback continui e misurabili
+          </h2>
         </div>
+        <p class="max-w-xl text-gray-600 dark:text-gray-300">
+          Il nostro team lavora come estensione del tuo: dati, conversazioni con i clienti e insight di mercato guidano ogni decisione. Nessun pacchetto preconfezionato, solo risultati condivisi.
+        </p>
+      </div>
 
-        <!-- Ecosistema NFC -->
-        <div class="relative group">
-          <div class="absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-25 group-hover:opacity-40 transition-opacity blur-lg"></div>
-          <div class="relative bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-all">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-xl flex items-center justify-center">
-                <span class="text-2xl">📱</span>
-              </div>
-              <div>
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Ecosistema NFC</h3>
-                <p class="text-gray-600 dark:text-gray-300">Tessere smart che stupiscono</p>
-              </div>
-            </div>
-            
-            <ul class="space-y-3 mb-8">
-              <li class="flex items-center gap-3">
-                <span class="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center text-xs">✓</span>
-                <span>Tessere NFC personalizzate con il tuo brand</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center text-xs">✓</span>
-                <span>Landing dinamiche che si aprono al tocco</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center text-xs">✓</span>
-                <span>Chatbot AI per assistenza 24/7</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center text-xs">✓</span>
-                <span>Dashboard per gestire tutto in autonomia</span>
-              </li>
-            </ul>
-            
-            <div class="mb-6">
-              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">Setup unico</div>
-              <div class="text-3xl font-bold text-gray-900 dark:text-white">€49<span class="text-lg text-gray-600 dark:text-gray-300"> + tessere</span></div>
-            </div>
-            
-            <a href="/prezzi#nfc-ecosystem" class="block w-full text-center py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors">Scopri l'ecosistema NFC</a>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {[
+          {
+            step: '1',
+            title: 'Diagnosi strategica',
+            description: 'Analizziamo brand, obiettivi e punto di partenza. Raccogliamo dati SEO locali, conversazioni dei clienti e posizionamento nelle risposte AI.'
+          },
+          {
+            step: '2',
+            title: 'Blueprint operativo',
+            description: 'Definiamo roadmap, priorità e metriche. Prototipi rapidi, copy in italiano ottimizzato per Carmagnola e Torino, e checklist legale GDPR.'
+          },
+          {
+            step: '3',
+            title: 'Implementazione continua',
+            description: 'Sviluppiamo e testiamo siti, landing e NFC. Monitoriamo risultati reali e interveniamo proattivamente su SEO, contenuti e performance.'
+          }
+        ].map(({ step, title, description }) => (
+          <div class="group rounded-3xl border border-gray-200/60 bg-white/70 p-6 shadow-sm transition-colors hover:border-primary/40 dark:border-white/10 dark:bg-black/40">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-semibold text-white shadow-custom">{step}</span>
+            <h3 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{title}</h3>
+            <p class="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-300">{description}</p>
           </div>
-        </div>
-      </div>
-      
-      <!-- Combo Solution -->
-      <div class="mt-12 max-w-4xl mx-auto">
-        <div class="relative">
-          <div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-2xl blur-xl"></div>
-          <div class="relative bg-gradient-to-r from-primary to-purple-600 p-8 rounded-xl text-white text-center">
-            <div class="inline-flex items-center bg-white dark:bg-gray-900/20 px-4 py-2 rounded-full text-sm font-medium mb-4">
-              🔥 Soluzione completa più richiesta
-            </div>
-            <h3 class="text-2xl md:text-3xl font-bold mb-4">Web Design + Ecosistema NFC</h3>
-            <p class="text-lg mb-6 opacity-95">Combina la potenza di un sito professionale con l'innovazione delle tessere NFC per risultati straordinari</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <div class="text-3xl font-bold">€59<span class="text-lg opacity-80">/mese</span></div>
-              <div class="text-sm opacity-80">invece di €69 - Risparmi €120/anno</div>
-              <a href="/contattaci?plan=Combo" class="px-6 py-3 bg-white dark:bg-gray-900 text-primary rounded-lg font-semibold hover:bg-gray-100 dark:bg-gray-700 transition-colors">Attiva ora</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Per Settore -->
-  <section id="settori" class="py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Soluzioni specifiche per il tuo settore</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Ogni business ha esigenze uniche. Le nostre soluzioni sono pensate per massimizzare i risultati nel tuo settore specifico.</p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <a href="/settori/ristoranti" class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 group">
-          <div class="w-16 h-16 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">🍕</div>
-          <h3 class="text-xl font-semibold mb-3">Ristoranti & Bar</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">Menu NFC/QR aggiornabile in tempo reale, sistema prenotazioni e raccolta recensioni automatica.</p>
-          <div class="text-sm text-primary font-semibold">
-            ✅ +35% prenotazioni in media
-          </div>
-          <div class="text-sm text-gray-500 mt-1">
-            Da: €49 setup + €20/mese
-          </div>
-        </a>
-        
-        <a href="/settori/turismo" class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 group">
-          <div class="w-16 h-16 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">🏨</div>
-          <h3 class="text-xl font-semibold mb-3">Hotel & B&B</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">Info per ospiti, check-in smart, upsell servizi e gestione digital concierge con AI.</p>
-          <div class="text-sm text-primary font-semibold">
-            ✅ +50% upsell servizi
-          </div>
-          <div class="text-sm text-gray-500 mt-1">
-            Da: €79 setup + €39/mese
-          </div>
-        </a>
-        
-        <a href="/settori/professionisti" class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 group">
-          <div class="w-16 h-16 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">💼</div>
-          <h3 class="text-xl font-semibold mb-3">Professionisti</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">Biglietto digitale smart, portfolio online, sistema appuntamenti e lead generation automatico.</p>
-          <div class="text-sm text-primary font-semibold">
-            ✅ +8 lead/settimana in media
-          </div>
-          <div class="text-sm text-gray-500 mt-1">
-            Da: €29 setup + €15/mese
-          </div>
-        </a>
-      </div>
-      
-      <!-- Testimonianze settoriali -->
-      <div class="mt-16 grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-        <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md border-l-4 border-orange-500">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="/mistral.jpg" alt="Mistral Impianti Elettrici" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
-            <div>
-              <div class="font-semibold">Mistral Impianti Elettrici</div>
-              <div class="text-sm text-gray-600 dark:text-gray-300">Roberto - Roreto (TO)</div>
-            </div>
-          </div>
-          <p class="text-gray-700 dark:text-gray-300 text-sm">"Con Bitora abbiamo digitalizzato la nostra presenza. I clienti ora ci trovano facilmente e possiamo gestire preventivi online."</p>
-        </div>
-        
-        <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md border-l-4 border-purple-500">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="/sartoria_kristina.png" alt="Kristina Sartoria" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
-            <div>
-              <div class="font-semibold">Kristina</div>
-              <div class="text-sm text-gray-600 dark:text-gray-300">Sartoria - Carmagnola (TO)</div>
-            </div>
-          </div>
-          <p class="text-gray-700 dark:text-gray-300 text-sm">"Il biglietto NFC professionale mi ha permesso di distinguermi. Ora i clienti accedono al mio portfolio istantaneamente."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Come funziona -->
-  <section id="come-funziona" class="py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Come funziona l'ecosistema Bitora</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">In 3 semplici passaggi trasformi ogni interazione in un'opportunità di business</p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div class="text-center relative">
-          <!-- Connessione tra step -->
-          <div class="hidden md:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-primary to-purple-500 z-0" style="transform: translateX(-50%); width: calc(100% - 3rem);"></div>
-          
-          <div class="relative bg-gradient-to-br from-primary to-purple-600 text-white p-8 rounded-2xl shadow-xl mb-6">
-            <div class="w-16 h-16 rounded-full bg-white dark:bg-gray-900 text-primary mx-auto mb-4 flex items-center justify-center font-bold text-xl shadow-lg">1</div>
-            <h3 class="font-bold text-xl mb-3">Cliente tocca o scansiona</h3>
-            <p class="opacity-95">Il cliente avvicina il telefono alla tessera NFC o scansiona il QR code sulla tua attività</p>
-          </div>
-          
-          <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl">
-            <div class="text-sm text-gray-600 dark:text-gray-300 mb-1">Tempo medio</div>
-            <div class="font-bold text-primary">&lt; 1 secondo</div>
-          </div>
-        </div>
-        
-        <div class="text-center relative">
-          <!-- Connessione tra step -->
-          <div class="hidden md:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-primary to-purple-500 z-0" style="transform: translateX(-50%); width: calc(100% - 3rem);"></div>
-          
-          <div class="relative bg-gradient-to-br from-blue-500 to-primary text-white p-8 rounded-2xl shadow-xl mb-6">
-            <div class="w-16 h-16 rounded-full bg-white dark:bg-gray-900 text-blue-600 mx-auto mb-4 flex items-center justify-center font-bold text-xl shadow-lg">2</div>
-            <h3 class="font-bold text-xl mb-3">Si apre la mini-landing</h3>
-            <p class="opacity-95">Una pagina veloce e personalizzata con menu, servizi, prenotazioni e tutte le informazioni utili</p>
-          </div>
-          
-          <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl">
-            <div class="text-sm text-gray-600 dark:text-gray-300 mb-1">Caricamento</div>
-            <div class="font-bold text-primary">&lt; 0.5 secondi</div>
-          </div>
-        </div>
-        
-        <div class="text-center">
-          <div class="relative bg-gradient-to-br from-green-500 to-emerald-600 text-white p-8 rounded-2xl shadow-xl mb-6">
-            <div class="w-16 h-16 rounded-full bg-white dark:bg-gray-900 text-green-600 mx-auto mb-4 flex items-center justify-center font-bold text-xl shadow-lg">3</div>
-            <h3 class="font-bold text-xl mb-3">Azioni e conversioni</h3>
-            <p class="opacity-95">Prenotazioni, ordini, contatti e recensioni arrivano direttamente nella tua dashboard</p>
-          </div>
-          
-          <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl">
-            <div class="text-sm text-gray-600 dark:text-gray-300 mb-1">Conversione media</div>
-            <div class="font-bold text-primary">+35% vs tradizionale</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pacchetti & Prezzi (sintesi) -->
-  <section id="prezzi-sintesi" class="py-20 bg-gray-50 dark:bg-gray-800 scroll-mt-20">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Pacchetti semplici, prezzi trasparenti</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Scegli il piano perfetto per la tua attività. Tutti i piani includono setup completo e supporto tecnico.</p>
-        <div class="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mt-4">
-          💰 30 giorni soddisfatti o rimborsati
-        </div>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <!-- Starter -->
-        <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-all">
-          <div class="text-center mb-6">
-            <h3 class="text-2xl font-bold mb-2">Start</h3>
-            <p class="text-gray-600 dark:text-gray-300">Per iniziare subito</p>
-            <div class="mt-4">
-              <div class="text-4xl font-bold text-gray-900 dark:text-white">€49</div>
-              <div class="text-sm text-gray-600 dark:text-gray-300">setup unico</div>
-            </div>
-          </div>
-          
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>1 tessera NFC personalizzata</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>Mini-landing base responsive</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>Setup completo in 24h</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>Supporto email</span>
-            </li>
-          </ul>
-          
-          <div class="text-center mb-4">
-            <div class="text-sm text-gray-600 dark:text-gray-300">Tessere aggiuntive: €15 cad.</div>
-          </div>
-          
-          <a href="/contattaci?plan=Start" class="block w-full text-center py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">Inizia ora</a>
-        </div>
-
-        <!-- Pro (Evidenziato) -->
-        <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-xl border-2 border-primary relative transform scale-105">
-          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">
-            Più scelto
-          </div>
-          
-          <div class="text-center mb-6">
-            <h3 class="text-2xl font-bold mb-2">Pro</h3>
-            <p class="text-gray-600 dark:text-gray-300">Per crescere con automazioni</p>
-            <div class="mt-4">
-              <div class="text-4xl font-bold text-gray-900 dark:text-white">€29</div>
-              <div class="text-sm text-gray-600 dark:text-gray-300">al mese</div>
-            </div>
-          </div>
-          
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>Sito web essenziale 5 pagine</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>SEO ottimizzato + Analytics</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>Chatbot AI integrato</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>3 tessere NFC incluse</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>Supporto prioritario</span>
-            </li>
-          </ul>
-          
-          <div class="text-center mb-4">
-            <div class="text-sm text-gray-600 dark:text-gray-300">Setup: €99 (una tantum)</div>
-          </div>
-          
-          <a href="/contattaci?plan=Pro" class="block w-full text-center py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-600 transition-colors">Attiva Pro</a>
-        </div>
-
-        <!-- Business -->
-        <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-all">
-          <div class="text-center mb-6">
-            <h3 class="text-2xl font-bold mb-2">Business</h3>
-            <p class="text-gray-600 dark:text-gray-300">Soluzione completa su misura</p>
-            <div class="mt-4">
-              <div class="text-4xl font-bold text-gray-900 dark:text-white">Su misura</div>
-              <div class="text-sm text-gray-600 dark:text-gray-300">a partire da €79/mese</div>
-            </div>
-          </div>
-          
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>Sito web premium illimitato</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>E-commerce con pagamenti</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>AI avanzata e integrazioni</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>Tessere NFC illimitate</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center text-xs">✓</span>
-              <span>Supporto dedicato + formazione</span>
-            </li>
-          </ul>
-          
-          <div class="text-center mb-4">
-            <div class="text-sm text-gray-600 dark:text-gray-300">Consulenza strategica inclusa</div>
-          </div>
-          
-          <a href="/contattaci?plan=Business" class="block w-full text-center py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors">Richiedi preventivo</a>
-        </div>
-      </div>
-      
-      <div class="text-center mt-12">
-        <a href="/prezzi" class="inline-flex items-center text-primary font-semibold hover:underline">
-          Vedi tutti i dettagli e confronta i piani
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Casi di successo -->
-  <section id="testimonianze" class="py-20 bg-white dark:bg-gray-900 scroll-mt-20">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Casi di successo</h2>
-      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {testimonials.slice(0,3).map(t => (
-          <a href={t.site} class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-lg transition block" target="_blank" rel="noopener">
-            <div class="flex items-center gap-4 mb-4">
-              <img src={t.image} alt={t.company} class="w-14 h-14 rounded-lg object-cover" loading="lazy" />
-              <div>
-                <div class="font-semibold">{t.company}</div>
-                <div class="text-sm text-gray-500">{t.results}</div>
-              </div>
-            </div>
-            <p class="text-gray-700 dark:text-gray-300">“{t.quote}”</p>
-          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA finale -->
-  <section class="py-20 bg-gradient-to-r from-primary to-purple-600 text-white">
-    <div class="container mx-auto px-4 text-center">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
-          Pronto a trasformare la tua attività?
-        </h2>
-        
-        <p class="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
-          Unisciti alle attività piemontesi che hanno scelto Bitora per crescere. Setup rapido, risultati misurabili, supporto locale.
-        </p>
-        
-        <div class="grid md:grid-cols-3 gap-6 mb-12">
-          <div class="text-center">
-            <div class="w-16 h-16 bg-white dark:bg-gray-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">🚀</span>
-            </div>
-            <div class="font-semibold mb-2">Setup rapido</div>
-            <div class="text-sm opacity-80">Attivo in 48-72 ore</div>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-white dark:bg-gray-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">💰</span>
-            </div>
-            <div class="font-semibold mb-2">Garanzia risultati</div>
-            <div class="text-sm opacity-80">30 giorni soddisfatti o rimborsati</div>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-white dark:bg-gray-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">🎯</span>
-            </div>
-            <div class="font-semibold mb-2">Supporto locale</div>
-            <div class="text-sm opacity-80">Team sempre disponibile in Piemonte</div>
-          </div>
+  <section class="py-20 bg-gray-50/70 dark:bg-white/5">
+    <div class="container mx-auto px-4">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr,1.1fr] lg:items-center">
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-400 dark:text-gray-500">Seo & Ai first</p>
+          <h2 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">
+            Visibilità locale oggi, presenza nelle risposte AI domani
+          </h2>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">
+            Ottimizziamo contenuti e dati strutturati per risultare rilevanti su Google Search, Google Maps, ChatGPT, Gemini e motori conversazionali. Prepariamo schemi, dataset e fonti verificabili per alimentare agenti AI con informazioni aggiornate.
+          </p>
         </div>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="/contattaci" class="px-8 py-4 bg-white dark:bg-gray-900 text-primary rounded-lg font-semibold hover:bg-gray-100 dark:bg-gray-700 transition-colors text-lg">
-            Prenota consulenza gratuita
-          </a>
-          
-          <a href="https://wa.me/+393123456789?text=Ciao,%20vorrei%20informazioni%20su%20Bitora" class="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white dark:bg-gray-900 hover:text-primary transition-colors text-lg">
-            Scrivici su WhatsApp
-          </a>
-        </div>
-        
-        <div class="mt-8 text-sm opacity-80">
-          📞 Chiamaci: <a href="tel:+393123456789" class="underline hover:opacity-100">+39 312 345 6789</a> | 
-          📧 Email: <a href="mailto:info@bitora.it" class="underline hover:opacity-100">info@bitora.it</a>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-3xl border border-gray-200/60 bg-white/80 p-5 dark:border-white/10 dark:bg-black/50">
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white">SEO locale potenziata</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Keyword Piemonte, arricchimento schede Google, citazioni geolocalizzate e tracciamento lead da mobile.</p>
+          </div>
+          <div class="rounded-3xl border border-gray-200/60 bg-white/80 p-5 dark:border-white/10 dark:bg-black/50">
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white">Answer Engine Optimization</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Contenuti strutturati per comparire nelle risposte AI con fonti affidabili e call-to-action dirette.</p>
+          </div>
+          <div class="rounded-3xl border border-gray-200/60 bg-white/80 p-5 dark:border-white/10 dark:bg-black/50">
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white">Performance misurata</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Core Web Vitals monitorati, Lighthouse 100/100 e controllo della reputazione digitale.</p>
+          </div>
+          <div class="rounded-3xl border border-gray-200/60 bg-white/80 p-5 dark:border-white/10 dark:bg-black/50">
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white">Contenuti conversazionali</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Tone of voice coerente, messaggi chiari e script per chatbot e assistenti vocali.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
-</Layout>
+
+  <section id="investimenti" class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center">
+        <p class="text-xs uppercase tracking-[0.3em] text-gray-400 dark:text-gray-500">Investimenti trasparenti</p>
+        <h2 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">
+          Consulenza su misura. Solo tre costi fissi già definiti.
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-gray-600 dark:text-gray-300">
+          Tutto parte da una consulenza: definiremo insieme il budget migliore in base a obiettivi e priorità. Gli unici prezzi pubblici sono questi, perché le nostre soluzioni sono costruite sul tuo contesto.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        <article class="rounded-3xl border border-gray-200/60 bg-white/80 p-6 shadow-sm dark:border-white/10 dark:bg-black/40">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Tessere NFC premium</h3>
+          <p class="mt-3 text-3xl font-semibold text-primary">€20 <span class="text-base font-normal text-gray-500">cad.</span></p>
+          <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">Grafica personalizzata, materiale resistente, programmazione inclusa con landing ottimizzata per mobile.</p>
+          <p class="mt-4 text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">Consegna 5-7 giorni lavorativi</p>
+        </article>
+        <article class="rounded-3xl border border-gray-200/60 bg-white/80 p-6 shadow-sm dark:border-white/10 dark:bg-black/40">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Sito vetrina su misura</h3>
+          <p class="mt-3 text-3xl font-semibold text-primary">€500</p>
+          <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">Fino a quattro pagine, design minimal su misura, copywriting local SEO e integrazione analytics.</p>
+          <p class="mt-4 text-sm font-medium text-gray-600 dark:text-gray-300">Pagine extra: +€100 ciascuna.</p>
+        </article>
+        <article class="rounded-3xl border border-gray-200/60 bg-white/80 p-6 shadow-sm dark:border-white/10 dark:bg-black/40">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Landing page ad alta conversione</h3>
+          <p class="mt-3 text-3xl font-semibold text-primary">€300</p>
+          <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">Perfetta per campagne mirate e lead generation geolocalizzata. Include copy ottimizzato per campagne AI e Google Ads.</p>
+          <p class="mt-4 text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">Setup entro 10 giorni lavorativi</p>
+        </article>
+      </div>
+
+      <div class="mt-8 rounded-3xl border border-primary/20 bg-primary/10 p-6 text-center text-sm text-primary dark:border-primary/30 dark:bg-primary/20">
+        Tutti gli altri investimenti vengono definiti insieme dopo la consulenza: ecommerce, integrazioni gestionali, automazioni, formazione interna e campagne multicanale.
+      </div>
+    </div>
+  </section>
+
+  <section id="clienti" class="py-20 bg-gray-50/70 dark:bg-white/5">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col gap-6 text-center md:text-left md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-400 dark:text-gray-500">Clienti & testimonianze</p>
+          <h2 class="mt-3 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">
+            Aziende piemontesi che hanno scelto Bitora come partner di crescita
+          </h2>
+        </div>
+        <a href="/lavori" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-600">
+          Guarda tutti i progetti ↗
+        </a>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        {testimonials.slice(0, 3).map(t => (
+          <article class="rounded-3xl border border-gray-200/60 bg-white/80 p-6 shadow-sm transition-transform hover:-translate-y-1 hover:border-primary/40 dark:border-white/10 dark:bg-black/40">
+            <div class="flex items-center gap-4">
+              <img src={t.image} alt={t.company} class="h-14 w-14 rounded-2xl object-cover" loading="lazy" />
+              <div>
+                <p class="text-base font-semibold text-gray-900 dark:text-white">{t.company}</p>
+                <p class="text-xs uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500">{t.role ?? 'Partner Bitora'}</p>
+              </div>
+            </div>
+            <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-300">“{t.quote}”</p>
+            {t.results && <p class="mt-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary">{t.results}</p>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="container mx-auto px-4">
+      <div class="glass-panel rounded-3xl px-6 py-12 text-center md:px-12">
+        <p class="text-xs uppercase tracking-[0.3em] text-gray-400 dark:text-gray-500">Parliamone</p>
+        <h2 class="mt-4 text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">
+          Raccontaci il tuo progetto, costruiremo insieme l’ecosistema digitale giusto
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-gray-600 dark:text-gray-300">
+          Prenota una call conoscitiva di 30 minuti: analizzeremo obiettivi, target e priorità. Tornerai con un piano d’azione concreto, tempi e suggerimenti pratici.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="/contattaci"
+            class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-orange/30 dark:text-orange dark:hover:bg-orange/10"
+          >
+            Fissa la consulenza gratuita
+          </a>
+          <a
+            href="https://wa.me/393247787644"
+            class="inline-flex items-center justify-center rounded-full border border-primary/40 px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contatto diretto WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>          

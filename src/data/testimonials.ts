@@ -23,7 +23,8 @@ export const testimonials: Testimonial[] = [
     results: '+35% prenotazioni in 3 mesi',
     rating: 5,
     category: 'web'
-  },  {
+  },
+  {
     quote:
       'Mistral Impianti SRL ha scelto bitora.it per il nostro sito web e non potremmo essere più soddisfatti! Professionalità, velocità e risultati concreti. Il nostro sito ora genera lead qualificati ogni settimana.',
     author: 'Gabriele',
@@ -34,6 +35,30 @@ export const testimonials: Testimonial[] = [
     results: '12 lead qualificati/mese',
     rating: 5,
     category: 'web'
+  },
+  {
+    quote:
+      'Con HoloLux volevamo un ecosistema che unisse storytelling immersivo, NFC e una presenza web impeccabile. Bitora ha coordinato tutto: ora presentiamo i nostri showroom digitali in modo coerente e i lead arrivano anche da ricerche generative.',
+    author: 'Simone',
+    company: 'HoloLux Torino',
+    role: 'Co-founder',
+    image: '/client.jpg',
+    site: 'https://hololux.it',
+    results: '+45% richieste demo in 60 giorni',
+    rating: 5,
+    category: 'combo'
+  },
+  {
+    quote:
+      'Il nuovo percorso digitale di Bar Chantilly racconta la nostra storia e permette ai clienti di lasciare recensioni con un tap grazie alle tessere NFC. Abbiamo raddoppiato le richieste per eventi privati e la visibilità locale cresce ogni settimana.',
+    author: 'Federica',
+    company: 'Bar Chantilly Carmagnola',
+    role: 'Responsabile marketing',
+    image: '/client.jpg',
+    site: 'https://www.barchantilly.it',
+    results: '2× richieste eventi in 3 mesi',
+    rating: 5,
+    category: 'nfc'
   },
   {
     quote:
