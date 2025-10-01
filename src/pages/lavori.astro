@@ -312,12 +312,12 @@ const stats = [
                   </div>
 
                   <div class="flex flex-wrap gap-3">
-                    <a
+                    {/* <a
                       href={caseStudy.caseStudyUrl || `/progetti/${caseStudy.id}`}
                       class="flex-1 rounded-xl bg-gray-900 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
                     >
                       Apri il case study
-                    </a>
+                    </a> */}
                     {caseStudy.siteUrl !== '#' && !caseStudy.isWip && (
                       <a
                         href={caseStudy.siteUrl}
@@ -422,7 +422,7 @@ const stats = [
         <h2 class="text-4xl md:text-5xl font-semibold">Portiamo il tuo progetto tra i nostri case study</h2>
         <p class="text-lg text-white/80">Discovery call gratuita di 15 minuti con Denis per mappare obiettivi, budget e prossimi step. Nessun impegno, solo strategia.</p>
         <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="/contattaci" class="w-full rounded-xl bg-primary px-6 py-4 text-center text-lg font-semibold text-gray-900 transition hover:bg-primary/80 sm:w-auto">
+          <a href="/contattaci" class="w-full rounded-xl bg-primary px-6 py-4 text-center text-lg font-semibold text-gray-900 transition hover:bg-primary/80 sm:w-auto dark:text-white">
             Prenota la consulenza
           </a>
           <a href="/prezzi" class="w-full rounded-xl border-2 border-white/60 px-6 py-4 text-center text-lg font-semibold text-white transition hover:border-white hover:bg-white/10 sm:w-auto">
