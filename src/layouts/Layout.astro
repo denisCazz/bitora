@@ -2,11 +2,12 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-import Analytics from '../components/Analytics.astro';
+import Analyticsgoogle from '../components/Analyticsgoogle.astro';
 import PerformanceMonitorSimple from '../components/PerformanceMonitorSimple.astro';
 import PerformanceOptimizer from '../components/PerformanceOptimizer.astro';
 import '../styles/global.css';
 import  SpeedInsights  from "@vercel/speed-insights/astro"
+import Analytics from '@vercel/analytics/astro'
 
 export interface Props {
   title: string;
@@ -25,11 +26,12 @@ const canonicalUrl = pathname === '/'
 <html lang="it">
   <head>
     <SpeedInsights/>
+    <Analytics />
     <!-- Performance Optimizer - Critical Resources -->
     <PerformanceOptimizer />
     
     <!-- Analytics (caricato condizionalmente) -->
-    <Analytics />
+    <Analyticsgoogle />
     
     <!-- Performance Monitoring -->
     <PerformanceMonitorSimple />
