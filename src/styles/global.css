@@ -311,6 +311,15 @@ a:hover {
   }
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
 }
@@ -329,6 +338,10 @@ a:hover {
 
 .animate-bounce-slow {
   animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 24s) linear infinite;
 }
 
 .animation-delay-1000 {

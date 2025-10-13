@@ -1,0 +1,134 @@
+---
+import { clientLogos, type PartnerTier } from '../data/clients';
+
+const tierOrder: PartnerTier[] = ['premium', 'gold'];
+
+const tierConfigs = {
+  premium: {
+    label: 'Premium Partner',
+    badgeClasses: 'bg-primary/10 text-primary dark:bg-orange/20 dark:text-orange',
+    marqueeDuration: '24s'
+  },
+  gold: {
+    label: 'Gold Partner',
+    badgeClasses: 'bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-200',
+    marqueeDuration: '28s'
+  }
+} satisfies Record<PartnerTier, { label: string; badgeClasses: string; marqueeDuration: string }>;
+
+const groupedPartners = tierOrder.flatMap(tier => {
+  const partners = clientLogos.filter(client => client.tier === tier);
+
+  if (!partners.length) {
+    return [];
+  }
+
+  return [
+    {
+      tier,
+      partners,
+      duplicated: [...partners, ...partners],
+      ...tierConfigs[tier]
+    }
+  ];
+});
+---
+
+<section class="py-16 md:py-20">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-gray-400 dark:text-gray-500">Fiducia sul territorio</p>
+        <h2 class="mt-3 max-w-xl text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl">
+          Brand piemontesi che hanno scelto Bitora per crescere in digitale
+        </h2>
+      </div>
+      <p class="max-w-lg text-sm text-gray-600 dark:text-gray-300">
+        Collaboriamo con realtà di Carmagnola, Torino e provincia, assicurando identità coerenti, performance elevate e presenza nelle ricerche locali.
+      </p>
+    </div>
+    <div class="mt-12 space-y-12 md:space-y-16">
+      {groupedPartners.map(({ tier, label, partners, duplicated, badgeClasses, marqueeDuration }) => (
+        <section class="space-y-6" aria-label={`${label} Bitora`} data-tier={tier}>
+          <div class="flex items-center gap-3">
+            <span class={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] ${badgeClasses}`}>
+              {label}
+            </span>
+          </div>
+
+          <div class="md:hidden" aria-label={`${label} - carosello`}>
+            <div class="overflow-hidden">
+              <div class="flex w-max gap-4 animate-marquee" style={`--marquee-duration: ${marqueeDuration}`}>
+                {duplicated.map(client => (
+                  client.url ? (
+                    <a
+                      class="group flex h-24 w-44 shrink-0 items-center justify-center rounded-2xl border border-gray-200/60 bg-white/80 px-6 py-4 shadow-sm backdrop-blur-sm transition-transform transition-colors hover:-translate-y-1 hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 dark:border-white/10 dark:bg-white/5 dark:hover:border-orange/50 dark:hover:bg-orange/10"
+                      href={client.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visita ${client.name}`}
+                    >
+                      <img
+                        src={client.logo}
+                        alt={client.name}
+                        loading="lazy"
+                        class="h-12 w-32 object-contain filter grayscale brightness-110 contrast-[0.9] opacity-90 transition-all duration-300 group-hover:scale-[1.05] group-hover:contrast-100 group-hover:grayscale-0 group-hover:opacity-100 dark:brightness-125"
+                      />
+                    </a>
+                  ) : (
+                    <div
+                      class="group flex h-24 w-44 shrink-0 items-center justify-center rounded-2xl border border-gray-200/60 bg-white/80 px-6 py-4 shadow-sm backdrop-blur-sm transition-transform transition-colors dark:border-white/10 dark:bg-white/5"
+                      role="group"
+                      aria-label={client.name}
+                    >
+                      <img
+                        src={client.logo}
+                        alt={client.name}
+                        loading="lazy"
+                        class="h-12 w-32 object-contain filter grayscale brightness-110 contrast-[0.9] opacity-90 transition-all duration-300 dark:brightness-125"
+                      />
+                    </div>
+                  )
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="hidden gap-6 md:grid md:grid-cols-3" aria-label={label}>
+            {partners.map(client => (
+              client.url ? (
+                <a
+                  class="group flex h-32 items-center justify-center rounded-3xl border border-gray-200/60 bg-white/80 px-8 py-8 shadow-sm transition-all hover:-translate-y-1.5 hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 dark:border-white/10 dark:bg-white/5 dark:hover:border-orange/50 dark:hover:bg-orange/10"
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visita ${client.name}`}
+                >
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    loading="lazy"
+                    class="h-16 w-40 object-contain filter grayscale brightness-110 contrast-[0.9] opacity-90 transition-all duration-300 group-hover:scale-[1.05] group-hover:contrast-100 group-hover:grayscale-0 group-hover:opacity-100 dark:brightness-125"
+                  />
+                </a>
+              ) : (
+                <div
+                  class="group flex h-32 items-center justify-center rounded-3xl border border-gray-200/60 bg-white/80 px-8 py-8 shadow-sm transition-all dark:border-white/10 dark:bg-white/5"
+                  role="group"
+                  aria-label={client.name}
+                >
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    loading="lazy"
+                    class="h-16 w-40 object-contain filter grayscale brightness-110 contrast-[0.9] opacity-90 transition-all duration-300 dark:brightness-125"
+                  />
+                </div>
+              )
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</section>
