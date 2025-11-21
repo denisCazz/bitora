@@ -1,0 +1,271 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const formats = [
+  { ext: 'PES', desc: 'Brother, Babylock' },
+  { ext: 'DST', desc: 'Tajima, Barudan' },
+  { ext: 'JEF', desc: 'Janome, Elna' },
+  { ext: 'EXP', desc: 'Melco, Bernina' },
+  { ext: 'XXX', desc: 'Singer' },
+  { ext: 'VIP', desc: 'Husqvarna' },
+];
+
+const pricing = [
+  {
+    title: 'Essenziale',
+    price: '8',
+    description: 'Testi, monogrammi e loghi vettoriali semplici a tinte piatte.',
+    features: ['Fino a 2 colori', 'Consegna 48h', 'Anteprima simulata'],
+  },
+  {
+    title: 'Standard',
+    price: '15',
+    description: 'Loghi aziendali completi, patch e design con sfumature base.',
+    features: ['Fino a 5 colori', 'Consegna 48h', 'Ottimizzazione tessuti'],
+    highlight: true
+  },
+  {
+    title: 'Avanzato',
+    price: '40+',
+    description: 'Digitalizzazione artistica, stemmi araldici e photo-stitch.',
+    features: ['Colori illimitati', 'Effetti 3D/Puff', 'Consulenza tecnica'],
+  }
+];
+---
+
+<Layout
+  title="Digitalizzazione Ricami | Bitora Service"
+  description="Servizio di punching professionale. Convertiamo loghi e immagini in file da ricamo di alta qualità."
+>
+  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+    
+    <!-- Hero Section -->
+    <section class="relative h-screen flex flex-col justify-center items-center text-center px-4">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+      
+      <div class="relative z-10 max-w-4xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+          Il ricamo,<br />perfezionato.
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+          Trasformiamo i tuoi design in file da ricamo impeccabili. <br class="hidden md:block" />
+          Precisione assoluta per professionisti del settore.
+        </p>
+        <div class="pt-8">
+          <a href="#prezzi" class="inline-block bg-white text-black px-8 py-4 rounded-full font-medium text-lg transition-transform hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+            Visualizza il listino
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 1: Precision -->
+    <section class="py-40 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
+        <div class="order-2 md:order-1 space-y-8 reveal-on-scroll">
+          <h2 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
+            Precisione <br />
+            <span class="text-indigo-400">ad ogni punto.</span>
+          </h2>
+          <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
+            Non lasciamo nulla al caso. Ogni conversione è ottimizzata manualmente per garantire la massima pulizia, ridurre al minimo i tagli del filo e assicurare una produzione fluida su qualsiasi macchina.
+          </p>
+          <ul class="space-y-6 text-gray-300 mt-8">
+            <li class="flex items-center gap-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 text-indigo-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              </span>
+              <span class="text-lg">Compensazione del tiraggio calcolata</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 text-indigo-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              </span>
+              <span class="text-lg">Percorsi ottimizzati per velocità</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 text-indigo-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              </span>
+              <span class="text-lg">Sottopunti specifici per tessuto</span>
+            </li>
+          </ul>
+        </div>
+        <div class="order-1 md:order-2 relative group reveal-on-scroll delay-200">
+          <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
+          <div class="relative rounded-3xl overflow-hidden aspect-square shadow-2xl">
+            <img 
+              src="https://www.arteericamo.it/wp-content/uploads/2024/01/1_w.jpg" 
+              alt="Dettaglio precisione ricamo" 
+              class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 2: Color -->
+    <section class="py-40 px-6 md:px-12 bg-zinc-900/30">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
+        <div class="relative group reveal-on-scroll order-1">
+          <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-orange-500 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
+          <div class="relative rounded-3xl overflow-hidden aspect-square shadow-2xl">
+            <img 
+              src="https://www.ricamopersonalizzato.it/wp-content/uploads/2019/03/ricami-bambini-milano-1-1024x1024.jpg" 
+              alt="Colori ricamo vibranti" 
+              class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+            />
+          </div>
+        </div>
+        <div class="space-y-8 reveal-on-scroll delay-200 order-2">
+          <h2 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
+            Colori che <br />
+            <span class="text-pink-400">prendono vita.</span>
+          </h2>
+          <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
+            Gestione avanzata delle sfumature e delle sovrapposizioni. Il risultato è un ricamo che rispetta l'anima del tuo design originale, mantenendo la morbidezza del capo e la vivacità cromatica.
+          </p>
+          <div class="grid grid-cols-2 gap-8 pt-6">
+            <div class="bg-white/5 p-6 rounded-2xl border border-white/5">
+              <h4 class="text-white font-semibold mb-2 text-lg">Photo Stitch</h4>
+              <p class="text-sm text-gray-400 leading-relaxed">Realismo fotografico con tecniche avanzate di miscelazione.</p>
+            </div>
+            <div class="bg-white/5 p-6 rounded-2xl border border-white/5">
+              <h4 class="text-white font-semibold mb-2 text-lg">Effetti 3D</h4>
+              <p class="text-sm text-gray-400 leading-relaxed">Supporto per schiuma (Puff) e rilievi strutturati.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formats -->
+    <section class="py-24 px-4 border-y border-white/5">
+      <div class="max-w-6xl mx-auto text-center reveal-on-scroll">
+        <h3 class="text-2xl font-semibold mb-12 text-gray-300">Compatibilità Universale</h3>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+          {formats.map(f => (
+            <div class="group bg-white/5 hover:bg-white/10 border border-white/5 px-6 py-4 rounded-2xl transition-all duration-300">
+              <span class="block text-xl font-bold text-white mb-1 group-hover:text-indigo-400 transition-colors">.{f.ext}</span>
+              <span class="block text-xs text-gray-500 uppercase tracking-wider">{f.desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="prezzi" class="py-32 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20 reveal-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">Investimento Trasparente</h2>
+          <p class="text-xl text-gray-400">Nessun costo nascosto. Paghi solo per la complessità.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {pricing.map((plan, i) => (
+            <div class={`relative group reveal-on-scroll`} style={`transition-delay: ${i * 100}ms`}>
+              <div class={`absolute inset-0 bg-gradient-to-b ${plan.highlight ? 'from-indigo-600 to-purple-600' : 'from-gray-800 to-gray-900'} rounded-3xl opacity-0 group-hover:opacity-100 transition duration-500 blur-xl`}></div>
+              <div class="relative h-full bg-zinc-900 border border-white/10 rounded-3xl p-8 flex flex-col transition-transform duration-300 group-hover:-translate-y-2">
+                <h3 class="text-xl font-medium text-gray-300 mb-4">{plan.title}</h3>
+                <div class="flex items-baseline gap-1 mb-6">
+                  <span class="text-5xl font-bold text-white">€{plan.price}</span>
+                </div>
+                <p class="text-gray-400 mb-8 leading-relaxed">{plan.description}</p>
+                
+                <ul class="space-y-4 mb-8 flex-1">
+                  {plan.features.map(feat => (
+                    <li class="flex items-center gap-3 text-sm text-gray-300">
+                      <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+
+                <a href={`/contattaci?service=embroidery&plan=${plan.title}`} class={`w-full py-4 rounded-xl font-semibold text-center transition-all duration-300 hover:scale-[1.02] ${plan.highlight ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.2)]' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                  Inizia ora
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div class="mt-16 text-center reveal-on-scroll">
+          <p class="text-gray-500 text-sm font-medium tracking-wide">
+            EXTRA: CONSEGNA EXPRESS 24H (+€10) • FILE SORGENTE .EMB (+€15) • RIDIMENSIONAMENTO (+€5)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-40 px-6 text-center">
+      <div class="max-w-4xl mx-auto reveal-on-scroll">
+        <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Pronto a digitalizzare?</h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
+          Inviaci il tuo file per un'analisi di fattibilità gratuita. <br />
+          Risposta garantita entro 60 minuti.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <a href="/contattaci?service=embroidery" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            Richiedi Preventivo
+          </a>
+          <a href="https://wa.me/+393514979670" class="min-w-[200px] px-8 py-4 bg-white/10 text-white backdrop-blur-md rounded-full font-medium text-lg transition-all hover:bg-white/20 hover:scale-105">
+            Chatta su WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target); // Only animate once
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.reveal-on-scroll');
+    elements.forEach(el => observer.observe(el));
+  });
+</script>
