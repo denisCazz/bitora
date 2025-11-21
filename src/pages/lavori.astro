@@ -5,55 +5,29 @@ import Layout from '../layouts/Layout.astro';
 const caseStudies = [
   {
     id: 'mistral-impianti',
-    title: 'Mistral Impianti Elettrici',
-    subtitle: 'Digitalizzazione completa e lead automation',
-    category: 'B2B • Impianti Elettrici',
+    title: 'Mistral Impianti',
+    subtitle: 'Digitalizzazione & Automation',
+    category: 'B2B • Impianti',
     location: 'Roreto (TO)',
     imageUrl: '/mistral.jpg',
     siteUrl: 'https://mistralimpianti.it',
-    challenge:
-      'Mistral Impianti doveva gestire in modo strutturato le richieste di preventivo e consolidare la reputazione locale online.',
-    solution:
-      'Consulenza strategica, sito web su misura, CRM integrato con automazioni email e tessere NFC per il team tecnico.',
-    results: [
-      { metric: '+25%', description: 'Richieste di preventivo qualificate' },
-      { metric: '3h', description: 'Tempo risparmiato ogni settimana' },
-      { metric: 'Top 5', description: 'Posizionamento per "elettricista Roreto"' },
-      { metric: '4.6★', description: 'Rating Google con 15+ recensioni' }
-    ],
-    technologies: ['Astro', 'Tailwind CSS', 'CRM', 'Google Analytics', 'NFC Cards'],
-    testimonial:
-      'Bitora coordina strategia, sito e assistenza continua. I lead sono aumentati e i clienti ci trovano subito con una reputazione solida.',
-    clientName: 'Roberto',
-    clientRole: 'Titolare',
-    timeline: '3 settimane',
+    challenge: 'Gestione strutturata delle richieste di preventivo e consolidamento reputazione locale.',
+    solution: 'Ecosistema completo: sito web, CRM integrato e automazioni per il team tecnico.',
+    results: ['+25% Richieste qualificate', 'Top 5 Ranking locale'],
     featured: true,
     caseStudyUrl: '/progetti/mistral-impianti'
   },
   {
     id: 'hololux',
-    title: 'HoloLux AR Experience',
-    subtitle: 'Consulenza strategica per occhiali AR innovativi',
-    category: 'B2B • Tecnologia AR',
+    title: 'HoloLux AR',
+    subtitle: 'Strategic Consulting',
+    category: 'Tech • B2B',
     location: 'Torino (TO)',
     imageUrl: '/client.jpg',
     siteUrl: '#',
-    challenge:
-      'HoloLux sviluppa occhiali AR all\'avanguardia e necessita di una strategia di go-to-market per il mercato B2B italiano.',
-    solution:
-      'Consulenza strategica su posizionamento, target audience e roadmap digitale per il lancio dei prodotti AR enterprise.',
-    results: [
-      { metric: 'In corso', description: 'Definizione target B2B' },
-      { metric: 'In corso', description: 'Strategia di posizionamento' },
-      { metric: 'In corso', description: 'Roadmap go-to-market' },
-      { metric: 'Q2 2025', description: 'Launch pianificato' }
-    ],
-    technologies: ['Strategic Consulting', 'Market Research', 'Brand Positioning', 'B2B Strategy'],
-    testimonial:
-      'La consulenza Bitora ci sta aiutando a definire chiaramente il nostro posizionamento nel mercato AR enterprise italiano.',
-    clientName: 'Simone',
-    clientRole: 'Co-founder',
-    timeline: 'In corso (8 settimane)',
+    challenge: 'Go-to-market strategy per occhiali AR enterprise nel mercato italiano.',
+    solution: 'Consulenza strategica su posizionamento, target audience e roadmap di lancio.',
+    results: ['Roadmap definita', 'Lancio Q2 2025'],
     featured: false,
     isWip: true,
     caseStudyUrl: '/progetti/hololux'
@@ -61,81 +35,42 @@ const caseStudies = [
   {
     id: 'kristina',
     title: 'Sartoria Kristina',
-    subtitle: 'Portfolio digitale e personal branding NFC',
-    category: 'Artigianato • Servizi',
+    subtitle: 'Portfolio & NFC',
+    category: 'Artigianato',
     location: 'Carmagnola (TO)',
     imageUrl: '/sartoria_kristina.png',
     siteUrl: 'https://sartoriakristina.it',
-    challenge:
-      'La sartoria aveva bisogno di mostrare lavori su misura e raccogliere contatti in modo professionale durante eventi e incontri.',
-    solution:
-      'Portfolio digitale elegante, landing dedicate per le collezioni e biglietto NFC programmato con aggiornamenti in tempo reale.',
-    results: [
-      { metric: '+3', description: 'Nuovi clienti/mese' },
-      { metric: '60%', description: 'Conversione da portfolio digitale' },
-      { metric: '+40%', description: 'Visibilità social in tre mesi' },
-      { metric: '4.7★', description: 'Valutazione feedback clienti' }
-    ],
-    technologies: ['Portfolio Gallery', 'Appointment Booking', 'NFC Business Card', 'Analytics'],
-    testimonial:
-      'Il portfolio digitale è diventato la mia vetrina principale. Con la tessera NFC aggiorno le collezioni e resto sempre in contatto con le clienti.',
-    clientName: 'Kristina',
-    clientRole: 'Sarta & Designer',
-    timeline: '2 settimane',
+    challenge: 'Mostrare lavori su misura e raccogliere contatti durante eventi.',
+    solution: 'Portfolio digitale elegante e biglietto da visita NFC per networking.',
+    results: ['+3 Clienti/mese', '60% Conversione'],
     featured: true,
     caseStudyUrl: '/progetti/kristina'
   },
   {
     id: 'speedy-pizza',
     title: 'Speedy Pizza',
-    subtitle: 'Sito vetrina per pizzeria da asporto',
-    category: 'Ristorazione • Sito Vetrina',
+    subtitle: 'Local Presence',
+    category: 'Food',
     location: 'Carmagnola (TO)',
     imageUrl: 'https://www.speedy-pizza.it/logo.jpeg',
     siteUrl: 'https://speedy-pizza.it',
-    challenge:
-      'La pizzeria aveva bisogno di una presenza online professionale per mostrare menu, orari e informazioni di contatto ai clienti.',
-    solution:
-      'Sito vetrina responsive con menu fotografico, informazioni complete e integrazione Google Maps per facilitare le visite.',
-    results: [
-      { metric: '+30%', description: 'Visibilità online locale' },
-      { metric: '200+', description: 'Visualizzazioni menu/mese' },
-      { metric: '15min', description: 'Riduzione tempo telefonate info' },
-      { metric: '4.5★', description: 'Rating Google Reviews' }
-    ],
-    technologies: ['Responsive Design', 'Menu Gallery', 'Google Maps', 'Local SEO'],
-    testimonial:
-      'Con il nuovo sito i clienti trovano subito tutte le informazioni che cercano. Meno telefonate per gli orari e più clienti che ci conoscono.',
-    clientName: 'Adele',
-    clientRole: 'Titolare',
-    timeline: '2 settimane',
+    challenge: 'Presenza online professionale per menu e orari.',
+    solution: 'Sito vetrina mobile-first con menu fotografico e integrazione Maps.',
+    results: ['+30% Visibilità', '-15min Gestione telefonate'],
     featured: true,
     caseStudyUrl: '/progetti/speedy-pizza'
   },
   {
     id: 'bar-chantilly',
-    title: 'Bar Tabacchi Chantilly',
-    subtitle: 'Sito vetrina per bar storico di Carmagnola',
-    category: 'Ristorazione • Completato',
+    title: 'Bar Chantilly',
+    subtitle: 'Rebranding Digitale',
+    category: 'Food',
     location: 'Carmagnola (TO)',
     imageUrl: '/chanty.JPG',
     siteUrl: 'https://bartabacchichantilly.it',
-    challenge:
-      'Il bar storico necessitava di una presenza digitale per presentare servizi, orari e menu in modo professionale ai clienti.',
-    solution:
-      'Sito vetrina elegante con menu digitale, informazioni servizi completi e identità visiva coordinata per il brand locale.',
-    results: [
-      { metric: '+25%', description: 'Riconoscimento brand locale' },
-      { metric: '150+', description: 'Visite mensili organiche' },
-      { metric: '4.8★', description: 'Soddisfazione clienti' },
-      { metric: '100%', description: 'Coerenza comunicazione' }
-    ],
-    technologies: ['Responsive Design', 'Digital Menu', 'Brand Identity', 'Local SEO'],
-    testimonial:
-      'Il nuovo sito rappresenta perfettamente la nostra storia e i nostri valori. I clienti apprezzano la professionalità e la chiarezza.',
-    clientName: 'Francesco',
-    clientRole: 'Titolare',
-    timeline: '3 settimane',
+    challenge: 'Presentare servizi e menu in modo professionale.',
+    solution: 'Sito vetrina elegante con menu digitale e identità coordinata.',
+    results: ['+25% Brand Awareness', '150+ Visite organiche'],
     featured: true,
     isWip: false,
     caseStudyUrl: '/progetti/bar-chantilly'
@@ -143,27 +78,14 @@ const caseStudies = [
   {
     id: 'sergio-contegiacomo',
     title: 'Sergio Contegiacomo',
-    subtitle: 'Consulenza strategica per consulente finanziario',
-    category: 'B2B • Servizi Finanziari',
+    subtitle: 'Financial Advisor',
+    category: 'Finance • B2B',
     location: 'Bra (CN)',
     imageUrl: '/client.jpg',
     siteUrl: '#',
-    challenge:
-      'Consulente finanziario indipendente che necessita di strutturare la propria presenza digitale e strategia di acquisizione clienti.',
-    solution:
-      'Consulenza strategica su posizionamento professionale, definizione target e roadmap per la crescita del business.',
-    results: [
-      { metric: 'In corso', description: 'Analisi target clientela' },
-      { metric: 'In corso', description: 'Strategia posizionamento' },
-      { metric: 'In corso', description: 'Piano comunicazione' },
-      { metric: 'Q1 2025', description: 'Implementazione prevista' }
-    ],
-    technologies: ['Strategic Consulting', 'Business Development', 'Client Acquisition', 'Digital Strategy'],
-    testimonial:
-      'La consulenza Bitora mi sta aiutando a definire chiaramente la mia proposta di valore e la strategia per raggiungere i clienti giusti.',
-    clientName: 'Sergio',
-    clientRole: 'Consulente Finanziario',
-    timeline: 'In corso (4 settimane)',
+    challenge: 'Strutturare presenza digitale e strategia di acquisizione.',
+    solution: 'Consulenza su posizionamento e piano di comunicazione.',
+    results: ['Analisi Target', 'Lancio Q1 2025'],
     featured: false,
     isWip: true,
     caseStudyUrl: '/progetti/sergio-contegiacomo'
@@ -171,363 +93,152 @@ const caseStudies = [
 ];
 
 const stats = [
-  { number: '25+', label: 'Progetti completati' },
-  { number: '100%', label: 'Clienti soddisfatti' },
-  { number: '+30%', label: 'Incremento lead medi' },
-  { number: '48h', label: 'Tempo medio setup' }
+  { number: '25+', label: 'Progetti' },
+  { number: '100%', label: 'Soddisfazione' },
+  { number: '+30%', label: 'Lead Medi' },
+  { number: '48h', label: 'Setup' }
 ];
 ---
 
 <Layout
-  title="Portfolio premium | Case study Bitora tra Torino e Piemonte"
-  description="Esplora i progetti Bitora: web design, ecosistemi NFC e automazioni AI con risultati misurabili per aziende e locali di Carmagnola, Torino e Piemonte."
+  title="Portfolio Progetti | Bitora"
+  description="Esplora i progetti Bitora: web design, ecosistemi NFC e automazioni AI con risultati misurabili per aziende di Carmagnola e Torino."
 >
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden py-24 md:py-32 bg-gradient-to-br from-gray-50 via-white to-primary/10 dark:from-gray-950 dark:via-gray-950 dark:to-primary/15">
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <div class="absolute -top-40 left-1/4 h-72 w-72 rounded-full bg-primary/30 blur-3xl"></div>
-      <div class="absolute bottom-10 right-10 h-64 w-64 rounded-full bg-purple-400/20 blur-[100px]"></div>
-    </div>
-    <div class="container mx-auto px-4 relative">
-      <div class="mx-auto max-w-5xl text-center space-y-8">
-        <span class="inline-flex items-center gap-2 rounded-full border border-gray-200/70 bg-white/70 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-gray-200">
-          <span class="text-lg">🏆</span>
-          Case study reali dal Piemonte
-        </span>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Trasformiamo i visitatori <br class="hidden md:block" /> in <span class="text-primary">clienti reali</span>
+  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+    
+    <!-- Hero Section -->
+    <section class="relative h-[70vh] flex flex-col justify-center items-center text-center px-4">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+      
+      <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+          Lavori che<br />
+          parlano.
         </h1>
-        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Non solo design: realizziamo ecosistemi digitali progettati per vendere. 
-          Scopri come le aziende piemontesi stanno aumentando il fatturato con le nostre soluzioni.
+        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+          Non solo pixel. Costruiamo strumenti di business che generano risultati misurabili.
         </p>
+      </div>
+    </section>
 
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => (
-            <div class="rounded-2xl border border-gray-200/80 bg-white/70 p-6 text-left shadow-lg shadow-gray-900/5 backdrop-blur dark:border-white/10 dark:bg-white/5">
-              <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">{stat.label}</p>
-              <p class="mt-2 text-3xl font-semibold text-gray-900 dark:text-white">{stat.number}</p>
+    <!-- Stats -->
+    <section class="py-12 border-y border-white/5 bg-white/[0.02]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, i) => (
+            <div class="reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
+              <p class="text-4xl md:text-5xl font-bold text-white mb-2">{stat.number}</p>
+              <p class="text-sm text-gray-500 uppercase tracking-widest">{stat.label}</p>
             </div>
           ))}
         </div>
-
-        <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-          {caseStudies.filter((cs) => cs.featured).map((cs) => (
-            <span class="inline-flex items-center gap-2 rounded-full border border-gray-200/70 bg-white/70 px-3 py-2 backdrop-blur dark:border-white/10 dark:bg-white/5">
-              <span class="size-2 rounded-full bg-primary"></span>
-              {cs.title}
-            </span>
-          ))}
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Grid -->
-  <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-950">
-    <div class="container mx-auto px-4">
-      <!-- Filter Buttons -->
-      <div class="flex flex-wrap justify-center gap-3 mb-12">
-        <button 
-          class="filter-chip px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border border-transparent
-                 data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=true]:shadow-lg
-                 data-[active=false]:bg-white data-[active=false]:text-gray-600 data-[active=false]:hover:bg-gray-100 data-[active=false]:border-gray-200
-                 dark:data-[active=true]:bg-white dark:data-[active=true]:text-gray-900
-                 dark:data-[active=false]:bg-white/5 dark:data-[active=false]:text-gray-400 dark:data-[active=false]:hover:bg-white/10 dark:data-[active=false]:border-white/10"
-          data-filter="all"
-          data-active="true"
-        >
-          Tutti i progetti
-        </button>
-        <button 
-          class="filter-chip px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border border-transparent
-                 data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=true]:shadow-lg
-                 data-[active=false]:bg-white data-[active=false]:text-gray-600 data-[active=false]:hover:bg-gray-100 data-[active=false]:border-gray-200
-                 dark:data-[active=true]:bg-white dark:data-[active=true]:text-gray-900
-                 dark:data-[active=false]:bg-white/5 dark:data-[active=false]:text-gray-400 dark:data-[active=false]:hover:bg-white/10 dark:data-[active=false]:border-white/10"
-          data-filter="ristoranti"
-          data-active="false"
-        >
-          Ristorazione
-        </button>
-        <button 
-          class="filter-chip px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border border-transparent
-                 data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=true]:shadow-lg
-                 data-[active=false]:bg-white data-[active=false]:text-gray-600 data-[active=false]:hover:bg-gray-100 data-[active=false]:border-gray-200
-                 dark:data-[active=true]:bg-white dark:data-[active=true]:text-gray-900
-                 dark:data-[active=false]:bg-white/5 dark:data-[active=false]:text-gray-400 dark:data-[active=false]:hover:bg-white/10 dark:data-[active=false]:border-white/10"
-          data-filter="servizi"
-          data-active="false"
-        >
-          Servizi & B2B
-        </button>
-        <button 
-          class="filter-chip px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border border-transparent
-                 data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=true]:shadow-lg
-                 data-[active=false]:bg-white data-[active=false]:text-gray-600 data-[active=false]:hover:bg-gray-100 data-[active=false]:border-gray-200
-                 dark:data-[active=true]:bg-white dark:data-[active=true]:text-gray-900
-                 dark:data-[active=false]:bg-white/5 dark:data-[active=false]:text-gray-400 dark:data-[active=false]:hover:bg-white/10 dark:data-[active=false]:border-white/10"
-          data-filter="wip"
-          data-active="false"
-        >
-          In Corso
-        </button>
-      </div>
-
-      <div class="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 xl:grid-cols-3">
-        {caseStudies.map((caseStudy) => {
-          const tags = [
-            caseStudy.featured ? 'featured' : '',
-            caseStudy.category.includes('Ristorazione') || caseStudy.category.includes('Food') ? 'ristoranti' : '',
-            caseStudy.category.includes('B2B') || caseStudy.category.includes('Artigianato') ? 'servizi' : '',
-            caseStudy.isWip ? 'wip' : ''
-          ]
-            .filter(Boolean)
-            .join(' ');
-
-          return (
-            <article
-              class={`project-card group relative overflow-hidden rounded-3xl border border-gray-200/70 bg-white/80 p-1 text-left shadow-xl shadow-gray-900/10 transition-all duration-500 hover:-translate-y-2 hover:border-gray-300 hover:shadow-2xl dark:border-white/10 dark:bg-white/5 dark:hover:border-white/30 ${
-                caseStudy.featured ? 'ring-2 ring-primary/30' : ''
-              } ${tags}`}
-              data-tags={tags || 'all'}
-            >
-              <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100 dark:from-primary/10"></div>
-
-              <div class="relative overflow-hidden rounded-[26px] bg-gray-100 dark:bg-gray-900">
-                <div class="relative">
-                  <div class="aspect-[4/3] overflow-hidden rounded-[26px]">
-                    {caseStudy.imageUrl ? (
-                      <img
-                        src={caseStudy.imageUrl}
-                        alt={caseStudy.title}
-                        class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.05] group-hover:grayscale-0 grayscale"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div class="flex h-full items-center justify-center text-4xl text-gray-400">🏢</div>
-                    )}
+    <!-- Projects Grid -->
+    <section class="py-32 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+        {caseStudies.map((project, i) => (
+          <article class={`group relative reveal-on-scroll ${i % 2 !== 0 ? 'md:translate-y-24' : ''}`}>
+            <a href={project.caseStudyUrl} class="block">
+              <div class="relative aspect-[4/3] overflow-hidden rounded-3xl bg-zinc-900 mb-8">
+                <div class="absolute inset-0 bg-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                <img 
+                  src={project.imageUrl} 
+                  alt={project.title}
+                  class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                />
+                {project.isWip && (
+                  <div class="absolute top-6 right-6 bg-black/50 backdrop-blur border border-white/10 px-4 py-1 rounded-full text-xs font-medium uppercase tracking-wider text-white z-20">
+                    In Corso
                   </div>
-
-                  <div class="absolute left-6 top-6 flex flex-wrap gap-2">
-                    <span class="inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/95 px-3 py-1 text-xs font-semibold text-gray-900 shadow-sm backdrop-blur dark:border-gray-700 dark:bg-gray-900/90 dark:text-gray-100">
-                      {caseStudy.category}
-                    </span>
-                    {caseStudy.featured && (
-                      <span class="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/90 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur">
-                        ⭐ Featured
-                      </span>
-                    )}
-                    {caseStudy.isWip && (
-                      <span class="inline-flex items-center gap-1 rounded-full border border-orange-400/40 bg-orange-500/90 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur">
-                        🚧 In corso
-                      </span>
-                    )}
-                  </div>
+                )}
+              </div>
+              
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-indigo-400 text-sm font-medium tracking-wider uppercase">{project.category}</span>
+                  <span class="text-gray-600 text-sm">{project.location}</span>
                 </div>
-
-                <div class="relative space-y-6 px-7 pb-8 pt-6">
-                  <div class="space-y-2">
-                    <div class="flex flex-wrap items-center justify-between gap-3">
-                      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{caseStudy.title}</h3>
-                      <span class="flex items-center gap-2 rounded-full border border-gray-200 bg-gray-100/50 px-3 py-1 text-xs font-medium text-gray-700 dark:border-gray-700 dark:bg-gray-800/50 dark:text-gray-300">
-                        📍 {caseStudy.location}
-                      </span>
-                    </div>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">{caseStudy.subtitle}</p>
-                  </div>
-
-                  <div class="grid grid-cols-2 gap-3">
-                    {caseStudy.results.slice(0, 2).map((result) => (
-                      <div class="rounded-2xl border border-gray-200/70 bg-white/80 px-4 py-3 text-left shadow-sm backdrop-blur transition group-hover:border-gray-300 dark:border-white/10 dark:bg-white/5">
-                        <p class="text-sm font-semibold text-gray-900 dark:text-white">{result.metric}</p>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">{result.description}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div class="rounded-2xl bg-gray-900/5 p-4 text-sm text-gray-600 dark:bg-white/5 dark:text-gray-300">
-                    <p class="italic">“{caseStudy.testimonial}”</p>
-                    <p class="mt-3 text-xs font-medium text-gray-500 dark:text-gray-400">{caseStudy.clientName} · {caseStudy.clientRole}</p>
-                  </div>
-
-                  <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                    <span class="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-gray-100/50 px-3 py-1 backdrop-blur dark:border-gray-700 dark:bg-gray-800/50">
-                      ⏱️ {caseStudy.timeline}
-                    </span>
-                    <span class="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-gray-100/50 px-3 py-1 backdrop-blur dark:border-gray-700 dark:bg-gray-800/50">
-                      ⚙️ {caseStudy.technologies.slice(0, 3).join(' · ')}
-                    </span>
-                  </div>
-
-                  <div class="flex flex-col sm:flex-row gap-3 mt-6">
-                    {caseStudy.siteUrl !== '#' && !caseStudy.isWip && (
-                      <a
-                        href={caseStudy.siteUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex-1 flex items-center justify-center rounded-xl border border-gray-200 bg-white px-4 py-3 text-center text-sm font-semibold text-gray-700 transition hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
-                      >
-                        Visita il sito
-                      </a>
-                    )}
-                  </div>
+                <h3 class="text-3xl font-bold text-white group-hover:text-indigo-300 transition-colors">{project.title}</h3>
+                <p class="text-gray-400 line-clamp-2 font-light">{project.challenge}</p>
+                
+                <div class="flex flex-wrap gap-3 pt-2">
+                  {project.results.map(res => (
+                    <span class="text-xs text-gray-500 border border-white/10 px-3 py-1 rounded-full">{res}</span>
+                  ))}
                 </div>
               </div>
-            </article>
-          );
-        })}
+            </a>
+          </article>
+        ))}
       </div>
+    </section>
 
-      <div class="mx-auto mt-16 max-w-5xl rounded-3xl border border-primary/20 bg-gradient-to-r from-primary/10 to-purple-500/10 p-10 shadow-lg dark:border-primary/30 dark:from-primary/20 dark:to-purple-500/20">
-        <div class="text-center space-y-6">
-          <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">“Ogni progetto nasce da una consulenza dedicata e termina con metriche chiare dentro Bitora CRM.”</h3>
-          <div class="grid gap-4 md:grid-cols-2">
-            <blockquote class="rounded-2xl border border-white/40 bg-white/80 p-6 text-left backdrop-blur dark:border-white/10 dark:bg-white/5">
-              <p class="text-sm text-gray-700 dark:text-gray-200">"La consulenza Bitora mi sta aiutando a definire chiaramente la mia strategia per il mercato AR enterprise italiano."</p>
-              <p class="mt-3 text-xs font-medium text-gray-500 dark:text-gray-400">Simone · Co-founder, HoloLux AR</p>
-            </blockquote>
-            <blockquote class="rounded-2xl border border-white/40 bg-white/80 p-6 text-left backdrop-blur dark:border-white/10 dark:bg-white/5">
-              <p class="text-sm text-gray-700 dark:text-gray-200">"Il nuovo sito rappresenta perfettamente la nostra storia. I clienti apprezzano la professionalità e trovano subito le informazioni."</p>
-              <p class="mt-3 text-xs font-medium text-gray-500 dark:text-gray-400">Federica · Bar Tabacchi Chantilly</p>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Impact Metrics -->
-  <section class="py-16 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-      <div class="mx-auto max-w-5xl text-center space-y-6">
-        <span class="inline-flex items-center gap-2 rounded-full border border-gray-200/70 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:border-white/10 dark:bg-white/5 dark:text-gray-400">
-          Performance aggregate 12 mesi
-        </span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white">Il cruscotto Bitora parla chiaro</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300">Misuriamo tutto: dal primo tap NFC al contratto firmato. Le metriche sono consultabili in tempo reale dentro Bitora CRM.</p>
-
-        <div class="grid gap-6 md:grid-cols-4">
-          <div class="rounded-3xl border border-gray-200/70 bg-gray-50 p-6 text-center dark:border-white/10 dark:bg-white/5">
-            <p class="text-3xl font-semibold text-primary">450+</p>
-            <p class="mt-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Lead qualificati</p>
-          </div>
-          <div class="rounded-3xl border border-gray-200/70 bg-gray-50 p-6 text-center dark:border-white/10 dark:bg-white/5">
-            <p class="text-3xl font-semibold text-green-500">+30%</p>
-            <p class="mt-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Visite organiche</p>
-          </div>
-          <div class="rounded-3xl border border-gray-200/70 bg-gray-50 p-6 text-center dark:border-white/10 dark:bg-white/5">
-            <p class="text-3xl font-semibold text-blue-500">280+</p>
-            <p class="mt-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Nuovi clienti</p>
-          </div>
-          <div class="rounded-3xl border border-gray-200/70 bg-gray-50 p-6 text-center dark:border-white/10 dark:bg-white/5">
-            <p class="text-3xl font-semibold text-purple-500">4.6★</p>
-            <p class="mt-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Rating medio</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Methodology -->
-  <section class="py-16 bg-gray-100 dark:bg-gray-950/80">
-    <div class="container mx-auto px-4">
-      <div class="mx-auto max-w-5xl text-center space-y-6">
-        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white">Un metodo che unisce consulenza e creatività</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300">Ogni progetto passa da un framework preciso con check-point condivisi e asset pronti per il tuo team.</p>
-      </div>
-
-      <div class="mt-12 grid gap-6 md:grid-cols-4">
-        <div class="rounded-3xl border border-gray-200/70 bg-white p-6 text-left shadow-sm dark:border-white/10 dark:bg-white/5">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">01 · Discovery</p>
-          <p class="mt-3 text-base text-gray-700 dark:text-gray-200">Workshop di 60 minuti, analisi competitor locali e raccolta KPI su Bitora CRM.</p>
-        </div>
-        <div class="rounded-3xl border border-gray-200/70 bg-white p-6 text-left shadow-sm dark:border-white/10 dark:bg-white/5">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">02 · Design system</p>
-          <p class="mt-3 text-base text-gray-700 dark:text-gray-200">UI su misura, copywriting SEO Piemonte, asset fotografici curati.</p>
-        </div>
-        <div class="rounded-3xl border border-gray-200/70 bg-white p-6 text-left shadow-sm dark:border-white/10 dark:bg-white/5">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">03 · Launch & automazioni</p>
-          <p class="mt-3 text-base text-gray-700 dark:text-gray-200">Setup in 30 giorni, tessere NFC, chatbot AI e campagne integrate.</p>
-        </div>
-        <div class="rounded-3xl border border-gray-200/70 bg-white p-6 text-left shadow-sm dark:border-white/10 dark:bg-white/5">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">04 · Iterazione</p>
-          <p class="mt-3 text-base text-gray-700 dark:text-gray-200">Report mensili, insight CRM e roadmap evolutiva senza lock-in.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-primary/5 dark:from-gray-900 dark:via-gray-900 dark:to-black relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('/grid.svg')] opacity-5 dark:opacity-10"></div>
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="mx-auto max-w-4xl text-center space-y-8">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Vuoi ottenere gli stessi risultati?</h2>
-        <p class="text-xl text-gray-600 dark:text-white/90 mb-8 max-w-2xl mx-auto">
-          Smetti di perdere opportunità online. Prenota una consulenza strategica gratuita e scopri come possiamo far crescere il tuo business.
+    <!-- CTA -->
+    <section class="py-40 px-6 text-center mt-24">
+      <div class="max-w-4xl mx-auto reveal-on-scroll">
+        <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Il prossimo caso studio? <br/> Potrebbe essere il tuo.</h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
+          Raccontaci la tua sfida. Costruiremo la soluzione su misura per vincerla.
         </p>
-        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="/contattaci" class="w-full rounded-xl bg-gradient-to-r from-primary to-orange-600 px-8 py-4 text-center text-lg font-bold text-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/50 hover:-translate-y-1 hover:scale-105 sm:w-auto">
-            Prenota la consulenza gratuita
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            Inizia il progetto
           </a>
-          <a href="/prezzi" class="w-full rounded-xl border-2 border-gray-200 bg-white px-8 py-4 text-center text-lg font-semibold text-gray-700 backdrop-blur-sm transition hover:bg-gray-50 hover:border-gray-300 dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:hover:border-white/40 sm:w-auto">
-            Vedi i piani
-          </a>
-        </div>
-
-        <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-500 dark:text-white/70">
-          <span class="flex items-center gap-2">📞 Chiamata diretta</span>
-          <span class="flex items-center gap-2">🎯 Strategia su misura</span>
-          <span class="flex items-center gap-2">📊 ROI misurabile</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 </Layout>
 
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
 <script>
-  // Enhanced filter system
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterChips = document.querySelectorAll('.filter-chip');
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    filterChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const filter = chip.getAttribute('data-filter');
-        
-        // Update active chip
-        filterChips.forEach(c => c.setAttribute('data-active', 'false'));
-        chip.setAttribute('data-active', 'true');
-        
-        // Filter projects with animation
-        projectCards.forEach(card => {
-          const htmlCard = card as HTMLElement;
-          const tags = card.getAttribute('data-tags') || '';
-          const shouldShow = filter === 'all' || tags.includes(filter);
-          
-          if (shouldShow) {
-            htmlCard.style.display = 'block';
-            htmlCard.style.opacity = '0';
-            htmlCard.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-              htmlCard.style.transition = 'all 0.5s ease-out';
-              htmlCard.style.opacity = '1';
-              htmlCard.style.transform = 'translateY(0)';
-            }, 50);
-          } else {
-            htmlCard.style.transition = 'all 0.3s ease-in';
-            htmlCard.style.opacity = '0';
-            htmlCard.style.transform = 'translateY(-20px)';
-            
-            setTimeout(() => {
-              htmlCard.style.display = 'none';
-            }, 300);
-          }
-        });
-      });
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
     });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.reveal-on-scroll');
+    elements.forEach(el => observer.observe(el));
   });
 </script>
-

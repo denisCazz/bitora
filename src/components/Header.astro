@@ -1,6 +1,5 @@
 ---
 import { icons } from './Icons';
-import ThemeToggle from './ThemeToggle.astro';
 
 const navItems = [
   { name: 'Home', url: '/' },
@@ -64,7 +63,6 @@ const currentPath = Astro.url.pathname;
         }
       </nav>
       <div class="hidden md:flex items-center gap-3">
-        <ThemeToggle />
         <a href="/contattaci"class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-orange/30 dark:text-orange dark:hover:bg-orange/10">Prenota una consulenza</a>
       </div>
       <div class="md:hidden">

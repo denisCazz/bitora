@@ -1,297 +1,165 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const solutions = [
+  {
+    title: 'Digital Experience',
+    subtitle: 'Web Design & SEO',
+    description: 'Siti web che non sono solo vetrine, ma strumenti di crescita. Ottimizzati per Google e per le risposte AI.',
+    features: ['Design Mobile-First', 'SEO Locale (Carmagnola/Torino)', 'Tempi di caricamento < 1s'],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
+    link: '/contattaci?topic=web',
+    cta: 'Inizia il progetto'
+  },
+  {
+    title: 'Phygital NFC',
+    subtitle: 'Connessione Fisica-Digitale',
+    description: 'Tessere, espositori e gadget che aprono mondi digitali con un tocco. Perfetti per networking e retail.',
+    features: ['Chip NTAG213 Alta Qualità', 'Dashboard di gestione', 'Analytics in tempo reale'],
+    image: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?q=80&w=2553&auto=format&fit=crop',
+    link: '/nfc-ecosystem',
+    cta: 'Scopri NFC'
+  },
+  {
+    title: 'Bitora CRM',
+    subtitle: 'Gestione Centralizzata',
+    description: 'Il cuore pulsante del tuo business. Gestisci contatti, lead e automazioni in un\'unica piattaforma intuitiva.',
+    features: ['Lead Scoring AI', 'Automazioni WhatsApp', 'Multi-utente'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop',
+    link: '/bitora-crm',
+    cta: 'Esplora CRM'
+  }
+];
 ---
+
 <Layout
-  title="Soluzioni Consulenziali Integrate per il Piemonte | Bitora"
-  description="Percorsi digitali su misura tra web design, ecosistemi NFC e Bitora CRM. Strategie SEO locali, automazioni AI e supporto umano per aziende e professionisti a Carmagnola, Torino e in tutto il Piemonte."
+  title="Soluzioni Digitali | Bitora"
+  description="Web Design, NFC e CRM per aziende che guardano al futuro. Soluzioni integrate per il mercato di Torino e Piemonte."
 >
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden py-24 md:py-28 bg-gradient-to-br from-gray-50 via-white to-primary/10 dark:from-gray-900 dark:via-gray-950 dark:to-primary/20">
-    <div class="absolute inset-0 opacity-30 dark:opacity-40" aria-hidden="true">
-      <div class="absolute top-10 left-1/4 w-64 h-64 bg-primary/20 blur-3xl rounded-full"></div>
-      <div class="absolute bottom-0 right-1/3 w-72 h-72 bg-purple-400/20 blur-3xl rounded-full"></div>
-    </div>
-    <div class="container mx-auto px-4 relative">
-      <div class="max-w-4xl mx-auto text-center">
-        <span class="inline-flex items-center gap-2 bg-white/70 dark:bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 mb-6">
-          <span class="text-lg">✨</span> Consulenza + tecnologia per il territorio piemontese
-        </span>
-
-        <h1 class="text-4xl md:text-6xl font-semibold tracking-tight mb-6 text-gray-900 dark:text-white">
-          Soluzioni Bitora per far crescere la tua realtà tra Carmagnola e Torino
+  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+    
+    <!-- Hero Section -->
+    <section class="relative h-screen flex flex-col justify-center items-center text-center px-4">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+      
+      <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+          Soluzioni per<br />
+          l'era digitale.
         </h1>
-
-        <p class="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto">
-          Uniamo branding, SEO locale, automazioni AI e phygital NFC per trasformare il tuo business. Ogni progetto parte da una discovery call con il nostro team senior.
+        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+          Un ecosistema integrato di strumenti per far crescere il tuo business. <br class="hidden md:block" />
+          Dal web al fisico, senza interruzioni.
         </p>
+      </div>
+    </section>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contattaci?topic=consulenza" class="px-7 py-4 bg-gray-900 text-white rounded-xl font-semibold shadow-lg shadow-gray-900/20 hover:bg-gray-800 transition-colors">
-            Prenota la discovery call
+    <!-- Solutions Loop -->
+    <div class="space-y-32 pb-32">
+      {solutions.map((sol, i) => (
+        <section class={`py-20 px-6 md:px-12 ${i % 2 !== 0 ? 'bg-zinc-900/30' : ''}`}>
+          <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
+            <div class={`space-y-8 reveal-on-scroll ${i % 2 !== 0 ? 'order-2' : 'order-2 md:order-1'}`}>
+              <span class="text-indigo-400 font-medium tracking-wider uppercase text-sm">{sol.subtitle}</span>
+              <h2 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
+                {sol.title}
+              </h2>
+              <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
+                {sol.description}
+              </p>
+              <ul class="space-y-4 text-gray-300 mt-8">
+                {sol.features.map(feat => (
+                  <li class="flex items-center gap-4">
+                    <span class="flex items-center justify-center w-6 h-6 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-xs">✓</span>
+                    <span class="text-lg">{feat}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="pt-8">
+                <a href={sol.link} class="inline-block px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                  {sol.cta}
+                </a>
+              </div>
+            </div>
+            <div class={`relative group reveal-on-scroll delay-200 ${i % 2 !== 0 ? 'order-1' : 'order-1 md:order-2'}`}>
+              <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
+              <div class="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
+                <img 
+                  src={sol.image} 
+                  alt={sol.title} 
+                  class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <section class="py-40 px-6 text-center border-t border-white/5">
+      <div class="max-w-4xl mx-auto reveal-on-scroll">
+        <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Iniziamo a costruire.</h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
+          Prenota una call conoscitiva. Analizziamo le tue esigenze e troviamo la soluzione perfetta.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            Parla con noi
           </a>
-          <a href="/bitora-crm" class="px-7 py-4 bg-white/60 dark:bg-white/10 border border-gray-200/60 dark:border-white/10 text-gray-900 dark:text-gray-100 rounded-xl font-semibold hover:bg-white/80 dark:hover:bg-white/5 transition-colors">
-            Esplora Bitora CRM
-          </a>
-        </div>
-
-        <div class="mt-12 grid gap-6 sm:grid-cols-3 text-left">
-          <div class="rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur p-6">
-            <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">SEO iper-locale</p>
-            <p class="text-lg font-semibold text-gray-900 dark:text-white">Keyword research mirata su Carmagnola, Torino e Langhe</p>
-          </div>
-          <div class="rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur p-6">
-            <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Automazioni AI</p>
-            <p class="text-lg font-semibold text-gray-900 dark:text-white">Chatbot custom, template follow-up e scoring lead intelligente</p>
-          </div>
-          <div class="rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur p-6">
-            <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">Phygital NFC</p>
-            <p class="text-lg font-semibold text-gray-900 dark:text-white">Esperienze su tessere, vetrine e materiali smart pronti all'uso</p>
-          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Solution Tracks -->
-  <section id="percorsi" class="py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-      <div class="max-w-5xl mx-auto text-center mb-16">
-        <span class="inline-flex items-center bg-primary/10 dark:bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium mb-5">Percorsi consulenziali</span>
-        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4">Scegli da dove iniziare, al resto pensiamo noi</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300">Ogni soluzione include workshop iniziale, roadmap condivisa, supporto WhatsApp dedicato e gestione su Bitora CRM.</p>
-      </div>
-
-      <div class="grid gap-10 lg:grid-cols-2">
-        <article class="relative overflow-hidden rounded-3xl border border-gray-200/60 dark:border-white/10 bg-gradient-to-br from-white via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900/20 p-10 text-left">
-          <div class="absolute inset-y-0 right-0 w-48 bg-blue-400/10 blur-3xl" aria-hidden="true"></div>
-          <div class="flex items-center gap-3 text-sm font-semibold text-blue-600 dark:text-blue-300 mb-6">
-            <span class="text-2xl">🌐</span> Digital Experience
-          </div>
-          <h3 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Web design che posiziona e converte</h3>
-          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">Branding, copy e UX pensati per chi opera tra Torino e provincia. Integriamo analytics, SEO locale e micro-conversioni misurabili.</p>
-
-          <div class="space-y-4 mb-6">
-            <div class="flex items-start gap-3">
-              <span class="w-6 h-6 text-sm rounded-full bg-blue-600 text-white flex items-center justify-center mt-1">1</span>
-              <p class="text-gray-700 dark:text-gray-200">Ricerca keyword e struttura contenuti ottimizzata per i quartieri e le ricerche vocali.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="w-6 h-6 text-sm rounded-full bg-blue-600 text-white flex items-center justify-center mt-1">2</span>
-              <p class="text-gray-700 dark:text-gray-200">Design modulare su misura, tempi di caricamento &lt; 1s e micro-animazioni WebGL-free.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="w-6 h-6 text-sm rounded-full bg-blue-600 text-white flex items-center justify-center mt-1">3</span>
-              <p class="text-gray-700 dark:text-gray-200">Flussi di lead nurturing: email, WhatsApp e automazioni AI per follow-up istantanei.</p>
-            </div>
-          </div>
-
-          <div class="rounded-2xl bg-white/80 dark:bg-white/10 backdrop-blur p-6 mb-6">
-            <p class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Case study</p>
-            <p class="text-base text-gray-700 dark:text-gray-200"><strong>Bar Chantilly, Carmagnola:</strong> +32% prenotazioni colazioni in 90 giorni grazie a landing local, schema markup e campagne QR in store.</p>
-          </div>
-
-          <div class="flex flex-wrap gap-3">
-            <a href="/contattaci?topic=web" class="px-5 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Avvia il percorso web</a>
-            <a href="/prezzi" class="px-5 py-3 border border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-200 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors">Consulta il percorso</a>
-          </div>
-        </article>
-
-        <article class="relative overflow-hidden rounded-3xl border border-gray-200/60 dark:border-white/10 bg-gradient-to-br from-white via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-purple-900/20 p-10 text-left">
-          <div class="absolute inset-y-0 right-0 w-48 bg-purple-400/10 blur-3xl" aria-hidden="true"></div>
-          <div class="flex items-center gap-3 text-sm font-semibold text-purple-600 dark:text-purple-300 mb-6">
-            <span class="text-2xl">📱</span> Phygital NFC Experience
-          </div>
-          <h3 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Tessere e materiali smart che stupiscono</h3>
-          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">Creiamo esperienze NFC per showroom, eventi e retail. Ogni tap apre contenuti dinamici, chatbot AI o moduli personalizzati.</p>
-
-          <div class="space-y-4 mb-6">
-            <div class="flex items-start gap-3">
-              <span class="w-6 h-6 text-sm rounded-full bg-purple-600 text-white flex items-center justify-center mt-1">1</span>
-              <p class="text-gray-700 dark:text-gray-200">Tessere NTAG213 e vetrofanie NFC prodotte in Piemonte, personalizzate in 7 giorni.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="w-6 h-6 text-sm rounded-full bg-purple-600 text-white flex items-center justify-center mt-1">2</span>
-              <p class="text-gray-700 dark:text-gray-200">Landing dinamiche ottimizzate mobile, contenuti aggiornabili in autonomia via Bitora CRM.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="w-6 h-6 text-sm rounded-full bg-purple-600 text-white flex items-center justify-center mt-1">3</span>
-              <p class="text-gray-700 dark:text-gray-200">Automazioni AI: lead scoring, messaggi istantanei, analytics di interazione store-by-store.</p>
-            </div>
-          </div>
-
-          <div class="rounded-2xl bg-white/80 dark:bg-white/10 backdrop-blur p-6 mb-6">
-            <p class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Case study</p>
-            <p class="text-base text-gray-700 dark:text-gray-200"><strong>HoloLux, Torino:</strong> onboarding clienti +45% e upsell servizi XR grazie a tessere NFC e dashboard integrate.</p>
-          </div>
-
-          <div class="flex flex-wrap gap-3">
-            <a href="/contattaci?topic=nfc" class="px-5 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Attiva il kit NFC</a>
-            <a href="/nfc-ecosystem" class="px-5 py-3 border border-purple-200 dark:border-purple-700 text-purple-700 dark:text-purple-200 rounded-lg font-semibold hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors">Vedi ecosistema</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Starter Investments -->
-  <section class="py-20 bg-gray-50 dark:bg-gray-950/60">
-    <div class="container mx-auto px-4">
-      <div class="max-w-5xl mx-auto mb-12 text-center">
-        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4">Investimenti iniziali trasparenti</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300">Solo tre numeri pubblici. Il resto lo calcoliamo insieme in base a volumi, integrazioni e roadmap di crescita.</p>
-      </div>
-
-      <div class="grid gap-6 md:grid-cols-3">
-        <div class="rounded-3xl bg-white dark:bg-gray-900 border border-gray-200/70 dark:border-white/10 p-8 text-left shadow-lg shadow-gray-900/5">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">Sito Essenziale</p>
-          <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">€20 <span class="text-lg font-normal text-gray-500">/mese</span></h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Fino a 5 pagine, dominio incluso, hosting gestito e design mobile-first. Ideale per iniziare.</p>
-        </div>
-        <div class="rounded-3xl bg-white dark:bg-gray-900 border border-gray-200/70 dark:border-white/10 p-8 text-left shadow-lg shadow-gray-900/5">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">Landing performance</p>
-          <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">€300 <span class="text-lg font-normal text-gray-500">una tantum</span></h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Per campagne Google Ads, QR code o eventi. UI su misura, analytics e gestione contatti in Bitora CRM.</p>
-        </div>
-        <div class="rounded-3xl bg-white dark:bg-gray-900 border border-gray-200/70 dark:border-white/10 p-8 text-left shadow-lg shadow-gray-900/5">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">Tessere NFC premium</p>
-          <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">€20 <span class="text-lg font-normal text-gray-500">cad.</span></h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Stampa full color, chip NTAG213, configurazione landing e backup QR. Ordine minimo 10 pezzi.</p>
-        </div>
-      </div>
-
-      <p class="text-sm text-gray-500 dark:text-gray-400 mt-6 text-center">Tutti i percorsi includono supporto umano, canale Slack dedicato e gestione su Bitora CRM.</p>
-    </div>
-  </section>
-
-  <!-- Bitora CRM highlight -->
-  <section id="bitora-crm" class="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-5xl mx-auto grid lg:grid-cols-[1.2fr_0.8fr] gap-12">
-        <div>
-          <span class="inline-flex items-center bg-white/10 px-4 py-2 rounded-full text-sm font-medium mb-5">Novità 2025</span>
-          <h2 class="text-3xl md:text-4xl font-semibold mb-4">Bitora CRM: il centro operativo del tuo business</h2>
-          <p class="text-lg text-white/80 mb-6">Piattaforma unica per web, NFC e campagne. Centralizza i contatti, gestisci le richieste e semplifica il lavoro quotidiano.</p>
-
-          <ul class="space-y-4 text-white/85">
-            <li class="flex gap-3">
-              <span class="w-6 h-6 flex items-center justify-center rounded-full bg-primary text-gray-900 font-semibold">1</span>
-              <span>Gestione centralizzata: contatti web, scansioni NFC e richieste WhatsApp in un unico posto.</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="w-6 h-6 flex items-center justify-center rounded-full bg-primary text-gray-900 font-semibold">2</span>
-              <span>Strumenti pronti all'uso per organizzare appuntamenti, preventivi e comunicazioni.</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="w-6 h-6 flex items-center justify-center rounded-full bg-primary text-gray-900 font-semibold">3</span>
-              <span>Accessi multi-sede: ideale per gestire team e collaboratori in modo semplice.</span>
-            </li>
-          </ul>
-
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a href="/bitora-crm" class="px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Scopri Bitora CRM</a>
-            <a href="/contattaci?topic=crm" class="px-6 py-3 border-2 border-white/60 text-white rounded-lg font-semibold hover:bg-white/10 hover:border-white transition-colors">Parla con un esperto</a>
-          </div>
-        </div>
-
-        <div class="rounded-3xl bg-white/10 backdrop-blur-lg border border-white/10 p-8 self-center">
-          <p class="text-sm uppercase tracking-widest text-white/60 mb-3">Piano mensile</p>
-          <p class="text-4xl font-bold text-white mb-2">€19,99</p>
-          <p class="text-base text-white/80 mb-6">Accesso per 5 utenti, gestione contatti illimitata e supporto premium italiano.</p>
-          <div class="space-y-4 text-white/80 text-sm">
-            <p>→ Funzionalità AI disponibili su richiesta.</p>
-            <p>→ Importazione contatti inclusa per chi arriva da fogli Excel o rubriche.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Combo Section -->
-  <section id="combo" class="py-20 bg-gradient-to-r from-primary to-purple-600 text-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-12">
-          <span class="inline-flex items-center bg-white/20 px-4 py-2 rounded-full text-sm font-medium mb-5">Percorso ibrido consigliato</span>
-          <h2 class="text-3xl md:text-4xl font-semibold mb-4">Web + NFC + CRM: il triO vincente</h2>
-          <p class="text-lg text-white/80">Ideale per ristoranti, hotel, studi professionali e retail che vogliono presidiare on e offline con tutto sempre sotto controllo.</p>
-        </div>
-
-        <div class="grid gap-8 lg:grid-cols-2">
-          <div class="bg-white/15 backdrop-blur rounded-3xl p-8">
-            <h3 class="text-2xl font-semibold mb-5">Cosa integriamo</h3>
-            <ul class="space-y-4 text-white/85">
-              <li class="flex gap-3"><span class="mt-1">✓</span><span>Design system condiviso tra sito, landing e materiali NFC.</span></li>
-              <li class="flex gap-3"><span class="mt-1">✓</span><span>Automazioni AI: lead scoring, retargeting email, reminder WhatsApp.</span></li>
-              <li class="flex gap-3"><span class="mt-1">✓</span><span>Piattaforma unificata per gestire ogni interazione.</span></li>
-              <li class="flex gap-3"><span class="mt-1">✓</span><span>Training on-site in Piemonte e manuali pronti per il tuo team.</span></li>
-            </ul>
-          </div>
-          <div class="bg-white/15 backdrop-blur rounded-3xl p-8">
-            <h3 class="text-2xl font-semibold mb-5">Roadmap rapida</h3>
-            <ol class="space-y-4 text-white/85 list-decimal list-inside">
-              <li>Workshop di 60 minuti: obiettivi, brand voice, metriche prioritarie.</li>
-              <li>Settimana 1-2: design system, sviluppo web, setup CRM e automazioni.</li>
-              <li>Settimana 3-4: produzione materiali NFC, test A/B, lancio soft.</li>
-              <li>Dal giorno 30: ottimizzazioni mensili, report e coaching operativo.</li>
-            </ol>
-          </div>
-        </div>
-
-        <div class="mt-12 rounded-3xl bg-white/20 backdrop-blur p-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          <div>
-            <p class="uppercase text-sm tracking-wide text-white/70 mb-2">Esempio investimento iniziale</p>
-            <p class="text-base text-white/85">Combo Start <span class="font-semibold">€39/mese</span> (Sito + NFC) + Bitora CRM incluso. Il resto è tailor-made sul tuo funnel.</p>
-          </div>
-          <div class="flex flex-wrap gap-4">
-            <a href="/contattaci?plan=combo" class="px-6 py-3 bg-white text-primary rounded-lg font-semibold hover:bg-gray-100 transition-colors">Prenota la consulenza</a>
-            <a href="/prezzi" class="px-6 py-3 border-2 border-white/60 text-white rounded-lg font-semibold hover:bg-white/10 hover:border-white transition-colors">Approfondischi il percorso</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Metodo -->
-  <section class="py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-      <div class="max-w-5xl mx-auto text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4">Come lavoriamo insieme</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-400">Processo snello con check-in costanti e team dedicato in Piemonte.</p>
-      </div>
-
-      <div class="grid gap-6 md:grid-cols-4">
-        <div class="rounded-3xl border border-gray-200/70 dark:border-white/10 p-6 text-left">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">01 · Discovery</p>
-          <p class="text-base text-gray-700 dark:text-gray-200">Workshop con stakeholder, analisi competitor locali e definizione KPI.</p>
-        </div>
-        <div class="rounded-3xl border border-gray-200/70 dark:border-white/10 p-6 text-left">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">02 · Design system</p>
-          <p class="text-base text-gray-700 dark:text-gray-200">UI su misura, copy conversazionale e accessibilità AA garantita.</p>
-        </div>
-        <div class="rounded-3xl border border-gray-200/70 dark:border-white/10 p-6 text-left">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">03 · Launch & automations</p>
-          <p class="text-base text-gray-700 dark:text-gray-200">Lancio entro 30 giorni, automazioni AI e gestione in Bitora CRM.</p>
-        </div>
-        <div class="rounded-3xl border border-gray-200/70 dark:border-white/10 p-6 text-left">
-          <p class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-3">04 · Iterazione</p>
-          <p class="text-base text-gray-700 dark:text-gray-200">Report mensili, ottimizzazioni SEO, nuovi asset NFC e supporto continuo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA finale -->
-  <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-    <div class="container mx-auto px-4 text-center">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-semibold mb-6">Scopriamo insieme la soluzione giusta</h2>
-        <p class="text-xl text-white/80 mb-10">Call gratuita di 15 minuti con Denis: valutiamo obiettivi, budget e priorità. Nessun impegno, solo strategia.</p>
-
-        <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-          <a href="/contattaci" class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-7 py-4 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-primary/30 dark:text-primary dark:hover:bg-primary/10">Prenota ora</a>
-          <a href="https://wa.me/+393514979670?text=Ciao,%20vorrei%20informazioni%20sulle%20soluzioni%20Bitora" class="inline-flex items-center gap-2 rounded-full border border-white/60 px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-white/10 dark:border-white/20 dark:text-white dark:hover:bg-white/10">Scrivici su WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 </Layout>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.reveal-on-scroll');
+    elements.forEach(el => observer.observe(el));
+  });
+</script>
