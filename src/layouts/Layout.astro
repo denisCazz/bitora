@@ -25,6 +25,7 @@ const canonicalUrl = pathname === '/'
 <!doctype html>
 <html lang="it">
   <head>
+    <meta charset="UTF-8" />
     <SpeedInsights/>
     <Analytics />
     <!-- Performance Optimizer - Critical Resources -->
@@ -74,8 +75,8 @@ const canonicalUrl = pathname === '/'
       
       // Listen for consent changes
       window.addEventListener('cookieConsentChanged', loadAnalyticsScript);
-    </script>    <!-- Essential Meta -->
-    <meta charset="UTF-8" />
+    </script>
+    <!-- Essential Meta -->
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->

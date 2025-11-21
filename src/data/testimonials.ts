@@ -14,10 +14,22 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      'Il mio sito è stato consegnato in soli 3 giorni! Design elegante e professionale che rispecchia perfettamente la mia attività. Clienti mi fanno sempre complimenti e ho visto un aumento delle prenotazioni del 35%.',
+      'Prima il sito era solo una vetrina statica. Ora riceviamo richieste di preventivo qualificate ogni settimana. La gestione è semplicissima e i clienti apprezzano la professionalità che trasmettiamo online.',
+    author: 'Roberto',
+    company: 'Mistral Impianti Elettrici',
+    role: 'Titolare',
+    image: '/mistral.jpg',
+    site: 'https://mistralimpianti.it',
+    results: '+25% richieste preventivo',
+    rating: 5,
+    category: 'web'
+  },
+  {
+    quote:
+      'I miei clienti adorano poter vedere le mie creazioni online prima di venire in atelier. Il sito rispecchia perfettamente l\'eleganza del mio lavoro e mi ha aiutato a farmi conoscere anche fuori Carmagnola.',
     author: 'Kristina',
     company: 'Sartoria Kristina',
-    role: 'Founder & Designer',
+    role: 'Titolare',
     image: '/sartoria_kristina.png',
     site: 'https://sartoriakristina.it',
     results: '+35% prenotazioni in 3 mesi',
@@ -26,27 +38,27 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      'Mistral Impianti SRL ha scelto bitora.it per il nostro sito web e non potremmo essere più soddisfatti! Professionalità, velocità e risultati concreti. Il nostro sito ora genera lead qualificati ogni settimana.',
-    author: 'Gabriele',
-    company: 'Mistral Impianti SRL',
-    role: 'CEO',
-    image: '/mistral.jpg',
-    site: 'https://mistralimpianti.it',
-    results: '12 lead qualificati/mese',
+      'Il sistema di ordini via WhatsApp integrato nel sito ci ha cambiato la vita. Niente più errori telefonici e clienti molto più felici. Una soluzione pratica che funziona davvero.',
+    author: 'Adele',
+    company: 'Speedy Pizza',
+    role: 'Responsabile',
+    image: 'https://www.speedy-pizza.it/logo.jpeg',
+    site: 'https://speedy-pizza.it',
+    results: 'Ordini WhatsApp automatizzati',
     rating: 5,
     category: 'web'
   },
   {
     quote:
-      'Con HoloLux volevamo un ecosistema che unisse storytelling immersivo, NFC e una presenza web impeccabile. Bitora ha coordinato tutto: ora presentiamo i nostri showroom digitali in modo coerente e i lead arrivano anche da ricerche generative.',
-    author: 'Simone',
-    company: 'HoloLux Torino',
-    role: 'Co-founder',
+      'Cercavamo una presenza digitale sobria ma moderna. Bitora ha capito subito le nostre esigenze, creando un sito che trasmette autorevolezza e competenza. Ottimo anche il supporto post-lancio.',
+    author: 'Avv. Marco G.',
+    company: 'Studio Legale Associato',
+    role: 'Partner',
     image: '/client.jpg',
-    site: 'https://hololux.it',
-    results: '+45% richieste demo in 60 giorni',
+    site: '#',
+    results: 'Presenza digitale professionale',
     rating: 5,
-    category: 'combo'
+    category: 'web'
   },
   {
     quote:

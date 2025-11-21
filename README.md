@@ -150,4 +150,4 @@ Build the site and deploy the `dist/` folder to your hosting provider.
 
 ## 📄 License
 
-© 2024 Bitora.it - All rights reserved.
+© 2025 Bitora.it - All rights reserved.

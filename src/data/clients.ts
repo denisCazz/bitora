@@ -23,13 +23,7 @@ export const clientLogos: ClientLogo[] = [
     url: 'https://mistralimpianti.it',
     location: 'Torino'
   },
-  {
-    name: 'HoloLux Torino',
-    logo: '/bitora.jpg',
-    tier: 'gold',
-    url: 'https://holo-lux.com/',
-    location: 'Torino'
-  },
+
   {
     name: 'Bar Chantilly',
     logo: '/chanty.JPG',
@@ -43,12 +37,5 @@ export const clientLogos: ClientLogo[] = [
     tier: 'gold',
     url: 'https://www.speedy-pizza.it',
     location: 'Carmagnola'
-  },
-  {
-    name: 'Monviso Multoservizi',
-    logo: '/monviso.jpg',
-    tier: 'gold',
-    url: 'https://monvisomultiservizi.it',
-    location: 'Torino'
   }
 ];

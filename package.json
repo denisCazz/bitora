@@ -19,13 +19,13 @@
     "security-check": "npm audit && npm outdated"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^4.3.0",
-    "@astrojs/sitemap": "^3.3.1",
-    "@astrojs/tailwind": "^5.1.5",
+    "@astrojs/check": "^0.9.5",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/tailwind": "^6.0.2",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.9.2",
+    "astro": "^5.16.0",
     "astro-compressor": "^1.0.0",
     "astro-robots-txt": "^1.0.0",
     "react": "^19.1.0",
