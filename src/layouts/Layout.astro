@@ -23,7 +23,7 @@ const canonicalUrl = pathname === '/'
 ---
 
 <!doctype html>
-<html lang="it">
+<html lang="it" class="dark">
   <head>
     <meta charset="UTF-8" />
     <SpeedInsights/>
@@ -97,6 +97,82 @@ const canonicalUrl = pathname === '/'
     <!-- Responsive Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <style is:global>
+      :root {
+        --color-bg: #000000;
+        --color-text: #ffffff;
+      }
+      
+      html {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      /* Apple-style Reveal Animation */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Fade In Up Animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+    </style>
+
+    <script>
+      // Global Intersection Observer for Reveal Animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.addEventListener('astro:page-load', () => {
+        const elements = document.querySelectorAll('.reveal-on-scroll');
+        elements.forEach(el => observer.observe(el));
+      });
+
+      // Fallback for initial load if View Transitions are not used or for first paint
+      document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('.reveal-on-scroll');
+        elements.forEach(el => observer.observe(el));
+      });
+    </script>
+    
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/bitora.png" />
@@ -168,37 +244,6 @@ const canonicalUrl = pathname === '/'
           "query-input": "required name=search_term_string"
         }
       }    </script>
-
-    <!-- Theme initialization script (must be in head to prevent flash) -->
-    <script is:inline>
-      // Prevent flash of incorrect theme
-      (function() {
-        function getStoredTheme() {
-          if (typeof localStorage !== 'undefined') {
-            return localStorage.getItem('theme');
-          }
-          return null;
-        }
-
-        function getSystemTheme() {
-          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        const storedTheme = getStoredTheme();
-        const theme = storedTheme || 'system';
-        
-        const root = document.documentElement;
-        root.classList.remove('light', 'dark');
-        
-        if (theme === 'dark') {
-          root.classList.add('dark');
-        } else if (theme === 'light') {
-          root.classList.add('light');
-        } else if (theme === 'system') {
-          root.classList.add(getSystemTheme());
-        }
-      })();
-    </script>
   </head>
   <body class="flex flex-col min-h-screen font-['Inter',sans-serif] transition-colors duration-300" style="background-color: var(--bg-primary); color: var(--text-primary);">
     <Header />

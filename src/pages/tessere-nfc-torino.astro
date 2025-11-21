@@ -6,386 +6,281 @@ import Layout from '../layouts/Layout.astro';
   title="Tessere NFC Torino | Biglietti da Visita Digitali Smart | Bitora"
   description="Tessere NFC personalizzate a Torino e provincia. Biglietti da visita digitali smart per ristoranti, hotel e professionisti. Consegna rapida in tutto il Piemonte."
 >
-  <!-- Hero Section -->
-  <section class="py-20 md:py-28 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-    <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-          <div class="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            📱 Tessere NFC Torino
-          </div>
-          
-          <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            Tessere NFC a <span class="text-primary">Torino</span>
-          </h1>
-          
-          <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Biglietti da visita digitali e tessere NFC personalizzate per ristoranti, hotel, negozi e professionisti a Torino e provincia. Tecnologia smart che impressiona i clienti.
-          </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="/contattaci" class="px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors">
-              Ordina la tua tessera
-            </a>
-            <a href="/contattaci" class="px-8 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/5 transition-colors">
-              Consulenza gratuita
-            </a>
-          </div>
+  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+    
+    <!-- Hero Section -->
+    <section class="relative h-[70vh] flex flex-col justify-center items-center text-center px-4">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+      
+      <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm font-medium text-indigo-300 mb-4">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+          </span>
+          Tessere NFC Torino
         </div>
+
+        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+          Tessere NFC <br />
+          <span class="text-indigo-400">Intelligenti.</span>
+        </h1>
         
-        <!-- Immagine hero -->
-        <div class="relative">
+        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
+          Biglietti da visita digitali per ristoranti, hotel e professionisti a Torino. <br class="hidden md:block" />
+          Tecnologia smart che impressiona i clienti.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
+            Ordina la tua tessera
+          </a>
+          <a href="/contattaci" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all">
+            Consulenza gratuita
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Showcase -->
+    <section class="py-12 px-6 md:px-12">
+      <div class="max-w-5xl mx-auto reveal-on-scroll">
+        <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-indigo-500/10">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
           <img 
             src="/nfc.png" 
             alt="Tessere NFC personalizzate Torino - Bitora"
-            class="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl"
-            loading="eager"
+            class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
           />
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Vantaggi delle tessere NFC -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">
-            Perché scegliere le tessere NFC a Torino?
-          </h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            Le tessere NFC sono il futuro del networking professionale. Ecco perché sempre più aziende torinesi le stanno adottando.
+    <!-- Benefits -->
+    <section class="py-24 px-6 md:px-12 bg-zinc-900/30 border-y border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Perché scegliere NFC?</h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Il futuro del networking professionale è contactless.
           </p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span class="text-3xl">⚡</span>
-            </div>
-            <h3 class="text-xl font-bold mb-4">Velocità Istantanea</h3>
-            <p class="text-gray-600">
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Benefit 1 -->
+          <div class="p-8 rounded-3xl bg-black border border-white/10 hover:border-indigo-500/50 transition-all duration-500 reveal-on-scroll">
+            <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6 text-2xl">⚡</div>
+            <h3 class="text-2xl font-bold text-white mb-4">Velocità Istantanea</h3>
+            <p class="text-gray-400 leading-relaxed">
               Un semplice tocco e i tuoi contatti, menu o portfolio si aprono immediatamente sullo smartphone del cliente.
             </p>
           </div>
-          
-          <div class="text-center p-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span class="text-3xl">🌱</span>
-            </div>
-            <h3 class="text-xl font-bold mb-4">Ecologico e Sostenibile</h3>
-            <p class="text-gray-600">
-              Elimina i biglietti da visita cartacei e i menu stampati. Una soluzione green per le aziende sostenibili di Torino.
+
+          <!-- Benefit 2 -->
+          <div class="p-8 rounded-3xl bg-black border border-white/10 hover:border-emerald-500/50 transition-all duration-500 reveal-on-scroll delay-100">
+            <div class="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center mb-6 text-2xl">🌱</div>
+            <h3 class="text-2xl font-bold text-white mb-4">Ecologico</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Elimina i biglietti da visita cartacei e i menu stampati. Una soluzione green per le aziende sostenibili.
             </p>
           </div>
-          
-          <div class="text-center p-8 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl">
-            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span class="text-3xl">📊</span>
-            </div>
-            <h3 class="text-xl font-bold mb-4">Analytics Avanzati</h3>
-            <p class="text-gray-600">
+
+          <!-- Benefit 3 -->
+          <div class="p-8 rounded-3xl bg-black border border-white/10 hover:border-purple-500/50 transition-all duration-500 reveal-on-scroll delay-200">
+            <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6 text-2xl">📊</div>
+            <h3 class="text-2xl font-bold text-white mb-4">Analytics</h3>
+            <p class="text-gray-400 leading-relaxed">
               Traccia chi, quando e dove i tuoi clienti interagiscono con la tua tessera. Dati preziosi per il tuo business.
             </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Settori principali -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">
-            Tessere NFC per ogni settore a Torino
-          </h2>
-          <p class="text-xl text-gray-600">
-            Soluzioni personalizzate per ristoranti, hotel, negozi e professionisti torinesi
+    <!-- Sectors -->
+    <section class="py-24 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Soluzioni per ogni settore</h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Personalizzate per le esigenze specifiche del tuo business.
           </p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Ristoranti -->
-          <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div class="text-center">
-              <div class="text-4xl mb-4">🍽️</div>
-              <h3 class="text-lg font-bold mb-2">Ristoranti</h3>
-              <p class="text-gray-600 text-sm mb-4">Menu digitali, prenotazioni, recensioni</p>
-              <a href="/settori/ristoranti" class="text-primary font-semibold text-sm hover:underline">
-                Scopri di più →
-              </a>
-            </div>
-          </div>
-          
-          <!-- Hotel -->
-          <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div class="text-center">
-              <div class="text-4xl mb-4">🏨</div>
-              <h3 class="text-lg font-bold mb-2">Hotel & B&B</h3>
-              <p class="text-gray-600 text-sm mb-4">Check-in digitale, servizi, wifi</p>
-              <a href="/settori/turismo" class="text-primary font-semibold text-sm hover:underline">
-                Scopri di più →
-              </a>
-            </div>
-          </div>
-          
-          <!-- Negozi -->
-          <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div class="text-center">
-              <div class="text-4xl mb-4">🛍️</div>
-              <h3 class="text-lg font-bold mb-2">Retail & Negozi</h3>
-              <p class="text-gray-600 text-sm mb-4">Cataloghi, promozioni, contatti</p>
-                            <a href="/prezzi" class="text-primary font-semibold text-sm hover:underline">
-                Scopri tutti i piani →
-              </a>
-            </div>
-          </div>
-          
-          <!-- Professionisti -->
-          <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div class="text-center">
-              <div class="text-4xl mb-4">👔</div>
-              <h3 class="text-lg font-bold mb-2">Professionisti</h3>
-              <p class="text-gray-600 text-sm mb-4">Portfolio, contatti, appuntamenti</p>
-              <a href="/settori/professionisti" class="text-primary font-semibold text-sm hover:underline">
-                Scopri di più →
-              </a>
-            </div>
-          </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon: '🍽️', title: 'Ristoranti', desc: 'Menu digitali, prenotazioni, recensioni', link: '/settori/ristoranti' },
+            { icon: '🏨', title: 'Hotel & B&B', desc: 'Check-in digitale, servizi, wifi', link: '/settori/turismo' },
+            { icon: '🛍️', title: 'Retail', desc: 'Cataloghi, promozioni, contatti', link: '/prezzi' },
+            { icon: '👔', title: 'Professionisti', desc: 'Portfolio, contatti, appuntamenti', link: '/settori/professionisti' }
+          ].map((item, index) => (
+            <a href={item.link} class="group p-6 rounded-3xl bg-zinc-900/50 border border-white/10 hover:bg-zinc-900 transition-all duration-300 reveal-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+              <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+              <h3 class="text-xl font-bold text-white mb-2">{item.title}</h3>
+              <p class="text-gray-400 text-sm mb-4">{item.desc}</p>
+              <span class="text-indigo-400 text-sm font-medium group-hover:text-indigo-300 flex items-center gap-1">
+                Scopri di più 
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </span>
+            </a>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Case study locale -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">
-            Tessere NFC in azione a Torino
-          </h2>
-          <p class="text-xl text-gray-600">
-            Case study reali di aziende torinesi che stanno già utilizzando le nostre tessere NFC
-          </p>
-        </div>
-        
-        <!-- Case study Kristina -->
-        <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+    <!-- Case Study -->
+    <section class="py-24 px-6 md:px-12 bg-zinc-900/30 border-y border-white/5">
+      <div class="max-w-5xl mx-auto reveal-on-scroll">
+        <div class="relative rounded-3xl bg-black border border-white/10 overflow-hidden">
+          <div class="grid lg:grid-cols-2 gap-8 items-center p-8 md:p-12">
             <div>
               <div class="flex items-center gap-4 mb-6">
-                <img src="/sartoria_kristina.png" alt="Kristina Sartoria Carmagnola" class="w-16 h-16 rounded-xl object-cover shadow-md" />
+                <div class="w-16 h-16 rounded-2xl bg-white/10 overflow-hidden">
+                  <img src="/sartoria_kristina.png" alt="Kristina Sartoria" class="w-full h-full object-cover" />
+                </div>
                 <div>
-                  <h3 class="text-2xl font-bold">Kristina</h3>
-                  <p class="text-gray-600">Carmagnola • Sartoria Artigianale</p>
+                  <h3 class="text-2xl font-bold text-white">Kristina</h3>
+                  <p class="text-indigo-400">Carmagnola • Sartoria</p>
                 </div>
               </div>
               
-              <blockquote class="text-lg text-gray-700 mb-6 italic">
-                "Il biglietto NFC professionale mi ha permesso di distinguermi completamente. 
-                Ora i clienti accedono al mio portfolio istantaneamente e posso mostrare tutti i miei lavori."
+              <blockquote class="text-xl text-gray-300 italic mb-8 leading-relaxed">
+                "Il biglietto NFC professionale mi ha permesso di distinguermi completamente. Ora i clienti accedono al mio portfolio istantaneamente."
               </blockquote>
               
-              <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="text-center p-4 bg-white rounded-lg shadow">
-                  <div class="text-2xl font-bold text-purple-600">+8</div>
-                  <div class="text-sm text-gray-600">Nuovi clienti/settimana</div>
+              <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="p-4 rounded-2xl bg-white/5 text-center">
+                  <div class="text-2xl font-bold text-purple-400 mb-1">+8</div>
+                  <div class="text-xs text-gray-500 uppercase tracking-wider">Clienti/sett</div>
                 </div>
-                <div class="text-center p-4 bg-white rounded-lg shadow">
-                  <div class="text-2xl font-bold text-purple-600">90%</div>
-                  <div class="text-sm text-gray-600">Conversione portfolio</div>
+                <div class="p-4 rounded-2xl bg-white/5 text-center">
+                  <div class="text-2xl font-bold text-purple-400 mb-1">90%</div>
+                  <div class="text-xs text-gray-500 uppercase tracking-wider">Conversione</div>
                 </div>
               </div>
               
-              <div class="text-center">
-                <a href="/progetti/sartoria-kristina" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors">
-                  Leggi il case study completo
-                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
+              <a href="/progetti/sartoria-kristina" class="inline-flex items-center px-6 py-3 bg-white text-black rounded-xl font-bold hover:bg-gray-200 transition-colors">
+                Leggi Case Study
+              </a>
             </div>
             
-            <div class="text-center">
-              <img src="/nfc.png" alt="Tessera NFC Kristina" class="w-full max-w-md mx-auto rounded-xl shadow-xl" />
+            <div class="relative">
+              <div class="absolute inset-0 bg-indigo-500/20 blur-3xl rounded-full"></div>
+              <img src="/nfc.png" alt="Tessera NFC Kristina" class="relative w-full rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500" />
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Processo d'ordine -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">
-            Come ordinare le tue tessere NFC a Torino
-          </h2>
-          <p class="text-xl text-gray-600">
-            Processo semplice e veloce, dalla configurazione alla consegna
+    <!-- Order Process -->
+    <section class="py-24 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Come ordinare</h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Processo semplice e veloce, dalla configurazione alla consegna.
           </p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div class="text-center">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl font-bold text-blue-600">1</span>
+
+        <div class="grid md:grid-cols-4 gap-8 relative">
+          <!-- Connecting Line (Desktop) -->
+          <div class="hidden md:block absolute top-10 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+          {[
+            { step: '1', title: 'Configura', desc: 'Usa il nostro configuratore online per personalizzare.' },
+            { step: '2', title: 'Ordina', desc: 'Completa l\'ordine con pagamento sicuro.' },
+            { step: '3', title: 'Produzione', desc: 'Produciamo con tecnologia NFC di qualità.' },
+            { step: '4', title: 'Consegna', desc: 'Spedizione rapida in 2-3 giorni lavorativi.' }
+          ].map((item, index) => (
+            <div class="relative text-center reveal-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+              <div class="w-20 h-20 mx-auto bg-black rounded-full flex items-center justify-center border border-white/20 mb-6 text-2xl font-bold text-white relative z-10 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                {item.step}
+              </div>
+              <h3 class="text-xl font-bold text-white mb-3">{item.title}</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
             </div>
-            <h3 class="text-lg font-bold mb-2">Configura</h3>
-            <p class="text-gray-600 text-sm">Usa il nostro configuratore online per personalizzare la tua tessera</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl font-bold text-green-600">2</span>
-            </div>
-            <h3 class="text-lg font-bold mb-2">Ordina</h3>
-            <p class="text-gray-600 text-sm">Completa l'ordine online con pagamento sicuro e immediato</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl font-bold text-purple-600">3</span>
-            </div>
-            <h3 class="text-lg font-bold mb-2">Produciamo</h3>
-            <p class="text-gray-600 text-sm">Le tue tessere vengono prodotte con tecnologia NFC di qualità</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl font-bold text-orange-600">4</span>
-            </div>
-            <h3 class="text-lg font-bold mb-2">Ricevi</h3>
-            <p class="text-gray-600 text-sm">Consegna rapida a Torino e provincia in 2-3 giorni lavorativi</p>
-          </div>
+          ))}
         </div>
-        
-        <div class="text-center mt-12">
-          <a href="/contattaci" class="inline-flex items-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
+
+        <div class="text-center mt-16 reveal-on-scroll">
+          <a href="/contattaci" class="inline-flex items-center px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
             Inizia la configurazione
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
           </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ specifiche per Torino -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">
-            Domande frequenti sulle tessere NFC a Torino
-          </h2>
+    <!-- FAQ -->
+    <section class="py-24 px-6 md:px-12 bg-zinc-900/30 border-t border-white/5">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12 reveal-on-scroll">
+          <h2 class="text-3xl font-bold text-white mb-4">Domande Frequenti</h2>
         </div>
-        
-        <div class="space-y-6">
-          <div class="bg-gray-50 p-6 rounded-xl">
-            <h3 class="text-lg font-bold mb-3">Le tessere NFC funzionano con tutti gli smartphone?</h3>
-            <p class="text-gray-600">
-              Sì, le nostre tessere NFC funzionano con tutti gli smartphone Android (dal 2011) e iPhone (dal iPhone 7). 
-              Oltre il 95% degli smartphone in circolazione a Torino supporta la tecnologia NFC.
-            </p>
-          </div>
-          
-          <div class="bg-gray-50 p-6 rounded-xl">
-            <h3 class="text-lg font-bold mb-3">Quanto tempo ci vuole per la consegna a Torino?</h3>
-            <p class="text-gray-600">
-              Per Torino e provincia la consegna avviene in 2-3 giorni lavorativi tramite corriere espresso. 
-              Per ordini urgenti offriamo anche la consegna in giornata (supplemento di €15).
-            </p>
-          </div>
-          
-          <div class="bg-gray-50 p-6 rounded-xl">
-            <h3 class="text-lg font-bold mb-3">Posso modificare i contenuti della tessera dopo l'acquisto?</h3>
-            <p class="text-gray-600">
-              Assolutamente sì! I contenuti della tessera sono modificabili illimitatamente tramite la nostra dashboard online. 
-              Puoi aggiornare contatti, menu, portfolio e informazioni quando vuoi.
-            </p>
-          </div>
-          
-          <div class="bg-gray-50 p-6 rounded-xl">
-            <h3 class="text-lg font-bold mb-3">Offrite supporto tecnico locale a Torino?</h3>
-            <p class="text-gray-600">
-              Sì, offriamo supporto tecnico dedicato per i clienti di Torino e provincia. Disponibile via chat, telefono 
-              e, per aziende con più di 50 tessere, anche supporto on-site.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CTA finale -->
-  <section class="py-20 bg-gradient-to-r from-primary to-purple-600 text-white">
-    <div class="container mx-auto px-4 text-center">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
-          Pronto per le tessere NFC a Torino?
-        </h2>
-        
-        <p class="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
-          Unisciti alle centinaia di aziende torinesi che stanno già utilizzando le nostre tessere NFC per impressionare i clienti e aumentare le conversioni.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/prezzi" class="px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-gray-100 transition-colors text-lg">
-            Vedi i prezzi
-          </a>
-          
-          <a href="/contattaci" class="px-8 py-4 border-2 border-white/60 text-white rounded-lg font-semibold hover:bg-white/10 hover:border-white transition-colors text-lg">
-            Consulenza gratuita
-          </a>
-        </div>
-        
-        <div class="mt-8 text-sm opacity-80">
-          📱 Compatibile con tutti gli smartphone • 🚚 Consegna rapida a Torino • 🔧 Supporto tecnico locale
+        <div class="space-y-4 reveal-on-scroll">
+          <div class="group rounded-2xl bg-black border border-white/10 overflow-hidden">
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-white mb-2">Le tessere NFC funzionano con tutti gli smartphone?</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Sì, le nostre tessere NFC funzionano con tutti gli smartphone Android (dal 2011) e iPhone (dal iPhone 7). Oltre il 95% degli smartphone in circolazione supporta la tecnologia.
+              </p>
+            </div>
+          </div>
+          <!-- Add more FAQs if needed -->
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 </Layout>
 
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
 <script>
-  // Schema markup per la pagina tessere NFC Torino
-  const torinoBusiness = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Bitora - Tessere NFC Torino",
-    "description": "Tessere NFC personalizzate e biglietti da visita digitali per ristoranti, hotel e professionisti a Torino",
-    "url": "https://bitora.it/tessere-nfc-torino",
-    "telephone": "+39-011-123456",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Torino",
-      "addressRegion": "Piemonte",
-      "addressCountry": "IT"
-    },
-    "areaServed": [
-      {
-        "@type": "City",
-        "name": "Torino"
-      },
-      {
-        "@type": "AdministrativeArea",
-        "name": "Provincia di Torino"
-      }
-    ],
-    "serviceType": "Tessere NFC e Biglietti da Visita Digitali"
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
   };
 
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.text = JSON.stringify(torinoBusiness);
-  document.head.appendChild(script);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.reveal-on-scroll');
+    elements.forEach(el => observer.observe(el));
+  });
 </script>

@@ -6,361 +6,157 @@ import Layout from '../layouts/Layout.astro';
   title="Privacy Policy - Bitora.it"
   description="Informativa sulla privacy di Bitora.it: come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali in conformità al GDPR."
 >
-  <main class="container mx-auto px-4 py-16">
+  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+    
     <!-- Header -->
-    <header class="text-center mb-16">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800">Privacy Policy</h1>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        La tua privacy è importante per noi. Questa informativa spiega come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali.
-      </p>
-      <div class="mt-8 text-sm text-gray-500">
-        Ultimo aggiornamento: 11 giugno 2025
+    <header class="relative py-24 px-6 md:px-12 text-center border-b border-white/5">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+      
+      <div class="relative z-10 max-w-4xl mx-auto animate-fade-in-up">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+          Privacy Policy
+        </h1>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          La tua privacy è importante. Ecco come proteggiamo i tuoi dati.
+        </p>
+        <div class="mt-8 text-sm text-gray-500 font-mono">
+          Ultimo aggiornamento: 11 giugno 2025
+        </div>
       </div>
     </header>
 
     <!-- Content -->
-    <article class="max-w-4xl mx-auto prose prose-lg prose-gray">
+    <article class="max-w-4xl mx-auto px-6 md:px-12 py-16 space-y-16">
       
-      <!-- Titolare del trattamento -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Titolare del trattamento</h2>
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6">
-          <div class="space-y-2 text-gray-700">
-            <p><strong>Bitora.it</strong></p>
-            <p><strong>Email:</strong> <a href="mailto:info@bitora.it" class="text-black hover:underline">info@bitora.it</a></p>
-            <p><strong>Telefono:</strong> <a href="tel:+393514979670" class="text-black hover:underline">+39 3514979670</a></p>
-            <p><strong>Sito web:</strong> <a href="https://bitora.it" class="text-black hover:underline">https://bitora.it</a></p>
+      <!-- Titolare -->
+      <section class="reveal-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-sm">01</span>
+          Titolare del trattamento
+        </h2>
+        <div class="p-6 rounded-2xl bg-zinc-900/50 border border-white/10">
+          <div class="space-y-3 text-gray-300">
+            <p><strong class="text-white">Bitora.it</strong></p>
+            <p>Email: <a href="mailto:info@bitora.it" class="text-indigo-400 hover:underline">info@bitora.it</a></p>
+            <p>Telefono: <a href="tel:+393514979670" class="text-indigo-400 hover:underline">+39 351 497 9670</a></p>
           </div>
         </div>
       </section>
 
       <!-- Dati raccolti -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Dati personali che raccogliamo</h2>
-        
-        <!-- Dati di contatto -->
-        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6 shadow-sm">
-          <h3 class="text-xl font-semibold mb-4 text-gray-800">Dati di contatto</h3>
-          <p class="text-gray-700 mb-4">
-            <strong>Quando li raccogliamo:</strong> Quando compili il modulo di contatto, richiedi informazioni o servizi.
-          </p>
-          <p class="text-gray-700 mb-4">
-            <strong>Dati raccolti:</strong>
-          </p>
-          <ul class="space-y-1 text-gray-700 mb-4">
-            <li>• Nome e cognome</li>
-            <li>• Indirizzo email</li>
-            <li>• Numero di telefono</li>
-            <li>• Nome dell'azienda (se applicabile)</li>
-            <li>• Messaggio/richiesta</li>
-          </ul>
-          <p class="text-gray-700">
-            <strong>Base giuridica:</strong> Consenso esplicito e interesse legittimo per rispondere alle tue richieste.
-          </p>
-        </div>
-
-        <!-- Dati di navigazione -->
-        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6 shadow-sm">
-          <h3 class="text-xl font-semibold mb-4 text-gray-800">Dati di navigazione</h3>
-          <p class="text-gray-700 mb-4">
-            <strong>Quando li raccogliamo:</strong> Automaticamente durante la navigazione del sito.
-          </p>
-          <p class="text-gray-700 mb-4">
-            <strong>Dati raccolti:</strong>
-          </p>
-          <ul class="space-y-1 text-gray-700 mb-4">
-            <li>• Indirizzo IP (anonimizzato)</li>
-            <li>• Pagine visitate</li>
-            <li>• Tempo di permanenza</li>
-            <li>• Tipo di browser e dispositivo</li>
-            <li>• Paese di origine</li>
-            <li>• Sito di provenienza</li>
-          </ul>
-          <p class="text-gray-700">
-            <strong>Base giuridica:</strong> Interesse legittimo per migliorare il servizio e analizzare le performance del sito.
-          </p>
-        </div>
-
-        <!-- Dati dei cookie -->
-        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6 shadow-sm">
-          <h3 class="text-xl font-semibold mb-4 text-gray-800">Cookie e tecnologie simili</h3>
-          <p class="text-gray-700 mb-4">
-            <strong>Scopo:</strong> Migliorare l'esperienza di navigazione e fornire funzionalità personalizzate.
-          </p>
-          <p class="text-gray-700">
-            <strong>Maggiori informazioni:</strong> Consulta la nostra <a href="/cookie-policy" class="text-black hover:underline">Cookie Policy</a> per dettagli completi.
-          </p>
-        </div>
-      </section>
-
-      <!-- Come utilizziamo i dati -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Come utilizziamo i tuoi dati</h2>
+      <section class="reveal-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-sm">02</span>
+          Dati raccolti
+        </h2>
         
         <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-green-50 border border-green-200 rounded-lg p-6">
-            <h3 class="text-lg font-semibold mb-3 text-green-800">Servizi richiesti</h3>
-            <ul class="space-y-2 text-green-700 text-sm">
-              <li>• Rispondere alle tue richieste</li>
-              <li>• Fornire preventivi personalizzati</li>
-              <li>• Sviluppare progetti su commissione</li>
-              <li>• Supporto tecnico e assistenza</li>
+          <!-- Contatto -->
+          <div class="p-6 rounded-2xl bg-black border border-white/10 hover:border-indigo-500/30 transition-colors">
+            <h3 class="text-lg font-bold text-white mb-4">Dati di contatto</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              Raccolti tramite moduli di contatto o email dirette.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-500">
+              <li>• Nome e cognome</li>
+              <li>• Email e telefono</li>
+              <li>• Messaggio</li>
             </ul>
           </div>
-          
-          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 class="text-lg font-semibold mb-3 text-blue-800">Miglioramento servizi</h3>
-            <ul class="space-y-2 text-blue-700 text-sm">
-              <li>• Analizzare le performance del sito</li>
-              <li>• Ottimizzare l'esperienza utente</li>
-              <li>• Sviluppare nuove funzionalità</li>
-              <li>• Ricerche di mercato anonime</li>
-            </ul>
-          </div>
-          
-          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
-            <h3 class="text-lg font-semibold mb-3 text-purple-800">Comunicazioni</h3>
-            <ul class="space-y-2 text-purple-700 text-sm">
-              <li>• Aggiornamenti sui progetti</li>
-              <li>• Newsletter (solo su consenso)</li>
-              <li>• Comunicazioni di servizio</li>
-              <li>• Inviti a eventi o webinar</li>
-            </ul>
-          </div>
-          
-          <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
-            <h3 class="text-lg font-semibold mb-3 text-orange-800">Obblighi legali</h3>
-            <ul class="space-y-2 text-orange-700 text-sm">
-              <li>• Adempimenti contabili</li>
-              <li>• Conservazione documenti fiscali</li>
-              <li>• Risposte ad autorità competenti</li>
-              <li>• Conformità normativa</li>
+
+          <!-- Navigazione -->
+          <div class="p-6 rounded-2xl bg-black border border-white/10 hover:border-indigo-500/30 transition-colors">
+            <h3 class="text-lg font-bold text-white mb-4">Dati di navigazione</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              Raccolti automaticamente (anonimizzati).
+            </p>
+            <ul class="space-y-2 text-sm text-gray-500">
+              <li>• Indirizzo IP (anonimo)</li>
+              <li>• Pagine visitate</li>
+              <li>• Dispositivo e browser</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- Condivisione dati -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Condivisione dei dati</h2>
+      <!-- Utilizzo -->
+      <section class="reveal-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-sm">03</span>
+          Utilizzo dei dati
+        </h2>
         
-        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-6">
-          <p class="text-yellow-800 font-semibold mb-2">Principio generale</p>
-          <p class="text-yellow-700">
-            Non vendiamo, affittiamo o condividiamo i tuoi dati personali con terze parti per scopi commerciali.
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-zinc-900/30 border border-white/5">
+            <h3 class="text-white font-bold mb-2">Servizi</h3>
+            <p class="text-gray-400 text-sm">Per rispondere alle richieste e fornire i servizi concordati.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-zinc-900/30 border border-white/5">
+            <h3 class="text-white font-bold mb-2">Miglioramento</h3>
+            <p class="text-gray-400 text-sm">Per analizzare le performance del sito e ottimizzare l'esperienza.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-zinc-900/30 border border-white/5">
+            <h3 class="text-white font-bold mb-2">Obblighi</h3>
+            <p class="text-gray-400 text-sm">Per adempimenti fiscali e legali obbligatori.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-zinc-900/30 border border-white/5">
+            <h3 class="text-white font-bold mb-2">Sicurezza</h3>
+            <p class="text-gray-400 text-sm">Per proteggere il sito da abusi e attacchi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diritti -->
+      <section class="reveal-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-sm">04</span>
+          I tuoi diritti
+        </h2>
+        
+        <div class="p-8 rounded-3xl bg-zinc-900 border border-white/10">
+          <p class="text-gray-300 mb-6">
+            In conformità al GDPR, hai diritto di accedere, rettificare, cancellare e limitare il trattamento dei tuoi dati.
           </p>
-        </div>
-        
-        <p class="text-gray-700 mb-6">I tuoi dati possono essere condivisi solo nei seguenti casi:</p>
-        
-        <div class="space-y-4">
-          <div class="border-l-4 border-gray-400 pl-4">
-            <h4 class="font-semibold text-gray-800">Fornitori di servizi tecnici</h4>
-            <p class="text-gray-700 text-sm">
-              Hosting, email marketing, analisi web (sempre con accordi di protezione dati).
-            </p>
-          </div>
-          
-          <div class="border-l-4 border-gray-400 pl-4">
-            <h4 class="font-semibold text-gray-800">Obblighi legali</h4>
-            <p class="text-gray-700 text-sm">
-              Su richiesta di autorità competenti o per rispettare obblighi di legge.
-            </p>
-          </div>
-          
-          <div class="border-l-4 border-gray-400 pl-4">
-            <h4 class="font-semibold text-gray-800">Consenso esplicito</h4>
-            <p class="text-gray-700 text-sm">
-              Solo quando hai dato il tuo consenso esplicito per scopi specifici.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Conservazione dati -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Conservazione dei dati</h2>
-        
-        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">Dati di contatto</h4>
-              <p class="text-gray-700 text-sm mb-2"><strong>Durata:</strong> 3 anni dalla raccolta</p>
-              <p class="text-gray-700 text-sm"><strong>Scopo:</strong> Gestione relazioni commerciali</p>
+          <div class="grid md:grid-cols-3 gap-4 mb-8">
+            <div class="p-4 rounded-xl bg-black border border-white/10 text-center">
+              <span class="block text-indigo-400 font-bold mb-1">Accesso</span>
+              <span class="text-xs text-gray-500">Vedi i tuoi dati</span>
             </div>
-            
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">Dati di navigazione</h4>
-              <p class="text-gray-700 text-sm mb-2"><strong>Durata:</strong> 2 anni massimo</p>
-              <p class="text-gray-700 text-sm"><strong>Scopo:</strong> Analisi e miglioramenti</p>
+            <div class="p-4 rounded-xl bg-black border border-white/10 text-center">
+              <span class="block text-indigo-400 font-bold mb-1">Rettifica</span>
+              <span class="text-xs text-gray-500">Correggi errori</span>
             </div>
-            
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">Dati contabili</h4>
-              <p class="text-gray-700 text-sm mb-2"><strong>Durata:</strong> 10 anni</p>
-              <p class="text-gray-700 text-sm"><strong>Scopo:</strong> Obblighi fiscali</p>
-            </div>
-            
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">Cookie tecnici</h4>
-              <p class="text-gray-700 text-sm mb-2"><strong>Durata:</strong> Fine sessione</p>
-              <p class="text-gray-700 text-sm"><strong>Scopo:</strong> Funzionamento sito</p>
+            <div class="p-4 rounded-xl bg-black border border-white/10 text-center">
+              <span class="block text-indigo-400 font-bold mb-1">Cancellazione</span>
+              <span class="text-xs text-gray-500">Rimuovi tutto</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- Diritti dell'interessato -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">I tuoi diritti</h2>
-        
-        <p class="text-gray-700 mb-6">In conformità al GDPR, hai i seguenti diritti:</p>
-        
-        <div class="grid md:grid-cols-2 gap-4">
-          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-            <h4 class="font-semibold text-green-800 mb-2">Accesso</h4>
-            <p class="text-green-700 text-sm">Conoscere quali dati abbiamo su di te</p>
-          </div>
-          
-          <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h4 class="font-semibold text-blue-800 mb-2">Rettifica</h4>
-            <p class="text-blue-700 text-sm">Correggere dati inesatti o incompleti</p>
-          </div>
-          
-          <div class="bg-red-50 border border-red-200 rounded-lg p-4">
-            <h4 class="font-semibold text-red-800 mb-2">Cancellazione</h4>
-            <p class="text-red-700 text-sm">Richiedere la rimozione dei tuoi dati</p>
-          </div>
-          
-          <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
-            <h4 class="font-semibold text-purple-800 mb-2">Portabilità</h4>
-            <p class="text-purple-700 text-sm">Ricevere i tuoi dati in formato leggibile</p>
-          </div>
-          
-          <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
-            <h4 class="font-semibold text-orange-800 mb-2">Limitazione</h4>
-            <p class="text-orange-700 text-sm">Limitare il trattamento dei dati</p>
-          </div>
-          
-          <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
-            <h4 class="font-semibold text-gray-800 mb-2">Opposizione</h4>
-            <p class="text-gray-700 text-sm">Opporti al trattamento per motivi legittimi</p>
-          </div>
-        </div>
-        
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
-          <p class="text-blue-800 font-semibold mb-2">Come esercitare i tuoi diritti</p>
-          <p class="text-blue-700 mb-4">
-            Puoi esercitare i tuoi diritti contattandoci tramite:
-          </p>
-          <div class="space-y-1 text-blue-700">
-            <p><strong>Email:</strong> <a href="mailto:privacy@bitora.it" class="text-blue-800 hover:underline">privacy@bitora.it</a></p>
-            <p><strong>Modulo:</strong> <a href="/contattaci" class="text-blue-800 hover:underline">Contattaci</a></p>
+          <div class="text-center">
+            <a href="mailto:privacy@bitora.it" class="inline-flex items-center gap-2 text-white hover:text-indigo-400 transition-colors font-medium">
+              Esercita i tuoi diritti <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
           </div>
         </div>
       </section>
 
       <!-- Sicurezza -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Sicurezza dei dati</h2>
-        
-        <p class="text-gray-700 mb-6">
-          Implementiamo misure tecniche e organizzative appropriate per proteggere i tuoi dati personali:
-        </p>
-        
+      <section class="reveal-on-scroll border-t border-white/10 pt-12">
+        <h2 class="text-2xl font-bold text-white mb-6">Sicurezza</h2>
         <div class="grid md:grid-cols-3 gap-4">
-          <div class="text-center p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-              </svg>
-            </div>
-            <h4 class="font-semibold text-gray-800 mb-2">Crittografia</h4>
-            <p class="text-gray-600 text-sm">HTTPS/SSL per tutte le comunicazioni</p>
+          <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/5">
+            <div class="text-2xl mb-3">🔒</div>
+            <h4 class="font-bold text-white mb-1">Crittografia</h4>
+            <p class="text-xs text-gray-500">HTTPS/SSL ovunque</p>
           </div>
-          
-          <div class="text-center p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-            </div>
-            <h4 class="font-semibold text-gray-800 mb-2">Accesso limitato</h4>
-            <p class="text-gray-600 text-sm">Solo personale autorizzato</p>
+          <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/5">
+            <div class="text-2xl mb-3">🛡️</div>
+            <h4 class="font-bold text-white mb-1">Protezione</h4>
+            <p class="text-xs text-gray-500">Accesso limitato</p>
           </div>
-          
-          <div class="text-center p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
-              </svg>
-            </div>
-            <h4 class="font-semibold text-gray-800 mb-2">Backup sicuri</h4>
-            <p class="text-gray-600 text-sm">Copie di sicurezza regolari</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Trasferimenti internazionali -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Trasferimenti internazionali</h2>
-        
-        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-          <p class="text-yellow-800 mb-4">
-            <strong>Server e hosting:</strong> I nostri server sono localizzati nell'Unione Europea per garantire la massima protezione dei dati.
-          </p>
-          <p class="text-yellow-700 text-sm">
-            In caso di trasferimenti verso paesi terzi, utilizziamo solo fornitori con adeguate garanzie di protezione (adequacy decisions o standard contractual clauses).
-          </p>
-        </div>
-      </section>
-
-      <!-- Modifiche alla privacy policy -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Modifiche a questa informativa</h2>
-        
-        <p class="text-gray-700 leading-relaxed mb-4">
-          Ci riserviamo il diritto di modificare questa Privacy Policy in qualsiasi momento per:
-        </p>
-        <ul class="space-y-2 text-gray-700 mb-6">
-          <li>• Adeguamenti normativi</li>
-          <li>• Nuovi servizi o funzionalità</li>
-          <li>• Miglioramenti delle misure di sicurezza</li>
-          <li>• Chiarimenti o correzioni</li>
-        </ul>
-        <p class="text-gray-700">
-          Ti informeremo di eventuali modifiche sostanziali tramite email o avviso sul sito web.
-        </p>
-      </section>
-
-      <!-- Contatti -->
-      <section class="mb-12">
-        <h2 class="text-3xl font-bold mb-6 text-gray-800">Contatti per la privacy</h2>
-        
-        <div class="bg-gray-50 rounded-lg p-6">
-          <p class="text-gray-700 mb-6">
-            Per domande, chiarimenti o per esercitare i tuoi diritti relativi alla privacy:
-          </p>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">Contatti diretti</h4>
-              <div class="space-y-2 text-gray-700">
-                <p><strong>Email Privacy:</strong> <a href="mailto:privacy@bitora.it" class="text-black hover:underline">privacy@bitora.it</a></p>
-                <p><strong>Email Generale:</strong> <a href="mailto:info@bitora.it" class="text-black hover:underline">info@bitora.it</a></p>
-                <p><strong>Telefono:</strong> <a href="tel:+393514979670" class="text-black hover:underline">+39 3514979670</a></p>
-              </div>
-            </div>
-            
-            <div>
-              <h4 class="font-semibold text-gray-800 mb-3">Autorità di controllo</h4>
-              <p class="text-gray-700 text-sm mb-2">
-                In caso di reclami, puoi rivolgerti al Garante per la Protezione dei Dati Personali:
-              </p>
-              <p class="text-gray-700 text-sm">
-                <a href="https://www.gpdp.it" target="_blank" rel="noopener noreferrer" class="text-black hover:underline">www.gpdp.it</a>
-              </p>
-            </div>
+          <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/5">
+            <div class="text-2xl mb-3">💾</div>
+            <h4 class="font-bold text-white mb-1">Backup</h4>
+            <p class="text-xs text-gray-500">Copie sicure</p>
           </div>
         </div>
       </section>
@@ -370,36 +166,52 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  /* Custom styles for the privacy policy page */
-  .prose h2 {
-    border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 0.5rem;
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  
-  .prose h3 {
-    color: #374151;
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
   }
-  
-  .prose h4 {
-    color: #374151;
-    margin-bottom: 0.5rem;
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  
-  .prose a {
-    color: #000;
-    text-decoration: underline;
-  }
-  
-  .prose a:hover {
-    color: #374151;
-  }
-  
-  .prose ul {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-  }
-  
-  .prose li {
-    margin-bottom: 0.5rem;
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
+
+<script>
+  // Animation Observer
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.reveal-on-scroll');
+    elements.forEach(el => observer.observe(el));
+  });
+</script>

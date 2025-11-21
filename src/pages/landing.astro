@@ -15,234 +15,192 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}&${utm}`
   title="Bitora | Scrivimi su WhatsApp"
   description="Hai scansionato il QR: parliamo su WhatsApp. Siti web, restyle, profilo Google, SEO locale, campagne WhatsApp, QR e NFC. Risposta rapida, zero giri di parole."
 >
-  <!-- HERO: messaggio unico → Apri WhatsApp -->
-  <section class="relative overflow-hidden bg-gradient-to-b from-orange-50 via-white to-white py-24 dark:from-primary/30 dark:via-black dark:to-black md:py-32">
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute -top-32 -right-16 h-72 w-72 rounded-full bg-primary/10 blur-3xl dark:bg-primary/20"></div>
-      <div class="absolute top-32 -left-24 h-80 w-80 rounded-full bg-indigo-500/10 blur-3xl dark:bg-indigo-500/20"></div>
-    </div>
-
-    <div class="container relative z-10 mx-auto max-w-4xl px-4 text-center">
-      <span class="inline-flex items-center justify-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary dark:bg-primary/20 dark:text-primary">
-        Hai scansionato il QR • Parliamo adesso
-      </span>
-
-      <h1 class="mt-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white md:text-5xl">
-        Vuoi un <strong>sito fatto bene</strong>, un <strong>restyle</strong> o far <strong>trovare la tua attività</strong>? Scrivimi su WhatsApp.
-      </h1>
-
-      <p class="mt-6 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-        Teniamola semplice: mi mandi due righe su cosa ti serve, ti dico come lo facciamo, tempi e costi.
-        Zero giri di parole. Se non è il momento, te lo dico. Se si può fare, partiamo.
-      </p>
-
-      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-        <a
-          href={whatsappLink}
-          class="group inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary/30 transition-transform hover:-translate-y-1 hover:bg-primary-600 focus:outline-none focus:ring-4 focus:ring-primary/40 dark:bg-primary dark:text-gray-950 dark:hover:bg-primary/80"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Apri WhatsApp adesso
-          <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white transition-transform group-hover:translate-x-1 dark:bg-gray-900/10">
-            ↗
+  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+    
+    <!-- Hero Section -->
+    <section class="relative h-[80vh] flex flex-col justify-center items-center text-center px-4">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+      
+      <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm font-medium text-indigo-300 mb-4">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
           </span>
-        </a>
-
-        <a
-          href="tel:+393514979670"
-          class="inline-flex items-center justify-center gap-3 rounded-full border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-800 transition hover:bg-gray-50 dark:border-white/20 dark:text-gray-100 dark:hover:bg-white/10"
-        >
-          Preferisci chiamare? +39 351 497 9670
-        </a>
-      </div>
-
-      <p class="mt-4 text-xs text-gray-500 dark:text-gray-400">
-        Rispondo in orari lavorativi. Piemonte, ma lavoro anche da remoto.
-      </p>
-    </div>
-  </section>
-
-  <!-- MENÙ SERVIZI: tutto rimanda a WhatsApp -->
-  <section class="bg-white py-16 dark:bg-black">
-    <div class="container mx-auto max-w-6xl px-4">
-  <h2 class="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">Scegli cosa ti serve (e scrivimi su WhatsApp)</h2>
-  <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Indicazioni oneste, investimento calibrato. Se non ti conviene, te lo dico prima di partire.</p>
-
-      <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Sito Vetrina -->
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-           class="block rounded-3xl border border-gray-200/70 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 dark:border-white/10 dark:bg-gray-950/60">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Sito vetrina</h3>
-          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Pulito, veloce, indicizzato. Niente baracconi.</p>
-          <div class="mt-4 text-sm text-gray-700 dark:text-gray-200">Brief rapido + messa online in 10 giorni</div>
-          <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">Dominio, hosting e base SEO inclusi</div>
-        </a>
-
-        <!-- Restyle sito -->
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-           class="block rounded-3xl border border-gray-200/70 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 dark:border-white/10 dark:bg-gray-950/60">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Restyle sito esistente</h3>
-          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Manteniamo i contenuti, rifacciamo struttura e look.</p>
-          <div class="mt-4 text-sm text-gray-700 dark:text-gray-200">Architettura aggiornata senza downtime</div>
-          <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">Pulizia tecnica e performance misurate</div>
-        </a>
-
-        <!-- Google Business -->
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-           class="block rounded-3xl border border-gray-200/70 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 dark:border-white/10 dark:bg-gray-950/60">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Profilo Google (ex Google My Business)</h3>
-          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Verifica, ottimizzazione, categorie, post e foto.</p>
-          <div class="mt-4 text-sm text-gray-700 dark:text-gray-200">Ottimizzazione completa in 48 ore</div>
-          <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">Pensato per le ricerche locali del Piemonte</div>
-        </a>
-
-        <!-- SEO Locale -->
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-           class="block rounded-3xl border border-gray-200/70 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 dark:border-white/10 dark:bg-gray-950/60">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">SEO locale</h3>
-          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Farti trovare nelle ricerche utili, non quelle “vanità”.</p>
-          <div class="mt-4 text-sm text-gray-700 dark:text-gray-200">Strategia su misura + contenuti ottimizzati</div>
-          <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">Tracciamento continuo e report mensile</div>
-        </a>
-
-        <!-- WhatsApp & Automazioni -->
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-           class="block rounded-3xl border border-gray-200/70 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 dark:border-white/10 dark:bg-gray-950/60">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">WhatsApp & messaggi</h3>
-          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Script pronti, automazioni base, risposta più rapida.</p>
-          <div class="mt-4 text-sm text-gray-700 dark:text-gray-200">Script pronti + automazioni plug & play</div>
-          <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">Funnel semplice e misurabile</div>
-        </a>
-
-        <!-- QR & NFC -->
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer"
-           class="block rounded-3xl border border-gray-200/70 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-primary/40 dark:border-white/10 dark:bg-gray-950/60">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">QR & NFC per locali</h3>
-          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Recensioni, menu, richieste eventi con un tap.</p>
-          <div class="mt-4 text-sm text-gray-700 dark:text-gray-200">Kit completo pronto all'uso</div>
-          <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">Installazione semplice e guidata</div>
-        </a>
-      </div>
-
-      <div class="mt-10 grid gap-4 rounded-3xl border border-gray-200/70 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-gray-950/60 md:grid-cols-3">
-        <div class="flex flex-col gap-1 text-center md:text-left">
-          <span class="text-2xl font-semibold text-primary dark:text-orange">+35%</span>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Prenotazioni generate per attività locali a Carmagnola</p>
+          Hai scansionato il QR • Parliamo adesso
         </div>
-        <div class="flex flex-col gap-1 text-center md:text-left">
-          <span class="text-2xl font-semibold text-primary dark:text-orange">12</span>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Richieste qualificate/mese con landing + WhatsApp</p>
-        </div>
-        <div class="flex flex-col gap-1 text-center md:text-left">
-          <span class="text-2xl font-semibold text-primary dark:text-orange">48h</span>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Per attivare un flusso che risponde e converte senza tecnicismi</p>
+
+        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+          Parliamone <br />
+          <span class="text-indigo-400">su WhatsApp.</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
+          Vuoi un sito fatto bene, un restyle o far trovare la tua attività? <br class="hidden md:block" />
+          Zero giri di parole. Se si può fare, partiamo.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <a href={whatsappLink} class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            Apri WhatsApp adesso
+          </a>
+          <a href="tel:+393514979670" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all">
+            Preferisci chiamare?
+          </a>
         </div>
       </div>
+    </section>
 
-      <div class="mt-8 flex justify-center">
-        <a
-          href={whatsappLink}
-          class="inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-4 text-base font-semibold text-white shadow-md transition hover:bg-primary-600 dark:bg-orange dark:text-gray-950 dark:hover:bg-orange/80"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Dimmi cosa ti serve su WhatsApp ↗
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROVE / TONO ONESTO -->
-  <section class="bg-gray-50 py-16 dark:bg-gray-900">
-    <div class="container mx-auto max-w-4xl px-4">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">Come lavoro</h2>
-      <div class="mt-6 grid gap-6 md:grid-cols-2">
-        <div class="rounded-3xl border border-gray-200/60 bg-white p-6 text-gray-700 shadow-sm dark:border-white/10 dark:bg-gray-950/70 dark:text-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pro</h3>
-          <ul class="mt-3 list-disc space-y-2 pl-5 text-sm">
-            <li>Ti rispondo subito e ti dico la verità.</li>
-            <li>Tempi e costi chiari prima di iniziare.</li>
-            <li>Preferisco cose semplici che funzionano.</li>
-          </ul>
+    <!-- Services Grid -->
+    <section class="py-24 px-6 md:px-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Scegli cosa ti serve</h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Indicazioni oneste, investimento calibrato. Se non ti conviene, te lo dico prima.
+          </p>
         </div>
-        <div class="rounded-3xl border border-gray-200/60 bg-white p-6 text-gray-700 shadow-sm dark:border-white/10 dark:bg-gray-950/70 dark:text-gray-200">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Contro</h3>
-          <ul class="mt-3 list-disc space-y-2 pl-5 text-sm">
-            <li>Se non serve, non lo faccio: niente lavori “tanto per”.</li>
-            <li>Niente promesse magiche: i risultati richiedono impegno tuo e mio.</li>
-            <li>Se non è il momento giusto per te, te lo dico subito.</li>
-          </ul>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { title: 'Sito Vetrina', desc: 'Pulito, veloce, indicizzato. Niente baracconi.', sub: 'Messa online in 10 giorni' },
+            { title: 'Restyle Sito', desc: 'Manteniamo i contenuti, rifacciamo struttura e look.', sub: 'Zero downtime' },
+            { title: 'Google Business', desc: 'Verifica, ottimizzazione, categorie, post e foto.', sub: 'Ottimizzazione in 48h' },
+            { title: 'SEO Locale', desc: 'Farti trovare nelle ricerche utili, non quelle "vanità".', sub: 'Strategia su misura' },
+            { title: 'WhatsApp & Automazioni', desc: 'Script pronti, automazioni base, risposta rapida.', sub: 'Funnel semplice' },
+            { title: 'QR & NFC', desc: 'Recensioni, menu, richieste eventi con un tap.', sub: 'Kit completo' }
+          ].map((item, index) => (
+            <a href={whatsappLink} class="group p-8 rounded-3xl bg-zinc-900/50 border border-white/10 hover:bg-zinc-900 transition-all duration-300 reveal-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">{item.title}</h3>
+              <p class="text-gray-400 text-sm mb-4 leading-relaxed">{item.desc}</p>
+              <div class="text-xs text-gray-500 font-mono uppercase tracking-wider">{item.sub}</div>
+            </a>
+          ))}
         </div>
       </div>
+    </section>
 
-      <div class="mt-8 text-center">
-        <a
-          href={whatsappLink}
-          class="inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-4 text-base font-semibold text-white shadow-md transition hover:bg-primary-600 dark:bg-orange dark:text-gray-950 dark:hover:bg-orange/80"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Parliamone su WhatsApp ↗
-        </a>
-        <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">Se ci sono incastri di agenda, ti rispondo entro la giornata.</p>
+    <!-- Stats -->
+    <section class="py-12 px-6 md:px-12 bg-zinc-900/30 border-y border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="reveal-on-scroll">
+            <div class="text-4xl font-bold text-white mb-2">+35%</div>
+            <div class="text-sm text-gray-500">Prenotazioni generate</div>
+          </div>
+          <div class="reveal-on-scroll delay-100">
+            <div class="text-4xl font-bold text-white mb-2">12</div>
+            <div class="text-sm text-gray-500">Richieste qualificate/mese</div>
+          </div>
+          <div class="reveal-on-scroll delay-200">
+            <div class="text-4xl font-bold text-white mb-2">48h</div>
+            <div class="text-sm text-gray-500">Per attivare un flusso</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA FINALE -->
-  <section class="bg-gradient-to-br from-primary/90 via-orange to-pink-500/80 py-16 text-white">
-    <div class="container mx-auto max-w-3xl px-4 text-center">
-      <h2 class="text-3xl font-bold md:text-4xl">Partiamo dal tuo obiettivo, non dalla moda del momento.</h2>
-      <p class="mt-4 text-lg text-white/90">
-        Dimmi cosa vuoi ottenere. Se è una buona idea, la realizziamo. Se non lo è, te lo dico. Senza perdere tempo.
-      </p>
-      <div class="mt-8">
-        <a
-          href={whatsappLink}
-          class="inline-flex items-center justify-center gap-3 rounded-full bg-black/20 px-8 py-4 text-lg font-semibold text-white transition hover:bg-black/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Scrivimi su WhatsApp: trasformiamo i click in clienti ↗
-        </a>
+    <!-- Pros/Cons -->
+    <section class="py-24 px-6 md:px-12">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Come lavoro</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <span class="text-green-400">✓</span> Pro
+            </h3>
+            <ul class="space-y-3 text-gray-400 text-sm">
+              <li>Ti rispondo subito e ti dico la verità.</li>
+              <li>Tempi e costi chiari prima di iniziare.</li>
+              <li>Preferisco cose semplici che funzionano.</li>
+            </ul>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll delay-100">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <span class="text-red-400">✕</span> Contro
+            </h3>
+            <ul class="space-y-3 text-gray-400 text-sm">
+              <li>Se non serve, non lo faccio.</li>
+              <li>Niente promesse magiche.</li>
+              <li>Se non è il momento giusto, te lo dico.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 px-6 md:px-12 bg-zinc-900/30 border-t border-white/5">
+      <div class="max-w-4xl mx-auto text-center reveal-on-scroll">
+        <h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+          Partiamo dal tuo obiettivo.
+        </h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+          Dimmi cosa vuoi ottenere. Se è una buona idea, la realizziamo.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href={whatsappLink} class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            Scrivimi su WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </Layout>
 
-<!-- CTA mobile “una sola volta” -->
-<script is:inline>
-  (function() {
-    const ID = 'bitora-qr-cta';
-    if (document.getElementById(ID)) return;
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-    const cta = document.createElement('div');
-    cta.id = ID;
-    cta.className = 'fixed inset-x-4 bottom-6 z-[60] flex justify-center md:hidden';
-    cta.innerHTML = `
-      <a
-        href="${whatsappLink}"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-full bg-primary px-6 py-4 text-base font-semibold text-white shadow-xl shadow-orange/40 transition hover:bg-primary-600 focus:outline-none focus:ring-4 focus:ring-primary/40 dark:bg-orange dark:text-gray-950 dark:hover:bg-orange/80"
-      >
-        Apri WhatsApp
-        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white">↗</span>
-      </a>
-    `;
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
 
-    // Mostra la CTA quando l'utente scorre un po'
-    let appended = false;
-    const onScroll = () => {
-      if (!appended && window.scrollY > 120) {
-        document.body.appendChild(cta);
-        appended = true;
-        window.removeEventListener('scroll', onScroll);
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
       }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-  })();
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.reveal-on-scroll');
+    elements.forEach(el => observer.observe(el));
+  });
 </script>
 
 <!-- Schema.org essenziale per contatto locale -->
