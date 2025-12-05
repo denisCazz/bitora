@@ -1,96 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-// Case study dettagliati con metriche realistiche
-const caseStudies = [
-  {
-    id: 'mistral-impianti',
-    title: 'Mistral Impianti',
-    subtitle: 'Digitalizzazione & Automation',
-    category: 'B2B • Impianti',
-    location: 'Roreto (TO)',
-    imageUrl: '/mistral.jpg',
-    siteUrl: 'https://mistralimpianti.it',
-    challenge: 'Gestione strutturata delle richieste di preventivo e consolidamento reputazione locale.',
-    solution: 'Ecosistema completo: sito web, CRM integrato e automazioni per il team tecnico.',
-    results: ['+25% Richieste qualificate', 'Top 5 Ranking locale'],
-    featured: true,
-    caseStudyUrl: '/progetti/mistral-impianti'
-  },
-  {
-    id: 'hololux',
-    title: 'HoloLux AR',
-    subtitle: 'Strategic Consulting',
-    category: 'Tech • B2B',
-    location: 'Torino (TO)',
-    imageUrl: '/client.jpg',
-    siteUrl: '#',
-    challenge: 'Go-to-market strategy per occhiali AR enterprise nel mercato italiano.',
-    solution: 'Consulenza strategica su posizionamento, target audience e roadmap di lancio.',
-    results: ['Roadmap definita', 'Lancio Q2 2025'],
-    featured: false,
-    isWip: true,
-    caseStudyUrl: '/progetti/hololux'
-  },
-  {
-    id: 'kristina',
-    title: 'Sartoria Kristina',
-    subtitle: 'Portfolio & NFC',
-    category: 'Artigianato',
-    location: 'Carmagnola (TO)',
-    imageUrl: '/sartoria_kristina.png',
-    siteUrl: 'https://sartoriakristina.it',
-    challenge: 'Mostrare lavori su misura e raccogliere contatti durante eventi.',
-    solution: 'Portfolio digitale elegante e biglietto da visita NFC per networking.',
-    results: ['+3 Clienti/mese', '60% Conversione'],
-    featured: true,
-    caseStudyUrl: '/progetti/kristina'
-  },
-  {
-    id: 'speedy-pizza',
-    title: 'Speedy Pizza',
-    subtitle: 'Local Presence',
-    category: 'Food',
-    location: 'Carmagnola (TO)',
-    imageUrl: 'https://www.speedy-pizza.it/logo.jpeg',
-    siteUrl: 'https://speedy-pizza.it',
-    challenge: 'Presenza online professionale per menu e orari.',
-    solution: 'Sito vetrina mobile-first con menu fotografico e integrazione Maps.',
-    results: ['+30% Visibilità', '-15min Gestione telefonate'],
-    featured: true,
-    caseStudyUrl: '/progetti/speedy-pizza'
-  },
-  {
-    id: 'bar-chantilly',
-    title: 'Bar Chantilly',
-    subtitle: 'Rebranding Digitale',
-    category: 'Food',
-    location: 'Carmagnola (TO)',
-    imageUrl: '/chanty.JPG',
-    siteUrl: 'https://bartabacchichantilly.it',
-    challenge: 'Presentare servizi e menu in modo professionale.',
-    solution: 'Sito vetrina elegante con menu digitale e identità coordinata.',
-    results: ['+25% Brand Awareness', '150+ Visite organiche'],
-    featured: true,
-    isWip: false,
-    caseStudyUrl: '/progetti/bar-chantilly'
-  },
-  {
-    id: 'sergio-contegiacomo',
-    title: 'Sergio Contegiacomo',
-    subtitle: 'Financial Advisor',
-    category: 'Finance • B2B',
-    location: 'Bra (CN)',
-    imageUrl: '/client.jpg',
-    siteUrl: '#',
-    challenge: 'Strutturare presenza digitale e strategia di acquisizione.',
-    solution: 'Consulenza su posizionamento e piano di comunicazione.',
-    results: ['Analisi Target', 'Lancio Q1 2025'],
-    featured: false,
-    isWip: true,
-    caseStudyUrl: '/progetti/sergio-contegiacomo'
-  }
-];
+import { caseStudies } from '../data/caseStudies';
 
 const stats = [
   { number: '25+', label: 'Progetti' },
@@ -140,7 +50,7 @@ const stats = [
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
         {caseStudies.map((project, i) => (
           <article class={`group relative reveal-on-scroll ${i % 2 !== 0 ? 'md:translate-y-24' : ''}`}>
-            <a href={project.caseStudyUrl} class="block">
+            <a href={`/progetti/${project.slug}`} class="block">
               <div class="relative aspect-[4/3] overflow-hidden rounded-3xl bg-zinc-900 mb-8">
                 <div class="absolute inset-0 bg-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                 <img 
@@ -161,10 +71,10 @@ const stats = [
                   <span class="text-gray-600 text-sm">{project.location}</span>
                 </div>
                 <h3 class="text-3xl font-bold text-white group-hover:text-indigo-300 transition-colors">{project.title}</h3>
-                <p class="text-gray-400 line-clamp-2 font-light">{project.challenge}</p>
+                <p class="text-gray-400 line-clamp-2 font-light">{project.problema}</p>
                 
                 <div class="flex flex-wrap gap-3 pt-2">
-                  {project.results.map(res => (
+                  {project.metricsPreview.map(res => (
                     <span class="text-xs text-gray-500 border border-white/10 px-3 py-1 rounded-full">{res}</span>
                   ))}
                 </div>
