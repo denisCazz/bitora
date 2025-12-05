@@ -10,6 +10,13 @@ export interface ClientLogo {
 
 export const clientLogos: ClientLogo[] = [
   {
+    name: 'Mistral Impianti',
+    logo: '/mistral.jpg',
+    tier: 'premium',
+    url: 'https://mistralimpianti.it',
+    location: 'Roreto di Cherasco'
+  },
+  {
     name: 'Sartoria Kristina',
     logo: '/sartoria_kristina.png',
     tier: 'premium',
@@ -17,15 +24,21 @@ export const clientLogos: ClientLogo[] = [
     location: 'Carmagnola'
   },
   {
-    name: 'Mistral Impianti',
-    logo: '/mistral.jpg',
-    tier: 'premium',
-    url: 'https://mistralimpianti.it',
-    location: 'Torino'
+    name: 'Wine Café',
+    logo: '/wine.png',
+    tier: 'gold',
+    url: 'https://winecafe.it',
+    location: 'Carmagnola'
   },
-
   {
-    name: 'Bar Chantilly',
+    name: 'Sergio Contegiacomo',
+    logo: '/logo_sergio.png',
+    tier: 'premium',
+    url: 'https://sergiocontegiacomo.it',
+    location: 'Bra'
+  },
+  {
+    name: 'Bar Tabacchi Chantilly',
     logo: '/chanty.JPG',
     tier: 'gold',
     url: 'https://www.bartabacchichantilly.it',
