@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none" role="img" aria-label="Illustrazione colorata per social media management">
+  <defs>
+    <linearGradient id="g1" x1="160" y1="120" x2="1040" y2="780" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DE7800" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#EC4899" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6366F1" stop-opacity="0.95"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(640 430) rotate(90) scale(420 520)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background blobs -->
+  <rect width="1200" height="900" fill="transparent"/>
+  <g filter="url(#blur)" opacity="0.95">
+    <path d="M210 230C210 122 345 58 460 88C585 120 650 240 640 355C628 492 520 565 410 580C300 595 210 506 210 420Z" fill="#DE7800" fill-opacity="0.35"/>
+    <path d="M980 150C1080 210 1100 360 1028 452C952 552 812 548 730 476C652 408 666 288 750 208C830 128 920 118 980 150Z" fill="#EC4899" fill-opacity="0.35"/>
+    <path d="M960 740C865 825 710 815 635 720C560 625 605 492 730 468C842 446 942 515 985 615C1025 708 1000 710 960 740Z" fill="#6366F1" fill-opacity="0.35"/>
+  </g>
+
+  <!-- Center glass card -->
+  <g filter="url(#shadow)">
+    <rect x="250" y="170" width="700" height="560" rx="40" fill="url(#g1)" fill-opacity="0.22" stroke="#FFFFFF" stroke-opacity="0.22"/>
+    <rect x="280" y="200" width="640" height="500" rx="32" fill="#0B0B10" fill-opacity="0.35" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  </g>
+
+  <!-- Phone silhouette -->
+  <g filter="url(#shadow)">
+    <rect x="460" y="230" width="280" height="450" rx="36" fill="#0B0B10" fill-opacity="0.75" stroke="#FFFFFF" stroke-opacity="0.18"/>
+    <rect x="490" y="268" width="220" height="330" rx="24" fill="#111827" fill-opacity="0.75"/>
+    <rect x="555" y="616" width="90" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.25"/>
+    <circle cx="600" cy="252" r="5" fill="#FFFFFF" fill-opacity="0.25"/>
+  </g>
+
+  <!-- Content cards -->
+  <g>
+    <g filter="url(#shadow)">
+      <rect x="512" y="304" width="176" height="72" rx="18" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.14"/>
+      <rect x="532" y="324" width="92" height="10" rx="5" fill="#DE7800" fill-opacity="0.85"/>
+      <rect x="532" y="344" width="140" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.22"/>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="512" y="396" width="176" height="96" rx="18" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.14"/>
+      <rect x="532" y="416" width="140" height="10" rx="5" fill="#EC4899" fill-opacity="0.85"/>
+      <rect x="532" y="438" width="120" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.22"/>
+      <rect x="532" y="460" width="92" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.22"/>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="512" y="512" width="176" height="72" rx="18" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.14"/>
+      <rect x="532" y="532" width="124" height="10" rx="5" fill="#6366F1" fill-opacity="0.9"/>
+      <rect x="532" y="552" width="150" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.22"/>
+    </g>
+  </g>
+
+  <!-- Floating metrics -->
+  <g filter="url(#shadow)">
+    <rect x="820" y="290" width="220" height="120" rx="26" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <path d="M850 372C890 332 920 358 950 328C984 293 1010 316 1030 296" stroke="#EC4899" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="850" cy="372" r="7" fill="#EC4899"/>
+    <circle cx="950" cy="328" r="7" fill="#EC4899"/>
+    <circle cx="1030" cy="296" r="7" fill="#EC4899"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="150" y="520" width="240" height="150" rx="28" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <rect x="180" y="558" width="180" height="12" rx="6" fill="#DE7800" fill-opacity="0.85"/>
+    <rect x="180" y="584" width="150" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.22"/>
+    <rect x="180" y="610" width="120" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.22"/>
+  </g>
+
+  <rect width="1200" height="900" fill="url(#glow)"/>
+</svg>
