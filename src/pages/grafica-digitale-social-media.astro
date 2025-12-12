@@ -1,25 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { icons } from '../components/Icons';
 
 const deliverables = [
   {
     title: 'Grafica digitale',
     desc: 'Post, stories, copertine, banner e creatività coordinate con la tua identità visiva.',
-    icon: 'spark',
+    icon: 'gallery',
     tone: 'from-primary/25 via-primary/10 to-white dark:to-black',
     accent: 'text-primary'
   },
   {
     title: 'Social media management',
     desc: 'Piano editoriale, pubblicazione, community management e ottimizzazione continua.',
-    icon: 'calendar',
+    icon: 'users',
     tone: 'from-secondary/20 via-secondary/10 to-white dark:to-black',
     accent: 'text-secondary'
   },
   {
     title: 'Campagne & contenuti',
     desc: 'Creatività per ADS e contenuti pensati per conversioni e crescita nel territorio.',
-    icon: 'rocket',
+    icon: 'trending',
     tone: 'from-accent/20 via-accent/10 to-white dark:to-black',
     accent: 'text-accent'
   }
@@ -52,9 +53,9 @@ const processSteps = [
   <main class="relative overflow-x-hidden selection:bg-primary/20 selection:text-black" style="background-color: var(--bg-primary); color: var(--text-primary);">
     <!-- Ambient background (page-only) -->
     <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div class="absolute -top-32 -right-24 h-[28rem] w-[28rem] rounded-full bg-gradient-to-br from-secondary/55 via-accent/35 to-transparent blur-3xl"></div>
-      <div class="absolute top-40 -left-24 h-[24rem] w-[24rem] rounded-full bg-gradient-to-br from-primary/55 via-accent/30 to-transparent blur-3xl"></div>
-      <div class="absolute -bottom-40 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-primary/40 via-secondary/40 to-transparent blur-3xl"></div>
+      <div class="absolute -top-32 -right-24 h-[28rem] w-[28rem] rounded-full bg-gradient-to-br from-secondary/55 via-accent/35 to-transparent blur-3xl opacity-70 md:opacity-100"></div>
+      <div class="absolute top-40 -left-24 h-[24rem] w-[24rem] rounded-full bg-gradient-to-br from-primary/55 via-accent/30 to-transparent blur-3xl opacity-70 md:opacity-100"></div>
+      <div class="absolute -bottom-40 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-primary/40 via-secondary/40 to-transparent blur-3xl opacity-70 md:opacity-100"></div>
     </div>
 
     <!-- Hero (new style) -->
@@ -112,7 +113,7 @@ const processSteps = [
 
           <!-- Visual preview (stacked cards) -->
           <div class="relative">
-            <div class="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-secondary/40 via-accent/30 to-primary/40 blur-2xl" aria-hidden="true"></div>
+            <div class="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-secondary/40 via-accent/30 to-primary/40 blur-2xl opacity-45 sm:opacity-60 md:opacity-90" aria-hidden="true"></div>
             <div class="relative rounded-[2rem] border border-gray-200/70 bg-white/70 p-6 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
               <div class="flex items-center justify-between">
                 <p class="text-sm font-semibold" style="color: var(--text-primary);">Anteprima feed</p>
@@ -161,7 +162,7 @@ const processSteps = [
                 <img
                   src="/social-media-hero.svg"
                   alt="Illustrazione: grafica digitale e social"
-                  class="w-full h-48 object-cover rounded-2xl border border-gray-200/60 dark:border-white/10"
+                  class="w-full h-48 object-cover rounded-2xl border border-gray-200/60 dark:border-white/10 shadow-none"
                   loading="lazy"
                 />
               </div>
@@ -193,7 +194,7 @@ const processSteps = [
         <div class="mt-10 grid md:grid-cols-3 gap-6">
           {deliverables.map((item) => (
             <div class="group relative rounded-3xl border border-gray-200/70 bg-white/70 p-8 shadow-custom-lg overflow-hidden dark:border-white/10 dark:bg-white/5">
-              <div class={`absolute -right-14 -top-14 h-44 w-44 rounded-full bg-gradient-to-br ${item.tone} blur-2xl opacity-95`} aria-hidden="true"></div>
+              <div class={`absolute -right-14 -top-14 h-44 w-44 rounded-full bg-gradient-to-br ${item.tone} blur-2xl opacity-75 md:opacity-95`} aria-hidden="true"></div>
               <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-secondary via-accent to-primary" aria-hidden="true"></div>
               <div class="relative">
                 <div class="flex items-start justify-between gap-6">
@@ -201,19 +202,11 @@ const processSteps = [
                     <h3 class="text-xl font-extrabold tracking-tight" style="color: var(--text-primary);">{item.title}</h3>
                     <p class="mt-3 leading-relaxed" style="color: var(--text-secondary);">{item.desc}</p>
                   </div>
-                  <div class={`shrink-0 h-12 w-12 rounded-2xl border border-gray-200/80 bg-white/80 flex items-center justify-center shadow-custom dark:border-white/10 dark:bg-white/5 ${item.accent}`}
+                  <div
+                    class={`shrink-0 h-12 w-12 rounded-2xl border border-gray-200/80 bg-white/80 flex items-center justify-center shadow-custom dark:border-white/10 dark:bg-white/5 ${item.accent} [&_svg]:h-5 [&_svg]:w-5`}
                     aria-hidden="true"
-                  >
-                    {item.icon === 'spark' && (
-                      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.5 6.2L20 10l-6.5 1.8L12 18l-1.5-6.2L4 10l6.5-1.8L12 2z"/></svg>
-                    )}
-                    {item.icon === 'calendar' && (
-                      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4V2zm14 8H3v10h18V10z"/></svg>
-                    )}
-                    {item.icon === 'rocket' && (
-                      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3c-4 1-7 4-8 8l4 4c4-1 7-4 8-8V3h-4zm-6 9l-2-2c-.6 1.8-.8 3.6-.8 4.8L8 12zm5 5l-2-2-2.8 3.6c1.2 0 3-.2 4.8-.8z"/></svg>
-                    )}
-                  </div>
+                    set:html={icons[item.icon]}
+                  />
                 </div>
 
                 <div class="mt-6 flex items-center gap-2 text-sm" style="color: var(--text-secondary);">
@@ -239,7 +232,7 @@ const processSteps = [
             <ul class="mt-4 space-y-3" style="color: var(--text-secondary);">
               <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden="true"></span><span>Ristoranti e locali che vogliono un feed curato e coerente</span></li>
               <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-secondary" aria-hidden="true"></span><span>Professionisti che vogliono autorevolezza e continuità</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-success" aria-hidden="true"></span><span>Hotel e turismo che puntano su stagionalità e campagne</span></li>
+              <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-accent" aria-hidden="true"></span><span>Hotel e turismo che puntano su stagionalità e campagne</span></li>
             </ul>
           </div>
 
@@ -252,9 +245,12 @@ const processSteps = [
                     <div class="absolute inset-1 rounded-full bg-gradient-to-br from-secondary via-accent to-primary"></div>
                   </div>
                   <div class="rounded-3xl border border-gray-200/70 bg-white/70 p-7 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
-                    <div class="flex items-baseline justify-between gap-4">
+                    <div class="flex items-center justify-between gap-4">
                       <h3 class="text-xl font-extrabold tracking-tight" style="color: var(--text-primary);">{step.title}</h3>
-                      <span class="text-xs rounded-full border border-gray-200/70 bg-white/70 px-3 py-1 dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">Step {idx + 1}/4</span>
+                      <span class="inline-flex items-center gap-2 text-sm whitespace-nowrap shrink-0 rounded-full border border-gray-200/70 bg-white/70 px-4 py-1.5 dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">
+                        <span class="inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-secondary via-accent to-primary" aria-hidden="true"></span>
+                        Step {idx + 1}/4
+                      </span>
                     </div>
                     <p class="mt-3 leading-relaxed" style="color: var(--text-secondary);">{step.desc}</p>
                   </div>
@@ -269,7 +265,7 @@ const processSteps = [
     <!-- Final CTA (new) -->
     <section class="relative px-6 pb-20">
       <div class="max-w-6xl mx-auto">
-        <div class="relative overflow-hidden rounded-[2rem] border border-gray-200/70 bg-white/70 p-10 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
+        <div class="relative overflow-hidden rounded-3xl md:rounded-[2rem] border border-gray-200/70 bg-white/70 p-10 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
           <div class="pointer-events-none absolute inset-0" aria-hidden="true">
             <div class="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-secondary/30 via-accent/20 to-transparent blur-3xl"></div>
             <div class="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-3xl"></div>
