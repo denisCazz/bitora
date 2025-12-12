@@ -3,48 +3,47 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="relative border-t border-gray-200/70 dark:border-white/10 bg-white/70 dark:bg-black/40 backdrop-blur-xl text-gray-700 dark:text-gray-200">
-  <div class="container mx-auto px-4 py-16">
-    <div class="grid gap-12 lg:grid-cols-[1.2fr,1fr,1fr,1fr]">
+  <div class="container mx-auto px-4 py-14">
+    <!-- Main footer grid -->
+    <div class="mt-12 grid gap-10 lg:grid-cols-[1.2fr,1fr,1fr,1fr]">
       <div class="space-y-6">
         <div>
-          <h3 class="text-3xl font-semibold text-gray-900 dark:text-white tracking-tight">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">Bitora</p>
+          <h3 class="mt-2 text-3xl font-semibold text-gray-900 dark:text-white tracking-tight">
             <span class="tracking-tight">bitora</span><span class="text-gray-400">.it</span>
           </h3>
-          <p class="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300 max-w-sm">
-            Il partner tecnologico per imprese e professionisti in Piemonte. Disegniamo ecosistemi digitali su misura per relazioni durature con i tuoi clienti.
+          <p class="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300 max-w-sm">
+            Partner digitale per imprese e professionisti. Focus su Carmagnola, Torino e Piemonte con performance e SEO locale.
           </p>
         </div>
 
         <div class="space-y-3 text-sm">
-          <div class="flex items-center gap-3">
-            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">@</span>
-            <a href="mailto:info@bitora.it" class="hover:text-primary transition-colors">info@bitora.it</a>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">☎︎</span>
-            <a href="tel:+393514979670" class="hover:text-primary transition-colors">+39 3514979670</a>
-          </div>
-          <div class="flex items-center gap-3 text-gray-500 dark:text-gray-400">
-            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black/5 dark:bg-white/10 text-sm">📍</span>
-            Carmagnola • Provincia di Torino • Piemonte
-          </div>
-        </div>
+          <a href="mailto:info@bitora.it" class="group flex items-center gap-3 hover:text-primary transition-colors">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary/15" aria-hidden="true">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6h16ZM4 18V8.2l7.4 6.17a2 2 0 0 0 2.6 0L20 8.2V18H4Z"/>
+              </svg>
+            </span>
+            <span class="text-gray-700 dark:text-gray-200">info@bitora.it</span>
+          </a>
 
-        <div class="flex flex-wrap gap-3">
-          <a
-            href="/contattaci"
-            class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-orange/30 dark:text-orange dark:hover:bg-orange/10"
-          >
-            Prenota una consulenza
+          <a href="tel:+393514979670" class="group flex items-center gap-3 hover:text-primary transition-colors">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary/15" aria-hidden="true">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.6 10.8c1.6 3.2 3.4 5 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.3c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1l-2.0 1.9Z"/>
+              </svg>
+            </span>
+            <span class="text-gray-700 dark:text-gray-200">+39 3514979670</span>
           </a>
-          <a
-            href="https://wa.me/393514979670"
-            class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-white/30 dark:text-white dark:hover:bg-white/10"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Scrivici su WhatsApp
-          </a>
+
+          <div class="flex items-center gap-3 text-gray-500 dark:text-gray-400">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-black/5 dark:bg-white/10" aria-hidden="true">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/>
+              </svg>
+            </span>
+            <span>Carmagnola • Provincia di Torino • Piemonte</span>
+          </div>
         </div>
       </div>
 
@@ -52,70 +51,67 @@ const currentYear = new Date().getFullYear();
         <h4 class="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">Soluzioni</h4>
         <ul class="mt-5 space-y-3 text-sm">
           <li><a href="/soluzioni" class="hover:text-primary transition-colors">Consulenze Web & NFC</a></li>
+          <li><a href="/grafica-digitale-social-media" class="hover:text-primary transition-colors">Grafica & Social Media</a></li>
           <li><a href="/bitora-crm" class="hover:text-primary transition-colors">Bitora CRM</a></li>
           <li><a href="/prezzi" class="hover:text-primary transition-colors">Percorsi di investimento</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">Approfondisci</h4>
+        <h4 class="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">Azienda</h4>
         <ul class="mt-5 space-y-3 text-sm">
           <li><a href="/chi-siamo" class="hover:text-primary transition-colors">Chi siamo</a></li>
           <li><a href="/lavori" class="hover:text-primary transition-colors">Progetti e case study</a></li>
-          <li><a href="/prezzi" class="hover:text-primary transition-colors">Percorsi di partnership</a></li>
-          <li><a href="/contattaci" class="hover:text-primary transition-colors">Parla con il team</a></li>
+          <li><a href="/contattaci" class="hover:text-primary transition-colors">Contatti</a></li>
         </ul>
       </div>
 
       <div>
-        <div class="glass-panel rounded-3xl p-6 space-y-4">
-          <p class="text-sm font-semibold text-gray-900 dark:text-white">Checklist di collaborazione</p>
-          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-            <li class="flex items-center gap-2"><span class="text-primary">•</span>Analisi gratuita del contesto</li>
-            <li class="flex items-center gap-2"><span class="text-primary">•</span>Roadmap digitale condivisa</li>
-            <li class="flex items-center gap-2"><span class="text-primary">•</span>Supporto continuo e proattivo</li>
-          </ul>
-          <a href="/contattaci" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-600 transition-colors">
-            Richiedi la roadmap ↗
-          </a>
+        <h4 class="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">Risorse</h4>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li><a href="/privacy-policy" class="hover:text-primary transition-colors">Privacy policy</a></li>
+          <li><a href="/cookie-policy" class="hover:text-primary transition-colors">Cookie policy</a></li>
+        </ul>
+
+        <div class="mt-8 rounded-3xl border border-gray-200/60 bg-white/60 p-6 shadow-custom dark:border-white/10 dark:bg-white/5">
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">Social</p>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Seguici e guarda esempi di contenuti e progetti.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <a
+              href="https://www.instagram.com/bitorait/"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary hover:bg-primary/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.881-.002 1.44 1.44 0 012.881.002z" />
+              </svg>
+            </a>
+            <a
+              href="https://www.facebook.com/people/Bitora-Italia/pfbid0JubiVqBfxyM2nY6CoHLW3P5vQkjhUGE5UF5Pa16f491fzGsneW512MdMTiEpgvJCl/?mibextid=wwXIfr&rdid=xyslEd78VfiU5dPK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BTziLdEef%2F%3Fmibextid%3DwwXIfr"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary hover:bg-primary/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.079v-3.47h3.046V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.515c-1.492 0-1.957.925-1.957 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.613 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="mt-16 flex flex-col gap-6 border-t border-gray-200/60 pt-6 text-sm dark:border-white/10 md:flex-row md:items-center md:justify-between">
-      <div class="flex flex-col md:flex-row md:items-center md:gap-6 text-gray-500 dark:text-gray-400">
-        <p>&copy; {currentYear} <span class="font-medium text-gray-800 dark:text-gray-100">bitora.it</span>. Tutti i diritti riservati.</p>
-        <div class="flex items-center gap-4">
+    <!-- Bottom bar -->
+    <div class="mt-12 border-t border-gray-200/60 pt-6 text-sm dark:border-white/10">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <p class="text-gray-500 dark:text-gray-400">&copy; {currentYear} <span class="font-medium text-gray-800 dark:text-gray-100">bitora.it</span>. Tutti i diritti riservati.</p>
+        <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400">
           <a href="/privacy-policy" class="hover:text-primary transition-colors">Privacy</a>
-          <span class="hidden text-gray-300 dark:text-gray-600 md:inline">/</span>
+          <span class="text-gray-300 dark:text-gray-600">/</span>
           <a href="/cookie-policy" class="hover:text-primary transition-colors">Cookie</a>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-4">
-        <div class="flex items-center gap-3">
-          <a
-            href="https://www.instagram.com/bitorait/"
-            class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 dark:bg-gray-700/50 dark:text-white dark:hover:bg-gray-600/50"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.881-.002 1.44 1.44 0 012.881.002z" />
-            </svg>
-          </a>
-          <a
-            href="https://www.facebook.com/people/Bitora-Italia/pfbid0JubiVqBfxyM2nY6CoHLW3P5vQkjhUGE5UF5Pa16f491fzGsneW512MdMTiEpgvJCl/?mibextid=wwXIfr&rdid=xyslEd78VfiU5dPK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BTziLdEef%2F%3Fmibextid%3DwwXIfr"
-            class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          >
-            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.079v-3.47h3.046V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.515c-1.492 0-1.957.925-1.957 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.613 23.027 24 18.062 24 12.073z" />
-            </svg>
-          </a>
         </div>
       </div>
     </div>
