@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Bitora CRM: Gestionale clienti con tracking, note e mapping | Piemonte"
-  description="Traccia ogni cliente, annota interazioni chiave e mappa relazioni in tempo reale. Consultazione immediata per PMI piemontesi con supporto italiano."
+  title="Bitora CRM: clienti, lead ed email integrate | Piemonte"
+  description="Web app CRM professionale (Next.js + Supabase) per PMI, freelance e agenzie: gestione clienti ordinata, email integrate, licenze per utente, export CSV, SMTP personalizzato e API lead."
 >
   <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
     
@@ -14,23 +14,57 @@ import Layout from '../layouts/Layout.astro';
       
       <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
         <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-widest text-indigo-400 backdrop-blur-md">
-          Novità 2025
+          Bitora CRM
         </div>
         <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
-          Il tuo business,<br />
-          sotto controllo.
+          Clienti, lead ed email.<br />
+          Sotto controllo.
         </h1>
         <p class="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-          Traccia ogni cliente, annota interazioni chiave e mappa le relazioni in tempo reale. <br class="hidden md:block" />
-          Il CRM progettato per chi non ha tempo da perdere.
+          Bitora CRM è una web app professionale sviluppata in Next.js + Supabase per PMI, freelance e agenzie.
+          <br class="hidden md:block" />
+          Gestisci clienti e lead in modo ordinato, invia email dal CRM e mantieni controllo completo su accessi, licenze e dati.
         </p>
         <div class="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center">
           <a href="/contattaci?topic=crm" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-            Parla con un esperto
+            Richiedi una demo
           </a>
-          <a href="#features" class="min-w-[200px] px-8 py-4 bg-white/10 text-white backdrop-blur-md rounded-full font-medium text-lg transition-all hover:bg-white/20 hover:scale-105">
-            Scopri le funzioni
+          <a href="#come-funziona" class="min-w-[200px] px-8 py-4 bg-white/10 text-white backdrop-blur-md rounded-full font-medium text-lg transition-all hover:bg-white/20 hover:scale-105">
+            Vedi come funziona
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro / What it is -->
+    <section id="come-funziona" class="py-32 px-6 md:px-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div class="reveal-on-scroll">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Cos’è Bitora CRM</h2>
+            <p class="text-lg text-gray-400 leading-relaxed">
+              Un CRM moderno, web-based e accessibile ovunque: nessuna installazione, nessun client da aggiornare, nessuna complessità inutile.
+              È pensato per chi lavora con clienti reali e processi chiari, non per soluzioni enterprise sovradimensionate.
+            </p>
+          </div>
+
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 100ms">
+            <h3 class="text-2xl font-bold text-white mb-4">Valore pratico, ogni giorno</h3>
+            <ul class="space-y-4 text-gray-300">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><span class="text-white font-medium">Controllo:</span> dati ordinati, pipeline leggibile, log email e export sempre disponibili.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><span class="text-white font-medium">Semplicità:</span> interfaccia essenziale, campi utili, niente “feature” che complicano il lavoro.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><span class="text-white font-medium">Automazione misurata:</span> tag e provenienza lead, template email e variabili dinamiche, deduplica per email.</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -42,20 +76,20 @@ import Layout from '../layouts/Layout.astro';
           <!-- Feature 1 -->
           <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-indigo-500/50 transition-colors duration-500">
             <div class="w-12 h-12 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <span class="text-2xl">👥</span>
+              <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1m8-4a4 4 0 10-8 0 4 4 0 008 0z"></path></svg>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-4">Tracking Clienti</h3>
+            <h3 class="text-2xl font-bold text-white mb-4">Clienti chiari e ordinati</h3>
             <p class="text-gray-400 leading-relaxed mb-6">
-              Timeline completa per ogni contatto. Ogni chiamata, email e incontro in un'unica vista cronologica.
+              Crea clienti in pochi secondi, tieni contatti, note, tag e stato sempre sotto mano. Niente caos: solo dati utili.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
               <li class="flex items-center gap-2">
                 <div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>
-                Profilo completo
+                Campi completi: contatti, note, tag, stato
               </li>
               <li class="flex items-center gap-2">
                 <div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>
-                Ricerca istantanea
+                Pipeline semplice: nuovo → contattato → convertito → archiviato
               </li>
             </ul>
           </div>
@@ -63,20 +97,20 @@ import Layout from '../layouts/Layout.astro';
           <!-- Feature 2 -->
           <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-purple-500/50 transition-colors duration-500" style="transition-delay: 100ms">
             <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <span class="text-2xl">📝</span>
+              <svg class="w-6 h-6 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-4">Note & Mapping</h3>
+            <h3 class="text-2xl font-bold text-white mb-4">Email integrate nel CRM</h3>
             <p class="text-gray-400 leading-relaxed mb-6">
-              Annotazioni automatiche e manuali. Visualizza le connessioni tra clienti e partner in tempo reale.
+              Gestisci template, invii singoli e invii a gruppi selezionati senza strumenti esterni. Ogni invio è tracciato.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
               <li class="flex items-center gap-2">
                 <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
-                Note intelligenti
+                Variabili dinamiche per messaggi personalizzati
               </li>
               <li class="flex items-center gap-2">
                 <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
-                Mappa relazionale
+                Log invii: inviata / fallita / in coda
               </li>
             </ul>
           </div>
@@ -84,21 +118,112 @@ import Layout from '../layouts/Layout.astro';
           <!-- Feature 3 -->
           <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-green-500/50 transition-colors duration-500" style="transition-delay: 200ms">
             <div class="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <span class="text-2xl">⚡</span>
+              <svg class="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-3.866 3.134-7 7-7 0 3.866-3.134 7-7 7zm0 0c0 3.866-3.134 7-7 7 0-3.866 3.134-7 7-7zm0 0v10"></path></svg>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-4">Automazioni</h3>
+            <h3 class="text-2xl font-bold text-white mb-4">Accesso, licenze, controllo</h3>
             <p class="text-gray-400 leading-relaxed mb-6">
-              Lead scoring AI e follow-up automatici. Lascia che il sistema lavori per te mentre ti concentri sul business.
+              Login sicuro e licenze per utente con trial automatico. Le funzionalità sono disponibili solo con licenza attiva.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
               <li class="flex items-center gap-2">
                 <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                Lead scoring AI
+                Ideale per team piccoli e strutturati
               </li>
               <li class="flex items-center gap-2">
                 <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                Workflow automatici
+                Controllo totale su utenti e permessi
               </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Sections -->
+    <section class="py-32 px-6 md:px-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Funzioni, spiegate con chiarezza</h2>
+          <p class="text-lg text-gray-400 font-light max-w-3xl mx-auto">
+            Ogni sezione è costruita per rendere il lavoro quotidiano più semplice: gestione clienti ordinata, comunicazioni tracciate e dati sempre disponibili.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll">
+            <h3 class="text-2xl font-bold text-white mb-4">Gestione clienti chiara e ordinata</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Crea e aggiorna clienti rapidamente. Tutto ciò che serve è al posto giusto, con una pipeline semplice e leggibile.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Vista tabellare responsive per desktop e tablet</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Stato e tag per trovare subito ciò che conta</li>
+            </ul>
+          </div>
+
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 75ms">
+            <h3 class="text-2xl font-bold text-white mb-4">Email integrate, senza strumenti esterni</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Hub email nel CRM: template riutilizzabili, invii mirati e log completo degli stati.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>Invio a singoli clienti o gruppi selezionati</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>Newsletter informativa in BCC</li>
+            </ul>
+          </div>
+
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 150ms">
+            <h3 class="text-2xl font-bold text-white mb-4">Statistiche ed export</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              I dati sono sempre disponibili e portabili. Quando serve, esporti i clienti in CSV in qualsiasi momento.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Export CSV immediato</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Trasparenza: i dati restano tuoi</li>
+            </ul>
+          </div>
+
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 225ms">
+            <h3 class="text-2xl font-bold text-white mb-4">SMTP personalizzato e brand coerente</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Usi il tuo provider email (Gmail, Aruba, Outlook o server dedicato). Nessun lock-in e credenziali cifrate lato server.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Invii dal tuo dominio e con il tuo stile</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Configurazione pensata per sicurezza e controllo</li>
+            </ul>
+          </div>
+
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 300ms">
+            <h3 class="text-2xl font-bold text-white mb-4">Integrazione con siti e form esterni</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              API dedicata per ricevere lead dal sito o da landing page. Niente duplicati: se l’email esiste già, si aggiorna il contatto.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>Tag automatici e tracciamento provenienza</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>Perfetto per campagne e acquisizione lead</li>
+            </ul>
+          </div>
+
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 375ms">
+            <h3 class="text-2xl font-bold text-white mb-4">Accesso e licenze</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Login sicuro e licenze per utente con trial automatico. Le funzioni sono disponibili solo con licenza attiva: controllo totale e costi prevedibili.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Licenze scalabili per team piccoli</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Accesso alle funzioni solo con licenza attiva</li>
+            </ul>
+          </div>
+
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 450ms">
+            <h3 class="text-2xl font-bold text-white mb-4">Area Admin</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Per chi gestisce più utenti o più account: controllo centralizzato su utenti, licenze e monitoraggio.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Gestione utenti e licenze</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Monitoraggio e gestione clienti</li>
             </ul>
           </div>
         </div>
@@ -107,51 +232,115 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- Pricing -->
     <section id="pricing" class="py-32 px-6">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-6xl mx-auto">
         <div class="text-center mb-24 reveal-on-scroll">
-          <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Un prezzo chiaro.</h2>
-          <p class="text-xl text-gray-400 font-light">Nessun costo nascosto. Solo crescita.</p>
+          <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Licenze per utente, controllo totale</h2>
+          <p class="text-xl text-gray-400 font-light">Scegli in base al numero di utenti. Trial automatico e funzionalità disponibili solo con licenza attiva.</p>
         </div>
 
-        <div class="relative group reveal-on-scroll">
-          <div class="absolute inset-0 bg-gradient-to-b from-indigo-600 to-purple-600 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
-          <div class="relative bg-zinc-900 border border-white/10 rounded-3xl p-12 md:p-16 text-center">
-            <div class="inline-block bg-indigo-500/20 text-indigo-300 px-4 py-1 rounded-full text-sm font-medium mb-8">
-              Piano Professionale
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Plan: Utente -->
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll text-center">
+            <div class="inline-block bg-white/10 text-white/80 px-4 py-1 rounded-full text-sm font-medium mb-8">Piano Utente</div>
+
+            <div class="flex items-baseline justify-center gap-2 mb-6">
+              <span class="text-5xl md:text-6xl font-bold text-white">€19,99</span>
+              <span class="text-lg text-gray-500">/utente/mese</span>
             </div>
-            
-            <div class="flex items-baseline justify-center gap-2 mb-8">
-              <span class="text-6xl md:text-7xl font-bold text-white">€19,99</span>
-              <span class="text-xl text-gray-500">/mese</span>
-            </div>
-            
-            <p class="text-gray-400 mb-12 max-w-lg mx-auto">
-              Tutto incluso: 5 utenti, dashboard multi-sede, automazioni base e supporto italiano dedicato.
+
+            <p class="text-gray-400 mb-10 max-w-sm mx-auto">
+              Per freelance e professionisti: un CRM completo, accessibile ovunque, con email integrate e dati sempre esportabili.
             </p>
 
-            <div class="grid md:grid-cols-2 gap-6 text-left max-w-2xl mx-auto mb-12">
+            <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
               <div class="flex items-center gap-3 text-gray-300">
                 <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Migrazione gratuita dati
+                Email integrate + log invii
               </div>
               <div class="flex items-center gap-3 text-gray-300">
                 <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Report mensili PDF
+                Export CSV in qualsiasi momento
               </div>
               <div class="flex items-center gap-3 text-gray-300">
                 <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Supporto via Slack
-              </div>
-              <div class="flex items-center gap-3 text-gray-300">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Export dati sempre disponibile
+                SMTP personalizzato (tuo provider)
               </div>
             </div>
 
-            <a href="/contattaci?plan=crm" class="inline-block min-w-[250px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-              Attiva Bitora CRM
+            <a href="/contattaci?plan=crm-user" class="inline-block w-full px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+              Attiva Piano Utente
             </a>
-            <p class="mt-6 text-sm text-gray-500">Setup in 48 ore • Cancellazione in qualsiasi momento</p>
+            <p class="mt-6 text-sm text-gray-500">Trial automatico • Disattivazione quando vuoi</p>
+          </div>
+
+          <!-- Plan: Fino a 5 utenti -->
+          <div class="relative group reveal-on-scroll">
+            <div class="absolute inset-0 bg-gradient-to-b from-indigo-600 to-purple-600 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
+            <div class="relative bg-zinc-900 border border-white/10 rounded-3xl p-10 text-center">
+              <div class="inline-block bg-indigo-500/20 text-indigo-300 px-4 py-1 rounded-full text-sm font-medium mb-8">Fino a 5 utenti</div>
+
+              <div class="flex items-baseline justify-center gap-2 mb-6">
+                <span class="text-5xl md:text-6xl font-bold text-white">€49,99</span>
+                <span class="text-lg text-gray-500">/mese</span>
+              </div>
+
+              <p class="text-gray-400 mb-10 max-w-sm mx-auto">
+                Per piccoli team e agenzie: gestione condivisa di clienti e lead, con accessi controllati e flussi ordinati.
+              </p>
+
+              <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
+                <div class="flex items-center gap-3 text-gray-300">
+                  <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  5 accessi inclusi
+                </div>
+                <div class="flex items-center gap-3 text-gray-300">
+                  <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  Area Admin per utenti e licenze
+                </div>
+                <div class="flex items-center gap-3 text-gray-300">
+                  <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  API lead + deduplica per email
+                </div>
+              </div>
+
+              <a href="/contattaci?plan=crm-5" class="inline-block w-full px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                Attiva Piano Team
+              </a>
+              <p class="mt-6 text-sm text-gray-500">Trial automatico • Disattivazione quando vuoi</p>
+            </div>
+          </div>
+
+          <!-- Plan: Enterprise -->
+          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll text-center" style="transition-delay: 100ms">
+            <div class="inline-block bg-white/10 text-white/80 px-4 py-1 rounded-full text-sm font-medium mb-8">Enterprise</div>
+
+            <div class="flex items-baseline justify-center gap-2 mb-6">
+              <span class="text-4xl md:text-5xl font-bold text-white">Su contatto</span>
+            </div>
+
+            <p class="text-gray-400 mb-10 max-w-sm mx-auto">
+              Per team più strutturati o esigenze specifiche: numero utenti personalizzato, setup dedicato e requisiti di integrazione.
+            </p>
+
+            <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
+              <div class="flex items-center gap-3 text-gray-300">
+                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                Numero utenti e licenze su misura
+              </div>
+              <div class="flex items-center gap-3 text-gray-300">
+                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                Integrazioni e flussi dedicati
+              </div>
+              <div class="flex items-center gap-3 text-gray-300">
+                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                Supporto e onboarding concordati
+              </div>
+            </div>
+
+            <a href="/contattaci?topic=crm-enterprise" class="inline-block w-full px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+              Contattaci
+            </a>
+            <p class="mt-6 text-sm text-gray-500">Preventivo e tempi in base alle esigenze</p>
           </div>
         </div>
       </div>
@@ -165,37 +354,37 @@ import Layout from '../layouts/Layout.astro';
         <div class="space-y-4">
           <details class="group bg-white/5 border border-white/5 rounded-2xl open:bg-white/10 transition-all duration-300">
             <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-              <span class="text-lg font-medium text-white">Quanto tempo serve per il setup?</span>
+              <span class="text-lg font-medium text-white">Come funzionano licenze e trial?</span>
               <span class="transition-transform group-open:rotate-180 text-gray-500">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </span>
             </summary>
             <div class="px-6 pb-6 text-gray-400 leading-relaxed">
-              Setup completo in 48 ore lavorative. Include migrazione dati da Excel/Sheets, configurazione automazioni base e training per il team.
+              Le licenze sono per utente e includono un trial automatico. Le funzionalità del CRM sono accessibili solo con licenza attiva, così hai controllo totale su accessi e costi.
             </div>
           </details>
 
           <details class="group bg-white/5 border border-white/5 rounded-2xl open:bg-white/10 transition-all duration-300">
             <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-              <span class="text-lg font-medium text-white">Funziona senza sito web?</span>
+              <span class="text-lg font-medium text-white">Posso usare il mio provider email?</span>
               <span class="transition-transform group-open:rotate-180 text-gray-500">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </span>
             </summary>
             <div class="px-6 pb-6 text-gray-400 leading-relaxed">
-              Sì, Bitora CRM è standalone. Puoi iniziare importando contatti esistenti e usare solo le funzioni CRM/automazioni.
+              Sì. Puoi configurare SMTP con il tuo provider (Gmail, Aruba, Outlook o server dedicato). Le credenziali sono gestite lato server in modo cifrato e le email restano coerenti con il tuo brand.
             </div>
           </details>
 
           <details class="group bg-white/5 border border-white/5 rounded-2xl open:bg-white/10 transition-all duration-300">
             <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-              <span class="text-lg font-medium text-white">I dati sono al sicuro?</span>
+              <span class="text-lg font-medium text-white">Posso importare lead dal sito ed esportare i dati?</span>
               <span class="transition-transform group-open:rotate-180 text-gray-500">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </span>
             </summary>
             <div class="px-6 pb-6 text-gray-400 leading-relaxed">
-              Assolutamente. Server europei, crittografia end-to-end e conformità GDPR completa. I dati sono tuoi e puoi esportarli quando vuoi.
+              Sì. Bitora CRM offre un’API dedicata per ricevere lead da form esterni (con deduplica per email e tag/provenienza). In qualsiasi momento puoi esportare i clienti in CSV.
             </div>
           </details>
         </div>
@@ -205,10 +394,10 @@ import Layout from '../layouts/Layout.astro';
     <!-- CTA -->
     <section class="py-40 px-6 text-center">
       <div class="max-w-4xl mx-auto reveal-on-scroll">
-        <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Pronto a semplificare?</h2>
+        <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Vuoi vedere Bitora CRM in azione?</h2>
         <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
           Prenota una demo di 15 minuti. <br />
-          Ti mostreremo come risparmiare 10 ore a settimana.
+          Ti mostriamo come gestire clienti, lead ed email con un flusso pulito e controllabile.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
