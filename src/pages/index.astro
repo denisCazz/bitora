@@ -32,14 +32,34 @@ const pricing = [
 ---
 
 <Layout
-  title="Partner tecnologico per aziende e professionisti in Piemonte | Bitora"
-  description="Bitora è il partner tecnologico di riferimento a Carmagnola, Torino e in tutto il Piemonte: consulenza digitale su misura, siti web ad alte prestazioni, ecosistemi NFC e strategie SEO ottimizzate anche per motori AI."
+  title="Partner tecnologico Piemonte | Bitora"
+  description="Bitora è il partner tecnologico a Carmagnola, Torino e in tutto il Piemonte: consulenza digitale, siti web ad alte prestazioni, ecosistemi NFC e strategie SEO ottimizzate per motori AI."
 >
   <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
     
     <!-- Hero Section -->
-    <section class="relative h-screen flex flex-col justify-center items-center text-center px-4">
+    <section class="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+      
+      <!-- Animated Neon Circles Background -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <!-- Blue circles -->
+        <div class="neon-circle neon-blue w-[600px] h-[600px] -top-[200px] -left-[200px] animate-float-slow"></div>
+        <div class="neon-circle neon-blue w-[400px] h-[400px] top-[60%] -right-[150px] animate-float-reverse" style="animation-delay: -3s;"></div>
+        <div class="neon-circle neon-blue w-[200px] h-[200px] top-[20%] left-[10%] animate-orbit" style="animation-delay: -5s;"></div>
+        <div class="neon-circle neon-blue-soft w-[800px] h-[800px] -bottom-[400px] left-[20%] animate-pulse-glow"></div>
+        
+        <!-- Orange circles -->
+        <div class="neon-circle neon-orange w-[500px] h-[500px] -bottom-[200px] -right-[200px] animate-float-slow" style="animation-delay: -2s;"></div>
+        <div class="neon-circle neon-orange w-[300px] h-[300px] top-[15%] right-[15%] animate-float-reverse" style="animation-delay: -4s;"></div>
+        <div class="neon-circle neon-orange w-[150px] h-[150px] bottom-[30%] left-[5%] animate-orbit" style="animation-delay: -1s;"></div>
+        <div class="neon-circle neon-orange-soft w-[700px] h-[700px] -top-[350px] right-[10%] animate-pulse-glow" style="animation-delay: -2.5s;"></div>
+        
+        <!-- Accent small circles -->
+        <div class="neon-circle neon-blue w-[80px] h-[80px] top-[40%] left-[20%] animate-drift"></div>
+        <div class="neon-circle neon-orange w-[60px] h-[60px] top-[70%] right-[25%] animate-drift" style="animation-delay: -3s;"></div>
+        <div class="neon-circle neon-blue w-[100px] h-[100px] bottom-[20%] right-[40%] animate-orbit" style="animation-delay: -6s;"></div>
+      </div>
       
       <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
         <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-widest text-gray-400 backdrop-blur-md">
@@ -78,7 +98,7 @@ const pricing = [
             <span class="text-indigo-400">prima del codice.</span>
           </h2>
           <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
-            Non vendiamo pacchetti preconfezionati. Analizziamo il tuo modello di business, i tuoi dati e il tuo mercato locale per costruire una roadmap digitale su misura.
+            Non vendiamo pacchetti preconfezionati. Analizziamo il tuo modello di business, i tuoi dati e il tuo mercato locale per costruire una roadmap digitale su misura. Il tuo business, amplificato attraverso strategie digitali mirate.
           </p>
           <ul class="space-y-6 text-gray-300 mt-8">
             <li class="flex items-center gap-4">
@@ -98,12 +118,25 @@ const pricing = [
         <div class="order-1 md:order-2 relative group reveal-on-scroll delay-200">
           <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
           <div class="relative rounded-3xl overflow-hidden aspect-square bg-zinc-900 border border-white/10 flex items-center justify-center">
-            <img 
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" 
-              alt="Strategia digitale in Piemonte" 
-              class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
-              loading="lazy"
-            />
+            <picture>
+              <source 
+                srcset="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop&fm=webp" 
+                type="image/webp"
+                media="(max-width: 768px)"
+              />
+              <source 
+                srcset="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop&fm=webp" 
+                type="image/webp"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" 
+                alt="Strategia digitale in Piemonte" 
+                class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
+                loading="lazy"
+                width="1200"
+                height="1200"
+              />
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
           </div>
         </div>
@@ -116,12 +149,25 @@ const pricing = [
         <div class="relative group reveal-on-scroll order-1">
           <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-orange-500 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
           <div class="relative rounded-3xl overflow-hidden aspect-square bg-zinc-900 border border-white/10 flex items-center justify-center">
-             <img 
-              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2940&auto=format&fit=crop" 
-              alt="Sviluppo Web e AI" 
-              class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
-              loading="lazy"
-            />
+            <picture>
+              <source 
+                srcset="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop&fm=webp" 
+                type="image/webp"
+                media="(max-width: 768px)"
+              />
+              <source 
+                srcset="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop&fm=webp" 
+                type="image/webp"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" 
+                alt="Sviluppo Web e AI" 
+                class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
+                loading="lazy"
+                width="1200"
+                height="1200"
+              />
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
           </div>
         </div>
@@ -237,8 +283,8 @@ const pricing = [
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Bitora',
-  image: 'https://bitora.it/bitora.jpg',
-  url: 'https://bitora.it',
+  image: 'https://www.bitora.it/bitora.jpg',
+  url: 'https://www.bitora.it',
   areaServed: ['Carmagnola', 'Torino', 'Piemonte'],
   makesOffer: {
     '@type': 'Offer',
@@ -282,6 +328,140 @@ const pricing = [
   .reveal-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Neon Circles */
+  .neon-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  .neon-blue {
+    border: 2px solid rgba(99, 102, 241, 0.6);
+    box-shadow: 
+      0 0 20px rgba(99, 102, 241, 0.4),
+      0 0 40px rgba(99, 102, 241, 0.2),
+      0 0 60px rgba(99, 102, 241, 0.1),
+      inset 0 0 20px rgba(99, 102, 241, 0.1);
+  }
+
+  .neon-blue-soft {
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 
+      0 0 60px rgba(99, 102, 241, 0.15),
+      0 0 100px rgba(99, 102, 241, 0.1);
+    filter: blur(1px);
+  }
+
+  .neon-orange {
+    border: 2px solid rgba(251, 146, 60, 0.6);
+    box-shadow: 
+      0 0 20px rgba(251, 146, 60, 0.4),
+      0 0 40px rgba(251, 146, 60, 0.2),
+      0 0 60px rgba(251, 146, 60, 0.1),
+      inset 0 0 20px rgba(251, 146, 60, 0.1);
+  }
+
+  .neon-orange-soft {
+    border: 1px solid rgba(251, 146, 60, 0.3);
+    box-shadow: 
+      0 0 60px rgba(251, 146, 60, 0.15),
+      0 0 100px rgba(251, 146, 60, 0.1);
+    filter: blur(1px);
+  }
+
+  /* Animations */
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(30px, -30px) rotate(5deg);
+    }
+    50% {
+      transform: translate(0, -50px) rotate(0deg);
+    }
+    75% {
+      transform: translate(-30px, -30px) rotate(-5deg);
+    }
+  }
+
+  @keyframes float-reverse {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(-20px, 20px) rotate(-3deg);
+    }
+    50% {
+      transform: translate(0, 40px) rotate(0deg);
+    }
+    75% {
+      transform: translate(20px, 20px) rotate(3deg);
+    }
+  }
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateX(50px) rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(50px) rotate(-360deg);
+    }
+  }
+
+  @keyframes drift {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.6;
+    }
+    33% {
+      transform: translate(40px, -20px) scale(1.1);
+      opacity: 0.8;
+    }
+    66% {
+      transform: translate(-30px, 30px) scale(0.9);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 20s ease-in-out infinite;
+  }
+
+  .animate-float-reverse {
+    animation: float-reverse 18s ease-in-out infinite;
+  }
+
+  .animate-orbit {
+    animation: orbit 30s linear infinite;
+  }
+
+  .animate-drift {
+    animation: drift 15s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 8s ease-in-out infinite;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .neon-circle {
+      animation: none !important;
+    }
   }
 </style>
 

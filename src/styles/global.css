@@ -242,6 +242,19 @@ a:hover {
   }
 }
 
+/* Explicit media queries for responsive design - SEO optimization */
+@media screen and (max-width: 768px) {
+  /* Mobile styles */
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet styles */
+}
+
+@media screen and (min-width: 1025px) {
+  /* Desktop styles */
+}
+
 /* High contrast mode support - removed override rules that conflict with Tailwind */
 @media (prefers-contrast: high) {
   /* Let Tailwind handle contrast modes */

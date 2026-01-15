@@ -18,8 +18,8 @@ const { title, description } = Astro.props;
 // Costruisci l'URL canonico corretto - più robusto
 const pathname = Astro.url.pathname || '/';
 const canonicalUrl = pathname === '/' 
-  ? 'https://bitora.it/' 
-  : `https://bitora.it${pathname.endsWith('/') ? pathname : pathname + '/'}`;
+  ? 'https://www.bitora.it/' 
+  : `https://www.bitora.it${pathname.endsWith('/') ? pathname : pathname + '/'}`;
 ---
 
 <!doctype html>
@@ -103,9 +103,6 @@ const canonicalUrl = pathname === '/'
     <meta name="geo.position" content="44.8477;7.6833" />
     <meta name="ICBM" content="44.8477, 7.6833" />
     <meta name="keywords" content="soluzioni digitali, web design professionale, tecnologie NFC, ecosistemi digitali, sviluppo web, landing page, performance digitale" />
-
-    <!-- Responsive Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <style is:global>
       :root {
@@ -187,14 +184,19 @@ const canonicalUrl = pathname === '/'
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/bitora.png" />
 
-    <!-- Fonts with optimized loading -->
+    <!-- Fonts with optimized loading - non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
     <noscript
       ><link
@@ -206,27 +208,27 @@ const canonicalUrl = pathname === '/'
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bitora.it/" />
+    <meta property="og:url" content="https://www.bitora.it/" />
     <meta property="og:title" content={title} />
     <meta
       property="og:description"
       content={description ??
         'Soluzioni digitali professionali per aziende moderne. Bitora realizza ecosistemi web e tecnologie NFC innovative per la crescita del business.'}
     />
-    <meta property="og:image" content="https://bitora.it/bitora.jpg" />
+    <meta property="og:image" content="https://www.bitora.it/bitora.jpg" />
     <meta property="og:locale" content="it_IT" />
     <meta property="og:site_name" content="Bitora - Soluzioni Digitali Professionali" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://bitora.it/" />
+    <meta name="twitter:url" content="https://www.bitora.it/" />
     <meta name="twitter:title" content={title} />
     <meta
       name="twitter:description"
       content={description ??
         'Soluzioni digitali professionali per aziende moderne. Bitora realizza ecosistemi web e tecnologie NFC innovative per distinguersi online.'}
     />
-    <meta name="twitter:image" content="https://bitora.it/bitora.jpg" />
+    <meta name="twitter:image" content="https://www.bitora.it/bitora.jpg" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -234,8 +236,8 @@ const canonicalUrl = pathname === '/'
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Bitora",
-        "url": "https://bitora.it",
-        "logo": "https://bitora.it/bitora.png",
+        "url": "https://www.bitora.it",
+        "logo": "https://www.bitora.it/bitora.png",
         "sameAs": [
           "https://www.instagram.com/bitorait/",
           "https://www.facebook.com/people/Bitora-Italia/pfbid0JubiVqBfxyM2nY6CoHLW3P5vQkjhUGE5UF5Pa16f491fzGsneW512MdMTiEpgvJCl/?mibextid=wwXIfr&rdid=xyslEd78VfiU5dPK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BTziLdEef%2F%3Fmibextid%3DwwXIfr"
@@ -247,10 +249,10 @@ const canonicalUrl = pathname === '/'
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "url": "https://bitora.it/",
+        "url": "https://www.bitora.it/",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://bitora.it/?s={search_term_string}",
+          "target": "https://www.bitora.it/?s={search_term_string}",
           "query-input": "required name=search_term_string"
         }
       }    </script>
