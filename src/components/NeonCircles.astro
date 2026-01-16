@@ -1,0 +1,81 @@
+---
+export interface Props {
+  variant?: 'hero' | 'section' | 'subtle' | 'accent';
+  colors?: ('blue' | 'orange' | 'purple')[];
+}
+
+const { variant = 'section', colors = ['blue', 'orange'] } = Astro.props;
+
+const hasBlue = colors.includes('blue');
+const hasOrange = colors.includes('orange');
+const hasPurple = colors.includes('purple');
+---
+
+{variant === 'hero' && (
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    {hasBlue && (
+      <>
+        <div class="neon-circle neon-blue w-[600px] h-[600px] -top-[200px] -left-[200px] animate-neon-float-slow"></div>
+        <div class="neon-circle neon-blue w-[400px] h-[400px] top-[60%] -right-[150px] animate-neon-float-reverse" style="animation-delay: -3s;"></div>
+        <div class="neon-circle neon-blue w-[200px] h-[200px] top-[20%] left-[10%] animate-neon-orbit" style="animation-delay: -5s;"></div>
+        <div class="neon-circle neon-blue-soft w-[800px] h-[800px] -bottom-[400px] left-[20%] animate-neon-pulse-glow"></div>
+      </>
+    )}
+    {hasOrange && (
+      <>
+        <div class="neon-circle neon-orange w-[500px] h-[500px] -bottom-[200px] -right-[200px] animate-neon-float-slow" style="animation-delay: -2s;"></div>
+        <div class="neon-circle neon-orange w-[300px] h-[300px] top-[15%] right-[15%] animate-neon-float-reverse" style="animation-delay: -4s;"></div>
+        <div class="neon-circle neon-orange w-[150px] h-[150px] bottom-[30%] left-[5%] animate-neon-orbit" style="animation-delay: -1s;"></div>
+        <div class="neon-circle neon-orange-soft w-[700px] h-[700px] -top-[350px] right-[10%] animate-neon-pulse-glow" style="animation-delay: -2.5s;"></div>
+      </>
+    )}
+    {hasPurple && (
+      <>
+        <div class="neon-circle neon-purple w-[550px] h-[550px] -top-[250px] right-[5%] animate-neon-float-slow" style="animation-delay: -1.5s;"></div>
+        <div class="neon-circle neon-purple-soft w-[750px] h-[750px] -bottom-[300px] -left-[200px] animate-neon-pulse-glow" style="animation-delay: -3.5s;"></div>
+      </>
+    )}
+    {/* Accent small circles */}
+    {hasBlue && <div class="neon-circle neon-blue w-[80px] h-[80px] top-[40%] left-[20%] animate-neon-drift"></div>}
+    {hasOrange && <div class="neon-circle neon-orange w-[60px] h-[60px] top-[70%] right-[25%] animate-neon-drift" style="animation-delay: -3s;"></div>}
+    {hasBlue && <div class="neon-circle neon-blue w-[100px] h-[100px] bottom-[20%] right-[40%] animate-neon-orbit" style="animation-delay: -6s;"></div>}
+  </div>
+)}
+
+{variant === 'section' && (
+  <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-60">
+    {hasBlue && (
+      <>
+        <div class="neon-circle neon-blue-subtle w-[400px] h-[400px] -top-[150px] -left-[150px] animate-neon-float-slow"></div>
+        <div class="neon-circle neon-blue-soft w-[300px] h-[300px] bottom-[10%] -right-[100px] animate-neon-float-reverse" style="animation-delay: -4s;"></div>
+      </>
+    )}
+    {hasOrange && (
+      <>
+        <div class="neon-circle neon-orange-subtle w-[350px] h-[350px] -bottom-[100px] left-[20%] animate-neon-float-reverse" style="animation-delay: -2s;"></div>
+        <div class="neon-circle neon-orange-soft w-[250px] h-[250px] top-[20%] -right-[80px] animate-neon-float-slow" style="animation-delay: -5s;"></div>
+      </>
+    )}
+    {hasPurple && (
+      <>
+        <div class="neon-circle neon-purple-soft w-[350px] h-[350px] -top-[100px] right-[10%] animate-neon-float-slow" style="animation-delay: -3s;"></div>
+      </>
+    )}
+  </div>
+)}
+
+{variant === 'subtle' && (
+  <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+    {hasBlue && <div class="neon-circle neon-blue-subtle w-[300px] h-[300px] -top-[100px] -right-[100px] animate-neon-pulse-glow"></div>}
+    {hasOrange && <div class="neon-circle neon-orange-subtle w-[250px] h-[250px] -bottom-[80px] -left-[80px] animate-neon-pulse-glow" style="animation-delay: -2s;"></div>}
+    {hasPurple && <div class="neon-circle neon-purple-soft w-[280px] h-[280px] top-[50%] -left-[100px] animate-neon-pulse-glow" style="animation-delay: -4s;"></div>}
+  </div>
+)}
+
+{variant === 'accent' && (
+  <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
+    {hasBlue && <div class="neon-circle neon-blue w-[120px] h-[120px] -top-[40px] -right-[40px] animate-neon-drift"></div>}
+    {hasOrange && <div class="neon-circle neon-orange w-[100px] h-[100px] -bottom-[30px] -left-[30px] animate-neon-drift" style="animation-delay: -2s;"></div>}
+    {hasPurple && <div class="neon-circle neon-purple w-[80px] h-[80px] top-[30%] -right-[20px] animate-neon-drift" style="animation-delay: -3s;"></div>}
+  </div>
+)}
