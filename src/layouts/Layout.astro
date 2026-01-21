@@ -26,16 +26,6 @@ const canonicalUrl = pathname === '/'
 <html lang="it" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17047013851">
-    </script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'AW-17047013851');
-    </script>
     <meta name="trustpilot-one-time-domain-verification-id" content="a73b7189-4327-406d-9010-8bc27db1d6c1"/>
     <SpeedInsights/>
     <Analytics />
@@ -185,26 +175,19 @@ const canonicalUrl = pathname === '/'
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/bitora.png" />
 
-    <!-- Fonts with optimized loading - non-blocking -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts - optimized non-blocking loading -->
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript
-      ><link
+    <noscript>
+      <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      /></noscript
-    >
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />    <!-- Open Graph / Facebook -->
@@ -303,6 +286,29 @@ const canonicalUrl = pathname === '/'
         
         // Initial check
         toggleBackToTop();
+      }
+    </script>
+    
+    <!-- Google Tag Manager - Loaded after page content (non-blocking) -->
+    <script is:inline>
+      // Load GTM only after page is interactive
+      if (typeof window !== 'undefined') {
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            var gtmScript = document.createElement('script');
+            gtmScript.async = true;
+            gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17047013851';
+            document.head.appendChild(gtmScript);
+            
+            gtmScript.onload = function() {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
+              gtag('js', new Date());
+              gtag('config', 'AW-17047013851');
+            };
+          }, 100);
+        });
       }
     </script>
     <CookieBanner />
