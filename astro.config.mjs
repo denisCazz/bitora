@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import robotsTxt from 'astro-robots-txt';
 import react from '@astrojs/react';
 
 import compressor from 'astro-compressor';
@@ -12,11 +11,8 @@ export default defineConfig({
   integrations: [
     tailwind(), 
     sitemap(), 
-    robotsTxt({
-      sitemap: true,
-      host: 'www.bitora.it',
-    }), 
-    react(),    compressor({
+    react(),
+    compressor({
       gzip: true,
       brotli: true
     })
