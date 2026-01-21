@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://bitora.it/sitemap.xml
+Sitemap: https://www.bitora.it/sitemap.xml
 
 # Important pages for local SEO
 Allow: /carmagnola
@@ -13,6 +13,21 @@ Allow: /contattaci
 # Block admin areas if any
 Disallow: /admin/
 Disallow: /.well-known/
+
+# Block URLs with query parameters to prevent duplicate content
+Disallow: /*?plan=*
+Disallow: /*?piano=*
+Disallow: /*?topic=*
+Disallow: /*?product=*
+Disallow: /*?source=*
+Disallow: /*?s=*
+
+# Block old/removed pages
+Disallow: /shop
+Disallow: /Shop
+Disallow: /demo/
+Disallow: /progetti/hololux
+Disallow: /progetti/kristina
 
 # Crawl delay
 Crawl-delay: 1

@@ -209,7 +209,7 @@ const canonicalUrl = pathname === '/'
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.bitora.it/" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta
       property="og:description"
@@ -222,7 +222,7 @@ const canonicalUrl = pathname === '/'
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://www.bitora.it/" />
+    <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={title} />
     <meta
       name="twitter:description"
@@ -250,13 +250,10 @@ const canonicalUrl = pathname === '/'
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "url": "https://www.bitora.it/",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://www.bitora.it/?s={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }    </script>
+        "name": "Bitora - Soluzioni Digitali Professionali",
+        "url": "https://www.bitora.it/"
+      }
+    </script>
   </head>
   <body class="flex flex-col min-h-screen font-['Inter',sans-serif] transition-colors duration-300" style="background-color: var(--bg-primary); color: var(--text-primary);">
     <Header />

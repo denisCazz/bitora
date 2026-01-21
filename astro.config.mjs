@@ -14,14 +14,14 @@ export default defineConfig({
     sitemap(), 
     robotsTxt({
       sitemap: true,
-      host: 'bitora.it',
+      host: 'www.bitora.it',
     }), 
     react(),    compressor({
       gzip: true,
       brotli: true
     })
   ],
-  site: 'https://bitora.it/',
+  site: 'https://www.bitora.it/',
   base: '/',
   trailingSlash: 'ignore',
   output: 'static',

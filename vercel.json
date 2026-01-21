@@ -1,0 +1,40 @@
+{
+  "redirects": [
+    {
+      "source": "/:path((?!api/).*)*",
+      "has": [
+        {
+          "type": "host",
+          "value": "bitora.it"
+        }
+      ],
+      "destination": "https://www.bitora.it/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Shop",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/demo/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/progetti/hololux",
+      "destination": "/lavori/",
+      "permanent": true
+    },
+    {
+      "source": "/progetti/kristina",
+      "destination": "/progetti/sartoria-kristina/",
+      "permanent": true
+    }
+  ]
+}
