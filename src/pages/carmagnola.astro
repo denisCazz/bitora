@@ -1,12 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { icons } from '../components/Icons';
 import NeonCircles from '../components/NeonCircles.astro';
 ---
 
 <Layout 
-  title="Web Design Carmagnola | Bitora - Siti Web Professionali Piemonte"
-  description="Web design professionale a Carmagnola e provincia di Torino. Creiamo siti web, landing page e ecosistemi digitali NFC per aziende del Piemonte. Servizi locali di qualità per il territorio piemontese."
+  title="Web Agency Carmagnola | Siti Web, E-commerce, NFC | Bitora"
+  description="Bitora è la web agency di riferimento a Carmagnola e dintorni. Realizziamo siti web professionali, e-commerce e tessere NFC per aziende locali. Preventivo gratuito."
 >
   <!-- Schema Markup Specifico per Carmagnola -->
   <script type="application/ld+json">
@@ -31,6 +30,7 @@ import NeonCircles from '../components/NeonCircles.astro';
       "areaServed": [
         "Carmagnola",
         "Carignano",
+        "Poirino",
         "Villastellone",
         "Pancalieri",
         "Osasio",
@@ -44,270 +44,256 @@ import NeonCircles from '../components/NeonCircles.astro';
         "Sviluppo Siti Web",
         "Landing Page",
         "Tessere NFC",
-        "Ecosistemi Digitali"
+        "E-commerce"
       ]
     }
   </script>
 
-  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+  <main class="bg-black text-white overflow-x-hidden selection:bg-orange-500 selection:text-white">
     
-    <!-- Hero Section -->
-    <section class="relative h-[60vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
-      <NeonCircles variant="hero" colors={['blue', 'orange']} />
+    <!-- Hero Section Full Height -->
+    <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-900/20 via-black to-black opacity-50"></div>
+      <NeonCircles variant="hero" colors={['orange', 'purple']} />
       
       <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
-        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-widest text-indigo-400 backdrop-blur-md">
-          Servizi Web Professionali • Carmagnola
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm font-medium text-orange-300">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+          </span>
+          Web Agency Carmagnola
         </div>
-        <h1 class="text-5xl md:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
-          Web Design<br />
-          Carmagnola.
+
+        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+          La tua web agency<br />
+          <span class="text-orange-400">a Carmagnola.</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-          La tua web agency di fiducia a Carmagnola. Creiamo siti web professionali, landing page efficaci 
-          e ecosistemi digitali innovativi per aziende del territorio piemontese.
+        
+        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
+          Realizziamo siti web, e-commerce e tessere NFC per aziende di Carmagnola e dintorni.
+          <strong class="text-white">Progetti chiavi in mano. Supporto locale.</strong>
         </p>
-        <div class="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-            Richiedi Preventivo
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
+            Preventivo Gratuito
           </a>
-          <a href="tel:+393514979670" class="min-w-[200px] px-8 py-4 bg-white/10 text-white backdrop-blur-md rounded-full font-medium text-lg transition-all hover:bg-white/20 hover:scale-105">
-            Chiamaci
+          <a href="https://wa.me/393514979670" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
           </a>
         </div>
       </div>
-    </section>
 
-    <!-- Servizi Locali -->
-    <section class="py-24 px-6 md:px-12 border-t border-white/5">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-4xl font-bold mb-4 text-white">Servizi per Aziende di Carmagnola</h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto font-light">
-            Soluzioni digitali complete per far crescere la tua attività nel territorio piemontese.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Siti Web Professionali -->
-          <div class="bg-zinc-900 border border-white/10 p-8 rounded-3xl hover:border-indigo-500/50 transition-all duration-300 reveal-on-scroll group">
-            <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <div class="w-6 h-6 text-indigo-400">
-                <Fragment set:html={icons.globe} />
-              </div>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-white">Siti Web Carmagnola</h3>
-            <p class="text-gray-400 mb-6 leading-relaxed">
-              Siti web responsive e professionali per aziende di Carmagnola. Design moderno, velocità ottimizzata e SEO locale.
-            </p>
-            <ul class="space-y-2 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Design responsive</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Ottimizzazione SEO locale</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Velocità ottimizzata</li>
-            </ul>
-          </div>
-
-          <!-- Landing Page Localizzate -->
-          <div class="bg-zinc-900 border border-white/10 p-8 rounded-3xl hover:border-green-500/50 transition-all duration-300 reveal-on-scroll group" style="transition-delay: 100ms">
-            <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <div class="w-6 h-6 text-green-400">
-                <Fragment set:html={icons.target} />
-              </div>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-white">Landing Page Efficaci</h3>
-            <p class="text-gray-400 mb-6 leading-relaxed">
-              Landing page ad alta conversione per campagne pubblicitarie locali. Cattura l'attenzione dei clienti di Carmagnola.
-            </p>
-            <ul class="space-y-2 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Alta conversione</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Messaggi localizzati</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Tracking avanzato</li>
-            </ul>
-          </div>
-
-          <!-- Tessere NFC Smart -->
-          <div class="bg-zinc-900 border border-white/10 p-8 rounded-3xl hover:border-orange-500/50 transition-all duration-300 reveal-on-scroll group" style="transition-delay: 200ms">
-            <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <div class="w-6 h-6 text-orange-400">
-                <Fragment set:html={icons.chip} />
-              </div>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-white">Tessere NFC Innovative</h3>
-            <p class="text-gray-400 mb-6 leading-relaxed">
-              Tecnologia NFC all'avanguardia per ristoranti, hotel e negozi di Carmagnola. Menù digitali e recensioni.
-            </p>
-            <ul class="space-y-2 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>Menù digitali</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>Recensioni automatiche</li>
-              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>Analytics clienti</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Perché Scegliere Bitora a Carmagnola -->
-    <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-          <div class="space-y-12 reveal-on-scroll">
-            <div>
-              <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Perché Scegliere Bitora a Carmagnola</h2>
-              <p class="text-xl text-gray-400 font-light">
-                Il partner digitale che conosce il territorio e le esigenze delle aziende locali.
-              </p>
-            </div>
-
-            <div class="space-y-8">
-              <div class="flex gap-6">
-                <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                  <div class="w-6 h-6 text-indigo-400">
-                    <Fragment set:html={icons.mapPin} />
-                  </div>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold mb-2 text-white">Conoscenza del Territorio</h3>
-                  <p class="text-gray-400 leading-relaxed">
-                    Comprendiamo le dinamiche del mercato locale di Carmagnola e Piemonte, creando strategie digitali mirate.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex gap-6">
-                <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                  <div class="w-6 h-6 text-green-400">
-                    <Fragment set:html={icons.users} />
-                  </div>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold mb-2 text-white">Supporto Locale</h3>
-                  <p class="text-gray-400 leading-relaxed">
-                    Assistenza diretta e personalizzata per le aziende del territorio. Siamo qui quando hai bisogno di noi.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex gap-6">
-                <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10">
-                  <div class="w-6 h-6 text-orange-400">
-                    <Fragment set:html={icons.trending} />
-                  </div>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold mb-2 text-white">Tecnologie Innovative</h3>
-                  <p class="text-gray-400 leading-relaxed">
-                    Portiamo l'innovazione tecnologica alle aziende di Carmagnola con soluzioni all'avanguardia come NFC e AI.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="relative group reveal-on-scroll delay-200">
-            <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
-            <div class="relative rounded-3xl overflow-hidden aspect-square bg-zinc-900 border border-white/10">
-              <img 
-                src="/carmagnola-digital.jpg" 
-                alt="Web design professionale Carmagnola Piemonte"
-                class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-700"
-                loading="lazy"
-                onerror="this.src='https://images.unsplash.com/photo-1449824913929-2b3a641f5f81?q=80&w=2670&auto=format&fit=crop'"
-              />
-            </div>
-          </div>
-        </div>
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
       </div>
     </section>
 
     <!-- Comuni Serviti -->
-    <section class="py-24 px-6 md:px-12 border-t border-white/5">
+    <section class="py-20 px-6 md:px-12 border-t border-white/5">
       <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Comuni del Piemonte che Serviamo</h2>
-          <p class="text-xl text-gray-400 font-light">
-            I nostri servizi web coprono tutto il territorio della provincia di Torino e oltre.
-          </p>
+        <div class="text-center mb-12 reveal-on-scroll">
+          <p class="text-sm uppercase tracking-widest text-orange-400 mb-4">Il nostro territorio</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Carmagnola e dintorni</h2>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto reveal-on-scroll">
-          {['Carmagnola', 'Torino', 'Carignano', 'Villastellone', 'Racconigi', 'Pancalieri', 'Lombriasco', 'Osasio'].map(city => (
-            <div class="bg-white/5 border border-white/5 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
-              <h3 class="font-medium text-white">{city}</h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-4xl mx-auto reveal-on-scroll">
+          {[
+            { city: 'Carmagnola', highlight: true },
+            { city: 'Carignano', highlight: false },
+            { city: 'Poirino', highlight: false },
+            { city: 'Villastellone', highlight: false },
+            { city: 'Racconigi', highlight: false },
+            { city: 'Pancalieri', highlight: false },
+            { city: 'Lombriasco', highlight: false },
+            { city: 'Osasio', highlight: false },
+            { city: 'Sommariva', highlight: false },
+            { city: 'Torino', highlight: true },
+          ].map((loc, i) => (
+            <div class={`p-4 rounded-2xl text-center transition-all hover:scale-105 ${loc.highlight ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-white/5 border border-white/5 hover:border-white/20'}`} style={`transition-delay: ${i * 30}ms`}>
+              <span class={`font-semibold ${loc.highlight ? 'text-orange-300' : 'text-white'}`}>{loc.city}</span>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- CTA Finale -->
-    <section class="py-40 px-6 text-center">
-      <div class="max-w-4xl mx-auto reveal-on-scroll">
-        <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Pronto a crescere?</h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-          Contattaci oggi stesso per una consulenza gratuita. <br />
-          Trasformiamo la tua presenza online.
+    <!-- Servizi Bento Grid -->
+    <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">I nostri servizi</h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Tutto ciò che serve alla tua azienda per essere online in modo professionale.
+          </p>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="grid md:grid-cols-3 gap-4">
+          <!-- Card grande - Siti Web -->
+          <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-900/40 to-black border border-orange-500/20 p-8 md:p-12 reveal-on-scroll">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-all duration-700"></div>
+            <div class="relative z-10">
+              <span class="text-5xl mb-6 block">🌐</span>
+              <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Siti Web Professionali</h3>
+              <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-xl">
+                Realizziamo siti web moderni, veloci e ottimizzati per le ricerche locali. Il tuo sito sarà visibile ai clienti di Carmagnola e zona.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 rounded-full bg-white/10 text-sm text-white">Mobile-First</span>
+                <span class="px-4 py-2 rounded-full bg-white/10 text-sm text-white">SEO Locale</span>
+                <span class="px-4 py-2 rounded-full bg-white/10 text-sm text-white">Google Business</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card NFC -->
+          <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-900/40 to-black border border-purple-500/20 p-8 reveal-on-scroll" style="transition-delay: 100ms">
+            <span class="text-4xl mb-4 block">💳</span>
+            <h3 class="text-2xl font-bold text-white mb-3">Tessere NFC</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Biglietti da visita smart e tessere recensioni Google per professionisti e locali.
+            </p>
+          </div>
+
+          <!-- Card E-commerce -->
+          <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-900/40 to-black border border-green-500/20 p-8 reveal-on-scroll" style="transition-delay: 200ms">
+            <span class="text-4xl mb-4 block">🛒</span>
+            <h3 class="text-2xl font-bold text-white mb-3">E-commerce</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Negozi online per vendere i tuoi prodotti. Pagamenti sicuri, gestione semplice.
+            </p>
+          </div>
+
+          <!-- Card Landing -->
+          <div class="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-8 reveal-on-scroll" style="transition-delay: 150ms">
+            <span class="text-4xl mb-4 block">🎯</span>
+            <h3 class="text-2xl font-bold text-white mb-3">Landing Page</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Pagine di vendita ad alta conversione per le tue campagne pubblicitarie.
+            </p>
+          </div>
+
+          <!-- Card Grafica -->
+          <div class="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-8 reveal-on-scroll" style="transition-delay: 250ms">
+            <span class="text-4xl mb-4 block">🎨</span>
+            <h3 class="text-2xl font-bold text-white mb-3">Grafica & Brand</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Logo, immagine coordinata, materiali per social media e stampa.
+            </p>
+          </div>
+
+          <!-- Card Assistenza -->
+          <div class="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-8 reveal-on-scroll" style="transition-delay: 300ms">
+            <span class="text-4xl mb-4 block">🤝</span>
+            <h3 class="text-2xl font-bold text-white mb-3">Supporto Locale</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Assistenza diretta dal territorio. Niente call center, parli con noi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perché Bitora -->
+    <section class="py-24 px-6 md:px-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal-on-scroll">
+            <p class="text-sm uppercase tracking-widest text-orange-400 mb-4">Perché sceglierci</p>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">Siamo di Carmagnola.</h2>
+            
+            <div class="space-y-8">
+              {[
+                { icon: '📍', title: 'Conosciamo il territorio', desc: 'Sappiamo cosa cercano i clienti di Carmagnola e come raggiungerli online.' },
+                { icon: '⚡', title: 'Risposte rapide', desc: 'Niente attese. Risposta garantita entro 24 ore, spesso in poche ore.' },
+                { icon: '🔧', title: 'Chiavi in mano', desc: 'Pensiamo a tutto noi: design, sviluppo, hosting, manutenzione.' },
+                { icon: '💬', title: 'Parli con le persone', desc: 'Nessun chatbot o call center. Parli direttamente con chi lavora al tuo progetto.' }
+              ].map((item, i) => (
+                <div class="flex gap-6 group" style={`transition-delay: ${i * 100}ms`}>
+                  <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-orange-500/20 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-white mb-2">{item.title}</h3>
+                    <p class="text-gray-400">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="reveal-on-scroll" style="transition-delay: 200ms">
+            <div class="relative">
+              <div class="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-purple-500/20 rounded-3xl blur-2xl"></div>
+              <div class="relative bg-zinc-900 border border-white/10 rounded-3xl p-8 md:p-12">
+                <h3 class="text-2xl font-bold text-white mb-6">Progetti chiavi in mano</h3>
+                <ul class="space-y-4">
+                  {[
+                    'Consulenza iniziale gratuita',
+                    'Design personalizzato',
+                    'Ottimizzazione SEO locale',
+                    'Formazione per gestione autonoma',
+                    'Hosting e dominio inclusi',
+                    'Supporto post-lancio'
+                  ].map(item => (
+                    <li class="flex items-center gap-3">
+                      <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                      <span class="text-gray-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="/contattaci" class="mt-8 inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-medium">
+                  Richiedi preventivo 
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-32 px-6 md:px-12 bg-zinc-900/30 border-t border-white/5">
+      <div class="max-w-4xl mx-auto text-center reveal-on-scroll">
+        <h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+          Fai crescere la tua attività.
+        </h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+          Preventivo gratuito in 24 ore. Raccontaci il tuo progetto e vediamo insieme come realizzarlo.
         </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-            Consulenza Gratuita
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            Richiedi preventivo gratuito
           </a>
-          <a href="https://wa.me/393514979670" class="min-w-[200px] px-8 py-4 bg-white/10 text-white backdrop-blur-md rounded-full font-medium text-lg transition-all hover:bg-white/20 hover:scale-105">
+          <a href="https://wa.me/393514979670" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
           </a>
         </div>
       </div>
     </section>
-
   </main>
 </Layout>
 
 <style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+  .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 </style>
 
 <script>
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
   document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-    elements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
   });
 </script>

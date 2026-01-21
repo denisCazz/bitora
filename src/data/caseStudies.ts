@@ -295,6 +295,45 @@ export const caseStudies: CaseStudy[] = [
     fonti: [
       { testo: 'Sito ufficiale Bar Tabacchi Chantilly', url: 'https://bartabacchichantilly.it' }
     ]
+  },
+  {
+    id: 'barbara-toffano',
+    slug: 'barbara-toffano',
+    title: 'Barbara Toffano',
+    subtitle: 'Grafica & Brand Identity',
+    category: 'Grafica • Branding',
+    location: 'Piemonte',
+    imageUrl: '/btoffano.jpg',
+    siteUrl: '#',
+    featured: false,
+    isWip: false,
+    
+    clientDescription: `Barbara Toffano è una professionista che aveva bisogno di un'identità visiva professionale e coerente per la propria attività.`,
+    
+    problema: `Necessità di un'immagine coordinata professionale che rispecchiasse la qualità e l'affidabilità del servizio offerto.`,
+    
+    soluzione: [
+      {
+        titolo: 'Brand Identity',
+        descrizione: 'Sviluppo di un\'identità visiva completa e coerente, dal logo ai materiali di comunicazione.'
+      },
+      {
+        titolo: 'Materiali Grafici',
+        descrizione: 'Creazione di materiali grafici professionali per la comunicazione online e offline.'
+      }
+    ],
+    
+    risultati: [
+      'Identità visiva professionale e riconoscibile',
+      'Materiali di comunicazione coerenti',
+      'Immagine che trasmette affidabilità e competenza'
+    ],
+    
+    tecnologie: ['Adobe Illustrator', 'Brand Design', 'Graphic Design'],
+    
+    metricsPreview: ['Brand Identity', 'Grafica Professionale'],
+    
+    fonti: []
   }
 ];
 

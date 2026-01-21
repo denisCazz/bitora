@@ -1,36 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { faqs } from '../data/faq';
 import NeonCircles from '../components/NeonCircles.astro';
 ---
 
 <Layout
-  title="Percorsi di partnership e consulenza digitale | Bitora Piemonte"
-  description="Scopri come Bitora accompagna aziende e professionisti in Piemonte con consulenze digitali su misura. Roadmap condivisa, supporto continuativo e pochi investimenti fissi: tessere NFC, sito vetrina e landing page."
+  title="Come Lavoriamo | Progetti Chiavi in Mano | Web Agency Carmagnola | Bitora"
+  description="Bitora realizza progetti digitali chiavi in mano per aziende in Piemonte. Siti web, e-commerce, tessere NFC: ogni preventivo è personalizzato sulle tue esigenze. Supporto incluso."
 >
   <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
     
     <!-- Hero Section -->
-    <section class="relative h-[70vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+    <section class="relative min-h-[70vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
       <NeonCircles variant="hero" colors={['blue', 'orange']} />
       
       <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
         <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
-          Investi nel futuro.
+          Progetti<br />chiavi in mano.
         </h1>
         <p class="text-xl md:text-2xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
-          Consulenza mirata, roadmap condivisa, supporto continuo. <br class="hidden md:block" />
-          Dal primo audit fino alla crescita costante.
+          Ogni business è unico. Per questo non abbiamo listini fissi: <strong class="text-white">ogni preventivo è costruito sulle tue esigenze reali</strong>, con supporto continuo incluso.
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
           <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
-            Prenota consulenza
+            Richiedi preventivo gratuito
           </a>
-          <a href="https://wa.me/393514979670" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all">
-            Scrivici su WhatsApp
+          <a href="https://wa.me/393514979670" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perché niente listino -->
+    <section class="py-24 px-6 md:px-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Perché non abbiamo un listino prezzi?</h2>
+          <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+            Un ristorante non ha le stesse esigenze di uno studio legale. Un negozio locale non ha gli stessi obiettivi di un'azienda B2B. 
+            <strong class="text-white">Il preventivo giusto nasce dall'ascolto.</strong>
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll">
+            <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6">
+              <span class="text-2xl">🎯</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">Analisi reale</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Prima di tutto ascoltiamo: obiettivi, budget, tempistiche. Solo dopo proponiamo la soluzione più adatta.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll" style="transition-delay: 100ms">
+            <div class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6">
+              <span class="text-2xl">🔑</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">Chiavi in mano</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Ogni progetto include tutto: strategia, sviluppo, contenuti, formazione e messa online. Nessun costo nascosto.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll" style="transition-delay: 200ms">
+            <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6">
+              <span class="text-2xl">🤝</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">Supporto incluso</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Non ti lasciamo solo dopo il lancio. Assistenza, aggiornamenti e consulenza continuano nel tempo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cosa facciamo -->
+    <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">I nostri servizi</h2>
+          <p class="text-xl text-gray-400">Ogni servizio viene quotato in base alle tue specifiche esigenze</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon: '🌐', title: 'Siti Web', desc: 'Vetrina, multilingua, portali. Design personalizzato e SEO locale.' },
+            { icon: '🛒', title: 'E-commerce', desc: 'Negozi online con pagamenti, spedizioni e gestionale integrato.' },
+            { icon: '💳', title: 'Tessere NFC', desc: 'Biglietti da visita smart, tessere recensioni, espositori.' },
+            { icon: '📱', title: 'Landing Page', desc: 'Pagine di conversione per campagne pubblicitarie e lead generation.' },
+            { icon: '🎨', title: 'Grafica', desc: 'Logo, immagine coordinata, materiali per social e stampa.' },
+            { icon: '📊', title: 'SEO Locale', desc: 'Ottimizzazione per Google Maps e ricerche nel tuo territorio.' },
+            { icon: '📧', title: 'Automazioni', desc: 'Email marketing, WhatsApp Business, CRM e flussi automatici.' },
+            { icon: '🎓', title: 'Formazione', desc: 'Ti insegniamo a gestire i tuoi strumenti digitali in autonomia.' }
+          ].map((item, i) => (
+            <div class="p-6 rounded-2xl bg-black border border-white/10 hover:border-indigo-500/30 transition-all reveal-on-scroll" style={`transition-delay: ${i * 50}ms`}>
+              <span class="text-3xl mb-4 block">{item.icon}</span>
+              <h3 class="text-lg font-bold text-white mb-2">{item.title}</h3>
+              <p class="text-gray-400 text-sm">{item.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -38,171 +111,57 @@ import NeonCircles from '../components/NeonCircles.astro';
     <!-- Process Steps -->
     <section class="py-24 px-6 md:px-12 border-t border-white/5">
       <div class="max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Come lavoriamo insieme</h2>
+          <p class="text-xl text-gray-400">Dal primo contatto al supporto post-lancio</p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8">
           {[
-            {
-              step: "01",
-              title: 'Scoperta e insight',
-              description: 'Colloquio con i referenti, analisi della presenza digitale attuale, reputazione locale e visibilità su Google, Bing, ChatGPT e Gemini.'
-            },
-            {
-              step: "02",
-              title: 'Blueprint operativo',
-              description: 'Roadmap con priorità condivise, proposte di investimento, KPI e timeline. Identifichiamo asset chiave: sito, landing, NFC, campagne.'
-            },
-            {
-              step: "03",
-              title: 'Partnership attiva',
-              description: 'Sviluppo, copywriting, SEO locale e ottimizzazioni per answer engine. Report mensili e supporto diretto del team Bitora.'
-            }
+            { step: "01", title: 'Consulenza gratuita', description: 'Ci racconti il tuo progetto, analizziamo insieme obiettivi e budget. Senza impegno.' },
+            { step: "02", title: 'Preventivo su misura', description: 'Ricevi una proposta dettagliata con tutto incluso: nessuna sorpresa, nessun extra.' },
+            { step: "03", title: 'Sviluppo e consegna', description: 'Realizziamo il progetto tenendoti aggiornato. Al termine, formazione completa.' },
+            { step: "04", title: 'Supporto continuo', description: 'Assistenza post-lancio, aggiornamenti e consulenza sempre disponibili.' }
           ].map((item, index) => (
-            <div class="group p-8 rounded-3xl bg-zinc-900/50 border border-white/10 hover:bg-zinc-900 transition-all duration-500 reveal-on-scroll" style={`transition-delay: ${index * 100}ms`}>
-              <span class="text-6xl font-bold text-white/5 group-hover:text-indigo-500/20 transition-colors duration-500">{item.step}</span>
-              <h3 class="text-2xl font-bold text-white mt-4 mb-4">{item.title}</h3>
-              <p class="text-gray-400 leading-relaxed">{item.description}</p>
+            <div class="group text-center reveal-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+              <span class="text-6xl font-bold text-indigo-500/20 group-hover:text-indigo-500/40 transition-colors">{item.step}</span>
+              <h3 class="text-xl font-bold text-white mt-4 mb-4">{item.title}</h3>
+              <p class="text-gray-400 leading-relaxed text-sm">{item.description}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
-
-    <!-- Pricing Cards -->
+    <!-- Cosa include ogni progetto -->
     <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Investimenti definiti</h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-            Tre acceleratori con prezzo trasparente. Tutto il resto è personalizzato sulle tue esigenze.
-          </p>
-        </div>
-
-        <div class="grid lg:grid-cols-3 gap-8">
-          <!-- Card 1 -->
-          <div class="p-8 rounded-3xl bg-black border border-white/10 hover:border-indigo-500/50 transition-all duration-500 reveal-on-scroll">
-            <h3 class="text-xl font-bold text-white mb-2">Tessera NFC Premium</h3>
-            <div class="flex items-baseline gap-1 mb-6">
-              <span class="text-4xl font-bold text-white">€20</span>
-              <span class="text-gray-500">/cad</span>
-            </div>
-            <p class="text-gray-400 text-sm mb-8 min-h-[60px]">
-              Materiale resistente, grafica personalizzata, programmazione e landing rapida incluse.
-            </p>
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Consegna in 5-7 giorni
-              </li>
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                QR di backup incluso
-              </li>
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Aggiornamenti illimitati
-              </li>
-            </ul>
-            <a href="/contattaci?plan=nfc" class="block w-full py-3 text-center rounded-xl border border-white/20 text-white hover:bg-white hover:text-black transition-all font-medium">
-              Ordina ora
-            </a>
-          </div>
-
-          <!-- Card 2 (Featured) -->
-          <div class="relative p-8 rounded-3xl bg-zinc-900 border border-indigo-500/30 hover:border-indigo-500 transition-all duration-500 reveal-on-scroll delay-100 transform scale-105 z-10 shadow-2xl shadow-indigo-500/10">
-            <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">POPOLARE</div>
-            <h3 class="text-xl font-bold text-white mb-2">Sito Vetrina</h3>
-            <div class="flex items-baseline gap-1 mb-6">
-              <span class="text-4xl font-bold text-white">€500</span>
-              <span class="text-gray-500">una tantum</span>
-            </div>
-            <p class="text-gray-400 text-sm mb-8 min-h-[60px]">
-              Fino a 4 pagine ottimizzate per mobile, SEO locale e answer engine. Design minimal e analytics.
-            </p>
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Design Responsive
-              </li>
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                SEO Locale & AI Ready
-              </li>
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Analytics GDPR Compliant
-              </li>
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Pagine extra +€100
-              </li>
-            </ul>
-            <a href="/contattaci?plan=sito" class="block w-full py-3 text-center rounded-xl bg-white text-black hover:bg-gray-200 transition-all font-bold shadow-lg shadow-white/10">
-              Inizia il progetto
-            </a>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="p-8 rounded-3xl bg-black border border-white/10 hover:border-indigo-500/50 transition-all duration-500 reveal-on-scroll delay-200">
-            <h3 class="text-xl font-bold text-white mb-2">Landing Page</h3>
-            <div class="flex items-baseline gap-1 mb-6">
-              <span class="text-4xl font-bold text-white">€300</span>
-              <span class="text-gray-500">una tantum</span>
-            </div>
-            <p class="text-gray-400 text-sm mb-8 min-h-[60px]">
-              Pensata per campagne mirate, con copywriting persuasivo, CTA chiare e moduli ottimizzati.
-            </p>
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Copywriting Persuasivo
-              </li>
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Moduli Ottimizzati
-              </li>
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Consegna in 10 giorni
-              </li>
-            </ul>
-            <a href="/contattaci?plan=landing" class="block w-full py-3 text-center rounded-xl border border-white/20 text-white hover:bg-white hover:text-black transition-all font-medium">
-              Richiedi ora
-            </a>
-          </div>
-        </div>
-
-        <div class="mt-12 p-6 rounded-2xl bg-indigo-900/20 border border-indigo-500/20 text-center text-indigo-300 text-sm reveal-on-scroll">
-          Tutti gli altri servizi (ecommerce, automazioni, CRM, formazione, campagne) vengono preventivati in consulenza dopo la definizione della roadmap.
-        </div>
-      </div>
-    </section>
-
-    <!-- Included Services -->
-    <section class="py-24 px-6 md:px-12 border-t border-white/5">
       <div class="max-w-7xl mx-auto">
         <div class="p-12 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-12">
             <div>
-              <h2 class="text-3xl font-bold text-white mb-2">Cosa ricevi collaborando con noi</h2>
-              <p class="text-gray-400">Il valore aggiunto di una partnership Bitora.</p>
+              <h2 class="text-3xl font-bold text-white mb-2">Cosa include ogni progetto Bitora</h2>
+              <p class="text-gray-400">Il valore di una partnership completa, non solo un fornitore.</p>
             </div>
-            <a href="/contattaci" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors font-medium">
-              Parla con un consulente 
+            <a href="/contattaci" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors font-medium whitespace-nowrap">
+              Parla con noi 
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </a>
           </div>
 
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              'Un partner unico per strategia, sviluppo, contenuti e analisi',
-              'Documentazione chiara: roadmap, backlog e report mensili',
-              'Supporto on-demand via Slack, email e WhatsApp Business',
-              'Ottimizzazioni SEO locali e answer engine optimization',
-              'Testing performance e accessibilità su dispositivi reali',
-              'Formazione del personale su nuovi flussi digitali'
+              'Consulenza iniziale gratuita e senza impegno',
+              'Preventivo trasparente con tutto incluso',
+              'Design personalizzato sul tuo brand',
+              'Sviluppo professionale e ottimizzato',
+              'SEO locale per Carmagnola, Torino e Piemonte',
+              'Formazione completa per gestire in autonomia',
+              'Supporto post-lancio via WhatsApp e email',
+              'Aggiornamenti e manutenzione concordati',
+              'Report e analisi delle performance'
             ].map(item => (
               <div class="flex items-start gap-4 p-4 rounded-xl bg-black/40 border border-white/5">
-                <div class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
                 <span class="text-gray-300 text-sm leading-relaxed">{item}</span>
               </div>
@@ -213,20 +172,24 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- FAQ -->
-    <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
+    <section class="py-24 px-6 md:px-12">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16 reveal-on-scroll">
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Domande Frequenti</h2>
-          <p class="text-gray-400">Dubbi sulla partnership? Rispondiamo qui.</p>
+          <p class="text-gray-400">Dubbi sul nostro approccio? Rispondiamo qui.</p>
         </div>
 
         <div class="space-y-4 reveal-on-scroll">
-          {faqs.slice(0, 6).map((faq, index) => (
-            <div class="group rounded-2xl bg-black border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/20">
-              <button
-                class="faq-trigger flex w-full items-center justify-between p-6 text-left focus:outline-none"
-                data-target={`faq-${index}`}
-              >
+          {[
+            { question: 'Quanto costa un sito web?', answer: 'Dipende dalle funzionalità: un sito vetrina semplice ha un costo diverso da un e-commerce complesso. Contattaci per un preventivo gratuito basato sulle tue reali esigenze.' },
+            { question: 'Quanto tempo ci vuole per realizzare un progetto?', answer: 'Un sito vetrina richiede circa 2-3 settimane. Un e-commerce 4-6 settimane. Le tessere NFC vengono consegnate in 5-7 giorni. Tempi precisi nel preventivo.' },
+            { question: 'Il supporto è davvero incluso?', answer: 'Sì. Ogni progetto include assistenza post-lancio. Per interventi più strutturati, definiamo insieme un piano di manutenzione adeguato.' },
+            { question: 'Posso gestire il sito da solo dopo la consegna?', answer: 'Assolutamente. Forniamo formazione completa e guide personalizzate. Il sito resta tuo al 100%.' },
+            { question: 'Lavorate solo a Carmagnola?', answer: 'No, serviamo tutto il Piemonte: Torino, Carignano, Poirino, Cuneo e oltre. Lavoriamo sia in presenza che da remoto.' },
+            { question: 'Come funziona il pagamento?', answer: 'Generalmente: 30-50% all\'avvio del progetto, saldo alla consegna. Per progetti più grandi, definiamo milestone intermedie.' }
+          ].map((faq, index) => (
+            <div class="group rounded-2xl bg-zinc-900 border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/20">
+              <button class="faq-trigger flex w-full items-center justify-between p-6 text-left focus:outline-none" data-target={`faq-${index}`}>
                 <span class="font-medium text-white group-hover:text-indigo-400 transition-colors">{faq.question}</span>
                 <span class="faq-icon text-indigo-500 text-xl transition-transform duration-300">+</span>
               </button>
@@ -240,98 +203,44 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- CTA -->
-    <section class="py-24 px-6 md:px-12">
+    <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
       <div class="max-w-5xl mx-auto text-center reveal-on-scroll">
-        <h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
-          Pronto a partire?
-        </h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-          Raccontaci le tue priorità. Disegniamo insieme il percorso migliore per la tua attività.
-        </p>
+        <h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">Raccontaci il tuo progetto.</h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">Preventivo gratuito e senza impegno. Costruiamo insieme la soluzione giusta per te.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-            Inizia ora
+          <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">Richiedi preventivo gratuito</a>
+          <a href="https://wa.me/393514979670" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
           </a>
         </div>
       </div>
     </section>
-
   </main>
 </Layout>
 
 <style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+  .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 </style>
 
 <script>
-  // Animation Observer
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
   document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-    elements.forEach(el => observer.observe(el));
-
-    // FAQ Logic
-    const triggers = document.querySelectorAll('.faq-trigger');
-    triggers.forEach(trigger => {
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
       trigger.addEventListener('click', () => {
-        const targetId = trigger.getAttribute('data-target');
-        const content = targetId ? document.getElementById(targetId) : null;
+        const content = document.getElementById(trigger.getAttribute('data-target') || '');
         const icon = trigger.querySelector('.faq-icon');
-
         if (!content || !icon) return;
-
         const isOpen = !content.classList.contains('hidden');
-        
-        // Close all others
         document.querySelectorAll('.faq-content').forEach(el => el.classList.add('hidden'));
-        document.querySelectorAll('.faq-icon').forEach(el => {
-          el.textContent = '+';
-          (el as HTMLElement).style.transform = 'rotate(0deg)';
-        });
-
-        if (!isOpen) {
-          content.classList.remove('hidden');
-          icon.textContent = '−';
-          (icon as HTMLElement).style.transform = 'rotate(180deg)';
-        }
+        document.querySelectorAll('.faq-icon').forEach(el => { el.textContent = '+'; });
+        if (!isOpen) { content.classList.remove('hidden'); icon.textContent = '−'; }
       });
     });
   });

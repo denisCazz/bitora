@@ -4,12 +4,21 @@ import { icons } from './Icons';
 const navItems = [
   { name: 'Home', url: '/' },
   {
-    name: 'Soluzioni',
+    name: 'Servizi',
     url: '/soluzioni',
     dropdown: [
-      { name: 'Consulenze Web & NFC', url: '/soluzioni' },
-      { name: 'Grafica & Social Media', url: '/grafica-digitale-social-media' },
-      { name: 'Bitora CRM', url: '/bitora-crm' },
+      { name: 'Siti Web Professionali', url: '/siti-web-professionali' },
+      { name: 'E-commerce', url: '/e-commerce-piemonte' },
+      { name: 'Tessere NFC', url: '/nfc-ecosystem' },
+      { name: 'Grafica & Social', url: '/grafica-digitale-social-media' },
+    ],
+  },
+  {
+    name: 'Territorio',
+    url: '/carmagnola',
+    dropdown: [
+      { name: 'Carmagnola e Dintorni', url: '/carmagnola' },
+      { name: 'Tutto il Piemonte', url: '/siti-web-piemonte' },
     ],
   },
   { name: 'Progetti', url: '/lavori' },
@@ -43,12 +52,12 @@ const currentPath = Astro.url.pathname;
                     <Fragment set:html={icons.chevronDown} />
                   </div>
                 </button>
-                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 glass-panel shadow-custom-lg rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-56">
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-zinc-900 border border-white/10 shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-56">
                   <div class="py-3">
                     {item.dropdown.map(dropItem => (
                       <a 
                         href={dropItem.url}
-                        class={`block px-5 py-3 text-base transition-colors rounded-xl mx-2 ${currentPath === dropItem.url ? 'text-black dark:text-white font-semibold bg-black/5 dark:bg-white/10' : 'text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white'}`}
+                        class={`block px-5 py-3 text-base transition-colors rounded-xl mx-2 ${currentPath === dropItem.url ? 'text-white font-semibold bg-white/10' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}
                       >
                         {dropItem.name}
                       </a>
@@ -90,7 +99,7 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile Menu Dropdown -->
     <div
       id="mobile-menu"
-      class="absolute top-full left-0 right-0 glass-panel shadow-custom-lg z-50 transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out md:hidden"
+      class="absolute top-full left-0 right-0 bg-zinc-900 border-t border-white/10 shadow-2xl z-50 transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out md:hidden"
     >
       <nav class="px-4 py-4 max-h-[80vh] overflow-y-auto">
         <ul class="space-y-1">

@@ -14,13 +14,25 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      'Prima il sito era solo una vetrina statica. Ora riceviamo richieste di preventivo qualificate ogni settimana. La gestione è semplicissima e i clienti apprezzano la professionalità che trasmettiamo online.',
-    author: 'Roberto',
-    company: 'Mistral Impianti Elettrici',
-    role: 'Titolare',
+      'La realizzazione del sito web è stata eseguita in modo puntuale, professionale e con elevata attenzione ai dettagli. Il risultato finale rispecchia pienamente le aspettative. Servizio altamente consigliato.',
+    author: 'Lello Bottero',
+    company: 'Mistral Impianti',
+    role: 'CEO',
     image: '/mistral.jpg',
     site: 'https://mistralimpianti.it',
-    results: '+25% richieste preventivo',
+    results: 'Sito web professionale',
+    rating: 5,
+    category: 'web'
+  },
+  {
+    quote:
+      'Ottima persona, competente ed affidabile. Consiglio vivamente per qualsiasi progetto grafico.',
+    author: 'Barbara Toffano',
+    company: 'Barbara Toffano',
+    role: 'Cliente Grafica',
+    image: '/btoffano.jpg',
+    site: '#',
+    results: 'Progetto grafico completato',
     rating: 5,
     category: 'web'
   },

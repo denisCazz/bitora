@@ -1,308 +1,273 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import NeonCircles from '../components/NeonCircles.astro';
 ---
 
 <Layout
-  title="Siti Web Piemonte | Web Design per Aziende Locali | Bitora"
-  description="Siti web professionali per aziende in Piemonte: Torino, Carmagnola, Cuneo, Alba. Web design responsive, e-commerce e SEO locale. Preventivi gratuiti."
+  title="Web Agency Piemonte | Siti Web per Aziende di Torino e Provincia | Bitora"
+  description="Bitora è la web agency di riferimento in Piemonte. Realizziamo siti web professionali, e-commerce e soluzioni digitali per aziende di Torino, Carmagnola, Cuneo, Alba. Preventivo gratuito."
 >
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Web Design Piemonte",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Bitora",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Carmagnola",
+          "addressRegion": "Piemonte",
+          "addressCountry": "IT"
+        }
+      },
+      "areaServed": ["Torino", "Carmagnola", "Carignano", "Poirino", "Cuneo", "Alba", "Piemonte"],
+      "serviceType": ["Web Design", "Sviluppo Siti Web", "E-commerce", "SEO Locale"]
+    }
+  </script>
+
   <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
     
     <!-- Hero Section -->
-    <section class="relative h-[70vh] flex flex-col justify-center items-center text-center px-4">
+    <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+      <NeonCircles variant="hero" colors={['blue', 'orange']} />
       
       <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm font-medium text-indigo-300 mb-4">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm font-medium text-indigo-300">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
           </span>
-          Web Design Piemonte
+          Web Agency Piemonte
         </div>
 
         <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
-          Siti Web <br />
-          <span class="text-indigo-400">Professionali.</span>
+          Siti web per<br />
+          <span class="text-indigo-400">il Piemonte.</span>
         </h1>
         
         <p class="text-xl md:text-2xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
-          Creiamo esperienze digitali che convertono per aziende in tutto il Piemonte. <br class="hidden md:block" />
-          Da Torino alle Langhe, da Carmagnola ad Alba.
+          Realizziamo siti web professionali per aziende di tutto il Piemonte. 
+          <strong class="text-white">Da Torino alle Langhe. Progetti chiavi in mano.</strong>
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
           <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
             Preventivo Gratuito
           </a>
-          <a href="/lavori" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all">
-            Vedi i Progetti
+          <a href="https://wa.me/393514979670" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
           </a>
         </div>
       </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
     </section>
 
-    <!-- Locations Grid -->
-    <section class="py-12 border-y border-white/5 bg-zinc-900/30">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <!-- Territorio -->
+    <section class="py-20 px-6 md:px-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 reveal-on-scroll">
+          <p class="text-sm uppercase tracking-widest text-indigo-400 mb-4">Serviamo tutto il territorio</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Dal cuore del Piemonte</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-3 max-w-5xl mx-auto reveal-on-scroll">
           {[
-            { city: 'Torino', desc: 'Città metropolitana', icon: '🏙️' },
-            { city: 'Carmagnola', desc: 'Zona industriale', icon: '🏭' },
-            { city: 'Cuneo', desc: 'Provincia sud', icon: '🏔️' },
-            { city: 'Alba & Langhe', desc: 'Zona vinicola', icon: '🍷' }
-          ].map(loc => (
-            <div class="text-center group cursor-default">
-              <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{loc.icon}</div>
-              <div class="font-bold text-white text-lg mb-1">{loc.city}</div>
-              <div class="text-sm text-gray-500">{loc.desc}</div>
+            { city: 'Torino', highlight: true },
+            { city: 'Carmagnola', highlight: true },
+            { city: 'Carignano', highlight: false },
+            { city: 'Poirino', highlight: false },
+            { city: 'Alba', highlight: false },
+            { city: 'Cuneo', highlight: false },
+          ].map((loc, i) => (
+            <div class={`p-4 rounded-2xl text-center transition-all hover:scale-105 ${loc.highlight ? 'bg-indigo-500/20 border border-indigo-500/30' : 'bg-white/5 border border-white/5 hover:border-white/20'}`} style={`transition-delay: ${i * 50}ms`}>
+              <span class={`font-semibold ${loc.highlight ? 'text-indigo-300' : 'text-white'}`}>{loc.city}</span>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section class="py-24 px-6 md:px-12">
+    <!-- Servizi Grid Bento -->
+    <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Servizi Web Design</h2>
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Cosa realizziamo</h2>
           <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-            Soluzioni digitali complete per far crescere la tua attività sul territorio.
+            Soluzioni digitali complete per ogni tipo di azienda piemontese.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          <!-- Service 1 -->
-          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 hover:bg-zinc-900 transition-all duration-500 reveal-on-scroll">
-            <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6 text-2xl">🌐</div>
-            <h3 class="text-2xl font-bold text-white mb-4">Siti Web Aziendali</h3>
-            <p class="text-gray-400 mb-6 leading-relaxed">
-              Siti corporate per aziende manifatturiere, artigianali e di servizi del Piemonte.
-            </p>
-            <ul class="space-y-3 text-gray-500 text-sm">
-              <li class="flex items-center gap-2">✓ Design professionale responsive</li>
-              <li class="flex items-center gap-2">✓ SEO ottimizzato localmente</li>
-              <li class="flex items-center gap-2">✓ Integrazione Google Business</li>
-            </ul>
+        <!-- Bento Grid -->
+        <div class="grid md:grid-cols-3 gap-4">
+          <!-- Card grande -->
+          <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900/40 to-black border border-indigo-500/20 p-8 md:p-12 reveal-on-scroll">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700"></div>
+            <div class="relative z-10">
+              <span class="text-5xl mb-6 block">🌐</span>
+              <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Siti Web Professionali</h3>
+              <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-xl">
+                Design moderno, velocità ottimizzata, SEO locale. Ogni sito è progettato per convertire visitatori in clienti.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 rounded-full bg-white/10 text-sm text-white">Mobile-First</span>
+                <span class="px-4 py-2 rounded-full bg-white/10 text-sm text-white">Core Web Vitals</span>
+                <span class="px-4 py-2 rounded-full bg-white/10 text-sm text-white">SEO Locale</span>
+              </div>
+            </div>
           </div>
 
-          <!-- Service 2 -->
-          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 hover:bg-zinc-900 transition-all duration-500 reveal-on-scroll delay-100">
-            <div class="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center mb-6 text-2xl">🛒</div>
-            <h3 class="text-2xl font-bold text-white mb-4">E-commerce Locali</h3>
-            <p class="text-gray-400 mb-6 leading-relaxed">
-              Negozi online per vendere i prodotti tipici piemontesi in tutto il mondo.
+          <!-- Card E-commerce -->
+          <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-900/40 to-black border border-green-500/20 p-8 reveal-on-scroll" style="transition-delay: 100ms">
+            <span class="text-4xl mb-4 block">🛒</span>
+            <h3 class="text-2xl font-bold text-white mb-3">E-commerce</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Negozi online per vendere i tuoi prodotti in tutta Italia.
             </p>
-            <ul class="space-y-3 text-gray-500 text-sm">
-              <li class="flex items-center gap-2">✓ Catalogo prodotti professionale</li>
-              <li class="flex items-center gap-2">✓ Pagamenti sicuri integrati</li>
-              <li class="flex items-center gap-2">✓ Gestione spedizioni facile</li>
-            </ul>
           </div>
 
-          <!-- Service 3 -->
-          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 hover:bg-zinc-900 transition-all duration-500 reveal-on-scroll delay-200">
-            <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 text-2xl">🍽️</div>
-            <h3 class="text-2xl font-bold text-white mb-4">Ristoranti & Hotel</h3>
-            <p class="text-gray-400 mb-6 leading-relaxed">
-              Siti specializzati per il settore turistico e della ristorazione piemontese.
+          <!-- Card NFC -->
+          <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-900/40 to-black border border-orange-500/20 p-8 reveal-on-scroll" style="transition-delay: 200ms">
+            <span class="text-4xl mb-4 block">💳</span>
+            <h3 class="text-2xl font-bold text-white mb-3">Tessere NFC</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Biglietti da visita smart e tessere recensioni per locali.
             </p>
-            <ul class="space-y-3 text-gray-500 text-sm">
-              <li class="flex items-center gap-2">✓ Menu digitali e prenotazioni</li>
-              <li class="flex items-center gap-2">✓ Gallerie fotografiche HD</li>
-              <li class="flex items-center gap-2">✓ Integrazione TripAdvisor</li>
-            </ul>
+          </div>
+
+          <!-- Card Landing -->
+          <div class="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-8 reveal-on-scroll" style="transition-delay: 150ms">
+            <span class="text-4xl mb-4 block">🎯</span>
+            <h3 class="text-2xl font-bold text-white mb-3">Landing Page</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Pagine di conversione per campagne Google Ads e social.
+            </p>
+          </div>
+
+          <!-- Card Grafica -->
+          <div class="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-8 reveal-on-scroll" style="transition-delay: 250ms">
+            <span class="text-4xl mb-4 block">🎨</span>
+            <h3 class="text-2xl font-bold text-white mb-3">Grafica & Brand</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Logo, immagine coordinata, materiali per social e stampa.
+            </p>
+          </div>
+
+          <!-- Card SEO -->
+          <div class="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-8 reveal-on-scroll" style="transition-delay: 300ms">
+            <span class="text-4xl mb-4 block">📍</span>
+            <h3 class="text-2xl font-bold text-white mb-3">SEO Locale</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Posizionamento su Google per ricerche nel tuo territorio.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Case Studies -->
-    <section class="py-24 px-6 md:px-12 bg-zinc-900/30 border-y border-white/5">
+    <!-- Processo -->
+    <section class="py-24 px-6 md:px-12 border-t border-white/5">
       <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Progetti Realizzati</h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-            Case study reali di aziende piemontesi che hanno trasformato il loro business.
-          </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-8">
-          <!-- Case Study 1 -->
-          <div class="group relative overflow-hidden rounded-3xl bg-black border border-white/10 hover:border-indigo-500/50 transition-all duration-500 reveal-on-scroll">
-            <div class="p-8 md:p-12">
-              <div class="flex items-center gap-4 mb-8">
-                <div class="w-16 h-16 rounded-2xl bg-white/10 overflow-hidden">
-                  <img src="/mistral.jpg" alt="Mistral Impianti" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal-on-scroll">
+            <p class="text-sm uppercase tracking-widest text-indigo-400 mb-4">Il nostro metodo</p>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">Come lavoriamo</h2>
+            
+            <div class="space-y-8">
+              {[
+                { num: '01', title: 'Ascolto', desc: 'Capiamo il tuo business, i tuoi obiettivi, il tuo pubblico.' },
+                { num: '02', title: 'Strategia', desc: 'Definiamo la soluzione migliore per le tue esigenze.' },
+                { num: '03', title: 'Realizzazione', desc: 'Sviluppiamo il progetto con aggiornamenti continui.' },
+                { num: '04', title: 'Supporto', desc: 'Non ti lasciamo solo. Assistenza e formazione incluse.' }
+              ].map((step, i) => (
+                <div class="flex gap-6 group" style={`transition-delay: ${i * 100}ms`}>
+                  <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold group-hover:bg-indigo-500 group-hover:text-white transition-all">
+                    {step.num}
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-white mb-2">{step.title}</h3>
+                    <p class="text-gray-400">{step.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="text-2xl font-bold text-white">Mistral Impianti</h3>
-                  <p class="text-indigo-400">Carmagnola • Impianti</p>
-                </div>
-              </div>
-
-              <blockquote class="text-xl text-gray-300 italic mb-8 leading-relaxed">
-                "Prima faticavamo a trovare clienti, ora dobbiamo gestire un flusso costante di richieste. Il nostro business è cambiato completamente."
-              </blockquote>
-
-              <div class="grid grid-cols-3 gap-4 mb-8">
-                <div class="p-4 rounded-2xl bg-white/5 text-center">
-                  <div class="text-2xl font-bold text-green-400 mb-1">+320%</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wider">Preventivi</div>
-                </div>
-                <div class="p-4 rounded-2xl bg-white/5 text-center">
-                  <div class="text-2xl font-bold text-blue-400 mb-1">1.2k+</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wider">Lead</div>
-                </div>
-                <div class="p-4 rounded-2xl bg-white/5 text-center">
-                  <div class="text-2xl font-bold text-purple-400 mb-1">€85k</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wider">Fatturato</div>
-                </div>
-              </div>
-
-              <a href="/lavori" class="inline-flex items-center text-white font-medium hover:text-indigo-400 transition-colors">
-                Vedi il progetto <span class="ml-2">→</span>
-              </a>
+              ))}
             </div>
           </div>
 
-          <!-- Case Study 2 -->
-          <div class="group relative overflow-hidden rounded-3xl bg-black border border-white/10 hover:border-indigo-500/50 transition-all duration-500 reveal-on-scroll delay-100">
-            <div class="p-8 md:p-12">
-              <div class="flex items-center gap-4 mb-8">
-                <div class="w-16 h-16 rounded-2xl bg-white/10 overflow-hidden">
-                  <img src="/sartoria_kristina.png" alt="Sartoria Kristina" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <div>
-                  <h3 class="text-2xl font-bold text-white">Sartoria Kristina</h3>
-                  <p class="text-indigo-400">Torino • Artigianato</p>
-                </div>
+          <div class="reveal-on-scroll" style="transition-delay: 200ms">
+            <div class="relative">
+              <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur-2xl"></div>
+              <div class="relative bg-zinc-900 border border-white/10 rounded-3xl p-8 md:p-12">
+                <h3 class="text-2xl font-bold text-white mb-6">Progetti chiavi in mano</h3>
+                <ul class="space-y-4">
+                  {[
+                    'Consulenza iniziale gratuita',
+                    'Design personalizzato sul tuo brand',
+                    'Sviluppo professionale ottimizzato',
+                    'SEO locale per Piemonte',
+                    'Formazione per gestire in autonomia',
+                    'Supporto post-lancio incluso'
+                  ].map(item => (
+                    <li class="flex items-center gap-3">
+                      <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                      <span class="text-gray-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="/contattaci" class="mt-8 inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium">
+                  Richiedi preventivo 
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
               </div>
-
-              <blockquote class="text-xl text-gray-300 italic mb-8 leading-relaxed">
-                "Non avrei mai immaginato che un sito web potesse trasformare così tanto il mio business. In 6 mesi ho raddoppiato i clienti!"
-              </blockquote>
-
-              <div class="grid grid-cols-3 gap-4 mb-8">
-                <div class="p-4 rounded-2xl bg-white/5 text-center">
-                  <div class="text-2xl font-bold text-green-400 mb-1">+180%</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wider">Prenotazioni</div>
-                </div>
-                <div class="p-4 rounded-2xl bg-white/5 text-center">
-                  <div class="text-2xl font-bold text-blue-400 mb-1">850+</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wider">Clienti</div>
-                </div>
-                <div class="p-4 rounded-2xl bg-white/5 text-center">
-                  <div class="text-2xl font-bold text-purple-400 mb-1">€25k</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wider">Extra</div>
-                </div>
-              </div>
-
-              <a href="/lavori" class="inline-flex items-center text-white font-medium hover:text-indigo-400 transition-colors">
-                Vedi il progetto <span class="ml-2">→</span>
-              </a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Process -->
-    <section class="py-24 px-6 md:px-12">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Come lavoriamo</h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-            Un processo rodato che garantisce risultati concreti per il territorio.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-4 gap-8">
-          {[
-            { step: '01', title: 'Analisi Locale', desc: 'Studiamo il mercato locale e i competitor piemontesi.' },
-            { step: '02', title: 'Strategia', desc: 'Definiamo una strategia su misura per la tua azienda.' },
-            { step: '03', title: 'Sviluppo', desc: 'Creiamo il sito ottimizzato per le ricerche locali.' },
-            { step: '04', title: 'Crescita', desc: 'Monitoriamo e ottimizziamo per massimizzare i risultati.' }
-          ].map((item, index) => (
-            <div class="text-center reveal-on-scroll" style={`transition-delay: ${index * 100}ms`}>
-              <div class="w-20 h-20 mx-auto bg-zinc-900 rounded-full flex items-center justify-center border border-white/10 mb-6 text-2xl font-bold text-white">
-                {item.step}
-              </div>
-              <h3 class="text-xl font-bold text-white mb-3">{item.title}</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-24 px-6 md:px-12 bg-zinc-900/30 border-t border-white/5">
+    <section class="py-32 px-6 md:px-12 bg-zinc-900/30 border-t border-white/5">
       <div class="max-w-4xl mx-auto text-center reveal-on-scroll">
         <h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
-          Pronto a crescere?
+          Porta il tuo business online.
         </h2>
         <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-          Parliamo del tuo progetto e scopriamo come possiamo aiutarti a raggiungere i tuoi obiettivi.
+          Preventivo gratuito in 24 ore. Nessun impegno, solo una chiacchierata per capire come possiamo aiutarti.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-            Richiedi Preventivo
+            Richiedi preventivo gratuito
+          </a>
+          <a href="https://wa.me/393514979670" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
           </a>
         </div>
       </div>
     </section>
-
   </main>
 </Layout>
 
 <style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+  .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 </style>
 
 <script>
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
   document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-    elements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
   });
 </script>

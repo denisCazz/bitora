@@ -50,5 +50,12 @@ export const clientLogos: ClientLogo[] = [
     tier: 'gold',
     url: 'https://www.speedy-pizza.it',
     location: 'Carmagnola'
+  },
+  {
+    name: 'Barbara Toffano',
+    logo: '/btoffano.jpg',
+    tier: 'gold',
+    url: '#',
+    location: 'Piemonte'
   }
 ];
