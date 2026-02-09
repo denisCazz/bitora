@@ -2,169 +2,276 @@
 import Layout from '../layouts/Layout.astro';
 import { icons } from '../components/Icons';
 
-const deliverables = [
+/* ── Grafica Digitale services ── */
+const graficaServices = [
   {
-    title: 'Grafica digitale',
-    desc: 'Post, stories, copertine, banner e creatività coordinate con la tua identità visiva.',
+    title: 'Brand Identity Completa',
+    desc: 'Logo, palette colori, tipografia e linee guida visive per un brand riconoscibile e coerente su ogni canale.',
+    features: ['Logo design', 'Palette colori', 'Font system', 'Brand book'],
     icon: 'gallery',
-    tone: 'from-primary/25 via-primary/10 to-white dark:to-black',
-    accent: 'text-primary'
+    accent: 'from-secondary via-secondary/60 to-secondary/20'
   },
   {
-    title: 'Social media management',
-    desc: 'Piano editoriale, pubblicazione, community management e ottimizzazione continua.',
-    icon: 'users',
-    tone: 'from-secondary/20 via-secondary/10 to-white dark:to-black',
-    accent: 'text-secondary'
+    title: 'Grafiche per Social',
+    desc: 'Post, stories, caroselli, copertine e template coordinati con la tua identità visiva. Pronti per Instagram, Facebook e LinkedIn.',
+    features: ['Template post', 'Stories & Reels', 'Caroselli', 'Copertine'],
+    icon: 'gallery',
+    accent: 'from-accent via-accent/60 to-accent/20'
   },
   {
-    title: 'Campagne & contenuti',
-    desc: 'Creatività per ADS e contenuti pensati per conversioni e crescita nel territorio.',
+    title: 'Materiale Marketing',
+    desc: 'Banner, volantini, biglietti da visita, menù e creatività per campagne pubblicitarie online e offline.',
+    features: ['Banner ADS', 'Volantini & flyer', 'Biglietti da visita', 'Menù & cataloghi'],
+    icon: 'portfolio',
+    accent: 'from-primary via-primary/60 to-primary/20'
+  },
+  {
+    title: 'Creatività per Campagne',
+    desc: 'Visual ad-hoc per Facebook Ads, Google Ads e campagne sponsorizzate: massima resa, minimo costo per click.',
+    features: ['Facebook Ads', 'Google Ads', 'Retargeting visual', 'A/B testing creatività'],
     icon: 'trending',
-    tone: 'from-accent/20 via-accent/10 to-white dark:to-black',
-    accent: 'text-accent'
+    accent: 'from-secondary via-accent/60 to-primary/20'
   }
 ];
 
+/* ── Social Media services ── */
+const socialServices = [
+  {
+    title: 'Piano Editoriale Strategico',
+    desc: 'Calendario mensile con contenuti mirati: ogni post ha un obiettivo preciso (awareness, engagement, conversione).',
+    icon: 'portfolio'
+  },
+  {
+    title: 'Gestione Profili Social',
+    desc: 'Pubblicazione, ottimizzazione bio/profilo, hashtag strategy e programmazione automatizzata su tutti i canali.',
+    icon: 'users'
+  },
+  {
+    title: 'Community Management',
+    desc: 'Risposte ai commenti, gestione messaggi, moderazione e costruzione di una community attiva e fidelizzata.',
+    icon: 'users'
+  },
+  {
+    title: 'Report & Ottimizzazione',
+    desc: 'Analisi mensile delle performance, insight azionabili e miglioramento continuo basato sui dati reali.',
+    icon: 'trending'
+  }
+];
+
+/* ── Process ── */
 const processSteps = [
   {
-    title: '1) Analisi & obiettivi',
-    desc: 'Capire dove sei oggi e dove vuoi arrivare: target, posizionamento, competitor locali.'
+    num: '01',
+    title: 'Analisi & Strategia',
+    desc: 'Studiamo il tuo brand, i competitor locali e il tuo target. Definiamo obiettivi chiari e misurabili.',
+    detail: 'Audit brand • Analisi competitor • Definizione KPI'
   },
   {
-    title: '2) Identità & linee guida',
-    desc: 'Palette (primary/secondary/accent), font, stile visual e template coerenti per tutto.'
+    num: '02',
+    title: 'Identità & Template',
+    desc: 'Creiamo la tua identità visiva e i template riutilizzabili: palette, font, stile grafico coerente.',
+    detail: 'Brand identity • Template system • Style guide'
   },
   {
-    title: '3) Produzione contenuti',
-    desc: 'Creiamo grafiche e copy, ottimizziamo formati, e pubblichiamo con ritmo costante.'
+    num: '03',
+    title: 'Produzione & Pubblicazione',
+    desc: 'Produciamo contenuti di qualità e li pubblichiamo con ritmo costante secondo il piano editoriale.',
+    detail: 'Content creation • Scheduling • Multi-piattaforma'
   },
   {
-    title: '4) Misura & migliora',
-    desc: 'Report essenziale e iterazione: ciò che funziona si scala, ciò che non funziona si corregge.'
+    num: '04',
+    title: 'Misura & Scala',
+    desc: 'Analizziamo i risultati, scaliamo ciò che funziona e miglioriamo ciò che non performa.',
+    detail: 'Report mensile • A/B testing • Ottimizzazione ROI'
+  }
+];
+
+/* ── FAQ ── */
+const faqs = [
+  {
+    q: 'Quanto costa il servizio di grafica digitale?',
+    a: 'Ogni progetto è diverso. Offriamo pacchetti a partire da soluzioni base per startup fino a piani completi per aziende strutturate. Contattaci per un preventivo gratuito e personalizzato.'
+  },
+  {
+    q: 'In quanto tempo vedo i primi risultati sui social?',
+    a: 'Con una strategia ben impostata, i primi miglioramenti in termini di engagement e visibilità si notano già dal primo mese. La crescita organica costante richiede 3-6 mesi di lavoro continuativo.'
+  },
+  {
+    q: 'Lavorate solo con aziende di Carmagnola e Torino?',
+    a: 'Il nostro focus è Carmagnola, Torino e tutto il Piemonte, ma lavoriamo anche con clienti in tutta Italia. La vicinanza territoriale ci permette di offrire un servizio più personalizzato.'
+  },
+  {
+    q: 'Posso avere solo la grafica senza la gestione social?',
+    a: 'Assolutamente sì. Offriamo servizi modulari: puoi scegliere solo grafica digitale, solo gestione social, oppure il pacchetto completo con un risparmio significativo.'
+  },
+  {
+    q: 'Che piattaforme social gestite?',
+    a: 'Gestiamo Instagram, Facebook, LinkedIn, TikTok e Google Business Profile. Consigliamo le piattaforme più adatte in base al tuo settore e target di riferimento.'
+  },
+  {
+    q: 'Come funziona il processo di approvazione dei contenuti?',
+    a: 'Ogni mese ricevi il piano editoriale in anticipo con tutte le grafiche e i copy per approvazione. Puoi richiedere modifiche illimitate prima della pubblicazione.'
+  }
+];
+
+/* ── Stats ── */
+const stats = [
+  { value: '150+', label: 'Grafiche create', sub: 'per clienti locali' },
+  { value: '40+', label: 'Brand curati', sub: 'identità visive complete' },
+  { value: '98%', label: 'Clienti soddisfatti', sub: 'feedback positivi' },
+  { value: '3x', label: 'Engagement medio', sub: 'crescita nei primi 90gg' }
+];
+
+/* ── Differentiators ── */
+const whyUs = [
+  {
+    title: 'Focus locale, mentalità globale',
+    desc: 'Conosciamo il territorio di Carmagnola e Torino. Applichiamo standard internazionali di design al contesto locale.'
+  },
+  {
+    title: 'Grafica + Strategia = Risultati',
+    desc: 'Non facciamo solo "belle immagini". Ogni visual è pensato per un obiettivo: generare click, vendite o riconoscibilità.'
+  },
+  {
+    title: 'Velocità e flessibilità',
+    desc: 'Tempi di consegna rapidi, revisioni illimitate e un team che si adatta alle tue esigenze senza burocrazia.'
+  },
+  {
+    title: 'Tutto incluso, zero sorprese',
+    desc: 'Preventivo chiaro, nessun costo nascosto. Sai esattamente cosa ricevi e quanto investi prima di iniziare.'
   }
 ];
 ---
 
 <Layout
-  title="Grafica Digitale & Social Media Management | Bitora"
-  description="Servizi di grafica digitale e social media management a Carmagnola, Torino e Piemonte. Branding, contenuti, piano editoriale e crescita social per aziende e professionisti."
+  title="Grafica Digitale & Social Media Management Carmagnola Torino | Bitora"
+  description="Servizi professionali di grafica digitale e social media management a Carmagnola, Torino e Piemonte. Brand identity, contenuti social, piano editoriale e campagne per far crescere la tua attività. Preventivo gratuito."
 >
   <main class="relative overflow-x-hidden selection:bg-primary/20 selection:text-black" style="background-color: var(--bg-primary); color: var(--text-primary);">
-    <!-- Ambient background (page-only) -->
+    <!-- Ambient background -->
     <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       <div class="absolute -top-32 -right-24 h-[28rem] w-[28rem] rounded-full bg-gradient-to-br from-secondary/55 via-accent/35 to-transparent blur-3xl opacity-70 md:opacity-100"></div>
       <div class="absolute top-40 -left-24 h-[24rem] w-[24rem] rounded-full bg-gradient-to-br from-primary/55 via-accent/30 to-transparent blur-3xl opacity-70 md:opacity-100"></div>
+      <div class="absolute top-[60rem] right-0 h-[30rem] w-[30rem] rounded-full bg-gradient-to-br from-accent/30 via-secondary/20 to-transparent blur-3xl opacity-60 md:opacity-80"></div>
+      <div class="absolute top-[120rem] -left-20 h-[26rem] w-[26rem] rounded-full bg-gradient-to-br from-primary/40 via-secondary/30 to-transparent blur-3xl opacity-50 md:opacity-70"></div>
       <div class="absolute -bottom-40 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-primary/40 via-secondary/40 to-transparent blur-3xl opacity-70 md:opacity-100"></div>
     </div>
 
-    <!-- Hero (new style) -->
-    <section class="relative px-6 pt-24 pb-16">
+    <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+    <section class="relative px-6 pt-24 pb-20 reveal-on-scroll">
       <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6">
-            <p class="inline-flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/80 px-4 py-2 text-sm shadow-custom dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">
-              <span class="h-2 w-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary"></span>
-              Carmagnola • Torino • Piemonte
-            </p>
+          <div class="space-y-7">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="inline-flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/80 px-4 py-2 text-sm shadow-custom dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">
+                <span class="h-2 w-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary"></span>
+                Carmagnola &bull; Torino &bull; Piemonte
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full border border-green-300/60 bg-green-50/80 px-4 py-2 text-sm font-semibold text-green-700 shadow-custom dark:border-green-500/20 dark:bg-green-500/10 dark:text-green-400">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                Disponibilità limitata
+              </span>
+            </div>
 
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" style="color: var(--text-primary);">
-              Grafica digitale e social
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]" style="color: var(--text-primary);">
+              Grafica professionale e social media
               <span class="block bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-primary">
-                con un look che si ricorda.
+                che portano risultati concreti.
               </span>
             </h1>
 
-            <p class="text-lg md:text-xl leading-relaxed" style="color: var(--text-secondary);">
-              Contenuti, template e gestione social con metodo: più coerenza visiva, più ritmo, più risultati.
+            <p class="text-lg md:text-xl leading-relaxed max-w-xl" style="color: var(--text-secondary);">
+              Creiamo l'identità visiva del tuo brand e gestiamo i tuoi social con metodo: più coerenza, più engagement, più clienti. Il tutto con un team locale dedicato.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-3">
               <a
-                href="/contattaci?topic=social"
-                class="inline-flex justify-center rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
+                href="/contattaci?topic=grafica"
+                class="inline-flex justify-center items-center gap-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
               >
-                Prenota una call
+                Richiedi preventivo gratuito
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
               </a>
               <a
-                href="/contattaci?topic=grafica"
-                class="inline-flex justify-center rounded-full border border-gray-200/80 bg-white/70 px-8 py-4 font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5"
+                href="/contattaci?topic=social"
+                class="inline-flex justify-center items-center gap-2 rounded-full border border-gray-200/80 bg-white/70 px-8 py-4 font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5"
                 style="color: var(--text-primary);"
               >
-                Richiedi un preventivo
+                Prenota una call gratuita
               </a>
             </div>
 
-            <div class="grid grid-cols-3 gap-3 pt-2">
-              <div class="rounded-2xl border border-gray-200/60 bg-white/70 p-4 shadow-custom dark:border-white/10 dark:bg-white/5">
-                <div class="text-sm font-semibold" style="color: var(--text-primary);">Template</div>
-                <div class="text-xs" style="color: var(--text-secondary);">Post & stories</div>
-              </div>
-              <div class="rounded-2xl border border-gray-200/60 bg-white/70 p-4 shadow-custom dark:border-white/10 dark:bg-white/5">
-                <div class="text-sm font-semibold" style="color: var(--text-primary);">Piano</div>
-                <div class="text-xs" style="color: var(--text-secondary);">Editoriale</div>
-              </div>
-              <div class="rounded-2xl border border-gray-200/60 bg-white/70 p-4 shadow-custom dark:border-white/10 dark:bg-white/5">
-                <div class="text-sm font-semibold" style="color: var(--text-primary);">Crescita</div>
-                <div class="text-xs" style="color: var(--text-secondary);">Engagement</div>
-              </div>
+            <!-- Trust signals -->
+            <div class="flex flex-wrap items-center gap-4 pt-2 text-sm" style="color: var(--text-secondary);">
+              <span class="inline-flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Preventivo gratuito
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Nessun vincolo
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Risposta entro 24h
+              </span>
             </div>
           </div>
 
-          <!-- Visual preview (stacked cards) -->
+          <!-- Visual preview -->
           <div class="relative">
-            <div class="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-secondary/40 via-accent/30 to-primary/40 blur-2xl opacity-45 sm:opacity-60 md:opacity-90" aria-hidden="true"></div>
+            <div class="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-secondary/40 via-accent/30 to-primary/40 blur-2xl opacity-45 sm:opacity-60 md:opacity-90" aria-hidden="true"></div>
             <div class="relative rounded-[2rem] border border-gray-200/70 bg-white/70 p-6 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
-              <div class="flex items-center justify-between">
-                <p class="text-sm font-semibold" style="color: var(--text-primary);">Anteprima feed</p>
-                <span class="text-xs rounded-full border border-gray-200/70 bg-white/70 px-3 py-1 dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">IG • FB • LinkedIn</span>
+              <div class="flex items-center justify-between mb-6">
+                <p class="text-sm font-semibold" style="color: var(--text-primary);">Anteprima feed coordinato</p>
+                <span class="text-xs rounded-full border border-gray-200/70 bg-white/70 px-3 py-1 dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">IG &bull; FB &bull; LinkedIn</span>
               </div>
 
-              <div class="mt-6 space-y-4">
-                <div class="relative rounded-2xl border border-gray-200/70 bg-gradient-to-br from-secondary/20 via-white to-white p-4 dark:border-white/10 dark:from-secondary/25 dark:via-black/10 dark:to-black/10">
-                  <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <p class="text-sm font-semibold" style="color: var(--text-primary);">Post coordinato</p>
-                      <p class="mt-1 text-xs" style="color: var(--text-secondary);">Palette + tipografia + call-to-action</p>
-                    </div>
-                    <div class="h-10 w-10 rounded-2xl bg-secondary/25 flex items-center justify-center" aria-hidden="true">
-                      <span class="text-secondary font-bold">A</span>
-                    </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="rounded-2xl border border-gray-200/70 bg-gradient-to-br from-secondary/20 via-white to-white p-4 dark:border-white/10 dark:from-secondary/25 dark:via-black/10 dark:to-black/10">
+                  <div class="h-8 w-8 rounded-xl bg-secondary/25 flex items-center justify-center mb-3" aria-hidden="true">
+                    <span class="text-secondary font-bold text-sm">A</span>
                   </div>
+                  <p class="text-sm font-semibold" style="color: var(--text-primary);">Post brand</p>
+                  <p class="mt-1 text-xs" style="color: var(--text-secondary);">Coordinato & on-brand</p>
                 </div>
 
-                <div class="relative rounded-2xl border border-gray-200/70 bg-gradient-to-br from-accent/20 via-white to-white p-4 dark:border-white/10 dark:from-accent/25 dark:via-black/10 dark:to-black/10">
-                  <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <p class="text-sm font-semibold" style="color: var(--text-primary);">Stories / Reel cover</p>
-                      <p class="mt-1 text-xs" style="color: var(--text-secondary);">Template veloci da riusare</p>
-                    </div>
-                    <div class="h-10 w-10 rounded-2xl bg-accent/25 flex items-center justify-center" aria-hidden="true">
-                      <span class="text-accent font-bold">✓</span>
-                    </div>
+                <div class="rounded-2xl border border-gray-200/70 bg-gradient-to-br from-accent/20 via-white to-white p-4 dark:border-white/10 dark:from-accent/25 dark:via-black/10 dark:to-black/10">
+                  <div class="h-8 w-8 rounded-xl bg-accent/25 flex items-center justify-center mb-3" aria-hidden="true">
+                    <span class="text-accent font-bold text-sm">S</span>
                   </div>
+                  <p class="text-sm font-semibold" style="color: var(--text-primary);">Stories</p>
+                  <p class="mt-1 text-xs" style="color: var(--text-secondary);">Template riutilizzabili</p>
                 </div>
 
-                <div class="relative rounded-2xl border border-gray-200/70 bg-gradient-to-br from-primary/20 via-white to-white p-4 dark:border-white/10 dark:from-primary/25 dark:via-black/10 dark:to-black/10">
-                  <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <p class="text-sm font-semibold" style="color: var(--text-primary);">Campagna</p>
-                      <p class="mt-1 text-xs" style="color: var(--text-secondary);">Creatività + messaggio + obiettivo</p>
-                    </div>
-                    <div class="h-10 w-10 rounded-2xl bg-primary/25 flex items-center justify-center" aria-hidden="true">
-                      <span class="text-primary font-bold">↗</span>
-                    </div>
+                <div class="rounded-2xl border border-gray-200/70 bg-gradient-to-br from-primary/20 via-white to-white p-4 dark:border-white/10 dark:from-primary/25 dark:via-black/10 dark:to-black/10">
+                  <div class="h-8 w-8 rounded-xl bg-primary/25 flex items-center justify-center mb-3" aria-hidden="true">
+                    <span class="text-primary font-bold text-sm">C</span>
                   </div>
+                  <p class="text-sm font-semibold" style="color: var(--text-primary);">Campagna</p>
+                  <p class="mt-1 text-xs" style="color: var(--text-secondary);">Ads che convertono</p>
+                </div>
+
+                <div class="rounded-2xl border border-gray-200/70 bg-gradient-to-br from-secondary/15 via-accent/10 to-white p-4 dark:border-white/10 dark:from-secondary/15 dark:via-accent/10 dark:to-black/10">
+                  <div class="h-8 w-8 rounded-xl bg-gradient-to-br from-secondary/25 to-accent/25 flex items-center justify-center mb-3" aria-hidden="true">
+                    <span class="text-accent font-bold text-sm">R</span>
+                  </div>
+                  <p class="text-sm font-semibold" style="color: var(--text-primary);">Report</p>
+                  <p class="mt-1 text-xs" style="color: var(--text-secondary);">Dati e insight mensili</p>
                 </div>
               </div>
 
-              <div class="mt-6">
-                <img
-                  src="/social-media-hero.svg"
-                  alt="Illustrazione: grafica digitale e social"
-                  class="w-full h-48 object-cover rounded-2xl border border-gray-200/60 dark:border-white/10 shadow-none"
-                  loading="lazy"
-                />
+              <div class="mt-5 rounded-2xl border border-gray-200/60 bg-gradient-to-r from-secondary/10 via-accent/10 to-primary/10 p-4 dark:border-white/10">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-semibold" style="color: var(--text-primary);">Engagement rate medio</p>
+                    <p class="text-xs" style="color: var(--text-secondary);">Dopo 90 giorni di gestione</p>
+                  </div>
+                  <span class="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-primary">+180%</span>
+                </div>
               </div>
             </div>
           </div>
@@ -172,46 +279,172 @@ const processSteps = [
       </div>
     </section>
 
-    <!-- Deliverables (new cards) -->
-    <section class="relative px-6 py-16">
+    <!-- ═══════════════════════════════════ SOCIAL PROOF STATS ═══════════════════════════════════ -->
+    <section class="relative px-6 py-14 reveal-on-scroll">
       <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map((stat) => (
+            <div class="rounded-3xl border border-gray-200/70 bg-white/70 p-6 text-center shadow-custom dark:border-white/10 dark:bg-white/5">
+              <div class="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-primary">{stat.value}</div>
+              <div class="mt-2 text-sm font-semibold" style="color: var(--text-primary);">{stat.label}</div>
+              <div class="mt-1 text-xs" style="color: var(--text-secondary);">{stat.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ GRAFICA DIGITALE (FOCUS) ═══════════════════════════════════ -->
+    <section class="relative px-6 py-20 reveal-on-scroll" id="grafica-digitale">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight" style="color: var(--text-primary);">Cosa include</h2>
-            <p class="mt-3 max-w-2xl" style="color: var(--text-secondary);">
-              Un servizio completo per ristoranti, hotel, professionisti e attività locali che vogliono una presenza digitale coerente.
+            <span class="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-sm font-semibold text-secondary dark:border-secondary/20 dark:bg-secondary/10 mb-4">
+              Servizio #1
+            </span>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">
+              Grafica Digitale
+              <span class="block text-xl md:text-2xl font-semibold mt-2" style="color: var(--text-secondary);">Design che comunica, non solo decora</span>
+            </h2>
+            <p class="mt-4 max-w-2xl text-lg leading-relaxed" style="color: var(--text-secondary);">
+              Ogni elemento grafico che creiamo ha uno scopo preciso: rafforzare il tuo brand, catturare l'attenzione e convertire. Dal logo ai post social, dalla brochure alla creatività per le ads.
             </p>
           </div>
-          <a
-            href="/contattaci"
-            class="inline-flex items-center justify-center rounded-full border border-gray-200/80 bg-white/70 px-6 py-3 text-sm font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5"
-            style="color: var(--text-primary);"
-          >
-            Parla con il team
-          </a>
         </div>
 
-        <div class="mt-10 grid md:grid-cols-3 gap-6">
-          {deliverables.map((item) => (
-            <div class="group relative rounded-3xl border border-gray-200/70 bg-white/70 p-8 shadow-custom-lg overflow-hidden dark:border-white/10 dark:bg-white/5">
-              <div class={`absolute -right-14 -top-14 h-44 w-44 rounded-full bg-gradient-to-br ${item.tone} blur-2xl opacity-75 md:opacity-95`} aria-hidden="true"></div>
-              <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-secondary via-accent to-primary" aria-hidden="true"></div>
+        <div class="grid md:grid-cols-2 gap-6">
+          {graficaServices.map((item) => (
+            <div class="group relative rounded-3xl border border-gray-200/70 bg-white/70 p-8 shadow-custom-lg overflow-hidden dark:border-white/10 dark:bg-white/5 hover:shadow-custom-lg transition-all duration-300">
+              <div class={`absolute -right-14 -top-14 h-44 w-44 rounded-full bg-gradient-to-br ${item.accent} blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-500`} aria-hidden="true"></div>
+              <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-secondary via-accent to-primary opacity-60" aria-hidden="true"></div>
               <div class="relative">
-                <div class="flex items-start justify-between gap-6">
+                <div class="flex items-start justify-between gap-4 mb-5">
                   <div>
                     <h3 class="text-xl font-extrabold tracking-tight" style="color: var(--text-primary);">{item.title}</h3>
-                    <p class="mt-3 leading-relaxed" style="color: var(--text-secondary);">{item.desc}</p>
+                    <p class="mt-2 leading-relaxed" style="color: var(--text-secondary);">{item.desc}</p>
                   </div>
                   <div
-                    class={`shrink-0 h-12 w-12 rounded-2xl border border-gray-200/80 bg-white/80 flex items-center justify-center shadow-custom dark:border-white/10 dark:bg-white/5 ${item.accent} [&_svg]:h-5 [&_svg]:w-5`}
+                    class="shrink-0 h-12 w-12 rounded-2xl border border-gray-200/80 bg-white/80 flex items-center justify-center shadow-custom dark:border-white/10 dark:bg-white/5 text-secondary [&_svg]:h-5 [&_svg]:w-5"
                     aria-hidden="true"
                     set:html={icons[item.icon]}
                   />
                 </div>
+                <div class="flex flex-wrap gap-2">
+                  {item.features.map((f) => (
+                    <span class="inline-flex items-center gap-1.5 rounded-full border border-gray-200/60 bg-white/60 px-3 py-1.5 text-xs font-medium dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">
+                      <svg class="w-3 h-3 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
 
-                <div class="mt-6 flex items-center gap-2 text-sm" style="color: var(--text-secondary);">
-                  <span class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-200/70 bg-white/70 shadow-custom dark:border-white/10 dark:bg-white/5" aria-hidden="true">✓</span>
-                  <span>Coerenza visiva + velocità di pubblicazione</span>
+        <!-- CTA intermedia grafica -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="/contattaci?topic=grafica"
+            class="inline-flex justify-center items-center gap-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
+          >
+            Richiedi un preventivo per la grafica
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+          <a
+            href="/lavori"
+            class="inline-flex justify-center items-center gap-2 rounded-full border border-gray-200/80 bg-white/70 px-6 py-4 font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5"
+            style="color: var(--text-primary);"
+          >
+            Guarda i nostri lavori
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ SOCIAL MEDIA MANAGEMENT ═══════════════════════════════════ -->
+    <section class="relative px-6 py-20 reveal-on-scroll" id="social-media">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-[1fr,1.1fr] gap-12 items-start">
+          <!-- Left: Info -->
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent dark:border-accent/20 dark:bg-accent/10 mb-4">
+              Servizio #2
+            </span>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">
+              Social Media Management
+              <span class="block text-xl md:text-2xl font-semibold mt-2" style="color: var(--text-secondary);">Strategia, contenuti e crescita misurabile</span>
+            </h2>
+            <p class="mt-4 text-lg leading-relaxed" style="color: var(--text-secondary);">
+              Non basta pubblicare. Serve un piano, una strategia e la costanza per costruire una presenza social che genera fiducia e clienti. Noi ci occupiamo di tutto.
+            </p>
+
+            <!-- Piattaforme -->
+            <div class="mt-8">
+              <p class="text-sm font-semibold mb-3" style="color: var(--text-primary);">Piattaforme che gestiamo</p>
+              <div class="flex flex-wrap gap-2">
+                {['Instagram', 'Facebook', 'LinkedIn', 'TikTok', 'Google Business'].map((p) => (
+                  <span class="inline-flex items-center gap-1.5 rounded-full border border-gray-200/60 bg-white/60 px-4 py-2 text-sm font-medium dark:border-white/10 dark:bg-white/5" style="color: var(--text-primary);">
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <a
+                href="/contattaci?topic=social"
+                class="inline-flex justify-center items-center gap-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
+              >
+                Affidaci i tuoi social
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Service cards -->
+          <div class="space-y-4">
+            {socialServices.map((item, idx) => (
+              <div class="group relative rounded-3xl border border-gray-200/70 bg-white/70 p-7 shadow-custom-lg overflow-hidden dark:border-white/10 dark:bg-white/5 hover:shadow-custom-lg transition-all duration-300">
+                <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-secondary via-accent to-primary opacity-40" aria-hidden="true"></div>
+                <div class="flex items-start gap-5">
+                  <div
+                    class="shrink-0 h-11 w-11 rounded-2xl border border-gray-200/80 bg-white/80 flex items-center justify-center shadow-custom dark:border-white/10 dark:bg-white/5 text-accent [&_svg]:h-5 [&_svg]:w-5"
+                    aria-hidden="true"
+                    set:html={icons[item.icon]}
+                  />
+                  <div>
+                    <h3 class="text-lg font-extrabold tracking-tight" style="color: var(--text-primary);">{item.title}</h3>
+                    <p class="mt-2 leading-relaxed text-sm" style="color: var(--text-secondary);">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ PERCHÉ SCEGLIERCI ═══════════════════════════════════ -->
+    <section class="relative px-6 py-20 reveal-on-scroll">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">Perché scegliere Bitora</h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg" style="color: var(--text-secondary);">
+            Non siamo l'ennesima agenzia generica. Ecco cosa ci rende diversi per le attività di Carmagnola, Torino e Piemonte.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          {whyUs.map((item, idx) => (
+            <div class="relative rounded-3xl border border-gray-200/70 bg-white/70 p-8 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
+              <div class="flex items-start gap-4">
+                <div class="shrink-0 h-10 w-10 rounded-2xl bg-gradient-to-br from-secondary via-accent to-primary flex items-center justify-center shadow-custom">
+                  <span class="text-white font-bold text-sm">{String(idx + 1).padStart(2, '0')}</span>
+                </div>
+                <div>
+                  <h3 class="text-lg font-extrabold tracking-tight" style="color: var(--text-primary);">{item.title}</h3>
+                  <p class="mt-2 leading-relaxed" style="color: var(--text-secondary);">{item.desc}</p>
                 </div>
               </div>
             </div>
@@ -220,39 +453,69 @@ const processSteps = [
       </div>
     </section>
 
-    <!-- Process (timeline) -->
-    <section class="relative px-6 py-16">
+    <!-- ═══════════════════════════════════ PROCESS ═══════════════════════════════════ -->
+    <section class="relative px-6 py-20 reveal-on-scroll">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight" style="color: var(--text-primary);">Metodo in 4 step</h2>
-        <p class="mt-3 max-w-2xl" style="color: var(--text-secondary);">Chiaro, iterativo, misurabile. Niente caos: un percorso condiviso.</p>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">Come lavoriamo</h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg" style="color: var(--text-secondary);">
+            Un metodo chiaro, iterativo e misurabile. Niente caos: un percorso condiviso in 4 step.
+          </p>
+        </div>
 
-        <div class="mt-10 grid lg:grid-cols-[1fr,1.2fr] gap-10 items-start">
+        <div class="grid lg:grid-cols-[1fr,1.2fr] gap-10 items-start">
+          <!-- Left: Per chi -->
           <div class="rounded-3xl border border-gray-200/70 bg-white/70 p-8 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
-            <p class="text-sm font-semibold" style="color: var(--text-primary);">Per chi è perfetto</p>
-            <ul class="mt-4 space-y-3" style="color: var(--text-secondary);">
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden="true"></span><span>Ristoranti e locali che vogliono un feed curato e coerente</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-secondary" aria-hidden="true"></span><span>Professionisti che vogliono autorevolezza e continuità</span></li>
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-accent" aria-hidden="true"></span><span>Hotel e turismo che puntano su stagionalità e campagne</span></li>
+            <p class="text-sm font-semibold uppercase tracking-widest mb-5" style="color: var(--text-secondary);">Perfetto per</p>
+            <ul class="space-y-4" style="color: var(--text-secondary);">
+              <li class="flex gap-3 items-start">
+                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-primary shrink-0" aria-hidden="true"></span>
+                <span><strong style="color: var(--text-primary);">Ristoranti e locali</strong> che vogliono un feed curato e un'identità visiva riconoscibile</span>
+              </li>
+              <li class="flex gap-3 items-start">
+                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-secondary shrink-0" aria-hidden="true"></span>
+                <span><strong style="color: var(--text-primary);">Professionisti</strong> che vogliono autorevolezza online e generare nuovi contatti</span>
+              </li>
+              <li class="flex gap-3 items-start">
+                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span>
+                <span><strong style="color: var(--text-primary);">Hotel e turismo</strong> che puntano su stagionalità, campagne ed esperienze</span>
+              </li>
+              <li class="flex gap-3 items-start">
+                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-green-500 shrink-0" aria-hidden="true"></span>
+                <span><strong style="color: var(--text-primary);">Negozi e attività locali</strong> che vogliono più visibilità e clienti dal territorio</span>
+              </li>
             </ul>
+
+            <div class="mt-8 pt-6 border-t border-gray-200/60 dark:border-white/10">
+              <a
+                href="/contattaci"
+                class="inline-flex items-center justify-center gap-2 rounded-full border border-gray-200/80 bg-white/70 px-6 py-3 text-sm font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5 w-full"
+                style="color: var(--text-primary);"
+              >
+                Parla con il team
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+            </div>
           </div>
 
+          <!-- Right: Timeline -->
           <div class="relative">
             <div class="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-secondary via-accent to-primary opacity-85" aria-hidden="true"></div>
-            <div class="space-y-6">
-              {processSteps.map((step, idx) => (
-                <div class="relative pl-12">
-                  <div class="absolute left-2.5 top-3 h-6 w-6 rounded-full border border-gray-200/70 bg-white/80 shadow-custom dark:border-white/10 dark:bg-white/10" aria-hidden="true">
-                    <div class="absolute inset-1 rounded-full bg-gradient-to-br from-secondary via-accent to-primary"></div>
+            <div class="space-y-5">
+              {processSteps.map((step) => (
+                <div class="relative pl-14">
+                  <div class="absolute left-2 top-4 h-7 w-7 rounded-full border border-gray-200/70 bg-white/80 shadow-custom dark:border-white/10 dark:bg-white/10 flex items-center justify-center" aria-hidden="true">
+                    <div class="h-4 w-4 rounded-full bg-gradient-to-br from-secondary via-accent to-primary"></div>
                   </div>
                   <div class="rounded-3xl border border-gray-200/70 bg-white/70 p-7 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
-                    <div class="flex items-center justify-between gap-4">
+                    <div class="flex items-center justify-between gap-4 mb-3">
                       <h3 class="text-xl font-extrabold tracking-tight" style="color: var(--text-primary);">{step.title}</h3>
-                      <span class="inline-flex items-center gap-2 text-sm whitespace-nowrap shrink-0 rounded-full border border-gray-200/70 bg-white/70 px-4 py-1.5 dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">
-                        <span class="inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-secondary via-accent to-primary" aria-hidden="true"></span>
-                        Step {idx + 1}/4
+                      <span class="inline-flex items-center gap-2 text-xs whitespace-nowrap shrink-0 rounded-full border border-gray-200/70 bg-white/70 px-3 py-1.5 font-semibold dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">
+                        Step {step.num}
                       </span>
                     </div>
-                    <p class="mt-3 leading-relaxed" style="color: var(--text-secondary);">{step.desc}</p>
+                    <p class="leading-relaxed" style="color: var(--text-secondary);">{step.desc}</p>
+                    <p class="mt-3 text-xs font-medium" style="color: var(--text-secondary);">{step.detail}</p>
                   </div>
                 </div>
               ))}
@@ -262,30 +525,78 @@ const processSteps = [
       </div>
     </section>
 
-    <!-- Final CTA (new) -->
-    <section class="relative px-6 pb-20">
+    <!-- ═══════════════════════════════════ FAQ ═══════════════════════════════════ -->
+    <section class="relative px-6 py-20 reveal-on-scroll" id="faq">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">Domande frequenti</h2>
+          <p class="mt-4 text-lg" style="color: var(--text-secondary);">
+            Tutto quello che devi sapere sui nostri servizi di grafica digitale e social media management.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          {faqs.map((faq, idx) => (
+            <details class="group rounded-3xl border border-gray-200/70 bg-white/70 shadow-custom dark:border-white/10 dark:bg-white/5 overflow-hidden">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer p-6 md:p-7 text-left font-semibold text-base md:text-lg list-none [&::-webkit-details-marker]:hidden" style="color: var(--text-primary);">
+                <span>{faq.q}</span>
+                <svg class="w-5 h-5 shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--text-secondary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </summary>
+              <div class="px-6 md:px-7 pb-6 md:pb-7 -mt-1">
+                <p class="leading-relaxed" style="color: var(--text-secondary);">{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ FINAL CTA ═══════════════════════════════════ -->
+    <section class="relative px-6 pb-20 reveal-on-scroll">
       <div class="max-w-6xl mx-auto">
-        <div class="relative overflow-hidden rounded-3xl md:rounded-[2rem] border border-gray-200/70 bg-white/70 p-10 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
+        <div class="relative overflow-hidden rounded-3xl md:rounded-[2rem] border border-gray-200/70 bg-white/70 p-10 md:p-14 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
           <div class="pointer-events-none absolute inset-0" aria-hidden="true">
             <div class="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-secondary/30 via-accent/20 to-transparent blur-3xl"></div>
             <div class="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-3xl"></div>
           </div>
           <div class="relative grid lg:grid-cols-[1.4fr,1fr] gap-10 items-center">
             <div>
-              <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">
-                Reinventiamo la tua presenza social
-                <span class="block bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-primary">con un sistema.</span>
+              <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight" style="color: var(--text-primary);">
+                Pronto a trasformare la tua
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-primary"> presenza digitale?</span>
               </h2>
-              <p class="mt-4 text-lg" style="color: var(--text-secondary);">
-                Raccontaci obiettivi e settore: ti rispondiamo con una proposta chiara (visual + gestione + priorità).
+              <p class="mt-5 text-lg leading-relaxed" style="color: var(--text-secondary);">
+                Raccontaci il tuo progetto e ricevi una proposta chiara e personalizzata: identità visiva, gestione social, campagne e tutto ciò che serve per distinguerti.
               </p>
+              <div class="mt-6 flex flex-wrap items-center gap-4 text-sm" style="color: var(--text-secondary);">
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  Preventivo gratuito in 24h
+                </span>
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  Nessun costo nascosto
+                </span>
+                <span class="inline-flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  Servizio modulare
+                </span>
+              </div>
             </div>
             <div class="flex flex-col gap-3">
               <a
                 href="/contattaci?topic=grafica"
-                class="inline-flex justify-center rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
+                class="inline-flex justify-center items-center gap-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
               >
-                Richiedi un preventivo
+                Richiedi un preventivo gratuito
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+              <a
+                href="/contattaci?topic=social"
+                class="inline-flex justify-center rounded-full border border-gray-200/80 bg-white/70 px-8 py-4 font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5"
+                style="color: var(--text-primary);"
+              >
+                Prenota una call gratuita
               </a>
               <a
                 href="/lavori"
@@ -294,18 +605,76 @@ const processSteps = [
               >
                 Guarda i progetti
               </a>
-              <p class="text-xs text-center" style="color: var(--text-secondary);">Carmagnola • Torino • Piemonte</p>
+              <p class="text-xs text-center mt-1" style="color: var(--text-secondary);">Carmagnola &bull; Torino &bull; tutto il Piemonte</p>
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- ═══════════════════════════════════ STRUCTURED DATA ═══════════════════════════════════ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Grafica Digitale e Social Media Management",
+    "provider": {
+      "@type": "Organization",
+      "name": "Bitora",
+      "url": "https://www.bitora.it",
+      "logo": "https://www.bitora.it/bitora.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Carmagnola",
+        "addressRegion": "Piemonte",
+        "addressCountry": "IT"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Carmagnola" },
+        { "@type": "City", "name": "Torino" },
+        { "@type": "AdministrativeArea", "name": "Piemonte" }
+      ]
+    },
+    "name": "Grafica Digitale e Social Media Management",
+    "description": "Servizi professionali di grafica digitale, brand identity e social media management per aziende e professionisti a Carmagnola, Torino e Piemonte.",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "EUR"
+    }
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.bitora.it/" },
+      { "@type": "ListItem", "position": 2, "name": "Servizi", "item": "https://www.bitora.it/soluzioni/" },
+      { "@type": "ListItem", "position": 3, "name": "Grafica Digitale & Social Media", "item": "https://www.bitora.it/grafica-digitale-social-media/" }
+    ]
+  })} />
 </Layout>
 
 <style>
   :global(html),
   :global(body) {
     overflow-x: hidden;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
   }
 </style>
