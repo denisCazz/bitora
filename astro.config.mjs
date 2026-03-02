@@ -3,11 +3,12 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
-
+import vercel from '@astrojs/vercel';
 import compressor from 'astro-compressor';
 
 // https://astro.build/config
 export default defineConfig({
+  adapter: vercel(),
   integrations: [
     tailwind(), 
     sitemap(), 
@@ -42,6 +43,13 @@ export default defineConfig({
     }
   },
   vite: {
+    server: {
+      hmr: {
+        host: 'localhost',
+        port: 4321,
+        protocol: 'ws',
+      },
+    },
     build: {
       cssMinify: 'lightningcss',
       minify: 'terser',

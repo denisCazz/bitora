@@ -1,164 +1,141 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import NeonCircles from '../components/NeonCircles.astro';
 ---
 
-<Layout title="Chi Siamo - Web Design Carmagnola | Bitora Piemonte" 
-       description="Scopri Bitora, la web agency di Carmagnola che serve tutto il Piemonte. Creiamo siti web professionali, ecosistemi digitali NFC e landing page per aziende locali. Il tuo partner digitale di fiducia a Carmagnola.">
-  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+<Layout title="Chi Siamo | Bitora - Sistemi Digitali su Misura" 
+       description="Scopri Bitora: sistemi digitali su misura per aziende e PMI. Sede in Piemonte, serviamo tutta Italia. Gestionali, CRM, CMMS, siti web ed e-commerce.">
+  <main class="bg-black text-white overflow-x-hidden selection:bg-primary/20 selection:text-white">
     
-    <!-- Hero Section -->
-    <section class="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
-      <NeonCircles variant="hero" colors={['blue', 'orange']} />
+    <!-- Hero -->
+    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-black via-black to-black/95"></div>
+      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-primary/10 blur-[100px] opacity-50"></div>
       
-      <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
-        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-widest text-indigo-400 backdrop-blur-md">
-          Partner Digitale • Piemonte
-        </div>
-        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
-          Chi siamo.
+      <div class="relative z-10 max-w-4xl">
+        <p class="text-sm font-medium tracking-widest text-primary uppercase mb-4">Chi siamo</p>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+          Il partner digitale<br />
+          <span class="text-primary">per la tua azienda.</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-          Siamo il partner digitale che trasforma la tua visione in realtà. <br class="hidden md:block" />
-          Design, tecnologia e strategia per il tuo business.
+        <p class="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed">
+          Sviluppiamo sistemi digitali su misura. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo clienti in tutta Italia.
         </p>
       </div>
     </section>
 
-    <!-- Mission -->
-    <section class="py-32 px-6 md:px-12 border-t border-white/5">
-      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-        <div class="space-y-8 reveal-on-scroll">
-          <h2 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
-            Il nostro <br />
-            <span class="text-indigo-400">impegno.</span>
-          </h2>
-          <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
-            Dal 2025, Bitora si dedica a un unico scopo: amplificare il successo delle aziende di Carmagnola e del Piemonte.
-          </p>
-          <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
-            Non creiamo solo siti web. Costruiamo ecosistemi digitali che generano risultati misurabili: più clienti, più vendite, più crescita.
-          </p>
-        </div>
-        <div class="relative group reveal-on-scroll delay-200">
-          <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
-          <div class="relative rounded-3xl overflow-hidden aspect-square bg-zinc-900 border border-white/10">
-            <img src="/client.jpg" alt="Team Bitora" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-700" />
+    <!-- Mission & Vision -->
+    <section class="py-20 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">La nostra missione</h2>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Bitora nasce per offrire alle PMI e alle aziende soluzioni digitali che funzionano davvero. Non vendiamo pacchetti preconfezionati: analizziamo i tuoi processi, ascoltiamo le tue esigenze e sviluppiamo software su misura.
+            </p>
+            <p class="text-gray-400 leading-relaxed">
+              Dal gestionale al sito web, dal CRM al CMMS: ti seguiamo dall'analisi al deploy, con formazione e supporto post-lancio. Il tuo successo è il nostro obiettivo.
+            </p>
+          </div>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Come lavoriamo</h2>
+            <div class="space-y-6">
+              {[
+                { step: '01', title: 'Analisi', desc: 'Studiamo processi, pain point e obiettivi. Definiamo scope e priorità.' },
+                { step: '02', title: 'Progettazione', desc: 'Architettura della soluzione, UX e flussi. Niente sorprese in fase di sviluppo.' },
+                { step: '03', title: 'Sviluppo', desc: 'Sviluppo iterativo con checkpoint. Vedi i progressi e dai feedback in tempo reale.' },
+                { step: '04', title: 'Deploy & Formazione', desc: 'Go-live assistito, formazione e documentazione. Supporto post-lancio.' }
+              ].map((item) => (
+                <div class="flex gap-4">
+                  <span class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm">{item.step}</span>
+                  <div>
+                    <h3 class="font-bold text-white mb-1">{item.title}</h3>
+                    <p class="text-gray-400 text-sm">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Values -->
-    <section class="py-32 px-6 bg-zinc-900/30">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-24 reveal-on-scroll">
-          <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">I nostri valori.</h2>
-          <p class="text-xl text-gray-400 font-light">Ciò che ci guida in ogni progetto.</p>
+    <!-- Valori -->
+    <section class="py-20 px-6 md:px-12 lg:px-20 bg-white/[0.02] border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">I nostri valori</h2>
+          <p class="text-gray-400 max-w-xl">Ciò che ci guida in ogni progetto.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <!-- Value 1 -->
-          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-indigo-500/50 transition-colors duration-500">
-            <div class="w-12 h-12 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <span class="text-2xl">📊</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-4">Risultati</h3>
+          <div class="p-8 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-2xl">📊</div>
+            <h3 class="text-xl font-bold text-white mb-3">Risultati</h3>
             <p class="text-gray-400 leading-relaxed">
-              Non ci accontentiamo di "bello". Vogliamo "efficace". Ogni pixel è progettato per convertire.
+              Non ci accontentiamo di "bello". Vogliamo "efficace". Ogni soluzione è progettata per generare valore misurabile.
             </p>
           </div>
 
-          <!-- Value 2 -->
-          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-purple-500/50 transition-colors duration-500" style="transition-delay: 100ms">
-            <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <span class="text-2xl">🚀</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-4">Innovazione</h3>
+          <div class="p-8 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-2xl">🚀</div>
+            <h3 class="text-xl font-bold text-white mb-3">Innovazione</h3>
             <p class="text-gray-400 leading-relaxed">
-              Usiamo le tecnologie più avanzate (Astro, AI, NFC) per darti un vantaggio competitivo reale.
+              Usiamo tecnologie moderne e best practice aggiornate. Astro, React, integrazioni API, automazioni.
             </p>
           </div>
 
-          <!-- Value 3 -->
-          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-green-500/50 transition-colors duration-500" style="transition-delay: 200ms">
-            <div class="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <span class="text-2xl">🤝</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-4">Partnership</h3>
+          <div class="p-8 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-2xl">🤝</div>
+            <h3 class="text-xl font-bold text-white mb-3">Partnership</h3>
             <p class="text-gray-400 leading-relaxed">
-              Non siamo fornitori, siamo partner. Il tuo successo è il nostro successo.
+              Non siamo fornitori, siamo partner. Il tuo successo è il nostro successo. Supporto diretto, nessun call center.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Territorio -->
+    <section class="py-20 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Sede in Piemonte.<br/>Serviamo tutta Italia.</h2>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Bitora ha sede a Carmagnola, in provincia di Torino. La vicinanza al territorio ci permette di incontrare i clienti quando serve, ma lavoriamo con aziende in tutta Italia grazie a call, demo e supporto remoto.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">Carmagnola</span>
+              <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">Torino</span>
+              <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">Piemonte</span>
+              <span class="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm">Tutta Italia</span>
+            </div>
+          </div>
+          <div class="p-8 rounded-2xl bg-white/[0.03] border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-4">Contattaci</h3>
+            <p class="text-gray-400 text-sm mb-6">Consulenza gratuita. Rispondiamo entro 24 ore.</p>
+            <a href="/contattaci" class="btn-primary inline-flex items-center gap-2">
+              Richiedi consulenza
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-40 px-6 text-center">
-      <div class="max-w-4xl mx-auto reveal-on-scroll">
-        <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Costruiamo il futuro insieme.</h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
+    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Costruiamo il futuro insieme.</h2>
+        <p class="text-gray-400 mb-8">
           Prenota una consulenza gratuita e scopri cosa possiamo fare per te.
         </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-            Contattaci ora
-          </a>
-        </div>
+        <a href="/contattaci" class="btn-primary inline-flex items-center gap-2">
+          Contattaci ora
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
       </div>
     </section>
 
   </main>
 </Layout>
-
-<style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
-
-<script>
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-    elements.forEach(el => observer.observe(el));
-  });
-</script>

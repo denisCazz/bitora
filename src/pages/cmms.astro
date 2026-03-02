@@ -11,99 +11,67 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
   title="CMMS Bitora | Software Gestione Manutenzione per Aziende e Tecnici"
   description="CMMS Bitora: il software di gestione manutenzione computerizzata per aziende di assistenza tecnica. Rapportini digitali, gestione clienti, PDF automatici, statistiche in tempo reale. Per team da 3 tecnici in su."
 >
-  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+  <main class="bg-black text-white overflow-x-hidden selection:bg-primary/20 selection:text-white">
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+    <!-- Hero - stesso stile home/sistemi -->
+    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-black via-black to-black/95"></div>
+      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-primary/10 blur-[100px] opacity-50"></div>
+      
+      <div class="relative z-10 max-w-4xl">
+        <p class="text-sm font-medium tracking-widest text-primary uppercase mb-4">CMMS · Manutenzione</p>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+          Il CMMS pensato<br />
+          <span class="text-primary">per chi fa manutenzione.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mb-8">
+          Gestisci <strong class="text-white">manutenzione, interventi e rapportini</strong> con un unico software professionale. Digitalizza la tua azienda. <strong class="text-primary">Risparmia fino al 99% del tempo.</strong>
+        </p>
 
-      <!-- Animated Neon Circles -->
-      <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="neon-circle neon-blue w-[600px] h-[600px] -top-[200px] -left-[200px] animate-neon-float-slow"></div>
-        <div class="neon-circle neon-blue w-[400px] h-[400px] top-[60%] -right-[150px] animate-neon-float-reverse" style="animation-delay: -3s;"></div>
-        <div class="neon-circle neon-orange w-[500px] h-[500px] -bottom-[200px] -right-[200px] animate-neon-float-slow" style="animation-delay: -2s;"></div>
-        <div class="neon-circle neon-blue-soft w-[800px] h-[800px] -bottom-[400px] left-[20%] animate-neon-pulse-glow"></div>
-        <div class="neon-circle neon-orange w-[200px] h-[200px] top-[20%] left-[10%] animate-neon-orbit" style="animation-delay: -5s;"></div>
-        <div class="neon-circle neon-blue w-[80px] h-[80px] top-[40%] left-[20%] animate-neon-drift"></div>
-        <div class="neon-circle neon-orange w-[60px] h-[60px] top-[70%] right-[25%] animate-neon-drift" style="animation-delay: -3s;"></div>
-      </div>
-
-      <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
-        <div class="absolute inset-0 -m-8 bg-gradient-to-b from-black/60 via-black/50 to-transparent backdrop-blur-sm lg:hidden" style="mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 100%);"></div>
-
-        <div class="relative z-10">
-          <!-- Badge -->
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 backdrop-blur-md text-sm font-medium text-indigo-300 mb-4">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-            </span>
-            CMMS · Computerized Maintenance Management System
-          </div>
-
-          <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mt-6">
-            Il CMMS pensato<br/>
-            <span class="text-indigo-400">per chi fa manutenzione.</span>
-          </h1>
-
-          <p class="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed mt-8">
-            Gestisci <strong class="text-white">manutenzione, interventi e rapportini</strong> con un unico software professionale. <br class="hidden md:block"/>
-            Digitalizza la tua azienda. <strong class="text-indigo-300">Risparmia fino al 99% del tempo.</strong>
-          </p>
-
-          <!-- Trust Badges -->
-          <div class="flex flex-wrap justify-center gap-6 pt-4 text-sm text-gray-400 mt-4">
+        <div class="flex flex-wrap gap-6 text-sm text-gray-400 mb-8">
             <span class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
               100% Cloud
             </span>
             <span class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
               PWA installabile
             </span>
             <span class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
               GDPR compliant
             </span>
             <span class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
               Multi-utente
             </span>
           </div>
 
-          <div class="pt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href={whatsappLink} class="group min-w-[240px] px-8 py-4 bg-white text-black rounded-full font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2">
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a href={whatsappLink} class="btn-primary group min-w-[200px] flex items-center justify-center gap-2">
               Richiedi una demo
               <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
-            <a href={whatsappLink} class="min-w-[240px] px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg transition-all hover:bg-green-500 hover:scale-105 flex items-center justify-center gap-2">
+            <a href={whatsappLink} class="btn-secondary min-w-[200px] flex items-center justify-center gap-2">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               WhatsApp
             </a>
           </div>
-        </div>
-      </div>
-
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
       </div>
     </section>
 
     <!-- What is CMMS -->
-    <section class="py-24 px-6 md:px-12 border-t border-white/5">
-      <div class="max-w-5xl mx-auto">
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div class="reveal-on-scroll">
-            <p class="text-sm uppercase tracking-widest text-indigo-400 mb-4 font-medium">Cos'e un CMMS?</p>
+            <p class="text-sm uppercase tracking-widest text-primary mb-4 font-medium">Cos'e un CMMS?</p>
             <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Manutenzione computerizzata,<br/><span class="text-gray-400">risultati concreti.</span></h2>
             <p class="text-lg text-gray-400 leading-relaxed mb-6">
               Un <strong class="text-white">CMMS</strong> (Computerized Maintenance Management System) e un software che centralizza e digitalizza tutte le operazioni di manutenzione: dalla pianificazione degli interventi alla gestione dei rapportini, dal monitoraggio dei materiali all'analisi delle statistiche.
             </p>
             <p class="text-lg text-gray-400 leading-relaxed">
-              <strong class="text-white">Bitora</strong> e il CMMS progettato per aziende di assistenza tecnica e manutenzione con <strong class="text-indigo-300">3 o piu tecnici operativi</strong>. Sostituisce completamente carta, Excel e processi manuali con un sistema digitale completo.
+              <strong class="text-white">Bitora</strong> e il CMMS progettato per aziende di assistenza tecnica e manutenzione con <strong class="text-primary">3 o piu tecnici operativi</strong>. Sostituisce completamente carta, Excel e processi manuali con un sistema digitale completo.
             </p>
           </div>
 
@@ -117,7 +85,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
                 { icon: '🔧', label: 'Catalogo attrezzature', value: 'Marche, modelli, ricambi' },
                 { icon: '🔐', label: 'Multi-utente', value: 'Admin + Operatori' }
               ].map((item, i) => (
-                <div class="p-5 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-indigo-500/30 transition-all" style={`transition-delay: ${i * 80}ms`}>
+                <div class="p-5 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-primary/40 transition-all" style={`transition-delay: ${i * 80}ms`}>
                   <div class="text-2xl mb-2">{item.icon}</div>
                   <div class="text-sm font-bold text-white mb-1">{item.label}</div>
                   <div class="text-xs text-gray-500">{item.value}</div>
@@ -130,15 +98,10 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
     </section>
 
     <!-- Problem / Solution -->
-    <section class="py-24 px-6 md:px-12 bg-zinc-900/30 border-y border-white/5 relative overflow-hidden">
-      <div class="absolute inset-0 pointer-events-none opacity-30">
-        <div class="neon-circle neon-blue w-[400px] h-[400px] -top-[150px] -right-[150px] animate-neon-float-slow"></div>
-        <div class="neon-circle neon-orange w-[350px] h-[350px] -bottom-[150px] -left-[100px] animate-neon-float-reverse" style="animation-delay: -3s;"></div>
-      </div>
-
-      <div class="max-w-5xl mx-auto relative z-10">
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-white/[0.02] border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16 reveal-on-scroll">
-          <p class="text-sm uppercase tracking-widest text-indigo-400 mb-4 font-medium">Il problema</p>
+          <p class="text-sm uppercase tracking-widest text-primary mb-4 font-medium">Il problema</p>
           <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Senza un CMMS, ogni giorno perdi tempo e soldi</h2>
         </div>
 
@@ -195,10 +158,10 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
     </section>
 
     <!-- CMMS Modules -->
-    <section class="py-24 px-6 md:px-12 relative overflow-hidden">
-      <div class="max-w-7xl mx-auto">
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16 reveal-on-scroll">
-          <p class="text-sm uppercase tracking-widest text-indigo-400 mb-4 font-medium">I moduli del CMMS</p>
+          <p class="text-sm uppercase tracking-widest text-primary mb-4 font-medium">I moduli</p>
           <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Tutto quello che ti serve. Niente di piu.</h2>
           <p class="text-xl text-gray-400 max-w-2xl mx-auto">
             Ogni modulo e progettato per risolvere un problema specifico della gestione manutenzione.
@@ -208,7 +171,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
         <!-- Module 1: Rapportini -->
         <div class="grid lg:grid-cols-2 gap-12 items-center mb-24 reveal-on-scroll">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium text-indigo-300 mb-4">Modulo 01</div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-xs font-medium text-primary-300 mb-4">Modulo 01</div>
             <h3 class="text-3xl font-bold text-white mb-4">Rapportini Digitali</h3>
             <p class="text-lg text-gray-400 leading-relaxed mb-6">
               Form guidato in <strong class="text-white">3 step</strong>: Operatore, Cliente, Intervento. I dati dell'operatore si compilano automaticamente dal login. Il cliente si cerca con autocompletamento. Attrezzature, modelli e materiali si selezionano da database.
@@ -220,23 +183,23 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
             </div>
           </div>
           <div class="relative">
-            <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur-2xl"></div>
+            <div class="absolute -inset-4 bg-gradient-to-r from-primary-500/10 to-purple-500/10 rounded-3xl blur-2xl"></div>
             <div class="relative bg-zinc-900 border border-white/10 rounded-3xl p-8">
               <div class="space-y-4">
-                <div class="flex items-center gap-3 p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20">
-                  <span class="w-8 h-8 rounded-lg bg-indigo-500/30 flex items-center justify-center text-sm font-bold text-indigo-300">1</span>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-primary-500/10 border border-primary-500/20">
+                  <span class="w-8 h-8 rounded-lg bg-primary-500/30 flex items-center justify-center text-sm font-bold text-primary-300">1</span>
                   <span class="text-sm text-white font-medium">Operatore — dati auto-compilati</span>
                   <span class="ml-auto text-green-400 text-xs">Automatico</span>
                 </div>
                 <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
                   <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-sm font-bold text-gray-400">2</span>
                   <span class="text-sm text-white font-medium">Cliente — ricerca o nuovo</span>
-                  <span class="ml-auto text-indigo-400 text-xs">Autocompletamento</span>
+                  <span class="ml-auto text-primary text-xs">Autocompletamento</span>
                 </div>
                 <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
                   <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-sm font-bold text-gray-400">3</span>
                   <span class="text-sm text-white font-medium">Intervento — dettagli e materiali</span>
-                  <span class="ml-auto text-indigo-400 text-xs">Da database</span>
+                  <span class="ml-auto text-primary text-xs">Da database</span>
                 </div>
               </div>
               <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
@@ -280,7 +243,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
                 ].map((client) => (
                   <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
                     <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-xs font-bold text-indigo-300">{client.name.charAt(0)}</div>
+                      <div class="w-8 h-8 rounded-full bg-primary-500/20 flex items-center justify-center text-xs font-bold text-primary-300">{client.name.charAt(0)}</div>
                       <div>
                         <div class="text-sm text-white font-medium">{client.name}</div>
                         <div class="text-xs text-gray-500">{client.city}</div>
@@ -368,7 +331,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
                 <div class="space-y-2">
                   <div>
                     <div class="flex justify-between text-xs mb-1"><span class="text-gray-400">Manutenzione</span><span class="text-white">54%</span></div>
-                    <div class="w-full bg-zinc-800 rounded-full h-2"><div class="h-full rounded-full bg-indigo-500" style="width: 54%"></div></div>
+                    <div class="w-full bg-zinc-800 rounded-full h-2"><div class="h-full rounded-full bg-primary-500" style="width: 54%"></div></div>
                   </div>
                   <div>
                     <div class="flex justify-between text-xs mb-1"><span class="text-gray-400">Installazione</span><span class="text-white">28%</span></div>
@@ -386,7 +349,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
 
         <!-- Module 5 & 6: Catalogo + Ruoli -->
         <div class="grid md:grid-cols-2 gap-8 reveal-on-scroll">
-          <div class="p-8 rounded-3xl bg-zinc-900/60 border border-white/10 hover:border-indigo-500/30 transition-all">
+          <div class="p-8 rounded-3xl bg-zinc-900/60 border border-white/10 hover:border-primary/40 transition-all">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-medium text-cyan-300 mb-4">Modulo 05</div>
             <h3 class="text-2xl font-bold text-white mb-3">Gestione Catalogo</h3>
             <p class="text-gray-400 leading-relaxed mb-4">
@@ -400,7 +363,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
             </div>
           </div>
 
-          <div class="p-8 rounded-3xl bg-zinc-900/60 border border-white/10 hover:border-indigo-500/30 transition-all" style="transition-delay: 100ms">
+          <div class="p-8 rounded-3xl bg-zinc-900/60 border border-white/10 hover:border-primary/40 transition-all" style="transition-delay: 100ms">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-xs font-medium text-rose-300 mb-4">Modulo 06</div>
             <h3 class="text-2xl font-bold text-white mb-3">Sistema Multi-Utente</h3>
             <p class="text-gray-400 leading-relaxed mb-4">
@@ -425,7 +388,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
 
       <div class="max-w-6xl mx-auto relative z-10">
         <div class="text-center mb-16 reveal-on-scroll">
-          <p class="text-sm uppercase tracking-widest text-indigo-400 mb-4 font-medium">I numeri del CMMS</p>
+          <p class="text-sm uppercase tracking-widest text-primary mb-4 font-medium">I numeri del CMMS</p>
           <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Il tempo che risparmi, ogni giorno</h2>
           <p class="text-xl text-gray-400 max-w-2xl mx-auto">
             Dati reali: confronto tra gestione tradizionale e CMMS Bitora.
@@ -441,7 +404,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
             { task: 'Ricerca rapportini', before: '23-40 min', after: '10-15 sec', saving: '99%' },
             { task: 'Gestione materiali', before: '9-14 min', after: '10-20 sec', saving: '98%' }
           ].map((stat, i) => (
-            <div class="group p-6 rounded-3xl bg-black/40 border border-white/10 hover:border-indigo-500/30 transition-all reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
+            <div class="group p-6 rounded-3xl bg-black/40 border border-white/10 hover:border-primary/40 transition-all reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
               <h3 class="text-lg font-bold text-white mb-4">{stat.task}</h3>
               <div class="space-y-3">
                 <div class="flex items-center justify-between">
@@ -455,10 +418,10 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
                 <div class="pt-2 border-t border-white/5">
                   <div class="flex items-center justify-between">
                     <span class="text-sm text-gray-500">Risparmio</span>
-                    <span class="text-2xl font-bold text-indigo-400">-{stat.saving}</span>
+                    <span class="text-2xl font-bold text-primary">-{stat.saving}</span>
                   </div>
                   <div class="mt-2 w-full bg-zinc-800 rounded-full h-2 overflow-hidden">
-                    <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-1000" style={`width: ${stat.saving}`}></div>
+                    <div class="h-full rounded-full bg-gradient-to-r from-primary-500 to-purple-500 transition-all duration-1000" style={`width: ${stat.saving}`}></div>
                   </div>
                 </div>
               </div>
@@ -474,7 +437,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
             { value: '€39K-71K', unit: '/anno', label: 'Risparmio annuo', icon: '📈' },
             { value: '<2 mesi', unit: '', label: 'Break-even', icon: '⚡' }
           ].map((kpi, i) => (
-            <div class="text-center p-6 rounded-2xl bg-indigo-500/5 border border-indigo-500/20 reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
+            <div class="text-center p-6 rounded-2xl bg-primary-500/5 border border-primary-500/20 reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
               <div class="text-3xl mb-3">{kpi.icon}</div>
               <div class="text-2xl md:text-3xl font-bold text-white mb-1">{kpi.value}</div>
               <div class="text-xs text-gray-500 font-mono">{kpi.unit}</div>
@@ -491,7 +454,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
         <div class="grid lg:grid-cols-2 gap-16">
           <!-- Target -->
           <div class="reveal-on-scroll">
-            <p class="text-sm uppercase tracking-widest text-indigo-400 mb-4 font-medium">Per chi e pensato</p>
+            <p class="text-sm uppercase tracking-widest text-primary mb-4 font-medium">Per chi e pensato</p>
             <h2 class="text-3xl font-bold text-white mb-8">Il CMMS per ogni tipo di manutenzione</h2>
             <div class="space-y-4">
               {[
@@ -503,7 +466,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
                 { icon: '👷', title: 'Da 3 tecnici in su', desc: 'Scalabile: funziona per piccoli team e aziende strutturate.' }
               ].map((item, i) => (
                 <div class="flex gap-4 group" style={`transition-delay: ${i * 100}ms`}>
-                  <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">{item.icon}</div>
+                  <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">{item.icon}</div>
                   <div>
                     <h3 class="text-base font-bold text-white mb-1">{item.title}</h3>
                     <p class="text-gray-400 text-sm">{item.desc}</p>
@@ -515,7 +478,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
 
           <!-- Tech -->
           <div class="reveal-on-scroll" style="transition-delay: 200ms">
-            <p class="text-sm uppercase tracking-widest text-indigo-400 mb-4 font-medium">Tecnologia</p>
+            <p class="text-sm uppercase tracking-widest text-primary mb-4 font-medium">Tecnologia</p>
             <h2 class="text-3xl font-bold text-white mb-8">Moderno, sicuro, affidabile</h2>
             <div class="space-y-4">
               {[
@@ -543,7 +506,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
     <section class="py-24 px-6 md:px-12 bg-zinc-900/30 border-t border-white/5">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-16 reveal-on-scroll">
-          <p class="text-sm uppercase tracking-widest text-indigo-400 mb-4 font-medium">Domande frequenti</p>
+          <p class="text-sm uppercase tracking-widest text-primary mb-4 font-medium">Domande frequenti</p>
           <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">FAQ sul CMMS</h2>
         </div>
 
@@ -574,7 +537,7 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
               a: 'La configurazione iniziale richiede pochi minuti: crei il tuo account, aggiungi i tecnici e sei operativo. Se hai gia una lista clienti, possiamo importarla per te.'
             }
           ].map((faq, i) => (
-            <details class="group p-6 rounded-2xl bg-black/40 border border-white/10 hover:border-indigo-500/20 transition-all cursor-pointer" style={`transition-delay: ${i * 50}ms`}>
+            <details class="group p-6 rounded-2xl bg-black/40 border border-white/10 hover:border-primary-500/20 transition-all cursor-pointer" style={`transition-delay: ${i * 50}ms`}>
               <summary class="flex items-center justify-between text-white font-bold list-none">
                 <span class="pr-4">{faq.q}</span>
                 <svg class="w-5 h-5 text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -587,29 +550,23 @@ const whatsappLink = `https://wa.me/393514979670?text=${whatsappMessage}`;
     </section>
 
     <!-- Final CTA -->
-    <section class="py-32 px-6 text-center relative overflow-hidden">
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="neon-circle neon-blue w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-neon-pulse-glow opacity-20"></div>
-        <div class="neon-circle neon-orange-soft w-[800px] h-[800px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-neon-breathe opacity-15" style="animation-delay: -2s;"></div>
-      </div>
-      <div class="max-w-4xl mx-auto reveal-on-scroll relative z-10">
-        <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
-          Pronto a digitalizzare<br/>la tua manutenzione?
-        </h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-          Richiedi una demo gratuita. Ti mostriamo come Bitora puo trasformare il tuo lavoro.
+    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pronto a digitalizzare la tua manutenzione?</h2>
+        <p class="text-gray-400 mb-8">
+          Richiedi una demo gratuita. Ti mostriamo come Bitora può trasformare il tuo lavoro.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href={whatsappLink} class="group min-w-[240px] px-8 py-4 bg-white text-black rounded-full font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href={whatsappLink} class="btn-primary group min-w-[200px] flex items-center justify-center gap-2">
             Richiedi demo gratuita
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href={whatsappLink} class="min-w-[240px] px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg transition-all hover:bg-green-500 hover:scale-105 flex items-center justify-center gap-2">
+          <a href={whatsappLink} class="btn-secondary min-w-[200px] flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
           </a>
         </div>
-        <p class="text-center text-sm text-gray-500 mt-8">Nessun impegno · Demo gratuita · Risposta immediata</p>
+        <p class="text-sm text-gray-500 mt-6">Nessun impegno · Demo gratuita · Risposta immediata</p>
       </div>
     </section>
 

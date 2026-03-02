@@ -1,0 +1,22 @@
+---
+export interface Props {
+  label?: string;
+  title: string;
+  subtitle?: string;
+  className?: string;
+}
+const { label, title, subtitle, className = '' } = Astro.props;
+---
+
+<section class={`py-20 md:py-24 px-6 md:px-12 lg:px-20 ${className}`}>
+  <div class="max-w-6xl mx-auto">
+    {(label || title || subtitle) && (
+      <div class="mb-12 md:mb-16">
+        {label && <p class="text-sm font-medium tracking-widest text-primary uppercase mb-3 reveal-on-scroll">{label}</p>}
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 reveal-on-scroll">{title}</h2>
+        {subtitle && <p class="text-lg text-gray-400 max-w-xl reveal-on-scroll">{subtitle}</p>}
+      </div>
+    )}
+    <slot />
+  </div>
+</section>

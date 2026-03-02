@@ -4,24 +4,19 @@ import { icons } from './Icons';
 const navItems = [
   { name: 'Home', url: '/' },
   {
-    name: 'Servizi',
+    name: 'Soluzioni',
     url: '/soluzioni',
     dropdown: [
-      { name: 'Siti Web Professionali', url: '/siti-web-professionali' },
+      { name: 'Sistemi aziendali su misura', url: '/sistemi-aziendali' },
       { name: 'E-commerce', url: '/e-commerce-piemonte' },
-      { name: 'CMMS Manutenzione', url: '/cmms' },
       { name: 'Tessere NFC', url: '/nfc-ecosystem' },
+      { name: 'Gestionali & CRM', url: '/bitora-crm' },
+      { name: 'CMMS Manutenzione', url: '/cmms' },
+      { name: 'Siti Web Professionali', url: '/siti-web-professionali' },
       { name: 'Grafica & Social', url: '/grafica-digitale-social-media' },
     ],
   },
-  {
-    name: 'Territorio',
-    url: '/carmagnola',
-    dropdown: [
-      { name: 'Carmagnola e Dintorni', url: '/carmagnola' },
-      { name: 'Tutto il Piemonte', url: '/siti-web-piemonte' },
-    ],
-  },
+  { name: 'Chi siamo', url: '/chi-siamo' },
   { name: 'Progetti', url: '/lavori' },
   { name: 'Contatti', url: '/contattaci' },
 ];
@@ -31,13 +26,13 @@ const currentPath = Astro.url.pathname;
 
 <header class="sticky top-0 z-50 w-full">
   <div class="w-full relative">
-    <div id="nav-shell" class="glass-panel flex items-center justify-between w-full px-6 md:px-12 lg:px-20 py-4 shadow-custom transition-all duration-300">
+    <div id="nav-shell" class="glass-panel flex items-center justify-between w-full px-6 md:px-12 lg:px-20 py-2 shadow-custom transition-all duration-300">
       <!-- Logo - Sinistra -->
       <a
         href="/"
-        class="flex items-center text-2xl font-semibold text-black dark:text-white hover:opacity-80 transition-opacity duration-200 z-10 tracking-tight flex-shrink-0"
+        class="flex items-center text-black dark:text-white hover:opacity-90 transition-opacity duration-200 z-10 flex-shrink-0 -m-1"
       >
-        <span class="tracking-tight">bitora</span><span class="text-gray-500 dark:text-gray-400">.it</span>
+        <img src="/bitora.png" alt="Bitora" class="h-16 w-16 md:h-20 md:w-20 m-0 block rounded-full object-cover" />
       </a>
       
       <!-- Nav + CTA - Destra -->
@@ -77,7 +72,7 @@ const currentPath = Astro.url.pathname;
           ))
         }
       </nav>
-      <a href="/contattaci" class="inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-orange/30 dark:text-orange dark:hover:bg-orange/10 whitespace-nowrap">Prenota una consulenza</a>
+      <a href="/contattaci" class="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3 text-base whitespace-nowrap">Richiedi consulenza</a>
       </div>
       
       <!-- Mobile Menu Button -->
@@ -148,7 +143,7 @@ const currentPath = Astro.url.pathname;
         <div class="mt-4 pt-4 border-t border-primary/20">
           <a
             href="/contattaci"
-            class="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 dark:border-orange/30 dark:text-orange dark:hover:bg-orange/10"
+            class="btn-secondary inline-flex items-center gap-2 px-5 py-2 text-sm"
           >
             Prenota consulenza
           </a>

@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const systems = [
+  {
+    title: 'Gestionali su misura',
+    desc: 'Software di gestione aziendale sviluppato sulle tue esigenze: magazzino, fatturazione, ordini, anagrafiche. Nessun pacchetto preconfezionato, solo ciò che serve.',
+    icon: 'database',
+    features: ['Magazzino e inventario', 'Fatturazione elettronica', 'Ordini e preventivi', 'Report personalizzati']
+  },
+  {
+    title: 'CRM & Vendite',
+    desc: 'Gestione clienti, pipeline commerciale, automazioni e integrazioni. Per vendere di più con meno sforzo.',
+    icon: 'users',
+    features: ['Pipeline vendite', 'Lead e opportunità', 'Automazioni email/WhatsApp', 'Integrazioni']
+  },
+  {
+    title: 'CMMS & Manutenzione',
+    desc: 'Software per la gestione della manutenzione: interventi, rapportini digitali, pianificazione. Per aziende di assistenza e facility.',
+    icon: 'wrench',
+    features: ['Interventi e rapportini', 'Pianificazione manutentiva', 'Clienti e contratti', 'Statistiche real-time']
+  },
+  {
+    title: 'Portali & Automazioni',
+    desc: 'Portali clienti, area riservata, integrazioni tra sistemi. Automatizza i processi ripetitivi e libera tempo.',
+    icon: 'globe',
+    features: ['Portale clienti', 'Area riservata', 'Integrazioni API', 'Workflow automatizzati']
+  }
+];
+
+const process = [
+  { num: '01', title: 'Analisi', desc: 'Studiamo processi, pain point e obiettivi. Definiamo scope e priorità.' },
+  { num: '02', title: 'Progettazione', desc: 'Architettura della soluzione, UX e flussi. Niente sorprese in fase di sviluppo.' },
+  { num: '03', title: 'Sviluppo', desc: 'Sviluppo iterativo con checkpoint. Vedi i progressi e dai feedback in tempo reale.' },
+  { num: '04', title: 'Deploy & Formazione', desc: 'Go-live assistito, formazione e documentazione. Supporto post-lancio.' }
+];
+---
+
+<Layout
+  title="Sistemi Aziendali su Misura | Bitora - Software per PMI"
+  description="Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS e software custom. Sviluppo da zero sulle tue esigenze. Sede in Piemonte, serviamo tutta Italia."
+>
+  <main class="bg-black text-white overflow-x-hidden selection:bg-primary/20 selection:text-white">
+    
+    <!-- Hero - stesso stile della home -->
+    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-black via-black to-black/95"></div>
+      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-primary/10 blur-[100px] opacity-50"></div>
+      
+      <div class="relative z-10 max-w-4xl">
+        <p class="text-sm font-medium tracking-widest text-primary uppercase mb-4">Sistemi aziendali su misura</p>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+          <span class="text-white">Sistemi digitali</span><br />
+          <span class="text-primary">su misura per la tua azienda.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mb-8">
+          Ti seguiamo dall'analisi al deploy. <strong class="text-white">Gestionali, CRM, CMMS e software custom</strong> sviluppati sulle tue esigenze reali. Nessun pacchetto preconfezionato. Solo ciò che serve.
+        </p>
+
+        <div class="flex flex-wrap gap-6 text-sm text-gray-400 mb-8">
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Sviluppo su misura
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            PMI e aziende
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Tutta Italia
+          </span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contattaci?topic=sistemi" class="btn-primary group min-w-[220px] flex items-center justify-center gap-2 text-lg">
+            Richiedi consulenza
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="https://wa.me/393514979670?text=Ciao,%20sono%20interessato%20ai%20sistemi%20aziendali%20su%20misura.%20Vorrei%20parlarne." class="btn-secondary min-w-[220px] flex items-center justify-center gap-2 text-lg">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Cosa realizziamo -->
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <p class="text-sm uppercase tracking-widest text-primary mb-4 font-medium">Cosa realizziamo</p>
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Soluzioni integrate per ogni esigenza</h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Non vendiamo pacchetti. Progettiamo e sviluppiamo software che risolve i tuoi problemi reali.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {systems.map((sys, i) => (
+            <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-10 reveal-on-scroll hover:border-primary/40 transition-all duration-300 group">
+              <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-4">{sys.title}</h3>
+              <p class="text-gray-400 leading-relaxed mb-6">{sys.desc}</p>
+              <ul class="space-y-2">
+                {sys.features.map(f => (
+                  <li class="flex items-center gap-3 text-gray-300 font-medium">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Processo -->
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-white/[0.02] border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <p class="text-sm uppercase tracking-widest text-primary mb-4 font-medium">Il nostro metodo</p>
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Ti seguiamo dall'inizio alla fine</h2>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8">
+          {process.map((step, i) => (
+            <div class="reveal-on-scroll text-center">
+              <div class="text-5xl font-bold text-primary/30 mb-4">{step.num}</div>
+              <h3 class="text-xl font-bold text-white mb-2">{step.title}</h3>
+              <p class="text-gray-400 text-sm">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
+          Pronto a digitalizzare<br/>i tuoi processi?
+        </h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
+          Consulenza gratuita. Analizziamo le tue esigenze e troviamo la soluzione giusta.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="/contattaci?topic=sistemi" class="btn-primary group min-w-[220px] flex items-center justify-center gap-2">
+            Richiedi consulenza
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="/bitora-crm" class="btn-secondary min-w-[220px] flex items-center justify-center gap-2">
+            Scopri Bitora CRM
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  });
+</script>

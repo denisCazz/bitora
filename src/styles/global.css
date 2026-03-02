@@ -13,9 +13,9 @@
   --overlay: rgba(245, 245, 247, 0.7);
   --surface-glass: rgba(255, 255, 255, 0.78);
   --surface-glass-border: rgba(10, 10, 12, 0.08);
-  --focus-ring: rgba(9, 86, 210, 0.32);
-  --link-color: #de7800;
-  --link-color-dark: #ff9a3d;
+  --focus-ring: rgba(24, 236, 255, 0.32);
+  --link-color: #18ECFF;
+  --link-color-dark: #18ECFF;
 }
 
 .dark {
@@ -32,7 +32,7 @@
   --overlay: rgba(8, 8, 10, 0.7);
   --surface-glass: rgba(17, 17, 22, 0.72);
   --surface-glass-border: rgba(255, 255, 255, 0.08);
-  --focus-ring: rgba(255, 154, 61, 0.28);
+  --focus-ring: rgba(24, 236, 255, 0.28);
 }
 
 /* Smooth transitions with reduced motion awareness */
@@ -57,8 +57,35 @@ body {
 }
 
 ::selection {
-  background-color: rgba(222, 120, 0, 0.15);
+  background-color: rgba(24, 236, 255, 0.2);
   color: var(--text-primary);
+}
+
+/* Button styles - high contrast for readability */
+.btn-primary,
+a.btn-primary {
+  @apply bg-white font-bold rounded-full px-8 py-4 transition-all hover:scale-105;
+  color: #000000 !important;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+.btn-primary:hover,
+a.btn-primary:hover {
+  color: #000000 !important;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.25);
+}
+.btn-secondary,
+a.btn-secondary {
+  @apply font-bold rounded-full px-8 py-4 transition-all hover:scale-105;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+.btn-secondary:hover,
+a.btn-secondary:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
 }
 
 /* Utility classes for consistent theming */
@@ -162,11 +189,11 @@ a {
 }
 
 a:hover {
-  color: #ff8a26;
+  color: #14d4e6;
 }
 
 .dark a:hover {
-  color: #ffb36e;
+  color: #18ECFF;
 }
 
 /* Skip link for screen readers */
@@ -271,6 +298,33 @@ a:hover {
     scroll-behavior: auto !important;
   }
 }
+
+/* Page animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-fade-in-left {
+  animation: fade-in-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
 
 /* Nuove animazioni per effetti NFC */
 @keyframes blob {
@@ -393,100 +447,110 @@ a:hover {
   pointer-events: none;
 }
 
-.neon-blue {
-  border: 2px solid rgba(99, 102, 241, 0.6);
+/* Cyan accent - primary brand color */
+.neon-cyan {
+  border: 2px solid rgba(24, 236, 255, 0.6);
   box-shadow: 
-    0 0 20px rgba(99, 102, 241, 0.4),
-    0 0 40px rgba(99, 102, 241, 0.2),
-    0 0 60px rgba(99, 102, 241, 0.1),
-    inset 0 0 20px rgba(99, 102, 241, 0.1);
+    0 0 20px rgba(24, 236, 255, 0.4),
+    0 0 40px rgba(24, 236, 255, 0.2),
+    0 0 60px rgba(24, 236, 255, 0.1),
+    inset 0 0 20px rgba(24, 236, 255, 0.1);
+}
+
+.neon-cyan-soft {
+  border: 1px solid rgba(24, 236, 255, 0.3);
+  box-shadow: 
+    0 0 60px rgba(24, 236, 255, 0.15),
+    0 0 100px rgba(24, 236, 255, 0.1);
+  filter: blur(1px);
+}
+
+.neon-cyan-subtle {
+  border: 1px solid rgba(24, 236, 255, 0.2);
+  box-shadow: 
+    0 0 30px rgba(24, 236, 255, 0.1),
+    0 0 50px rgba(24, 236, 255, 0.05);
+}
+
+.neon-blue {
+  border: 2px solid rgba(24, 236, 255, 0.6);
+  box-shadow: 
+    0 0 20px rgba(24, 236, 255, 0.4),
+    0 0 40px rgba(24, 236, 255, 0.2),
+    0 0 60px rgba(24, 236, 255, 0.1),
+    inset 0 0 20px rgba(24, 236, 255, 0.1);
 }
 
 .neon-blue-soft {
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  border: 1px solid rgba(24, 236, 255, 0.3);
   box-shadow: 
-    0 0 60px rgba(99, 102, 241, 0.15),
-    0 0 100px rgba(99, 102, 241, 0.1);
+    0 0 60px rgba(24, 236, 255, 0.15),
+    0 0 100px rgba(24, 236, 255, 0.1);
   filter: blur(1px);
 }
 
 .neon-blue-subtle {
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(24, 236, 255, 0.2);
   box-shadow: 
-    0 0 30px rgba(99, 102, 241, 0.1),
-    0 0 50px rgba(99, 102, 241, 0.05);
+    0 0 30px rgba(24, 236, 255, 0.1),
+    0 0 50px rgba(24, 236, 255, 0.05);
 }
 
 .neon-orange {
-  border: 2px solid rgba(251, 146, 60, 0.6);
+  border: 2px solid rgba(24, 236, 255, 0.5);
   box-shadow: 
-    0 0 20px rgba(251, 146, 60, 0.4),
-    0 0 40px rgba(251, 146, 60, 0.2),
-    0 0 60px rgba(251, 146, 60, 0.1),
-    inset 0 0 20px rgba(251, 146, 60, 0.1);
+    0 0 20px rgba(24, 236, 255, 0.3),
+    0 0 40px rgba(24, 236, 255, 0.15);
 }
 
 .neon-orange-soft {
-  border: 1px solid rgba(251, 146, 60, 0.3);
+  border: 1px solid rgba(24, 236, 255, 0.25);
   box-shadow: 
-    0 0 60px rgba(251, 146, 60, 0.15),
-    0 0 100px rgba(251, 146, 60, 0.1);
+    0 0 60px rgba(24, 236, 255, 0.12),
+    0 0 100px rgba(24, 236, 255, 0.08);
   filter: blur(1px);
 }
 
 .neon-orange-subtle {
-  border: 1px solid rgba(251, 146, 60, 0.2);
+  border: 1px solid rgba(24, 236, 255, 0.15);
   box-shadow: 
-    0 0 30px rgba(251, 146, 60, 0.1),
-    0 0 50px rgba(251, 146, 60, 0.05);
+    0 0 30px rgba(24, 236, 255, 0.08),
+    0 0 50px rgba(24, 236, 255, 0.04);
 }
 
 .neon-purple {
-  border: 2px solid rgba(168, 85, 247, 0.6);
+  border: 2px solid rgba(24, 236, 255, 0.4);
   box-shadow: 
-    0 0 20px rgba(168, 85, 247, 0.4),
-    0 0 40px rgba(168, 85, 247, 0.2),
-    0 0 60px rgba(168, 85, 247, 0.1),
-    inset 0 0 20px rgba(168, 85, 247, 0.1);
+    0 0 20px rgba(24, 236, 255, 0.25),
+    0 0 40px rgba(24, 236, 255, 0.12);
 }
 
 .neon-purple-soft {
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  border: 1px solid rgba(24, 236, 255, 0.2);
   box-shadow: 
-    0 0 60px rgba(168, 85, 247, 0.15),
-    0 0 100px rgba(168, 85, 247, 0.1);
+    0 0 60px rgba(24, 236, 255, 0.1),
+    0 0 100px rgba(24, 236, 255, 0.06);
   filter: blur(1px);
 }
 
-/* Neon ring for cards/elements - matching circle style */
-.neon-ring-blue {
-  border-color: rgba(99, 102, 241, 0.5) !important;
-  box-shadow: 
-    0 0 0 1px rgba(99, 102, 241, 0.4),
-    0 0 15px rgba(99, 102, 241, 0.3),
-    0 0 30px rgba(99, 102, 241, 0.2),
-    0 0 45px rgba(99, 102, 241, 0.1),
-    inset 0 0 20px rgba(99, 102, 241, 0.05);
-}
-
+/* Neon ring for cards/elements - cyan primary */
+.neon-ring-blue,
 .neon-ring-orange {
-  border-color: rgba(251, 146, 60, 0.5) !important;
+  border-color: rgba(24, 236, 255, 0.5) !important;
   box-shadow: 
-    0 0 0 1px rgba(251, 146, 60, 0.4),
-    0 0 15px rgba(251, 146, 60, 0.3),
-    0 0 30px rgba(251, 146, 60, 0.2),
-    0 0 45px rgba(251, 146, 60, 0.1),
-    inset 0 0 20px rgba(251, 146, 60, 0.05);
+    0 0 0 1px rgba(24, 236, 255, 0.4),
+    0 0 15px rgba(24, 236, 255, 0.3),
+    0 0 30px rgba(24, 236, 255, 0.2),
+    0 0 45px rgba(24, 236, 255, 0.1),
+    inset 0 0 20px rgba(24, 236, 255, 0.05);
 }
 
 .neon-ring-purple {
-  border-color: rgba(168, 85, 247, 0.5) !important;
+  border-color: rgba(24, 236, 255, 0.4) !important;
   box-shadow: 
-    0 0 0 1px rgba(168, 85, 247, 0.4),
-    0 0 15px rgba(168, 85, 247, 0.3),
-    0 0 30px rgba(168, 85, 247, 0.2),
-    0 0 45px rgba(168, 85, 247, 0.1),
-    inset 0 0 20px rgba(168, 85, 247, 0.05);
+    0 0 0 1px rgba(24, 236, 255, 0.3),
+    0 0 15px rgba(24, 236, 255, 0.2),
+    0 0 30px rgba(24, 236, 255, 0.15);
 }
 
 .neon-ring-green {
@@ -499,63 +563,29 @@ a:hover {
     inset 0 0 20px rgba(34, 197, 94, 0.05);
 }
 
-/* Neon card styles - full effect */
-.neon-card-blue {
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
-  box-shadow: 
-    0 0 20px rgba(99, 102, 241, 0.15),
-    0 0 40px rgba(99, 102, 241, 0.08),
-    inset 0 0 30px rgba(99, 102, 241, 0.03);
-}
-
-.neon-card-orange {
-  border: 1px solid rgba(251, 146, 60, 0.3);
-  background: linear-gradient(135deg, rgba(251, 146, 60, 0.05) 0%, transparent 50%);
-  box-shadow: 
-    0 0 20px rgba(251, 146, 60, 0.15),
-    0 0 40px rgba(251, 146, 60, 0.08),
-    inset 0 0 30px rgba(251, 146, 60, 0.03);
-}
-
+/* Neon card styles - cyan primary */
+.neon-card-blue,
+.neon-card-orange,
 .neon-card-purple {
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+  border: 1px solid rgba(24, 236, 255, 0.25);
+  background: linear-gradient(135deg, rgba(24, 236, 255, 0.04) 0%, transparent 50%);
   box-shadow: 
-    0 0 20px rgba(168, 85, 247, 0.15),
-    0 0 40px rgba(168, 85, 247, 0.08),
-    inset 0 0 30px rgba(168, 85, 247, 0.03);
+    0 0 20px rgba(24, 236, 255, 0.1),
+    0 0 40px rgba(24, 236, 255, 0.05),
+    inset 0 0 30px rgba(24, 236, 255, 0.02);
 }
 
-/* Hover neon effects */
-.hover\:neon-glow-blue:hover {
-  border-color: rgba(99, 102, 241, 0.5) !important;
-  box-shadow: 
-    0 0 0 1px rgba(99, 102, 241, 0.4),
-    0 0 20px rgba(99, 102, 241, 0.4),
-    0 0 40px rgba(99, 102, 241, 0.25),
-    0 0 60px rgba(99, 102, 241, 0.15),
-    inset 0 0 25px rgba(99, 102, 241, 0.08);
-}
-
-.hover\:neon-glow-orange:hover {
-  border-color: rgba(251, 146, 60, 0.5) !important;
-  box-shadow: 
-    0 0 0 1px rgba(251, 146, 60, 0.4),
-    0 0 20px rgba(251, 146, 60, 0.4),
-    0 0 40px rgba(251, 146, 60, 0.25),
-    0 0 60px rgba(251, 146, 60, 0.15),
-    inset 0 0 25px rgba(251, 146, 60, 0.08);
-}
-
+/* Hover neon effects - cyan */
+.hover\:neon-glow-blue:hover,
+.hover\:neon-glow-orange:hover,
 .hover\:neon-glow-purple:hover {
-  border-color: rgba(168, 85, 247, 0.5) !important;
+  border-color: rgba(24, 236, 255, 0.5) !important;
   box-shadow: 
-    0 0 0 1px rgba(168, 85, 247, 0.4),
-    0 0 20px rgba(168, 85, 247, 0.4),
-    0 0 40px rgba(168, 85, 247, 0.25),
-    0 0 60px rgba(168, 85, 247, 0.15),
-    inset 0 0 25px rgba(168, 85, 247, 0.08);
+    0 0 0 1px rgba(24, 236, 255, 0.4),
+    0 0 20px rgba(24, 236, 255, 0.35),
+    0 0 40px rgba(24, 236, 255, 0.2),
+    0 0 60px rgba(24, 236, 255, 0.12),
+    inset 0 0 25px rgba(24, 236, 255, 0.06);
 }
 
 .hover\:neon-glow-green:hover {
@@ -568,59 +598,33 @@ a:hover {
     inset 0 0 25px rgba(34, 197, 94, 0.08);
 }
 
-/* Neon text glow */
-.neon-text-blue {
-  text-shadow: 
-    0 0 10px rgba(99, 102, 241, 0.5),
-    0 0 20px rgba(99, 102, 241, 0.3),
-    0 0 30px rgba(99, 102, 241, 0.2);
-}
-
-.neon-text-orange {
-  text-shadow: 
-    0 0 10px rgba(251, 146, 60, 0.5),
-    0 0 20px rgba(251, 146, 60, 0.3),
-    0 0 30px rgba(251, 146, 60, 0.2);
-}
-
+/* Neon text glow - cyan */
+.neon-text-blue,
+.neon-text-orange,
 .neon-text-purple {
   text-shadow: 
-    0 0 10px rgba(168, 85, 247, 0.5),
-    0 0 20px rgba(168, 85, 247, 0.3),
-    0 0 30px rgba(168, 85, 247, 0.2);
+    0 0 10px rgba(24, 236, 255, 0.5),
+    0 0 20px rgba(24, 236, 255, 0.3),
+    0 0 30px rgba(24, 236, 255, 0.2);
 }
 
-/* Neon button styles */
-.neon-btn-blue {
-  border: 1px solid rgba(99, 102, 241, 0.5);
-  box-shadow: 
-    0 0 10px rgba(99, 102, 241, 0.2),
-    0 0 20px rgba(99, 102, 241, 0.1),
-    inset 0 0 15px rgba(99, 102, 241, 0.05);
-}
-
-.neon-btn-blue:hover {
-  box-shadow: 
-    0 0 15px rgba(99, 102, 241, 0.4),
-    0 0 30px rgba(99, 102, 241, 0.25),
-    0 0 45px rgba(99, 102, 241, 0.15),
-    inset 0 0 20px rgba(99, 102, 241, 0.1);
-}
-
+/* Neon button styles - cyan */
+.neon-btn-blue,
 .neon-btn-orange {
-  border: 1px solid rgba(251, 146, 60, 0.5);
+  border: 1px solid rgba(24, 236, 255, 0.5);
   box-shadow: 
-    0 0 10px rgba(251, 146, 60, 0.2),
-    0 0 20px rgba(251, 146, 60, 0.1),
-    inset 0 0 15px rgba(251, 146, 60, 0.05);
+    0 0 10px rgba(24, 236, 255, 0.2),
+    0 0 20px rgba(24, 236, 255, 0.1),
+    inset 0 0 15px rgba(24, 236, 255, 0.05);
 }
 
+.neon-btn-blue:hover,
 .neon-btn-orange:hover {
   box-shadow: 
-    0 0 15px rgba(251, 146, 60, 0.4),
-    0 0 30px rgba(251, 146, 60, 0.25),
-    0 0 45px rgba(251, 146, 60, 0.15),
-    inset 0 0 20px rgba(251, 146, 60, 0.1);
+    0 0 15px rgba(24, 236, 255, 0.4),
+    0 0 30px rgba(24, 236, 255, 0.25),
+    0 0 45px rgba(24, 236, 255, 0.15),
+    inset 0 0 20px rgba(24, 236, 255, 0.1);
 }
 
 /* Neon Animations */
@@ -692,13 +696,13 @@ a:hover {
 @keyframes neon-breathe {
   0%, 100% {
     box-shadow: 
-      0 0 20px rgba(99, 102, 241, 0.4),
-      0 0 40px rgba(99, 102, 241, 0.2);
+      0 0 20px rgba(24, 236, 255, 0.4),
+      0 0 40px rgba(24, 236, 255, 0.2);
   }
   50% {
     box-shadow: 
-      0 0 30px rgba(99, 102, 241, 0.6),
-      0 0 60px rgba(99, 102, 241, 0.3);
+      0 0 30px rgba(24, 236, 255, 0.6),
+      0 0 60px rgba(24, 236, 255, 0.3);
   }
 }
 

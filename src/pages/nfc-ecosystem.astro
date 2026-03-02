@@ -1,37 +1,47 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import NeonCircles from '../components/NeonCircles.astro';
 ---
 
 <Layout 
-  title="Tessere NFC Professionali | Biglietti da Visita Smart per Bar, Ristoranti, Professionisti | Bitora"
-  description="Tessere NFC programmate su misura per professionisti, bar, ristoranti e locali. Perfette per raccogliere recensioni, condividere contatti e link al sito. Grafica in pellicola intercambiabile. Molto richieste in Piemonte."
+  title="Tessere NFC | Biglietti da Visita Smart per Bar, Ristoranti, Professionisti | Bitora"
+  description="Tessere NFC programmate su misura: recensioni Google, contatti, menu digitali. Per bar, ristoranti, professionisti. Pellicola intercambiabile. Molto richieste in Piemonte."
 >
-  <main class="bg-black text-white overflow-x-hidden selection:bg-orange-500 selection:text-white">
+  <main class="bg-black text-white overflow-x-hidden selection:bg-primary/20 selection:text-white">
     
-    <!-- Hero Section -->
-    <section class="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-900/20 via-black to-black opacity-50"></div>
-      <NeonCircles variant="hero" colors={['orange', 'blue']} />
+    <!-- Hero -->
+    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-black via-black to-black/95"></div>
+      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-primary/10 blur-[100px] opacity-50"></div>
       
-      <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
-        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-widest text-orange-400 backdrop-blur-md">
-          <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
-          Molto richieste in Piemonte
-        </div>
-        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
-          Tessere NFC<br />
-          <span class="text-orange-400">Smart.</span>
+      <div class="relative z-10 max-w-4xl">
+        <p class="text-sm font-medium tracking-widest text-primary uppercase mb-4">Tessere NFC</p>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+          Biglietti da visita<br />
+          <span class="text-primary">intelligenti.</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-          Biglietti da visita intelligenti programmati da noi per professionisti, bar, ristoranti e locali. 
-          <strong class="text-white">Basta un tocco per condividere tutto.</strong>
+        <p class="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mb-8">
+          Un tap per condividere tutto: recensioni Google, contatti, menu digitali, sito web. <strong class="text-white">Pellicola intercambiabile</strong>, programmazione inclusa, aggiornamenti gratuiti.
         </p>
-        <div class="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+        <div class="flex flex-wrap gap-6 text-sm text-gray-400 mb-8">
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            1 Tap
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Aggiornamenti illimitati
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Nessun abbonamento
+          </span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contattaci?topic=nfc" class="btn-primary group min-w-[200px] flex items-center justify-center gap-2">
             Richiedi informazioni
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="#come-funziona" class="min-w-[200px] px-8 py-4 bg-white/10 text-white backdrop-blur-md rounded-full font-medium text-lg transition-all hover:bg-white/20 hover:scale-105">
+          <a href="#come-funziona" class="btn-secondary min-w-[200px] flex items-center justify-center gap-2">
             Come funziona
           </a>
         </div>
@@ -39,205 +49,89 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- Stats -->
-    <div class="border-y border-white/5 bg-white/[0.02] py-12">
-      <div class="max-w-7xl mx-auto px-6">
+    <section class="py-16 md:py-20 px-6 md:px-12 lg:px-20 border-y border-white/5 bg-white/[0.02]">
+      <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-3 gap-8 text-center">
-          <div class="reveal-on-scroll">
-            <p class="text-4xl md:text-5xl font-bold text-white mb-2">1 Tap</p>
-            <p class="text-sm text-gray-500 uppercase tracking-widest">Per condividere tutto</p>
-          </div>
-          <div class="reveal-on-scroll" style="transition-delay: 100ms">
-            <p class="text-4xl md:text-5xl font-bold text-white mb-2">∞</p>
-            <p class="text-sm text-gray-500 uppercase tracking-widest">Aggiornamenti gratuiti</p>
-          </div>
-          <div class="reveal-on-scroll" style="transition-delay: 200ms">
-            <p class="text-4xl md:text-5xl font-bold text-white mb-2">Pellicola</p>
-            <p class="text-sm text-gray-500 uppercase tracking-widest">Grafica intercambiabile</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- How it works -->
-    <section id="come-funziona" class="py-32 px-6 md:px-12 relative overflow-hidden">
-      <!-- Section Neon Accents -->
-      <div class="absolute inset-0 pointer-events-none opacity-30">
-        <div class="neon-circle neon-orange-soft w-[400px] h-[400px] -top-[150px] -left-[150px] animate-neon-float-slow"></div>
-        <div class="neon-circle neon-purple-soft w-[350px] h-[350px] top-[40%] -right-[120px] animate-neon-float-reverse" style="animation-delay: -3s;"></div>
-        <div class="neon-circle neon-blue-subtle w-[300px] h-[300px] -bottom-[100px] left-[30%] animate-neon-pulse-glow" style="animation-delay: -5s;"></div>
-      </div>
-      <div class="max-w-7xl mx-auto relative z-10">
-        <div class="text-center mb-24 reveal-on-scroll">
-          <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Come funziona.</h2>
-          <p class="text-xl text-gray-400 font-light">Tessere NFC programmate da noi, pronte all'uso.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          <!-- Level 1 -->
-          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:neon-glow-orange transition-all duration-500">
-            <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <span class="text-3xl">💳</span>
+          {[
+            { value: '1 Tap', label: 'Per condividere tutto' },
+            { value: '∞', label: 'Aggiornamenti gratuiti' },
+            { value: 'Pellicola', label: 'Grafica intercambiabile' }
+          ].map((stat, i) => (
+            <div class="reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
+              <p class="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</p>
+              <p class="text-sm text-gray-500 uppercase tracking-wider">{stat.label}</p>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-4">1. Tessera Personalizzata</h3>
-            <p class="text-gray-400 leading-relaxed mb-6">
-              Grafica professionale in pellicola adesiva intercambiabile. Puoi cambiare look senza cambiare tessera.
-            </p>
-            <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
-                Materiale resistente PVC
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
-                Pellicola intercambiabile
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
-                QR di backup incluso
-              </li>
-            </ul>
-          </div>
-
-          <!-- Level 2 -->
-          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:neon-glow-purple transition-all duration-500" style="transition-delay: 100ms">
-            <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <span class="text-3xl">📱</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-4">2. Programmazione Bitora</h3>
-            <p class="text-gray-400 leading-relaxed mb-6">
-              Noi ci occupiamo di tutto: programmiamo il chip NFC con i tuoi link, contatti o pagina recensioni.
-            </p>
-            <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
-                Link a Google Recensioni
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
-                Sito web o landing page
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
-                Contatti e social
-              </li>
-            </ul>
-          </div>
-
-          <!-- Level 3 -->
-          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-green-500/50 transition-colors duration-500" style="transition-delay: 200ms">
-            <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <span class="text-3xl">⭐</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-4">3. Usa e Aggiorna</h3>
-            <p class="text-gray-400 leading-relaxed mb-6">
-              Consegna ai clienti, esponi in locale. Aggiornamenti gratuiti quando vuoi cambiare destinazione.
-            </p>
-            <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                Aggiornamenti illimitati
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                Supporto Bitora incluso
-              </li>
-              <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                Nessun abbonamento
-              </li>
-            </ul>
-          </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- Examples -->
-    <section id="esempi" class="py-32 px-6 bg-zinc-900/30">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-24 reveal-on-scroll">
-          <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Per chi sono perfette.</h2>
-          <p class="text-xl text-gray-400 font-light">Le tessere NFC stanno avendo molto successo in questi settori.</p>
+    <!-- Come funziona -->
+    <section id="come-funziona" class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <p class="text-sm font-medium tracking-widest text-primary uppercase mb-4">Come funziona</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">Tessere NFC programmate da noi, pronte all'uso</h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            { icon: '💳', title: '1. Tessera Personalizzata', desc: 'Grafica professionale in pellicola adesiva intercambiabile. Cambi look senza cambiare tessera.', features: ['PVC resistente', 'Pellicola intercambiabile', 'QR di backup'] },
+            { icon: '📱', title: '2. Programmazione Bitora', desc: 'Ci occupiamo di tutto: programmiamo il chip NFC con i tuoi link, contatti o pagina recensioni.', features: ['Link Google Recensioni', 'Sito web o landing', 'Contatti e social'] },
+            { icon: '⭐', title: '3. Usa e Aggiorna', desc: 'Consegna ai clienti, esponi in locale. Aggiornamenti gratuiti quando vuoi cambiare destinazione.', features: ['Aggiornamenti illimitati', 'Supporto incluso', 'Nessun abbonamento'] }
+          ].map((item, i) => (
+            <div class="p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-primary/40 transition-all reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
+              <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-3xl">{item.icon}</div>
+              <h3 class="text-xl font-bold text-white mb-4">{item.title}</h3>
+              <p class="text-gray-400 mb-6">{item.desc}</p>
+              <ul class="space-y-2">
+                {item.features.map(f => (
+                  <li class="flex items-center gap-2 text-sm text-gray-400">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Per chi -->
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-white/[0.02] border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <p class="text-sm font-medium tracking-widest text-primary uppercase mb-4">Per chi sono perfette</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">Settori in cui abbiamo più successo</h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            { icon: '🍕', title: 'Ristoranti & Pizzerie', desc: 'Raccogli recensioni Google. Consegnale con lo scontrino o esponile sui tavoli: un tap e il cliente lascia la recensione.', badge: 'Ristorazione' },
+            { icon: '🍸', title: 'Bar & Locali', desc: 'Menu digitali, eventi e promozioni. I clienti scansionano e vedono subito le novità del locale.', badge: 'Bar & Locali' },
+            { icon: '💼', title: 'Professionisti', desc: 'Biglietto da visita del futuro. Un tap e il cliente salva contatti, visita il sito e prenota un appuntamento.', badge: 'Professionisti' }
+          ].map((item, i) => (
+            <div class="p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-primary/40 transition-all reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
+              <span class="text-xs font-medium text-primary uppercase tracking-wider">{item.badge}</span>
+              <div class="text-3xl my-4">{item.icon}</div>
+              <h3 class="text-xl font-bold text-white mb-4">{item.title}</h3>
+              <p class="text-gray-400 leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Ristoranti -->
-          <div class="group relative overflow-hidden rounded-3xl reveal-on-scroll">
-            <div class="absolute inset-0 bg-gradient-to-br from-orange-600 to-red-600 opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
-            <div class="relative p-8 h-full flex flex-col min-h-[300px]">
-              <div class="mb-6">
-                <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-medium text-white uppercase tracking-wider">🍕 Ristorazione</span>
-              </div>
-              <h3 class="text-2xl font-bold text-white mb-4">Ristoranti & Pizzerie</h3>
-              <p class="text-white/80 mb-6 leading-relaxed flex-grow">
-                Tessere per raccogliere recensioni Google. Consegnale con lo scontrino o esponile sui tavoli: un tap e il cliente lascia la recensione.
-              </p>
-              <ul class="space-y-2 text-white/70 text-sm">
-                <li>✓ Link diretto a Google Recensioni</li>
-                <li>✓ Aumenta le recensioni positive</li>
-                <li>✓ Migliora la reputazione online</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Bar e Locali -->
-          <div class="group relative overflow-hidden rounded-3xl reveal-on-scroll" style="transition-delay: 100ms">
-            <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-600 opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
-            <div class="relative p-8 h-full flex flex-col min-h-[300px]">
-              <div class="mb-6">
-                <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-medium text-white uppercase tracking-wider">🍸 Bar & Locali</span>
-              </div>
-              <h3 class="text-2xl font-bold text-white mb-4">Bar & Cocktail Bar</h3>
-              <p class="text-white/80 mb-6 leading-relaxed flex-grow">
-                Perfette per condividere menu digitali, eventi e promozioni. I clienti scansionano e vedono subito le novità del locale.
-              </p>
-              <ul class="space-y-2 text-white/70 text-sm">
-                <li>✓ Menu digitale sempre aggiornato</li>
-                <li>✓ Promozioni e eventi</li>
-                <li>✓ Social media e contatti</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Professionisti -->
-          <div class="group relative overflow-hidden rounded-3xl reveal-on-scroll" style="transition-delay: 200ms">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-600 opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
-            <div class="relative p-8 h-full flex flex-col min-h-[300px]">
-              <div class="mb-6">
-                <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-medium text-white uppercase tracking-wider">💼 Professionisti</span>
-              </div>
-              <h3 class="text-2xl font-bold text-white mb-4">Liberi Professionisti</h3>
-              <p class="text-white/80 mb-6 leading-relaxed flex-grow">
-                Biglietto da visita del futuro. Un tap e il cliente salva i tuoi contatti, visita il sito e prenota un appuntamento.
-              </p>
-              <ul class="space-y-2 text-white/70 text-sm">
-                <li>✓ Contatti salvati automaticamente</li>
-                <li>✓ Link al sito professionale</li>
-                <li>✓ Prenotazione appuntamenti</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Testimonial -->
-        <div class="mt-16 p-8 rounded-3xl bg-zinc-900 border border-white/10 text-center reveal-on-scroll">
+        <div class="mt-16 p-8 rounded-2xl bg-white/[0.03] border border-white/10 text-center reveal-on-scroll">
           <p class="text-xl text-gray-300 italic mb-4">"Le tessere NFC per le recensioni hanno aumentato del 300% i feedback su Google. I clienti le adorano, è questione di un secondo."</p>
-          <p class="text-orange-400 font-medium">— Titolare pizzeria, Carmagnola</p>
+          <p class="text-primary font-medium">— Titolare pizzeria, Carmagnola</p>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-40 px-6 text-center">
-      <div class="max-w-4xl mx-auto reveal-on-scroll">
-        <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Pronto per la tua tessera?</h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-          Contattaci per ricevere informazioni e un preventivo personalizzato. Ogni progetto è chiavi in mano.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-            Richiedi informazioni
-          </a>
-          <a href="https://wa.me/393514979670" class="min-w-[200px] px-8 py-4 bg-green-600 text-white rounded-full font-medium text-lg transition-all hover:bg-green-500 hover:scale-105 flex items-center justify-center gap-2">
+    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pronto per la tua tessera NFC?</h2>
+        <p class="text-gray-400 mb-8">Contattaci per informazioni e un preventivo personalizzato. Ogni progetto è chiavi in mano.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contattaci?topic=nfc" class="btn-primary inline-flex items-center justify-center gap-2 min-w-[200px]">Richiedi informazioni</a>
+          <a href="https://wa.me/393514979670?text=Ciao,%20vorrei%20informazioni%20sulle%20tessere%20NFC." class="btn-secondary inline-flex items-center justify-center gap-2 min-w-[200px]">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
           </a>
@@ -249,51 +143,13 @@ import NeonCircles from '../components/NeonCircles.astro';
 </Layout>
 
 <style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 </style>
 
 <script>
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-    elements.forEach(el => observer.observe(el));
-  });
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
+  document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el)));
 </script>

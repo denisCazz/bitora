@@ -7,11 +7,11 @@ import NeonCircles from '../components/NeonCircles.astro';
   title="Come Lavoriamo | Progetti Chiavi in Mano | Web Agency Carmagnola | Bitora"
   description="Bitora realizza progetti digitali chiavi in mano per aziende in Piemonte. Siti web, e-commerce, tessere NFC: ogni preventivo è personalizzato sulle tue esigenze. Supporto incluso."
 >
-  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+  <main class="bg-black text-white overflow-x-hidden selection:bg-primary-500 selection:text-white">
     
     <!-- Hero Section -->
     <section class="relative min-h-[70vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-900/20 via-black to-black opacity-50"></div>
       <NeonCircles variant="hero" colors={['blue', 'orange']} />
       
       <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
@@ -47,7 +47,7 @@ import NeonCircles from '../components/NeonCircles.astro';
 
         <div class="grid md:grid-cols-3 gap-8">
           <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll">
-            <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6">
+            <div class="w-14 h-14 bg-primary-500/20 rounded-2xl flex items-center justify-center mb-6">
               <span class="text-2xl">🎯</span>
             </div>
             <h3 class="text-xl font-bold text-white mb-4">Analisi reale</h3>
@@ -98,7 +98,7 @@ import NeonCircles from '../components/NeonCircles.astro';
             { icon: '📧', title: 'Automazioni', desc: 'Email marketing, WhatsApp Business, CRM e flussi automatici.' },
             { icon: '🎓', title: 'Formazione', desc: 'Ti insegniamo a gestire i tuoi strumenti digitali in autonomia.' }
           ].map((item, i) => (
-            <div class="p-6 rounded-2xl bg-black border border-white/10 hover:border-indigo-500/30 transition-all reveal-on-scroll" style={`transition-delay: ${i * 50}ms`}>
+            <div class="p-6 rounded-2xl bg-black border border-white/10 hover:border-primary-500/30 transition-all reveal-on-scroll" style={`transition-delay: ${i * 50}ms`}>
               <span class="text-3xl mb-4 block">{item.icon}</span>
               <h3 class="text-lg font-bold text-white mb-2">{item.title}</h3>
               <p class="text-gray-400 text-sm">{item.desc}</p>
@@ -124,7 +124,7 @@ import NeonCircles from '../components/NeonCircles.astro';
             { step: "04", title: 'Supporto continuo', description: 'Assistenza post-lancio, aggiornamenti e consulenza sempre disponibili.' }
           ].map((item, index) => (
             <div class="group text-center reveal-on-scroll" style={`transition-delay: ${index * 100}ms`}>
-              <span class="text-6xl font-bold text-indigo-500/20 group-hover:text-indigo-500/40 transition-colors">{item.step}</span>
+              <span class="text-6xl font-bold text-primary-500/20 group-hover:text-primary-500/40 transition-colors">{item.step}</span>
               <h3 class="text-xl font-bold text-white mt-4 mb-4">{item.title}</h3>
               <p class="text-gray-400 leading-relaxed text-sm">{item.description}</p>
             </div>
@@ -141,7 +141,7 @@ import NeonCircles from '../components/NeonCircles.astro';
               <h2 class="text-3xl font-bold text-white mb-2">Cosa include ogni progetto Bitora</h2>
               <p class="text-gray-400">Il valore di una partnership completa, non solo un fornitore.</p>
             </div>
-            <a href="/contattaci" class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors font-medium whitespace-nowrap">
+            <a href="/contattaci" class="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors font-medium whitespace-nowrap">
               Parla con noi 
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </a>
@@ -190,8 +190,8 @@ import NeonCircles from '../components/NeonCircles.astro';
           ].map((faq, index) => (
             <div class="group rounded-2xl bg-zinc-900 border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/20">
               <button class="faq-trigger flex w-full items-center justify-between p-6 text-left focus:outline-none" data-target={`faq-${index}`}>
-                <span class="font-medium text-white group-hover:text-indigo-400 transition-colors">{faq.question}</span>
-                <span class="faq-icon text-indigo-500 text-xl transition-transform duration-300">+</span>
+                <span class="font-medium text-white group-hover:text-primary-400 transition-colors">{faq.question}</span>
+                <span class="faq-icon text-primary-500 text-xl transition-transform duration-300">+</span>
               </button>
               <div id={`faq-${index}`} class="faq-content hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
                 <p>{faq.answer}</p>

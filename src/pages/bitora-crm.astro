@@ -1,37 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import NeonCircles from '../components/NeonCircles.astro';
 ---
 
 <Layout
   title="Bitora CRM: clienti, lead ed email integrate | Piemonte"
   description="Web app CRM professionale (Next.js + Supabase) per PMI, freelance e agenzie: gestione clienti ordinata, email integrate, licenze per utente, export CSV, SMTP personalizzato e API lead."
 >
-  <main class="bg-black text-white overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+  <main class="bg-black text-white overflow-x-hidden selection:bg-primary/20 selection:text-white">
     
-    <!-- Hero Section -->
-    <section class="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
-      <NeonCircles variant="hero" colors={['blue', 'purple']} />
+    <!-- Hero - stesso stile home/sistemi -->
+    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-black via-black to-black/95"></div>
+      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-primary/10 blur-[100px] opacity-50"></div>
       
-      <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
-        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-widest text-indigo-400 backdrop-blur-md">
-          Bitora CRM
-        </div>
-        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+      <div class="relative z-10 max-w-4xl">
+        <p class="text-sm font-medium tracking-widest text-primary uppercase mb-4">Gestionali & CRM</p>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
           Clienti, lead ed email.<br />
-          Sotto controllo.
+          <span class="text-primary">Sotto controllo.</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
-          Bitora CRM è una web app professionale sviluppata in Next.js + Supabase per PMI, freelance e agenzie.
-          <br class="hidden md:block" />
-          Gestisci clienti e lead in modo ordinato, invia email dal CRM e mantieni controllo completo su accessi, licenze e dati.
+        <p class="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mb-8">
+          Bitora CRM è una web app professionale per PMI, freelance e agenzie. Gestisci clienti e lead in modo ordinato, invia email dal CRM e mantieni controllo completo su accessi, licenze e dati.
         </p>
-        <div class="pt-8 flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci?topic=crm" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contattaci?topic=crm" class="btn-primary group min-w-[200px] flex items-center justify-center gap-2">
             Richiedi una demo
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="#come-funziona" class="min-w-[200px] px-8 py-4 bg-white/10 text-white backdrop-blur-md rounded-full font-medium text-lg transition-all hover:bg-white/20 hover:scale-105">
+          <a href="#come-funziona" class="btn-secondary min-w-[200px] flex items-center justify-center gap-2">
             Vedi come funziona
           </a>
         </div>
@@ -39,13 +35,8 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- Intro / What it is -->
-    <section id="come-funziona" class="py-32 px-6 md:px-12 border-t border-white/5 relative overflow-hidden">
-      <!-- Section Neon Accents -->
-      <div class="absolute inset-0 pointer-events-none opacity-30">
-        <div class="neon-circle neon-blue-subtle w-[350px] h-[350px] -top-[100px] -left-[100px] animate-neon-float-slow"></div>
-        <div class="neon-circle neon-purple-soft w-[300px] h-[300px] bottom-[10%] -right-[100px] animate-neon-float-reverse" style="animation-delay: -3s;"></div>
-      </div>
-      <div class="max-w-7xl mx-auto relative z-10">
+    <section id="come-funziona" class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-10 items-start">
           <div class="reveal-on-scroll">
             <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Cos'è Bitora CRM</h2>
@@ -55,19 +46,19 @@ import NeonCircles from '../components/NeonCircles.astro';
             </p>
           </div>
 
-          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll hover:neon-glow-blue transition-all duration-500" style="transition-delay: 100ms">
+          <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-10 reveal-on-scroll hover:border-primary/40 transition-all" style="transition-delay: 100ms">
             <h3 class="text-2xl font-bold text-white mb-4">Valore pratico, ogni giorno</h3>
             <ul class="space-y-4 text-gray-300">
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 <span><span class="text-white font-medium">Controllo:</span> dati ordinati, pipeline leggibile, log email e export sempre disponibili.</span>
               </li>
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 <span><span class="text-white font-medium">Semplicità:</span> interfaccia essenziale, campi utili, niente “feature” che complicano il lavoro.</span>
               </li>
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 <span><span class="text-white font-medium">Automazione misurata:</span> tag e provenienza lead, template email e variabili dinamiche, deduplica per email.</span>
               </li>
             </ul>
@@ -77,18 +68,13 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- Features Grid -->
-    <section id="features" class="py-32 px-6 md:px-12 border-t border-white/5 relative overflow-hidden">
-      <!-- Section Neon Accents -->
-      <div class="absolute inset-0 pointer-events-none opacity-25">
-        <div class="neon-circle neon-purple-soft w-[400px] h-[400px] top-[20%] -right-[150px] animate-neon-pulse-glow"></div>
-        <div class="neon-circle neon-blue-subtle w-[300px] h-[300px] bottom-[10%] left-[5%] animate-neon-drift" style="animation-delay: -2s;"></div>
-      </div>
-      <div class="max-w-7xl mx-auto relative z-10">
+    <section id="features" class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Feature 1 -->
-          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:neon-glow-blue transition-all duration-500">
-            <div class="w-12 h-12 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1m8-4a4 4 0 10-8 0 4 4 0 008 0z"></path></svg>
+          <div class="bg-white/[0.03] border border-white/10 p-10 rounded-2xl reveal-on-scroll group hover:border-primary/40 transition-all">
+            <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1m8-4a4 4 0 10-8 0 4 4 0 008 0z"></path></svg>
             </div>
             <h3 class="text-2xl font-bold text-white mb-4">Clienti chiari e ordinati</h3>
             <p class="text-gray-400 leading-relaxed mb-6">
@@ -96,18 +82,18 @@ import NeonCircles from '../components/NeonCircles.astro';
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
               <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
                 Campi completi: contatti, note, tag, stato
               </li>
               <li class="flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
                 Pipeline semplice: nuovo → contattato → convertito → archiviato
               </li>
             </ul>
           </div>
 
           <!-- Feature 2 -->
-          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:neon-glow-purple transition-all duration-500" style="transition-delay: 100ms">
+          <div class="bg-white/[0.03] border border-white/10 p-10 rounded-2xl reveal-on-scroll group hover:border-primary/40 transition-all" style="transition-delay: 100ms">
             <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
               <svg class="w-6 h-6 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
             </div>
@@ -128,7 +114,7 @@ import NeonCircles from '../components/NeonCircles.astro';
           </div>
 
           <!-- Feature 3 -->
-          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-green-500/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)] transition-all duration-500" style="transition-delay: 200ms">
+          <div class="bg-zinc-900 border border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-primary/40 transition-all duration-500" style="transition-delay: 200ms">
             <div class="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
               <svg class="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-3.866 3.134-7 7-7 0 3.866-3.134 7-7 7zm0 0c0 3.866-3.134 7-7 7 0-3.866 3.134-7 7-7zm0 0v10"></path></svg>
             </div>
@@ -152,8 +138,8 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- Detailed Sections -->
-    <section class="py-32 px-6 md:px-12 border-t border-white/5">
-      <div class="max-w-7xl mx-auto">
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
         <div class="text-center mb-20 reveal-on-scroll">
           <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Funzioni, spiegate con chiarezza</h2>
           <p class="text-lg text-gray-400 font-light max-w-3xl mx-auto">
@@ -162,14 +148,14 @@ import NeonCircles from '../components/NeonCircles.astro';
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll">
+          <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-10 reveal-on-scroll hover:border-primary/40 transition-all">
             <h3 class="text-2xl font-bold text-white mb-4">Gestione clienti chiara e ordinata</h3>
             <p class="text-gray-400 leading-relaxed mb-6">
               Crea e aggiorna clienti rapidamente. Tutto ciò che serve è al posto giusto, con una pipeline semplice e leggibile.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Vista tabellare responsive per desktop e tablet</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Stato e tag per trovare subito ciò che conta</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div>Vista tabellare responsive per desktop e tablet</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div>Stato e tag per trovare subito ciò che conta</li>
             </ul>
           </div>
 
@@ -201,8 +187,8 @@ import NeonCircles from '../components/NeonCircles.astro';
               Usi il tuo provider email (Gmail, Aruba, Outlook o server dedicato). Nessun lock-in e credenziali cifrate lato server.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Invii dal tuo dominio e con il tuo stile</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Configurazione pensata per sicurezza e controllo</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div>Invii dal tuo dominio e con il tuo stile</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div>Configurazione pensata per sicurezza e controllo</li>
             </ul>
           </div>
 
@@ -234,8 +220,8 @@ import NeonCircles from '../components/NeonCircles.astro';
               Per chi gestisce più utenti o più account: controllo centralizzato su utenti, licenze e monitoraggio.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Gestione utenti e licenze</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>Monitoraggio e gestione clienti</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div>Gestione utenti e licenze</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div>Monitoraggio e gestione clienti</li>
             </ul>
           </div>
         </div>
@@ -243,7 +229,7 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="py-32 px-6">
+    <section id="pricing" class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-24 reveal-on-scroll">
           <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Licenze per utente, controllo totale</h2>
@@ -252,7 +238,7 @@ import NeonCircles from '../components/NeonCircles.astro';
 
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Plan: Utente -->
-          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll text-center">
+          <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-10 reveal-on-scroll text-center hover:border-primary/40 transition-all">
             <div class="inline-block bg-white/10 text-white/80 px-4 py-1 rounded-full text-sm font-medium mb-8">Piano Utente</div>
 
             <div class="flex items-baseline justify-center gap-2 mb-6">
@@ -266,20 +252,20 @@ import NeonCircles from '../components/NeonCircles.astro';
 
             <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
               <div class="flex items-center gap-3 text-gray-300">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 Email integrate + log invii
               </div>
               <div class="flex items-center gap-3 text-gray-300">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 Export CSV in qualsiasi momento
               </div>
               <div class="flex items-center gap-3 text-gray-300">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 SMTP personalizzato (tuo provider)
               </div>
             </div>
 
-            <a href="/contattaci?plan=crm-user" class="inline-block w-full px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            <a href="/contattaci?plan=crm-user" class="btn-primary inline-block w-full text-center">
               Attiva Piano Utente
             </a>
             <p class="mt-6 text-sm text-gray-500">Trial automatico • Disattivazione quando vuoi</p>
@@ -287,9 +273,9 @@ import NeonCircles from '../components/NeonCircles.astro';
 
           <!-- Plan: Fino a 5 utenti -->
           <div class="relative group reveal-on-scroll">
-            <div class="absolute inset-0 bg-gradient-to-b from-indigo-600 to-purple-600 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
-            <div class="relative bg-zinc-900 border border-white/10 rounded-3xl p-10 text-center">
-              <div class="inline-block bg-indigo-500/20 text-indigo-300 px-4 py-1 rounded-full text-sm font-medium mb-8">Fino a 5 utenti</div>
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/30 to-primary/10 rounded-2xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
+            <div class="relative bg-white/[0.03] border border-white/10 rounded-2xl p-10 text-center hover:border-primary/40 transition-all">
+              <div class="inline-block bg-primary/20 text-primary px-4 py-1 rounded-full text-sm font-medium mb-8">Fino a 5 utenti</div>
 
               <div class="flex items-baseline justify-center gap-2 mb-6">
                 <span class="text-5xl md:text-6xl font-bold text-white">€49,99</span>
@@ -302,20 +288,20 @@ import NeonCircles from '../components/NeonCircles.astro';
 
               <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
                 <div class="flex items-center gap-3 text-gray-300">
-                  <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                   5 accessi inclusi
                 </div>
                 <div class="flex items-center gap-3 text-gray-300">
-                  <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                   Area Admin per utenti e licenze
                 </div>
                 <div class="flex items-center gap-3 text-gray-300">
-                  <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                   API lead + deduplica per email
                 </div>
               </div>
 
-              <a href="/contattaci?plan=crm-5" class="inline-block w-full px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+              <a href="/contattaci?plan=crm-5" class="btn-primary inline-block w-full text-center">
                 Attiva Piano Team
               </a>
               <p class="mt-6 text-sm text-gray-500">Trial automatico • Disattivazione quando vuoi</p>
@@ -323,7 +309,7 @@ import NeonCircles from '../components/NeonCircles.astro';
           </div>
 
           <!-- Plan: Enterprise -->
-          <div class="bg-zinc-900 border border-white/10 rounded-3xl p-10 reveal-on-scroll text-center" style="transition-delay: 100ms">
+          <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-10 reveal-on-scroll text-center hover:border-primary/40 transition-all" style="transition-delay: 100ms">
             <div class="inline-block bg-white/10 text-white/80 px-4 py-1 rounded-full text-sm font-medium mb-8">Enterprise</div>
 
             <div class="flex items-baseline justify-center gap-2 mb-6">
@@ -336,20 +322,20 @@ import NeonCircles from '../components/NeonCircles.astro';
 
             <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
               <div class="flex items-center gap-3 text-gray-300">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 Numero utenti e licenze su misura
               </div>
               <div class="flex items-center gap-3 text-gray-300">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 Integrazioni e flussi dedicati
               </div>
               <div class="flex items-center gap-3 text-gray-300">
-                <svg class="w-5 h-5 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 Supporto e onboarding concordati
               </div>
             </div>
 
-            <a href="/contattaci?topic=crm-enterprise" class="inline-block w-full px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            <a href="/contattaci?topic=crm-enterprise" class="btn-primary inline-block w-full text-center">
               Contattaci
             </a>
             <p class="mt-6 text-sm text-gray-500">Preventivo e tempi in base alle esigenze</p>
@@ -359,7 +345,7 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- FAQ -->
-    <section class="py-32 px-6 border-t border-white/5">
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center">Domande frequenti</h2>
         
@@ -404,18 +390,16 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- CTA -->
-    <section class="py-40 px-6 text-center">
-      <div class="max-w-4xl mx-auto reveal-on-scroll">
-        <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Vuoi vedere Bitora CRM in azione?</h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-          Prenota una demo di 15 minuti. <br />
-          Ti mostriamo come gestire clienti, lead ed email con un flusso pulito e controllabile.
+    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-white/5">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Vuoi vedere Bitora CRM in azione?</h2>
+        <p class="text-gray-400 mb-8">
+          Prenota una demo di 15 minuti. Ti mostriamo come gestire clienti, lead ed email con un flusso pulito e controllabile.
         </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-            Prenota Demo
-          </a>
-        </div>
+        <a href="/contattaci" class="btn-primary inline-flex items-center justify-center gap-2 min-w-[200px]">
+          Prenota Demo
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
       </div>
     </section>
 
