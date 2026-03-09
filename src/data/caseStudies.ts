@@ -77,44 +77,39 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'wine-cafe',
     slug: 'wine-cafe',
-    title: 'Wine Café',
-    subtitle: 'Sito & Menù Digitale',
+    title: 'Bar Wine Café',
+    subtitle: 'Sito in manutenzione',
     category: 'Food & Beverage',
     location: 'Carmagnola (TO)',
     imageUrl: '/wine.png',
-    siteUrl: 'https://winecafe.it',
+    siteUrl: 'https://barwinecafe.it',
     featured: true,
     isWip: false,
     
-    clientDescription: `Il Wine Café è un bar e lounge bar di Carmagnola. Nel gennaio 2024 il locale si è trasferito dal vecchio indirizzo di via Giolitti alla centrale piazza IV Martiri, subentrando allo storico bar Gianduja. Il nuovo Wine Café è gestito da Sandy e dal marito, che offrono aperitivi con taglieri, pinsa romana e pranzi veloci. Le recensioni lo definiscono "miglior locale di Carmagnola" con personale competente e cocktail apprezzati; altri clienti elogiano l'atmosfera, i cocktail e la cordialità dello staff.`,
+    clientDescription: `Bar Wine Café è un locale di Carmagnola con proposta bar e aperitivi. In questa fase il progetto web resta online in forma ridotta, con il dominio presidiato e una comunicazione chiara verso i visitatori.`,
     
-    problema: `Il trasferimento in piazza IV Martiri richiedeva una presenza digitale adeguata. Il Wine Café non disponeva di un sito né di un menù digitale, e le informazioni online erano frammentarie. Inoltre mancava un modo semplice per far lasciare recensioni.`,
+    problema: `Al momento il progetto non è attivo come in precedenza e non ha senso mantenere un sito completo. Serviva quindi una soluzione semplice: tenere il dominio corretto online e comunicare chiaramente che il sito è in manutenzione.`,
     
     soluzione: [
       {
-        titolo: 'Sito e menù digitale',
-        descrizione: 'Bitora ha creato un sito dal design elegante, con pagina di presentazione e menù digitale sempre aggiornato. I visitatori possono consultare piatti, pinsa e cocktail da smartphone.'
+        titolo: 'Pagina di manutenzione',
+        descrizione: 'Il progetto viene gestito con una presenza essenziale che informa subito l\'utente sullo stato attuale del sito.'
       },
       {
-        titolo: 'Preparazione alle recensioni NFC',
-        descrizione: 'È stato previsto l\'uso futuro di tessere NFC da posizionare ai tavoli per facilitare le recensioni e l\'accesso al menù tramite un tap.'
-      },
-      {
-        titolo: 'SEO locale e storytelling',
-        descrizione: 'Il sito mette in risalto la nuova sede e la storia del locale, collegando la tradizione al moderno trasferimento.'
+        titolo: 'Dominio aggiornato e presidiato',
+        descrizione: 'Il riferimento corretto diventa `barwinecafe.it`, così il brand mantiene una presenza ordinata e facilmente recuperabile in futuro.'
       }
     ],
     
     risultati: [
-      'Canale digitale che descrive i servizi e indirizza i clienti verso il nuovo locale',
-      'Menù digitale che semplifica la scelta per i clienti',
-      'Predisposizione alle tessere NFC per raccogliere più recensioni e feedback',
-      'Reputazione online supportata da un sito all\'altezza della qualità del locale'
+      'Comunicazione immediata dello stato di manutenzione',
+      'Dominio corretto mantenuto online',
+      'Presenza digitale pulita, senza contenuti non aggiornati'
     ],
     
-    tecnologie: ['Astro', 'Vercel', 'Menù digitale', 'Integrazione futura NFC', 'SEO locale', 'Copywriting'],
+    tecnologie: ['Astro', 'Vercel', 'Pagina manutenzione', 'Presidio dominio'],
     
-    metricsPreview: ['Menù digitale attivo', 'Nuova sede valorizzata'],
+    metricsPreview: ['Sito in manutenzione', 'Dominio presidiato'],
     
     fonti: [
       { testo: 'Corriere di Carmagnola', url: 'https://corrieredicarmagnola.it' },
@@ -132,16 +127,16 @@ export const caseStudies: CaseStudy[] = [
     imageUrl: '/logo_sergio.png',
     siteUrl: 'https://sergiocontegiacomo.it',
     featured: true,
-    isWip: true,
+    isWip: false,
     
     clientDescription: `Sergio Contegiacomo è un consulente patrimoniale affiliato ad Allianz Bank e opera nel settore dal 1991. Ha iniziato questa professione a 23 anni. Il suo valore aggiunto consiste nell'interessarsi delle persone e delle famiglie oltre che dei loro patrimoni: aiuta i clienti con educazione finanziaria, consulenza previdenziale e pianificazione successoria. Ritiene che "fare la differenza è la vera differenza" e applica i principi del kaizen, miglioramento continuo. Dopo quasi tre decenni di lavoro, afferma di amare la professione e di voler soddisfare i clienti con soluzioni d'investimento adatte.`,
     
-    problema: `Sergio e il figlio necessitavano di un ecosistema digitale moderno: al momento non avevano un sito aggiornato né strumenti per condividere in modo elegante i contatti. La gestione dei social e degli eventi richiedeva un partner affidabile per portare avanti il personal brand.`,
+    problema: `Sergio necessitava di una presenza digitale moderna e coerente con il suo posizionamento professionale. Servivano un sito aggiornato, strumenti per condividere i contatti in modo elegante e una base solida per i contenuti di personal branding.`,
     
     soluzione: [
       {
-        titolo: 'Doppio sito web (padre e figlio)',
-        descrizione: 'Bitora ha progettato due siti coordinati che valorizzano la professionalità di Sergio e introducono al contempo il figlio nel settore. I siti raccontano la loro storia, includono articoli di educazione finanziaria e spiegano i servizi offerti.'
+        titolo: 'Sito personal brand',
+        descrizione: 'Bitora ha progettato un sito che valorizza la storia professionale di Sergio, i suoi servizi e il suo approccio orientato alle persone e alle famiglie.'
       },
       {
         titolo: 'Tessere NFC e biglietti digitali',
@@ -155,16 +150,58 @@ export const caseStudies: CaseStudy[] = [
     
     risultati: [
       'Struttura digitale che permette una presentazione coerente e autorevole',
-      'Siti e tessere NFC che faciliteranno la condivisione di contenuti e contatti',
+      'Sito e tessere NFC che faciliteranno la condivisione di contenuti e contatti',
       'Gestione professionale dei social che rafforzerà la reputazione costruita in oltre trent\'anni'
     ],
     
     tecnologie: ['Astro', 'Vercel', 'Tessere NFC personalizzate', 'Social media management', 'Copywriting'],
     
-    metricsPreview: ['2 Siti coordinati', 'Lancio Q1 2025'],
+    metricsPreview: ['Personal brand online', 'Lancio Q1 2025'],
     
     fonti: [
       { testo: 'Sito ufficiale Sergio Contegiacomo', url: 'https://sergiocontegiacomo.it' }
+    ]
+  },
+  
+  {
+    id: 'simone-contegiacomo',
+    slug: 'simone-contegiacomo',
+    title: 'Simone Contegiacomo',
+    subtitle: 'Personal Brand',
+    category: 'Finance • Consulenza',
+    location: 'Bra (CN)',
+    imageUrl: '/simone.jpg',
+    siteUrl: 'https://simonecontegiacomo.it',
+    featured: true,
+    isWip: true,
+    
+    clientDescription: `Simone Contegiacomo è il figlio di Sergio Contegiacomo e sta costruendo una presenza digitale professionale coordinata ma distinta, pensata per presentarsi online con credibilità fin dal primo contatto.`,
+    
+    problema: `Serviva un sito dedicato che permettesse a Simone di avere uno spazio proprio, separato dal brand del padre ma coerente nel tono, nella qualità percepita e nella struttura di presentazione.`,
+    
+    soluzione: [
+      {
+        titolo: 'Sito personal brand dedicato',
+        descrizione: 'Bitora ha impostato un progetto web dedicato a Simone, con struttura chiara, presentazione professionale e base pronta per evoluzioni future.'
+      },
+      {
+        titolo: 'Immagine coordinata con il progetto di famiglia',
+        descrizione: 'Il sito mantiene coerenza con il contesto professionale della famiglia Contegiacomo, lasciando comunque spazio a un\'identita autonoma.'
+      }
+    ],
+    
+    risultati: [
+      'Presenza digitale dedicata e più riconoscibile',
+      'Separazione chiara tra il profilo di Sergio e quello di Simone',
+      'Base pronta per contenuti, contatti e crescita del personal brand'
+    ],
+    
+    tecnologie: ['Astro', 'Vercel', 'Copywriting', 'Personal branding'],
+    
+    metricsPreview: ['Nuovo progetto', 'In sviluppo'],
+    
+    fonti: [
+      { testo: 'Sito ufficiale Simone Contegiacomo', url: 'https://simonecontegiacomo.it' }
     ]
   },
   
@@ -296,6 +333,48 @@ export const caseStudies: CaseStudy[] = [
       { testo: 'Sito ufficiale Bar Tabacchi Chantilly', url: 'https://bartabacchichantilly.it' }
     ]
   },
+  {
+    id: 'myzone',
+    slug: 'myzone',
+    title: 'MyZone',
+    subtitle: 'Sito Immobiliare',
+    category: 'Immobiliare',
+    location: 'Italia',
+    imageUrl: '/myzone.jpg',
+    siteUrl: 'https://immobiliaremyzone.it',
+    featured: true,
+    isWip: false,
+    
+    clientDescription: `MyZone è un progetto immobiliare pensato per presentare immobili e opportunità in modo chiaro, ordinato e professionale, con una presenza digitale coerente con il settore.`,
+    
+    problema: `Serviva una vetrina online credibile per il progetto MyZone, capace di trasmettere affidabilità, valorizzare il brand e offrire un punto di contatto immediato ai visitatori.`,
+    
+    soluzione: [
+      {
+        titolo: 'Sito vetrina immobiliare',
+        descrizione: 'Bitora ha inserito MyZone nel portfolio come progetto dedicato al settore immobiliare, con impostazione orientata a chiarezza, fiducia e presentazione professionale.'
+      },
+      {
+        titolo: 'Base pronta per evoluzioni future',
+        descrizione: 'La presenza digitale è pronta per essere completata con contenuti, copertine e ulteriori materiali visivi del brand.'
+      }
+    ],
+    
+    risultati: [
+      'Brand MyZone presente online con una base professionale',
+      'Progetto facilmente espandibile con nuovi contenuti',
+      'Identità digitale ordinata e coerente con il settore immobiliare'
+    ],
+    
+    tecnologie: ['Astro', 'Vercel', 'Copywriting', 'Web design'],
+    
+    metricsPreview: ['Nuovo progetto', 'Settore immobiliare'],
+    
+    fonti: [
+      { testo: 'Sito ufficiale MyZone', url: 'https://immobiliaremyzone.it' }
+    ]
+  },
+  
   {
     id: 'barbara-toffano',
     slug: 'barbara-toffano',

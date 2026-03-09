@@ -24,10 +24,10 @@ export const clientLogos: ClientLogo[] = [
     location: 'Carmagnola'
   },
   {
-    name: 'Wine Café',
+    name: 'Bar Wine Café',
     logo: '/wine.png',
     tier: 'gold',
-    url: 'https://winecafe.it',
+    url: 'https://barwinecafe.it',
     location: 'Carmagnola'
   },
   {
