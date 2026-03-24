@@ -6,7 +6,7 @@ const tierOrder: PartnerTier[] = ['premium', 'gold'];
 const tierConfigs = {
   premium: {
     label: 'Premium Partner',
-    badgeClasses: 'bg-primary/10 text-primary dark:bg-orange/20 dark:text-orange',
+    badgeClasses: 'bg-gray-900/10 text-gray-900 dark:bg-white/10 dark:text-white',
     marqueeDuration: '24s'
   },
   gold: {
@@ -62,7 +62,7 @@ const groupedPartners = tierOrder.flatMap(tier => {
                 {duplicated.map(client => (
                   client.url ? (
                     <a
-                      class="group flex h-24 w-44 shrink-0 items-center justify-center rounded-2xl border border-gray-200/60 bg-white/80 px-6 py-4 shadow-sm backdrop-blur-sm transition-transform transition-colors hover:-translate-y-1 hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 dark:border-white/10 dark:bg-white/5 dark:hover:border-orange/50 dark:hover:bg-orange/10"
+                      class="group flex h-24 w-44 shrink-0 items-center justify-center rounded-2xl border border-gray-200/60 bg-white/80 px-6 py-4 shadow-sm backdrop-blur-sm transition-transform transition-colors hover:-translate-y-1 hover:border-gray-400 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-300 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/30 dark:hover:bg-white/10"
                       href={client.url}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -98,7 +98,7 @@ const groupedPartners = tierOrder.flatMap(tier => {
             {partners.map(client => (
               client.url ? (
                 <a
-                  class="group flex h-32 items-center justify-center rounded-3xl border border-gray-200/60 bg-white/80 px-8 py-8 shadow-sm transition-all hover:-translate-y-1.5 hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 dark:border-white/10 dark:bg-white/5 dark:hover:border-orange/50 dark:hover:bg-orange/10"
+                  class="group flex h-32 items-center justify-center rounded-3xl border border-gray-200/60 bg-white/80 px-8 py-8 shadow-sm transition-all hover:-translate-y-1.5 hover:border-gray-400 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-300 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/30 dark:hover:bg-white/10"
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"

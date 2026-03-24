@@ -1,32 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import NeonCircles from '../components/NeonCircles.astro';
+import { testimonials } from '../data/testimonials';
+import { webDesignPlans } from '../data/pricing';
 ---
 
 <Layout
   title="Come Lavoriamo | Progetti Chiavi in Mano | Web Agency Carmagnola | Bitora"
   description="Bitora realizza progetti digitali chiavi in mano per aziende in Piemonte. Siti web, e-commerce, tessere NFC: ogni preventivo è personalizzato sulle tue esigenze. Supporto incluso."
 >
-  <main class="bg-black text-white overflow-x-hidden selection:bg-primary-500 selection:text-white">
+  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     
     <!-- Hero Section -->
     <section class="relative min-h-[70vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-900/20 via-black to-black opacity-50"></div>
-      <NeonCircles variant="hero" colors={['blue', 'orange']} />
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900/20 dark:via-black dark:to-black opacity-50"></div>
       
       <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
-        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+        <h1 class="text-5xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-gray-900/60 dark:from-white dark:to-white/60">
           Progetti<br />chiavi in mano.
         </h1>
-        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
-          Ogni business è unico. Per questo non abbiamo listini fissi: <strong class="text-white">ogni preventivo è costruito sulle tue esigenze reali</strong>, con supporto continuo incluso.
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
+          Ogni business è unico. Per questo non abbiamo listini fissi: <strong class="text-gray-900 dark:text-white">ogni preventivo è costruito sulle tue esigenze reali</strong>, con supporto continuo incluso.
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-          <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
+          <a href="/contattaci" class="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
             Richiedi preventivo gratuito
           </a>
-          <a href="https://wa.me/393514979670" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
+          <a href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20un%20preventivo.%20Ho%20visitato%20bitora.it" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
           </a>
@@ -35,43 +35,43 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- Perché niente listino -->
-    <section class="py-24 px-6 md:px-12 border-t border-white/5">
+    <section class="py-24 px-6 md:px-12 border-t border-gray-200 dark:border-white/5">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Perché non abbiamo un listino prezzi?</h2>
-          <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Perché non abbiamo un listino prezzi?</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Un ristorante non ha le stesse esigenze di uno studio legale. Un negozio locale non ha gli stessi obiettivi di un'azienda B2B. 
-            <strong class="text-white">Il preventivo giusto nasce dall'ascolto.</strong>
+            <strong class="text-gray-900 dark:text-white">Il preventivo giusto nasce dall'ascolto.</strong>
           </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll">
-            <div class="w-14 h-14 bg-primary-500/20 rounded-2xl flex items-center justify-center mb-6">
+          <div class="p-8 rounded-3xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 reveal-on-scroll">
+            <div class="w-14 h-14 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-6">
               <span class="text-2xl">🎯</span>
             </div>
-            <h3 class="text-xl font-bold text-white mb-4">Analisi reale</h3>
-            <p class="text-gray-400 leading-relaxed">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Analisi reale</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
               Prima di tutto ascoltiamo: obiettivi, budget, tempistiche. Solo dopo proponiamo la soluzione più adatta.
             </p>
           </div>
 
-          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll" style="transition-delay: 100ms">
+          <div class="p-8 rounded-3xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 reveal-on-scroll" style="transition-delay: 100ms">
             <div class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6">
               <span class="text-2xl">🔑</span>
             </div>
-            <h3 class="text-xl font-bold text-white mb-4">Chiavi in mano</h3>
-            <p class="text-gray-400 leading-relaxed">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Chiavi in mano</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
               Ogni progetto include tutto: strategia, sviluppo, contenuti, formazione e messa online. Nessun costo nascosto.
             </p>
           </div>
 
-          <div class="p-8 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll" style="transition-delay: 200ms">
-            <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6">
+          <div class="p-8 rounded-3xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 reveal-on-scroll" style="transition-delay: 200ms">
+            <div class="w-14 h-14 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-6">
               <span class="text-2xl">🤝</span>
             </div>
-            <h3 class="text-xl font-bold text-white mb-4">Supporto incluso</h3>
-            <p class="text-gray-400 leading-relaxed">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Supporto incluso</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
               Non ti lasciamo solo dopo il lancio. Assistenza, aggiornamenti e consulenza continuano nel tempo.
             </p>
           </div>
@@ -80,28 +80,55 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- Cosa facciamo -->
-    <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
+    <section class="py-24 px-6 md:px-12 bg-gray-50 dark:bg-zinc-900/30">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">I nostri servizi</h2>
-          <p class="text-xl text-gray-400">Ogni servizio viene quotato in base alle tue specifiche esigenze</p>
+          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">I nostri servizi</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400">Ogni servizio viene quotato in base alle tue specifiche esigenze</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: '🌐', title: 'Siti Web', desc: 'Vetrina, multilingua, portali. Design personalizzato e SEO locale.' },
-            { icon: '🛒', title: 'E-commerce', desc: 'Negozi online con pagamenti, spedizioni e gestionale integrato.' },
-            { icon: '💳', title: 'Tessere NFC', desc: 'Biglietti da visita smart, tessere recensioni, espositori.' },
-            { icon: '📱', title: 'Landing Page', desc: 'Pagine di conversione per campagne pubblicitarie e lead generation.' },
-            { icon: '🎨', title: 'Grafica', desc: 'Logo, immagine coordinata, materiali per social e stampa.' },
-            { icon: '📊', title: 'SEO Locale', desc: 'Ottimizzazione per Google Maps e ricerche nel tuo territorio.' },
-            { icon: '📧', title: 'Automazioni', desc: 'Email marketing, WhatsApp Business, CRM e flussi automatici.' },
-            { icon: '🎓', title: 'Formazione', desc: 'Ti insegniamo a gestire i tuoi strumenti digitali in autonomia.' }
+            { icon: '🌐', title: 'Siti Web', desc: 'Vetrina, multilingua, portali. Design personalizzato e SEO locale.', href: '/siti-web-professionali' },
+            { icon: '🛒', title: 'E-commerce', desc: 'Negozi online con pagamenti, spedizioni e gestionale integrato.', href: '/e-commerce-piemonte' },
+            { icon: '💳', title: 'Tessere NFC', desc: 'Biglietti da visita smart, tessere recensioni, espositori.', href: '/nfc-ecosystem' },
+            { icon: '📱', title: 'Landing Page', desc: 'Pagine di conversione per campagne pubblicitarie e lead generation.', href: '/contattaci' },
+            { icon: '🎨', title: 'Grafica', desc: 'Logo, immagine coordinata, materiali per social e stampa.', href: '/grafica-digitale-social-media' },
+            { icon: '📊', title: 'SEO Locale', desc: 'Ottimizzazione per Google Maps e ricerche nel tuo territorio.', href: '/siti-web-piemonte' },
+            { icon: '📧', title: 'Automazioni', desc: 'Email marketing, WhatsApp Business, CRM e flussi automatici.', href: '/bitora-crm' },
+            { icon: '🎓', title: 'Formazione', desc: 'Ti insegniamo a gestire i tuoi strumenti digitali in autonomia.', href: '/contattaci' }
           ].map((item, i) => (
-            <div class="p-6 rounded-2xl bg-black border border-white/10 hover:border-primary-500/30 transition-all reveal-on-scroll" style={`transition-delay: ${i * 50}ms`}>
+            <a href={item.href} class="group p-6 rounded-2xl bg-white dark:bg-black border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/30 transition-all reveal-on-scroll" style={`transition-delay: ${i * 50}ms`}>
               <span class="text-3xl mb-4 block">{item.icon}</span>
-              <h3 class="text-lg font-bold text-white mb-2">{item.title}</h3>
-              <p class="text-gray-400 text-sm">{item.desc}</p>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">{item.title}</h3>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">{item.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Fasce di prezzo indicative -->
+    <section class="py-24 px-6 md:px-12 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Fasce di prezzo indicative</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Ogni progetto è unico, ma ecco un'idea dei range di investimento</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            { title: 'Sito Web', price: 'da €20/mese', desc: 'Sito vetrina professionale con SEO locale' },
+            { title: 'E-commerce', price: 'da €49/mese', desc: 'Negozio online completo con pagamenti e spedizioni' },
+            { title: 'Sistemi su misura', price: 'Su preventivo', desc: 'Gestionali, CRM, CMMS personalizzati' }
+          ].map((item, i) => (
+            <div class="p-8 rounded-3xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 text-center reveal-on-scroll hover:border-gray-400 dark:hover:border-white/30 transition-all" style={`transition-delay: ${i * 100}ms`}>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">{item.title}</h3>
+              <p class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{item.price}</p>
+              <p class="text-gray-600 dark:text-gray-400 mb-8">{item.desc}</p>
+              <a href="/contattaci" class="inline-block px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                Richiedi preventivo
+              </a>
             </div>
           ))}
         </div>
@@ -109,11 +136,11 @@ import NeonCircles from '../components/NeonCircles.astro';
     </section>
 
     <!-- Process Steps -->
-    <section class="py-24 px-6 md:px-12 border-t border-white/5">
+    <section class="py-24 px-6 md:px-12 border-t border-gray-200 dark:border-white/5">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Come lavoriamo insieme</h2>
-          <p class="text-xl text-gray-400">Dal primo contatto al supporto post-lancio</p>
+          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Come lavoriamo insieme</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400">Dal primo contatto al supporto post-lancio</p>
         </div>
 
         <div class="grid md:grid-cols-4 gap-8">
@@ -124,24 +151,24 @@ import NeonCircles from '../components/NeonCircles.astro';
             { step: "04", title: 'Supporto continuo', description: 'Assistenza post-lancio, aggiornamenti e consulenza sempre disponibili.' }
           ].map((item, index) => (
             <div class="group text-center reveal-on-scroll" style={`transition-delay: ${index * 100}ms`}>
-              <span class="text-6xl font-bold text-primary-500/20 group-hover:text-primary-500/40 transition-colors">{item.step}</span>
-              <h3 class="text-xl font-bold text-white mt-4 mb-4">{item.title}</h3>
-              <p class="text-gray-400 leading-relaxed text-sm">{item.description}</p>
+              <span class="text-6xl font-bold text-gray-200 dark:text-white/10 group-hover:text-gray-300 dark:group-hover:text-white/20 transition-colors">{item.step}</span>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-4 mb-4">{item.title}</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">{item.description}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
     <!-- Cosa include ogni progetto -->
-    <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
+    <section class="py-24 px-6 md:px-12 bg-gray-50 dark:bg-zinc-900/30">
       <div class="max-w-7xl mx-auto">
-        <div class="p-12 rounded-3xl bg-zinc-900/50 border border-white/10 reveal-on-scroll">
+        <div class="p-12 rounded-3xl bg-white dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 reveal-on-scroll">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-12">
             <div>
-              <h2 class="text-3xl font-bold text-white mb-2">Cosa include ogni progetto Bitora</h2>
-              <p class="text-gray-400">Il valore di una partnership completa, non solo un fornitore.</p>
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Cosa include ogni progetto Bitora</h2>
+              <p class="text-gray-600 dark:text-gray-400">Il valore di una partnership completa, non solo un fornitore.</p>
             </div>
-            <a href="/contattaci" class="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors font-medium whitespace-nowrap">
+            <a href="/contattaci" class="inline-flex items-center gap-2 text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-medium whitespace-nowrap">
               Parla con noi 
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </a>
@@ -159,11 +186,11 @@ import NeonCircles from '../components/NeonCircles.astro';
               'Aggiornamenti e manutenzione concordati',
               'Report e analisi delle performance'
             ].map(item => (
-              <div class="flex items-start gap-4 p-4 rounded-xl bg-black/40 border border-white/5">
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-gray-50 dark:bg-black/40 border border-gray-100 dark:border-white/5">
                 <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg class="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-                <span class="text-gray-300 text-sm leading-relaxed">{item}</span>
+                <span class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{item}</span>
               </div>
             ))}
           </div>
@@ -175,8 +202,8 @@ import NeonCircles from '../components/NeonCircles.astro';
     <section class="py-24 px-6 md:px-12">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Domande Frequenti</h2>
-          <p class="text-gray-400">Dubbi sul nostro approccio? Rispondiamo qui.</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Domande Frequenti</h2>
+          <p class="text-gray-600 dark:text-gray-400">Dubbi sul nostro approccio? Rispondiamo qui.</p>
         </div>
 
         <div class="space-y-4 reveal-on-scroll">
@@ -188,12 +215,12 @@ import NeonCircles from '../components/NeonCircles.astro';
             { question: 'Lavorate solo a Carmagnola?', answer: 'No, serviamo tutto il Piemonte: Torino, Carignano, Poirino, Cuneo e oltre. Lavoriamo sia in presenza che da remoto.' },
             { question: 'Come funziona il pagamento?', answer: 'Generalmente: 30-50% all\'avvio del progetto, saldo alla consegna. Per progetti più grandi, definiamo milestone intermedie.' }
           ].map((faq, index) => (
-            <div class="group rounded-2xl bg-zinc-900 border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/20">
+            <div class="group rounded-2xl bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 overflow-hidden transition-all duration-300 hover:border-gray-300 dark:hover:border-white/20">
               <button class="faq-trigger flex w-full items-center justify-between p-6 text-left focus:outline-none" data-target={`faq-${index}`}>
-                <span class="font-medium text-white group-hover:text-primary-400 transition-colors">{faq.question}</span>
-                <span class="faq-icon text-primary-500 text-xl transition-transform duration-300">+</span>
+                <span class="font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">{faq.question}</span>
+                <span class="faq-icon text-gray-500 text-xl transition-transform duration-300">+</span>
               </button>
-              <div id={`faq-${index}`} class="faq-content hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+              <div id={`faq-${index}`} class="faq-content hidden px-6 pb-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-200 dark:border-white/5 pt-4">
                 <p>{faq.answer}</p>
               </div>
             </div>
@@ -202,14 +229,39 @@ import NeonCircles from '../components/NeonCircles.astro';
       </div>
     </section>
 
+    <!-- Testimonials -->
+    <section class="py-24 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 reveal-on-scroll">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Cosa dicono i nostri clienti</h2>
+          <p class="text-gray-600 dark:text-gray-400">Aziende che hanno scelto Bitora</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          {testimonials.slice(0, 2).map((t, i) => (
+            <div class="p-8 rounded-2xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
+              <div class="flex items-center gap-4 mb-4">
+                <img src={t.image} alt={t.company} class="h-12 w-12 rounded-full object-cover bg-gray-100 dark:bg-white/10" loading="lazy" />
+                <div>
+                  <p class="text-gray-900 dark:text-white font-medium">{t.company}</p>
+                  <p class="text-xs text-gray-500 uppercase tracking-wider">{t.role ?? 'Partner'}</p>
+                </div>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">"{t.quote}"</p>
+              {t.results && <p class="text-sm text-gray-500 font-medium">{t.results}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <!-- CTA -->
-    <section class="py-24 px-6 md:px-12 bg-zinc-900/30">
+    <section class="py-24 px-6 md:px-12 bg-gray-50 dark:bg-zinc-900/30">
       <div class="max-w-5xl mx-auto text-center reveal-on-scroll">
-        <h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">Raccontaci il tuo progetto.</h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">Preventivo gratuito e senza impegno. Costruiamo insieme la soluzione giusta per te.</p>
+        <h2 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8 tracking-tight">Raccontaci il tuo progetto.</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">Preventivo gratuito e senza impegno. Costruiamo insieme la soluzione giusta per te.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contattaci" class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">Richiedi preventivo gratuito</a>
-          <a href="https://wa.me/393514979670" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
+          <a href="/contattaci" class="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">Richiedi preventivo gratuito</a>
+          <a href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20un%20preventivo.%20Ho%20visitato%20bitora.it" class="px-8 py-4 bg-green-600 text-white rounded-full font-bold text-lg hover:bg-green-500 transition-all flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
           </a>

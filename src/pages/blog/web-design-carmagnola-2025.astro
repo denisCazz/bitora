@@ -1,3 +1,215 @@
 ---
-return Astro.redirect('/');
+import Layout from '../../layouts/Layout.astro';
 ---
+
+<Layout
+  title="Web Design a Carmagnola: Guida Completa | Blog Bitora"
+  description="Guida completa al web design a Carmagnola e dintorni. Come realizzare un sito web professionale, SEO locale, costi e consigli per aziende e professionisti del territorio."
+>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Web design a Carmagnola: guida completa",
+    "description": "Tutto quello che devi sapere per realizzare un sito web professionale a Carmagnola e dintorni. SEO locale, design moderno e strategie per farsi trovare.",
+    "author": {
+      "@type": "Organization",
+      "name": "Bitora",
+      "url": "https://www.bitora.it"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Bitora",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.bitora.it/bitora.png"
+      }
+    },
+    "datePublished": "2025-11-20",
+    "dateModified": "2025-11-20",
+    "mainEntityOfPage": "https://www.bitora.it/blog/web-design-carmagnola-2025",
+    "image": "https://www.bitora.it/bitora.jpg"
+  })}></script>
+
+  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden selection:bg-gray-200 dark:selection:bg-white/20 selection:text-gray-900 dark:selection:text-white">
+
+    <!-- Article Header -->
+    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-gray-50 dark:from-black dark:via-black dark:to-black/95"></div>
+      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-100 dark:bg-white/10 blur-[100px] opacity-50"></div>
+
+      <div class="relative z-10 max-w-3xl">
+        <a href="/blog" class="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors mb-6">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Blog
+        </a>
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white rounded-full">Siti Web</span>
+          <span class="text-sm text-gray-500">20 Novembre 2025</span>
+          <span class="text-sm text-gray-500">&middot; 7 min di lettura</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tight leading-[1.15] mb-6">
+          Web design a Carmagnola: guida completa
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          Sei un'azienda o un professionista di Carmagnola e vuoi un sito web che funzioni davvero? Questa guida ti spiega tutto: dal design alla SEO locale, dai costi alle strategie per farti trovare dai clienti della zona.
+        </p>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="py-16 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-3xl mx-auto prose-custom">
+
+        <div class="reveal-on-scroll">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Perché un sito web è essenziale a Carmagnola</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Carmagnola è una città vivace con un tessuto imprenditoriale ricco: artigiani, commercianti, ristoratori, professionisti e piccole industrie. Eppure, molte attività locali non hanno ancora un sito web professionale, o ne hanno uno obsoleto che non genera contatti.
+          </p>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Il problema è concreto: quando un potenziale cliente cerca "idraulico Carmagnola" o "avvocato Carmagnola" su Google, trova solo chi ha investito nella propria presenza online. Chi non c'è, semplicemente non esiste per quel cliente.
+          </p>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Un sito web professionale non è un biglietto da visita statico. È il tuo commerciale che lavora 24 ore su 24, 7 giorni su 7. Presenta i tuoi servizi, risponde alle domande più comuni, raccoglie richieste di contatto e ti posiziona come punto di riferimento nel tuo settore.
+          </p>
+        </div>
+
+        <div class="reveal-on-scroll">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 mt-12">Cosa rende un sito web efficace nel 2025</h2>
+
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-8">Design moderno e mobile-first</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Oltre il 70% delle ricerche locali avviene da smartphone. Il tuo sito deve essere perfetto su mobile: veloce, leggibile, con pulsanti facili da toccare e un percorso chiaro verso il contatto. Un design datato o non responsivo fa scappare i visitatori in pochi secondi.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-8">Velocità di caricamento</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Google premia i siti veloci e penalizza quelli lenti. Un sito che si carica in più di 3 secondi perde oltre il 50% dei visitatori. Le tecnologie moderne — come quelle che usiamo noi per i <a href="/siti-web-professionali" class="text-gray-900 dark:text-white underline hover:text-gray-600 dark:hover:text-gray-300">siti web professionali</a> — permettono tempi di caricamento sotto il secondo.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-8">Contenuti che convertono</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Un bel design senza contenuti efficaci è come una vetrina vuota. Ogni pagina del sito deve avere un obiettivo chiaro: informare, convincere, far agire. Testi scritti per il tuo pubblico, non per te. Call-to-action visibili. Form di contatto semplici e strategici.
+          </p>
+        </div>
+
+        <div class="reveal-on-scroll">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 mt-12">SEO locale: farsi trovare a Carmagnola</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            La SEO locale è la strategia che ti permette di comparire nei risultati di Google quando qualcuno cerca i tuoi servizi nella tua zona. Per un'attività di Carmagnola, è probabilmente l'investimento digitale con il miglior ritorno.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-8">Google Business Profile</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Il primo passo è avere un profilo Google Business completo e ottimizzato: foto professionali, orari aggiornati, descrizione dettagliata, categorie corrette. È gratuito e ti fa comparire nelle mappe e nel "local pack" — quei tre risultati con la mappa che appaiono per le ricerche locali.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-8">Keyword territoriali</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Il tuo sito deve contenere le parole chiave che i tuoi clienti cercano: "web design Carmagnola", "sito web Torino sud", "agenzia digitale Piemonte". Non basta inserirle a caso: devono essere integrate naturalmente nei testi, nei titoli, nelle meta description e negli URL.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-8">Schema markup locale</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Il markup strutturato (Schema.org) comunica a Google informazioni precise sulla tua attività: indirizzo, telefono, orari, tipo di servizio, area servita. È un codice invisibile ai visitatori ma prezioso per i motori di ricerca, che lo usano per mostrare risultati più ricchi e pertinenti.
+          </p>
+        </div>
+
+        <!-- Mid-article CTA -->
+        <div class="my-12 p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/20 text-center reveal-on-scroll">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Vuoi un sito web professionale a Carmagnola?</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">Realizziamo siti web su misura per aziende e professionisti del territorio. Preventivo gratuito in 24 ore.</p>
+          <a href="/contattaci?topic=siti-web" class="btn-primary inline-flex items-center gap-2">
+            Richiedi preventivo
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+
+        <div class="reveal-on-scroll">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 mt-12">Quanto costa un sito web a Carmagnola</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            La domanda che tutti si pongono. La risposta onesta è: dipende. Un sito vetrina per un professionista ha costi diversi da un e-commerce per un negozio. Ecco un orientamento realistico:
+          </p>
+          <div class="space-y-4 mb-6">
+            {[
+              { type: 'Sito vetrina (3-5 pagine)', range: 'Da poche centinaia di euro' },
+              { type: 'Sito aziendale completo', range: 'Da 1.000-1.500 euro' },
+              { type: 'E-commerce', range: 'Da 2.000-3.000 euro' },
+              { type: 'Portale web su misura', range: 'Da 3.000 euro in su' }
+            ].map((item) => (
+              <div class="flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10">
+                <span class="text-gray-900 dark:text-white font-medium">{item.type}</span>
+                <span class="text-gray-900 dark:text-white font-bold">{item.range}</span>
+              </div>
+            ))}
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Attenzione ai preventivi troppo bassi: un sito da 200 euro è quasi certamente un template preconfezionato senza personalizzazione, senza SEO e senza supporto. Un investimento serio porta risultati seri.
+          </p>
+        </div>
+
+        <div class="reveal-on-scroll">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 mt-12">Come scegliere l'agenzia giusta</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Non tutte le agenzie web sono uguali. Ecco cosa verificare prima di affidarti a qualcuno:
+          </p>
+          <div class="space-y-3 mb-6">
+            {[
+              'Portfolio con lavori reali e verificabili',
+              'Competenza in SEO locale (non solo design)',
+              'Trasparenza sui costi e sui tempi',
+              'Supporto post-lancio e manutenzione',
+              'Recensioni di clienti reali',
+              'Conoscenza del territorio e del mercato locale'
+            ].map((item) => (
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-gray-600 dark:text-gray-400">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="reveal-on-scroll">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 mt-12">Conclusione</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Un sito web professionale è l'investimento digitale più importante per qualsiasi attività di Carmagnola. Non è questione di "se", ma di "quando" e "come". Scegli un partner che conosca il territorio, che sappia di SEO locale e che ti segua anche dopo il lancio.
+          </p>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Noi di Bitora siamo a Carmagnola. Realizziamo <a href="/siti-web-professionali" class="text-gray-900 dark:text-white underline hover:text-gray-600 dark:hover:text-gray-300">siti web professionali</a> per aziende e professionisti del territorio da anni. Conosciamo il mercato locale, le sue dinamiche e le sue opportunità. Se vuoi un sito che funziona davvero, parliamone.
+          </p>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Pronto per il tuo nuovo sito web?</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-8">Preventivo gratuito in 24 ore. Nessun impegno, solo una chiacchierata per capire le tue esigenze.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contattaci?topic=siti-web" class="btn-primary inline-flex items-center justify-center gap-2 min-w-[200px]">Richiedi preventivo gratuito</a>
+          <a href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20informazioni%20su%20siti%20web.%20Ho%20visitato%20il%20sito%20bitora.it" class="btn-secondary inline-flex items-center justify-center gap-2 min-w-[200px]">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  });
+</script>

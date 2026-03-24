@@ -1,10 +1,26 @@
-// API endpoint per proxy dati Umami
-export async function GET() {
+import type { APIRoute } from 'astro';
+
+export const prerender = false;
+
+export const GET: APIRoute = async () => {
+  const websiteId = import.meta.env.UMAMI_WEBSITE_ID ?? process.env.UMAMI_WEBSITE_ID;
+  const apiToken = import.meta.env.UMAMI_API_TOKEN ?? process.env.UMAMI_API_TOKEN;
+
+  if (!websiteId || !apiToken) {
+    return new Response(JSON.stringify({
+      pageviews: 15420,
+      visitors: 8234,
+      sessions: 11567
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   try {
-    const websiteId = '2adbf0f8-a9d3-47bd-9a32-61ac932f9640';
     const response = await fetch(`https://cloud.umami.is/api/websites/${websiteId}/stats`, {
       headers: {
-        'Authorization': 'Bearer api_g7xWhCJnq6U8AvM5do0PK5aUlRi2ZrRP',
+        'Authorization': `Bearer ${apiToken}`,
         'Content-Type': 'application/json'
       }
     });
@@ -13,37 +29,27 @@ export async function GET() {
       const data = await response.json();
       return new Response(JSON.stringify(data), {
         status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    // Fallback con dati statici
     return new Response(JSON.stringify({
       pageviews: 15420,
       visitors: 8234,
       sessions: 11567
     }), {
       status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     });
-
   } catch (error) {
     console.error('Errore proxy Umami:', error);
-    
-    // Restituisci sempre dati di fallback
     return new Response(JSON.stringify({
       pageviews: 15420,
       visitors: 8234,
       sessions: 11567
     }), {
       status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     });
   }
-}
+};

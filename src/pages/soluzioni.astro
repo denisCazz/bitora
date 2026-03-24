@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import NeonCircles from '../components/NeonCircles.astro';
 
 const solutions = [
   {
@@ -37,19 +36,18 @@ const solutions = [
   title="Soluzioni Digitali | Bitora - Sistemi su Misura per Aziende"
   description="Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia."
 >
-  <main class="bg-black text-white overflow-x-hidden selection:bg-primary/20 selection:text-white">
+  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     
     <!-- Hero Section -->
     <section class="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
-      <NeonCircles variant="hero" colors={['blue', 'purple']} />
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900/20 dark:via-black dark:to-black opacity-50"></div>
       
       <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
         <h1 class="text-5xl md:text-8xl font-bold tracking-tight">
-          <span class="text-white">Sistemi digitali</span><br />
-          <span class="text-primary">su misura.</span>
+          <span class="text-gray-900 dark:text-white">Sistemi digitali</span><br />
+          <span class="text-gray-900 dark:text-white">su misura.</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
           Gestionali, CRM, CMMS, siti web ed e-commerce. <br class="hidden md:block" />
           Ti seguiamo dall'inizio alla fine.
         </p>
@@ -59,37 +57,32 @@ const solutions = [
     <!-- Solutions Loop -->
     <div class="space-y-32 pb-32">
       {solutions.map((sol, i) => (
-        <section class={`py-20 px-6 md:px-12 relative overflow-hidden ${i % 2 !== 0 ? 'bg-zinc-900/30' : ''}`}>
-          {/* Section Neon Accents */}
-          <div class="absolute inset-0 pointer-events-none opacity-25">
-            <div class={`neon-circle ${i === 0 ? 'neon-blue-subtle' : i === 1 ? 'neon-orange-subtle' : 'neon-purple-soft'} w-[350px] h-[350px] ${i % 2 === 0 ? '-top-[100px] -left-[100px]' : '-top-[100px] -right-[100px]'} animate-neon-float-slow`} style={`animation-delay: ${i * -2}s`}></div>
-            <div class={`neon-circle ${i === 0 ? 'neon-orange-subtle' : i === 1 ? 'neon-purple-soft' : 'neon-blue-subtle'} w-[280px] h-[280px] ${i % 2 === 0 ? 'bottom-[10%] -right-[80px]' : 'bottom-[10%] -left-[80px]'} animate-neon-float-reverse`} style={`animation-delay: ${i * -3}s`}></div>
-          </div>
+        <section class={`py-20 px-6 md:px-12 relative overflow-hidden ${i % 2 !== 0 ? 'bg-gray-50 dark:bg-zinc-900/30' : ''}`}>
           <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center relative z-10">
             <div class={`space-y-8 reveal-on-scroll ${i % 2 !== 0 ? 'order-2' : 'order-2 md:order-1'}`}>
-              <span class="text-primary font-medium tracking-wider uppercase text-sm">{sol.subtitle}</span>
+              <span class="text-gray-500 dark:text-gray-400 font-medium tracking-wider uppercase text-sm">{sol.subtitle}</span>
               <h2 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
                 {sol.title}
               </h2>
-              <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
+              <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light">
                 {sol.description}
               </p>
-              <ul class="space-y-4 text-gray-300 mt-8">
+              <ul class="space-y-4 text-gray-700 dark:text-gray-300 mt-8">
                 {sol.features.map(feat => (
                   <li class="flex items-center gap-4">
-                    <span class="flex items-center justify-center w-6 h-6 rounded-full bg-white/5 border border-white/10 text-primary text-xs">✓</span>
+                    <span class="flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-xs">✓</span>
                     <span class="text-lg">{feat}</span>
                   </li>
                 ))}
               </ul>
               <div class="pt-8">
-                <a href={sol.link} class="inline-block px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                <a href={sol.link} class="inline-block px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium text-lg transition-all hover:scale-105">
                   {sol.cta}
                 </a>
               </div>
             </div>
             <div class={`relative group reveal-on-scroll delay-200 ${i % 2 !== 0 ? 'order-1' : 'order-1 md:order-2'}`}>
-              <div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-primary/10 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
+              <div class="absolute -inset-1 bg-gradient-to-r from-gray-200/30 to-gray-100/20 dark:from-white/10 dark:to-white/5 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
               <div class="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <img 
                   src={sol.image} 
@@ -104,19 +97,14 @@ const solutions = [
     </div>
 
     <!-- CTA -->
-    <section class="py-40 px-6 text-center border-t border-white/5 relative overflow-hidden">
-      <!-- CTA Neon Background -->
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="neon-circle neon-purple w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-neon-pulse-glow opacity-15"></div>
-        <div class="neon-circle neon-blue-soft w-[700px] h-[700px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-neon-breathe opacity-10" style="animation-delay: -2s;"></div>
-      </div>
+    <section class="py-40 px-6 text-center border-t border-gray-200 dark:border-white/5 relative overflow-hidden">
       <div class="max-w-4xl mx-auto reveal-on-scroll relative z-10">
         <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Iniziamo a costruire.</h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
+        <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto font-light">
           Prenota una call conoscitiva. Analizziamo le tue esigenze e troviamo la soluzione perfetta.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-white text-black rounded-full font-medium text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium text-lg transition-all hover:scale-105">
             Parla con noi
           </a>
         </div>

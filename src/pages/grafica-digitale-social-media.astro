@@ -9,28 +9,24 @@ const graficaServices = [
     desc: 'Logo, palette colori, tipografia e linee guida visive per un brand riconoscibile e coerente su ogni canale.',
     features: ['Logo design', 'Palette colori', 'Font system', 'Brand book'],
     icon: 'gallery',
-    accent: 'from-secondary via-secondary/60 to-secondary/20'
   },
   {
     title: 'Grafiche per Social',
     desc: 'Post, stories, caroselli, copertine e template coordinati con la tua identità visiva. Pronti per Instagram, Facebook e LinkedIn.',
     features: ['Template post', 'Stories & Reels', 'Caroselli', 'Copertine'],
     icon: 'gallery',
-    accent: 'from-accent via-accent/60 to-accent/20'
   },
   {
     title: 'Materiale Marketing',
     desc: 'Banner, volantini, biglietti da visita, menù e creatività per campagne pubblicitarie online e offline.',
     features: ['Banner ADS', 'Volantini & flyer', 'Biglietti da visita', 'Menù & cataloghi'],
     icon: 'portfolio',
-    accent: 'from-primary via-primary/60 to-primary/20'
   },
   {
     title: 'Creatività per Campagne',
     desc: 'Visual ad-hoc per Facebook Ads, Google Ads e campagne sponsorizzate: massima resa, minimo costo per click.',
     features: ['Facebook Ads', 'Google Ads', 'Retargeting visual', 'A/B testing creatività'],
     icon: 'trending',
-    accent: 'from-secondary via-accent/60 to-primary/20'
   }
 ];
 
@@ -147,15 +143,7 @@ const whyUs = [
   title="Grafica Digitale & Social Media Management Carmagnola Torino | Bitora"
   description="Servizi professionali di grafica digitale e social media management a Carmagnola, Torino e Piemonte. Brand identity, contenuti social, piano editoriale e campagne per far crescere la tua attività. Preventivo gratuito."
 >
-  <main class="relative selection:bg-primary/20 selection:text-black" style="background-color: var(--bg-primary); color: var(--text-primary);">
-    <!-- Ambient background -->
-    <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div class="absolute -top-32 -right-24 h-[28rem] w-[28rem] rounded-full bg-gradient-to-br from-secondary/55 via-accent/35 to-transparent blur-3xl opacity-70 md:opacity-100"></div>
-      <div class="absolute top-40 -left-24 h-[24rem] w-[24rem] rounded-full bg-gradient-to-br from-primary/55 via-accent/30 to-transparent blur-3xl opacity-70 md:opacity-100"></div>
-      <div class="absolute top-[60rem] right-0 h-[30rem] w-[30rem] rounded-full bg-gradient-to-br from-accent/30 via-secondary/20 to-transparent blur-3xl opacity-60 md:opacity-80"></div>
-      <div class="absolute top-[120rem] -left-20 h-[26rem] w-[26rem] rounded-full bg-gradient-to-br from-primary/40 via-secondary/30 to-transparent blur-3xl opacity-50 md:opacity-70"></div>
-      <div class="absolute -bottom-40 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-primary/40 via-secondary/40 to-transparent blur-3xl opacity-70 md:opacity-100"></div>
-    </div>
+  <main class="relative bg-white dark:bg-black text-gray-900 dark:text-white">
 
     <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
     <section class="relative px-6 pt-24 pb-20 reveal-on-scroll">
@@ -163,11 +151,11 @@ const whyUs = [
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="space-y-7">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="inline-flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/80 px-4 py-2 text-sm shadow-custom dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">
-                <span class="h-2 w-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary"></span>
+              <span class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/80 px-4 py-2 text-sm shadow-sm dark:border-white/10 dark:bg-white/5 text-gray-600 dark:text-gray-400">
+                <span class="h-2 w-2 rounded-full bg-gray-900 dark:bg-white"></span>
                 Carmagnola &bull; Torino &bull; Piemonte
               </span>
-              <span class="inline-flex items-center gap-2 rounded-full border border-green-300/60 bg-green-50/80 px-4 py-2 text-sm font-semibold text-green-700 shadow-custom dark:border-green-500/20 dark:bg-green-500/10 dark:text-green-400">
+              <span class="inline-flex items-center gap-2 rounded-full border border-green-300/60 bg-green-50/80 px-4 py-2 text-sm font-semibold text-green-700 shadow-sm dark:border-green-500/20 dark:bg-green-500/10 dark:text-green-400">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -176,36 +164,35 @@ const whyUs = [
               </span>
             </div>
 
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]" style="color: var(--text-primary);">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-gray-900 dark:text-white">
               Grafica professionale e social media
-              <span class="block bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-primary">
+              <span class="block text-gray-500 dark:text-gray-400">
                 che portano risultati concreti.
               </span>
             </h1>
 
-            <p class="text-lg md:text-xl leading-relaxed max-w-xl" style="color: var(--text-secondary);">
+            <p class="text-lg md:text-xl leading-relaxed max-w-xl text-gray-600 dark:text-gray-400">
               Creiamo l'identità visiva del tuo brand e gestiamo i tuoi social con metodo: più coerenza, più engagement, più clienti. Il tutto con un team locale dedicato.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-3">
               <a
                 href="/contattaci?topic=grafica"
-                class="inline-flex justify-center items-center gap-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
+                class="btn-primary inline-flex justify-center items-center gap-2"
               >
                 Richiedi preventivo gratuito
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
               </a>
               <a
                 href="/contattaci?topic=social"
-                class="inline-flex justify-center items-center gap-2 rounded-full border border-gray-200/80 bg-white/70 px-8 py-4 font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5"
-                style="color: var(--text-primary);"
+                class="btn-secondary inline-flex justify-center items-center gap-2"
               >
                 Prenota una call gratuita
               </a>
             </div>
 
             <!-- Trust signals -->
-            <div class="flex flex-wrap items-center gap-4 pt-2 text-sm" style="color: var(--text-secondary);">
+            <div class="flex flex-wrap items-center gap-4 pt-2 text-sm text-gray-600 dark:text-gray-400">
               <span class="inline-flex items-center gap-1.5">
                 <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 Preventivo gratuito
@@ -223,54 +210,53 @@ const whyUs = [
 
           <!-- Visual preview -->
           <div class="relative">
-            <div class="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-secondary/40 via-accent/30 to-primary/40 blur-2xl opacity-45 sm:opacity-60 md:opacity-90" aria-hidden="true"></div>
-            <div class="relative rounded-[2rem] border border-gray-200/70 bg-white/70 p-6 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
+            <div class="relative rounded-[2rem] border border-gray-200 bg-gray-50 p-6 shadow-sm dark:border-white/10 dark:bg-white/5">
               <div class="flex items-center justify-between mb-6">
-                <p class="text-sm font-semibold" style="color: var(--text-primary);">Anteprima feed coordinato</p>
-                <span class="text-xs rounded-full border border-gray-200/70 bg-white/70 px-3 py-1 dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">IG &bull; FB &bull; LinkedIn</span>
+                <p class="text-sm font-semibold text-gray-900 dark:text-white">Anteprima feed coordinato</p>
+                <span class="text-xs rounded-full border border-gray-200 bg-white px-3 py-1 dark:border-white/10 dark:bg-white/5 text-gray-600 dark:text-gray-400">IG &bull; FB &bull; LinkedIn</span>
               </div>
 
               <div class="grid grid-cols-2 gap-3">
-                <div class="rounded-2xl border border-gray-200/70 bg-gradient-to-br from-secondary/20 via-white to-white p-4 dark:border-white/10 dark:from-secondary/25 dark:via-black/10 dark:to-black/10">
-                  <div class="h-8 w-8 rounded-xl bg-secondary/25 flex items-center justify-center mb-3" aria-hidden="true">
-                    <span class="text-secondary font-bold text-sm">A</span>
+                <div class="rounded-2xl border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
+                  <div class="h-8 w-8 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-3" aria-hidden="true">
+                    <span class="text-gray-900 dark:text-white font-bold text-sm">A</span>
                   </div>
-                  <p class="text-sm font-semibold" style="color: var(--text-primary);">Post brand</p>
-                  <p class="mt-1 text-xs" style="color: var(--text-secondary);">Coordinato & on-brand</p>
+                  <p class="text-sm font-semibold text-gray-900 dark:text-white">Post brand</p>
+                  <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">Coordinato & on-brand</p>
                 </div>
 
-                <div class="rounded-2xl border border-gray-200/70 bg-gradient-to-br from-accent/20 via-white to-white p-4 dark:border-white/10 dark:from-accent/25 dark:via-black/10 dark:to-black/10">
-                  <div class="h-8 w-8 rounded-xl bg-accent/25 flex items-center justify-center mb-3" aria-hidden="true">
-                    <span class="text-accent font-bold text-sm">S</span>
+                <div class="rounded-2xl border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
+                  <div class="h-8 w-8 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-3" aria-hidden="true">
+                    <span class="text-gray-900 dark:text-white font-bold text-sm">S</span>
                   </div>
-                  <p class="text-sm font-semibold" style="color: var(--text-primary);">Stories</p>
-                  <p class="mt-1 text-xs" style="color: var(--text-secondary);">Template riutilizzabili</p>
+                  <p class="text-sm font-semibold text-gray-900 dark:text-white">Stories</p>
+                  <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">Template riutilizzabili</p>
                 </div>
 
-                <div class="rounded-2xl border border-gray-200/70 bg-gradient-to-br from-primary/20 via-white to-white p-4 dark:border-white/10 dark:from-primary/25 dark:via-black/10 dark:to-black/10">
-                  <div class="h-8 w-8 rounded-xl bg-primary/25 flex items-center justify-center mb-3" aria-hidden="true">
-                    <span class="text-primary font-bold text-sm">C</span>
+                <div class="rounded-2xl border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
+                  <div class="h-8 w-8 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-3" aria-hidden="true">
+                    <span class="text-gray-900 dark:text-white font-bold text-sm">C</span>
                   </div>
-                  <p class="text-sm font-semibold" style="color: var(--text-primary);">Campagna</p>
-                  <p class="mt-1 text-xs" style="color: var(--text-secondary);">Ads che convertono</p>
+                  <p class="text-sm font-semibold text-gray-900 dark:text-white">Campagna</p>
+                  <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">Ads che convertono</p>
                 </div>
 
-                <div class="rounded-2xl border border-gray-200/70 bg-gradient-to-br from-secondary/15 via-accent/10 to-white p-4 dark:border-white/10 dark:from-secondary/15 dark:via-accent/10 dark:to-black/10">
-                  <div class="h-8 w-8 rounded-xl bg-gradient-to-br from-secondary/25 to-accent/25 flex items-center justify-center mb-3" aria-hidden="true">
-                    <span class="text-accent font-bold text-sm">R</span>
+                <div class="rounded-2xl border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
+                  <div class="h-8 w-8 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-3" aria-hidden="true">
+                    <span class="text-gray-900 dark:text-white font-bold text-sm">R</span>
                   </div>
-                  <p class="text-sm font-semibold" style="color: var(--text-primary);">Report</p>
-                  <p class="mt-1 text-xs" style="color: var(--text-secondary);">Dati e insight mensili</p>
+                  <p class="text-sm font-semibold text-gray-900 dark:text-white">Report</p>
+                  <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">Dati e insight mensili</p>
                 </div>
               </div>
 
-              <div class="mt-5 rounded-2xl border border-gray-200/60 bg-gradient-to-r from-secondary/10 via-accent/10 to-primary/10 p-4 dark:border-white/10">
+              <div class="mt-5 rounded-2xl border border-gray-200 bg-gray-100 dark:bg-white/5 dark:border-white/10 p-4">
                 <div class="flex items-center justify-between">
                   <div>
-                    <p class="text-sm font-semibold" style="color: var(--text-primary);">Engagement rate medio</p>
-                    <p class="text-xs" style="color: var(--text-secondary);">Dopo 90 giorni di gestione</p>
+                    <p class="text-sm font-semibold text-gray-900 dark:text-white">Engagement rate medio</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400">Dopo 90 giorni di gestione</p>
                   </div>
-                  <span class="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-primary">+180%</span>
+                  <span class="text-2xl font-extrabold text-gray-900 dark:text-white">+180%</span>
                 </div>
               </div>
             </div>
@@ -284,10 +270,10 @@ const whyUs = [
       <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat) => (
-            <div class="rounded-3xl border border-gray-200/70 bg-white/70 p-6 text-center shadow-custom dark:border-white/10 dark:bg-white/5">
-              <div class="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-primary">{stat.value}</div>
-              <div class="mt-2 text-sm font-semibold" style="color: var(--text-primary);">{stat.label}</div>
-              <div class="mt-1 text-xs" style="color: var(--text-secondary);">{stat.sub}</div>
+            <div class="rounded-3xl border border-gray-200 bg-gray-50 p-6 text-center shadow-sm dark:border-white/10 dark:bg-white/5">
+              <div class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">{stat.value}</div>
+              <div class="mt-2 text-sm font-semibold text-gray-900 dark:text-white">{stat.label}</div>
+              <div class="mt-1 text-xs text-gray-600 dark:text-gray-400">{stat.sub}</div>
             </div>
           ))}
         </div>
@@ -299,14 +285,14 @@ const whyUs = [
       <div class="max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
-            <span class="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-sm font-semibold text-secondary dark:border-secondary/20 dark:bg-secondary/10 mb-4">
+            <span class="inline-flex items-center gap-2 rounded-full border border-gray-300 dark:border-white/20 bg-gray-100 dark:bg-white/10 px-4 py-1.5 text-sm font-semibold text-gray-600 dark:text-gray-300 mb-4">
               Servizio #1
             </span>
-            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
               Grafica Digitale
-              <span class="block text-xl md:text-2xl font-semibold mt-2" style="color: var(--text-secondary);">Design che comunica, non solo decora</span>
+              <span class="block text-xl md:text-2xl font-semibold mt-2 text-gray-600 dark:text-gray-400">Design che comunica, non solo decora</span>
             </h2>
-            <p class="mt-4 max-w-2xl text-lg leading-relaxed" style="color: var(--text-secondary);">
+            <p class="mt-4 max-w-2xl text-lg leading-relaxed text-gray-600 dark:text-gray-400">
               Ogni elemento grafico che creiamo ha uno scopo preciso: rafforzare il tuo brand, catturare l'attenzione e convertire. Dal logo ai post social, dalla brochure alla creatività per le ads.
             </p>
           </div>
@@ -314,24 +300,23 @@ const whyUs = [
 
         <div class="grid md:grid-cols-2 gap-6">
           {graficaServices.map((item) => (
-            <div class="group relative rounded-3xl border border-gray-200/70 bg-white/70 p-8 shadow-custom-lg overflow-hidden dark:border-white/10 dark:bg-white/5 hover:shadow-custom-lg transition-all duration-300">
-              <div class={`absolute -right-14 -top-14 h-44 w-44 rounded-full bg-gradient-to-br ${item.accent} blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-500`} aria-hidden="true"></div>
-              <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-secondary via-accent to-primary opacity-60" aria-hidden="true"></div>
+            <div class="group relative rounded-3xl border border-gray-200 bg-gray-50 p-8 shadow-sm overflow-hidden dark:border-white/10 dark:bg-white/5 hover:shadow-md transition-all duration-300">
+              <div class="absolute inset-x-0 top-0 h-1 bg-gray-300 dark:bg-white/20 opacity-60" aria-hidden="true"></div>
               <div class="relative">
                 <div class="flex items-start justify-between gap-4 mb-5">
                   <div>
-                    <h3 class="text-xl font-extrabold tracking-tight" style="color: var(--text-primary);">{item.title}</h3>
-                    <p class="mt-2 leading-relaxed" style="color: var(--text-secondary);">{item.desc}</p>
+                    <h3 class="text-xl font-extrabold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
+                    <p class="mt-2 leading-relaxed text-gray-600 dark:text-gray-400">{item.desc}</p>
                   </div>
                   <div
-                    class="shrink-0 h-12 w-12 rounded-2xl border border-gray-200/80 bg-white/80 flex items-center justify-center shadow-custom dark:border-white/10 dark:bg-white/5 text-secondary [&_svg]:h-5 [&_svg]:w-5"
+                    class="shrink-0 h-12 w-12 rounded-2xl border border-gray-200 bg-white flex items-center justify-center shadow-sm dark:border-white/10 dark:bg-white/5 text-gray-500 dark:text-gray-400 [&_svg]:h-5 [&_svg]:w-5"
                     aria-hidden="true"
                     set:html={icons[item.icon]}
                   />
                 </div>
                 <div class="flex flex-wrap gap-2">
                   {item.features.map((f) => (
-                    <span class="inline-flex items-center gap-1.5 rounded-full border border-gray-200/60 bg-white/60 px-3 py-1.5 text-xs font-medium dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">
+                    <span class="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium dark:border-white/10 dark:bg-white/5 text-gray-600 dark:text-gray-400">
                       <svg class="w-3 h-3 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                       {f}
                     </span>
@@ -346,15 +331,14 @@ const whyUs = [
         <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="/contattaci?topic=grafica"
-            class="inline-flex justify-center items-center gap-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
+            class="btn-primary inline-flex justify-center items-center gap-2"
           >
             Richiedi un preventivo per la grafica
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
           <a
             href="/lavori"
-            class="inline-flex justify-center items-center gap-2 rounded-full border border-gray-200/80 bg-white/70 px-6 py-4 font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5"
-            style="color: var(--text-primary);"
+            class="btn-secondary inline-flex justify-center items-center gap-2"
           >
             Guarda i nostri lavori
           </a>
@@ -368,23 +352,23 @@ const whyUs = [
         <div class="grid lg:grid-cols-[1fr,1.1fr] gap-12 items-start">
           <!-- Left: Info -->
           <div>
-            <span class="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent dark:border-accent/20 dark:bg-accent/10 mb-4">
+            <span class="inline-flex items-center gap-2 rounded-full border border-gray-300 dark:border-white/20 bg-gray-100 dark:bg-white/10 px-4 py-1.5 text-sm font-semibold text-gray-600 dark:text-gray-300 mb-4">
               Servizio #2
             </span>
-            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
               Social Media Management
-              <span class="block text-xl md:text-2xl font-semibold mt-2" style="color: var(--text-secondary);">Strategia, contenuti e crescita misurabile</span>
+              <span class="block text-xl md:text-2xl font-semibold mt-2 text-gray-600 dark:text-gray-400">Strategia, contenuti e crescita misurabile</span>
             </h2>
-            <p class="mt-4 text-lg leading-relaxed" style="color: var(--text-secondary);">
+            <p class="mt-4 text-lg leading-relaxed text-gray-600 dark:text-gray-400">
               Non basta pubblicare. Serve un piano, una strategia e la costanza per costruire una presenza social che genera fiducia e clienti. Noi ci occupiamo di tutto.
             </p>
 
             <!-- Piattaforme -->
             <div class="mt-8">
-              <p class="text-sm font-semibold mb-3" style="color: var(--text-primary);">Piattaforme che gestiamo</p>
+              <p class="text-sm font-semibold mb-3 text-gray-900 dark:text-white">Piattaforme che gestiamo</p>
               <div class="flex flex-wrap gap-2">
                 {['Instagram', 'Facebook', 'LinkedIn', 'TikTok', 'Google Business'].map((p) => (
-                  <span class="inline-flex items-center gap-1.5 rounded-full border border-gray-200/60 bg-white/60 px-4 py-2 text-sm font-medium dark:border-white/10 dark:bg-white/5" style="color: var(--text-primary);">
+                  <span class="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium dark:border-white/10 dark:bg-white/5 text-gray-900 dark:text-white">
                     {p}
                   </span>
                 ))}
@@ -394,7 +378,7 @@ const whyUs = [
             <div class="mt-8">
               <a
                 href="/contattaci?topic=social"
-                class="inline-flex justify-center items-center gap-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
+                class="btn-primary inline-flex justify-center items-center gap-2"
               >
                 Affidaci i tuoi social
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
@@ -405,17 +389,17 @@ const whyUs = [
           <!-- Right: Service cards -->
           <div class="space-y-4">
             {socialServices.map((item, idx) => (
-              <div class="group relative rounded-3xl border border-gray-200/70 bg-white/70 p-7 shadow-custom-lg overflow-hidden dark:border-white/10 dark:bg-white/5 hover:shadow-custom-lg transition-all duration-300">
-                <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-secondary via-accent to-primary opacity-40" aria-hidden="true"></div>
+              <div class="group relative rounded-3xl border border-gray-200 bg-gray-50 p-7 shadow-sm overflow-hidden dark:border-white/10 dark:bg-white/5 hover:shadow-md transition-all duration-300">
+                <div class="absolute inset-x-0 top-0 h-0.5 bg-gray-300 dark:bg-white/20 opacity-40" aria-hidden="true"></div>
                 <div class="flex items-start gap-5">
                   <div
-                    class="shrink-0 h-11 w-11 rounded-2xl border border-gray-200/80 bg-white/80 flex items-center justify-center shadow-custom dark:border-white/10 dark:bg-white/5 text-accent [&_svg]:h-5 [&_svg]:w-5"
+                    class="shrink-0 h-11 w-11 rounded-2xl border border-gray-200 bg-white flex items-center justify-center shadow-sm dark:border-white/10 dark:bg-white/5 text-gray-500 dark:text-gray-400 [&_svg]:h-5 [&_svg]:w-5"
                     aria-hidden="true"
                     set:html={icons[item.icon]}
                   />
                   <div>
-                    <h3 class="text-lg font-extrabold tracking-tight" style="color: var(--text-primary);">{item.title}</h3>
-                    <p class="mt-2 leading-relaxed text-sm" style="color: var(--text-secondary);">{item.desc}</p>
+                    <h3 class="text-lg font-extrabold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
+                    <p class="mt-2 leading-relaxed text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
                   </div>
                 </div>
               </div>
@@ -429,22 +413,22 @@ const whyUs = [
     <section class="relative px-6 py-20 reveal-on-scroll">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">Perché scegliere Bitora</h2>
-          <p class="mt-4 max-w-2xl mx-auto text-lg" style="color: var(--text-secondary);">
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">Perché scegliere Bitora</h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
             Non siamo l'ennesima agenzia generica. Ecco cosa ci rende diversi per le attività di Carmagnola, Torino e Piemonte.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
           {whyUs.map((item, idx) => (
-            <div class="relative rounded-3xl border border-gray-200/70 bg-white/70 p-8 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
+            <div class="relative rounded-3xl border border-gray-200 bg-gray-50 p-8 shadow-sm dark:border-white/10 dark:bg-white/5">
               <div class="flex items-start gap-4">
-                <div class="shrink-0 h-10 w-10 rounded-2xl bg-gradient-to-br from-secondary via-accent to-primary flex items-center justify-center shadow-custom">
-                  <span class="text-white font-bold text-sm">{String(idx + 1).padStart(2, '0')}</span>
+                <div class="shrink-0 h-10 w-10 rounded-2xl bg-gray-900 dark:bg-white flex items-center justify-center shadow-sm">
+                  <span class="text-white dark:text-gray-900 font-bold text-sm">{String(idx + 1).padStart(2, '0')}</span>
                 </div>
                 <div>
-                  <h3 class="text-lg font-extrabold tracking-tight" style="color: var(--text-primary);">{item.title}</h3>
-                  <p class="mt-2 leading-relaxed" style="color: var(--text-secondary);">{item.desc}</p>
+                  <h3 class="text-lg font-extrabold tracking-tight text-gray-900 dark:text-white">{item.title}</h3>
+                  <p class="mt-2 leading-relaxed text-gray-600 dark:text-gray-400">{item.desc}</p>
                 </div>
               </div>
             </div>
@@ -457,40 +441,39 @@ const whyUs = [
     <section class="relative px-6 py-20 reveal-on-scroll">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">Come lavoriamo</h2>
-          <p class="mt-4 max-w-2xl mx-auto text-lg" style="color: var(--text-secondary);">
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">Come lavoriamo</h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
             Un metodo chiaro, iterativo e misurabile. Niente caos: un percorso condiviso in 4 step.
           </p>
         </div>
 
         <div class="grid lg:grid-cols-[1fr,1.2fr] gap-10 items-start">
           <!-- Left: Per chi -->
-          <div class="rounded-3xl border border-gray-200/70 bg-white/70 p-8 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
-            <p class="text-sm font-semibold uppercase tracking-widest mb-5" style="color: var(--text-secondary);">Perfetto per</p>
-            <ul class="space-y-4" style="color: var(--text-secondary);">
+          <div class="rounded-3xl border border-gray-200 bg-gray-50 p-8 shadow-sm dark:border-white/10 dark:bg-white/5">
+            <p class="text-sm font-semibold uppercase tracking-widest mb-5 text-gray-600 dark:text-gray-400">Perfetto per</p>
+            <ul class="space-y-4 text-gray-600 dark:text-gray-400">
               <li class="flex gap-3 items-start">
-                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-primary shrink-0" aria-hidden="true"></span>
-                <span><strong style="color: var(--text-primary);">Ristoranti e locali</strong> che vogliono un feed curato e un'identità visiva riconoscibile</span>
+                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-gray-900 dark:bg-white shrink-0" aria-hidden="true"></span>
+                <span><strong class="text-gray-900 dark:text-white">Ristoranti e locali</strong> che vogliono un feed curato e un'identità visiva riconoscibile</span>
               </li>
               <li class="flex gap-3 items-start">
-                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-secondary shrink-0" aria-hidden="true"></span>
-                <span><strong style="color: var(--text-primary);">Professionisti</strong> che vogliono autorevolezza online e generare nuovi contatti</span>
+                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-gray-500 dark:bg-gray-400 shrink-0" aria-hidden="true"></span>
+                <span><strong class="text-gray-900 dark:text-white">Professionisti</strong> che vogliono autorevolezza online e generare nuovi contatti</span>
               </li>
               <li class="flex gap-3 items-start">
-                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span>
-                <span><strong style="color: var(--text-primary);">Hotel e turismo</strong> che puntano su stagionalità, campagne ed esperienze</span>
+                <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-gray-400 dark:bg-gray-500 shrink-0" aria-hidden="true"></span>
+                <span><strong class="text-gray-900 dark:text-white">Hotel e turismo</strong> che puntano su stagionalità, campagne ed esperienze</span>
               </li>
               <li class="flex gap-3 items-start">
                 <span class="mt-1.5 h-2.5 w-2.5 rounded-full bg-green-500 shrink-0" aria-hidden="true"></span>
-                <span><strong style="color: var(--text-primary);">Negozi e attività locali</strong> che vogliono più visibilità e clienti dal territorio</span>
+                <span><strong class="text-gray-900 dark:text-white">Negozi e attività locali</strong> che vogliono più visibilità e clienti dal territorio</span>
               </li>
             </ul>
 
-            <div class="mt-8 pt-6 border-t border-gray-200/60 dark:border-white/10">
+            <div class="mt-8 pt-6 border-t border-gray-200 dark:border-white/10">
               <a
                 href="/contattaci"
-                class="inline-flex items-center justify-center gap-2 rounded-full border border-gray-200/80 bg-white/70 px-6 py-3 text-sm font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5 w-full"
-                style="color: var(--text-primary);"
+                class="btn-secondary inline-flex items-center justify-center gap-2 w-full"
               >
                 Parla con il team
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
@@ -500,22 +483,22 @@ const whyUs = [
 
           <!-- Right: Timeline -->
           <div class="relative">
-            <div class="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-secondary via-accent to-primary opacity-85" aria-hidden="true"></div>
+            <div class="absolute left-5 top-0 bottom-0 w-px bg-gray-300 dark:bg-white/20" aria-hidden="true"></div>
             <div class="space-y-5">
               {processSteps.map((step) => (
                 <div class="relative pl-14">
-                  <div class="absolute left-2 top-4 h-7 w-7 rounded-full border border-gray-200/70 bg-white/80 shadow-custom dark:border-white/10 dark:bg-white/10 flex items-center justify-center" aria-hidden="true">
-                    <div class="h-4 w-4 rounded-full bg-gradient-to-br from-secondary via-accent to-primary"></div>
+                  <div class="absolute left-2 top-4 h-7 w-7 rounded-full border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-white/10 flex items-center justify-center" aria-hidden="true">
+                    <div class="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>
                   </div>
-                  <div class="rounded-3xl border border-gray-200/70 bg-white/70 p-7 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
+                  <div class="rounded-3xl border border-gray-200 bg-gray-50 p-7 shadow-sm dark:border-white/10 dark:bg-white/5">
                     <div class="flex items-center justify-between gap-4 mb-3">
-                      <h3 class="text-xl font-extrabold tracking-tight" style="color: var(--text-primary);">{step.title}</h3>
-                      <span class="inline-flex items-center gap-2 text-xs whitespace-nowrap shrink-0 rounded-full border border-gray-200/70 bg-white/70 px-3 py-1.5 font-semibold dark:border-white/10 dark:bg-white/5" style="color: var(--text-secondary);">
+                      <h3 class="text-xl font-extrabold tracking-tight text-gray-900 dark:text-white">{step.title}</h3>
+                      <span class="inline-flex items-center gap-2 text-xs whitespace-nowrap shrink-0 rounded-full border border-gray-200 bg-white px-3 py-1.5 font-semibold dark:border-white/10 dark:bg-white/5 text-gray-600 dark:text-gray-400">
                         Step {step.num}
                       </span>
                     </div>
-                    <p class="leading-relaxed" style="color: var(--text-secondary);">{step.desc}</p>
-                    <p class="mt-3 text-xs font-medium" style="color: var(--text-secondary);">{step.detail}</p>
+                    <p class="leading-relaxed text-gray-600 dark:text-gray-400">{step.desc}</p>
+                    <p class="mt-3 text-xs font-medium text-gray-500 dark:text-gray-500">{step.detail}</p>
                   </div>
                 </div>
               ))}
@@ -529,21 +512,21 @@ const whyUs = [
     <section class="relative px-6 py-20 reveal-on-scroll" id="faq">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight" style="color: var(--text-primary);">Domande frequenti</h2>
-          <p class="mt-4 text-lg" style="color: var(--text-secondary);">
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">Domande frequenti</h2>
+          <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
             Tutto quello che devi sapere sui nostri servizi di grafica digitale e social media management.
           </p>
         </div>
 
         <div class="space-y-3">
           {faqs.map((faq, idx) => (
-            <details class="group rounded-3xl border border-gray-200/70 bg-white/70 shadow-custom dark:border-white/10 dark:bg-white/5 overflow-hidden">
-              <summary class="flex items-center justify-between gap-4 cursor-pointer p-6 md:p-7 text-left font-semibold text-base md:text-lg list-none [&::-webkit-details-marker]:hidden" style="color: var(--text-primary);">
+            <details class="group rounded-3xl border border-gray-200 bg-gray-50 shadow-sm dark:border-white/10 dark:bg-white/5 overflow-hidden">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer p-6 md:p-7 text-left font-semibold text-base md:text-lg list-none [&::-webkit-details-marker]:hidden text-gray-900 dark:text-white">
                 <span>{faq.q}</span>
-                <svg class="w-5 h-5 shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--text-secondary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                <svg class="w-5 h-5 shrink-0 transition-transform duration-300 group-open:rotate-45 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
               </summary>
               <div class="px-6 md:px-7 pb-6 md:pb-7 -mt-1">
-                <p class="leading-relaxed" style="color: var(--text-secondary);">{faq.a}</p>
+                <p class="leading-relaxed text-gray-600 dark:text-gray-400">{faq.a}</p>
               </div>
             </details>
           ))}
@@ -554,21 +537,17 @@ const whyUs = [
     <!-- ═══════════════════════════════════ FINAL CTA ═══════════════════════════════════ -->
     <section class="relative px-6 pb-20 reveal-on-scroll">
       <div class="max-w-6xl mx-auto">
-        <div class="relative overflow-hidden rounded-3xl md:rounded-[2rem] border border-gray-200/70 bg-white/70 p-10 md:p-14 shadow-custom-lg dark:border-white/10 dark:bg-white/5">
-          <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-            <div class="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-secondary/30 via-accent/20 to-transparent blur-3xl"></div>
-            <div class="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-3xl"></div>
-          </div>
+        <div class="relative overflow-hidden rounded-3xl md:rounded-[2rem] border border-gray-200 bg-gray-50 p-10 md:p-14 shadow-sm dark:border-white/10 dark:bg-white/5">
           <div class="relative grid lg:grid-cols-[1.4fr,1fr] gap-10 items-center">
             <div>
-              <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight" style="color: var(--text-primary);">
+              <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-gray-900 dark:text-white">
                 Pronto a trasformare la tua
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-secondary via-accent to-primary"> presenza digitale?</span>
+                <span class="text-gray-500 dark:text-gray-400"> presenza digitale?</span>
               </h2>
-              <p class="mt-5 text-lg leading-relaxed" style="color: var(--text-secondary);">
+              <p class="mt-5 text-lg leading-relaxed text-gray-600 dark:text-gray-400">
                 Raccontaci il tuo progetto e ricevi una proposta chiara e personalizzata: identità visiva, gestione social, campagne e tutto ciò che serve per distinguerti.
               </p>
-              <div class="mt-6 flex flex-wrap items-center gap-4 text-sm" style="color: var(--text-secondary);">
+              <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                 <span class="inline-flex items-center gap-1.5">
                   <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                   Preventivo gratuito in 24h
@@ -586,26 +565,24 @@ const whyUs = [
             <div class="flex flex-col gap-3">
               <a
                 href="/contattaci?topic=grafica"
-                class="inline-flex justify-center items-center gap-2 rounded-full bg-gradient-to-r from-secondary via-accent to-primary px-8 py-4 font-extrabold !text-white hover:!text-white shadow-custom-lg transition-transform hover:scale-[1.02]"
+                class="btn-primary inline-flex justify-center items-center gap-2"
               >
                 Richiedi un preventivo gratuito
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
               </a>
               <a
                 href="/contattaci?topic=social"
-                class="inline-flex justify-center rounded-full border border-gray-200/80 bg-white/70 px-8 py-4 font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5"
-                style="color: var(--text-primary);"
+                class="btn-secondary inline-flex justify-center items-center gap-2"
               >
                 Prenota una call gratuita
               </a>
               <a
                 href="/lavori"
-                class="inline-flex justify-center rounded-full border border-gray-200/80 bg-white/70 px-8 py-4 font-semibold shadow-custom hover:bg-white dark:border-white/15 dark:bg-white/5"
-                style="color: var(--text-primary);"
+                class="btn-secondary inline-flex justify-center items-center gap-2"
               >
                 Guarda i progetti
               </a>
-              <p class="text-xs text-center mt-1" style="color: var(--text-secondary);">Carmagnola &bull; Torino &bull; tutto il Piemonte</p>
+              <p class="text-xs text-center mt-1 text-gray-500 dark:text-gray-500">Carmagnola &bull; Torino &bull; tutto il Piemonte</p>
             </div>
           </div>
         </div>

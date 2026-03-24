@@ -1,5 +1,6 @@
 ---
 import { icons } from './Icons';
+import ThemeToggle from './ThemeToggle.astro';
 
 const navItems = [
   { name: 'Home', url: '/' },
@@ -48,12 +49,12 @@ const currentPath = Astro.url.pathname;
                     <Fragment set:html={icons.chevronDown} />
                   </div>
                 </button>
-                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-zinc-900 border border-white/10 shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-56">
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-white/10 shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-56">
                   <div class="py-3">
                     {item.dropdown.map(dropItem => (
                       <a 
                         href={dropItem.url}
-                        class={`block px-5 py-3 text-base transition-colors rounded-xl mx-2 ${currentPath === dropItem.url ? 'text-white font-semibold bg-white/10' : 'text-gray-300 hover:bg-white/10 hover:text-white'}`}
+                        class={`block px-5 py-3 text-base transition-colors rounded-xl mx-2 ${currentPath === dropItem.url ? 'text-gray-900 dark:text-white font-semibold bg-gray-100 dark:bg-white/10' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white'}`}
                       >
                         {dropItem.name}
                       </a>
@@ -72,6 +73,7 @@ const currentPath = Astro.url.pathname;
           ))
         }
       </nav>
+      <ThemeToggle />
       <a href="/contattaci" class="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3 text-base whitespace-nowrap">Richiedi consulenza</a>
       </div>
       
@@ -95,7 +97,7 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile Menu Dropdown -->
     <div
       id="mobile-menu"
-      class="absolute top-full left-0 right-0 bg-zinc-900 border-t border-white/10 shadow-2xl z-50 transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out md:hidden"
+      class="absolute top-full left-0 right-0 bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-white/10 shadow-2xl z-50 transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out md:hidden"
     >
       <nav class="px-4 py-4 max-h-[80vh] overflow-y-auto">
         <ul class="space-y-1">
@@ -113,7 +115,7 @@ const currentPath = Astro.url.pathname;
                           href={dropItem.url}
                           class={`block py-2 px-3 text-sm rounded-lg transition-all duration-200 ${
                             currentPath === dropItem.url
-                        ? 'text-black dark:text-white font-semibold bg-black/5 dark:bg-white/10 border-l-2 border-primary'
+                        ? 'text-black dark:text-white font-semibold bg-black/5 dark:bg-white/10 border-l-2 border-gray-900 dark:border-white'
                         : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10'
                       }`}
                       >
@@ -129,7 +131,7 @@ const currentPath = Astro.url.pathname;
                     href={item.url}
                     class={`block py-2.5 px-3 text-sm rounded-lg transition-all duration-200 ${
                       currentPath === item.url
-                        ? 'text-black dark:text-white font-semibold bg-black/5 dark:bg-white/10 border-l-3 border-primary'
+                        ? 'text-black dark:text-white font-semibold bg-black/5 dark:bg-white/10 border-l-3 border-gray-900 dark:border-white'
                         : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10'
                     }`}
                   >
@@ -140,7 +142,7 @@ const currentPath = Astro.url.pathname;
             ))
           }
         </ul>
-        <div class="mt-4 pt-4 border-t border-primary/20">
+        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-white/20">
           <a
             href="/contattaci"
             class="btn-secondary inline-flex items-center gap-2 px-5 py-2 text-sm"

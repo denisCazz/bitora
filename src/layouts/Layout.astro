@@ -23,9 +23,17 @@ const canonicalUrl = pathname === '/'
 ---
 
 <!doctype html>
-<html lang="it" class="dark">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
+    <script is:inline>
+      (function(){
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <meta name="trustpilot-one-time-domain-verification-id" content="a73b7189-4327-406d-9010-8bc27db1d6c1"/>
     <SpeedInsights/>
     <Analytics />
@@ -96,49 +104,13 @@ const canonicalUrl = pathname === '/'
     <meta name="keywords" content="sistemi digitali su misura, gestionali, CRM, CMMS, siti web, e-commerce, PMI, software aziendale" />
     
     <style is:global>
-      :root {
-        --color-bg: #000000;
-        --color-text: #ffffff;
-      }
-      
       html {
-        background-color: var(--color-bg);
-        color: var(--color-text);
         scroll-behavior: smooth;
       }
-
       body {
         margin: 0;
         padding: 0;
         overflow-x: hidden;
-      }
-
-      /* Apple-style Reveal Animation */
-      .reveal-on-scroll {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .reveal-on-scroll.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Fade In Up Animation */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .animate-fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
       }
     </style>
 
@@ -175,19 +147,10 @@ const canonicalUrl = pathname === '/'
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/bitora.png" />
 
-    <!-- Fonts - optimized non-blocking loading -->
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      />
-    </noscript>
+    <!-- Fonts - self-hosted for GDPR compliance and performance -->
+    <link rel="preload" href="/fonts/inter-400.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/inter-700.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="/fonts/inter.css" />
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />    <!-- Open Graph / Facebook -->
@@ -238,7 +201,7 @@ const canonicalUrl = pathname === '/'
       }
     </script>
   </head>
-  <body class="flex flex-col min-h-screen font-['Inter',sans-serif] transition-colors duration-300" style="background-color: var(--bg-primary); color: var(--text-primary);">
+  <body class="flex flex-col min-h-screen font-['Inter',sans-serif] transition-colors duration-300 bg-white dark:bg-black text-gray-900 dark:text-white">
     <Header />
     <main id="main-content" class="flex-grow" tabindex="-1">
       <slot />
@@ -248,7 +211,7 @@ const canonicalUrl = pathname === '/'
     <!-- Back to Top Button -->
     <button 
       id="back-to-top" 
-      class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-white text-black p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+      class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-gray-900 dark:bg-white text-white dark:text-black p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-gray-400"
       aria-label="Torna in cima"
     >
       <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -289,26 +252,35 @@ const canonicalUrl = pathname === '/'
       }
     </script>
     
-    <!-- Google Tag Manager - Loaded after page content (non-blocking) -->
+    <!-- Google Tag Manager - Loaded only with marketing cookie consent -->
     <script is:inline>
-      // Load GTM only after page is interactive
+      function loadGTMIfConsented() {
+        if (document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) return;
+        var cookies = document.cookie.split(';');
+        var consent = null;
+        for (var i = 0; i < cookies.length; i++) {
+          var parts = cookies[i].trim().split('=');
+          if (parts[0] === 'bitora_cookie_consent') {
+            try { consent = JSON.parse(decodeURIComponent(parts[1])); } catch(e) {}
+          }
+        }
+        if (consent && consent.marketing) {
+          var gtmScript = document.createElement('script');
+          gtmScript.async = true;
+          gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17047013851';
+          document.head.appendChild(gtmScript);
+          gtmScript.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'AW-17047013851');
+          };
+        }
+      }
       if (typeof window !== 'undefined') {
-        window.addEventListener('load', function() {
-          setTimeout(function() {
-            var gtmScript = document.createElement('script');
-            gtmScript.async = true;
-            gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17047013851';
-            document.head.appendChild(gtmScript);
-            
-            gtmScript.onload = function() {
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              window.gtag = gtag;
-              gtag('js', new Date());
-              gtag('config', 'AW-17047013851');
-            };
-          }, 100);
-        });
+        window.addEventListener('load', function() { setTimeout(loadGTMIfConsented, 100); });
+        window.addEventListener('cookieConsentChanged', loadGTMIfConsented);
       }
     </script>
     <CookieBanner />

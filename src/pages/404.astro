@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Pagina 404 avanzata con analytics e suggerimenti
 const suggestedPages = [
   { title: 'Homepage', url: '/', description: 'Scopri i nostri servizi NFC' },
   { title: 'Prezzi', url: '/prezzi', description: 'Tutti i nostri piani tariffari' },
@@ -10,34 +9,33 @@ const suggestedPages = [
   { title: 'Ecosistema NFC', url: '/nfc-ecosystem', description: 'Come funziona la tecnologia NFC' }
 ];
 
-// Analytics: traccia 404 errors
 const currentPath = Astro.url.pathname;
 ---
 
 <Layout title="Pagina non trovata - 404" description="La pagina richiesta non è stata trovata. Scopri le nostre alternative.">
-  <main class="min-h-screen bg-black text-white flex items-center justify-center px-4 relative overflow-hidden">
+  <main class="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white flex items-center justify-center px-4 relative overflow-hidden">
     
     <!-- Background Effects -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-50"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-200/40 dark:from-gray-800/20 via-white dark:via-black to-white dark:to-black opacity-50"></div>
     
     <div class="relative z-10 max-w-4xl w-full py-24">
       <!-- Contenuto principale 404 -->
       <div class="text-center mb-16 animate-fade-in-up">
-        <h1 class="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/10 mb-8 tracking-tighter">
+        <h1 class="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-gray-900 dark:from-white to-gray-300 dark:to-white/10 mb-8 tracking-tighter">
           404
         </h1>
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
           Pagina non trovata
         </h2>
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
           La pagina che stai cercando potrebbe essere stata rimossa, rinominata o è temporaneamente non disponibile.
         </p>
       </div>
 
       <!-- Percorso richiesto -->
-      <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 mb-12 max-w-2xl mx-auto text-center animate-fade-in-up delay-100">
+      <div class="bg-gray-50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 mb-12 max-w-2xl mx-auto text-center animate-fade-in-up delay-100">
         <p class="text-sm text-gray-500 mb-2 uppercase tracking-wider">Percorso richiesto</p>
-        <code class="text-indigo-400 font-mono text-lg">
+        <code class="text-gray-900 dark:text-gray-300 font-mono text-lg">
           {currentPath}
         </code>
       </div>
@@ -47,15 +45,15 @@ const currentPath = Astro.url.pathname;
         {suggestedPages.slice(0, 3).map((page) => (
           <a
             href={page.url}
-            class="group p-6 rounded-2xl bg-zinc-900/50 border border-white/10 hover:bg-zinc-900 transition-all duration-300"
+            class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-zinc-900 transition-all duration-300"
           >
-            <h4 class="font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+            <h4 class="font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
               {page.title}
             </h4>
-            <p class="text-gray-400 text-sm mb-4">
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
               {page.description}
             </p>
-            <span class="text-indigo-400 text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
+            <span class="text-gray-900 dark:text-white text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
               Vai alla pagina <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </span>
           </a>
@@ -67,13 +65,13 @@ const currentPath = Astro.url.pathname;
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/"
-            class="px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            class="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-lg hover:scale-105 transition-transform"
           >
             Torna alla Homepage
           </a>
           <a
             href="/contattaci"
-            class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all"
+            class="px-8 py-4 bg-gray-100 dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-full font-bold text-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-all"
           >
             Contattaci
           </a>
@@ -104,7 +102,6 @@ const currentPath = Astro.url.pathname;
   </style>
 
   <script>
-    // Analytics per 404
     if (typeof window !== 'undefined' && (window as any).trackEvent) {
       (window as any).trackEvent('page_404', {
         category: 'navigation',

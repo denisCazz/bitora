@@ -1,5 +1,306 @@
 ---
-return Astro.redirect('/soluzioni');
+import Layout from '../../layouts/Layout.astro';
 ---
 
+<Layout
+  title="Soluzioni Digitali per Professionisti | Avvocati, Commercialisti, Consulenti | Bitora"
+  description="Siti web professionali, CRM, portfolio e SEO locale per avvocati, commercialisti e consulenti in Piemonte. Presenza online autorevole e lead generation."
+>
+  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden selection:bg-gray-200 dark:selection:bg-white/20 selection:text-gray-900 dark:selection:text-white">
 
+    <!-- Hero -->
+    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-gray-50 dark:from-black dark:via-black dark:to-black/95"></div>
+      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-100 dark:bg-white/10 blur-[100px] opacity-50"></div>
+
+      <div class="relative z-10 max-w-4xl">
+        <a href="/settori" class="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors mb-6">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Tutti i settori
+        </a>
+        <p class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4">Settore Professionisti</p>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+          Soluzioni digitali per<br />
+          <span class="text-gray-900 dark:text-white">professionisti.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed mb-8">
+          Siti web autorevoli, CRM per la gestione clienti, portfolio e SEO locale. Tutto ciò che serve ad avvocati, commercialisti e consulenti per crescere online.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contattaci?topic=professionisti" class="btn-primary group min-w-[200px] flex items-center justify-center gap-2">
+            Parla con noi
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20informazioni%20su%20soluzioni%20per%20professionisti.%20Ho%20visitato%20il%20sito%20bitora.it" class="btn-secondary min-w-[200px] flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Le sfide dei professionisti</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Problemi comuni per chi lavora nel mondo dei servizi professionali.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          {[
+            { icon: '🌐', title: 'Presenza online autorevole', desc: 'Un professionista senza sito web perde credibilità. I potenziali clienti cercano online prima di scegliere a chi affidarsi.' },
+            { icon: '🎯', title: 'Lead generation', desc: 'Il passaparola non basta più. Serve una strategia digitale per attrarre nuovi clienti in modo costante e prevedibile.' },
+            { icon: '📂', title: 'Gestione clienti', desc: 'Appuntamenti, documenti, scadenze, comunicazioni: senza un sistema organizzato si perde tempo e si rischiano errori.' }
+          ].map((item, i) => (
+            <div class="p-6 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/30 transition-all reveal-on-scroll" style={`transition-delay: ${i * 80}ms`}>
+              <span class="text-3xl mb-4 block">{item.icon}</span>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Per chi -->
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Per quali professionisti</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Soluzioni pensate per chi offre servizi professionali di alto valore.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { icon: '⚖️', label: 'Avvocati' },
+            { icon: '📊', label: 'Commercialisti' },
+            { icon: '💼', label: 'Consulenti' },
+            { icon: '🏗️', label: 'Ingegneri' },
+            { icon: '🏠', label: 'Architetti' },
+            { icon: '🩺', label: 'Medici' },
+            { icon: '📐', label: 'Geometri' },
+            { icon: '💰', label: 'Consulenti finanziari' }
+          ].map((item, i) => (
+            <div class="p-5 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-center hover:border-gray-400 dark:hover:border-white/30 transition-all reveal-on-scroll" style={`transition-delay: ${i * 50}ms`}>
+              <span class="text-2xl block mb-2">{item.icon}</span>
+              <span class="text-gray-900 dark:text-white font-medium text-sm">{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Soluzioni -->
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Le nostre soluzioni per professionisti</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Strumenti digitali che comunicano competenza e generano nuovi contatti.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/30 transition-all">
+            <div class="w-14 h-14 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+              <span class="text-2xl">🌐</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Siti web professionali</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              Un sito che comunica autorevolezza e competenza. Design sobrio ed elegante, contenuti ottimizzati, form di contatto strategici. Il tuo biglietto da visita digitale.
+            </p>
+            <ul class="space-y-3 text-gray-500 text-sm">
+              <li class="flex items-center gap-2">✓ Design professionale e autorevole</li>
+              <li class="flex items-center gap-2">✓ Sezione servizi e competenze</li>
+              <li class="flex items-center gap-2">✓ Form di contatto con qualificazione lead</li>
+            </ul>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/30 transition-all" style="transition-delay: 100ms">
+            <div class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6">
+              <span class="text-2xl">📊</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">CRM e gestione clienti</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              Un sistema per gestire contatti, appuntamenti, documenti e comunicazioni. Tutto in un unico posto, accessibile da qualsiasi dispositivo. Basta fogli Excel e post-it.
+            </p>
+            <ul class="space-y-3 text-gray-500 text-sm">
+              <li class="flex items-center gap-2">✓ Anagrafica clienti centralizzata</li>
+              <li class="flex items-center gap-2">✓ Calendario appuntamenti integrato</li>
+              <li class="flex items-center gap-2">✓ Gestione documenti e scadenze</li>
+            </ul>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/30 transition-all" style="transition-delay: 200ms">
+            <div class="w-14 h-14 bg-yellow-500/20 rounded-2xl flex items-center justify-center mb-6">
+              <span class="text-2xl">📁</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Portfolio e casi studio</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              Mostra i tuoi risultati. Una sezione portfolio con casi studio dettagliati dimostra la tua esperienza e convince i potenziali clienti meglio di qualsiasi brochure.
+            </p>
+            <ul class="space-y-3 text-gray-500 text-sm">
+              <li class="flex items-center gap-2">✓ Casi studio con risultati misurabili</li>
+              <li class="flex items-center gap-2">✓ Testimonianze clienti verificate</li>
+              <li class="flex items-center gap-2">✓ Sezione pubblicazioni e articoli</li>
+            </ul>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/30 transition-all" style="transition-delay: 300ms">
+            <div class="w-14 h-14 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+              <span class="text-2xl">📍</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">SEO locale</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              "Avvocato Torino", "commercialista Carmagnola", "consulente del lavoro Piemonte" — quando un potenziale cliente cerca online, il tuo studio deve comparire tra i primi risultati.
+            </p>
+            <ul class="space-y-3 text-gray-500 text-sm">
+              <li class="flex items-center gap-2">✓ Google Business ottimizzato</li>
+              <li class="flex items-center gap-2">✓ Schema markup professionale</li>
+              <li class="flex items-center gap-2">✓ Contenuti SEO per la tua specializzazione</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study -->
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal-on-scroll">
+            <p class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4">Caso studio</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Studio Legale Associato</h2>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              Uno studio legale con tre soci e nessuna presenza online. Abbiamo realizzato un sito professionale con sezione competenze, blog giuridico e form di contatto qualificato. In sei mesi, il 40% dei nuovi clienti arriva dal sito.
+            </p>
+            <div class="space-y-4 mb-8">
+              {[
+                { metric: '40%', label: 'Nuovi clienti dal sito web' },
+                { metric: '+120%', label: 'Traffico organico in 6 mesi' },
+                { metric: '15+', label: 'Richieste di consulenza al mese dal form' }
+              ].map((item) => (
+                <div class="flex items-center gap-4">
+                  <span class="text-2xl font-bold text-gray-900 dark:text-white min-w-[80px]">{item.metric}</span>
+                  <span class="text-gray-600 dark:text-gray-400">{item.label}</span>
+                </div>
+              ))}
+            </div>
+            <a href="/contattaci?topic=professionisti" class="btn-primary inline-flex items-center gap-2">
+              Voglio risultati simili
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 reveal-on-scroll" style="transition-delay: 200ms">
+            <blockquote class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
+              "Prima del sito, i nuovi clienti arrivavano solo dal passaparola. Ora riceviamo richieste di consulenza ogni settimana direttamente dal form del sito. Un investimento che si è ripagato in pochi mesi."
+            </blockquote>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center text-xl">⚖️</div>
+              <div>
+                <p class="text-gray-900 dark:text-white font-medium">Studio Legale Associato</p>
+                <p class="text-gray-500 text-sm">Studio legale · Piemonte</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Domande frequenti</h2>
+          <p class="text-gray-600 dark:text-gray-400">Le risposte ai dubbi più comuni dei professionisti.</p>
+        </div>
+
+        <div class="space-y-6">
+          {[
+            {
+              q: 'Un professionista ha davvero bisogno di un sito web?',
+              a: 'Assolutamente sì. Il 70% dei potenziali clienti cerca online prima di scegliere un professionista. Senza un sito, perdi visibilità e credibilità rispetto ai colleghi che ne hanno uno.'
+            },
+            {
+              q: 'Come funziona il CRM per professionisti?',
+              a: 'È un sistema su misura per gestire la tua base clienti: anagrafica, appuntamenti, documenti, scadenze e comunicazioni. Tutto accessibile da computer, tablet o smartphone. Lo personalizziamo sulle tue esigenze specifiche.'
+            },
+            {
+              q: 'Il sito rispetta le normative deontologiche?',
+              a: 'Certamente. Conosciamo le regole deontologiche per avvocati, commercialisti e altre professioni regolamentate. Il sito viene realizzato nel pieno rispetto delle normative vigenti.'
+            },
+            {
+              q: 'Quanto tempo serve per vedere i primi risultati SEO?',
+              a: 'I primi risultati in termini di posizionamento Google si vedono generalmente dopo 2-3 mesi. In 6 mesi, con una strategia SEO locale ben eseguita, i contatti dal sito iniziano ad arrivare in modo costante.'
+            }
+          ].map((item, i) => (
+            <details class="group p-6 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 reveal-on-scroll" style={`transition-delay: ${i * 80}ms`}>
+              <summary class="flex items-center justify-between cursor-pointer list-none">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white pr-4">{item.q}</h3>
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <p class="text-gray-600 dark:text-gray-400 mt-4 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Dai al tuo studio la presenza digitale che merita.</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-8">Consulenza gratuita. Raccontaci del tuo studio e ti proponiamo la soluzione giusta.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contattaci?topic=professionisti" class="btn-primary inline-flex items-center justify-center gap-2 min-w-[200px]">Richiedi consulenza gratuita</a>
+          <a href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20informazioni%20su%20soluzioni%20per%20professionisti.%20Ho%20visitato%20il%20sito%20bitora.it" class="btn-secondary inline-flex items-center justify-center gap-2 min-w-[200px]">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Soluzioni Digitali per Professionisti",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Bitora",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Carmagnola",
+        "addressRegion": "Piemonte",
+        "addressCountry": "IT"
+      }
+    },
+    "areaServed": ["Carmagnola", "Torino", "Piemonte", "Italia"],
+    "serviceType": "Digital Solutions for Professionals",
+    "description": "Siti web professionali, CRM, portfolio e SEO locale per avvocati, commercialisti e consulenti"
+  }
+</script>
+
+<style>
+  .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  });
+</script>

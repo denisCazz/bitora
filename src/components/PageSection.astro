@@ -12,9 +12,9 @@ const { label, title, subtitle, className = '' } = Astro.props;
   <div class="max-w-6xl mx-auto">
     {(label || title || subtitle) && (
       <div class="mb-12 md:mb-16">
-        {label && <p class="text-sm font-medium tracking-widest text-primary uppercase mb-3 reveal-on-scroll">{label}</p>}
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 reveal-on-scroll">{title}</h2>
-        {subtitle && <p class="text-lg text-gray-400 max-w-xl reveal-on-scroll">{subtitle}</p>}
+        {label && <p class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-3 reveal-on-scroll">{label}</p>}
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 reveal-on-scroll">{title}</h2>
+        {subtitle && <p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl reveal-on-scroll">{subtitle}</p>}
       </div>
     )}
     <slot />

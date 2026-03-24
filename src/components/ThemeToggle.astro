@@ -1,0 +1,103 @@
+---
+---
+<div class="flex items-center gap-1 bg-gray-100 dark:bg-white/10 rounded-full p-1">
+  <button
+    id="theme-light"
+    class="theme-btn p-1.5 rounded-full transition-colors"
+    aria-label="Tema chiaro"
+    title="Tema chiaro"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <circle cx="12" cy="12" r="5"/>
+      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+  </button>
+  <button
+    id="theme-system"
+    class="theme-btn p-1.5 rounded-full transition-colors"
+    aria-label="Tema di sistema"
+    title="Tema di sistema"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+      <line x1="8" y1="21" x2="16" y2="21"/>
+      <line x1="12" y1="17" x2="12" y2="21"/>
+    </svg>
+  </button>
+  <button
+    id="theme-dark"
+    class="theme-btn p-1.5 rounded-full transition-colors"
+    aria-label="Tema scuro"
+    title="Tema scuro"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+  function initThemeToggle() {
+    const lightBtn = document.getElementById('theme-light');
+    const systemBtn = document.getElementById('theme-system');
+    const darkBtn = document.getElementById('theme-dark');
+
+    function getStoredTheme(): string {
+      return localStorage.getItem('theme') || 'system';
+    }
+
+    function applyTheme(theme: string) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+      updateButtons(theme);
+    }
+
+    function updateButtons(theme: string) {
+      const active = 'bg-white dark:bg-white/20 shadow-sm text-gray-900 dark:text-white';
+      const inactive = 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200';
+
+      [lightBtn, systemBtn, darkBtn].forEach(btn => {
+        if (!btn) return;
+        btn.className = 'theme-btn p-1.5 rounded-full transition-colors ' + inactive;
+      });
+
+      const activeBtn = theme === 'light' ? lightBtn : theme === 'dark' ? darkBtn : systemBtn;
+      if (activeBtn) {
+        activeBtn.className = 'theme-btn p-1.5 rounded-full transition-colors ' + active;
+      }
+    }
+
+    function setTheme(theme: string) {
+      if (theme === 'system') {
+        localStorage.removeItem('theme');
+      } else {
+        localStorage.setItem('theme', theme);
+      }
+      applyTheme(theme);
+    }
+
+    lightBtn?.addEventListener('click', () => setTheme('light'));
+    systemBtn?.addEventListener('click', () => setTheme('system'));
+    darkBtn?.addEventListener('click', () => setTheme('dark'));
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme('system');
+      }
+    });
+
+    applyTheme(getStoredTheme());
+  }
+
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+  document.addEventListener('astro:page-load', initThemeToggle);
+</script>
