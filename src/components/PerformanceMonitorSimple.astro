@@ -4,7 +4,7 @@
 
 <script is:inline>
   // Performance monitoring essenziale e compatibile
-  (function() {
+  (function () {
     function initPerformanceTracking() {
       // Solo se trackEvent è disponibile (caricato da Analytics)
       if (!window.trackEvent) {
@@ -12,13 +12,13 @@
         setTimeout(initPerformanceTracking, 1000);
         return;
       }
-      
+
       // Tempo di caricamento pagina
-      window.addEventListener('load', function() {
-        setTimeout(function() {
+      window.addEventListener('load', function () {
+        setTimeout(function () {
           window.trackEvent('page_load', {
             category: 'performance',
-            value: Math.round(performance.now())
+            value: Math.round(performance.now()),
           });
         }, 100);
       });
@@ -30,35 +30,35 @@
           interactionTracked = true;
           window.trackEvent('first_interaction', {
             category: 'engagement',
-            label: e.type
+            label: e.type,
           });
-          
+
           // Rimuovi listener
           document.removeEventListener('click', trackFirstInteraction);
           document.removeEventListener('scroll', trackFirstInteraction);
           document.removeEventListener('keydown', trackFirstInteraction);
         }
       }
-      
+
       document.addEventListener('click', trackFirstInteraction);
       document.addEventListener('scroll', trackFirstInteraction);
       document.addEventListener('keydown', trackFirstInteraction);
 
       // Errori JavaScript
-      window.addEventListener('error', function(e) {
+      window.addEventListener('error', function (e) {
         window.trackEvent('js_error', {
           category: 'error',
-          label: e.message || 'unknown'
+          label: e.message || 'unknown',
         });
       });
 
       // Tempo sulla pagina
       let startTime = Date.now();
-      window.addEventListener('beforeunload', function() {
+      window.addEventListener('beforeunload', function () {
         const timeOnPage = Math.round((Date.now() - startTime) / 1000);
         window.trackEvent('time_on_page', {
           category: 'engagement',
-          value: timeOnPage
+          value: timeOnPage,
         });
       });
     }

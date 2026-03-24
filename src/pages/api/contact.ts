@@ -50,10 +50,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const from = import.meta.env.SMTP_FROM ?? process.env.SMTP_FROM;
 
   if (!host || !user || !pass || !from) {
-    return new Response(
-      JSON.stringify({ ok: false, error: 'Configurazione SMTP incompleta' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ ok: false, error: 'Configurazione SMTP incompleta' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   try {
@@ -61,10 +61,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     const honeypot = (data.get('_gotcha') as string)?.trim() || '';
     if (honeypot) {
-      return new Response(
-        JSON.stringify({ ok: true }),
-        { status: 200, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     const nome = (data.get('nome') as string)?.trim() || '';
@@ -114,14 +114,14 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       html,
     });
 
-    return new Response(
-      JSON.stringify({ ok: true }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (err) {
     console.error('Errore invio email:', err);
     return new Response(
-      JSON.stringify({ ok: false, error: 'Errore durante l\'invio del messaggio' }),
+      JSON.stringify({ ok: false, error: "Errore durante l'invio del messaggio" }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }

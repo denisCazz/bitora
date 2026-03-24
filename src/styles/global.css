@@ -35,7 +35,8 @@
 
 /* Smooth transitions with reduced motion awareness */
 * {
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-property:
+    background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-duration: 0.25s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -47,7 +48,7 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-feature-settings: "liga";
+  font-feature-settings: 'liga';
   letter-spacing: -0.01em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -98,7 +99,7 @@ a.btn-secondary {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.9);
   color: #ffffff !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 .btn-secondary:hover,
 a.btn-secondary:hover {
@@ -142,11 +143,15 @@ a.btn-secondary:hover {
 }
 
 .shadow-custom {
-  box-shadow: 0 1px 3px 0 var(--shadow-primary), 0 1px 2px 0 var(--shadow-secondary);
+  box-shadow:
+    0 1px 3px 0 var(--shadow-primary),
+    0 1px 2px 0 var(--shadow-secondary);
 }
 
 .shadow-custom-lg {
-  box-shadow: 0 10px 15px -3px var(--shadow-primary), 0 4px 6px -2px var(--shadow-secondary);
+  box-shadow:
+    0 10px 15px -3px var(--shadow-primary),
+    0 4px 6px -2px var(--shadow-secondary);
 }
 
 /* Popup and modal styles */
@@ -251,7 +256,7 @@ a:hover {
   .responsive-table {
     font-size: 0.875rem;
   }
-  
+
   .responsive-table th,
   .responsive-table td {
     padding: 0.5rem 0.25rem;
@@ -264,12 +269,12 @@ a:hover {
     font-size: 1rem;
     line-height: 1.5rem;
   }
-  
+
   .responsive-text-xl {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
-  
+
   .responsive-text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -290,16 +295,32 @@ a:hover {
 
 /* Page animations */
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes fade-in-left {
-  from { opacity: 0; transform: translateX(-24px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 .animate-fade-in {
   animation: fade-in 0.6s ease-out forwards;
@@ -310,54 +331,118 @@ a:hover {
 .animate-fade-in-left {
   animation: fade-in-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.animation-delay-100 { animation-delay: 100ms; }
-.animation-delay-200 { animation-delay: 200ms; }
-.animation-delay-300 { animation-delay: 300ms; }
-.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
 
 @keyframes blob {
-  0% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0px, 0px) scale(1); }
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
 }
 
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes bounce-slow {
-  0%, 100% { transform: translateY(0) rotate(6deg); }
-  50% { transform: translateY(-10px) rotate(6deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(6deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(6deg);
+  }
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.animate-blob { animation: blob 7s infinite; }
-.animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
-.animate-shimmer { animation: shimmer 2s ease-in-out infinite; }
-.animate-float { animation: float 3s ease-in-out infinite; }
-.animate-bounce-slow { animation: bounce-slow 3s ease-in-out infinite; }
-.animate-marquee { animation: marquee var(--marquee-duration, 24s) linear infinite; }
+.animate-blob {
+  animation: blob 7s infinite;
+}
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 24s) linear infinite;
+}
 
-.animation-delay-1000 { animation-delay: 1s; }
-.animation-delay-2000 { animation-delay: 2s; }
-.animation-delay-4000 { animation-delay: 4s; }
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
 
-.perspective-1000 { perspective: 1000px; }
-.transform-gpu { transform: translateZ(0); will-change: transform; }
-.rotateY-12 { transform: rotateY(12deg); }
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-gpu {
+  transform: translateZ(0);
+  will-change: transform;
+}
+.rotateY-12 {
+  transform: rotateY(12deg);
+}

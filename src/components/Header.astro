@@ -27,56 +27,69 @@ const currentPath = Astro.url.pathname;
 
 <header class="sticky top-0 z-50 w-full">
   <div class="w-full relative">
-    <div id="nav-shell" class="glass-panel flex items-center justify-between w-full px-6 md:px-12 lg:px-20 py-2 shadow-custom transition-all duration-300">
+    <div
+      id="nav-shell"
+      class="glass-panel flex items-center justify-between w-full px-6 md:px-12 lg:px-20 py-2 shadow-custom transition-all duration-300"
+    >
       <!-- Logo - Sinistra -->
       <a
         href="/"
         class="flex items-center text-black dark:text-white hover:opacity-90 transition-opacity duration-200 z-10 flex-shrink-0 -m-1"
       >
-        <img src="/bitora.png" alt="Bitora" class="h-16 w-16 md:h-20 md:w-20 m-0 block rounded-full object-cover" />
+        <img
+          src="/bitora.png"
+          alt="Bitora"
+          class="h-16 w-16 md:h-20 md:w-20 m-0 block rounded-full object-cover"
+        />
       </a>
-      
+
       <!-- Nav + CTA - Destra -->
       <div class="hidden md:flex items-center gap-6">
-      <nav class="flex items-center gap-2">
-        {
-          navItems.map(item => (
-            item.dropdown ? (
-              <div class="relative group">
-                <button class={`py-3 px-5 rounded-xl transition-colors duration-200 relative flex items-center gap-2 text-base ${currentPath === item.url || item.dropdown.some(d => d.url === currentPath) ? 'text-black dark:text-white font-medium bg-black/5 dark:bg-white/5' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white'}`}>
-                  <span>{item.name}</span>
-                  <div class="w-4 h-4 flex items-center justify-center">
-                    <Fragment set:html={icons.chevronDown} />
-                  </div>
-                </button>
-                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-white/10 shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-56">
-                  <div class="py-3">
-                    {item.dropdown.map(dropItem => (
-                      <a 
-                        href={dropItem.url}
-                        class={`block px-5 py-3 text-base transition-colors rounded-xl mx-2 ${currentPath === dropItem.url ? 'text-gray-900 dark:text-white font-semibold bg-gray-100 dark:bg-white/10' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white'}`}
-                      >
-                        {dropItem.name}
-                      </a>
-                    ))}
+        <nav class="flex items-center gap-2">
+          {
+            navItems.map(item =>
+              item.dropdown ? (
+                <div class="relative group">
+                  <button
+                    class={`py-3 px-5 rounded-xl transition-colors duration-200 relative flex items-center gap-2 text-base ${currentPath === item.url || item.dropdown.some(d => d.url === currentPath) ? 'text-black dark:text-white font-medium bg-black/5 dark:bg-white/5' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white'}`}
+                  >
+                    <span>{item.name}</span>
+                    <div class="w-4 h-4 flex items-center justify-center">
+                      <Fragment set:html={icons.chevronDown} />
+                    </div>
+                  </button>
+                  <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-white/10 shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-56">
+                    <div class="py-3">
+                      {item.dropdown.map(dropItem => (
+                        <a
+                          href={dropItem.url}
+                          class={`block px-5 py-3 text-base transition-colors rounded-xl mx-2 ${currentPath === dropItem.url ? 'text-gray-900 dark:text-white font-semibold bg-gray-100 dark:bg-white/10' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white'}`}
+                        >
+                          {dropItem.name}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <a
-                href={item.url}
-                class={`py-3 px-5 rounded-xl transition-colors duration-200 flex items-center text-base ${currentPath === item.url ? 'text-black dark:text-white font-medium bg-black/5 dark:bg-white/10' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10'}`}
-              >
-                {item.name}
-              </a>
+              ) : (
+                <a
+                  href={item.url}
+                  class={`py-3 px-5 rounded-xl transition-colors duration-200 flex items-center text-base ${currentPath === item.url ? 'text-black dark:text-white font-medium bg-black/5 dark:bg-white/10' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10'}`}
+                >
+                  {item.name}
+                </a>
+              )
             )
-          ))
-        }
-      </nav>
-      <ThemeToggle />
-      <a href="/contattaci" class="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3 text-base whitespace-nowrap">Richiedi consulenza</a>
+          }
+        </nav>
+        <ThemeToggle />
+        <a
+          href="/contattaci"
+          class="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3 text-base whitespace-nowrap"
+          >Richiedi consulenza</a
+        >
       </div>
-      
+
       <!-- Mobile Menu Button -->
       <div class="md:hidden flex items-center ml-auto">
         <button
@@ -93,7 +106,7 @@ const currentPath = Astro.url.pathname;
         </button>
       </div>
     </div>
-    
+
     <!-- Mobile Menu Dropdown -->
     <div
       id="mobile-menu"
@@ -102,7 +115,7 @@ const currentPath = Astro.url.pathname;
       <nav class="px-4 py-4 max-h-[80vh] overflow-y-auto">
         <ul class="space-y-1">
           {
-            navItems.map(item => (
+            navItems.map(item =>
               item.dropdown ? (
                 <li>
                   <div class="block py-2.5 px-3 text-sm font-semibold text-gray-800 dark:text-gray-100">
@@ -115,12 +128,12 @@ const currentPath = Astro.url.pathname;
                           href={dropItem.url}
                           class={`block py-2 px-3 text-sm rounded-lg transition-all duration-200 ${
                             currentPath === dropItem.url
-                        ? 'text-black dark:text-white font-semibold bg-black/5 dark:bg-white/10 border-l-2 border-gray-900 dark:border-white'
-                        : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10'
-                      }`}
-                      >
-                        {dropItem.name}
-                      </a>
+                              ? 'text-black dark:text-white font-semibold bg-black/5 dark:bg-white/10 border-l-2 border-gray-900 dark:border-white'
+                              : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10'
+                          }`}
+                        >
+                          {dropItem.name}
+                        </a>
                       </li>
                     ))}
                   </ul>
@@ -139,7 +152,7 @@ const currentPath = Astro.url.pathname;
                   </a>
                 </li>
               )
-            ))
+            )
           }
         </ul>
         <div class="mt-4 pt-4 border-t border-gray-200 dark:border-white/20">
@@ -191,12 +204,12 @@ const currentPath = Astro.url.pathname;
     const navLinks = mobileMenu?.querySelectorAll('a');
     navLinks?.forEach(link => {
       link.addEventListener('click', closeMenu);
-    });    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
+    }); // Close menu when clicking outside
+    document.addEventListener('click', e => {
       const target = e.target as Node;
       const isClickInsideMenu = mobileMenu?.contains(target);
       const isClickOnToggle = menuToggle?.contains(target);
-      
+
       if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu?.classList.contains('invisible')) {
         closeMenu();
       }

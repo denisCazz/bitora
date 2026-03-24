@@ -6,34 +6,50 @@ const suggestedPages = [
   { title: 'Prezzi', url: '/prezzi', description: 'Tutti i nostri piani tariffari' },
   { title: 'Chi Siamo', url: '/chi-siamo', description: 'La nostra storia e missione' },
   { title: 'Contatti', url: '/contattaci', description: 'Mettiti in contatto con noi' },
-  { title: 'Ecosistema NFC', url: '/nfc-ecosystem', description: 'Come funziona la tecnologia NFC' }
+  {
+    title: 'Ecosistema NFC',
+    url: '/nfc-ecosystem',
+    description: 'Come funziona la tecnologia NFC',
+  },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<Layout title="Pagina non trovata - 404" description="La pagina richiesta non è stata trovata. Scopri le nostre alternative.">
-  <main class="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white flex items-center justify-center px-4 relative overflow-hidden">
-    
+<Layout
+  title="Pagina non trovata - 404"
+  description="La pagina richiesta non è stata trovata. Scopri le nostre alternative."
+>
+  <main
+    class="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white flex items-center justify-center px-4 relative overflow-hidden"
+  >
     <!-- Background Effects -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-200/40 dark:from-gray-800/20 via-white dark:via-black to-white dark:to-black opacity-50"></div>
-    
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-200/40 dark:from-gray-800/20 via-white dark:via-black to-white dark:to-black opacity-50"
+    >
+    </div>
+
     <div class="relative z-10 max-w-4xl w-full py-24">
       <!-- Contenuto principale 404 -->
       <div class="text-center mb-16 animate-fade-in-up">
-        <h1 class="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-gray-900 dark:from-white to-gray-300 dark:to-white/10 mb-8 tracking-tighter">
+        <h1
+          class="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-gray-900 dark:from-white to-gray-300 dark:to-white/10 mb-8 tracking-tighter"
+        >
           404
         </h1>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
           Pagina non trovata
         </h2>
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          La pagina che stai cercando potrebbe essere stata rimossa, rinominata o è temporaneamente non disponibile.
+          La pagina che stai cercando potrebbe essere stata rimossa, rinominata o è temporaneamente
+          non disponibile.
         </p>
       </div>
 
       <!-- Percorso richiesto -->
-      <div class="bg-gray-50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 mb-12 max-w-2xl mx-auto text-center animate-fade-in-up delay-100">
+      <div
+        class="bg-gray-50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 mb-12 max-w-2xl mx-auto text-center animate-fade-in-up delay-100"
+      >
         <p class="text-sm text-gray-500 mb-2 uppercase tracking-wider">Percorso richiesto</p>
         <code class="text-gray-900 dark:text-gray-300 font-mono text-lg">
           {currentPath}
@@ -42,22 +58,30 @@ const currentPath = Astro.url.pathname;
 
       <!-- Pagine suggerite -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 animate-fade-in-up delay-200">
-        {suggestedPages.slice(0, 3).map((page) => (
-          <a
-            href={page.url}
-            class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-zinc-900 transition-all duration-300"
-          >
-            <h4 class="font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
-              {page.title}
-            </h4>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
-              {page.description}
-            </p>
-            <span class="text-gray-900 dark:text-white text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
-              Vai alla pagina <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </span>
-          </a>
-        ))}
+        {
+          suggestedPages.slice(0, 3).map(page => (
+            <a
+              href={page.url}
+              class="group p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-zinc-900 transition-all duration-300"
+            >
+              <h4 class="font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+                {page.title}
+              </h4>
+              <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">{page.description}</p>
+              <span class="text-gray-900 dark:text-white text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
+                Vai alla pagina{' '}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
       </div>
 
       <!-- Azioni principali -->
@@ -96,9 +120,15 @@ const currentPath = Astro.url.pathname;
       animation: fadeInUp 0.8s ease-out forwards;
     }
 
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
   </style>
 
   <script>
@@ -109,8 +139,8 @@ const currentPath = Astro.url.pathname;
         custom: JSON.stringify({
           page_title: '404 - Page Not Found',
           page_location: window.location.href,
-          requested_path: window.location.pathname
-        })
+          requested_path: window.location.pathname,
+        }),
       });
     }
   </script>

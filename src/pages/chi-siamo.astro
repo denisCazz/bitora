@@ -3,23 +3,35 @@ import Layout from '../layouts/Layout.astro';
 import ClientLogos from '../components/ClientLogos.astro';
 ---
 
-<Layout title="Chi Siamo | Bitora - Sistemi Digitali su Misura" 
-       description="Scopri Bitora: sistemi digitali su misura per aziende e PMI. Sede in Piemonte, serviamo tutta Italia. Gestionali, CRM, CMMS, siti web ed e-commerce.">
+<Layout
+  title="Chi Siamo | Bitora - Sistemi Digitali su Misura"
+  description="Scopri Bitora: sistemi digitali su misura per aziende e PMI. Sede in Piemonte, serviamo tutta Italia. Gestionali, CRM, CMMS, siti web ed e-commerce."
+>
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    
     <!-- Hero -->
     <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-black dark:via-black dark:to-black/95"></div>
-      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-100 dark:bg-white/5 blur-[100px] opacity-50"></div>
-      
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-black dark:via-black dark:to-black/95"
+      >
+      </div>
+      <div
+        class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-100 dark:bg-white/5 blur-[100px] opacity-50"
+      >
+      </div>
+
       <div class="relative z-10 max-w-4xl">
-        <p class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4">Chi siamo</p>
+        <p
+          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
+        >
+          Chi siamo
+        </p>
         <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
           Il partner digitale<br />
           <span class="text-gray-900 dark:text-white">per la tua azienda.</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
-          Sviluppiamo sistemi digitali su misura. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo clienti in tutta Italia.
+          Sviluppiamo sistemi digitali su misura. Gestionali, CRM, CMMS, siti web ed e-commerce.
+          Sede in Piemonte, serviamo clienti in tutta Italia.
         </p>
       </div>
     </section>
@@ -29,26 +41,33 @@ import ClientLogos from '../components/ClientLogos.astro';
       <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">La nostra storia</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              La nostra storia
+            </h2>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Bitora nasce dall'idea di creare sistemi digitali su misura per le PMI italiane, con sede a Carmagnola, nel cuore del Piemonte. Crediamo che ogni azienda meriti strumenti digitali costruiti sulle proprie esigenze, non soluzioni generiche.
+              Bitora nasce dall'idea di creare sistemi digitali su misura per le PMI italiane, con
+              sede a Carmagnola, nel cuore del Piemonte. Crediamo che ogni azienda meriti strumenti
+              digitali costruiti sulle proprie esigenze, non soluzioni generiche.
             </p>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Dal primo giorno, il nostro obiettivo è stato chiaro: affiancare le imprese nel percorso di digitalizzazione con competenza, trasparenza e risultati concreti.
+              Dal primo giorno, il nostro obiettivo è stato chiaro: affiancare le imprese nel
+              percorso di digitalizzazione con competenza, trasparenza e risultati concreti.
             </p>
           </div>
           <div class="grid grid-cols-2 gap-6">
-            {[
-              { value: '50+', label: 'Progetti completati' },
-              { value: '100%', label: 'Soddisfazione clienti' },
-              { value: '24h', label: 'Tempo di risposta' },
-              { value: 'Italia', label: 'Servizio in tutta Italia' }
-            ].map(stat => (
-              <div class="p-6 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-center">
-                <p class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{stat.value}</p>
-                <p class="text-sm text-gray-600 dark:text-gray-400">{stat.label}</p>
-              </div>
-            ))}
+            {
+              [
+                { value: '50+', label: 'Progetti completati' },
+                { value: '100%', label: 'Soddisfazione clienti' },
+                { value: '24h', label: 'Tempo di risposta' },
+                { value: 'Italia', label: 'Servizio in tutta Italia' },
+              ].map(stat => (
+                <div class="p-6 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-center">
+                  <p class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{stat.value}</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{stat.label}</p>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -59,31 +78,58 @@ import ClientLogos from '../components/ClientLogos.astro';
       <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-16 items-start">
           <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">La nostra missione</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+              La nostra missione
+            </h2>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Bitora nasce per offrire alle PMI e alle aziende soluzioni digitali che funzionano davvero. Non vendiamo pacchetti preconfezionati: analizziamo i tuoi processi, ascoltiamo le tue esigenze e sviluppiamo software su misura.
+              Bitora nasce per offrire alle PMI e alle aziende soluzioni digitali che funzionano
+              davvero. Non vendiamo pacchetti preconfezionati: analizziamo i tuoi processi,
+              ascoltiamo le tue esigenze e sviluppiamo software su misura.
             </p>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Dal gestionale al sito web, dal CRM al CMMS: ti seguiamo dall'analisi al deploy, con formazione e supporto post-lancio. Il tuo successo è il nostro obiettivo.
+              Dal gestionale al sito web, dal CRM al CMMS: ti seguiamo dall'analisi al deploy, con
+              formazione e supporto post-lancio. Il tuo successo è il nostro obiettivo.
             </p>
           </div>
           <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">Come lavoriamo</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+              Come lavoriamo
+            </h2>
             <div class="space-y-6">
-              {[
-                { step: '01', title: 'Analisi', desc: 'Studiamo processi, pain point e obiettivi. Definiamo scope e priorità.' },
-                { step: '02', title: 'Progettazione', desc: 'Architettura della soluzione, UX e flussi. Niente sorprese in fase di sviluppo.' },
-                { step: '03', title: 'Sviluppo', desc: 'Sviluppo iterativo con checkpoint. Vedi i progressi e dai feedback in tempo reale.' },
-                { step: '04', title: 'Deploy & Formazione', desc: 'Go-live assistito, formazione e documentazione. Supporto post-lancio.' }
-              ].map((item) => (
-                <div class="flex gap-4">
-                  <span class="flex-shrink-0 w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/10 border border-gray-200 dark:border-white/20 flex items-center justify-center text-gray-900 dark:text-white font-bold text-sm">{item.step}</span>
-                  <div>
-                    <h3 class="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h3>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm">{item.desc}</p>
+              {
+                [
+                  {
+                    step: '01',
+                    title: 'Analisi',
+                    desc: 'Studiamo processi, pain point e obiettivi. Definiamo scope e priorità.',
+                  },
+                  {
+                    step: '02',
+                    title: 'Progettazione',
+                    desc: 'Architettura della soluzione, UX e flussi. Niente sorprese in fase di sviluppo.',
+                  },
+                  {
+                    step: '03',
+                    title: 'Sviluppo',
+                    desc: 'Sviluppo iterativo con checkpoint. Vedi i progressi e dai feedback in tempo reale.',
+                  },
+                  {
+                    step: '04',
+                    title: 'Deploy & Formazione',
+                    desc: 'Go-live assistito, formazione e documentazione. Supporto post-lancio.',
+                  },
+                ].map(item => (
+                  <div class="flex gap-4">
+                    <span class="flex-shrink-0 w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/10 border border-gray-200 dark:border-white/20 flex items-center justify-center text-gray-900 dark:text-white font-bold text-sm">
+                      {item.step}
+                    </span>
+                    <div>
+                      <h3 class="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h3>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm">{item.desc}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              }
             </div>
           </div>
         </div>
@@ -91,35 +137,62 @@ import ClientLogos from '../components/ClientLogos.astro';
     </section>
 
     <!-- Valori -->
-    <section class="py-20 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-t border-gray-200 dark:border-white/5">
+    <section
+      class="py-20 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-t border-gray-200 dark:border-white/5"
+    >
       <div class="max-w-6xl mx-auto">
         <div class="mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">I nostri valori</h2>
-          <p class="text-gray-600 dark:text-gray-400 max-w-xl">Ciò che ci guida in ogni progetto.</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            I nostri valori
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 max-w-xl">
+            Ciò che ci guida in ogni progetto.
+          </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10">
-            <div class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-6 text-2xl">📊</div>
+          <div
+            class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-6 text-2xl"
+            >
+              📊
+            </div>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Risultati</h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Non ci accontentiamo di "bello". Vogliamo "efficace". Ogni soluzione è progettata per generare valore misurabile.
+              Non ci accontentiamo di "bello". Vogliamo "efficace". Ogni soluzione è progettata per
+              generare valore misurabile.
             </p>
           </div>
 
-          <div class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10">
-            <div class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-6 text-2xl">🚀</div>
+          <div
+            class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-6 text-2xl"
+            >
+              🚀
+            </div>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Innovazione</h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Usiamo tecnologie moderne e best practice aggiornate. Astro, React, integrazioni API, automazioni.
+              Usiamo tecnologie moderne e best practice aggiornate. Astro, React, integrazioni API,
+              automazioni.
             </p>
           </div>
 
-          <div class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10">
-            <div class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-6 text-2xl">🤝</div>
+          <div
+            class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-6 text-2xl"
+            >
+              🤝
+            </div>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Partnership</h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Non siamo fornitori, siamo partner. Il tuo successo è il nostro successo. Supporto diretto, nessun call center.
+              Non siamo fornitori, siamo partner. Il tuo successo è il nostro successo. Supporto
+              diretto, nessun call center.
             </p>
           </div>
         </div>
@@ -127,15 +200,26 @@ import ClientLogos from '../components/ClientLogos.astro';
     </section>
 
     <!-- Client Logos -->
-    <section class="border-y border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02] py-12">
+    <section
+      class="border-y border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02] py-12"
+    >
       <ClientLogos />
     </section>
 
     <!-- Vedi i nostri lavori -->
     <section class="py-12 px-6 md:px-12 lg:px-20 text-center">
-      <a href="/lavori" class="inline-flex items-center gap-2 text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-medium text-lg">
+      <a
+        href="/lavori"
+        class="inline-flex items-center gap-2 text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-medium text-lg"
+      >
         Vedi i nostri lavori
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
       </a>
     </section>
 
@@ -144,23 +228,49 @@ import ClientLogos from '../components/ClientLogos.astro';
       <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Sede in Piemonte.<br/>Serviamo tutta Italia.</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              Sede in Piemonte.<br />Serviamo tutta Italia.
+            </h2>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Bitora ha sede a Carmagnola, in provincia di Torino. La vicinanza al territorio ci permette di incontrare i clienti quando serve, ma lavoriamo con aziende in tutta Italia grazie a call, demo e supporto remoto.
+              Bitora ha sede a Carmagnola, in provincia di Torino. La vicinanza al territorio ci
+              permette di incontrare i clienti quando serve, ma lavoriamo con aziende in tutta
+              Italia grazie a call, demo e supporto remoto.
             </p>
             <div class="flex flex-wrap gap-3">
-              <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-sm">Carmagnola</span>
-              <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-sm">Torino</span>
-              <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-sm">Piemonte</span>
-              <span class="px-4 py-2 rounded-full bg-gray-200 dark:bg-white/10 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white text-sm font-medium">Tutta Italia</span>
+              <span
+                class="px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-sm"
+                >Carmagnola</span
+              >
+              <span
+                class="px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-sm"
+                >Torino</span
+              >
+              <span
+                class="px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-sm"
+                >Piemonte</span
+              >
+              <span
+                class="px-4 py-2 rounded-full bg-gray-200 dark:bg-white/10 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white text-sm font-medium"
+                >Tutta Italia</span
+              >
             </div>
           </div>
-          <div class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10">
+          <div
+            class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10"
+          >
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Contattaci</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Consulenza gratuita. Rispondiamo entro 24 ore.</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">
+              Consulenza gratuita. Rispondiamo entro 24 ore.
+            </p>
             <a href="/contattaci" class="btn-primary inline-flex items-center gap-2">
               Richiedi consulenza
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
             </a>
           </div>
         </div>
@@ -170,16 +280,23 @@ import ClientLogos from '../components/ClientLogos.astro';
     <!-- CTA -->
     <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Costruiamo il futuro insieme.</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          Costruiamo il futuro insieme.
+        </h2>
         <p class="text-gray-600 dark:text-gray-400 mb-8">
           Prenota una consulenza gratuita e scopri cosa possiamo fare per te.
         </p>
         <a href="/contattaci" class="btn-primary inline-flex items-center gap-2">
           Contattaci ora
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+          >
         </a>
       </div>
     </section>
-
   </main>
 </Layout>

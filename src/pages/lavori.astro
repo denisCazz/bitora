@@ -6,7 +6,7 @@ const stats = [
   { number: '25+', label: 'Progetti', bar: 92 },
   { number: '100%', label: 'Soddisfazione', bar: 100 },
   { number: '+30%', label: 'Lead medi', bar: 75 },
-  { number: '48h', label: 'Setup iniziale', bar: 85 }
+  { number: '48h', label: 'Setup iniziale', bar: 85 },
 ];
 ---
 
@@ -15,14 +15,23 @@ const stats = [
   description="Guarda i progetti realizzati da Bitora: siti web professionali, e-commerce e tessere NFC per aziende di Carmagnola, Torino e Piemonte. Risultati concreti."
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    
     <!-- Hero -->
     <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-b from-white dark:from-black via-white dark:via-black to-gray-50 dark:to-black/95"></div>
-      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-200/50 dark:bg-gray-800/10 blur-[100px] opacity-50"></div>
-      
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-white dark:from-black via-white dark:via-black to-gray-50 dark:to-black/95"
+      >
+      </div>
+      <div
+        class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-200/50 dark:bg-gray-800/10 blur-[100px] opacity-50"
+      >
+      </div>
+
       <div class="relative z-10 max-w-4xl">
-        <p class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4">Portfolio</p>
+        <p
+          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
+        >
+          Portfolio
+        </p>
         <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
           Lavori che<br />
           <span class="text-gray-500">parlano.</span>
@@ -34,65 +43,89 @@ const stats = [
     </section>
 
     <!-- Stats con barre -->
-    <section class="py-16 md:py-20 px-6 md:px-12 lg:px-20 border-y border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]">
+    <section
+      class="py-16 md:py-20 px-6 md:px-12 lg:px-20 border-y border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
+    >
       <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {stats.map((stat, i) => (
-            <div class="text-center reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
-              <p class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">{stat.number}</p>
-              <p class="text-sm text-gray-500 uppercase tracking-wider mb-4">{stat.label}</p>
-              <div class="h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden max-w-[120px] mx-auto">
-                <div 
-                  class="bar-fill h-full bg-gray-900 dark:bg-white rounded-full transition-all duration-1000 ease-out" 
-                  data-width={stat.bar}
-                ></div>
+          {
+            stats.map((stat, i) => (
+              <div class="text-center reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
+                <p class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                  {stat.number}
+                </p>
+                <p class="text-sm text-gray-500 uppercase tracking-wider mb-4">{stat.label}</p>
+                <div class="h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden max-w-[120px] mx-auto">
+                  <div
+                    class="bar-fill h-full bg-gray-900 dark:bg-white rounded-full transition-all duration-1000 ease-out"
+                    data-width={stat.bar}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </section>
 
     <!-- Projects Grid -->
-    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5">
+    <section
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5"
+    >
       <div class="max-w-6xl mx-auto">
-        <p class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4">Casi studio</p>
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-12">Progetti realizzati</h2>
-        
+        <p
+          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
+        >
+          Casi studio
+        </p>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-12">
+          Progetti realizzati
+        </h2>
+
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
-          {caseStudies.map((project, i) => (
-            <article class="group relative reveal-on-scroll">
-              <a href={`/progetti/${project.slug}`} class="block">
-                <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 mb-6 transition-all duration-300 group-hover:border-gray-400 dark:group-hover:border-white/20">
-                  <img 
-                    src={project.imageUrl} 
-                    alt={project.title}
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {project.isWip && (
-                    <div class="absolute top-4 right-4 bg-white/80 dark:bg-black/80 backdrop-blur border border-gray-200 dark:border-white/10 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider text-gray-900 dark:text-white">
-                      In Corso
+          {
+            caseStudies.map((project, i) => (
+              <article class="group relative reveal-on-scroll">
+                <a href={`/progetti/${project.slug}`} class="block">
+                  <div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 mb-6 transition-all duration-300 group-hover:border-gray-400 dark:group-hover:border-white/20">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {project.isWip && (
+                      <div class="absolute top-4 right-4 bg-white/80 dark:bg-black/80 backdrop-blur border border-gray-200 dark:border-white/10 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider text-gray-900 dark:text-white">
+                        In Corso
+                      </div>
+                    )}
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-gray-500 text-sm font-medium tracking-wider uppercase">
+                        {project.category}
+                      </span>
+                      <span class="text-gray-500 text-sm">{project.location}</span>
                     </div>
-                  )}
-                </div>
-                
-                <div class="space-y-2">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="text-gray-500 text-sm font-medium tracking-wider uppercase">{project.category}</span>
-                    <span class="text-gray-500 text-sm">{project.location}</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-white/90 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 line-clamp-2 text-sm">
+                      {project.problema}
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 pt-3">
+                      {project.metricsPreview.map(res => (
+                        <span class="text-xs text-gray-500 border border-gray-200 dark:border-white/10 px-2.5 py-1 rounded-full">
+                          {res}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-white/90 transition-colors">{project.title}</h3>
-                  <p class="text-gray-600 dark:text-gray-400 line-clamp-2 text-sm">{project.problema}</p>
-                  
-                  <div class="flex flex-wrap gap-2 pt-3">
-                    {project.metricsPreview.map(res => (
-                      <span class="text-xs text-gray-500 border border-gray-200 dark:border-white/10 px-2.5 py-1 rounded-full">{res}</span>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            </article>
-          ))}
+                </a>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -100,17 +133,27 @@ const stats = [
     <!-- CTA -->
     <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Il prossimo caso studio? Potrebbe essere il tuo.</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          Il prossimo caso studio? Potrebbe essere il tuo.
+        </h2>
         <p class="text-gray-600 dark:text-gray-400 mb-8">
           Raccontaci la tua sfida. Costruiremo la soluzione su misura per vincerla.
         </p>
-        <a href="/contattaci" class="inline-flex items-center justify-center gap-2 min-w-[200px] px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
+        <a
+          href="/contattaci"
+          class="inline-flex items-center justify-center gap-2 min-w-[200px] px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-lg hover:scale-105 transition-transform"
+        >
           Inizia il progetto
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+          >
         </a>
       </div>
     </section>
-
   </main>
 </Layout>
 
@@ -137,18 +180,21 @@ const stats = [
 </style>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        const bar = entry.target.querySelector('.bar-fill') as HTMLElement | null;
-        if (bar && bar.dataset.width) {
-          bar.style.setProperty('--bar-target', bar.dataset.width + '%');
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          const bar = entry.target.querySelector('.bar-fill') as HTMLElement | null;
+          if (bar && bar.dataset.width) {
+            bar.style.setProperty('--bar-target', bar.dataset.width + '%');
+          }
+          observer.unobserve(entry.target);
         }
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { root: null, rootMargin: '0px', threshold: 0.2 });
+      });
+    },
+    { root: null, rootMargin: '0px', threshold: 0.2 }
+  );
 
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));

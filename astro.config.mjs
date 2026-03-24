@@ -10,13 +10,13 @@ import compressor from 'astro-compressor';
 export default defineConfig({
   adapter: vercel(),
   integrations: [
-    tailwind(), 
-    sitemap(), 
+    tailwind(),
+    sitemap(),
     react(),
     compressor({
       gzip: true,
-      brotli: true
-    })
+      brotli: true,
+    }),
   ],
   site: 'https://www.bitora.it/',
   base: '/',
@@ -25,10 +25,11 @@ export default defineConfig({
   compressHTML: true,
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'viewport'
-  },  build: {
+    defaultStrategy: 'viewport',
+  },
+  build: {
     inlineStylesheets: 'auto',
-    assets: 'assets'
+    assets: 'assets',
   },
   publicDir: './public',
   outDir: './dist',
@@ -39,8 +40,8 @@ export default defineConfig({
       'X-Frame-Options': 'DENY',
       'X-XSS-Protection': '1; mode=block',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
-      'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload'
-    }
+      'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+    },
   },
   vite: {
     server: {
@@ -57,12 +58,12 @@ export default defineConfig({
         output: {
           assetFileNames: 'assets/[name].[hash][extname]',
           chunkFileNames: 'assets/[name].[hash].js',
-          entryFileNames: 'assets/[name].[hash].js'
+          entryFileNames: 'assets/[name].[hash].js',
         },
       },
     },
     ssr: {
-      noExternal: ['react-icons']
-    }
+      noExternal: ['react-icons'],
+    },
   },
 });

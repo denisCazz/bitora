@@ -33,12 +33,12 @@ export const webDesignPlans: PricingPlan[] = [
     benefits: [
       'Aumenta la credibilità del tuo business',
       'Attrai nuovi clienti 24/7',
-      'Risultati misurabili con analytics inclusi'
+      'Risultati misurabili con analytics inclusi',
     ],
     useCases: [
       'Piccole imprese locali',
       'Professionisti e freelance',
-      'Attività commerciali in Piemonte'
+      'Attività commerciali in Piemonte',
     ],
     buttonText: 'Inizia ora',
     buttonUrl: '/contattaci?plan=WebEssenziale',
@@ -49,7 +49,8 @@ export const webDesignPlans: PricingPlan[] = [
     title: 'Sito Business',
     price: '€49',
     period: 'mese',
-    description: '� Soluzione completa per aziende che vogliono dominare online. E-commerce, automazioni e lead generation.',
+    description:
+      '� Soluzione completa per aziende che vogliono dominare online. E-commerce, automazioni e lead generation.',
     features: [
       'Pagine illimitate + blog integrato',
       'E-commerce con pagamenti Stripe/PayPal',
@@ -62,12 +63,12 @@ export const webDesignPlans: PricingPlan[] = [
     benefits: [
       'Vendi online H24 senza limitazioni',
       'Automatizza acquisizione clienti',
-      'Domina i risultati di ricerca locali'
+      'Domina i risultati di ricerca locali',
     ],
     useCases: [
       'E-commerce e negozi online',
       'Aziende con servizi complessi',
-      'Attività con team commerciale'
+      'Attività con team commerciale',
     ],
     buttonText: 'Potenzia il business',
     buttonUrl: '/contattaci?plan=WebBusiness',
@@ -77,7 +78,8 @@ export const webDesignPlans: PricingPlan[] = [
   {
     title: 'Sito Premium',
     price: 'Su misura',
-    description: '💎 Soluzione enterprise completamente personalizzata. Design unico, funzioni avanzate, supporto dedicato.',
+    description:
+      '💎 Soluzione enterprise completamente personalizzata. Design unico, funzioni avanzate, supporto dedicato.',
     features: [
       'Design 100% su misura per il brand',
       'Funzionalità custom sviluppate ad hoc',
@@ -90,12 +92,12 @@ export const webDesignPlans: PricingPlan[] = [
     benefits: [
       'Distinguiti completamente dalla concorrenza',
       'Funzionalità uniche per il tuo settore',
-      'Crescita digitale strategica assistita'
+      'Crescita digitale strategica assistita',
     ],
     useCases: [
       'Grandi aziende e franchising',
       'Portali complessi multi-utente',
-      'Progetti con esigenze specifiche'
+      'Progetti con esigenze specifiche',
     ],
     buttonText: 'Richiedi preventivo',
     buttonUrl: '/contattaci?plan=WebPremium',
@@ -104,14 +106,13 @@ export const webDesignPlans: PricingPlan[] = [
   },
 ];
 
-
-
 // NFC Ecosystem Plans
 export const nfcEcosystemPlans: PricingPlan[] = [
   {
     title: 'NFC Start',
     price: '€49',
-    description: '⚡ Inizia subito con l\'ecosistema NFC. Una tessera intelligente che apre un mondo di possibilità.',
+    description:
+      "⚡ Inizia subito con l'ecosistema NFC. Una tessera intelligente che apre un mondo di possibilità.",
     features: [
       '1 tessera NFC personalizzata premium',
       'Mini landing page mobile-optimized',
@@ -123,12 +124,12 @@ export const nfcEcosystemPlans: PricingPlan[] = [
     benefits: [
       'Wow effect garantito sui clienti',
       'Setup rapido e senza complicazioni',
-      'Prima impressione digitale professionale'
+      'Prima impressione digitale professionale',
     ],
     useCases: [
       'Biglietti da visita intelligenti',
       'Menu base per bar e locali',
-      'Info point per piccole attività'
+      'Info point per piccole attività',
     ],
     buttonText: 'Inizia con NFC',
     buttonUrl: '/contattaci?plan=NFCStart',
@@ -139,7 +140,8 @@ export const nfcEcosystemPlans: PricingPlan[] = [
     title: 'NFC Pro',
     price: '€29',
     period: 'mese',
-    description: '🚀 Ecosistema NFC completo con automazioni AI. Il futuro del customer engagement è qui.',
+    description:
+      '🚀 Ecosistema NFC completo con automazioni AI. Il futuro del customer engagement è qui.',
     features: [
       '3 tessere NFC personalizzate incluse',
       'Landing dinamiche con chatbot AI',
@@ -152,12 +154,12 @@ export const nfcEcosystemPlans: PricingPlan[] = [
     benefits: [
       'Automatizza acquisizione clienti',
       'Incrementa recensioni e rating',
-      'Dati e insights per crescere'
+      'Dati e insights per crescere',
     ],
     useCases: [
       'Ristoranti e locali',
       'Hotel e strutture ricettive',
-      'Professionisti con clientela'
+      'Professionisti con clientela',
     ],
     buttonText: 'Attiva NFC Pro',
     buttonUrl: '/contattaci?plan=NFCPro',
@@ -167,7 +169,8 @@ export const nfcEcosystemPlans: PricingPlan[] = [
   {
     title: 'NFC Business',
     price: 'Su misura',
-    description: '💎 Soluzione NFC enterprise su misura. Integrazioni avanzate, multi-location, dashboard personalizzata.',
+    description:
+      '💎 Soluzione NFC enterprise su misura. Integrazioni avanzate, multi-location, dashboard personalizzata.',
     features: [
       'Tessere NFC illimitate',
       'Integrazioni ERP/CRM custom',
@@ -180,13 +183,9 @@ export const nfcEcosystemPlans: PricingPlan[] = [
     benefits: [
       'Soluzione scalabile per growth',
       'Integrazione perfetta con sistemi esistenti',
-      'Controllo totale dell\'esperienza'
+      "Controllo totale dell'esperienza",
     ],
-    useCases: [
-      'Catene e franchising',
-      'Grandi eventi e fiere',
-      'Aziende con esigenze specifiche'
-    ],
+    useCases: ['Catene e franchising', 'Grandi eventi e fiere', 'Aziende con esigenze specifiche'],
     buttonText: 'Richiedi preventivo',
     buttonUrl: '/contattaci?plan=NFCBusiness',
     highlighted: false,
@@ -213,12 +212,12 @@ export const comboPlans: PricingPlan[] = [
     benefits: [
       'Risparmi €10/mese vs piani separati',
       'Esperienza cliente omnichannel',
-      'Gestione semplificata in unica dashboard'
+      'Gestione semplificata in unica dashboard',
     ],
     useCases: [
       'Piccole attività locali',
       'Professionisti innovativi',
-      'Negozi con presenza online e offline'
+      'Negozi con presenza online e offline',
     ],
     buttonText: 'Attiva Combo',
     buttonUrl: '/contattaci?plan=ComboStart',
@@ -229,7 +228,7 @@ export const comboPlans: PricingPlan[] = [
     title: 'Combo Pro',
     price: '€59',
     period: 'mese',
-    description: '💎 Il massimo dell\'innovazione: sito business + ecosistema NFC completo.',
+    description: "💎 Il massimo dell'innovazione: sito business + ecosistema NFC completo.",
     features: [
       'Sito web business completo',
       '3 tessere NFC personalizzate',
@@ -242,13 +241,9 @@ export const comboPlans: PricingPlan[] = [
     benefits: [
       'Risparmi €120/anno vs piani separati',
       'Massima efficacia: online + offline',
-      'Automazioni che lavorano 24/7'
+      'Automazioni che lavorano 24/7',
     ],
-    useCases: [
-      'Ristoranti e hotel',
-      'Aziende innovative',
-      'Attività con alto volume clienti'
-    ],
+    useCases: ['Ristoranti e hotel', 'Aziende innovative', 'Attività con alto volume clienti'],
     buttonText: 'Scegli Pro - Più richiesto',
     buttonUrl: '/contattaci?plan=ComboPro',
     highlighted: true,
@@ -262,7 +257,8 @@ export const nfcSingleCardPlans: PricingPlan[] = [
   {
     title: 'Tessera NFC Basic',
     price: '€15',
-    description: '🎯 Tessera NFC semplice ma efficace. Design essenziale per iniziare subito la rivoluzione digitale.',
+    description:
+      '🎯 Tessera NFC semplice ma efficace. Design essenziale per iniziare subito la rivoluzione digitale.',
     features: [
       'Tessera NFC personalizzata con logo',
       'Design essenziale professionale',
@@ -274,12 +270,12 @@ export const nfcSingleCardPlans: PricingPlan[] = [
     benefits: [
       'Soluzione economica per testare NFC',
       'Perfetta per eventi e networking',
-      'Prima impressione professionale'
+      'Prima impressione professionale',
     ],
     useCases: [
       'Biglietti da visita digitali',
       'Menu semplici per bar',
-      'Collegamenti rapidi ai social'
+      'Collegamenti rapidi ai social',
     ],
     buttonText: 'Ordina tessera',
     buttonUrl: '/contattaci?product=nfc-basic',
@@ -289,7 +285,8 @@ export const nfcSingleCardPlans: PricingPlan[] = [
   {
     title: 'Tessera NFC Custom',
     price: 'Da €20',
-    description: '✨ Tessere NFC con grafica personalizzata. Design su misura che riflette perfettamente il tuo brand.',
+    description:
+      '✨ Tessere NFC con grafica personalizzata. Design su misura che riflette perfettamente il tuo brand.',
     features: [
       'Design grafico completamente personalizzato',
       'Colori e stile coordinati al brand',
@@ -301,12 +298,12 @@ export const nfcSingleCardPlans: PricingPlan[] = [
     benefits: [
       'Design unico che rappresenta il brand',
       'Qualità premium per durare nel tempo',
-      'Sconti vantaggiosi per quantità'
+      'Sconti vantaggiosi per quantità',
     ],
     useCases: [
       'Menu digitali per ristoranti',
       'Cataloghi prodotti per negozi',
-      'Presentazioni aziendali innovative'
+      'Presentazioni aziendali innovative',
     ],
     buttonText: 'Personalizza tessere',
     buttonUrl: '/contattaci?product=nfc-custom',

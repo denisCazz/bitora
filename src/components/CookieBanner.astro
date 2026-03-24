@@ -2,29 +2,52 @@
 // Cookie Banner Component per gestire il consenso cookie
 ---
 
-<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-2xl border-t border-gray-200 p-4 md:p-6 transform translate-y-full transition-transform duration-300 ease-in-out">
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-2xl border-t border-gray-200 p-4 md:p-6 transform translate-y-full transition-transform duration-300 ease-in-out"
+>
   <div class="container mx-auto max-w-6xl">
     <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
       <!-- Cookie Info -->
       <div class="flex-1">
         <div class="flex items-start gap-3">
-          <div class="w-8 h-8 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-            <svg class="w-4 h-4 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          <div
+            class="w-8 h-8 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1"
+          >
+            <svg
+              class="w-4 h-4 text-gray-600 dark:text-gray-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
           <div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Utilizziamo i cookie per migliorare la tua esperienza</h3>
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">
+              Utilizziamo i cookie per migliorare la tua esperienza
+            </h3>
             <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
-              Utilizziamo cookie tecnici e di analisi per garantire il funzionamento del sito e migliorare l'esperienza di navigazione. 
-              Puoi gestire le tue preferenze in qualsiasi momento.
+              Utilizziamo cookie tecnici e di analisi per garantire il funzionamento del sito e
+              migliorare l'esperienza di navigazione. Puoi gestire le tue preferenze in qualsiasi
+              momento.
             </p>
             <div class="flex flex-wrap gap-2 text-xs">
-              <a href="/cookie-policy" class="text-black hover:underline font-medium">Cookie Policy</a>
+              <a href="/cookie-policy" class="text-black hover:underline font-medium"
+                >Cookie Policy</a
+              >
               <span class="text-gray-400">•</span>
-              <a href="/privacy-policy" class="text-black hover:underline font-medium">Privacy Policy</a>
+              <a href="/privacy-policy" class="text-black hover:underline font-medium"
+                >Privacy Policy</a
+              >
               <span class="text-gray-400">•</span>
-              <button id="cookie-settings-btn" class="text-black hover:underline font-medium">Gestisci Preferenze</button>
+              <button id="cookie-settings-btn" class="text-black hover:underline font-medium"
+                >Gestisci Preferenze</button
+              >
             </div>
           </div>
         </div>
@@ -32,14 +55,14 @@
 
       <!-- Cookie Actions -->
       <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-        <button 
-          id="cookie-reject" 
+        <button
+          id="cookie-reject"
           class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 rounded-lg transition-colors order-2 sm:order-1"
         >
           Solo Necessari
         </button>
-        <button 
-          id="cookie-accept" 
+        <button
+          id="cookie-accept"
           class="px-6 py-2 text-sm font-medium text-white bg-black hover:bg-gray-800 rounded-lg transition-colors order-1 sm:order-2"
         >
           Accetta Tutti
@@ -50,16 +73,30 @@
 </div>
 
 <!-- Cookie Settings Modal -->
-<div id="cookie-settings-modal" class="fixed inset-0 z-60 bg-black bg-opacity-50 backdrop-blur-sm hidden">
+<div
+  id="cookie-settings-modal"
+  class="fixed inset-0 z-60 bg-black bg-opacity-50 backdrop-blur-sm hidden"
+>
   <div class="flex items-center justify-center min-h-screen p-4">
-    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
+    <div
+      class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl max-w-2xl w-full max-h-screen overflow-y-auto"
+    >
       <!-- Modal Header -->
       <div class="p-6 border-b border-gray-200">
         <div class="flex items-center justify-between">
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Gestisci Preferenze Cookie</h2>
-          <button id="close-cookie-settings" class="text-gray-400 hover:text-gray-600 dark:text-gray-300">
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+            Gestisci Preferenze Cookie
+          </h2>
+          <button
+            id="close-cookie-settings"
+            class="text-gray-400 hover:text-gray-600 dark:text-gray-300"
+          >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
         </div>
@@ -68,7 +105,8 @@
       <!-- Modal Content -->
       <div class="p-6 space-y-6">
         <p class="text-gray-600 dark:text-gray-300">
-          Puoi personalizzare le tue preferenze sui cookie. Tieni presente che disabilitare alcuni cookie potrebbe influire sulla funzionalità del sito.
+          Puoi personalizzare le tue preferenze sui cookie. Tieni presente che disabilitare alcuni
+          cookie potrebbe influire sulla funzionalità del sito.
         </p>
 
         <!-- Cookie Categories -->
@@ -80,13 +118,16 @@
               <div class="flex items-center">
                 <span class="text-sm text-gray-500 mr-3">Sempre attivi</span>
                 <div class="w-10 h-6 bg-gray-300 rounded-full relative">
-                  <div class="absolute top-1 right-1 w-4 h-4 bg-white dark:bg-gray-900 rounded-full shadow-sm"></div>
+                  <div
+                    class="absolute top-1 right-1 w-4 h-4 bg-white dark:bg-gray-900 rounded-full shadow-sm"
+                  >
+                  </div>
                 </div>
               </div>
             </div>
             <p class="text-sm text-gray-600 dark:text-gray-300">
-              Questi cookie sono essenziali per il funzionamento del sito web e non possono essere disabilitati. 
-              Includono cookie per la navigazione, la sicurezza e l'accessibilità.
+              Questi cookie sono essenziali per il funzionamento del sito web e non possono essere
+              disabilitati. Includono cookie per la navigazione, la sicurezza e l'accessibilità.
             </p>
           </div>
 
@@ -95,13 +136,17 @@
             <div class="flex items-center justify-between mb-3">
               <h3 class="font-semibold text-gray-900 dark:text-white">Cookie di Analisi</h3>
               <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="analytics-cookies" class="sr-only peer" checked>
-                <div class="w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-black/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-black"></div>
+                <input type="checkbox" id="analytics-cookies" class="sr-only peer" checked />
+                <div
+                  class="w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-black/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-black"
+                >
+                </div>
               </label>
             </div>
             <p class="text-sm text-gray-600 dark:text-gray-300">
-              Ci aiutano a capire come i visitatori interagiscono con il nostro sito web raccogliendo e riportando informazioni in forma anonima. 
-              Utilizziamo Umami Analytics per questo scopo.
+              Ci aiutano a capire come i visitatori interagiscono con il nostro sito web
+              raccogliendo e riportando informazioni in forma anonima. Utilizziamo Umami Analytics
+              per questo scopo.
             </p>
           </div>
 
@@ -110,13 +155,17 @@
             <div class="flex items-center justify-between mb-3">
               <h3 class="font-semibold text-gray-900 dark:text-white">Cookie Funzionali</h3>
               <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="functional-cookies" class="sr-only peer" checked>
-                <div class="w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-black/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-black"></div>
+                <input type="checkbox" id="functional-cookies" class="sr-only peer" checked />
+                <div
+                  class="w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-black/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white dark:bg-gray-900 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-black"
+                >
+                </div>
               </label>
             </div>
             <p class="text-sm text-gray-600 dark:text-gray-300">
-              Questi cookie permettono al sito web di fornire funzionalità avanzate e personalizzazione. 
-              Potrebbero essere impostati da noi o da fornitori terzi i cui servizi abbiamo aggiunto alle nostre pagine.
+              Questi cookie permettono al sito web di fornire funzionalità avanzate e
+              personalizzazione. Potrebbero essere impostati da noi o da fornitori terzi i cui
+              servizi abbiamo aggiunto alle nostre pagine.
             </p>
           </div>
         </div>
@@ -125,7 +174,10 @@
       <!-- Modal Footer -->
       <div class="p-6 border-t border-gray-200">
         <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
-          <button id="save-cookie-settings" class="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-medium">
+          <button
+            id="save-cookie-settings"
+            class="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+          >
             Salva Preferenze
           </button>
         </div>
@@ -139,7 +191,7 @@
   class CookieManager {
     cookieName: string;
     cookieExpiry: number;
-    
+
     constructor() {
       this.cookieName = 'bitora_cookie_consent';
       this.cookieExpiry = 365; // giorni
@@ -151,7 +203,7 @@
       if (!this.hasConsent()) {
         this.showBanner();
       }
-      
+
       this.bindEvents();
       this.applyConsent();
     }
@@ -177,7 +229,7 @@
 
       document.getElementById('save-cookie-settings')?.addEventListener('click', () => {
         this.saveSettings();
-      });      // Close modal on backdrop click
+      }); // Close modal on backdrop click
       document.getElementById('cookie-settings-modal')?.addEventListener('click', (e: Event) => {
         if ((e.target as HTMLElement)?.id === 'cookie-settings-modal') {
           this.hideSettings();
@@ -216,7 +268,7 @@
         necessary: true,
         analytics: true,
         functional: true,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
       this.setConsent(consent);
       this.hideBanner();
@@ -228,37 +280,48 @@
         necessary: true,
         analytics: false,
         functional: false,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
       this.setConsent(consent);
       this.hideBanner();
       this.applyConsent();
-    }    saveSettings() {
-      const analyticsChecked = (document.getElementById('analytics-cookies') as HTMLInputElement)?.checked || false;
-      const functionalChecked = (document.getElementById('functional-cookies') as HTMLInputElement)?.checked || false;
-      
+    }
+    saveSettings() {
+      const analyticsChecked =
+        (document.getElementById('analytics-cookies') as HTMLInputElement)?.checked || false;
+      const functionalChecked =
+        (document.getElementById('functional-cookies') as HTMLInputElement)?.checked || false;
+
       const consent = {
         necessary: true,
         analytics: analyticsChecked,
         functional: functionalChecked,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
-      
+
       this.setConsent(consent);
       this.hideSettings();
       this.hideBanner();
       this.applyConsent();
-    }    setConsent(consent: {necessary: boolean, analytics: boolean, functional: boolean, timestamp: number}) {
+    }
+    setConsent(consent: {
+      necessary: boolean;
+      analytics: boolean;
+      functional: boolean;
+      timestamp: number;
+    }) {
       const consentString = JSON.stringify(consent);
       const date = new Date();
-      date.setTime(date.getTime() + (this.cookieExpiry * 24 * 60 * 60 * 1000));
-      const expires = "expires=" + date.toUTCString();
+      date.setTime(date.getTime() + this.cookieExpiry * 24 * 60 * 60 * 1000);
+      const expires = 'expires=' + date.toUTCString();
       document.cookie = `${this.cookieName}=${consentString};${expires};path=/;secure;samesite=strict`;
-      
+
       // Emit event for other scripts to listen to
-      window.dispatchEvent(new CustomEvent('cookieConsentChanged', { 
-        detail: consent 
-      }));
+      window.dispatchEvent(
+        new CustomEvent('cookieConsentChanged', {
+          detail: consent,
+        })
+      );
     }
 
     getConsent() {
@@ -297,7 +360,8 @@
       } else {
         this.disableFunctional();
       }
-    }    enableAnalytics() {
+    }
+    enableAnalytics() {
       // Analytics script will be loaded by the layout based on consent
       // We just need to track the consent event
       console.log('Analytics tracking enabled');
@@ -305,13 +369,15 @@
 
     disableAnalytics() {
       // Remove analytics script if it exists
-      const existingScript = document.querySelector('script[data-website-id="2adbf0f8-a9d3-47bd-9a32-61ac932f9640"]');
+      const existingScript = document.querySelector(
+        'script[data-website-id="2adbf0f8-a9d3-47bd-9a32-61ac932f9640"]'
+      );
       if (existingScript) {
         existingScript.remove();
       }
-      
+
       console.log('Analytics tracking disabled');
-      
+
       // Clear any existing analytics cookies
       this.clearAnalyticsCookies();
     }
@@ -344,7 +410,7 @@
   // Initialize cookie manager when DOM is loaded
   document.addEventListener('DOMContentLoaded', () => {
     const cookieManager = new CookieManager();
-    
+
     // Expose reset method for development (accessible via browser console)
     (window as any).resetCookieConsent = () => {
       cookieManager.resetConsent();
@@ -357,23 +423,23 @@
   .peer:checked + div {
     background-color: #000;
   }
-  
+
   .peer:checked + div:after {
     transform: translateX(100%);
   }
-  
+
   /* Animation for modal */
   #cookie-settings-modal.hidden {
     opacity: 0;
     pointer-events: none;
   }
-  
+
   #cookie-settings-modal:not(.hidden) {
     opacity: 1;
     pointer-events: auto;
     animation: fadeIn 0.2s ease-out;
   }
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;

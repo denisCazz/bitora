@@ -14,8 +14,8 @@ const parts = email.split('@');
 const encodedEmail = btoa(email); // Base64 encoding
 ---
 
-<a 
-  href="#" 
+<a
+  href="#"
   class={`protected-email ${className}`}
   data-email={encodedEmail}
   data-subject={subject}
@@ -34,19 +34,19 @@ const encodedEmail = btoa(email); // Base64 encoding
       const encodedEmail = element.getAttribute('data-email');
       const subject = element.getAttribute('data-subject') || '';
       const email = atob(encodedEmail);
-        // Log per analytics (se disponibile)
+      // Log per analytics (se disponibile)
       if (window.trackEvent) {
         window.trackEvent('email_click', {
           category: 'contact',
-          label: 'protected_email'
+          label: 'protected_email',
         });
       }
-      
+
       // Crea mailto link
       const mailtoLink = `mailto:${email}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
       window.location.href = mailtoLink;
     } catch (error) {
-      console.error('Errore nell\'apertura email:', error);
+      console.error("Errore nell'apertura email:", error);
       // Fallback: mostra alert con email
       const encodedEmail = element.getAttribute('data-email');
       const email = atob(encodedEmail);
@@ -81,7 +81,7 @@ const encodedEmail = btoa(email); // Base64 encoding
     cursor: pointer;
     transition: all 0.2s ease;
   }
-  
+
   .protected-email:hover {
     opacity: 0.8;
   }

@@ -10,25 +10,54 @@ export interface Props {
 const { badge, title, titleAccent, subtitle, centered = false, compact = false } = Astro.props;
 ---
 
-<section class={`relative py-20 md:py-28 lg:py-32 px-6 md:px-12 lg:px-20 overflow-hidden ${compact ? 'min-h-0' : 'min-h-[70vh]'} flex flex-col justify-center bg-gray-50 dark:bg-black`}>
-  <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-50 to-gray-100/95 dark:from-black dark:via-black dark:to-black/95"></div>
-  <div class="absolute inset-0 opacity-30 pointer-events-none">
-    <div class="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gray-300/20 dark:bg-white/5 blur-[120px] animate-pulse-slow"></div>
-    <div class="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gray-300/10 dark:bg-white/3 blur-[100px] animate-pulse-slow" style="animation-delay: 1s;"></div>
+<section
+  class={`relative py-20 md:py-28 lg:py-32 px-6 md:px-12 lg:px-20 overflow-hidden ${compact ? 'min-h-0' : 'min-h-[70vh]'} flex flex-col justify-center bg-gray-50 dark:bg-black`}
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-gray-50 via-gray-50 to-gray-100/95 dark:from-black dark:via-black dark:to-black/95"
+  >
   </div>
-  
+  <div class="absolute inset-0 opacity-30 pointer-events-none">
+    <div
+      class="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gray-300/20 dark:bg-white/5 blur-[120px] animate-pulse-slow"
+    >
+    </div>
+    <div
+      class="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gray-300/10 dark:bg-white/3 blur-[100px] animate-pulse-slow"
+      style="animation-delay: 1s;"
+    >
+    </div>
+  </div>
+
   <div class={`relative z-10 max-w-4xl ${centered ? 'mx-auto text-center' : ''}`}>
-    {badge && (
-      <p class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-6 animate-fade-in">{badge}</p>
-    )}
-    <h1 class={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6 text-gray-900 dark:text-white`}>
+    {
+      badge && (
+        <p class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-6 animate-fade-in">
+          {badge}
+        </p>
+      )
+    }
+    <h1
+      class={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6 text-gray-900 dark:text-white`}
+    >
       {title}
-      {titleAccent && <br /><span class="text-gray-500 dark:text-gray-400">{titleAccent}</span>}
+      {
+        titleAccent && (
+          <>
+            <br />
+            <span class="text-gray-500 dark:text-gray-400">{titleAccent}</span>
+          </>
+        )
+      }
     </h1>
-    {subtitle && (
-      <p class={`text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed ${centered ? 'mx-auto' : ''}`}>
-        {subtitle}
-      </p>
-    )}
+    {
+      subtitle && (
+        <p
+          class={`text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed ${centered ? 'mx-auto' : ''}`}
+        >
+          {subtitle}
+        </p>
+      )
+    }
   </div>
 </section>

@@ -14,7 +14,7 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      'I miei clienti adorano poter vedere le mie creazioni online prima di venire in atelier. Il sito rispecchia perfettamente l\'eleganza del mio lavoro e mi ha aiutato a farmi conoscere anche fuori Carmagnola.',
+      "I miei clienti adorano poter vedere le mie creazioni online prima di venire in atelier. Il sito rispecchia perfettamente l'eleganza del mio lavoro e mi ha aiutato a farmi conoscere anche fuori Carmagnola.",
     author: 'Kristina',
     company: 'Sartoria Kristina',
     role: 'Titolare',
@@ -22,11 +22,11 @@ export const testimonials: Testimonial[] = [
     site: 'https://sartoriakristina.it',
     results: '+35% prenotazioni in 3 mesi',
     rating: 5,
-    category: 'web'
+    category: 'web',
   },
   {
     quote:
-      'Sito consegnato in tempi record! Design minimale e perfettamente mirato alla mia clientela. Interfaccia intuitiva che rende l\'ordinazione semplice per tutti i clienti, dalle nonne ai giovani. Ordini online aumentati del 60%!',
+      "Sito consegnato in tempi record! Design minimale e perfettamente mirato alla mia clientela. Interfaccia intuitiva che rende l'ordinazione semplice per tutti i clienti, dalle nonne ai giovani. Ordini online aumentati del 60%!",
     author: 'Adele',
     company: 'Speedy Pizza',
     role: 'Proprietario',
@@ -34,7 +34,7 @@ export const testimonials: Testimonial[] = [
     site: 'https://speedy-pizza.it',
     results: '+60% ordini online',
     rating: 5,
-    category: 'web'
+    category: 'web',
   },
   {
     quote:
@@ -46,7 +46,7 @@ export const testimonials: Testimonial[] = [
     site: 'https://aboutdenis.eu',
     results: '+80% visibilità online',
     rating: 5,
-    category: 'web'
+    category: 'web',
   },
   {
     quote:
@@ -58,7 +58,7 @@ export const testimonials: Testimonial[] = [
     site: 'https://www.barchantilly.it',
     results: '2× richieste eventi in 3 mesi',
     rating: 5,
-    category: 'nfc'
+    category: 'nfc',
   },
   {
     quote:
@@ -70,7 +70,7 @@ export const testimonials: Testimonial[] = [
     site: 'https://mistralimpianti.it',
     results: 'Sito web professionale',
     rating: 5,
-    category: 'web'
+    category: 'web',
   },
   {
     quote:
@@ -82,7 +82,7 @@ export const testimonials: Testimonial[] = [
     site: 'https://speedy-pizza.it',
     results: 'Ordini WhatsApp automatizzati',
     rating: 5,
-    category: 'web'
+    category: 'web',
   },
   {
     quote:
@@ -94,7 +94,7 @@ export const testimonials: Testimonial[] = [
     site: '#',
     results: 'Presenza digitale professionale',
     rating: 5,
-    category: 'web'
+    category: 'web',
   },
   {
     quote:
@@ -106,8 +106,8 @@ export const testimonials: Testimonial[] = [
     site: '#',
     results: 'Progetto grafico completato',
     rating: 5,
-    category: 'web'
-  }
+    category: 'web',
+  },
 ];
 
 export const webTestimonials = testimonials.filter(t => t.category === 'web');

@@ -7,27 +7,56 @@ import Layout from '../layouts/Layout.astro';
   description="Web app CRM professionale (Next.js + Supabase) per PMI, freelance e agenzie: gestione clienti ordinata, email integrate, licenze per utente, export CSV, SMTP personalizzato e API lead."
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    
     <!-- Hero -->
     <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-black dark:via-black dark:to-black/95"></div>
-      <div class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-200/50 dark:bg-gray-700/20 blur-[100px] opacity-50"></div>
-      
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-black dark:via-black dark:to-black/95"
+      >
+      </div>
+      <div
+        class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-200/50 dark:bg-gray-700/20 blur-[100px] opacity-50"
+      >
+      </div>
+
       <div class="relative z-10 max-w-4xl">
-        <p class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4">Gestionali & CRM</p>
+        <p
+          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
+        >
+          Gestionali & CRM
+        </p>
         <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
           Clienti, lead ed email.<br />
           <span class="text-gray-900 dark:text-white">Sotto controllo.</span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed mb-8">
-          Bitora CRM è una web app professionale per PMI, freelance e agenzie. Gestisci clienti e lead in modo ordinato, invia email dal CRM e mantieni controllo completo su accessi, licenze e dati.
+        <p
+          class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed mb-8"
+        >
+          Bitora CRM è una web app professionale per PMI, freelance e agenzie. Gestisci clienti e
+          lead in modo ordinato, invia email dal CRM e mantieni controllo completo su accessi,
+          licenze e dati.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/contattaci?topic=crm" class="btn-primary group min-w-[200px] flex items-center justify-center gap-2">
+          <a
+            href="/contattaci?topic=crm"
+            class="btn-primary group min-w-[200px] flex items-center justify-center gap-2"
+          >
             Richiedi una demo
-            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            <svg
+              class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            >
           </a>
-          <a href="#come-funziona" class="btn-secondary min-w-[200px] flex items-center justify-center gap-2">
+          <a
+            href="#come-funziona"
+            class="btn-secondary min-w-[200px] flex items-center justify-center gap-2"
+          >
             Vedi come funziona
           </a>
         </div>
@@ -35,31 +64,80 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <!-- Intro / What it is -->
-    <section id="come-funziona" class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+    <section
+      id="come-funziona"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
+    >
       <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-10 items-start">
           <div class="reveal-on-scroll">
             <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Cos'è Bitora CRM</h2>
             <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              Un CRM moderno, web-based e accessibile ovunque: nessuna installazione, nessun client da aggiornare, nessuna complessità inutile.
-              È pensato per chi lavora con clienti reali e processi chiari, non per soluzioni enterprise sovradimensionate.
+              Un CRM moderno, web-based e accessibile ovunque: nessuna installazione, nessun client
+              da aggiornare, nessuna complessità inutile. È pensato per chi lavora con clienti reali
+              e processi chiari, non per soluzioni enterprise sovradimensionate.
             </p>
           </div>
 
-          <div class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/40 transition-all" style="transition-delay: 100ms">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Valore pratico, ogni giorno</h3>
+          <div
+            class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/40 transition-all"
+            style="transition-delay: 100ms"
+          >
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Valore pratico, ogni giorno
+            </h3>
             <ul class="space-y-4 text-gray-700 dark:text-gray-300">
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><span class="text-gray-900 dark:text-white font-medium">Controllo:</span> dati ordinati, pipeline leggibile, log email e export sempre disponibili.</span>
+                <svg
+                  class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path></svg
+                >
+                <span
+                  ><span class="text-gray-900 dark:text-white font-medium">Controllo:</span> dati ordinati,
+                  pipeline leggibile, log email e export sempre disponibili.</span
+                >
               </li>
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><span class="text-gray-900 dark:text-white font-medium">Semplicità:</span> interfaccia essenziale, campi utili, niente "feature" che complicano il lavoro.</span>
+                <svg
+                  class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path></svg
+                >
+                <span
+                  ><span class="text-gray-900 dark:text-white font-medium">Semplicità:</span> interfaccia
+                  essenziale, campi utili, niente "feature" che complicano il lavoro.</span
+                >
               </li>
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span><span class="text-gray-900 dark:text-white font-medium">Automazione misurata:</span> tag e provenienza lead, template email e variabili dinamiche, deduplica per email.</span>
+                <svg
+                  class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path></svg
+                >
+                <span
+                  ><span class="text-gray-900 dark:text-white font-medium"
+                    >Automazione misurata:</span
+                  > tag e provenienza lead, template email e variabili dinamiche, deduplica per email.</span
+                >
               </li>
             </ul>
           </div>
@@ -68,17 +146,38 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <!-- Features Grid -->
-    <section id="features" class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+    <section
+      id="features"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
+    >
       <div class="max-w-6xl mx-auto">
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Feature 1 -->
-          <div class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-10 rounded-2xl reveal-on-scroll group hover:border-gray-400 dark:hover:border-white/40 transition-all">
-            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <svg class="w-6 h-6 text-gray-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1m8-4a4 4 0 10-8 0 4 4 0 008 0z"></path></svg>
+          <div
+            class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-10 rounded-2xl reveal-on-scroll group hover:border-gray-400 dark:hover:border-white/40 transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500"
+            >
+              <svg
+                class="w-6 h-6 text-gray-900 dark:text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1m8-4a4 4 0 10-8 0 4 4 0 008 0z"
+                ></path></svg
+              >
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Clienti chiari e ordinati</h3>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Clienti chiari e ordinati
+            </h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Crea clienti in pochi secondi, tieni contatti, note, tag e stato sempre sotto mano. Niente caos: solo dati utili.
+              Crea clienti in pochi secondi, tieni contatti, note, tag e stato sempre sotto mano.
+              Niente caos: solo dati utili.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
               <li class="flex items-center gap-2">
@@ -93,13 +192,32 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <!-- Feature 2 -->
-          <div class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-10 rounded-2xl reveal-on-scroll group hover:border-gray-400 dark:hover:border-white/40 transition-all" style="transition-delay: 100ms">
-            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <svg class="w-6 h-6 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          <div
+            class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-10 rounded-2xl reveal-on-scroll group hover:border-gray-400 dark:hover:border-white/40 transition-all"
+            style="transition-delay: 100ms"
+          >
+            <div
+              class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500"
+            >
+              <svg
+                class="w-6 h-6 text-gray-500 dark:text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"
+                ></path></svg
+              >
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Email integrate nel CRM</h3>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Email integrate nel CRM
+            </h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Gestisci template, invii singoli e invii a gruppi selezionati senza strumenti esterni. Ogni invio è tracciato.
+              Gestisci template, invii singoli e invii a gruppi selezionati senza strumenti esterni.
+              Ogni invio è tracciato.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
               <li class="flex items-center gap-2">
@@ -114,13 +232,32 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <!-- Feature 3 -->
-          <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-gray-400 dark:hover:border-white/40 transition-all duration-500" style="transition-delay: 200ms">
-            <div class="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-              <svg class="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-3.866 3.134-7 7-7 0 3.866-3.134 7-7 7zm0 0c0 3.866-3.134 7-7 7 0-3.866 3.134-7 7-7zm0 0v10"></path></svg>
+          <div
+            class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 p-10 rounded-3xl reveal-on-scroll group hover:border-gray-400 dark:hover:border-white/40 transition-all duration-500"
+            style="transition-delay: 200ms"
+          >
+            <div
+              class="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500"
+            >
+              <svg
+                class="w-6 h-6 text-green-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 11c0-3.866 3.134-7 7-7 0 3.866-3.134 7-7 7zm0 0c0 3.866-3.134 7-7 7 0-3.866 3.134-7 7-7zm0 0v10"
+                ></path></svg
+              >
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Accesso, licenze, controllo</h3>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Accesso, licenze, controllo
+            </h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Login sicuro e licenze per utente con trial automatico. Le funzionalità sono disponibili solo con licenza attiva.
+              Login sicuro e licenze per utente con trial automatico. Le funzionalità sono
+              disponibili solo con licenza attiva.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
               <li class="flex items-center gap-2">
@@ -138,90 +275,172 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <!-- Detailed Sections -->
-    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+    <section
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
+    >
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-20 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Funzioni, spiegate con chiarezza</h2>
+          <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+            Funzioni, spiegate con chiarezza
+          </h2>
           <p class="text-lg text-gray-600 dark:text-gray-400 font-light max-w-3xl mx-auto">
-            Ogni sezione è costruita per rendere il lavoro quotidiano più semplice: gestione clienti ordinata, comunicazioni tracciate e dati sempre disponibili.
+            Ogni sezione è costruita per rendere il lavoro quotidiano più semplice: gestione clienti
+            ordinata, comunicazioni tracciate e dati sempre disponibili.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/40 transition-all">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Gestione clienti chiara e ordinata</h3>
+          <div
+            class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/40 transition-all"
+          >
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Gestione clienti chiara e ordinata
+            </h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Crea e aggiorna clienti rapidamente. Tutto ciò che serve è al posto giusto, con una pipeline semplice e leggibile.
+              Crea e aggiorna clienti rapidamente. Tutto ciò che serve è al posto giusto, con una
+              pipeline semplice e leggibile.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Vista tabellare responsive per desktop e tablet</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Stato e tag per trovare subito ciò che conta</li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Vista
+                tabellare responsive per desktop e tablet
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Stato e tag
+                per trovare subito ciò che conta
+              </li>
             </ul>
           </div>
 
-          <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 75ms">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Email integrate, senza strumenti esterni</h3>
+          <div
+            class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll"
+            style="transition-delay: 75ms"
+          >
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Email integrate, senza strumenti esterni
+            </h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
               Hub email nel CRM: template riutilizzabili, invii mirati e log completo degli stati.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-gray-400"></div>Invio a singoli clienti o gruppi selezionati</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-gray-400"></div>Newsletter informativa in BCC</li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-gray-400"></div>Invio a
+                singoli clienti o gruppi selezionati
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-gray-400"></div>Newsletter
+                informativa in BCC
+              </li>
             </ul>
           </div>
 
-          <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 150ms">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Statistiche ed export</h3>
+          <div
+            class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll"
+            style="transition-delay: 150ms"
+          >
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Statistiche ed export
+            </h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              I dati sono sempre disponibili e portabili. Quando serve, esporti i clienti in CSV in qualsiasi momento.
+              I dati sono sempre disponibili e portabili. Quando serve, esporti i clienti in CSV in
+              qualsiasi momento.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Export CSV immediato</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Trasparenza: i dati restano tuoi</li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Export CSV immediato
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Trasparenza: i dati restano
+                tuoi
+              </li>
             </ul>
           </div>
 
-          <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 225ms">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">SMTP personalizzato e brand coerente</h3>
+          <div
+            class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll"
+            style="transition-delay: 225ms"
+          >
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              SMTP personalizzato e brand coerente
+            </h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Usi il tuo provider email (Gmail, Aruba, Outlook o server dedicato). Nessun lock-in e credenziali cifrate lato server.
+              Usi il tuo provider email (Gmail, Aruba, Outlook o server dedicato). Nessun lock-in e
+              credenziali cifrate lato server.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Invii dal tuo dominio e con il tuo stile</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Configurazione pensata per sicurezza e controllo</li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Invii dal tuo
+                dominio e con il tuo stile
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Configurazione
+                pensata per sicurezza e controllo
+              </li>
             </ul>
           </div>
 
-          <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 300ms">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Integrazione con siti e form esterni</h3>
+          <div
+            class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll"
+            style="transition-delay: 300ms"
+          >
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Integrazione con siti e form esterni
+            </h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              API dedicata per ricevere lead dal sito o da landing page. Niente duplicati: se l'email esiste già, si aggiorna il contatto.
+              API dedicata per ricevere lead dal sito o da landing page. Niente duplicati: se
+              l'email esiste già, si aggiorna il contatto.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-gray-400"></div>Tag automatici e tracciamento provenienza</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-gray-400"></div>Perfetto per campagne e acquisizione lead</li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-gray-400"></div>Tag
+                automatici e tracciamento provenienza
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-gray-400"></div>Perfetto
+                per campagne e acquisizione lead
+              </li>
             </ul>
           </div>
 
-          <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 375ms">
+          <div
+            class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll"
+            style="transition-delay: 375ms"
+          >
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Accesso e licenze</h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Login sicuro e licenze per utente con trial automatico. Le funzioni sono disponibili solo con licenza attiva: controllo totale e costi prevedibili.
+              Login sicuro e licenze per utente con trial automatico. Le funzioni sono disponibili
+              solo con licenza attiva: controllo totale e costi prevedibili.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Licenze scalabili per team piccoli</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Accesso alle funzioni solo con licenza attiva</li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Licenze scalabili per team
+                piccoli
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>Accesso alle funzioni solo
+                con licenza attiva
+              </li>
             </ul>
           </div>
 
-          <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll" style="transition-delay: 450ms">
+          <div
+            class="bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-white/10 rounded-3xl p-10 reveal-on-scroll"
+            style="transition-delay: 450ms"
+          >
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Area Admin</h3>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Per chi gestisce più utenti o più account: controllo centralizzato su utenti, licenze e monitoraggio.
+              Per chi gestisce più utenti o più account: controllo centralizzato su utenti, licenze
+              e monitoraggio.
             </p>
             <ul class="space-y-3 text-sm text-gray-500">
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Gestione utenti e licenze</li>
-              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Monitoraggio e gestione clienti</li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Gestione
+                utenti e licenze
+              </li>
+              <li class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white"></div>Monitoraggio e
+                gestione clienti
+              </li>
             </ul>
           </div>
         </div>
@@ -229,38 +448,85 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+    <section
+      id="pricing"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
+    >
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-24 reveal-on-scroll">
-          <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Licenze per utente, controllo totale</h2>
-          <p class="text-xl text-gray-600 dark:text-gray-400 font-light">Scegli in base al numero di utenti. Trial automatico e funzionalità disponibili solo con licenza attiva.</p>
+          <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            Licenze per utente, controllo totale
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 font-light">
+            Scegli in base al numero di utenti. Trial automatico e funzionalità disponibili solo con
+            licenza attiva.
+          </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Plan: Utente -->
-          <div class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-10 reveal-on-scroll text-center hover:border-gray-400 dark:hover:border-white/40 transition-all">
-            <div class="inline-block bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-white/80 px-4 py-1 rounded-full text-sm font-medium mb-8">Piano Utente</div>
+          <div
+            class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-10 reveal-on-scroll text-center hover:border-gray-400 dark:hover:border-white/40 transition-all"
+          >
+            <div
+              class="inline-block bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-white/80 px-4 py-1 rounded-full text-sm font-medium mb-8"
+            >
+              Piano Utente
+            </div>
 
             <div class="flex items-baseline justify-center gap-2 mb-6">
-              <span class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white">€19,99</span>
+              <span class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white"
+                >€19,99</span
+              >
               <span class="text-lg text-gray-500">/utente/mese</span>
             </div>
 
             <p class="text-gray-600 dark:text-gray-400 mb-10 max-w-sm mx-auto">
-              Per freelance e professionisti: un CRM completo, accessibile ovunque, con email integrate e dati sempre esportabili.
+              Per freelance e professionisti: un CRM completo, accessibile ovunque, con email
+              integrate e dati sempre esportabili.
             </p>
 
             <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
               <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg
+                  class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path></svg
+                >
                 Email integrate + log invii
               </div>
               <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg
+                  class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path></svg
+                >
                 Export CSV in qualsiasi momento
               </div>
               <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg
+                  class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path></svg
+                >
                 SMTP personalizzato (tuo provider)
               </div>
             </div>
@@ -273,30 +539,72 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Plan: Fino a 5 utenti -->
           <div class="relative group reveal-on-scroll">
-            <div class="absolute inset-0 bg-gray-200/30 dark:bg-gray-700/20 rounded-2xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
-            <div class="relative bg-gray-50 dark:bg-white/[0.03] border border-gray-300 dark:border-white/10 rounded-2xl p-10 text-center hover:border-gray-400 dark:hover:border-white/40 transition-all">
-              <div class="inline-block bg-gray-200 dark:bg-white/20 text-gray-900 dark:text-white px-4 py-1 rounded-full text-sm font-medium mb-8">Fino a 5 utenti</div>
+            <div
+              class="absolute inset-0 bg-gray-200/30 dark:bg-gray-700/20 rounded-2xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"
+            >
+            </div>
+            <div
+              class="relative bg-gray-50 dark:bg-white/[0.03] border border-gray-300 dark:border-white/10 rounded-2xl p-10 text-center hover:border-gray-400 dark:hover:border-white/40 transition-all"
+            >
+              <div
+                class="inline-block bg-gray-200 dark:bg-white/20 text-gray-900 dark:text-white px-4 py-1 rounded-full text-sm font-medium mb-8"
+              >
+                Fino a 5 utenti
+              </div>
 
               <div class="flex items-baseline justify-center gap-2 mb-6">
-                <span class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white">€49,99</span>
+                <span class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white"
+                  >€49,99</span
+                >
                 <span class="text-lg text-gray-500">/mese</span>
               </div>
 
               <p class="text-gray-600 dark:text-gray-400 mb-10 max-w-sm mx-auto">
-                Per piccoli team e agenzie: gestione condivisa di clienti e lead, con accessi controllati e flussi ordinati.
+                Per piccoli team e agenzie: gestione condivisa di clienti e lead, con accessi
+                controllati e flussi ordinati.
               </p>
 
               <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
                 <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                  <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <svg
+                    class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    ><path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"></path></svg
+                  >
                   5 accessi inclusi
                 </div>
                 <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                  <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <svg
+                    class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    ><path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"></path></svg
+                  >
                   Area Admin per utenti e licenze
                 </div>
                 <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                  <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <svg
+                    class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    ><path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"></path></svg
+                  >
                   API lead + deduplica per email
                 </div>
               </div>
@@ -304,38 +612,83 @@ import Layout from '../layouts/Layout.astro';
               <a href="/contattaci?plan=crm-5" class="btn-primary inline-block w-full text-center">
                 Attiva Piano Team
               </a>
-              <p class="mt-6 text-sm text-gray-500">Trial automatico • Disattivazione quando vuoi</p>
+              <p class="mt-6 text-sm text-gray-500">
+                Trial automatico • Disattivazione quando vuoi
+              </p>
             </div>
           </div>
 
           <!-- Plan: Enterprise -->
-          <div class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-10 reveal-on-scroll text-center hover:border-gray-400 dark:hover:border-white/40 transition-all" style="transition-delay: 100ms">
-            <div class="inline-block bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-white/80 px-4 py-1 rounded-full text-sm font-medium mb-8">Enterprise</div>
+          <div
+            class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-10 reveal-on-scroll text-center hover:border-gray-400 dark:hover:border-white/40 transition-all"
+            style="transition-delay: 100ms"
+          >
+            <div
+              class="inline-block bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-white/80 px-4 py-1 rounded-full text-sm font-medium mb-8"
+            >
+              Enterprise
+            </div>
 
             <div class="flex items-baseline justify-center gap-2 mb-6">
-              <span class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Su contatto</span>
+              <span class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white"
+                >Su contatto</span
+              >
             </div>
 
             <p class="text-gray-600 dark:text-gray-400 mb-10 max-w-sm mx-auto">
-              Per team più strutturati o esigenze specifiche: numero utenti personalizzato, setup dedicato e requisiti di integrazione.
+              Per team più strutturati o esigenze specifiche: numero utenti personalizzato, setup
+              dedicato e requisiti di integrazione.
             </p>
 
             <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
               <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg
+                  class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path></svg
+                >
                 Numero utenti e licenze su misura
               </div>
               <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg
+                  class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path></svg
+                >
                 Integrazioni e flussi dedicati
               </div>
               <div class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                <svg class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <svg
+                  class="w-5 h-5 text-gray-900 dark:text-white flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path></svg
+                >
                 Supporto e onboarding concordati
               </div>
             </div>
 
-            <a href="/contattaci?topic=crm-enterprise" class="btn-primary inline-block w-full text-center">
+            <a
+              href="/contattaci?topic=crm-enterprise"
+              class="btn-primary inline-block w-full text-center"
+            >
               Contattaci
             </a>
             <p class="mt-6 text-sm text-gray-500">Preventivo e tempi in base alle esigenze</p>
@@ -345,44 +698,81 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <!-- FAQ -->
-    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+    <section
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
+    >
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center">Domande frequenti</h2>
-        
+
         <div class="space-y-4">
-          <details class="group bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl open:bg-gray-100 dark:open:bg-white/10 transition-all duration-300">
+          <details
+            class="group bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl open:bg-gray-100 dark:open:bg-white/10 transition-all duration-300"
+          >
             <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-              <span class="text-lg font-medium text-gray-900 dark:text-white">Come funzionano licenze e trial?</span>
+              <span class="text-lg font-medium text-gray-900 dark:text-white"
+                >Come funzionano licenze e trial?</span
+              >
               <span class="transition-transform group-open:rotate-180 text-gray-500">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
               </span>
             </summary>
             <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed">
-              Le licenze sono per utente e includono un trial automatico. Le funzionalità del CRM sono accessibili solo con licenza attiva, così hai controllo totale su accessi e costi.
+              Le licenze sono per utente e includono un trial automatico. Le funzionalità del CRM
+              sono accessibili solo con licenza attiva, così hai controllo totale su accessi e
+              costi.
             </div>
           </details>
 
-          <details class="group bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl open:bg-gray-100 dark:open:bg-white/10 transition-all duration-300">
+          <details
+            class="group bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl open:bg-gray-100 dark:open:bg-white/10 transition-all duration-300"
+          >
             <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-              <span class="text-lg font-medium text-gray-900 dark:text-white">Posso usare il mio provider email?</span>
+              <span class="text-lg font-medium text-gray-900 dark:text-white"
+                >Posso usare il mio provider email?</span
+              >
               <span class="transition-transform group-open:rotate-180 text-gray-500">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
               </span>
             </summary>
             <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed">
-              Sì. Puoi configurare SMTP con il tuo provider (Gmail, Aruba, Outlook o server dedicato). Le credenziali sono gestite lato server in modo cifrato e le email restano coerenti con il tuo brand.
+              Sì. Puoi configurare SMTP con il tuo provider (Gmail, Aruba, Outlook o server
+              dedicato). Le credenziali sono gestite lato server in modo cifrato e le email restano
+              coerenti con il tuo brand.
             </div>
           </details>
 
-          <details class="group bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl open:bg-gray-100 dark:open:bg-white/10 transition-all duration-300">
+          <details
+            class="group bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-2xl open:bg-gray-100 dark:open:bg-white/10 transition-all duration-300"
+          >
             <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-              <span class="text-lg font-medium text-gray-900 dark:text-white">Posso importare lead dal sito ed esportare i dati?</span>
+              <span class="text-lg font-medium text-gray-900 dark:text-white"
+                >Posso importare lead dal sito ed esportare i dati?</span
+              >
               <span class="transition-transform group-open:rotate-180 text-gray-500">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
               </span>
             </summary>
             <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed">
-              Sì. Bitora CRM offre un'API dedicata per ricevere lead da form esterni (con deduplica per email e tag/provenienza). In qualsiasi momento puoi esportare i clienti in CSV.
+              Sì. Bitora CRM offre un'API dedicata per ricevere lead da form esterni (con deduplica
+              per email e tag/provenienza). In qualsiasi momento puoi esportare i clienti in CSV.
             </div>
           </details>
         </div>
@@ -392,17 +782,28 @@ import Layout from '../layouts/Layout.astro';
     <!-- CTA -->
     <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Vuoi vedere Bitora CRM in azione?</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          Vuoi vedere Bitora CRM in azione?
+        </h2>
         <p class="text-gray-600 dark:text-gray-400 mb-8">
-          Prenota una demo di 15 minuti. Ti mostriamo come gestire clienti, lead ed email con un flusso pulito e controllabile.
+          Prenota una demo di 15 minuti. Ti mostriamo come gestire clienti, lead ed email con un
+          flusso pulito e controllabile.
         </p>
-        <a href="/contattaci" class="btn-primary inline-flex items-center justify-center gap-2 min-w-[200px]">
+        <a
+          href="/contattaci"
+          class="btn-primary inline-flex items-center justify-center gap-2 min-w-[200px]"
+        >
           Prenota Demo
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+          >
         </a>
       </div>
     </section>
-
   </main>
 </Layout>
 
@@ -438,10 +839,10 @@ import Layout from '../layouts/Layout.astro';
   const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.1
+    threshold: 0.1,
   };
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');

@@ -14,48 +14,48 @@ export const clientLogos: ClientLogo[] = [
     logo: '/mistral.jpg',
     tier: 'premium',
     url: 'https://mistralimpianti.it',
-    location: 'Roreto di Cherasco'
+    location: 'Roreto di Cherasco',
   },
   {
     name: 'Sartoria Kristina',
     logo: '/sartoria_kristina.png',
     tier: 'premium',
     url: 'https://sartoriakristina.it',
-    location: 'Carmagnola'
+    location: 'Carmagnola',
   },
   {
     name: 'Bar Wine Café',
     logo: '/wine.png',
     tier: 'gold',
     url: 'https://barwinecafe.it',
-    location: 'Carmagnola'
+    location: 'Carmagnola',
   },
   {
     name: 'Sergio Contegiacomo',
     logo: '/logo_sergio.png',
     tier: 'premium',
     url: 'https://sergiocontegiacomo.it',
-    location: 'Bra'
+    location: 'Bra',
   },
   {
     name: 'Bar Tabacchi Chantilly',
     logo: '/chanty.JPG',
     tier: 'gold',
     url: 'https://www.bartabacchichantilly.it',
-    location: 'Carmagnola'
+    location: 'Carmagnola',
   },
   {
     name: 'Speedy Pizza',
     logo: 'https://www.speedy-pizza.it/logo.jpeg',
     tier: 'gold',
     url: 'https://www.speedy-pizza.it',
-    location: 'Carmagnola'
+    location: 'Carmagnola',
   },
   {
     name: 'Barbara Toffano',
     logo: '/btoffano.jpg',
     tier: 'gold',
     url: '#',
-    location: 'Piemonte'
-  }
+    location: 'Piemonte',
+  },
 ];

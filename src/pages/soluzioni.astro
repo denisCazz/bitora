@@ -5,30 +5,36 @@ const solutions = [
   {
     title: 'Sistemi Aziendali su Misura',
     subtitle: 'Gestionali · CRM · CMMS',
-    description: 'Software sviluppato sulle tue esigenze. Gestionali, CRM, CMMS e portali custom. Ti seguiamo dall\'analisi al deploy.',
+    description:
+      "Software sviluppato sulle tue esigenze. Gestionali, CRM, CMMS e portali custom. Ti seguiamo dall'analisi al deploy.",
     features: ['Sviluppo su misura', 'PMI e aziende', 'Integrazioni', 'Supporto post-lancio'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop',
     link: '/sistemi-aziendali',
-    cta: 'Scopri di più'
+    cta: 'Scopri di più',
   },
   {
     title: 'Digital Experience',
     subtitle: 'Siti Web & E-commerce',
-    description: 'Siti web professionali, veloci e ottimizzati per la conversione. E-commerce per vendere in tutta Italia.',
+    description:
+      'Siti web professionali, veloci e ottimizzati per la conversione. E-commerce per vendere in tutta Italia.',
     features: ['Design Mobile-First', 'SEO', 'Performance', 'Manutenzione'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
     link: '/siti-web-professionali',
-    cta: 'Inizia il progetto'
+    cta: 'Inizia il progetto',
   },
   {
     title: 'Phygital NFC',
     subtitle: 'Connessione Fisica-Digitale',
-    description: 'Tessere e espositori NFC che aprono mondi digitali con un tocco. Per networking e retail.',
+    description:
+      'Tessere e espositori NFC che aprono mondi digitali con un tocco. Per networking e retail.',
     features: ['Chip NTAG213', 'Dashboard analytics', 'Integrazioni'],
-    image: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?q=80&w=2553&auto=format&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?q=80&w=2553&auto=format&fit=crop',
     link: '/nfc-ecosystem',
-    cta: 'Scopri NFC'
-  }
+    cta: 'Scopri NFC',
+  },
 ];
 ---
 
@@ -37,17 +43,26 @@ const solutions = [
   description="Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia."
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    
     <!-- Hero Section -->
-    <section class="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900/20 dark:via-black dark:to-black opacity-50"></div>
-      
-      <div class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+    <section
+      class="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900/20 dark:via-black dark:to-black opacity-50"
+      >
+      </div>
+
+      <div
+        class="relative z-10 max-w-5xl mx-auto space-y-8 opacity-0 animate-fade-in-up"
+        style="animation-delay: 0.2s; animation-fill-mode: forwards;"
+      >
         <h1 class="text-5xl md:text-8xl font-bold tracking-tight">
           <span class="text-gray-900 dark:text-white">Sistemi digitali</span><br />
           <span class="text-gray-900 dark:text-white">su misura.</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+        <p
+          class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light max-w-2xl mx-auto leading-relaxed"
+        >
           Gestionali, CRM, CMMS, siti web ed e-commerce. <br class="hidden md:block" />
           Ti seguiamo dall'inizio alla fine.
         </p>
@@ -56,61 +71,81 @@ const solutions = [
 
     <!-- Solutions Loop -->
     <div class="space-y-32 pb-32">
-      {solutions.map((sol, i) => (
-        <section class={`py-20 px-6 md:px-12 relative overflow-hidden ${i % 2 !== 0 ? 'bg-gray-50 dark:bg-zinc-900/30' : ''}`}>
-          <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center relative z-10">
-            <div class={`space-y-8 reveal-on-scroll ${i % 2 !== 0 ? 'order-2' : 'order-2 md:order-1'}`}>
-              <span class="text-gray-500 dark:text-gray-400 font-medium tracking-wider uppercase text-sm">{sol.subtitle}</span>
-              <h2 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
-                {sol.title}
-              </h2>
-              <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light">
-                {sol.description}
-              </p>
-              <ul class="space-y-4 text-gray-700 dark:text-gray-300 mt-8">
-                {sol.features.map(feat => (
-                  <li class="flex items-center gap-4">
-                    <span class="flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-xs">✓</span>
-                    <span class="text-lg">{feat}</span>
-                  </li>
-                ))}
-              </ul>
-              <div class="pt-8">
-                <a href={sol.link} class="inline-block px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium text-lg transition-all hover:scale-105">
-                  {sol.cta}
-                </a>
+      {
+        solutions.map((sol, i) => (
+          <section
+            class={`py-20 px-6 md:px-12 relative overflow-hidden ${i % 2 !== 0 ? 'bg-gray-50 dark:bg-zinc-900/30' : ''}`}
+          >
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center relative z-10">
+              <div
+                class={`space-y-8 reveal-on-scroll ${i % 2 !== 0 ? 'order-2' : 'order-2 md:order-1'}`}
+              >
+                <span class="text-gray-500 dark:text-gray-400 font-medium tracking-wider uppercase text-sm">
+                  {sol.subtitle}
+                </span>
+                <h2 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
+                  {sol.title}
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light">
+                  {sol.description}
+                </p>
+                <ul class="space-y-4 text-gray-700 dark:text-gray-300 mt-8">
+                  {sol.features.map(feat => (
+                    <li class="flex items-center gap-4">
+                      <span class="flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-xs">
+                        ✓
+                      </span>
+                      <span class="text-lg">{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div class="pt-8">
+                  <a
+                    href={sol.link}
+                    class="inline-block px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium text-lg transition-all hover:scale-105"
+                  >
+                    {sol.cta}
+                  </a>
+                </div>
+              </div>
+              <div
+                class={`relative group reveal-on-scroll delay-200 ${i % 2 !== 0 ? 'order-1' : 'order-1 md:order-2'}`}
+              >
+                <div class="absolute -inset-1 bg-gradient-to-r from-gray-200/30 to-gray-100/20 dark:from-white/10 dark:to-white/5 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000" />
+                <div class="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
+                  <img
+                    src={sol.image}
+                    alt={sol.title}
+                    class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                  />
+                </div>
               </div>
             </div>
-            <div class={`relative group reveal-on-scroll delay-200 ${i % 2 !== 0 ? 'order-1' : 'order-1 md:order-2'}`}>
-              <div class="absolute -inset-1 bg-gradient-to-r from-gray-200/30 to-gray-100/20 dark:from-white/10 dark:to-white/5 rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
-              <div class="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
-                <img 
-                  src={sol.image} 
-                  alt={sol.title} 
-                  class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-      ))}
+          </section>
+        ))
+      }
     </div>
 
     <!-- CTA -->
-    <section class="py-40 px-6 text-center border-t border-gray-200 dark:border-white/5 relative overflow-hidden">
+    <section
+      class="py-40 px-6 text-center border-t border-gray-200 dark:border-white/5 relative overflow-hidden"
+    >
       <div class="max-w-4xl mx-auto reveal-on-scroll relative z-10">
         <h2 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight">Iniziamo a costruire.</h2>
         <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-          Prenota una call conoscitiva. Analizziamo le tue esigenze e troviamo la soluzione perfetta.
+          Prenota una call conoscitiva. Analizziamo le tue esigenze e troviamo la soluzione
+          perfetta.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/contattaci" class="min-w-[200px] px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium text-lg transition-all hover:scale-105">
+          <a
+            href="/contattaci"
+            class="min-w-[200px] px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium text-lg transition-all hover:scale-105"
+          >
             Parla con noi
           </a>
         </div>
       </div>
     </section>
-
   </main>
 </Layout>
 
@@ -146,10 +181,10 @@ const solutions = [
   const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.1
+    threshold: 0.1,
   };
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');

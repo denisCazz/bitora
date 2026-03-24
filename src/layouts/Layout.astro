@@ -6,8 +6,8 @@ import Analyticsgoogle from '../components/Analyticsgoogle.astro';
 import PerformanceMonitorSimple from '../components/PerformanceMonitorSimple.astro';
 import PerformanceOptimizer from '../components/PerformanceOptimizer.astro';
 import '../styles/global.css';
-import  SpeedInsights  from "@vercel/speed-insights/astro"
-import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from '@vercel/speed-insights/astro';
+import Analytics from '@vercel/analytics/astro';
 
 export interface Props {
   title: string;
@@ -17,9 +17,10 @@ export interface Props {
 const { title, description } = Astro.props;
 // Costruisci l'URL canonico corretto - più robusto
 const pathname = Astro.url.pathname || '/';
-const canonicalUrl = pathname === '/' 
-  ? 'https://www.bitora.it/' 
-  : `https://www.bitora.it${pathname.endsWith('/') ? pathname : pathname + '/'}`;
+const canonicalUrl =
+  pathname === '/'
+    ? 'https://www.bitora.it/'
+    : `https://www.bitora.it${pathname.endsWith('/') ? pathname : pathname + '/'}`;
 ---
 
 <!doctype html>
@@ -27,25 +28,28 @@ const canonicalUrl = pathname === '/'
   <head>
     <meta charset="UTF-8" />
     <script is:inline>
-      (function(){
+      (function () {
         var t = localStorage.getItem('theme');
         if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark');
         }
       })();
     </script>
-    <meta name="trustpilot-one-time-domain-verification-id" content="a73b7189-4327-406d-9010-8bc27db1d6c1"/>
-    <SpeedInsights/>
+    <meta
+      name="trustpilot-one-time-domain-verification-id"
+      content="a73b7189-4327-406d-9010-8bc27db1d6c1"
+    />
+    <SpeedInsights />
     <Analytics />
     <!-- Performance Optimizer - Critical Resources -->
     <PerformanceOptimizer />
-    
+
     <!-- Analytics (caricato condizionalmente) -->
     <Analyticsgoogle />
-    
+
     <!-- Performance Monitoring -->
     <PerformanceMonitorSimple />
-    
+
     <!-- Analytics - Load conditionally based on consent -->
     <script is:inline>
       // Check cookie consent before loading analytics
@@ -63,13 +67,17 @@ const canonicalUrl = pathname === '/'
         }
         return null;
       }
-      
+
       // Load analytics script only if consent given
       function loadAnalyticsScript() {
         const consent = getCookieConsent();
         if (consent && consent.analytics) {
           // Check if script is already loaded
-          if (!document.querySelector('script[data-website-id="2adbf0f8-a9d3-47bd-9a32-61ac932f9640"]')) {
+          if (
+            !document.querySelector(
+              'script[data-website-id="2adbf0f8-a9d3-47bd-9a32-61ac932f9640"]'
+            )
+          ) {
             const script = document.createElement('script');
             script.defer = true;
             script.src = 'https://cloud.umami.is/script.js';
@@ -78,10 +86,10 @@ const canonicalUrl = pathname === '/'
           }
         }
       }
-      
+
       // Initial load
       document.addEventListener('DOMContentLoaded', loadAnalyticsScript);
-      
+
       // Listen for consent changes
       window.addEventListener('cookieConsentChanged', loadAnalyticsScript);
     </script>
@@ -89,7 +97,8 @@ const canonicalUrl = pathname === '/'
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->
-    <title>{title}</title>    <meta
+    <title>{title}</title>
+    <meta
       name="description"
       content={description ??
         'Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia.'}
@@ -101,8 +110,11 @@ const canonicalUrl = pathname === '/'
     <meta name="geo.placename" content="Carmagnola" />
     <meta name="geo.position" content="44.8477;7.6833" />
     <meta name="ICBM" content="44.8477, 7.6833" />
-    <meta name="keywords" content="sistemi digitali su misura, gestionali, CRM, CMMS, siti web, e-commerce, PMI, software aziendale" />
-    
+    <meta
+      name="keywords"
+      content="sistemi digitali su misura, gestionali, CRM, CMMS, siti web, e-commerce, PMI, software aziendale"
+    />
+
     <style is:global>
       html {
         scroll-behavior: smooth;
@@ -119,10 +131,10 @@ const canonicalUrl = pathname === '/'
       const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1
+        threshold: 0.1,
       };
 
-      const observer = new IntersectionObserver((entries) => {
+      const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
@@ -142,7 +154,7 @@ const canonicalUrl = pathname === '/'
         elements.forEach(el => observer.observe(el));
       });
     </script>
-    
+
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/bitora.png" />
@@ -153,7 +165,8 @@ const canonicalUrl = pathname === '/'
     <link rel="stylesheet" href="/fonts/inter.css" />
 
     <!-- Sitemap -->
-    <link rel="sitemap" href="/sitemap-index.xml" />    <!-- Open Graph / Facebook -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
@@ -201,28 +214,34 @@ const canonicalUrl = pathname === '/'
       }
     </script>
   </head>
-  <body class="flex flex-col min-h-screen font-['Inter',sans-serif] transition-colors duration-300 bg-white dark:bg-black text-gray-900 dark:text-white">
+  <body
+    class="flex flex-col min-h-screen font-['Inter',sans-serif] transition-colors duration-300 bg-white dark:bg-black text-gray-900 dark:text-white"
+  >
     <Header />
     <main id="main-content" class="flex-grow" tabindex="-1">
       <slot />
     </main>
     <Footer />
-    
+
     <!-- Back to Top Button -->
-    <button 
-      id="back-to-top" 
+    <button
+      id="back-to-top"
       class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-gray-900 dark:bg-white text-white dark:text-black p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-gray-400"
       aria-label="Torna in cima"
     >
       <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
       </svg>
     </button>
 
     <script>
       // Back to Top functionality
       const backToTopButton = document.getElementById('back-to-top');
-      
+
       if (backToTopButton) {
         // Show/hide button based on scroll position
         function toggleBackToTop() {
@@ -234,24 +253,24 @@ const canonicalUrl = pathname === '/'
             backToTopButton.classList.remove('opacity-100', 'visible');
           }
         }
-        
+
         // Smooth scroll to top
         function scrollToTop() {
           window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: 'smooth',
           });
         }
-        
+
         // Add event listeners
         window.addEventListener('scroll', toggleBackToTop);
         backToTopButton.addEventListener('click', scrollToTop);
-        
+
         // Initial check
         toggleBackToTop();
       }
     </script>
-    
+
     <!-- Google Tag Manager - Loaded only with marketing cookie consent -->
     <script is:inline>
       function loadGTMIfConsented() {
@@ -261,7 +280,9 @@ const canonicalUrl = pathname === '/'
         for (var i = 0; i < cookies.length; i++) {
           var parts = cookies[i].trim().split('=');
           if (parts[0] === 'bitora_cookie_consent') {
-            try { consent = JSON.parse(decodeURIComponent(parts[1])); } catch(e) {}
+            try {
+              consent = JSON.parse(decodeURIComponent(parts[1]));
+            } catch (e) {}
           }
         }
         if (consent && consent.marketing) {
@@ -269,9 +290,11 @@ const canonicalUrl = pathname === '/'
           gtmScript.async = true;
           gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17047013851';
           document.head.appendChild(gtmScript);
-          gtmScript.onload = function() {
+          gtmScript.onload = function () {
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag() {
+              dataLayer.push(arguments);
+            }
             window.gtag = gtag;
             gtag('js', new Date());
             gtag('config', 'AW-17047013851');
@@ -279,7 +302,9 @@ const canonicalUrl = pathname === '/'
         }
       }
       if (typeof window !== 'undefined') {
-        window.addEventListener('load', function() { setTimeout(loadGTMIfConsented, 100); });
+        window.addEventListener('load', function () {
+          setTimeout(loadGTMIfConsented, 100);
+        });
         window.addEventListener('cookieConsentChanged', loadGTMIfConsented);
       }
     </script>

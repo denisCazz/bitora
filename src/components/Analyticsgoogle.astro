@@ -9,9 +9,11 @@ const GA_ID = 'G-EL32YTDTYH'; // Il tuo ID GA4 attuale
   // Defer Analytics initialization per non bloccare il main thread
   function initAnalytics() {
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() {
+      dataLayer.push(arguments);
+    }
     gtag('js', new Date());
-    
+
     gtag('config', 'G-EL32YTDTYH', {
       page_title: document.title,
       page_location: window.location.href,
@@ -20,44 +22,44 @@ const GA_ID = 'G-EL32YTDTYH'; // Il tuo ID GA4 attuale
       transport_type: 'beacon',
       use_amp_client_id: false,
       custom_map: {
-        'custom_parameter_1': 'conversion_type',
-        'custom_parameter_2': 'user_engagement'
-      }
+        custom_parameter_1: 'conversion_type',
+        custom_parameter_2: 'user_engagement',
+      },
     });
 
     // Eventi personalizzati per il funnel
-    window.trackEvent = function(eventName, parameters = {}) {
+    window.trackEvent = function (eventName, parameters = {}) {
       if (typeof gtag !== 'undefined') {
         gtag('event', eventName, {
           event_category: parameters.category || 'engagement',
           event_label: parameters.label || '',
           value: parameters.value || 0,
           custom_parameter: parameters.custom || '',
-          ...parameters
+          ...parameters,
         });
       }
     };
   }
-  
+
   // Inizializza Analytics dopo che la pagina è caricata
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAnalytics);
   } else {
     initAnalytics();
   }
-    // Tracking automatico di interazioni importanti (deferred)
+  // Tracking automatico di interazioni importanti (deferred)
   function setupTracking() {
     // Tracking click sui CTA
     const ctaButtons = document.querySelectorAll('[data-track="cta"]');
-    ctaButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
+    ctaButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
         const ctaType = this.getAttribute('data-cta-type') || 'unknown';
         const ctaText = this.textContent.trim();
         if (typeof window.trackEvent === 'function') {
           window.trackEvent('cta_click', {
             category: 'conversion',
             label: ctaType,
-            custom: ctaText
+            custom: ctaText,
           });
         }
       });
@@ -66,32 +68,39 @@ const GA_ID = 'G-EL32YTDTYH'; // Il tuo ID GA4 attuale
     // Tracking scroll depth (throttled)
     let maxScroll = 0;
     let scrollTimeout;
-    window.addEventListener('scroll', function() {
-      if (scrollTimeout) return;
-      scrollTimeout = setTimeout(function() {
-        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-        if (scrollPercent > maxScroll && scrollPercent % 25 === 0 && scrollPercent <= 100) {
-          maxScroll = scrollPercent;
-          if (typeof window.trackEvent === 'function') {
-            window.trackEvent('scroll_depth', {
-              category: 'engagement',
-              value: scrollPercent,
-              label: scrollPercent + '%'
-            });
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (scrollTimeout) return;
+        scrollTimeout = setTimeout(function () {
+          const scrollPercent = Math.round(
+            (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
+          );
+          if (scrollPercent > maxScroll && scrollPercent % 25 === 0 && scrollPercent <= 100) {
+            maxScroll = scrollPercent;
+            if (typeof window.trackEvent === 'function') {
+              window.trackEvent('scroll_depth', {
+                category: 'engagement',
+                value: scrollPercent,
+                label: scrollPercent + '%',
+              });
+            }
           }
-        }
-        scrollTimeout = null;
-      }, 100);    }, { passive: true });
+          scrollTimeout = null;
+        }, 100);
+      },
+      { passive: true }
+    );
 
     // Tracking form submissions
     const forms = document.querySelectorAll('form');
-    forms.forEach(function(form) {
-      form.addEventListener('submit', function() {
+    forms.forEach(function (form) {
+      form.addEventListener('submit', function () {
         const formId = this.getAttribute('id') || 'unnamed_form';
         if (typeof window.trackEvent === 'function') {
           window.trackEvent('form_submit', {
             category: 'conversion',
-            label: formId
+            label: formId,
           });
         }
       });
@@ -99,13 +108,13 @@ const GA_ID = 'G-EL32YTDTYH'; // Il tuo ID GA4 attuale
 
     // Tracking outbound links
     const outboundLinks = document.querySelectorAll('a[href^="http"]');
-    outboundLinks.forEach(function(link) {
+    outboundLinks.forEach(function (link) {
       if (link.href && !link.href.includes(window.location.hostname)) {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
           if (typeof window.trackEvent === 'function') {
             window.trackEvent('outbound_click', {
               category: 'engagement',
-              label: this.href
+              label: this.href,
             });
           }
         });
@@ -113,19 +122,21 @@ const GA_ID = 'G-EL32YTDTYH'; // Il tuo ID GA4 attuale
     });
 
     // Tracking download links
-    const downloadLinks = document.querySelectorAll('a[href$=".pdf"], a[href$=".doc"], a[href$=".docx"], a[href*="download"]');
-    downloadLinks.forEach(function(link) {
-      link.addEventListener('click', function() {
+    const downloadLinks = document.querySelectorAll(
+      'a[href$=".pdf"], a[href$=".doc"], a[href$=".docx"], a[href*="download"]'
+    );
+    downloadLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
         if (typeof window.trackEvent === 'function') {
           window.trackEvent('file_download', {
             category: 'engagement',
-            label: this.href
+            label: this.href,
           });
         }
       });
     });
   }
-  
+
   // Setup tracking dopo il caricamento completo
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupTracking);
@@ -139,51 +150,51 @@ const GA_ID = 'G-EL32YTDTYH'; // Il tuo ID GA4 attuale
 
 <!-- Schema.org per SEO avanzato -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://bitora.it/#organization",
-      "name": "Bitora",
-      "url": "https://bitora.it/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://bitora.it/bitora.png"
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://bitora.it/#organization",
+        "name": "Bitora",
+        "url": "https://bitora.it/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://bitora.it/bitora.png"
+        },
+        "description": "Soluzioni NFC innovative per hotel, ristoranti e negozi. Digitalizza la tua attività con Bitora.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IT"
+        },
+        "sameAs": [
+          "https://www.facebook.com/bitora",
+          "https://www.linkedin.com/company/bitora",
+          "https://www.instagram.com/bitora_official"
+        ]
       },
-      "description": "Soluzioni NFC innovative per hotel, ristoranti e negozi. Digitalizza la tua attività con Bitora.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "IT"
-      },
-      "sameAs": [
-        "https://www.facebook.com/bitora",
-        "https://www.linkedin.com/company/bitora",
-        "https://www.instagram.com/bitora_official"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://bitora.it/#website",
-      "url": "https://bitora.it/",
-      "name": "Bitora - Soluzioni NFC per Business",
-      "description": "Digitalizza la tua attività con le soluzioni NFC di Bitora. Hotel, ristoranti, negozi - scopri l'ecosistema NFC più avanzato.",
-      "publisher": {
-        "@id": "https://bitora.it/#organization"
-      },
-      "potentialAction": [
-        {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://bitora.it/search?q={search_term_string}"
-          },
-          "query-input": "required name=search_term_string"
-        }
-      ]
-    }
-  ]
-}
+      {
+        "@type": "WebSite",
+        "@id": "https://bitora.it/#website",
+        "url": "https://bitora.it/",
+        "name": "Bitora - Soluzioni NFC per Business",
+        "description": "Digitalizza la tua attività con le soluzioni NFC di Bitora. Hotel, ristoranti, negozi - scopri l'ecosistema NFC più avanzato.",
+        "publisher": {
+          "@id": "https://bitora.it/#organization"
+        },
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://bitora.it/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        ]
+      }
+    ]
+  }
 </script>
 
 <!-- Facebook Pixel (opzionale) -->
