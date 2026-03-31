@@ -54,13 +54,6 @@ export default defineConfig({
     build: {
       cssMinify: 'lightningcss',
       minify: 'terser',
-      rollupOptions: {
-        output: {
-          assetFileNames: 'assets/[name].[hash][extname]',
-          chunkFileNames: 'assets/[name].[hash].js',
-          entryFileNames: 'assets/[name].[hash].js',
-        },
-      },
     },
     ssr: {
       noExternal: ['react-icons'],
