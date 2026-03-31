@@ -40,7 +40,7 @@ ENV PORT=4321
 ENV NODE_ENV=production
 EXPOSE 4321
 
-HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=3 \
-  CMD curl -f http://localhost:4321/ || exit 1
+HEALTHCHECK --interval=10s --timeout=5s --start-period=30s --retries=3 \
+  CMD curl -f http://127.0.0.1:${PORT:-4321}/ || exit 1
 
 CMD ["node", "./dist/server/entry.mjs"]
