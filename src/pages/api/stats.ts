@@ -21,7 +21,7 @@ export const GET: APIRoute = async () => {
   }
 
   try {
-    const response = await fetch(`https://cloud.umami.is/api/websites/${websiteId}/stats`, {
+    const response = await fetch(`http://umami-c2fur7wa4p5yvjzrwie84h5g.212.227.193.249.sslip.io/api/websites/${websiteId}/stats`, {
       headers: {
         Authorization: `Bearer ${apiToken}`,
         'Content-Type': 'application/json',
