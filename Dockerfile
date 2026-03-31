@@ -33,12 +33,12 @@ RUN chown -R astro:astro /app
 USER astro
 
 ENV HOST=0.0.0.0
-ENV PORT=80
+ENV PORT=4321
 ENV NODE_ENV=production
-EXPOSE 80
+EXPOSE 4321
 
 # Health check for Coolify
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD node -e "fetch('http://localhost:80/').then(r=>{process.exit(r.ok?0:1)}).catch(()=>process.exit(1))"
+  CMD node -e "fetch('http://localhost:4321/').then(r=>{process.exit(r.ok?0:1)}).catch(()=>process.exit(1))"
 
 CMD ["node", "./dist/server/entry.mjs"]
