@@ -51,7 +51,7 @@ export const caseStudies: CaseStudy[] = [
       {
         titolo: 'Sito vetrina professionale',
         descrizione:
-          "Bitora ha progettato un nuovo sito web che mette in risalto la storia, i valori e i servizi dell'azienda. Il sito è realizzato con tecnologie moderne (Astro, Vercel) e ottimizzato per i motori di ricerca locali.",
+          "Bitora ha progettato un nuovo sito web che mette in risalto la storia, i valori e i servizi dell'azienda. Il sito è realizzato con tecnologie moderne (Astro, Coolify) e ottimizzato per i motori di ricerca locali.",
       },
       {
         titolo: 'Tessere NFC per contatti e presentazioni',
@@ -69,7 +69,7 @@ export const caseStudies: CaseStudy[] = [
 
     tecnologie: [
       'Astro',
-      'Vercel',
+      'Coolify',
       'Tessere NFC personalizzate',
       'SEO locale',
       'Copywriting professionale',
@@ -115,7 +115,7 @@ export const caseStudies: CaseStudy[] = [
       'Presenza digitale pulita, senza contenuti non aggiornati',
     ],
 
-    tecnologie: ['Astro', 'Vercel', 'Pagina manutenzione', 'Presidio dominio'],
+    tecnologie: ['Astro', 'Coolify', 'Pagina manutenzione', 'Presidio dominio'],
 
     metricsPreview: ['Sito in manutenzione', 'Dominio presidiato'],
 
@@ -167,7 +167,7 @@ export const caseStudies: CaseStudy[] = [
 
     tecnologie: [
       'Astro',
-      'Vercel',
+      'Coolify',
       'Tessere NFC personalizzate',
       'Social media management',
       'Copywriting',
@@ -213,7 +213,7 @@ export const caseStudies: CaseStudy[] = [
       'Base pronta per contenuti, contatti e crescita del personal brand',
     ],
 
-    tecnologie: ['Astro', 'Vercel', 'Copywriting', 'Personal branding'],
+    tecnologie: ['Astro', 'Coolify', 'Copywriting', 'Personal branding'],
 
     metricsPreview: ['Nuovo progetto', 'In sviluppo'],
 
@@ -258,7 +258,7 @@ export const caseStudies: CaseStudy[] = [
 
     tecnologie: [
       'Astro',
-      'Vercel',
+      'Coolify',
       'Portfolio fotografico',
       'Tessere NFC per recensioni',
       'SEO locale',
@@ -305,7 +305,7 @@ export const caseStudies: CaseStudy[] = [
       'Visibilità aumentata e reputazione consolidata come pizzeria rapida e gustosa',
     ],
 
-    tecnologie: ['Astro', 'Vercel', 'Menù digitale', 'Tessere NFC per recensioni', 'SEO locale'],
+    tecnologie: ['Astro', 'Coolify', 'Menù digitale', 'Tessere NFC per recensioni', 'SEO locale'],
 
     metricsPreview: ['+30% Visibilità', '-15min Gestione telefonate'],
 
@@ -348,7 +348,7 @@ export const caseStudies: CaseStudy[] = [
       "Tessere NFC che hanno incrementato il numero di feedback e migliorato l'interazione",
     ],
 
-    tecnologie: ['Astro', 'Vercel', 'Menù digitale', 'Tessere NFC per recensioni', 'SEO locale'],
+    tecnologie: ['Astro', 'Coolify', 'Menù digitale', 'Tessere NFC per recensioni', 'SEO locale'],
 
     metricsPreview: ['+25% Brand Awareness', '150+ Visite organiche'],
 
@@ -391,7 +391,7 @@ export const caseStudies: CaseStudy[] = [
       'Identità digitale ordinata e coerente con il settore immobiliare',
     ],
 
-    tecnologie: ['Astro', 'Vercel', 'Copywriting', 'Web design'],
+    tecnologie: ['Astro', 'Coolify', 'Copywriting', 'Web design'],
 
     metricsPreview: ['Nuovo progetto', 'Settore immobiliare'],
 

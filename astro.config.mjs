@@ -3,12 +3,12 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
-import vercel from '@astrojs/vercel';
+import node from '@astrojs/node';
 import compressor from 'astro-compressor';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel(),
+  adapter: node({ mode: 'standalone' }),
   integrations: [
     tailwind(),
     sitemap(),
