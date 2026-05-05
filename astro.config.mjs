@@ -18,10 +18,21 @@ export default defineConfig({
       brotli: true,
     }),
   ],
-  site: 'https://www.bitora.it/',
+  // Canonical production origin (affects sitemap, etc.)
+  site: 'https://bitora.it/',
   base: '/',
   trailingSlash: 'ignore',
   output: 'server',
+  // Production fix: prevent false-positive CSRF blocks behind proxies/CDNs
+  // (e.g. apex vs www, https termination). If you later ensure correct
+  // X-Forwarded-* headers, you can re-enable this.
+  security: {
+    checkOrigin: false,
+    allowedDomains: [
+      { hostname: 'bitora.it', protocol: 'https' },
+      { hostname: 'www.bitora.it', protocol: 'https' },
+    ],
+  },
   compressHTML: true,
   prefetch: {
     prefetchAll: true,
@@ -45,6 +56,10 @@ export default defineConfig({
   },
   vite: {
     server: {
+      // Dev-only: allow POSTs when accessing via non-localhost hostnames/tunnels.
+      // This prevents Vite's CSRF protection from rejecting cross-site form posts.
+      cors: true,
+      allowedHosts: true,
       hmr: {
         host: 'localhost',
         port: 4321,
