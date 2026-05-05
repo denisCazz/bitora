@@ -538,14 +538,23 @@ const topTestimonials = testimonials.slice(0, 2);
         const res = await fetch('/api/contact', {
           method: 'POST',
           body: formData,
+          headers: {
+            Accept: 'application/json',
+          },
         });
-        const data = await res.json();
+        const contentType = res.headers.get('content-type') || '';
+        const isJson = contentType.includes('application/json');
+        const payload = isJson ? await res.json().catch(() => null) : await res.text().catch(() => '');
 
-        if (data.ok) {
+        if (res.ok && payload && typeof payload === 'object' && payload.ok) {
           window.location.href = '/contattaci/?inviato=1';
           return;
         }
-        errorEl.textContent = data.error || "Errore durante l'invio. Riprova.";
+
+        const serverError =
+          payload && typeof payload === 'object' ? payload.error : typeof payload === 'string' ? payload : '';
+        const suffix = res.status ? ` (HTTP ${res.status})` : '';
+        errorEl.textContent = (serverError || "Errore durante l'invio. Riprova.") + suffix;
         errorEl.classList.remove('hidden');
       } catch {
         errorEl.textContent = 'Errore di connessione. Riprova.';
