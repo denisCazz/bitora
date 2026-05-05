@@ -1,5 +1,8 @@
 import type { APIRoute } from 'astro';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+import crypto from 'node:crypto';
+import { renderAdminEmail } from '../../emails/adminNotification';
+import { renderCustomerReplyEmail } from '../../emails/customerReply';
 
 export const prerender = false;
 
@@ -43,14 +46,13 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     );
   }
 
-  const host = import.meta.env.SMTP_HOST ?? process.env.SMTP_HOST;
-  const port = Number(import.meta.env.SMTP_PORT ?? process.env.SMTP_PORT) || 587;
-  const user = import.meta.env.SMTP_USER ?? process.env.SMTP_USER;
-  const pass = import.meta.env.SMTP_PASS ?? process.env.SMTP_PASS;
-  const from = import.meta.env.SMTP_FROM ?? process.env.SMTP_FROM;
+  const apiKey = import.meta.env.RESEND_API_KEY ?? process.env.RESEND_API_KEY;
+  const mailFrom = import.meta.env.MAIL_FROM ?? process.env.MAIL_FROM;
+  const mailTo = import.meta.env.MAIL_TO ?? process.env.MAIL_TO;
+  const mailCc = import.meta.env.MAIL_CC ?? process.env.MAIL_CC;
 
-  if (!host || !user || !pass || !from) {
-    return new Response(JSON.stringify({ ok: false, error: 'Configurazione SMTP incompleta' }), {
+  if (!apiKey || !mailFrom || !mailTo) {
+    return new Response(JSON.stringify({ ok: false, error: 'Configurazione email incompleta' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
@@ -87,32 +89,55 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      requireTLS: port === 587,
-      auth: { user, pass },
+    const resend = new Resend(apiKey);
+    const argomentoClean = argomento || '';
+    const subject = `[Bitora] Contatto da ${escapeHtml(nome)}${argomentoClean ? ` - ${escapeHtml(argomentoClean)}` : ''}`;
+
+    const minuteBucket = Math.floor(Date.now() / 60_000);
+    const idempotencyKey = crypto
+      .createHash('sha256')
+      .update(`${email}|${minuteBucket}|${nome}|${argomentoClean}`.toLowerCase())
+      .digest('hex');
+
+    const siteUrl = 'https://www.bitora.it';
+
+    const adminHtml = renderAdminEmail({
+      nome,
+      email,
+      telefono,
+      argomento: argomentoClean,
+      messaggio,
+      siteUrl,
+      ip: typeof ip === 'string' ? ip : String(ip),
     });
 
-    const html = `
-      <h2>Nuovo messaggio da bitora.it</h2>
-      <p><strong>Nome:</strong> ${escapeHtml(nome)}</p>
-      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-      <p><strong>Telefono:</strong> ${escapeHtml(telefono || '-')}</p>
-      <p><strong>Argomento:</strong> ${escapeHtml(argomento || '-')}</p>
-      <p><strong>Messaggio:</strong></p>
-      <p>${escapeHtml(messaggio).replace(/\n/g, '<br>')}</p>
-    `;
-
-    await transporter.sendMail({
-      from,
-      to: from,
-      replyTo: email,
-      subject: `[Bitora] Contatto da ${escapeHtml(nome)}${argomento ? ` - ${escapeHtml(argomento)}` : ''}`,
-      text: `Nome: ${nome}\nEmail: ${email}\nTelefono: ${telefono || '-'}\nArgomento: ${argomento || '-'}\n\nMessaggio:\n${messaggio}`,
-      html,
+    const customerHtml = renderCustomerReplyEmail({
+      nome,
+      email,
+      argomento: argomentoClean,
+      messaggio,
+      siteUrl,
     });
+
+    await Promise.all([
+      resend.emails.send({
+        from: mailFrom,
+        to: mailTo,
+        cc: mailCc || undefined,
+        replyTo: email,
+        subject,
+        html: adminHtml,
+        headers: { 'Idempotency-Key': idempotencyKey },
+      }),
+      resend.emails.send({
+        from: mailFrom,
+        to: email,
+        replyTo: mailTo,
+        subject: 'Bitora · Abbiamo ricevuto la tua richiesta',
+        html: customerHtml,
+        headers: { 'Idempotency-Key': `${idempotencyKey}-reply` },
+      }),
+    ]);
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,

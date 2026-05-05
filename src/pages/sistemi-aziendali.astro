@@ -1,345 +1,242 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
-
-const systems = [
-  {
-    title: 'Gestionali su misura',
-    desc: 'Software di gestione aziendale sviluppato sulle tue esigenze: magazzino, fatturazione, ordini, anagrafiche. Nessun pacchetto preconfezionato, solo ciò che serve.',
-    icon: 'database',
-    features: [
-      'Magazzino e inventario',
-      'Fatturazione elettronica',
-      'Ordini e preventivi',
-      'Report personalizzati',
-    ],
-  },
-  {
-    title: 'CRM & Vendite',
-    desc: 'Gestione clienti, pipeline commerciale, automazioni e integrazioni. Per vendere di più con meno sforzo.',
-    icon: 'users',
-    features: [
-      'Pipeline vendite',
-      'Lead e opportunità',
-      'Automazioni email/WhatsApp',
-      'Integrazioni',
-    ],
-  },
-  {
-    title: 'CMMS & Manutenzione',
-    desc: 'Software per la gestione della manutenzione: interventi, rapportini digitali, pianificazione. Per aziende di assistenza e facility.',
-    icon: 'wrench',
-    features: [
-      'Interventi e rapportini',
-      'Pianificazione manutentiva',
-      'Clienti e contratti',
-      'Statistiche real-time',
-    ],
-  },
-  {
-    title: 'Portali & Automazioni',
-    desc: 'Portali clienti, area riservata, integrazioni tra sistemi. Automatizza i processi ripetitivi e libera tempo.',
-    icon: 'globe',
-    features: ['Portale clienti', 'Area riservata', 'Integrazioni API', 'Workflow automatizzati'],
-  },
-];
-
-const process = [
-  {
-    num: '01',
-    title: 'Analisi',
-    desc: 'Studiamo processi, pain point e obiettivi. Definiamo scope e priorità.',
-  },
-  {
-    num: '02',
-    title: 'Progettazione',
-    desc: 'Architettura della soluzione, UX e flussi. Niente sorprese in fase di sviluppo.',
-  },
-  {
-    num: '03',
-    title: 'Sviluppo',
-    desc: 'Sviluppo iterativo con checkpoint. Vedi i progressi e dai feedback in tempo reale.',
-  },
-  {
-    num: '04',
-    title: 'Deploy & Formazione',
-    desc: 'Go-live assistito, formazione e documentazione. Supporto post-lancio.',
-  },
-];
+import VideoHero from '../components/VideoHero.astro';
+import MediaShowcase from '../components/MediaShowcase.astro';
+import FAQ from '../components/FAQ.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import ServiceSchema from '../components/schema/Service.astro';
+import FAQPageSchema from '../components/schema/FAQPage.astro';
+import HowToSchema from '../components/schema/HowTo.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 ---
 
 <Layout
-  title="Sistemi Aziendali su Misura | Bitora - Software per PMI"
-  description="Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS e software custom. Sviluppo da zero sulle tue esigenze. Sede in Piemonte, serviamo tutta Italia."
+  title="Sistemi Aziendali su Misura | Gestionali, CRM, CMMS | Bitora"
+  description="Software gestionali, CRM, CMMS e strumenti aziendali su misura. Riduci lavoro manuale, integra processi, aumenta efficienza. Sviluppo italiano."
+  image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80"
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    <!-- Hero -->
-    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-black dark:via-black dark:to-black/95"
-      >
-      </div>
-      <div
-        class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-200/50 dark:bg-gray-700/20 blur-[100px] opacity-50"
-      >
-      </div>
+    <VideoHero
+      variant="background"
+      eyebrow="Sistemi Aziendali su Misura"
+      title="Software gestionali"
+      highlight="che lavorano per te."
+      description="CRM, gestionali, CMMS e tool custom. Integrati con email, WhatsApp, fogli e API. Riduci lavoro manuale, aumenta efficienza."
+      primaryCta={{ label: 'Richiedi consulenza', href: '/contattaci?topic=sistemi' }}
+      secondaryCta={{ label: 'Cosa realizziamo', href: '#cosa' }}
+      posterSrc="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80"
+      videoSrc="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4"
+      videoLabel="Dashboard gestionale aziendale"
+    />
 
-      <div class="relative z-10 max-w-4xl">
-        <p
-          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
-        >
-          Sistemi aziendali su misura
-        </p>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-          <span class="text-gray-900 dark:text-white">Sistemi digitali</span><br />
-          <span class="text-gray-900 dark:text-white">su misura per la tua azienda.</span>
-        </h1>
-        <p
-          class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed mb-8"
-        >
-          Ti seguiamo dall'analisi al deploy. <strong class="text-gray-900 dark:text-white"
-            >Gestionali, CRM, CMMS e software custom</strong
-          > sviluppati sulle tue esigenze reali. Nessun pacchetto preconfezionato. Solo ciò che serve.
-        </p>
-
-        <div class="flex flex-wrap gap-6 text-sm text-gray-600 dark:text-gray-400 mb-8">
-          <span class="flex items-center gap-2">
-            <svg
-              class="w-5 h-5 text-gray-900 dark:text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              ><path
-                fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path></svg
-            >
-            Sviluppo su misura
-          </span>
-          <span class="flex items-center gap-2">
-            <svg
-              class="w-5 h-5 text-gray-900 dark:text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              ><path
-                fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path></svg
-            >
-            PMI e aziende
-          </span>
-          <span class="flex items-center gap-2">
-            <svg
-              class="w-5 h-5 text-gray-900 dark:text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              ><path
-                fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path></svg
-            >
-            Tutta Italia
-          </span>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a
-            href="/contattaci?topic=sistemi"
-            class="btn-primary group min-w-[220px] flex items-center justify-center gap-2 text-lg"
-          >
-            Richiedi consulenza
-            <svg
-              class="w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
-            >
-          </a>
-          <a
-            href="https://wa.me/393514979670?text=Ciao,%20sono%20interessato%20ai%20sistemi%20aziendali%20su%20misura.%20Vorrei%20parlarne."
-            class="btn-secondary min-w-[220px] flex items-center justify-center gap-2 text-lg"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-              ><path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-              ></path></svg
-            >
-            WhatsApp
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cosa realizziamo -->
     <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
+      id="cosa"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5"
     >
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5 lg:sticky lg:top-28">
           <p
-            class="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-4 font-medium"
+            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
           >
-            Cosa realizziamo
+            Cos'è un sistema aziendale
           </p>
-          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Soluzioni integrate per ogni esigenza
+          <h2
+            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+          >
+            Software che riduce lavoro manuale.
           </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Non vendiamo pacchetti. Progettiamo e sviluppiamo software che risolve i tuoi problemi
-            reali.
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Centralizza dati, automatizza task ripetitivi, integra strumenti che usi già.
           </p>
+
+          <dl class="mt-8 space-y-4">
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
+            >
+              <dt class="font-bold text-slate-950 dark:text-white">
+                CRM (Customer Relationship Management)
+              </dt>
+              <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                Lead, clienti, pipeline, follow-up automatizzati.
+              </dd>
+            </div>
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
+            >
+              <dt class="font-bold text-slate-950 dark:text-white">Gestionale</dt>
+              <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                Ordini, magazzino, fatturazione, integrazione contabile.
+              </dd>
+            </div>
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
+            >
+              <dt class="font-bold text-slate-950 dark:text-white">CMMS (Manutenzione)</dt>
+              <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                Interventi, ticket, asset, ricambi, firme digitali.
+              </dd>
+            </div>
+          </dl>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-          {
-            systems.map((sys, i) => (
-              <div class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-8 md:p-10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/40 transition-all duration-300 group">
-                <div class="w-14 h-14 rounded-2xl bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <svg
-                    class="w-7 h-7 text-gray-900 dark:text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                    />
-                  </svg>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{sys.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">{sys.desc}</p>
-                <ul class="space-y-2">
-                  {sys.features.map(f => (
-                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-medium">
-                      <span class="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))
-          }
+        <div class="lg:col-span-7">
+          <MediaShowcase
+            items={[
+              {
+                src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80',
+                alt: 'Dashboard CRM e analytics',
+                caption: 'Dashboard centralizzata: KPI, pipeline, ticket.',
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80',
+                alt: 'Report e statistiche',
+                caption: 'Report automatici e alert intelligenti.',
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80',
+                alt: 'Operatore con tablet',
+                caption: 'App mobile per operatori sul campo.',
+              },
+            ]}
+          />
         </div>
       </div>
     </section>
 
-    <!-- Processo -->
-    <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-t border-gray-200 dark:border-white/5"
-    >
+    <!-- Prima/Dopo rimosso: evitiamo blocchi ridondanti -->
+
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20">
       <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <p
-            class="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-4 font-medium"
-          >
-            Il nostro metodo
-          </p>
-          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Ti seguiamo dall'inizio alla fine
-          </h2>
-        </div>
-
-        <div class="grid md:grid-cols-4 gap-8">
-          {
-            process.map((step, i) => (
-              <div class="reveal-on-scroll text-center">
-                <div class="text-5xl font-bold text-gray-200 dark:text-gray-700 mb-4">
-                  {step.num}
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{step.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">{step.desc}</p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
-          Pronto a digitalizzare<br />i tuoi processi?
+        <p
+          class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
+        >
+          Garanzie
+        </p>
+        <h2
+          class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white mb-12"
+        >
+          Trust e metodo
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-          Consulenza gratuita. Analizziamo le tue esigenze e troviamo la soluzione giusta.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="/contattaci?topic=sistemi"
-            class="btn-primary group min-w-[220px] flex items-center justify-center gap-2"
+        <TrustBadges />
+      </div>
+    </section>
+
+    <section
+      class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
+    >
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2
+            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
           >
-            Richiedi consulenza
-            <svg
-              class="w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
-            >
-          </a>
-          <a
-            href="/bitora-crm"
-            class="btn-secondary min-w-[220px] flex items-center justify-center gap-2"
-          >
-            Scopri Bitora CRM
-          </a>
+            FAQ sistemi aziendali
+          </h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+            Risposte chiare su CRM, gestionali, CMMS e integrazioni.
+          </p>
+        </div>
+        <div class="lg:col-span-7">
+          <FAQ
+            items={[
+              {
+                question: 'Cos’è un CRM?',
+                answer:
+                  'Software per gestire clienti, lead, pipeline e follow-up. Centralizza dati e comunicazioni.',
+              },
+              {
+                question: 'Cos’è un CMMS?',
+                answer:
+                  'Computerized Maintenance Management System: gestione interventi, asset, ricambi, ticket, firme.',
+              },
+              {
+                question: 'Quanto costa un gestionale su misura?',
+                answer:
+                  'Dipende da moduli e integrazioni. Audit gratuito e roadmap modulare in base a priorità.',
+              },
+              {
+                question: 'Si integra con strumenti esistenti?',
+                answer:
+                  'Sì: email, WhatsApp, Google Sheets, fatturazione italiana, API REST e webhook.',
+              },
+              {
+                question: 'Tempo medio di sviluppo?',
+                answer: 'MVP funzionale 4–8 settimane. Sviluppo iterativo con rilasci frequenti.',
+              },
+              {
+                question: 'Posso accedere da mobile?',
+                answer: 'Sì: web app responsive o app dedicata per operatori sul campo.',
+              },
+              {
+                question: 'I dati sono al sicuro?',
+                answer:
+                  'Sì: hosting EU, backup automatici, controllo accessi, audit log e GDPR by design.',
+              },
+            ]}
+          />
         </div>
       </div>
     </section>
   </main>
 </Layout>
 
-<style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
+<ServiceSchema
+  name="Sistemi Aziendali su Misura (CRM, Gestionali, CMMS)"
+  url="https://www.bitora.it/sistemi-aziendali/"
+  serviceType={['CRM', 'Gestionale', 'CMMS', 'Software su misura', 'Automazione']}
+  areaServed={['Carmagnola', 'Torino', 'Piemonte', 'Italia']}
+/>
 
-<script>
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
+<HowToSchema
+  name="Come digitalizziamo processi aziendali"
+  description="Metodo Bitora: audit, mappa processi, MVP, rilascio iterativo."
+  steps={[
+    { name: 'Audit', text: 'Analisi processi esistenti e identificazione colli di bottiglia.' },
+    { name: 'Mappa', text: 'Mappa flussi target con priorità e KPI misurabili.' },
+    { name: 'MVP', text: 'Sviluppo MVP funzionale in 4–8 settimane con rilascio iterativo.' },
+    { name: 'Ottimizza', text: 'Rilasci frequenti, raccolta feedback, miglioramenti continui.' },
+  ]}
+/>
+
+<FAQPageSchema
+  items={[
+    {
+      question: 'Cos’è un CRM?',
+      answer:
+        'Software per gestire clienti, lead, pipeline e follow-up. Centralizza dati e comunicazioni.',
     },
-    { root: null, rootMargin: '0px', threshold: 0.1 }
-  );
+    {
+      question: 'Cos’è un CMMS?',
+      answer:
+        'Computerized Maintenance Management System: gestione interventi, asset, ricambi, ticket, firme.',
+    },
+    {
+      question: 'Quanto costa un gestionale su misura?',
+      answer:
+        'Dipende da moduli e integrazioni. Audit gratuito e roadmap modulare in base a priorità.',
+    },
+    {
+      question: 'Si integra con strumenti esistenti?',
+      answer: 'Sì: email, WhatsApp, Google Sheets, fatturazione italiana, API REST e webhook.',
+    },
+    {
+      question: 'Tempo medio di sviluppo?',
+      answer: 'MVP funzionale 4–8 settimane. Sviluppo iterativo con rilasci frequenti.',
+    },
+    {
+      question: 'Posso accedere da mobile?',
+      answer: 'Sì: web app responsive o app dedicata per operatori sul campo.',
+    },
+    {
+      question: 'I dati sono al sicuro?',
+      answer: 'Sì: hosting EU, backup automatici, controllo accessi, audit log e GDPR by design.',
+    },
+  ]}
+/>
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-  });
-</script>
+<BreadcrumbListSchema
+  crumbs={[
+    { name: 'Home', item: 'https://www.bitora.it/' },
+    { name: 'Sistemi Aziendali', item: 'https://www.bitora.it/sistemi-aziendali/' },
+  ]}
+/>

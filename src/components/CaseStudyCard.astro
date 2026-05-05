@@ -1,0 +1,54 @@
+---
+export interface Props {
+  title: string;
+  image: string;
+  alt: string;
+  metric: string;
+  description: string;
+  href?: string;
+}
+
+const { title, image, alt, metric, description, href } = Astro.props;
+---
+
+<article
+  class="group rounded-3xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel overflow-hidden hover-lift"
+>
+  <div class="aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-white/5">
+    <img
+      src={image}
+      alt={alt}
+      class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+      loading="lazy"
+    />
+  </div>
+  <div class="p-6">
+    <div class="flex items-center justify-between gap-4">
+      <h3 class="text-lg font-extrabold tracking-tight text-slate-950 dark:text-white">{title}</h3>
+      <span
+        class="text-xs font-bold px-3 py-1 rounded-full bg-[color:var(--brand-cta)]/10 text-[color:var(--brand-cta)]"
+      >
+        {metric}
+      </span>
+    </div>
+    <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{description}</p>
+    {
+      href ? (
+        <a
+          href={href}
+          class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--brand-cta)] hover:opacity-90"
+        >
+          Vedi progetto
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </a>
+      ) : null
+    }
+  </div>
+</article>

@@ -1,0 +1,38 @@
+---
+export interface Props {
+  name: string;
+  serviceType?: string | string[];
+  url?: string;
+  areaServed?: string[];
+  providerName?: string;
+  providerUrl?: string;
+  image?: string;
+}
+
+const {
+  name,
+  serviceType,
+  url = 'https://www.bitora.it/',
+  areaServed = ['Carmagnola', 'Torino', 'Piemonte', 'Italia'],
+  providerName = 'Bitora',
+  providerUrl = 'https://www.bitora.it/',
+  image = 'https://www.bitora.it/bitora.jpg',
+} = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name,
+  url,
+  image,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: providerName,
+    url: providerUrl,
+  },
+  areaServed,
+  ...(serviceType ? { serviceType } : {}),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

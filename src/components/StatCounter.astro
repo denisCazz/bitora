@@ -1,0 +1,75 @@
+---
+export interface Item {
+  label: string;
+  value: string;
+  number?: number;
+  suffix?: string;
+}
+
+export interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+  {
+    items.map((it, i) => (
+      <div class="text-center reveal-on-scroll" style={`transition-delay:${i * 100}ms`}>
+        <p
+          class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+          data-count={it.number ?? ''}
+          data-suffix={it.suffix ?? ''}
+        >
+          {it.value}
+        </p>
+        <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+          {it.label}
+        </p>
+        <div class="mt-4 h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden max-w-[140px] mx-auto">
+          <div
+            class="bar-fill h-full bg-[color:var(--brand-cta)] rounded-full transition-all duration-1000 ease-out"
+            data-width={92}
+          />
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+  if (!prefersReduced) {
+    const bars = document.querySelectorAll('.bar-fill[data-width]');
+    bars.forEach(b => {
+      const el = b as HTMLElement;
+      const w = el.dataset.width ? Number(el.dataset.width) : 0;
+      if (Number.isFinite(w)) el.style.width = w + '%';
+    });
+
+    const els = document.querySelectorAll('[data-count]');
+    els.forEach(el => {
+      const node = el as HTMLElement;
+      const countRaw = node.dataset.count;
+      const suffix = node.dataset.suffix ?? '';
+      const target = countRaw ? Number(countRaw) : NaN;
+      if (!Number.isFinite(target)) return;
+
+      const start = 0;
+      const duration = 800;
+      let t0: number | null = null;
+
+      const tick = (ts: number) => {
+        if (t0 === null) t0 = ts;
+        const p = Math.min(1, (ts - t0) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const v = Math.round(start + (target - start) * eased);
+        node.textContent = `${v}${suffix}`;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    });
+  }
+</script>

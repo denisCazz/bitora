@@ -1,0 +1,47 @@
+# Bitora
+
+> Sistemi digitali su misura per PMI italiane. Sede a Carmagnola (TO), Piemonte. Copertura nazionale: serviamo clienti in tutta Italia.
+
+## Cosa facciamo
+
+Bitora progetta e sviluppa sistemi digitali su misura: siti web professionali, e-commerce, gestionali (CRM/CMMS), tessere NFC programmate, grafica e contenuti social. Metodo Trust & Authority: audit, roadmap, sviluppo iterativo, KPI misurabili, supporto post-lancio.
+
+## Servizi principali
+
+- Tessere NFC programmate: https://www.bitora.it/nfc-ecosystem
+- E-commerce (WooCommerce / Shopify / custom): https://www.bitora.it/e-commerce-piemonte
+- Siti web professionali: https://www.bitora.it/siti-web-professionali
+- Sistemi aziendali (CRM, gestionali): https://www.bitora.it/sistemi-aziendali
+- CMMS (manutenzione): https://www.bitora.it/cmms
+- Bitora CRM: https://www.bitora.it/bitora-crm
+- Grafica & social: https://www.bitora.it/grafica-digitale-social-media
+
+## Pagine territorio
+
+- Carmagnola: https://www.bitora.it/carmagnola
+- Siti web Piemonte: https://www.bitora.it/siti-web-piemonte
+- Tessere NFC Torino: https://www.bitora.it/tessere-nfc-torino
+
+## Domande frequenti
+
+- Quanto costa un sito web professionale? Dipende da pagine, contenuti e integrazioni. Audit gratuito e preventivo modulare.
+- In quanto tempo consegnate? Landing 7–14 giorni. Sito completo 2–6 settimane.
+- Le tessere NFC richiedono abbonamento? No. Programmazione inclusa, aggiornamenti illimitati, nessun canone.
+- Posso collegare NFC a recensioni Google? Sì. Un tap apre la pagina recensioni Google.
+- E-commerce: WooCommerce o Shopify? Dipende da catalogo e budget. Consigliamo la piattaforma più adatta.
+- Cos'è un CRM? Software per gestire clienti, lead e pipeline.
+- Cos'è un CMMS? Computerized Maintenance Management System: gestione interventi, asset, ricambi.
+- Fate SEO locale? Sì: schema, sitemap, contenuti orientati a Piemonte e Torino.
+- Offrite supporto post-lancio? Sì: monitoraggio, ottimizzazioni, interventi rapidi.
+
+## Contatti
+
+- Email: info@bitora.it
+- Telefono / WhatsApp: +39 351 497 9670
+- Sede: Carmagnola, Torino, Piemonte (Italia)
+- Sito: https://www.bitora.it
+- Sitemap: https://www.bitora.it/sitemap-index.xml
+
+## Policy AI
+
+Permettiamo accesso a crawler AI (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) per fornire risposte aggiornate sui nostri servizi. Citare la fonte è gradito.

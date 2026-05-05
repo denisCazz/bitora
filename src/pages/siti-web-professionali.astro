@@ -1,370 +1,223 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
+import VideoHero from '../components/VideoHero.astro';
+import MediaShowcase from '../components/MediaShowcase.astro';
+import FAQ from '../components/FAQ.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import ServiceSchema from '../components/schema/Service.astro';
+import FAQPageSchema from '../components/schema/FAQPage.astro';
+import HowToSchema from '../components/schema/HowTo.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 ---
 
 <Layout
-  title="Siti Web Professionali | Realizzazione Siti Aziendali Piemonte | Bitora"
-  description="Realizziamo siti web professionali per aziende, studi e liberi professionisti in Piemonte. Design moderno, SEO locale, supporto continuo. Preventivo gratuito."
+  title="Siti Web Professionali | Veloci, SEO, Mobile-First | Bitora"
+  description="Siti web professionali per aziende e PMI. Design su misura, performance, SEO tecnico, contenuti. Sede in Piemonte, copertura Italia."
+  image="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1600&q=80"
 >
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Realizzazione Siti Web Professionali",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Bitora",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Carmagnola",
-          "addressRegion": "Piemonte",
-          "addressCountry": "IT"
-        }
-      },
-      "areaServed": ["Carmagnola", "Torino", "Carignano", "Poirino", "Piemonte"],
-      "serviceType": "Web Design",
-      "description": "Siti web professionali per aziende e liberi professionisti del Piemonte"
-    }
-  </script>
-
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    <!-- Hero -->
-    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-black dark:via-black dark:to-black/95"
-      >
-      </div>
-      <div
-        class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-200/50 dark:bg-gray-700/20 blur-[100px] opacity-50"
-      >
-      </div>
+    <VideoHero
+      variant="background"
+      eyebrow="Siti Web Professionali"
+      title="Siti web"
+      highlight="che fanno la differenza."
+      description="Design su misura, performance reali, SEO tecnico e contenuti. Mobile-first, accessibili, indicizzati al meglio."
+      primaryCta={{ label: 'Richiedi preventivo', href: '/contattaci?topic=sito' }}
+      secondaryCta={{ label: 'Cosa includiamo', href: '#cosa' }}
+      posterSrc="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1600&q=80"
+      videoSrc="https://videos.pexels.com/video-files/3192293/3192293-uhd_2560_1440_25fps.mp4"
+      videoLabel="Sviluppo siti web professionali"
+    />
 
-      <div class="relative z-10 max-w-4xl">
-        <p
-          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
-        >
-          Siti Web
-        </p>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-          Il tuo sito web<br />
-          <span class="text-gray-900 dark:text-white">professionale.</span>
-        </h1>
-        <p
-          class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed mb-8"
-        >
-          Siti web che rappresentano la tua attività al meglio. Design moderno, velocità
-          ottimizzata, SEO locale. <strong class="text-gray-900 dark:text-white"
-            >Chiavi in mano.</strong
+    <section
+      id="cosa"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5"
+    >
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5 lg:sticky lg:top-28">
+          <p
+            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
           >
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a
-            href="/contattaci"
-            class="btn-primary group min-w-[200px] flex items-center justify-center gap-2"
+            Cos'è un sito professionale
+          </p>
+          <h2
+            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
           >
-            Richiedi preventivo gratuito
-            <svg
-              class="w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            Più di una vetrina. Un asset di business.
+          </h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Sito veloce, indicizzato, mobile-first, con contenuti chiari e CTA misurabili.
+          </p>
+
+          <dl class="mt-8 space-y-4">
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
             >
-          </a>
-          <a
-            href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20informazioni%20sui%20siti%20web%20professionali.%20Ho%20visitato%20bitora.it"
-            class="btn-secondary min-w-[200px] flex items-center justify-center gap-2"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-              ><path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-              ></path></svg
+              <dt class="font-bold text-slate-950 dark:text-white">Performance reali</dt>
+              <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                LCP &lt; 2.5s, CLS controllato. Niente librerie pesanti inutili.
+              </dd>
+            </div>
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
             >
-            WhatsApp
-          </a>
+              <dt class="font-bold text-slate-950 dark:text-white">SEO tecnico</dt>
+              <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                Schema, sitemap, OG, contenuti orientati a intent locali e nazionali.
+              </dd>
+            </div>
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
+            >
+              <dt class="font-bold text-slate-950 dark:text-white">Accessibilità</dt>
+              <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                WCAG AA: contrasti, focus, semantica, screen reader.
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="lg:col-span-7">
+          <MediaShowcase
+            items={[
+              {
+                src: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1600&q=80',
+                alt: 'Mockup sito su laptop e mobile',
+                caption: 'Design responsive testato 375 → 1440px.',
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80',
+                alt: 'Sviluppo codice e SEO',
+                caption: 'Codice pulito + Lighthouse target 90+.',
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80',
+                alt: 'Analytics e metriche',
+                caption: 'Dashboard analytics e Search Console.',
+              },
+            ]}
+          />
         </div>
       </div>
     </section>
 
-    <!-- Per chi -->
-    <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
-    >
+    <!-- Prima/Dopo rimosso: evitiamo blocchi ridondanti -->
+
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20">
       <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Per chi è pensato
-          </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Siti web su misura per ogni tipo di attività professionale.
-          </p>
-        </div>
+        <p
+          class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
+        >
+          Metodo
+        </p>
+        <h2
+          class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white mb-12"
+        >
+          Dal brief al lancio in 4 step.
+        </h2>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {
             [
-              {
-                icon: '🏢',
-                title: 'Aziende',
-                desc: 'Siti corporate che comunicano solidità e professionalità ai clienti B2B.',
-              },
-              {
-                icon: '⚖️',
-                title: 'Studi Professionali',
-                desc: 'Avvocati, commercialisti, consulenti: presenza online autorevole.',
-              },
-              {
-                icon: '🏥',
-                title: 'Studi Medici',
-                desc: 'Medici, dentisti, fisioterapisti: prenotazioni online e informazioni chiare.',
-              },
-              {
-                icon: '🔧',
-                title: 'Artigiani',
-                desc: 'Elettricisti, idraulici, imprese edili: farsi trovare dai clienti locali.',
-              },
-              {
-                icon: '🏠',
-                title: 'Agenzie Immobiliari',
-                desc: 'Catalogo immobili, ricerca avanzata, contatti diretti.',
-              },
-              {
-                icon: '🎨',
-                title: 'Creativi',
-                desc: 'Architetti, designer, fotografi: portfolio che impressiona.',
-              },
-              {
-                icon: '🏋️',
-                title: 'Centri Fitness',
-                desc: 'Palestre, studi yoga, personal trainer: corsi e prenotazioni.',
-              },
-              {
-                icon: '🎓',
-                title: 'Formatori',
-                desc: 'Coach, consulenti, formatori: credibilità e lead generation.',
-              },
-            ].map((item, i) => (
+              { n: '01', t: 'Discovery', d: 'Brief, obiettivi, target, struttura.' },
+              { n: '02', t: 'Design', d: 'Wireframe, UI, prototipo, copy.' },
+              { n: '03', t: 'Sviluppo', d: 'Codice pulito, performance, SEO, test.' },
+              { n: '04', t: 'Lancio', d: 'Deploy, Analytics, Search Console, supporto.' },
+            ].map((s, i) => (
               <div
-                class="p-6 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/40 transition-all reveal-on-scroll"
-                style={`transition-delay: ${i * 50}ms`}
+                class="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-7 hover-lift"
+                style={`transition-delay:${i * 80}ms`}
               >
-                <span class="text-3xl mb-4 block">{item.icon}</span>
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">{item.desc}</p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- Cosa include -->
-    <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-t border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Cosa include ogni sito
-          </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Progetti completi, chiavi in mano. Nessun costo nascosto.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          <div
-            class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/40 transition-all"
-          >
-            <div
-              class="w-14 h-14 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-6"
-            >
-              <span class="text-2xl">🎨</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
-              Design Personalizzato
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Niente template: ogni sito è progettato da zero sul tuo brand, i tuoi colori, il tuo
-              stile.
-            </p>
-            <ul class="space-y-3 text-gray-500 text-sm">
-              <li class="flex items-center gap-2">✓ Layout esclusivo</li>
-              <li class="flex items-center gap-2">✓ Mobile-first responsive</li>
-              <li class="flex items-center gap-2">✓ Immagini ottimizzate</li>
-            </ul>
-          </div>
-
-          <div
-            class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/40 transition-all"
-            style="transition-delay: 100ms"
-          >
-            <div
-              class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6"
-            >
-              <span class="text-2xl">🚀</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
-              Performance Ottimizzate
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Siti veloci che si caricano in meno di 2 secondi. Google ti premia, i clienti non
-              scappano.
-            </p>
-            <ul class="space-y-3 text-gray-500 text-sm">
-              <li class="flex items-center gap-2">✓ Core Web Vitals ottimi</li>
-              <li class="flex items-center gap-2">✓ Hosting premium incluso</li>
-              <li class="flex items-center gap-2">✓ CDN e cache avanzata</li>
-            </ul>
-          </div>
-
-          <div
-            class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 reveal-on-scroll hover:border-gray-400 dark:hover:border-white/40 transition-all"
-            style="transition-delay: 200ms"
-          >
-            <div
-              class="w-14 h-14 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-6"
-            >
-              <span class="text-2xl">📍</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">SEO Locale</h3>
-            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Ottimizzazione per le ricerche locali: farti trovare su Google da chi cerca i tuoi
-              servizi in zona.
-            </p>
-            <ul class="space-y-3 text-gray-500 text-sm">
-              <li class="flex items-center gap-2">✓ Google Business integrato</li>
-              <li class="flex items-center gap-2">✓ Schema markup locale</li>
-              <li class="flex items-center gap-2">✓ Keyword territoriali</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Processo -->
-    <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Come realizziamo il tuo sito
-          </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-400">
-            Dal primo contatto al lancio in 2-4 settimane
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-4 gap-8">
-          {
-            [
-              {
-                step: '01',
-                title: 'Briefing',
-                desc: 'Ci racconti la tua attività, i tuoi obiettivi, il tuo pubblico. Definiamo insieme la struttura.',
-              },
-              {
-                step: '02',
-                title: 'Design',
-                desc: 'Creiamo il design su misura. Ti mostriamo le bozze, raccogliamo feedback, perfezioniamo.',
-              },
-              {
-                step: '03',
-                title: 'Sviluppo',
-                desc: 'Costruiamo il sito con le migliori tecnologie. Veloce, sicuro, ottimizzato.',
-              },
-              {
-                step: '04',
-                title: 'Lancio',
-                desc: 'Pubblichiamo il sito, configuriamo analytics e ti formiamo sulla gestione.',
-              },
-            ].map((item, index) => (
-              <div
-                class="group text-center reveal-on-scroll"
-                style={`transition-delay: ${index * 100}ms`}
-              >
-                <span class="text-6xl font-bold text-gray-200 dark:text-gray-700 group-hover:text-gray-300 dark:group-hover:text-gray-600 transition-colors">
-                  {item.step}
-                </span>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-4 mb-4">
-                  {item.title}
+                <p class="text-xs font-bold tracking-widest text-[color:var(--brand-cta)]">{s.n}</p>
+                <h3 class="mt-2 text-lg font-extrabold tracking-tight text-slate-950 dark:text-white">
+                  {s.t}
                 </h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">{item.desc}</p>
+                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">{s.d}</p>
               </div>
             ))
           }
         </div>
+
+        <div class="mt-16">
+          <TrustBadges />
+        </div>
       </div>
     </section>
 
-    <!-- Territorio -->
     <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-t border-gray-200 dark:border-white/5"
+      class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
     >
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16 reveal-on-scroll">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-            Serviamo il Piemonte
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2
+            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+          >
+            FAQ siti web
           </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Lavoriamo con aziende e professionisti in tutto il territorio.
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+            Risposte chiare su costi, tempi, SEO e supporto.
           </p>
         </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto reveal-on-scroll">
-          {
-            [
-              'Carmagnola',
-              'Torino',
-              'Carignano',
-              'Poirino',
-              'Villastellone',
-              'Racconigi',
-              'Sommariva del Bosco',
-              'Cuneo',
-              'Alba',
-              'Asti',
-            ].map(city => (
-              <div class="bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/5 p-4 rounded-xl text-center hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
-                <span class="font-medium text-gray-900 dark:text-white text-sm">{city}</span>
-              </div>
-            ))
-          }
+        <div class="lg:col-span-7">
+          <FAQ
+            items={[
+              {
+                question: 'Quanto costa un sito professionale?',
+                answer:
+                  'Dipende da pagine, contenuti e integrazioni. Audit gratuito e preventivo chiaro.',
+              },
+              {
+                question: 'Quanto tempo serve?',
+                answer:
+                  'Landing 7–14 giorni. Sito completo 2–6 settimane in base a contenuti e revisioni.',
+              },
+              {
+                question: 'Fate SEO tecnico?',
+                answer:
+                  'Sì: struttura H1/H2, schema, performance, sitemap, contenuti per intent locali e nazionali.',
+              },
+              {
+                question: 'Mi insegnate ad aggiornarlo?',
+                answer: 'Sì: formazione e documentazione. CMS semplice o servizio gestito.',
+              },
+              {
+                question: 'Lo rendete accessibile?',
+                answer:
+                  'Sì: WCAG AA. Contrasti, focus, semantica, alt text, prefers-reduced-motion.',
+              },
+              {
+                question: 'Hosting incluso?',
+                answer: 'Possibile: ti consigliamo soluzione adatta a budget e traffico.',
+              },
+              {
+                question: 'Fate manutenzione?',
+                answer: 'Sì: aggiornamenti, monitoraggio, backup, ottimizzazioni continue.',
+              },
+            ]}
+          />
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          Il tuo nuovo sito ti aspetta.
+      <div class="max-w-6xl mx-auto text-center">
+        <h2
+          class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+        >
+          Vuoi un sito che converte?
         </h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-8">
-          Preventivo gratuito in 24 ore. Nessun impegno, solo una chiacchierata per capire le tue
-          esigenze.
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+          Audit gratuito + preventivo modulare in 24h.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/contattaci"
-            class="btn-primary inline-flex items-center justify-center gap-2 min-w-[200px]"
-            >Richiedi preventivo gratuito</a
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contattaci?topic=sito" class="btn-primary min-w-[220px] shine-on-hover"
+            >Richiedi preventivo</a
           >
           <a
-            href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20informazioni%20sui%20siti%20web%20professionali.%20Ho%20visitato%20bitora.it"
-            class="btn-secondary inline-flex items-center justify-center gap-2 min-w-[200px]"
+            href="https://wa.me/393514979670?text=Ciao,%20vorrei%20un%20preventivo%20per%20un%20sito%20web."
+            class="btn-secondary min-w-[220px]"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-              ><path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-              ></path></svg
-            >
             WhatsApp
           </a>
         </div>
@@ -373,44 +226,64 @@ import Layout from '../layouts/Layout.astro';
   </main>
 </Layout>
 
-<style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
+<ServiceSchema
+  name="Realizzazione Siti Web Professionali"
+  url="https://www.bitora.it/siti-web-professionali/"
+  serviceType={['Siti Web', 'Web Design', 'SEO Tecnico', 'Sviluppo Web']}
+  areaServed={['Carmagnola', 'Torino', 'Piemonte', 'Italia']}
+/>
 
-<script>
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
+<HowToSchema
+  name="Come progettiamo un sito web professionale"
+  description="Metodo Bitora in 4 step: discovery, design, sviluppo, lancio."
+  steps={[
+    { name: 'Discovery', text: 'Brief, obiettivi, target, struttura informativa.' },
+    { name: 'Design', text: 'Wireframe, UI, prototipo navigabile, copy SEO.' },
+    {
+      name: 'Sviluppo',
+      text: 'Codice pulito, performance LCP < 2.5s, SEO tecnico, test cross-browser.',
     },
-    { threshold: 0.1 }
-  );
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-  });
-</script>
+    { name: 'Lancio', text: 'Deploy, Analytics, Search Console, supporto post-lancio.' },
+  ]}
+/>
+
+<FAQPageSchema
+  items={[
+    {
+      question: 'Quanto costa un sito professionale?',
+      answer: 'Dipende da pagine, contenuti e integrazioni. Audit gratuito e preventivo chiaro.',
+    },
+    {
+      question: 'Quanto tempo serve?',
+      answer: 'Landing 7–14 giorni. Sito completo 2–6 settimane in base a contenuti e revisioni.',
+    },
+    {
+      question: 'Fate SEO tecnico?',
+      answer:
+        'Sì: struttura H1/H2, schema, performance, sitemap, contenuti per intent locali e nazionali.',
+    },
+    {
+      question: 'Mi insegnate ad aggiornarlo?',
+      answer: 'Sì: formazione e documentazione. CMS semplice o servizio gestito.',
+    },
+    {
+      question: 'Lo rendete accessibile?',
+      answer: 'Sì: WCAG AA. Contrasti, focus, semantica, alt text, prefers-reduced-motion.',
+    },
+    {
+      question: 'Hosting incluso?',
+      answer: 'Possibile: ti consigliamo soluzione adatta a budget e traffico.',
+    },
+    {
+      question: 'Fate manutenzione?',
+      answer: 'Sì: aggiornamenti, monitoraggio, backup, ottimizzazioni continue.',
+    },
+  ]}
+/>
+
+<BreadcrumbListSchema
+  crumbs={[
+    { name: 'Home', item: 'https://www.bitora.it/' },
+    { name: 'Siti Web Professionali', item: 'https://www.bitora.it/siti-web-professionali/' },
+  ]}
+/>

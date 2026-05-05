@@ -1,0 +1,44 @@
+---
+export interface Props {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'secondary';
+}
+
+const { href, label, variant = 'primary' } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`${variant === 'primary' ? 'btn-primary' : 'btn-secondary'} inline-flex items-center justify-center gap-2 magnetic-btn shine-on-hover`}
+  data-magnetic
+>
+  {label}
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+  </svg>
+</a>
+
+<script>
+  const el = document.querySelector('[data-magnetic]') as HTMLElement | null;
+  const canHover = window.matchMedia?.('(hover: hover)')?.matches;
+  const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+  if (el && canHover && !prefersReduced) {
+    const strength = 6;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+      const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+      el.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
+    };
+    const onLeave = () => {
+      el.style.transform = '';
+    };
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('mouseleave', onLeave);
+  }
+</script>

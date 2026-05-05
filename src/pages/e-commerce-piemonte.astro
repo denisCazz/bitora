@@ -1,362 +1,246 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
+import VideoHero from '../components/VideoHero.astro';
+import MediaShowcase from '../components/MediaShowcase.astro';
+import FAQ from '../components/FAQ.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import ServiceSchema from '../components/schema/Service.astro';
+import FAQPageSchema from '../components/schema/FAQPage.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 ---
 
 <Layout
   title="E-commerce Piemonte | Negozi Online Chiavi in Mano | Bitora"
   description="E-commerce professionali per aziende in Piemonte. WooCommerce, Shopify, sviluppo custom. Dalla strategia al lancio con supporto continuo. Preventivo gratuito."
+  image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80"
 >
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Realizzazione E-commerce Piemonte",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Bitora",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Carmagnola",
-          "addressRegion": "Piemonte",
-          "addressCountry": "IT"
-        }
-      },
-      "areaServed": ["Carmagnola", "Carignano", "Poirino", "Torino", "Piemonte"],
-      "serviceType": ["E-commerce", "Negozi Online", "WooCommerce", "Shopify"]
-    }
-  </script>
-
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    <!-- Hero -->
-    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-black dark:via-black dark:to-black/95"
-      >
-      </div>
-      <div
-        class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-200/50 dark:bg-gray-700/20 blur-[100px] opacity-50"
-      >
-      </div>
+    <VideoHero
+      variant="background"
+      eyebrow="E-commerce Piemonte"
+      title="Vendi online,"
+      highlight="senza compromessi."
+      description="WooCommerce, Shopify o sviluppo custom. Dalla strategia al lancio: pagamenti, spedizioni, SEO e supporto inclusi."
+      primaryCta={{ label: 'Richiedi preventivo', href: '/contattaci?topic=ecommerce' }}
+      secondaryCta={{ label: 'Come funziona', href: '#come' }}
+      posterSrc="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80"
+      videoSrc="https://videos.pexels.com/video-files/4994040/4994040-uhd_2732_1440_25fps.mp4"
+      videoLabel="E-commerce checkout in azione"
+    />
 
-      <div class="relative z-10 max-w-4xl">
-        <p
-          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
-        >
-          E-commerce
-        </p>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-          Il tuo negozio online,<br />
-          <span class="text-gray-900 dark:text-white">chiavi in mano.</span>
-        </h1>
-        <p
-          class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed mb-8"
-        >
-          E-commerce professionali per vendere in tutta Italia. <strong
-            class="text-gray-900 dark:text-white">Dalla strategia al lancio</strong
-          >, con pagamenti sicuri, spedizioni integrate e supporto continuo.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a
-            href="/contattaci?topic=ecommerce"
-            class="btn-primary group min-w-[200px] flex items-center justify-center gap-2"
+    <section
+      id="come"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5"
+    >
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5 lg:sticky lg:top-28">
+          <p
+            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
           >
-            Richiedi preventivo gratuito
-            <svg
-              class="w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+            Cos'è un e-commerce
+          </p>
+          <h2
+            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+          >
+            Negozio online che vende davvero.
+          </h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Sito che mostra catalogo, accetta pagamenti, gestisce spedizioni, traccia conversioni.
+            Aperto 24/7.
+          </p>
+
+          <dl class="mt-8 space-y-4">
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
             >
-          </a>
-          <a
-            href="#vantaggi"
-            class="btn-secondary min-w-[200px] flex items-center justify-center gap-2"
-          >
-            Scopri i vantaggi
-          </a>
+              <dt class="font-bold text-slate-950 dark:text-white">Pagamenti sicuri</dt>
+              <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                Stripe, PayPal, bonifico, Klarna. Conformità PCI.
+              </dd>
+            </div>
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
+            >
+              <dt class="font-bold text-slate-950 dark:text-white">Spedizioni integrate</dt>
+              <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                GLS, BRT, Poste, ritiro in negozio. Tracking automatico.
+              </dd>
+            </div>
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
+            >
+              <dt class="font-bold text-slate-950 dark:text-white">SEO + tracking</dt>
+              <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                Schema product, Google Merchant, GA4, Pixel.
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="lg:col-span-7">
+          <MediaShowcase
+            items={[
+              {
+                src: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1600&q=80',
+                alt: 'Mockup checkout su laptop',
+                caption: 'Checkout veloce, mobile-first, conversioni alte.',
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1600&q=80',
+                alt: 'Catalogo prodotti',
+                caption: 'Catalogo ottimizzato: filtri, varianti, foto pro.',
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?auto=format&fit=crop&w=1600&q=80',
+                alt: 'Dashboard vendite',
+                caption: 'Dashboard ordini, magazzino e clienti.',
+              },
+            ]}
+          />
         </div>
       </div>
     </section>
 
-    <!-- Stats -->
-    <section
-      class="py-16 md:py-20 px-6 md:px-12 lg:px-20 border-y border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
-    >
-      <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {
-            [
-              { value: '100%', label: 'Chiavi in mano', bar: 100 },
-              { value: '24/7', label: 'Vendita sempre attiva', bar: 100 },
-              { value: 'SEO', label: 'Ottimizzato Google', bar: 95 },
-              { value: '∞', label: 'Supporto incluso', bar: 100 },
-            ].map((stat, i) => (
-              <div class="reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
-                <p class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                  {stat.value}
-                </p>
-                <p class="text-sm text-gray-500 uppercase tracking-wider">{stat.label}</p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+    <!-- Prima/Dopo rimosso: evitiamo blocchi ridondanti -->
 
-    <!-- Perché E-commerce -->
-    <section
-      id="vantaggi"
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
-    >
+    <section class="py-24 px-6 md:px-12 lg:px-20">
       <div class="max-w-6xl mx-auto">
-        <p
-          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
-        >
-          Perché vendere online
-        </p>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12">
-          Il commercio digitale cresce. Il tuo negozio no.
-        </h2>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          {
-            [
-              {
-                icon: '🛒',
-                title: 'Vendita 24/7',
-                desc: 'Il negozio non chiude mai. Clienti acquistano a qualsiasi ora, da qualsiasi luogo.',
-              },
-              {
-                icon: '📍',
-                title: 'SEO Locale + Nazionale',
-                desc: 'Visibilità su Google per ricerche locali e nazionali. Più traffico, più vendite.',
-              },
-              {
-                icon: '📦',
-                title: 'Gestione Semplificata',
-                desc: 'Pannello intuitivo per prodotti, ordini e clienti. Formazione inclusa.',
-              },
-            ].map((item, i) => (
-              <div
-                class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/40 transition-all reveal-on-scroll"
-                style={`transition-delay: ${i * 100}ms`}
-              >
-                <div class="w-14 h-14 bg-gray-100 dark:bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-2xl">
-                  {item.icon}
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">{item.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{item.desc}</p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- Cosa include -->
-    <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-t border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div class="reveal-on-scroll">
+        <div class="mb-12 grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
             <p
-              class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
+              class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
             >
-              Cosa include
+              Risultato
             </p>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
-              Ogni progetto è unico, come la tua attività.
+            <h2
+              class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+            >
+              Online + offline, stessa regia.
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              Non vendiamo pacchetti standard. Ogni e-commerce viene progettato sulle tue esigenze:
-              tipo di prodotto, volume di vendite, target.
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+              Catalogo, pagamenti, spedizioni e tracking lavorano insieme. Tu vedi ordini e clienti
+              in un’unica dashboard.
             </p>
-            <ul class="space-y-4">
-              {
-                [
-                  'Analisi mercato e concorrenza',
-                  'Design personalizzato sul brand',
-                  'Catalogo prodotti ottimizzato',
-                  'Pagamenti sicuri (Stripe, PayPal, Bonifico)',
-                  'Spedizioni integrate (GLS, BRT, Poste)',
-                  'Formazione completa sulla gestione',
-                ].map(item => (
-                  <li class="flex items-center gap-4">
-                    <div class="w-6 h-6 rounded-full bg-gray-200 dark:bg-white/20 flex items-center justify-center flex-shrink-0">
-                      <svg
-                        class="w-3 h-3 text-gray-900 dark:text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                    <span class="text-gray-700 dark:text-gray-300">{item}</span>
-                  </li>
-                ))
-              }
+            <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-slate-700 dark:text-slate-300">
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[color:var(--brand-cta)]"></span> Vendita 24/7
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[color:var(--brand-cta)]"></span> SEO + Merchant
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[color:var(--brand-cta)]"></span> Remarketing pronto
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[color:var(--brand-cta)]"></span> Automazioni ordini
+              </li>
             </ul>
           </div>
-
-          <div class="reveal-on-scroll" style="transition-delay: 200ms">
-            <div
-              class="p-8 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10"
-            >
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Tecnologie</h3>
-              <div class="space-y-4">
-                {
-                  [
-                    {
-                      name: 'WooCommerce',
-                      desc: 'Controllo totale. Ideale per cataloghi medi e personalizzazioni avanzate.',
-                      color: 'bg-green-500/20',
-                    },
-                    {
-                      name: 'Shopify',
-                      desc: 'Zero pensieri tecnici. Parti velocemente con budget definito.',
-                      color: 'bg-gray-100 dark:bg-white/10',
-                    },
-                    {
-                      name: 'Sviluppo Custom',
-                      desc: 'Marketplace, B2B, integrazioni gestionali. Massima flessibilità.',
-                      color: 'bg-gray-100 dark:bg-white/10',
-                    },
-                  ].map(t => (
-                    <div class="p-4 rounded-xl border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/40 transition-all">
-                      <h4 class="font-bold text-gray-900 dark:text-white mb-1">{t.name}</h4>
-                      <p class="text-gray-600 dark:text-gray-400 text-sm">{t.desc}</p>
-                    </div>
-                  ))
-                }
-              </div>
+          <div class="lg:col-span-5">
+            <div class="media-frame overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1600&q=80"
+                alt="Checkout e-commerce su laptop"
+                class="w-full h-full object-cover aspect-[16/10]"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
+
+        <div class="mb-10">
+          <p
+            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
+          >
+            Trust
+          </p>
+          <h2
+            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+          >
+            Garanzie e metodo
+          </h2>
+        </div>
+        <TrustBadges />
       </div>
     </section>
 
-    <!-- Processo -->
     <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
+      class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
     >
-      <div class="max-w-6xl mx-auto">
-        <p
-          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
-        >
-          Come lavoriamo
-        </p>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12">
-          Dal primo contatto al lancio in 3-6 settimane
-        </h2>
-
-        <div class="grid md:grid-cols-4 gap-8">
-          {
-            [
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-5">
+          <h2
+            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+          >
+            FAQ e-commerce
+          </h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+            Risposte chiare su costi, tempi e piattaforme.
+          </p>
+        </div>
+        <div class="lg:col-span-7">
+          <FAQ
+            items={[
               {
-                step: '01',
-                title: 'Consulenza',
-                desc: 'Analizziamo obiettivi, prodotti e target. Definiamo la strategia.',
+                question: 'Quanto costa un e-commerce?',
+                answer:
+                  'Dipende da piattaforma, catalogo e integrazioni. Partiamo da audit gratuito e preventivo modulare.',
               },
               {
-                step: '02',
-                title: 'Progettazione',
-                desc: "Design personalizzato, architettura catalogo e flusso d'acquisto.",
+                question: 'WooCommerce o Shopify?',
+                answer:
+                  'WooCommerce per controllo + personalizzazioni. Shopify per partenza veloce. Custom per casi B2B/marketplace.',
               },
               {
-                step: '03',
-                title: 'Sviluppo',
-                desc: 'Costruzione, integrazione pagamenti e spedizioni, test.',
+                question: 'Quanto tempo serve per il lancio?',
+                answer:
+                  'Tipicamente 3–6 settimane dal brief al go-live, in base a contenuti e prodotti.',
               },
               {
-                step: '04',
-                title: 'Lancio + Supporto',
-                desc: 'Messa online, formazione e assistenza continua.',
+                question: 'Gestite pagamenti e fatture?',
+                answer:
+                  'Sì: Stripe, PayPal, bonifico. Integrazione fatturazione automatica con gestionali italiani.',
               },
-            ].map((item, i) => (
-              <div class="text-center reveal-on-scroll" style={`transition-delay: ${i * 100}ms`}>
-                <span class="text-5xl font-bold text-gray-200 dark:text-gray-700">{item.step}</span>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-4 mb-2">
-                  {item.title}
-                </h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">{item.desc}</p>
-              </div>
-            ))
-          }
+              {
+                question: 'Posso vendere in tutta Italia?',
+                answer:
+                  'Sì. Configuriamo spedizioni nazionali con GLS, BRT, Poste e ritiro in negozio.',
+              },
+              {
+                question: 'Fate SEO per il negozio?',
+                answer:
+                  'Sì: schema product, sitemap, Merchant Center, contenuti ottimizzati per ricerche prodotto.',
+              },
+              {
+                question: 'Offrite supporto post-lancio?',
+                answer:
+                  'Sì: monitoraggio, aggiornamenti, ottimizzazioni continue. Niente abbandono al lancio.',
+              },
+            ]}
+          />
         </div>
       </div>
     </section>
 
-    <!-- Territorio -->
-    <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-t border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto">
-        <p
-          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
-        >
-          Territorio
-        </p>
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
-          E-commerce in tutto il Piemonte
-        </h2>
-        <div class="flex flex-wrap gap-3">
-          {
-            [
-              'Carmagnola',
-              'Carignano',
-              'Poirino',
-              'Villastellone',
-              'Torino',
-              'Cuneo',
-              'Asti',
-              'Alessandria',
-            ].map(city => (
-              <span class="px-4 py-2 rounded-xl bg-gray-100 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm font-medium">
-                {city}
-              </span>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
     <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2
+          class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+        >
           Pronto a vendere online?
         </h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-8">
-          Raccontaci il tuo progetto. Preventivo gratuito e senza impegno.
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+          Preventivo gratuito. Ti rispondiamo entro 24h.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/contattaci?topic=ecommerce"
-            class="btn-primary inline-flex items-center justify-center gap-2 min-w-[200px]"
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contattaci?topic=ecommerce" class="btn-primary min-w-[220px] shine-on-hover"
             >Richiedi preventivo</a
           >
           <a
             href="https://wa.me/393514979670?text=Ciao,%20vorrei%20un%20preventivo%20per%20un%20e-commerce."
-            class="btn-secondary inline-flex items-center justify-center gap-2 min-w-[200px]"
+            class="btn-secondary min-w-[220px]"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-              ><path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-              ></path></svg
-            >
             WhatsApp
           </a>
         </div>
@@ -365,31 +249,64 @@ import Layout from '../layouts/Layout.astro';
   </main>
 </Layout>
 
-<style>
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
+<ServiceSchema
+  name="Realizzazione E-commerce Piemonte"
+  url="https://www.bitora.it/e-commerce-piemonte/"
+  serviceType={['E-commerce', 'WooCommerce', 'Shopify', 'Negozi Online']}
+  areaServed={[
+    'Carmagnola',
+    'Carignano',
+    'Poirino',
+    'Torino',
+    'Cuneo',
+    'Asti',
+    'Alessandria',
+    'Piemonte',
+    'Italia',
+  ]}
+/>
 
-<script>
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
+<FAQPageSchema
+  items={[
+    {
+      question: 'Quanto costa un e-commerce?',
+      answer:
+        'Dipende da piattaforma, catalogo e integrazioni. Partiamo da audit gratuito e preventivo modulare.',
     },
-    { threshold: 0.1 }
-  );
-  document.addEventListener('DOMContentLoaded', () =>
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el))
-  );
-</script>
+    {
+      question: 'WooCommerce o Shopify?',
+      answer:
+        'WooCommerce per controllo + personalizzazioni. Shopify per partenza veloce. Custom per casi B2B/marketplace.',
+    },
+    {
+      question: 'Quanto tempo serve per il lancio?',
+      answer: 'Tipicamente 3–6 settimane dal brief al go-live, in base a contenuti e prodotti.',
+    },
+    {
+      question: 'Gestite pagamenti e fatture?',
+      answer:
+        'Sì: Stripe, PayPal, bonifico. Integrazione fatturazione automatica con gestionali italiani.',
+    },
+    {
+      question: 'Posso vendere in tutta Italia?',
+      answer: 'Sì. Configuriamo spedizioni nazionali con GLS, BRT, Poste e ritiro in negozio.',
+    },
+    {
+      question: 'Fate SEO per il negozio?',
+      answer:
+        'Sì: schema product, sitemap, Merchant Center, contenuti ottimizzati per ricerche prodotto.',
+    },
+    {
+      question: 'Offrite supporto post-lancio?',
+      answer:
+        'Sì: monitoraggio, aggiornamenti, ottimizzazioni continue. Niente abbandono al lancio.',
+    },
+  ]}
+/>
+
+<BreadcrumbListSchema
+  crumbs={[
+    { name: 'Home', item: 'https://www.bitora.it/' },
+    { name: 'E-commerce', item: 'https://www.bitora.it/e-commerce-piemonte/' },
+  ]}
+/>

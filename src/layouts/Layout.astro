@@ -5,20 +5,28 @@ import CookieBanner from '../components/CookieBanner.astro';
 import Analyticsgoogle from '../components/Analyticsgoogle.astro';
 import PerformanceMonitorSimple from '../components/PerformanceMonitorSimple.astro';
 import PerformanceOptimizer from '../components/PerformanceOptimizer.astro';
+import LocalBusinessSchema from '../components/schema/LocalBusiness.astro';
 import '../styles/global.css';
 
 export interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 // Costruisci l'URL canonico corretto - più robusto
 const pathname = Astro.url.pathname || '/';
 const canonicalUrl =
   pathname === '/'
     ? 'https://www.bitora.it/'
     : `https://www.bitora.it${pathname.endsWith('/') ? pathname : pathname + '/'}`;
+
+const ogImage = image?.startsWith('http')
+  ? image
+  : image
+    ? `https://www.bitora.it${image.startsWith('/') ? image : `/${image}`}`
+    : 'https://www.bitora.it/bitora.jpg';
 ---
 
 <!doctype html>
@@ -94,6 +102,7 @@ const canonicalUrl =
 
     <!-- SEO -->
     <title>{title}</title>
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta
       name="description"
       content={description ??
@@ -155,10 +164,14 @@ const canonicalUrl =
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/bitora.png" />
 
-    <!-- Fonts - self-hosted for GDPR compliance and performance -->
-    <link rel="preload" href="/fonts/inter-400.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="preload" href="/fonts/inter-700.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="/fonts/inter.css" />
+    <!-- Fonts -->
+    <!-- NOTE: Using Google Fonts until Plus Jakarta Sans is self-hosted -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -171,7 +184,7 @@ const canonicalUrl =
       content={description ??
         'Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia.'}
     />
-    <meta property="og:image" content="https://www.bitora.it/bitora.jpg" />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content="it_IT" />
     <meta property="og:site_name" content="Bitora - Sistemi Digitali su Misura" />
 
@@ -184,7 +197,7 @@ const canonicalUrl =
       content={description ??
         'Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia.'}
     />
-    <meta name="twitter:image" content="https://www.bitora.it/bitora.jpg" />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -209,6 +222,8 @@ const canonicalUrl =
         "url": "https://www.bitora.it/"
       }
     </script>
+
+    <LocalBusinessSchema />
   </head>
   <body
     class="flex flex-col min-h-screen font-['Inter',sans-serif] transition-colors duration-300 bg-white dark:bg-black text-gray-900 dark:text-white"

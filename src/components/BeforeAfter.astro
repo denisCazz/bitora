@@ -1,0 +1,87 @@
+---
+export interface Props {
+  beforeSrc: string;
+  afterSrc: string;
+  beforeAlt: string;
+  afterAlt: string;
+  labelBefore?: string;
+  labelAfter?: string;
+}
+
+const {
+  beforeSrc,
+  afterSrc,
+  beforeAlt,
+  afterAlt,
+  labelBefore = 'Prima',
+  labelAfter = 'Dopo',
+} = Astro.props;
+---
+
+<div class="media-frame relative select-none overflow-hidden" data-before-after>
+  <img src={beforeSrc} alt={beforeAlt} class="w-full h-full object-cover" loading="lazy" />
+  <div class="absolute inset-0 overflow-hidden" data-after-wrap style="width:50%">
+    <img src={afterSrc} alt={afterAlt} class="w-full h-full object-cover" loading="lazy" />
+  </div>
+
+  <div class="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-bold">
+    <span class="px-3 py-1 rounded-full bg-black/60 text-white">{labelBefore}</span>
+    <span class="px-3 py-1 rounded-full bg-black/60 text-white">{labelAfter}</span>
+  </div>
+
+  <div class="absolute inset-y-0 left-1/2 w-0.5 bg-white/70" data-divider></div>
+  <button
+    type="button"
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 text-slate-900 shadow-lg flex items-center justify-center"
+    aria-label="Sposta comparatore"
+    data-handle
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M8 7l-5 5 5 5M16 7l5 5-5 5"></path>
+    </svg>
+  </button>
+</div>
+
+<script>
+  const root = document.querySelector('[data-before-after]') as HTMLElement | null;
+  if (!root) {
+  }
+  const wrap = root?.querySelector('[data-after-wrap]') as HTMLElement | null;
+  const divider = root?.querySelector('[data-divider]') as HTMLElement | null;
+  const handle = root?.querySelector('[data-handle]') as HTMLElement | null;
+
+  if (root && wrap && divider && handle) {
+    let dragging = false;
+
+    const setAt = (clientX: number) => {
+      const r = root.getBoundingClientRect();
+      const x = Math.max(0, Math.min(r.width, clientX - r.left));
+      const pct = (x / r.width) * 100;
+      wrap.style.width = pct + '%';
+      divider.style.left = pct + '%';
+      handle.style.left = pct + '%';
+    };
+
+    const onDown = (e: PointerEvent) => {
+      dragging = true;
+      (e.target as Element).setPointerCapture?.(e.pointerId);
+      setAt(e.clientX);
+    };
+    const onMove = (e: PointerEvent) => {
+      if (!dragging) return;
+      setAt(e.clientX);
+    };
+    const onUp = () => {
+      dragging = false;
+    };
+
+    handle.addEventListener('pointerdown', onDown);
+    root.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    root.addEventListener('pointerdown', e => setAt((e as PointerEvent).clientX));
+  }
+</script>

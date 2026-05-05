@@ -1,0 +1,24 @@
+---
+const badges = [
+  { title: 'Made in Italy', desc: 'Sviluppo e supporto in Italia' },
+  { title: 'GDPR by design', desc: 'Privacy e consenso cookie' },
+  { title: 'Risposta 24h', desc: 'Preventivo e audit iniziale' },
+  { title: '+50 progetti', desc: 'PMI e attività locali' },
+];
+---
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  {
+    badges.map((b, i) => (
+      <div
+        class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5 hover-lift"
+        style={`transition-delay:${i * 60}ms`}
+      >
+        <div class="text-sm font-extrabold tracking-tight text-slate-950 dark:text-white">
+          {b.title}
+        </div>
+        <div class="mt-1 text-xs text-slate-600 dark:text-slate-400">{b.desc}</div>
+      </div>
+    ))
+  }
+</div>

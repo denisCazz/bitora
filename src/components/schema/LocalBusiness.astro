@@ -1,0 +1,61 @@
+---
+export interface Props {
+  url?: string;
+  name?: string;
+  image?: string;
+  telephone?: string;
+  email?: string;
+  addressLocality?: string;
+  addressRegion?: string;
+  postalCode?: string;
+  streetAddress?: string;
+  latitude?: number;
+  longitude?: number;
+  areaServed?: string[];
+  priceRange?: string;
+}
+
+const {
+  url = 'https://www.bitora.it/',
+  name = 'Bitora',
+  image = 'https://www.bitora.it/bitora.jpg',
+  telephone = '+39 351 497 9670',
+  email = 'info@bitora.it',
+  addressLocality = 'Carmagnola',
+  addressRegion = 'TO',
+  postalCode = '10022',
+  streetAddress = 'Carmagnola, Torino, Piemonte',
+  latitude = 44.8477,
+  longitude = 7.6833,
+  areaServed = ['Carmagnola', 'Torino', 'Piemonte', 'Italia'],
+  priceRange = '€€',
+} = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${url}#localbusiness`,
+  name,
+  url,
+  image,
+  telephone,
+  email,
+  priceRange,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress,
+    addressLocality,
+    addressRegion,
+    postalCode,
+    addressCountry: 'IT',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude,
+    longitude,
+  },
+  areaServed,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

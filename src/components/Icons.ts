@@ -75,4 +75,38 @@ export const icons = {
   close: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
   </svg>`,
+
+  shoppingBag: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437m0 0L6.75 12.75m-1.644-7.477h15.788c.974 0 1.671.93 1.427 1.872l-1.35 5.19a1.5 1.5 0 0 1-1.452 1.125H6.75m0 0 1.5 6h12.75m-14.25 0a1.5 1.5 0 1 0 3 0m-3 0a1.5 1.5 0 1 1 3 0m9.75 0a1.5 1.5 0 1 0 3 0m-3 0a1.5 1.5 0 1 1 3 0" />
+  </svg>`,
+
+  creditCard: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25A3 3 0 0 1 5.25 5.25h13.5a3 3 0 0 1 3 3v7.5a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3v-7.5Z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 10.5h19.5" />
+  </svg>`,
+
+  cog: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h3m-6.364 13.364 2.121-2.121m9.9 0 2.121 2.121M6 10.5v3m12-3v3M7.636 4.636 9.757 6.757m4.486 0 2.121-2.121M12 9.75a2.25 2.25 0 1 1 0 4.5 2.25 2.25 0 0 1 0-4.5Z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+  </svg>`,
+
+  globeAlt: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.6 9h16.8M3.6 15h16.8" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.5 2.9 3.9 6.2 4 9s-1.5 6.1-4 9c-2.5-2.9-3.9-6.2-4-9s1.5-6.1 4-9Z" />
+  </svg>`,
+
+  chartBarSquare: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75h16.5v16.5H3.75V3.75Z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5v-4.5m4.5 4.5V7.5m4.5 9v-6" />
+  </svg>`,
+
+  wrench: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5a4.5 4.5 0 0 1-6.32 4.11l-7.86 7.86a2.25 2.25 0 1 1-3.182-3.182l7.86-7.86A4.5 4.5 0 0 1 21 7.5Z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 7.5h.008v.008H16.5V7.5Z" />
+  </svg>`,
+
+  paintBrush: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25 18.75 8.25m-3-3L9 12m6.75-6.75 1.5-1.5a2.121 2.121 0 0 1 3 3l-1.5 1.5m-3 3L12 16.5m0 0c.621.621 1.5 1.5 1.5 3.75 0 0-1.5 0-3.75-1.5m2.25-2.25L7.5 21" />
+  </svg>`,
 };

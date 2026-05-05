@@ -4,6 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        bitora: {
+          primary: '#0F172A',
+          secondary: '#334155',
+          cta: '#0369A1',
+          bg: '#F8FAFC',
+          text: '#020617',
+        },
         gray: {
           50: '#F9FAFB',
           100: '#F3F4F6',
@@ -57,7 +64,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

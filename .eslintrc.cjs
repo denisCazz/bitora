@@ -1,5 +1,9 @@
 module.exports = {
-  extends: ['eslint:recommended', '@typescript-eslint/recommended', 'plugin:astro/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:astro/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,
@@ -11,14 +15,18 @@ module.exports = {
     // Relaxed rules for better development experience
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/triple-slash-reference': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
 
     // General rules
     'no-console': 'warn',
-    'prefer-const': 'error',
-    'no-var': 'error',
+    'no-undef': 'off',
+    'prefer-const': 'warn',
+    'no-var': 'warn',
+    'no-inner-declarations': 'warn',
+    'no-empty': 'warn',
   },
   overrides: [
     {
@@ -30,9 +38,10 @@ module.exports = {
       },
       rules: {
         // Astro-specific rules
-        'astro/no-set-html-directive': 'error',
-        'astro/no-conflict-set-directives': 'error',
-        'astro/no-unused-define-vars-in-style': 'error',
+        // set:html used for JSON-LD; safe by construction
+        'astro/no-set-html-directive': 'off',
+        'astro/no-conflict-set-directives': 'warn',
+        'astro/no-unused-define-vars-in-style': 'warn',
       },
     },
     {

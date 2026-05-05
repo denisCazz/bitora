@@ -1,7 +1,22 @@
 User-agent: *
 Allow: /
+Allow: /llms.txt
+
+# AI crawlers (explicit allow)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 # Sitemap
+Sitemap: https://www.bitora.it/sitemap-index.xml
 Sitemap: https://www.bitora.it/sitemap.xml
 
 # Important pages for local SEO
@@ -9,6 +24,10 @@ Allow: /carmagnola
 Allow: /chi-siamo
 Allow: /services
 Allow: /contattaci
+Allow: /nfc-ecosystem
+Allow: /e-commerce-piemonte
+Allow: /siti-web-professionali
+Allow: /sistemi-aziendali
 
 # Block admin areas if any
 Disallow: /admin/

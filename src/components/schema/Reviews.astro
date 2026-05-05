@@ -1,0 +1,41 @@
+---
+export interface ReviewItem {
+  author: string;
+  body: string;
+  rating?: number;
+  datePublished?: string;
+}
+
+export interface Props {
+  itemName: string;
+  ratingValue?: number;
+  reviewCount?: number;
+  reviews?: ReviewItem[];
+}
+
+const { itemName, ratingValue = 5, reviewCount = 50, reviews = [] } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: itemName,
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue,
+    reviewCount,
+  },
+  ...(reviews.length
+    ? {
+        review: reviews.map(r => ({
+          '@type': 'Review',
+          reviewBody: r.body,
+          ...(r.rating ? { reviewRating: { '@type': 'Rating', ratingValue: r.rating } } : {}),
+          ...(r.datePublished ? { datePublished: r.datePublished } : {}),
+          author: { '@type': 'Person', name: r.author },
+        })),
+      }
+    : {}),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

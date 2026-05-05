@@ -1,0 +1,44 @@
+---
+export interface Props {
+  headline: string;
+  description?: string;
+  url: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+  authorName?: string;
+  publisherName?: string;
+  publisherLogo?: string;
+}
+
+const {
+  headline,
+  description,
+  url,
+  image,
+  datePublished,
+  dateModified,
+  authorName = 'Bitora',
+  publisherName = 'Bitora',
+  publisherLogo = 'https://www.bitora.it/bitora.png',
+} = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline,
+  ...(description ? { description } : {}),
+  url,
+  ...(image ? { image } : {}),
+  ...(datePublished ? { datePublished } : {}),
+  ...(dateModified ? { dateModified } : {}),
+  author: { '@type': 'Person', name: authorName },
+  publisher: {
+    '@type': 'Organization',
+    name: publisherName,
+    logo: { '@type': 'ImageObject', url: publisherLogo },
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
