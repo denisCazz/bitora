@@ -1,265 +1,121 @@
----
-import { icons } from './Icons';
-import ThemeToggle from './ThemeToggle.astro';
-
+﻿---
 const navItems = [
   { name: 'Home', url: '/' },
-  {
-    name: 'Soluzioni',
-    url: '/soluzioni',
-    dropdown: [
-      { name: 'Sistemi aziendali su misura', url: '/sistemi-aziendali' },
-      { name: 'E-commerce', url: '/e-commerce-piemonte' },
-      { name: 'Tessere NFC', url: '/nfc-ecosystem' },
-      { name: 'Gestionali & CRM', url: '/bitora-crm' },
-      { name: 'CMMS Manutenzione', url: '/cmms' },
-      { name: 'Siti Web Professionali', url: '/siti-web-professionali' },
-      { name: 'Grafica & Social', url: '/grafica-digitale-social-media' },
-    ],
-  },
-  { name: 'Chi siamo', url: '/chi-siamo' },
-  { name: 'Progetti', url: '/lavori' },
+  { name: 'Servizi', url: '/servizi' },
+  { name: 'I nostri lavori', url: '/lavori' },
+  { name: 'Free Tools', url: '/tools' },
   { name: 'Contatti', url: '/contattaci' },
 ];
-
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 w-full">
-  <div class="w-full relative">
-    <div
-      id="nav-shell"
-      class="glass-panel flex items-center justify-between w-full px-6 md:px-12 lg:px-20 py-2 shadow-custom transition-all duration-300"
-    >
-      <!-- Logo - Sinistra -->
-      <a
-        href="/"
-        class="flex items-center text-black dark:text-white hover:opacity-90 transition-opacity duration-200 z-10 flex-shrink-0 -m-1"
-      >
-        <img
-          src="/bitora.png"
-          alt="Bitora"
-          class="h-16 w-16 md:h-20 md:w-20 m-0 block rounded-full object-cover"
-        />
-      </a>
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50">
 
-      <!-- Nav + CTA - Destra -->
-      <div class="hidden md:flex items-center gap-6">
-        <nav class="flex items-center gap-2">
-          {
-            navItems.map(item =>
-              item.dropdown ? (
-                <div class="relative group">
-                  <button
-                    class={`py-3 px-5 rounded-xl transition-colors duration-200 relative flex items-center gap-2 text-base ${currentPath === item.url || item.dropdown.some(d => d.url === currentPath) ? 'text-black dark:text-white font-medium bg-black/5 dark:bg-white/5' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white'}`}
-                  >
-                    <span>{item.name}</span>
-                    <div class="w-4 h-4 flex items-center justify-center">
-                      <Fragment set:html={icons.chevronDown} />
-                    </div>
-                  </button>
-                  <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-white/10 shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-56">
-                    <div class="py-3">
-                      {item.dropdown.map(dropItem => (
-                        <a
-                          href={dropItem.url}
-                          class={`block px-5 py-3 text-base transition-colors rounded-xl mx-2 ${currentPath === dropItem.url ? 'text-gray-900 dark:text-white font-semibold bg-gray-100 dark:bg-white/10' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white'}`}
-                        >
-                          {dropItem.name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <a
-                  href={item.url}
-                  class={`py-3 px-5 rounded-xl transition-colors duration-200 flex items-center text-base ${currentPath === item.url ? 'text-black dark:text-white font-medium bg-black/5 dark:bg-white/10' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10'}`}
-                >
-                  {item.name}
-                </a>
-              )
-            )
-          }
-        </nav>
-        <ThemeToggle />
+  <div class="flex items-center justify-between px-8 md:px-16 lg:px-24 py-4">
+    <a href="/" class="flex-shrink-0 z-10 flex items-center gap-3" aria-label="Bitora home">
+      <img src="/bitora.png" alt="Bitora" class="h-10 w-10 rounded-full object-cover" />
+      <span class="text-sm font-semibold text-white/75 hidden md:block tracking-tight">bitora<span class="text-white/30">.it</span></span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-0.5" aria-label="Navigazione principale">
+      {navItems.filter(i => i.name !== 'Contatti').map(item => (
         <a
-          href="/contattaci"
-          class="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3 text-base whitespace-nowrap"
-          >Richiedi consulenza</a
+          href={item.url}
+          class={(currentPath === item.url || currentPath.startsWith(item.url + '/'))
+            ? 'px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-white bg-white/[0.09]'
+            : 'px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-white/60 hover:text-white hover:bg-white/[0.06]'}
         >
-      </div>
+          {item.name}
+        </a>
+      ))}
+    </nav>
 
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden flex items-center ml-auto">
-        <button
-          id="menu-toggle"
-          class="text-black dark:text-white p-3 hover:bg-black/5 dark:hover:bg-white/10 rounded-xl transition-colors focus:outline-none focus:ring-0 z-10 relative flex items-center justify-center"
-          aria-label="Toggle mobile menu"
-          aria-expanded="false"
-        >
-          <div class="hamburger">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-          </div>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu Dropdown -->
-    <div
-      id="mobile-menu"
-      class="absolute top-full left-0 right-0 bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-white/10 shadow-2xl z-50 transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out md:hidden"
-    >
-      <nav class="px-4 py-4 max-h-[80vh] overflow-y-auto">
-        <ul class="space-y-1">
-          {
-            navItems.map(item =>
-              item.dropdown ? (
-                <li>
-                  <div class="block py-2.5 px-3 text-sm font-semibold text-gray-800 dark:text-gray-100">
-                    {item.name}
-                  </div>
-                  <ul class="ml-4 mt-1 space-y-1">
-                    {item.dropdown.map(dropItem => (
-                      <li>
-                        <a
-                          href={dropItem.url}
-                          class={`block py-2 px-3 text-sm rounded-lg transition-all duration-200 ${
-                            currentPath === dropItem.url
-                              ? 'text-black dark:text-white font-semibold bg-black/5 dark:bg-white/10 border-l-2 border-gray-900 dark:border-white'
-                              : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10'
-                          }`}
-                        >
-                          {dropItem.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ) : (
-                <li>
-                  <a
-                    href={item.url}
-                    class={`block py-2.5 px-3 text-sm rounded-lg transition-all duration-200 ${
-                      currentPath === item.url
-                        ? 'text-black dark:text-white font-semibold bg-black/5 dark:bg-white/10 border-l-3 border-gray-900 dark:border-white'
-                        : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10'
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              )
-            )
-          }
-        </ul>
-        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-white/20">
-          <a
-            href="/contattaci"
-            class="btn-secondary inline-flex items-center gap-2 px-5 py-2 text-sm"
-          >
-            Prenota consulenza
-          </a>
-        </div>
-      </nav>
+    <div class="flex items-center gap-3">
+      <a href="/contattaci" class="sl-cta-btn hidden md:inline-flex">Contattaci</a>
+      <button id="mob-toggle" class="md:hidden text-white p-2 rounded-lg transition-colors hover:bg-white/10" aria-label="Menu" aria-expanded="false">
+        <svg id="mob-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="mob-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
     </div>
   </div>
+
+  <div id="mob-menu" class="hidden md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 px-8 py-5">
+    <nav class="flex flex-col gap-0.5">
+      {navItems.map(item => (
+        <a
+          href={item.url}
+          class={currentPath === item.url
+            ? 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white bg-white/[0.08]'
+            : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/65 hover:text-white hover:bg-white/[0.05]'}
+        >
+          {item.name}
+        </a>
+      ))}
+    </nav>
+  </div>
+
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navShell = document.getElementById('nav-shell');
-    const body = document.body;
+  const header = document.getElementById('site-header');
+  const mobToggle = document.getElementById('mob-toggle');
+  const mobMenu = document.getElementById('mob-menu');
+  const mobIconOpen = document.getElementById('mob-icon-open');
+  const mobIconClose = document.getElementById('mob-icon-close');
 
-    function openMenu() {
-      mobileMenu?.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
-      mobileMenu?.classList.add('translate-y-0', 'opacity-100', 'visible');
-      menuToggle?.setAttribute('aria-expanded', 'true');
-      menuToggle?.querySelector('.hamburger')?.classList.add('open');
-      body.style.overflow = 'hidden'; // Prevent body scroll
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        if (window.scrollY > 60) {
+          header?.classList.add('scrolled');
+        } else {
+          header?.classList.remove('scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-    function closeMenu() {
-      mobileMenu?.classList.add('-translate-y-full', 'opacity-0', 'invisible');
-      mobileMenu?.classList.remove('translate-y-0', 'opacity-100', 'visible');
-      menuToggle?.setAttribute('aria-expanded', 'false');
-      menuToggle?.querySelector('.hamburger')?.classList.remove('open');
-      body.style.overflow = ''; // Restore body scroll
+  mobToggle?.addEventListener('click', () => {
+    const isOpen = !mobMenu?.classList.contains('hidden');
+    if (isOpen) {
+      mobMenu?.classList.add('hidden');
+      mobIconOpen?.classList.remove('hidden');
+      mobIconClose?.classList.add('hidden');
+      mobToggle.setAttribute('aria-expanded', 'false');
+    } else {
+      mobMenu?.classList.remove('hidden');
+      mobIconOpen?.classList.add('hidden');
+      mobIconClose?.classList.remove('hidden');
+      mobToggle.setAttribute('aria-expanded', 'true');
     }
-
-    menuToggle?.addEventListener('click', () => {
-      const isOpen = menuToggle?.getAttribute('aria-expanded') === 'true';
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    // Close menu when clicking on nav links
-    const navLinks = mobileMenu?.querySelectorAll('a');
-    navLinks?.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    }); // Close menu when clicking outside
-    document.addEventListener('click', e => {
-      const target = e.target as Node;
-      const isClickInsideMenu = mobileMenu?.contains(target);
-      const isClickOnToggle = menuToggle?.contains(target);
-
-      if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu?.classList.contains('invisible')) {
-        closeMenu();
-      }
-    });
-
-    // Close menu on Escape key
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && !mobileMenu?.classList.contains('invisible')) {
-        closeMenu();
-      }
-    });
-
-    // Add shadow when scrolled
-    const onScroll = () => {
-      const y = window.scrollY || document.documentElement.scrollTop;
-      if (y > 8) navShell?.classList.add('shadow-md');
-      else navShell?.classList.remove('shadow-md');
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
   });
 </script>
 
 <style>
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    width: 24px;
-    height: 18px;
-    justify-content: space-between;
-    cursor: pointer;
+  #site-header { transition: background .35s ease, border-color .35s ease, box-shadow .35s ease; }
+  #site-header.scrolled {
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.35);
   }
-
-  .hamburger-line {
-    width: 100%;
-    height: 2px;
-    background-color: currentColor;
-    transition: all 0.3s ease;
-    transform-origin: center;
+  .sl-cta-btn {
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:rgba(255,255,255,0.11);color:#fff;font-weight:600;font-size:.875rem;
+    padding:.5rem 1.25rem;border-radius:8px;
+    border:1px solid rgba(255,255,255,0.18);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    transition:background .2s,border-color .2s;white-space:nowrap;
   }
-
-  .hamburger.open .hamburger-line:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger.open .hamburger-line:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.open .hamburger-line:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
+  .sl-cta-btn:hover{background:rgba(255,255,255,0.20);border-color:rgba(255,255,255,0.32);}
 </style>

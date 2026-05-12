@@ -159,31 +159,31 @@ export default function QRCodeGenerator() {
   ];
 
   const inputClass =
-    'w-full rounded-xl border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 focus:border-gray-500 dark:focus:border-white/40 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:focus:ring-white/30 transition-colors';
-  const labelClass = 'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2';
+    'w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/25 focus:border-white/40 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors';
+  const labelClass = 'block text-sm font-medium text-white/60 mb-2';
   const selectClass =
-    'w-full rounded-xl border border-gray-300 dark:border-white/10 bg-white dark:bg-zinc-900 px-4 py-3 text-gray-900 dark:text-white focus:border-gray-500 dark:focus:border-white/40 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:focus:ring-white/30 transition-colors appearance-none cursor-pointer';
+    'w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors appearance-none cursor-pointer';
   const cardClass =
-    'space-y-5 p-4 sm:p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10';
-  const headingClass = 'text-lg font-semibold text-gray-900 dark:text-white';
-  const subLabelClass = 'text-sm font-medium text-gray-600 dark:text-gray-300';
+    'space-y-5 p-4 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10';
+  const headingClass = 'text-lg font-semibold text-white';
+  const subLabelClass = 'text-sm font-medium text-white/60';
   const colorRowClass =
-    'flex items-center justify-between gap-3 p-3 rounded-xl bg-gray-100 dark:bg-white/5';
+    'flex items-center justify-between gap-3 p-3 rounded-xl bg-white/[0.05]';
   const colorInputClass =
-    'w-20 sm:w-24 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 px-2 py-1.5 text-xs sm:text-sm text-gray-900 dark:text-white font-mono text-center';
+    'w-20 sm:w-24 rounded-lg border border-white/10 bg-white/5 px-2 py-1.5 text-xs sm:text-sm text-white font-mono text-center';
 
   return (
     <div className="grid lg:grid-cols-[1fr,auto] gap-8 items-start">
       <div className="space-y-6">
-        <div className="flex gap-2 p-1 rounded-2xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10">
+        <div className="flex gap-2 p-1 rounded-2xl bg-white/[0.04] border border-white/10">
           {tabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                 activeTab === tab.id
-                  ? 'bg-gray-900 dark:bg-white text-white dark:text-black shadow-lg'
-                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/5'
+                  ? 'bg-white text-black shadow-lg'
+                  : 'text-white/40 hover:text-white hover:bg-white/[0.06]'
               }`}
             >
               <span>{tab.icon}</span>
@@ -214,9 +214,9 @@ export default function QRCodeGenerator() {
                 step="10"
                 value={size}
                 onChange={e => setSize(Number(e.target.value))}
-                className="w-full accent-gray-900 dark:accent-white"
+                className="w-full accent-white"
               />
-              <div className="flex justify-between text-xs text-gray-500 mt-1">
+              <div className="flex justify-between text-xs text-white/30 mt-1">
                 <span>150px</span>
                 <span>1000px</span>
               </div>
@@ -230,7 +230,7 @@ export default function QRCodeGenerator() {
                 step="1"
                 value={margin}
                 onChange={e => setMargin(Number(e.target.value))}
-                className="w-full accent-gray-900 dark:accent-white"
+                className="w-full accent-white"
               />
             </div>
             <div>
@@ -247,7 +247,7 @@ export default function QRCodeGenerator() {
                 ))}
               </select>
               {logoFile && (errorCorrection === 'L' || errorCorrection === 'M') && (
-                <p className="mt-2 text-xs text-gray-500">
+                <p className="mt-2 text-xs text-white/40">
                   ⚠️ Con un logo, si consiglia correzione "Alta" o "Massima"
                 </p>
               )}
@@ -263,7 +263,7 @@ export default function QRCodeGenerator() {
               <p className={subLabelClass}>Colori</p>
 
               <div className={colorRowClass}>
-                <span className="text-sm text-gray-900 dark:text-white shrink-0">Punti</span>
+                <span className="text-sm text-white shrink-0">Punti</span>
                 <div className="flex items-center gap-2">
                   <input
                     type="text"
@@ -275,22 +275,22 @@ export default function QRCodeGenerator() {
                     type="color"
                     value={dotColor}
                     onChange={e => setDotColor(e.target.value)}
-                    className="h-9 w-9 shrink-0 rounded-lg border border-gray-300 dark:border-white/10 bg-transparent cursor-pointer"
+                    className="h-9 w-9 shrink-0 rounded-lg border border-white/10 bg-transparent cursor-pointer"
                   />
                 </div>
               </div>
 
               <div className={colorRowClass}>
                 <div className="shrink-0">
-                  <span className="text-sm text-gray-900 dark:text-white">Sfondo</span>
+                  <span className="text-sm text-white">Sfondo</span>
                   <label className="mt-1 flex items-center gap-1.5 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={transparentBg}
                       onChange={e => setTransparentBg(e.target.checked)}
-                      className="rounded border-gray-300 dark:border-white/20 accent-gray-900 dark:accent-white w-3.5 h-3.5"
+                      className="rounded border-white/20 accent-white w-3.5 h-3.5"
                     />
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Trasparente</span>
+                    <span className="text-xs text-white/40">Trasparente</span>
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
@@ -306,13 +306,13 @@ export default function QRCodeGenerator() {
                     value={bgColor}
                     onChange={e => setBgColor(e.target.value)}
                     disabled={transparentBg}
-                    className="h-9 w-9 shrink-0 rounded-lg border border-gray-300 dark:border-white/10 bg-transparent cursor-pointer disabled:opacity-40"
+                    className="h-9 w-9 shrink-0 rounded-lg border border-white/10 bg-transparent cursor-pointer disabled:opacity-40"
                   />
                 </div>
               </div>
 
               <div className={colorRowClass}>
-                <span className="text-sm text-gray-900 dark:text-white shrink-0">Angoli (ext)</span>
+                <span className="text-sm text-white shrink-0">Angoli (ext)</span>
                 <div className="flex items-center gap-2">
                   <input
                     type="text"
@@ -324,13 +324,13 @@ export default function QRCodeGenerator() {
                     type="color"
                     value={cornerSquareColor}
                     onChange={e => setCornerSquareColor(e.target.value)}
-                    className="h-9 w-9 shrink-0 rounded-lg border border-gray-300 dark:border-white/10 bg-transparent cursor-pointer"
+                    className="h-9 w-9 shrink-0 rounded-lg border border-white/10 bg-transparent cursor-pointer"
                   />
                 </div>
               </div>
 
               <div className={colorRowClass}>
-                <span className="text-sm text-gray-900 dark:text-white shrink-0">Angoli (int)</span>
+                <span className="text-sm text-white shrink-0">Angoli (int)</span>
                 <div className="flex items-center gap-2">
                   <input
                     type="text"
@@ -342,7 +342,7 @@ export default function QRCodeGenerator() {
                     type="color"
                     value={cornerDotColor}
                     onChange={e => setCornerDotColor(e.target.value)}
-                    className="h-9 w-9 shrink-0 rounded-lg border border-gray-300 dark:border-white/10 bg-transparent cursor-pointer"
+                    className="h-9 w-9 shrink-0 rounded-lg border border-white/10 bg-transparent cursor-pointer"
                   />
                 </div>
               </div>
@@ -357,8 +357,8 @@ export default function QRCodeGenerator() {
                     onClick={() => setDotStyle(s.value)}
                     className={`px-2 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all border ${
                       dotStyle === s.value
-                        ? 'bg-gray-900 dark:bg-white border-gray-900 dark:border-gray-200 text-white dark:text-black'
-                        : 'bg-white dark:bg-white/5 border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white'
+                        ? 'bg-white border-white/80 text-black'
+                        : 'bg-white/[0.04] border-white/10 text-white/50 hover:bg-white/10 hover:text-white'
                     }`}
                   >
                     {s.label}
@@ -371,7 +371,7 @@ export default function QRCodeGenerator() {
               <p className={`${subLabelClass} mb-2`}>Stile angoli</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs text-gray-500 dark:text-gray-400 mb-1.5">
+                  <label className="block text-xs text-white/40 mb-1.5">
                     Esterno
                   </label>
                   <select
@@ -387,7 +387,7 @@ export default function QRCodeGenerator() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 dark:text-gray-400 mb-1.5">
+                  <label className="block text-xs text-white/40 mb-1.5">
                     Interno
                   </label>
                   <select
@@ -410,13 +410,13 @@ export default function QRCodeGenerator() {
         {activeTab === 'logo' && (
           <div className={cardClass}>
             <h3 className={headingClass}>Logo al centro</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-white/50">
               Carica un'immagine da posizionare al centro del QR code. La correzione errori verrà
               automaticamente aumentata.
             </p>
 
             <div>
-              <label className="flex flex-col items-center justify-center w-full h-32 rounded-2xl border-2 border-dashed border-gray-300 dark:border-white/20 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer">
+              <label className="flex flex-col items-center justify-center w-full h-32 rounded-2xl border-2 border-dashed border-white/20 bg-white/[0.04] hover:bg-white/[0.07] transition-colors cursor-pointer">
                 <input
                   type="file"
                   accept="image/*"
@@ -430,17 +430,17 @@ export default function QRCodeGenerator() {
                       alt="Logo"
                       className="h-16 w-16 object-contain rounded-lg"
                     />
-                    <span className="text-sm text-green-600 dark:text-green-400">
+                    <span className="text-sm text-green-400">
                       Logo caricato ✓
                     </span>
                   </div>
                 ) : (
                   <div className="text-center">
                     <span className="text-3xl">📁</span>
-                    <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    <p className="mt-2 text-sm text-white/50">
                       Clicca per caricare un logo
                     </p>
-                    <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">PNG, JPG, SVG</p>
+                    <p className="text-xs text-white/30 mt-1">PNG, JPG, SVG</p>
                   </div>
                 )}
               </label>
@@ -459,16 +459,16 @@ export default function QRCodeGenerator() {
                     step="0.05"
                     value={logoSize}
                     onChange={e => setLogoSize(Number(e.target.value))}
-                    className="w-full accent-gray-900 dark:accent-white"
+                    className="w-full accent-white"
                   />
-                  <div className="flex justify-between text-xs text-gray-500 mt-1">
+                  <div className="flex justify-between text-xs text-white/30 mt-1">
                     <span>10%</span>
                     <span>50%</span>
                   </div>
                 </div>
                 <button
                   onClick={removeLogo}
-                  className="w-full py-3 rounded-xl border border-red-500/30 text-red-500 dark:text-red-400 hover:bg-red-500/10 transition-colors text-sm font-medium"
+                  className="w-full py-3 rounded-xl border border-red-500/30 text-red-400 hover:bg-red-500/10 transition-colors text-sm font-medium"
                 >
                   Rimuovi logo
                 </button>
@@ -484,13 +484,13 @@ export default function QRCodeGenerator() {
             <div className="space-y-3">
               <button
                 onClick={() => downloadQR('png')}
-                className="w-full flex items-center justify-between px-6 py-4 rounded-2xl bg-gray-900 dark:bg-white hover:bg-black dark:hover:bg-gray-100 text-white dark:text-black font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full flex items-center justify-between px-6 py-4 rounded-2xl bg-white hover:bg-white/90 text-black font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">🖼️</span>
                   <div className="text-left">
                     <p>Scarica PNG</p>
-                    <p className="text-xs font-normal text-gray-300 dark:text-gray-500">
+                    <p className="text-xs font-normal text-black/50">
                       {transparentBg ? 'Con sfondo trasparente' : 'Con sfondo colorato'}
                     </p>
                   </div>
@@ -507,13 +507,13 @@ export default function QRCodeGenerator() {
 
               <button
                 onClick={() => downloadQR('jpeg')}
-                className="w-full flex items-center justify-between px-6 py-4 rounded-2xl bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/15 text-gray-900 dark:text-white font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] border border-gray-200 dark:border-white/10"
+                className="w-full flex items-center justify-between px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/15 text-white font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] border border-white/10"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">📸</span>
                   <div className="text-left">
                     <p>Scarica JPG</p>
-                    <p className="text-xs font-normal text-gray-500 dark:text-gray-400">
+                    <p className="text-xs font-normal text-white/40">
                       Sempre con sfondo colorato ({bgColor})
                     </p>
                   </div>
@@ -529,9 +529,9 @@ export default function QRCodeGenerator() {
               </button>
             </div>
 
-            <div className="p-4 rounded-xl bg-gray-100 dark:bg-white/10 border border-gray-200 dark:border-white/20">
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                <strong>💡 Suggerimento:</strong> Usa il formato PNG per sfondi trasparenti (ideale
+              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10">
+              <p className="text-sm text-white/50">
+                <strong className="text-white/70">Suggerimento:</strong> Usa il formato PNG per sfondi trasparenti (ideale
                 per stampe su materiali colorati). Il JPG include sempre uno sfondo pieno — perfetto
                 per uso digitale.
               </p>
@@ -542,8 +542,8 @@ export default function QRCodeGenerator() {
 
       <div className="flex flex-col items-center gap-6 order-first lg:order-none">
         <div className="lg:sticky lg:top-28 w-full flex justify-center">
-          <div className="p-4 sm:p-6 rounded-3xl bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-white/10 shadow-2xl w-full max-w-xs sm:max-w-sm">
-            <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4 text-center">
+          <div className="p-4 sm:p-6 rounded-3xl bg-white/[0.04] border border-white/10 shadow-2xl w-full max-w-xs sm:max-w-sm">
+            <p className="text-sm font-medium text-white/40 mb-4 text-center">
               Anteprima
             </p>
             <div
@@ -556,7 +556,7 @@ export default function QRCodeGenerator() {
                 maxWidth: '280px',
               }}
             />
-            <p className="mt-4 text-xs text-gray-500 text-center truncate">
+            <p className="mt-4 text-xs text-white/30 text-center truncate">
               {data || 'Inserisci un contenuto'}
             </p>
           </div>

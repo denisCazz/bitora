@@ -1,544 +1,271 @@
----
+﻿---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
-import { testimonials } from '../data/testimonials';
-import { caseStudies } from '../data/caseStudies';
-import ClientLogos from '../components/ClientLogos.astro';
-import VideoHero from '../components/VideoHero.astro';
-import StatCounter from '../components/StatCounter.astro';
-import TrustBadges from '../components/TrustBadges.astro';
-import FAQ from '../components/FAQ.astro';
-import FAQPageSchema from '../components/schema/FAQPage.astro';
-import ReviewsSchema from '../components/schema/Reviews.astro';
-
-const featured = caseStudies.filter(c => c.featured).slice(0, 3);
 ---
 
 <Layout
-  title="Bitora | Sistemi Digitali su Misura per Aziende e PMI | Piemonte"
-  description="Sistemi digitali su misura: CRM, gestionali, CMMS, siti web ed e-commerce. Progettiamo, sviluppiamo, ottimizziamo. Sede in Piemonte, serviamo tutta Italia."
-  image="/social-media-hero.svg"
+  title="Bitora | Sistemi Digitali su Misura | Piemonte"
+  description="Sistemi digitali su misura per la tua azienda. Gestionali, CRM, CMMS, siti web ed e-commerce. Ti seguiamo dall'inizio alla fine. Sede in Piemonte, serviamo tutta Italia."
 >
-  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    <VideoHero
-      variant="background"
-      eyebrow="Sede in Piemonte · Serviamo tutta Italia"
-      title="Sistemi digitali"
-      highlight="che convertono."
-      description="CRM, gestionali, CMMS, siti web ed e-commerce. Dal concept al deploy, con metodo e risultati misurabili."
-      primaryCta={{ label: 'Richiedi consulenza', href: '/contattaci' }}
-      secondaryCta={{ label: 'Vedi i progetti', href: '/lavori' }}
-      posterSrc="/social-media-hero.svg"
-      videoSrc="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
-      videoLabel="Bitora al lavoro su progetti digitali"
-    />
+  <main class="bg-black text-white overflow-x-hidden">
 
-    <!-- Logos clienti -->
-    <section
-      class="border-y border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02] py-10"
-    >
-      <ClientLogos />
-    </section>
-
-    <!-- Stats -->
-    <section
-      class="py-16 md:py-20 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto">
-        <StatCounter
-          items={[
-            { label: 'Progetti realizzati', value: '50+', number: 50, suffix: '+' },
-            { label: 'Clienti soddisfatti', value: '100%', number: 100, suffix: '%' },
-            { label: 'Tempo di risposta', value: '24h', number: 24, suffix: 'h' },
-            { label: 'Copertura', value: 'Italia' },
-          ]}
+    <!-- HERO -->
+    <section class="relative h-screen min-h-[640px] flex flex-col justify-end">
+      <div class="absolute inset-0">
+        <img
+          src="/world-tech.jpg"
+          alt="Sistemi digitali su misura per aziende"
+          class="w-full h-full object-cover"
+          fetchpriority="high"
+          decoding="async"
         />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10"></div>
+      </div>
+      <div class="relative z-10 px-8 md:px-16 lg:px-24 pb-20 md:pb-28 hero-text">
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-4">
+          Sede in Piemonte · Serviamo tutta Italia
+        </p>
+        <h1 class="text-5xl md:text-6xl lg:text-[5.5rem] font-bold leading-[1.04] tracking-tight mb-5 max-w-3xl">
+          Sistemi digitali<br />su misura.
+        </h1>
+        <p class="text-base md:text-lg text-white/70 mb-9 max-w-lg leading-relaxed">
+          Gestionali, siti web, e-commerce e tessere NFC.<br class="hidden md:block" />
+          Ti seguiamo dall'analisi al deploy.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/contattaci" class="sl-btn-primary">Richiedi consulenza</a>
+          <a href="/servizi" class="sl-btn-secondary">Scopri i servizi</a>
+        </div>
       </div>
     </section>
 
-    <!-- Soluzioni: 4 servizi con foto -->
-    <section
-      id="servizi"
-      class="py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto">
-        <p
-          class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-        >
-          Soluzioni
-        </p>
-        <h2
-          class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white max-w-3xl"
-        >
-          Tutto ciò che serve per vendere e gestire online.
+    <!-- SITI WEB & E-COMMERCE -->
+    <section class="relative min-h-screen flex flex-col md:flex-row overflow-hidden">
+      <!-- mobile: immagine come sfondo a bassa opacità -->
+      <div class="absolute inset-0 md:hidden">
+        <img src="/programming.jpg" alt="" class="w-full h-full object-cover opacity-15" loading="lazy" decoding="async" />
+      </div>
+      <!-- pannello sinistro: testo su nero pieno -->
+      <div class="relative z-10 flex flex-col justify-center bg-black md:w-1/2 px-8 md:px-14 lg:px-20 py-32 md:py-0 min-h-screen" data-reveal-left>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">Siti Web &amp; E-commerce</p>
+        <h2 class="text-5xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-6">
+          Il tuo sito.<br />La tua<br />vetrina.&nbsp;→
         </h2>
-        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-2xl">
-          Quattro pilastri. Uno stack coerente. Risultati misurabili.
+        <p class="text-base md:text-lg text-white/70 mb-10 max-w-sm leading-relaxed">
+          Veloci, SEO-ottimizzati e costruiti per convertire. Sviluppati su misura, codice proprietario.
         </p>
-
-        <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-12 gap-6">
-          {
-            [
-              {
-                href: '/e-commerce-piemonte',
-                title: 'E-commerce',
-                desc: 'WooCommerce, Shopify o custom. Checkout veloce, tracking, SEO e supporto.',
-                img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80',
-                span: 'lg:col-span-7',
-                cta: 'Scopri e-commerce',
-              },
-              {
-                href: '/nfc-ecosystem',
-                title: 'Tessere NFC',
-                desc: 'Un tap: recensioni Google, contatti, menu. Programmazione inclusa.',
-                img: '/nfc.png',
-                span: 'lg:col-span-5',
-                cta: 'Scopri NFC',
-              },
-              {
-                href: '/siti-web-professionali',
-                title: 'Siti web professionali',
-                desc: "Veloci, accessibili, indicizzati. Conversione prima dell'estetica.",
-                img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1600&q=80',
-                span: 'lg:col-span-5',
-                cta: 'Scopri siti web',
-              },
-              {
-                href: '/sistemi-aziendali',
-                title: 'Sistemi aziendali',
-                desc: 'CRM, CMMS, gestionali. Automatizziamo il lavoro manuale.',
-                img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80',
-                span: 'lg:col-span-7',
-                cta: 'Scopri sistemi',
-              },
-            ].map((s, i) => (
-              <a
-                href={s.href}
-                class={`group block rounded-3xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel hover-lift reveal-on-scroll ${s.span}`}
-                style={`transition-delay:${i * 80}ms`}
-              >
-                <div class="relative media-frame">
-                  <img
-                    src={s.img}
-                    alt={s.title}
-                    class="w-full h-full object-cover aspect-[16/10] group-hover:scale-[1.04] transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-                  <div class="absolute bottom-5 left-5 right-5">
-                    <div class="hero-panel rounded-2xl px-5 py-4">
-                      <p class="text-white font-bold text-xl">{s.title}</p>
-                      <p class="text-white/85 text-sm mt-1">{s.desc}</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="px-6 py-5 inline-flex items-center gap-2 font-semibold text-[color:var(--brand-cta)]">
-                  {s.cta}
-                  <svg
-                    class="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </div>
-              </a>
-            ))
-          }
-        </div>
+        <a href="/servizi" class="sl-btn-secondary self-start">Scopri i servizi</a>
+      </div>
+      <!-- pannello destro: immagine (solo desktop) -->
+      <div class="hidden md:block md:w-1/2 relative overflow-hidden" data-reveal-right>
+        <img
+          src="/programming.jpg"
+          alt="Siti web professionali ed e-commerce"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-black to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 inset-x-0 h-52 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
       </div>
     </section>
 
-    <!-- Metodo: storytelling sticky + parallax -->
-    <section
-      class="py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
-    >
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
-        <div class="lg:col-span-5 lg:sticky lg:top-28">
-          <p
-            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-          >
-            Metodo
-          </p>
-          <h2
-            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-          >
-            Meno monotonia.<br />Più ritmo.
-          </h2>
-          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Alterniamo testo, immagini e micro-effetti per tenere l'attenzione alta. Sempre leggeri,
-            sempre misurati.
-          </p>
-
-          <div class="mt-10 media-frame relative overflow-hidden">
-            <img
-              src="/bitora.jpg"
-              alt="Workshop e pianificazione progetto digitale"
-              class="w-full h-full object-cover aspect-video"
-              loading="lazy"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent"
-            >
-            </div>
-            <div class="absolute bottom-5 left-5 right-5">
-              <div class="hero-panel rounded-2xl px-5 py-4">
-                <p class="text-white font-semibold">Roadmap + KPI</p>
-                <p class="text-white/85 text-sm mt-1">
-                  Più lead. Più vendite. Meno lavoro manuale. Misurabile.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-7 space-y-6">
-          {
-            [
-              {
-                n: '01',
-                title: 'Analisi & Strategia',
-                desc: 'Obiettivi, target, keyword, funnel. Definiamo cosa misurare e cosa tagliare.',
-              },
-              {
-                n: '02',
-                title: 'UI/UX & Copy',
-                desc: 'Struttura pagina, CTA, trust. Prototipo rapido e iterazioni veloci.',
-              },
-              {
-                n: '03',
-                title: 'Sviluppo & Performance',
-                desc: 'Mobile-first, LCP/CLS controllati. SEO tecnico e tracking.',
-              },
-              {
-                n: '04',
-                title: 'Deploy & Ottimizzazione',
-                desc: 'Monitoraggio, miglioramenti continui, supporto post-lancio.',
-              },
-            ].map((s, i) => (
-              <div
-                class="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-7 hover-lift reveal-on-scroll"
-                style={`transition-delay:${i * 90}ms`}
-              >
-                <div class="flex items-start justify-between gap-6">
-                  <div>
-                    <p class="text-xs font-bold tracking-widest text-[color:var(--brand-cta)]">
-                      {s.n}
-                    </p>
-                    <h3 class="mt-2 text-xl font-extrabold tracking-tight text-slate-950 dark:text-white">
-                      {s.title}
-                    </h3>
-                    <p class="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed">{s.desc}</p>
-                  </div>
-                  <div class="w-12 h-12 rounded-2xl bg-[color:var(--brand-cta)]/10 text-[color:var(--brand-cta)] flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.8"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- Trust + perché Bitora -->
-    <section class="py-20 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-5">
-          <p
-            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-          >
-            Perché Bitora
-          </p>
-          <h2
-            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-          >
-            Sviluppo su misura,<br />con numeri chiari.
-          </h2>
-          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Niente pacchetti preconfezionati. Costruiamo prodotti digitali che semplificano
-            processi, portano lead e aumentano vendite.
-          </p>
-        </div>
-        <div class="lg:col-span-7">
-          <TrustBadges />
-        </div>
-      </div>
-    </section>
-
-    <!-- Progetti in evidenza -->
-    <section
-      class="py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
-    >
-      <div class="max-w-6xl mx-auto">
-        <div class="flex items-end justify-between gap-6 mb-12 flex-wrap">
-          <div>
-            <p
-              class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-            >
-              Case study
-            </p>
-            <h2
-              class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-            >
-              Progetti reali.<br />Risultati misurabili.
+    <!-- TESSERE NFC -->
+    <section class="bg-black py-24 md:py-36">
+      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+          <div data-reveal-left>
+            <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">Tessere NFC</p>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-6">
+              Un tap.<br />Tutto connesso.
             </h2>
+            <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
+              Biglietti da visita intelligenti. Recensioni Google, menu digitali, contatti. Un solo tocco.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-10">
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Biglietti da visita</span>
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Menu digitali</span>
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Recensioni Google</span>
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Prog. illimitata</span>
+            </div>
+            <a href="/servizi#nfc" class="sl-btn-secondary">Scopri le tessere NFC</a>
           </div>
-          <a href="/lavori" class="link-brand inline-flex items-center gap-2 font-semibold">
-            Tutti i progetti
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-          {
-            featured.map((p, i) => (
-              <a
-                href={`/progetti/${p.slug}`}
-                class="group block rounded-3xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] hover-lift reveal-on-scroll"
-                style={`transition-delay:${i * 80}ms`}
-              >
-                <div class="relative">
-                  <img
-                    src={p.imageUrl}
-                    alt={p.title}
-                    class="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.04] transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <div class="p-5">
-                  <p class="text-xs text-slate-500 uppercase tracking-wider">
-                    {p.category} · {p.location}
-                  </p>
-                  <h3 class="mt-1 text-lg font-extrabold tracking-tight text-slate-950 dark:text-white group-hover:text-[color:var(--brand-cta)] transition-colors">
-                    {p.title}
-                  </h3>
-                  <div class="mt-3 flex flex-wrap gap-1.5">
-                    {p.metricsPreview.slice(0, 2).map(m => (
-                      <span class="text-[11px] text-slate-600 dark:text-slate-300 border border-gray-200 dark:border-white/10 px-2 py-0.5 rounded-full">
-                        {m}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            ))
-          }
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10" data-reveal-right>
+            <img
+              src="/nfc.jpg"
+              alt="Tessere NFC intelligenti in uso"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-12">
-          <p
-            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-          >
-            Recensioni
-          </p>
-          <h2
-            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-          >
-            Cosa dicono i clienti.
-          </h2>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-          {
-            testimonials.slice(0, 6).map((t, i) => (
-              <div
-                class="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-7 hover-lift reveal-on-scroll"
-                style={`transition-delay:${i * 80}ms`}
-              >
-                <div class="flex items-center gap-4">
-                  <img
-                    src={t.image}
-                    alt={t.company}
-                    class="h-12 w-12 rounded-full object-cover bg-gray-100 dark:bg-white/10"
-                    loading="lazy"
-                  />
-                  <div>
-                    <p class="text-slate-950 dark:text-white font-semibold">{t.company}</p>
-                    <p class="text-xs text-slate-500 uppercase tracking-wider">
-                      {t.role ?? 'Partner'}
-                    </p>
-                  </div>
-                  <div class="ml-auto text-[color:var(--brand-cta)] text-sm font-bold tracking-widest">
-                    {'★'.repeat(t.rating ?? 5)}
-                  </div>
-                </div>
-                <p class="mt-4 text-slate-700 dark:text-slate-300 leading-relaxed">“{t.quote}”</p>
-                {t.results ? (
-                  <p class="mt-4 text-sm font-semibold text-[color:var(--brand-cta)]">
-                    {t.results}
-                  </p>
-                ) : null}
-              </div>
-            ))
-          }
+    <!-- SISTEMI AZIENDALI -->
+    <section class="relative min-h-screen flex items-center justify-center py-24">
+      <div class="absolute inset-0">
+        <img
+          src="/customers.jpg"
+          alt="Gestionali CRM e sistemi aziendali su misura"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+      </div>
+      <div class="relative z-10 w-full max-w-2xl mx-6 md:mx-auto text-center backdrop-blur-xl bg-white/[0.07] border border-white/15 rounded-3xl px-8 md:px-16 py-14" data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">Sistemi Aziendali</p>
+        <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-6">
+          Automatizza.<br />Controlla.<br />Scala.
+        </h2>
+        <p class="text-base md:text-lg text-white/70 mb-10 max-w-md mx-auto leading-relaxed">
+          Gestionali, CRM, CMMS e software custom. Dall'analisi dei processi al deploy in produzione.
+        </p>
+        <a href="/servizi#sistemi" class="sl-btn-secondary">Scopri i sistemi</a>
+      </div>
+    </section>
+
+    <!-- AI -->
+    <section class="relative bg-black py-32 md:py-44 overflow-hidden text-center">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-600/15 blur-[120px]"></div>
+      </div>
+      <div class="relative z-10 px-8 max-w-3xl mx-auto" data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-indigo-400/70 uppercase mb-6">Intelligenza Artificiale</p>
+        <h2 class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.04] tracking-tight mb-6">
+          Il tuo assistente AI.<br />Già operativo.
+        </h2>
+        <p class="text-base md:text-lg text-white/65 mb-12 max-w-md mx-auto leading-relaxed">
+          Automazioni, chatbot e strumenti AI integrati nei tuoi processi. Su misura, non soluzioni preconfezionate.
+        </p>
+        <a href="https://ai.bitora.it/" class="sl-btn-primary" target="_blank" rel="noopener">Scopri Bitora AI →</a>
+      </div>
+    </section>
+
+    <!-- PIEMONTE -->
+    <section class="relative h-[90vh] min-h-[580px] flex flex-col items-center justify-center text-center">
+      <div class="absolute inset-0">
+        <img
+          src="/italy.jpg"
+          alt="Da Carmagnola a tutta Italia"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-black/55"></div>
+        <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+      </div>
+      <div class="relative z-10 px-8 max-w-3xl" data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-8">Radicati in Piemonte</p>
+        <h2 class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.04] tracking-tight mb-6">
+          Da Carmagnola<br />a tutta Italia.
+        </h2>
+        <p class="text-base md:text-lg text-white/70 mb-10 max-w-md mx-auto leading-relaxed">
+          Sede a Carmagnola, Provincia di Torino. Serviamo PMI e aziende in tutta Italia.
+        </p>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/45">
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white/35 inline-block"></span>Carmagnola</span>
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white/35 inline-block"></span>Torino</span>
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white/35 inline-block"></span>Piemonte</span>
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white/35 inline-block"></span>Tutta Italia</span>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section
-      class="py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
-        <div class="lg:col-span-5">
-          <p
-            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-          >
-            FAQ
-          </p>
-          <h2
-            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-          >
-            Domande frequenti.
-          </h2>
-          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
-            Risposte rapide per aiutarti a decidere.
-          </p>
-        </div>
-        <div class="lg:col-span-7">
-          <FAQ
-            items={[
-              {
-                question: 'Quanto costa un sito web professionale?',
-                answer:
-                  'Dipende da pagine, contenuti e integrazioni. Partiamo da un audit e ti diamo un preventivo chiaro e modulare.',
-              },
-              {
-                question: 'In quanto tempo consegnate?',
-                answer:
-                  'Per una landing efficace 7–14 giorni. Per un sito completo 2–6 settimane, in base a contenuti e revisioni.',
-              },
-              {
-                question: 'Fate SEO e ottimizzazione per Google (locale)?',
-                answer:
-                  'Sì: struttura H1/H2, performance, schema, sitemap e contenuti orientati a ricerche locali (Piemonte/Torino).',
-              },
-              {
-                question: 'Le tessere NFC richiedono abbonamento?',
-                answer:
-                  'No: programmazione inclusa e aggiornamenti illimitati. Nessun canone mensile.',
-              },
-              {
-                question: 'Posso collegare NFC a recensioni Google e contatti?',
-                answer:
-                  'Sì: un tap apre recensioni Google, WhatsApp, menu digitale, sito e link personalizzati.',
-              },
-              {
-                question: 'E-commerce: WooCommerce o Shopify?',
-                answer:
-                  'Dipende da catalogo, gestione e budget. Ti consigliamo la piattaforma più adatta e ti seguiamo fino al lancio.',
-              },
-              {
-                question: 'Gestionali/CRM: si integra con i miei strumenti?',
-                answer:
-                  'Sì: integriamo email, WhatsApp, fogli, API e processi interni. Riduciamo lavoro manuale.',
-              },
-              {
-                question: 'Offrite supporto dopo il lancio?',
-                answer:
-                  'Sì: monitoraggio, ottimizzazioni e interventi rapidi. Il sito non finisce con la pubblicazione.',
-              },
-            ]}
-          />
-        </div>
+    <!-- CTA FINALE -->
+    <section class="bg-black py-28 px-8 md:px-16 lg:px-24 text-center">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-5 max-w-2xl mx-auto" data-reveal>
+        Pronto a digitalizzare<br />la tua azienda?
+      </h2>
+      <p class="text-base md:text-lg text-white/60 mb-10 max-w-md mx-auto" data-reveal data-delay="2">
+        Consulenza gratuita. Ti rispondiamo entro 24 ore.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal data-delay="3">
+        <a href="/contattaci" class="sl-btn-primary">Richiedi consulenza</a>
+        <a href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20informazioni%20sui%20vostri%20servizi.%20Ho%20visitato%20bitora.it" class="sl-btn-secondary">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
       </div>
     </section>
 
-    <!-- CTA finale rimossa: evitiamo duplicati -->
+  <script>
+
+    // ── Scroll reveal ─────────────────────────────────────────
+    const _revEls = document.querySelectorAll('[data-reveal],[data-reveal-left],[data-reveal-right]');
+    const _revObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); _revObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    _revEls.forEach(el => _revObs.observe(el));
+  </script>
   </main>
 </Layout>
 
-<FAQPageSchema
-  items={[
-    {
-      question: 'Quanto costa un sito web professionale?',
-      answer:
-        'Dipende da pagine, contenuti e integrazioni. Partiamo da un audit e ti diamo un preventivo chiaro e modulare.',
-    },
-    {
-      question: 'In quanto tempo consegnate?',
-      answer:
-        'Per una landing efficace 7–14 giorni. Per un sito completo 2–6 settimane, in base a contenuti e revisioni.',
-    },
-    {
-      question: 'Fate SEO e ottimizzazione per Google (locale)?',
-      answer:
-        'Sì: struttura H1/H2, performance, schema, sitemap e contenuti orientati a ricerche locali (Piemonte/Torino).',
-    },
-    {
-      question: 'Le tessere NFC richiedono abbonamento?',
-      answer: 'No: programmazione inclusa e aggiornamenti illimitati. Nessun canone mensile.',
-    },
-    {
-      question: 'Posso collegare NFC a recensioni Google e contatti?',
-      answer:
-        'Sì: un tap apre recensioni Google, WhatsApp, menu digitale, sito e link personalizzati.',
-    },
-    {
-      question: 'E-commerce: WooCommerce o Shopify?',
-      answer:
-        'Dipende da catalogo, gestione e budget. Ti consigliamo la piattaforma più adatta e ti seguiamo fino al lancio.',
-    },
-    {
-      question: 'Gestionali/CRM: si integra con i miei strumenti?',
-      answer:
-        'Sì: integriamo email, WhatsApp, fogli, API e processi interni. L’obiettivo è ridurre lavoro manuale.',
-    },
-    {
-      question: 'Offrite supporto dopo il lancio?',
-      answer:
-        'Sì: monitoraggio, ottimizzazioni e interventi rapidi. Il sito non finisce con la pubblicazione.',
-    },
-  ]}
-/>
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Bitora",
+  image: "https://www.bitora.it/bitora.jpg",
+  url: "https://www.bitora.it",
+  areaServed: ["Carmagnola","Torino","Piemonte","Italia"],
+})} />
 
-<ReviewsSchema
-  itemName="Bitora"
-  ratingValue={5}
-  reviewCount={50}
-  reviews={testimonials
-    .slice(0, 5)
-    .map(t => ({ author: t.author, body: t.quote, rating: t.rating }))}
-/>
-
-<script>
-  const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
-  if (!prefersReduced) {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-parallax]'));
-    const onScroll = () => {
-      const y = window.scrollY || 0;
-      els.forEach(el => {
-        const r = el.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight) return;
-        el.style.transform = `translateY(${(y * 0.06).toFixed(1)}px) scale(1.04)`;
-      });
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+<style>
+  /* ── Hero entrance ── */
+  .hero-text > * { opacity:0; animation: heroUp 1s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .hero-text > *:nth-child(1) { animation-delay:.15s; }
+  .hero-text > *:nth-child(2) { animation-delay:.32s; }
+  .hero-text > *:nth-child(3) { animation-delay:.48s; }
+  .hero-text > *:nth-child(4) { animation-delay:.64s; }
+  @keyframes heroUp {
+    from { opacity:0; transform:translateY(36px); }
+    to   { opacity:1; transform:translateY(0); }
   }
-</script>
+  /* ── Scroll reveal ── */
+  [data-reveal] {
+    opacity:0; transform:translateY(52px);
+    transition: opacity .85s cubic-bezier(0.16,1,0.3,1), transform .85s cubic-bezier(0.16,1,0.3,1);
+  }
+  [data-reveal-left] {
+    opacity:0; transform:translateX(-52px);
+    transition: opacity .85s cubic-bezier(0.16,1,0.3,1), transform .85s cubic-bezier(0.16,1,0.3,1);
+  }
+  [data-reveal-right] {
+    opacity:0; transform:translateX(52px);
+    transition: opacity .85s cubic-bezier(0.16,1,0.3,1), transform .85s cubic-bezier(0.16,1,0.3,1);
+  }
+  [data-reveal].is-visible,
+  [data-reveal-left].is-visible,
+  [data-reveal-right].is-visible { opacity:1; transform:translate(0,0); }
+  [data-delay="2"] { transition-delay:.22s; }
+  [data-delay="3"] { transition-delay:.4s; }
+  /* ── Parallax ── */
+  .parallax-img { will-change:transform; }
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],[data-reveal-left],[data-reveal-right],.hero-text > * {
+      opacity:1!important; transform:none!important; animation:none!important; transition:none!important;
+    }
+  }
+  .sl-btn-primary {
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:#fff;color:#000;font-weight:600;font-size:.875rem;
+    padding:.75rem 1.75rem;border-radius:4px;transition:background .2s;white-space:nowrap;
+  }
+  .sl-btn-primary:hover{background:#e5e5e5;}
+  .sl-btn-secondary {
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:transparent;color:#fff;font-weight:600;font-size:.875rem;
+    padding:.75rem 1.75rem;border-radius:4px;
+    border:1.5px solid rgba(255,255,255,.55);
+    transition:border-color .2s,background .2s;white-space:nowrap;
+  }
+  .sl-btn-secondary:hover{border-color:rgba(255,255,255,.9);background:rgba(255,255,255,.08);}
+</style>

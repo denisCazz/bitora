@@ -1,4 +1,4 @@
----
+﻿---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import { testimonials } from '../data/testimonials';
@@ -22,43 +22,40 @@ const topTestimonials = testimonials.slice(0, 2);
   title="Contattaci | Consulenza Gratuita | Bitora"
   description="Richiedi una consulenza gratuita per sistemi aziendali, gestionali, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia. Risposta in 24 ore."
 >
-  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    <!-- Hero - stesso stile della home -->
-    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white dark:from-black dark:via-black dark:to-black/95"
-      >
+  <main class="bg-black text-white overflow-x-hidden">
+    <!-- Hero -->
+    <section class="relative h-[55vh] min-h-[440px] flex flex-col justify-end">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1920&q=85"
+          alt="Contattaci - Bitora"
+          class="w-full h-full object-cover"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
       </div>
-      <div
-        class="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-gray-100 dark:bg-white/5 blur-[100px] opacity-50"
-      >
-      </div>
-
-      <div class="relative z-10 max-w-4xl">
-        <p
-          class="text-sm font-medium tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4"
-        >
-          Contatti
-        </p>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+      <div class="relative z-10 px-8 md:px-16 lg:px-24 pb-14 md:pb-20">
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-4">Contatti</p>
+        <h1 class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.04] tracking-tight mb-4">
           Parliamone.
         </h1>
-        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
-          Hai un progetto in mente? Siamo qui per ascoltarti. Contattaci su WhatsApp o chiamaci.
+        <p class="text-base md:text-lg text-white/70 max-w-lg leading-relaxed">
+          Hai un progetto in mente? Siamo qui per ascoltarti. Risposta entro 24 ore.
         </p>
       </div>
     </section>
 
     <!-- Contact Options -->
     <section
-      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-t border-white/5"
     >
       <div class="max-w-6xl mx-auto">
         <div class="grid md:grid-cols-2 gap-8 reveal-on-scroll">
           <!-- WhatsApp -->
           <a
             href="https://wa.me/393514979670"
-            class="group relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-10 transition-all hover:scale-[1.02] hover:border-gray-400 dark:hover:border-white/40"
+            class="group relative overflow-hidden rounded-2xl bg-white/[0.04] border border-white/10 p-10 transition-all hover:scale-[1.02] hover:border-white/40"
           >
             <div
               class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -66,10 +63,10 @@ const topTestimonials = testimonials.slice(0, 2);
             </div>
             <div class="relative z-10 flex flex-col items-center text-center space-y-6">
               <div
-                class="w-20 h-20 bg-gray-100 dark:bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-green-500/20 transition-colors duration-300"
+                class="w-20 h-20 bg-white/8 rounded-2xl flex items-center justify-center group-hover:bg-green-500/20 transition-colors duration-300"
               >
                 <svg
-                  class="w-10 h-10 text-gray-900 dark:text-white group-hover:text-green-400 transition-colors"
+                  class="w-10 h-10 text-white group-hover:text-green-400 transition-colors"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   ><path
@@ -78,8 +75,8 @@ const topTestimonials = testimonials.slice(0, 2);
                 >
               </div>
               <div>
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">WhatsApp</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">Risposta immediata</p>
+                <h3 class="text-2xl font-bold text-white mb-2">WhatsApp</h3>
+                <p class="text-white/65 mb-4">Risposta immediata</p>
                 <span class="inline-flex items-center gap-2 text-green-400 font-medium">
                   Chatta ora
                   <svg
@@ -101,7 +98,7 @@ const topTestimonials = testimonials.slice(0, 2);
           <!-- Phone -->
           <a
             href="tel:+393514979670"
-            class="group relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-10 transition-all hover:scale-[1.02] hover:border-gray-400 dark:hover:border-white/40"
+            class="group relative overflow-hidden rounded-2xl bg-white/[0.04] border border-white/10 p-10 transition-all hover:scale-[1.02] hover:border-white/40"
           >
             <div
               class="absolute inset-0 bg-gradient-to-br from-gray-200/50 dark:from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -109,10 +106,10 @@ const topTestimonials = testimonials.slice(0, 2);
             </div>
             <div class="relative z-10 flex flex-col items-center text-center space-y-6">
               <div
-                class="w-20 h-20 bg-gray-100 dark:bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors duration-300"
+                class="w-20 h-20 bg-white/8 rounded-2xl flex items-center justify-center group-hover:bg-white/15 transition-colors duration-300"
               >
                 <svg
-                  class="w-10 h-10 text-gray-900 dark:text-white transition-colors"
+                  class="w-10 h-10 text-white transition-colors"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -125,10 +122,10 @@ const topTestimonials = testimonials.slice(0, 2);
                 >
               </div>
               <div>
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Telefono</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">Parla con noi</p>
+                <h3 class="text-2xl font-bold text-white mb-2">Telefono</h3>
+                <p class="text-white/65 mb-4">Parla con noi</p>
                 <span
-                  class="inline-flex items-center gap-2 text-gray-900 dark:text-white font-medium"
+                  class="inline-flex items-center gap-2 text-white font-medium"
                 >
                   +39 351 497 9670
                   <svg
@@ -163,10 +160,10 @@ const topTestimonials = testimonials.slice(0, 2);
           <div class="grid lg:grid-cols-[1fr,380px] gap-12">
             <!-- Form -->
             <div>
-              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">
                 Scrivici
               </h2>
-              <p class="text-gray-600 dark:text-gray-400 mb-8">
+              <p class="text-white/65 mb-8">
                 Compila il form e ti risponderemo entro 24 ore.
               </p>
               <form id="contact-form" action="/api/contact" method="POST" class="space-y-6">
@@ -175,7 +172,7 @@ const topTestimonials = testimonials.slice(0, 2);
                   <div>
                     <label
                       for="nome"
-                      class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      class="block text-sm font-medium text-white/80 mb-2"
                       >Nome *</label
                     >
                     <input
@@ -183,14 +180,14 @@ const topTestimonials = testimonials.slice(0, 2);
                       id="nome"
                       name="nome"
                       required
-                      class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-gray-400 dark:focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-white/20 transition-colors"
+                      class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors"
                       placeholder="Il tuo nome"
                     />
                   </div>
                   <div>
                     <label
                       for="email"
-                      class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      class="block text-sm font-medium text-white/80 mb-2"
                       >Email *</label
                     >
                     <input
@@ -198,7 +195,7 @@ const topTestimonials = testimonials.slice(0, 2);
                       id="email"
                       name="email"
                       required
-                      class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-gray-400 dark:focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-white/20 transition-colors"
+                      class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors"
                       placeholder="tua@email.it"
                     />
                   </div>
@@ -207,27 +204,27 @@ const topTestimonials = testimonials.slice(0, 2);
                   <div>
                     <label
                       for="telefono"
-                      class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      class="block text-sm font-medium text-white/80 mb-2"
                       >Telefono</label
                     >
                     <input
                       type="tel"
                       id="telefono"
                       name="telefono"
-                      class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-gray-400 dark:focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-white/20 transition-colors"
+                      class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors"
                       placeholder="+39 351 123 4567"
                     />
                   </div>
                   <div>
                     <label
                       for="argomento"
-                      class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      class="block text-sm font-medium text-white/80 mb-2"
                       >Argomento</label
                     >
                     <select
                       id="argomento"
                       name="argomento"
-                      class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white focus:border-gray-400 dark:focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-white/20 transition-colors"
+                      class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors"
                     >
                       <option value="" class="bg-white dark:bg-zinc-900 text-gray-400"
                         >Seleziona...</option
@@ -265,7 +262,7 @@ const topTestimonials = testimonials.slice(0, 2);
                 <div>
                   <label
                     for="messaggio"
-                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    class="block text-sm font-medium text-white/80 mb-2"
                     >Messaggio *</label
                   >
                   <textarea
@@ -273,7 +270,7 @@ const topTestimonials = testimonials.slice(0, 2);
                     name="messaggio"
                     rows="5"
                     required
-                    class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-gray-400 dark:focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-white/20 transition-colors resize-none"
+                    class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors resize-none"
                     placeholder="Raccontaci il tuo progetto..."></textarea>
                 </div>
                 <div class="flex items-start gap-3">
@@ -282,12 +279,12 @@ const topTestimonials = testimonials.slice(0, 2);
                     id="privacy"
                     name="privacy"
                     required
-                    class="mt-1 w-4 h-4 rounded border-gray-300 dark:border-white/20 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-gray-300 dark:focus:ring-white/20"
+                    class="mt-1 w-4 h-4 rounded border-gray-300 dark:border-white/20 bg-gray-50 dark:bg-white/5 text-white focus:ring-white/20"
                   />
-                  <label for="privacy" class="text-sm text-gray-600 dark:text-gray-400">
+                  <label for="privacy" class="text-sm text-white/65">
                     Ho letto e accetto la <a
                       href="/privacy-policy"
-                      class="text-gray-900 dark:text-white hover:underline font-medium"
+                      class="text-white hover:underline font-medium"
                       target="_blank">Privacy Policy</a
                     >. I dati saranno trattati per rispondere alla richiesta. *
                   </label>
@@ -306,7 +303,7 @@ const topTestimonials = testimonials.slice(0, 2);
             <!-- Social Proof Sidebar -->
             <div class="space-y-6 lg:pt-12">
               <div
-                class="p-6 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10"
+                class="p-6 rounded-2xl bg-white/[0.04] border border-white/10"
               >
                 <div class="flex items-center gap-2 mb-3">
                   <div class="flex -space-x-2">
@@ -340,7 +337,7 @@ const topTestimonials = testimonials.slice(0, 2);
                     }
                   </div>
                 </div>
-                <p class="text-gray-900 dark:text-white font-bold text-lg mb-1">
+                <p class="text-white font-bold text-lg mb-1">
                   50+ progetti realizzati
                 </p>
                 <p class="text-gray-500 text-sm">Clienti soddisfatti in tutta Italia</p>
@@ -348,7 +345,7 @@ const topTestimonials = testimonials.slice(0, 2);
 
               {
                 topTestimonials.map(t => (
-                  <div class="p-5 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10">
+                  <div class="p-5 rounded-2xl bg-white/[0.04] border border-white/10">
                     <div class="flex items-center gap-3 mb-3">
                       <img
                         src={t.image}
@@ -357,11 +354,11 @@ const topTestimonials = testimonials.slice(0, 2);
                         loading="lazy"
                       />
                       <div>
-                        <p class="text-gray-900 dark:text-white font-medium text-sm">{t.company}</p>
+                        <p class="text-white font-medium text-sm">{t.company}</p>
                         {t.results && <p class="text-gray-500 text-xs font-medium">{t.results}</p>}
                       </div>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                    <p class="text-white/65 text-sm leading-relaxed">
                       "{t.quote.slice(0, 120)}..."
                     </p>
                   </div>
@@ -369,7 +366,7 @@ const topTestimonials = testimonials.slice(0, 2);
               }
 
               <div class="space-y-3 text-sm">
-                <div class="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                <div class="flex items-center gap-3 text-white/65">
                   <svg
                     class="w-5 h-5 text-green-400 flex-shrink-0"
                     fill="none"
@@ -383,7 +380,7 @@ const topTestimonials = testimonials.slice(0, 2);
                   >
                   Rispondiamo entro 24 ore
                 </div>
-                <div class="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                <div class="flex items-center gap-3 text-white/65">
                   <svg
                     class="w-5 h-5 text-green-400 flex-shrink-0"
                     fill="none"
@@ -397,7 +394,7 @@ const topTestimonials = testimonials.slice(0, 2);
                   >
                   Consulenza gratuita e senza impegno
                 </div>
-                <div class="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                <div class="flex items-center gap-3 text-white/65">
                   <svg
                     class="w-5 h-5 text-green-400 flex-shrink-0"
                     fill="none"
@@ -417,15 +414,15 @@ const topTestimonials = testimonials.slice(0, 2);
         </div>
 
         <div
-          class="mt-24 p-8 bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl text-center reveal-on-scroll hover:border-gray-400 dark:hover:border-white/40 transition-all duration-300"
+          class="mt-24 p-8 bg-white/[0.04] border border-white/10 rounded-2xl text-center reveal-on-scroll hover:border-white/40 transition-all duration-300"
         >
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
-            Perché scegliere Bitora?
+          <h3 class="text-xl font-bold text-white mb-4">
+            PerchÃ© scegliere Bitora?
           </h3>
           <div class="grid md:grid-cols-3 gap-6 text-left md:text-center">
             <div class="flex flex-col items-center gap-3">
               <div
-                class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-900 dark:text-white"
+                class="w-10 h-10 rounded-full bg-white/8 flex items-center justify-center text-white"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                   ><path
@@ -435,11 +432,11 @@ const topTestimonials = testimonials.slice(0, 2);
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
                 >
               </div>
-              <span class="text-gray-600 dark:text-gray-400">Risposta rapida</span>
+              <span class="text-white/65">Risposta rapida</span>
             </div>
             <div class="flex flex-col items-center gap-3">
               <div
-                class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-900 dark:text-white"
+                class="w-10 h-10 rounded-full bg-white/8 flex items-center justify-center text-white"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                   ><path
@@ -449,11 +446,11 @@ const topTestimonials = testimonials.slice(0, 2);
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
                 >
               </div>
-              <span class="text-gray-600 dark:text-gray-400">Consulenza gratuita</span>
+              <span class="text-white/65">Consulenza gratuita</span>
             </div>
             <div class="flex flex-col items-center gap-3">
               <div
-                class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-900 dark:text-white"
+                class="w-10 h-10 rounded-full bg-white/8 flex items-center justify-center text-white"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                   ><path
@@ -463,7 +460,7 @@ const topTestimonials = testimonials.slice(0, 2);
                     d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg
                 >
               </div>
-              <span class="text-gray-600 dark:text-gray-400">Soluzioni su misura</span>
+              <span class="text-white/65">Soluzioni su misura</span>
             </div>
           </div>
         </div>

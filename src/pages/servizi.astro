@@ -1,0 +1,234 @@
+﻿---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Servizi | Bitora - Siti Web, E-commerce, NFC, Sistemi, Grafica e AI"
+  description="Siti web su misura, e-commerce, tessere NFC, gestionali CRM, grafica e intelligenza artificiale. Tutto sviluppato su misura. Sede in Piemonte, serviamo tutta Italia."
+>
+  <main class="bg-black text-white overflow-x-hidden">
+
+    <!-- HERO SERVIZI -->
+    <section class="relative h-[70vh] min-h-[560px] flex flex-col justify-end">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=85"
+          alt="I nostri servizi digitali"
+          class="w-full h-full object-cover"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/20"></div>
+      </div>
+      <div class="relative z-10 px-8 md:px-16 lg:px-24 pb-16 md:pb-24">
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-4">Cosa facciamo</p>
+        <h1 class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.04] tracking-tight mb-5 max-w-3xl">
+          Strumenti digitali<br />che fanno risultati.
+        </h1>
+        <p class="text-base md:text-lg text-white/70 max-w-lg leading-relaxed">
+          Dal sito web al gestionale aziendale. Ogni soluzione progettata su misura, senza pacchetti preconfezionati.
+        </p>
+      </div>
+    </section>
+
+    <!-- SITI WEB -->
+    <section id="siti-web" class="relative h-screen min-h-[640px] flex flex-col justify-center">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1920&q=85"
+          alt="Siti web professionali"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-transparent"></div>
+      </div>
+      <div class="relative z-10 px-8 md:px-16 lg:px-24 max-w-2xl">
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-4">01 — Siti Web</p>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-4">
+          Veloci.<br />Ottimizzati.<br />Che convertono.
+        </h2>
+        <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
+          Siti professionali in Astro, Next.js o WordPress. Mobile-first, SEO tecnico incluso, Core Web Vitals al 100%.
+        </p>
+        <a href="/contattaci?topic=siti" class="sl-btn-secondary">Richiedi preventivo</a>
+      </div>
+    </section>
+
+    <!-- E-COMMERCE -->
+    <section id="ecommerce" class="bg-black py-24 md:py-36 border-t border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10 order-2 md:order-1">
+            <img
+              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=85"
+              alt="E-commerce su misura"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="order-1 md:order-2">
+            <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">02 — E-commerce</p>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-6">
+              Vendi online.<br />In tutta Italia.
+            </h2>
+            <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
+              Sviluppiamo il tuo negozio online su misura. Carrello, pagamenti, spedizioni e SEO prodotto. Nessun template, codice proprietario.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-10">
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Sviluppo custom</span>
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Pagamenti integrati</span>
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">SEO prodotto</span>
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Gestione ordini</span>
+            </div>
+            <a href="/contattaci?topic=ecommerce" class="sl-btn-secondary">Richiedi preventivo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NFC -->
+    <section id="nfc" class="bg-black py-24 md:py-36 border-t border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+          <div>
+            <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">03 — Tessere NFC</p>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-6">
+              Un tap.<br />Tutto connesso.
+            </h2>
+            <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
+              Biglietti da visita intelligenti con pellicola intercambiabile. Recensioni Google, menu digitali, contatti. Programmazione illimitata inclusa.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-10">
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Biglietti da visita</span>
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Menu digitali</span>
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Recensioni Google</span>
+              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Pellicola intercambiabile</span>
+            </div>
+            <a href="/contattaci?topic=nfc" class="sl-btn-secondary">Richiedi preventivo</a>
+          </div>
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
+            <img
+              src="/nfc.jpg"
+              alt="Tessere NFC intelligenti in uso"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SISTEMI AZIENDALI -->
+    <section id="sistemi" class="relative min-h-screen flex items-center justify-center py-24">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=85"
+          alt="Sistemi aziendali CRM gestionale"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-black/62"></div>
+        <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+      </div>
+      <div class="relative z-10 w-full max-w-2xl mx-6 md:mx-auto text-center backdrop-blur-xl bg-white/[0.07] border border-white/15 rounded-3xl px-8 md:px-16 py-14">
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">04 — Sistemi Aziendali</p>
+        <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-6">
+          Automatizza.<br />Controlla.<br />Scala.
+        </h2>
+        <p class="text-base md:text-lg text-white/70 mb-10 max-w-md mx-auto leading-relaxed">
+          Gestionali, CRM e CMMS su misura. Dall'analisi dei processi al deploy in produzione. Supporto post-lancio incluso.
+        </p>
+        <a href="/contattaci?topic=sistemi" class="sl-btn-secondary">Richiedi preventivo</a>
+      </div>
+    </section>
+
+    <!-- GRAFICA & IDENTITÀ VISIVA -->
+    <section id="grafica" class="relative min-h-screen flex flex-col md:flex-row overflow-hidden">
+      <!-- mobile bg -->
+      <div class="absolute inset-0 md:hidden">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=85" alt="" class="w-full h-full object-cover opacity-15" loading="lazy" decoding="async" />
+      </div>
+      <!-- pannello sinistro: testo su nero -->
+      <div class="relative z-10 flex flex-col justify-center bg-black md:w-1/2 px-8 md:px-14 lg:px-20 py-32 md:py-0 min-h-screen order-1">
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">05 — Grafica &amp; Identità Visiva</p>
+        <h2 class="text-5xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-6">
+          Design che<br />lascia il segno.
+        </h2>
+        <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
+          Logo, brand identity, materiali stampa e social. In collaborazione con <a href="https://tropinistudio.it" target="_blank" rel="noopener" class="text-white underline underline-offset-4 hover:text-white/80 transition-colors">Tropini Studio Design</a>.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-10">
+          <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Logo &amp; Brand</span>
+          <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Social media</span>
+          <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Materiali stampa</span>
+          <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Brand identity</span>
+        </div>
+        <a href="/contattaci?topic=grafica" class="sl-btn-secondary self-start">Richiedi preventivo</a>
+      </div>
+      <!-- pannello destro: immagine desktop -->
+      <div class="hidden md:block md:w-1/2 relative overflow-hidden order-2">
+        <img
+          src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=85"
+          alt="Grafica e identità visiva"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-black to-transparent pointer-events-none"></div>
+        <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
+      </div>
+    </section>
+
+    <!-- AI -->
+    <section id="ai" class="relative bg-black py-32 md:py-44 overflow-hidden text-center">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-indigo-600/12 blur-[140px]"></div>
+      </div>
+      <div class="relative z-10 px-8 max-w-3xl mx-auto">
+        <p class="text-xs font-semibold tracking-[0.25em] text-indigo-400/70 uppercase mb-6">06 — Intelligenza Artificiale</p>
+        <h2 class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.04] tracking-tight mb-6">
+          AI su misura<br />per la tua azienda.
+        </h2>
+        <p class="text-base md:text-lg text-white/65 mb-12 max-w-lg mx-auto leading-relaxed">
+          Chatbot, automazioni e strumenti intelligenti integrati nei tuoi processi. Sviluppati su misura, non soluzioni preconfezionate.
+        </p>
+        <a href="https://ai.bitora.it/" class="sl-btn-primary" target="_blank" rel="noopener">Scopri Bitora AI →</a>
+      </div>
+    </section>
+
+    <!-- CTA FINALE -->
+    <section class="bg-black py-28 px-8 md:px-16 lg:px-24 text-center border-t border-white/10">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-5 max-w-2xl mx-auto">
+        Quale servizio<br />fa per te?
+      </h2>
+      <p class="text-base md:text-lg text-white/60 mb-10 max-w-md mx-auto">
+        Parlaci del tuo progetto. Risposta entro 24 ore, consulenza gratuita.
+      </p>
+      <a href="/contattaci" class="sl-btn-primary">Contattaci ora</a>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  .sl-btn-primary {
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:#fff;color:#000;font-weight:600;font-size:.875rem;
+    padding:.75rem 1.75rem;border-radius:4px;transition:background .2s;white-space:nowrap;
+  }
+  .sl-btn-primary:hover{background:#e5e5e5;}
+  .sl-btn-secondary {
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:transparent;color:#fff;font-weight:600;font-size:.875rem;
+    padding:.75rem 1.75rem;border-radius:4px;
+    border:1.5px solid rgba(255,255,255,.55);
+    transition:border-color .2s,background .2s;white-space:nowrap;
+  }
+  .sl-btn-secondary:hover{border-color:rgba(255,255,255,.9);background:rgba(255,255,255,.08);}
+</style>
