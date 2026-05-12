@@ -54,6 +54,21 @@
     animation: fadeIn 0.3s ease-in-out forwards;
   }
 
+  /* Responsive media queries */
+  @media (max-width: 768px) {
+    nav {
+      height: auto;
+      min-height: 4rem;
+    }
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+    .hero {
+      min-height: 50vh;
+    }
+  }
+
   @keyframes fadeIn {
     to {
       opacity: 1;

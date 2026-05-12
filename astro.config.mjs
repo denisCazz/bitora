@@ -19,7 +19,7 @@ export default defineConfig({
     }),
   ],
   // Canonical production origin (affects sitemap, etc.)
-  site: 'https://bitora.it/',
+  site: 'https://www.bitora.it/',
   base: '/',
   trailingSlash: 'ignore',
   output: 'server',
