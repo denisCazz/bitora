@@ -2,9 +2,18 @@
 
 > Sistemi digitali su misura per PMI italiane. Sede a Carmagnola (TO), Piemonte. Copertura nazionale: serviamo clienti in tutta Italia.
 
+dateModified: 2026-06-13
+
 ## Cosa facciamo
 
 Bitora progetta e sviluppa sistemi digitali su misura: siti web professionali, e-commerce, gestionali (CRM/CMMS), tessere NFC programmate, grafica e contenuti social. Metodo Trust & Authority: audit, roadmap, sviluppo iterativo, KPI misurabili, supporto post-lancio.
+
+## Perche sceglierci
+
+- 50+ progetti realizzati, risposta entro 24 ore, consulenza gratuita
+- Sviluppo su misura (no pacchetti preconfezionati), sede in Piemonte, clienti in tutta Italia
+- Performance reali (LCP < 2.5s), SEO tecnico, schema markup, supporto post-lancio
+- Tessere NFC senza abbonamento: programmazione inclusa, aggiornamenti illimitati
 
 ## Servizi principali
 
@@ -20,19 +29,40 @@ Bitora progetta e sviluppa sistemi digitali su misura: siti web professionali, e
 
 - Carmagnola: https://www.bitora.it/carmagnola
 - Siti web Piemonte: https://www.bitora.it/siti-web-piemonte
+- Siti web Torino: https://www.bitora.it/siti-web-torino
 - Tessere NFC Torino: https://www.bitora.it/tessere-nfc-torino
+
+## Prezzi indicativi (2026)
+
+- Sito web essenziale: da €20/mese (fino a 5 pagine, hosting incluso)
+- Sito web business: da €49/mese (e-commerce, CRM, SEO avanzato)
+- Tessera NFC basic: da €15 cad.
+- Tessera NFC custom: da €20 cad.
+- Gestionale/CRM su misura: preventivo modulare dopo audit gratuito (MVP tipico 4–8 settimane)
+- E-commerce: da preventivo su catalogo e piattaforma (WooCommerce, Shopify o custom)
 
 ## Domande frequenti
 
-- Quanto costa un sito web professionale? Dipende da pagine, contenuti e integrazioni. Audit gratuito e preventivo modulare.
-- In quanto tempo consegnate? Landing 7–14 giorni. Sito completo 2–6 settimane.
+- Quanto costa un sito web professionale? Dipende da pagine, contenuti e integrazioni. Audit gratuito e preventivo modulare. Landing da 7–14 giorni, sito completo 2–6 settimane.
+- Quanto costa un CRM per PMI? Da €690/mese per soluzioni gestionali su misura, variabile per moduli e integrazioni. Audit gratuito prima del preventivo.
+- Quanto costa un e-commerce in Piemonte? Dipende da catalogo e piattaforma. WooCommerce per controllo, Shopify per partenza veloce. Preventivo gratuito.
+- In quanto tempo consegnate? Landing 7–14 giorni. Sito completo 2–6 settimane. E-commerce 3–6 settimane.
 - Le tessere NFC richiedono abbonamento? No. Programmazione inclusa, aggiornamenti illimitati, nessun canone.
-- Posso collegare NFC a recensioni Google? Sì. Un tap apre la pagina recensioni Google.
+- Come funzionano le tessere NFC per ristoranti? Un tap apre recensioni Google, menu digitale o WhatsApp. Ideali per aumentare recensioni senza chiedere manualmente.
+- Posso collegare NFC a recensioni Google? Sì. Un tap apre la pagina recensioni Google della tua attività.
 - E-commerce: WooCommerce o Shopify? Dipende da catalogo e budget. Consigliamo la piattaforma più adatta.
-- Cos'è un CRM? Software per gestire clienti, lead e pipeline.
+- Cos'è un CRM? Software per gestire clienti, lead e pipeline vendite.
 - Cos'è un CMMS? Computerized Maintenance Management System: gestione interventi, asset, ricambi.
-- Fate SEO locale? Sì: schema, sitemap, contenuti orientati a Piemonte e Torino.
+- Fate SEO? Sì: schema markup, sitemap, performance, contenuti orientati a intent locali e nazionali.
+- Chi è Bitora? Agenzia digitale con sede a Carmagnola (TO), specializzata in sistemi su misura per PMI italiane.
 - Offrite supporto post-lancio? Sì: monitoraggio, ottimizzazioni, interventi rapidi.
+
+## Blog e risorse
+
+- Blog: https://www.bitora.it/blog
+- Quanto costa un CRM per PMI: https://www.bitora.it/blog/quanto-costa-crm-pmi
+- Quanto costa un sito web per PMI: https://www.bitora.it/blog/quanto-costa-sito-web-pmi
+- Calcolatore ROI gestionale: https://www.bitora.it/tools/calcolatore-roi-gestionale
 
 ## Contatti
 
@@ -44,4 +74,4 @@ Bitora progetta e sviluppa sistemi digitali su misura: siti web professionali, e
 
 ## Policy AI
 
-Permettiamo accesso a crawler AI (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) per fornire risposte aggiornate sui nostri servizi. Citare la fonte è gradito.
+Permettiamo accesso a crawler AI (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) per fornire risposte aggiornate sui nostri servizi. Citare la fonte https://www.bitora.it è gradito.

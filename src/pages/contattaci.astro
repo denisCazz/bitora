@@ -14,7 +14,9 @@ const argomentoPreselezionato =
         ? 'sistemi-aziendali'
         : topic === 'crm'
           ? 'gestionali-crm'
-          : '';
+          : topic === 'sito'
+            ? 'siti-web'
+            : '';
 const topTestimonials = testimonials.slice(0, 2);
 ---
 
@@ -55,6 +57,8 @@ const topTestimonials = testimonials.slice(0, 2);
           <!-- WhatsApp -->
           <a
             href="https://wa.me/393514979670"
+            data-track="whatsapp_click"
+            data-track-location="contattaci_hero"
             class="group relative overflow-hidden rounded-2xl bg-white/[0.04] border border-white/10 p-10 transition-all hover:scale-[1.02] hover:border-white/40"
           >
             <div
@@ -98,6 +102,8 @@ const topTestimonials = testimonials.slice(0, 2);
           <!-- Phone -->
           <a
             href="tel:+393514979670"
+            data-track="phone_click"
+            data-track-location="contattaci_hero"
             class="group relative overflow-hidden rounded-2xl bg-white/[0.04] border border-white/10 p-10 transition-all hover:scale-[1.02] hover:border-white/40"
           >
             <div
@@ -180,9 +186,12 @@ const topTestimonials = testimonials.slice(0, 2);
                       id="nome"
                       name="nome"
                       required
-                      class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors"
+                      minlength="2"
+                      autocomplete="name"
+                      class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors invalid:border-red-400"
                       placeholder="Il tuo nome"
                     />
+                    <p id="nome-error" class="hidden mt-1 text-xs text-red-400">Inserisci almeno 2 caratteri</p>
                   </div>
                   <div>
                     <label
@@ -195,9 +204,11 @@ const topTestimonials = testimonials.slice(0, 2);
                       id="email"
                       name="email"
                       required
-                      class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors"
+                      autocomplete="email"
+                      class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors invalid:border-red-400"
                       placeholder="tua@email.it"
                     />
+                    <p id="email-error" class="hidden mt-1 text-xs text-red-400">Inserisci un indirizzo email valido</p>
                   </div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-6">
@@ -241,7 +252,7 @@ const topTestimonials = testimonials.slice(0, 2);
                         selected={argomentoPreselezionato === 'gestionali-crm'}
                         >Gestionali & CRM</option
                       >
-                      <option value="siti-web" class="bg-white dark:bg-zinc-900">Siti web</option>
+                      <option value="siti-web" class="bg-white dark:bg-zinc-900" selected={argomentoPreselezionato === 'siti-web'}>Siti web</option>
                       <option
                         value="e-commerce"
                         class="bg-white dark:bg-zinc-900"
@@ -270,8 +281,10 @@ const topTestimonials = testimonials.slice(0, 2);
                     name="messaggio"
                     rows="5"
                     required
-                    class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors resize-none"
+                    minlength="10"
+                    class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors resize-none invalid:border-red-400"
                     placeholder="Raccontaci il tuo progetto..."></textarea>
+                  <p id="messaggio-error" class="hidden mt-1 text-xs text-red-400">Scrivi almeno 10 caratteri</p>
                 </div>
                 <div class="flex items-start gap-3">
                   <input
@@ -294,8 +307,8 @@ const topTestimonials = testimonials.slice(0, 2);
                   class="hidden p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm"
                 >
                 </div>
-                <button type="submit" id="submit-btn" class="btn-primary px-8 py-4">
-                  Invia messaggio
+                <button type="submit" id="submit-btn" class="btn-primary px-8 py-4 disabled:opacity-60 disabled:cursor-not-allowed">
+                  <span id="submit-label">Invia messaggio</span>
                 </button>
               </form>
             </div>
@@ -417,7 +430,7 @@ const topTestimonials = testimonials.slice(0, 2);
           class="mt-24 p-8 bg-white/[0.04] border border-white/10 rounded-2xl text-center reveal-on-scroll hover:border-white/40 transition-all duration-300"
         >
           <h3 class="text-xl font-bold text-white mb-4">
-            PerchÃ© scegliere Bitora?
+            Perché scegliere Bitora?
           </h3>
           <div class="grid md:grid-cols-3 gap-6 text-left md:text-center">
             <div class="flex flex-col items-center gap-3">
@@ -513,23 +526,76 @@ const topTestimonials = testimonials.slice(0, 2);
     });
   }, observerOptions);
 
+  function isValidEmail(value: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  function validateContactForm(form: HTMLFormElement): boolean {
+    const nome = form.querySelector('#nome') as HTMLInputElement;
+    const email = form.querySelector('#email') as HTMLInputElement;
+    const messaggio = form.querySelector('#messaggio') as HTMLTextAreaElement;
+    const nomeError = document.getElementById('nome-error');
+    const emailError = document.getElementById('email-error');
+    const messaggioError = document.getElementById('messaggio-error');
+    let valid = true;
+
+    const show = (el: HTMLElement | null, showErr: boolean) => {
+      if (!el) return;
+      el.classList.toggle('hidden', !showErr);
+    };
+
+    if (nome.value.trim().length < 2) {
+      show(nomeError, true);
+      valid = false;
+    } else {
+      show(nomeError, false);
+    }
+
+    if (!isValidEmail(email.value.trim())) {
+      show(emailError, true);
+      valid = false;
+    } else {
+      show(emailError, false);
+    }
+
+    if (messaggio.value.trim().length < 10) {
+      show(messaggioError, true);
+      valid = false;
+    } else {
+      show(messaggioError, false);
+    }
+
+    return valid;
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll('.reveal-on-scroll');
     elements.forEach(el => observer.observe(el));
 
-    const form = document.getElementById('contact-form');
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
     const submitBtn = document.getElementById('submit-btn');
+    const submitLabel = document.getElementById('submit-label');
     const errorEl = document.getElementById('form-error');
+
+    ['nome', 'email', 'messaggio'].forEach(id => {
+      const field = document.getElementById(id);
+      field?.addEventListener('blur', () => {
+        if (form) validateContactForm(form);
+      });
+    });
 
     form?.addEventListener('submit', async e => {
       e.preventDefault();
-      if (!submitBtn || !errorEl) return;
+      if (!submitBtn || !errorEl || !form) return;
+
+      if (!validateContactForm(form)) return;
 
       submitBtn.setAttribute('disabled', '');
+      if (submitLabel) submitLabel.textContent = 'Invio in corso…';
       errorEl.classList.add('hidden');
       errorEl.textContent = '';
 
-      const formData = new FormData(form as HTMLFormElement);
+      const formData = new FormData(form);
 
       try {
         const res = await fetch('/api/contact', {
@@ -544,6 +610,8 @@ const topTestimonials = testimonials.slice(0, 2);
         const payload = isJson ? await res.json().catch(() => null) : await res.text().catch(() => '');
 
         if (res.ok && payload && typeof payload === 'object' && payload.ok) {
+          const w = window as Window & { bitoraTrack?: (n: string, p?: Record<string, string>) => void };
+          w.bitoraTrack?.('lead_form_submit', { location: 'contattaci' });
           window.location.href = '/contattaci/?inviato=1';
           return;
         }
@@ -558,6 +626,7 @@ const topTestimonials = testimonials.slice(0, 2);
         errorEl.classList.remove('hidden');
       } finally {
         submitBtn.removeAttribute('disabled');
+        if (submitLabel) submitLabel.textContent = 'Invia messaggio';
       }
     });
   });

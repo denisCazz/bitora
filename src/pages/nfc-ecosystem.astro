@@ -8,6 +8,8 @@ import ServiceSchema from '../components/schema/Service.astro';
 import FAQPageSchema from '../components/schema/FAQPage.astro';
 import HowToSchema from '../components/schema/HowTo.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
+import AnswerFirst from '../components/AnswerFirst.astro';
+import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 ---
 
 <Layout
@@ -31,6 +33,11 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
         { src: '/mistral.jpg', alt: 'Mistral Impianti' },
         { src: '/ilportico.png', alt: 'Il Portico' },
       ]}
+    />
+
+    <AnswerFirst
+      question="Come funzionano le tessere NFC per ristoranti e attività locali?"
+      answer="Una tessera NFC programmata apre con un tap dello smartphone una pagina personalizzata: recensioni Google, menu digitale, WhatsApp o contatti. Bitora programma il chip, include aggiornamenti illimitati e nessun abbonamento mensile. Ideale per bar, ristoranti e professionisti in Piemonte."
     />
 
     <section
@@ -152,6 +159,62 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
               },
             ]}
           />
+        </div>
+      </div>
+    </section>
+
+    <ServiceRelatedLinks
+      links={[
+        {
+          href: '/tessere-nfc-torino',
+          label: 'Tessere NFC Torino',
+          desc: 'Consegna in provincia torinese',
+        },
+        {
+          href: '/blog/tessere-nfc-ristoranti',
+          label: 'NFC per ristoranti',
+          desc: 'Guida recensioni Google con un tap',
+        },
+        {
+          href: '/settori/ristoranti',
+          label: 'Soluzioni ristoranti',
+          desc: 'Menu digitale, ordini, NFC',
+        },
+        {
+          href: '/carmagnola',
+          label: 'Bitora Carmagnola',
+          desc: 'Sede e clienti locali NFC',
+        },
+        {
+          href: '/prezzi',
+          label: 'Prezzi tessere NFC',
+          desc: 'Da €15, senza abbonamento',
+        },
+      ]}
+    />
+
+    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2
+          class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+        >
+          Pronto per le tessere NFC?
+        </h2>
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+          Programmazione inclusa, nessun abbonamento. Consegna in pochi giorni.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contattaci?topic=nfc" class="btn-primary min-w-[220px] shine-on-hover"
+            >Richiedi informazioni</a
+          >
+          <a
+            href="https://wa.me/393514979670?text=Ciao,%20vorrei%20informazioni%20sulle%20tessere%20NFC."
+            data-track="whatsapp_click"
+            data-track-location="nfc_cta"
+            class="btn-secondary min-w-[220px]"
+          >
+            WhatsApp
+          </a>
         </div>
       </div>
     </section>

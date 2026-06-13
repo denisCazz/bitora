@@ -9,6 +9,8 @@ import ServiceSchema from '../components/schema/Service.astro';
 import FAQPageSchema from '../components/schema/FAQPage.astro';
 import HowToSchema from '../components/schema/HowTo.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
+import AnswerFirst from '../components/AnswerFirst.astro';
+import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 ---
 
 <Layout
@@ -28,6 +30,11 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
       posterSrc="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1600&q=80"
       videoSrc="https://videos.pexels.com/video-files/3192293/3192293-uhd_2560_1440_25fps.mp4"
       videoLabel="Sviluppo siti web professionali"
+    />
+
+    <AnswerFirst
+      question="Quanto costa un sito web professionale per una PMI?"
+      answer="Un sito web professionale per PMI parte da circa €20/mese per soluzioni essenziali (fino a 5 pagine con hosting) fino a progetti business da €49/mese o preventivi su misura. Bitora offre audit gratuito e consegna in 7–14 giorni per landing, 2–6 settimane per siti completi."
     />
 
     <section
@@ -200,6 +207,41 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
       </div>
     </section>
 
+    <ServiceRelatedLinks
+      links={[
+        {
+          href: '/siti-web-piemonte',
+          label: 'Siti web Piemonte',
+          desc: 'Web agency per Torino e provincia',
+        },
+        {
+          href: '/siti-web-torino',
+          label: 'Siti web Torino',
+          desc: 'Progetti per aziende torinesi',
+        },
+        {
+          href: '/blog/quanto-costa-sito-web-pmi',
+          label: 'Quanto costa un sito web PMI',
+          desc: 'Guida prezzi e tempi 2026',
+        },
+        {
+          href: '/carmagnola',
+          label: 'Web design Carmagnola',
+          desc: 'Sede Bitora e clienti locali',
+        },
+        {
+          href: '/e-commerce-piemonte',
+          label: 'E-commerce Piemonte',
+          desc: 'Negozi online chiavi in mano',
+        },
+        {
+          href: '/lavori',
+          label: 'Case study',
+          desc: 'Progetti reali con metriche',
+        },
+      ]}
+    />
+
     <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
       <div class="max-w-6xl mx-auto text-center">
         <h2
@@ -216,6 +258,8 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
           >
           <a
             href="https://wa.me/393514979670?text=Ciao,%20vorrei%20un%20preventivo%20per%20un%20sito%20web."
+            data-track="whatsapp_click"
+            data-track-location="siti_web_cta"
             class="btn-secondary min-w-[220px]"
           >
             WhatsApp

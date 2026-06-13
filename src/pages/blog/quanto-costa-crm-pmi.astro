@@ -1,0 +1,123 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+import FAQPageSchema from '../../components/schema/FAQPage.astro';
+import ArticleSchema from '../../components/schema/Article.astro';
+
+const faqItems = [
+  {
+    question: 'Quanto costa un CRM per una PMI in Italia nel 2026?',
+    answer:
+      'Un CRM per PMI costa da €50–150/mese per soluzioni SaaS standard fino a €690+/mese per gestionali su misura con moduli avanzati. Il prezzo dipende da utenti, integrazioni e personalizzazioni.',
+  },
+  {
+    question: 'Conviene un CRM a pacchetto o su misura?',
+    answer:
+      'Il pacchetto conviene per processi standard. Il su misura è migliore se hai flussi specifici, integrazioni con strumenti interni o bisogno di automazioni personalizzate.',
+  },
+  {
+    question: 'Quanto tempo serve per implementare un CRM?',
+    answer:
+      'Un SaaS si attiva in giorni. Un CRM su misura richiede tipicamente 4–8 settimane per un MVP funzionale, con rilasci iterativi.',
+  },
+  {
+    question: 'Un CRM si integra con email e WhatsApp?',
+    answer:
+      'Sì. Bitora integra email, WhatsApp, fogli, fatturazione e API REST per centralizzare lead e follow-up.',
+  },
+];
+---
+
+<Layout
+  title="Quanto Costa un CRM per PMI nel 2026 | Prezzi e Guida | Bitora"
+  description="Quanto costa un CRM per PMI? Guida 2026 con fasce di prezzo (SaaS vs su misura), tempi di implementazione, errori da evitare e consigli per scegliere. Audit gratuito Bitora."
+>
+  <ArticleSchema
+    headline="Quanto costa un CRM per PMI nel 2026"
+    description="Guida ai prezzi CRM per PMI: SaaS, su misura, tempi e criteri di scelta."
+    datePublished="2026-06-13"
+    dateModified="2026-06-13"
+    url="https://www.bitora.it/blog/quanto-costa-crm-pmi"
+    image="https://www.bitora.it/bitora.jpg"
+  />
+
+  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
+    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div class="relative z-10 max-w-3xl">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors mb-6"
+        >
+          ← Blog
+        </a>
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/10 rounded-full"
+            >CRM</span
+          >
+          <span class="text-sm text-gray-500">13 Giugno 2026</span>
+          <span class="text-sm text-gray-500">· 6 min</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tight leading-[1.15] mb-6">
+          Quanto costa un CRM per PMI nel 2026?
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          <strong class="text-gray-900 dark:text-white"
+            >Un CRM per PMI costa da circa €50/mese (SaaS base) a €690+/mese (gestionale su misura)</strong
+          >, in base a utenti, moduli e integrazioni. Ecco come orientarti senza sprechi.
+        </p>
+      </div>
+    </section>
+
+    <article class="py-16 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-3xl mx-auto space-y-8 text-gray-600 dark:text-gray-400 leading-relaxed">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Fasce di prezzo CRM</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li><strong class="text-gray-900 dark:text-white">SaaS entry-level:</strong> €50–150/mese per 1–5 utenti, funzioni base (pipeline, contatti).</li>
+            <li><strong class="text-gray-900 dark:text-white">SaaS avanzato:</strong> €150–400/mese con automazioni, report e integrazioni.</li>
+            <li><strong class="text-gray-900 dark:text-white">Su misura Bitora:</strong> da €690/mese per gestionali/CRM personalizzati con moduli specifici.</li>
+            <li><strong class="text-gray-900 dark:text-white">Setup iniziale:</strong> €0 per SaaS, variabile per sviluppo custom (audit gratuito).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Cosa influenza il prezzo</h2>
+          <p>
+            Numero utenti, automazioni, integrazioni (email, WhatsApp, fatturazione), report custom,
+            app mobile per operatori sul campo. Più processi unici hai, più conviene valutare una
+            <a href="/sistemi-aziendali" class="text-gray-900 dark:text-white underline"
+              >soluzione su misura</a
+            >.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">ROI: quando si ripaga</h2>
+          <p>
+            Un CRM ben configurato riduce lavoro manuale su lead, follow-up e reportistica. Usa il nostro
+            <a href="/tools/calcolatore-roi-gestionale" class="text-gray-900 dark:text-white underline"
+              >calcolatore ROI gestionale</a
+            > per stimare il risparmio in ore e euro. Leggi anche
+            <a href="/blog/gestionale-pmi-2026" class="text-gray-900 dark:text-white underline"
+              >come scegliere un gestionale</a
+            >.
+          </p>
+        </section>
+
+        <div
+          class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-center"
+        >
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            Vuoi un preventivo CRM su misura?
+          </h3>
+          <p class="mb-6">Audit gratuito + roadmap modulare. Risposta in 24h.</p>
+          <a href="/contattaci?topic=crm" class="btn-primary inline-flex items-center gap-2"
+            >Richiedi consulenza</a
+          >
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<FAQPageSchema items={faqItems} />

@@ -1,0 +1,31 @@
+---
+export interface Props {
+  question: string;
+  answer: string;
+}
+
+const { question, answer } = Astro.props;
+---
+
+<aside
+  class="border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02] py-8 px-6 md:px-12 lg:px-20"
+  itemscope
+  itemtype="https://schema.org/Question"
+>
+  <div class="max-w-6xl mx-auto">
+    <p class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-2">
+      Risposta rapida
+    </p>
+    <h2 class="text-lg md:text-xl font-bold text-slate-950 dark:text-white" itemprop="name">
+      {question}
+    </h2>
+    <p
+      class="mt-3 text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed"
+      itemprop="acceptedAnswer"
+      itemscope
+      itemtype="https://schema.org/Answer"
+    >
+      <span itemprop="text">{answer}</span>
+    </p>
+  </div>
+</aside>

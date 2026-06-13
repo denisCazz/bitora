@@ -9,6 +9,8 @@ import ServiceSchema from '../components/schema/Service.astro';
 import FAQPageSchema from '../components/schema/FAQPage.astro';
 import HowToSchema from '../components/schema/HowTo.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
+import AnswerFirst from '../components/AnswerFirst.astro';
+import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 ---
 
 <Layout
@@ -28,6 +30,11 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
       posterSrc="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80"
       videoSrc="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4"
       videoLabel="Dashboard gestionale aziendale"
+    />
+
+    <AnswerFirst
+      question="Quanto costa un gestionale o CRM su misura per una PMI?"
+      answer="Un gestionale o CRM su misura per PMI parte da preventivo modulare dopo audit gratuito: tipicamente da €690/mese per soluzioni gestionali complete, variabile per moduli e integrazioni. MVP funzionale in 4–8 settimane con rilasci iterativi."
     />
 
     <section
@@ -174,6 +181,62 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
               },
             ]}
           />
+        </div>
+      </div>
+    </section>
+
+    <ServiceRelatedLinks
+      links={[
+        {
+          href: '/bitora-crm',
+          label: 'Bitora CRM',
+          desc: 'CRM professionale per PMI',
+        },
+        {
+          href: '/cmms',
+          label: 'CMMS manutenzione',
+          desc: 'Software per assistenza tecnica',
+        },
+        {
+          href: '/blog/quanto-costa-crm-pmi',
+          label: 'Quanto costa un CRM PMI',
+          desc: 'Guida prezzi e scelta 2026',
+        },
+        {
+          href: '/blog/gestionale-pmi-2026',
+          label: 'Come scegliere un gestionale',
+          desc: 'Criteri e errori da evitare',
+        },
+        {
+          href: '/tools/calcolatore-roi-gestionale',
+          label: 'Calcolatore ROI gestionale',
+          desc: 'Stima risparmio in pochi click',
+        },
+      ]}
+    />
+
+    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2
+          class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+        >
+          Vuoi digitalizzare i processi?
+        </h2>
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+          Audit gratuito + roadmap modulare. Risposta in 24h.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contattaci?topic=sistemi" class="btn-primary min-w-[220px] shine-on-hover"
+            >Richiedi consulenza</a
+          >
+          <a
+            href="https://wa.me/393514979670?text=Ciao,%20vorrei%20informazioni%20su%20gestionali%20e%20CRM."
+            data-track="whatsapp_click"
+            data-track-location="sistemi_cta"
+            class="btn-secondary min-w-[220px]"
+          >
+            WhatsApp
+          </a>
         </div>
       </div>
     </section>

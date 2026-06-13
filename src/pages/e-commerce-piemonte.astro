@@ -7,7 +7,10 @@ import FAQ from '../components/FAQ.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 import ServiceSchema from '../components/schema/Service.astro';
 import FAQPageSchema from '../components/schema/FAQPage.astro';
+import HowToSchema from '../components/schema/HowTo.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
+import AnswerFirst from '../components/AnswerFirst.astro';
+import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 ---
 
 <Layout
@@ -27,6 +30,11 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
       posterSrc="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80"
       videoSrc="https://videos.pexels.com/video-files/4994040/4994040-uhd_2732_1440_25fps.mp4"
       videoLabel="E-commerce checkout in azione"
+    />
+
+    <AnswerFirst
+      question="Quanto costa un e-commerce per una PMI in Piemonte?"
+      answer="Un e-commerce professionale costa in base a catalogo, piattaforma e integrazioni. Bitora realizza negozi WooCommerce, Shopify o custom con preventivo modulare gratuito. Tempi tipici: 3–6 settimane dal brief al go-live, con pagamenti, spedizioni e SEO inclusi."
     />
 
     <section
@@ -223,6 +231,36 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
       </div>
     </section>
 
+    <ServiceRelatedLinks
+      links={[
+        {
+          href: '/siti-web-piemonte',
+          label: 'Web agency Piemonte',
+          desc: 'Siti e negozi online nel territorio',
+        },
+        {
+          href: '/siti-web-professionali',
+          label: 'Siti web professionali',
+          desc: 'Vetrina e conversione prima del negozio',
+        },
+        {
+          href: '/blog/quanto-costa-sito-web-pmi',
+          label: 'Guida costi digitali PMI',
+          desc: 'Confronto investimenti web 2026',
+        },
+        {
+          href: '/prezzi',
+          label: 'Investimenti',
+          desc: 'Piani e preventivi personalizzati',
+        },
+        {
+          href: '/lavori',
+          label: 'Progetti e-commerce',
+          desc: 'Case study con risultati',
+        },
+      ]}
+    />
+
     <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
       <div class="max-w-6xl mx-auto text-center">
         <h2
@@ -239,6 +277,8 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
           >
           <a
             href="https://wa.me/393514979670?text=Ciao,%20vorrei%20un%20preventivo%20per%20un%20e-commerce."
+            data-track="whatsapp_click"
+            data-track-location="ecommerce_cta"
             class="btn-secondary min-w-[220px]"
           >
             WhatsApp
@@ -301,6 +341,17 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
       answer:
         'Sì: monitoraggio, aggiornamenti, ottimizzazioni continue. Niente abbandono al lancio.',
     },
+  ]}
+/>
+
+<HowToSchema
+  name="Come lanciamo un e-commerce per PMI"
+  description="Metodo Bitora: strategia, piattaforma, sviluppo, go-live."
+  steps={[
+    { name: 'Strategia', text: 'Analisi catalogo, target, piattaforma (WooCommerce, Shopify o custom).' },
+    { name: 'Setup', text: 'Design checkout, pagamenti Stripe/PayPal, spedizioni GLS/BRT/Poste.' },
+    { name: 'Sviluppo', text: 'Caricamento prodotti, SEO product schema, tracking conversioni.' },
+    { name: 'Go-live', text: 'Test ordini, Merchant Center, supporto e ottimizzazioni post-lancio.' },
   ]}
 />
 

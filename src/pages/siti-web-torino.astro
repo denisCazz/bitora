@@ -1,0 +1,126 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import ServiceSchema from '../components/schema/Service.astro';
+import FAQPageSchema from '../components/schema/FAQPage.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
+import AnswerFirst from '../components/AnswerFirst.astro';
+
+const faqItems = [
+  {
+    question: 'Quanto costa un sito web a Torino?',
+    answer:
+      'Un sito web professionale a Torino parte da circa €20/mese (essenziale) fino a progetti business da €49+/mese o preventivi su misura. Bitora offre audit gratuito e consegna in 2–6 settimane.',
+  },
+  {
+    question: 'Realizzate siti web per aziende di Torino e provincia?',
+    answer:
+      'Sì. Bitora ha sede a Carmagnola (TO) e realizza siti web, e-commerce e sistemi digitali per aziende di Torino, provincia e tutta Italia.',
+  },
+  {
+    question: 'Fate SEO locale per Torino?',
+    answer:
+      'Sì: schema markup, performance, contenuti geo-targetizzati e ottimizzazione per ricerche locali Torino e Piemonte.',
+  },
+];
+---
+
+<Layout
+  title="Siti Web Torino | Web Design per Aziende e PMI | Bitora"
+  description="Realizzazione siti web professionali a Torino e provincia. Design su misura, SEO locale, performance e e-commerce. Sede Bitora a Carmagnola (TO). Preventivo gratuito."
+>
+  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
+    <section class="relative py-24 md:py-32 px-6 md:px-12 text-center overflow-hidden">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-200/50 dark:from-gray-800/20 via-white dark:via-black to-white dark:to-black opacity-50"
+      >
+      </div>
+      <div class="relative z-10 max-w-4xl mx-auto space-y-6">
+        <p class="text-sm font-medium tracking-widest uppercase text-gray-500">Siti Web Torino</p>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+          Siti web professionali<br />
+          <span class="text-gray-600 dark:text-gray-400">per Torino e provincia.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Web design, e-commerce e SEO locale per PMI torinesi. Sede a Carmagnola, progetti in tutta
+          Italia.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+          <a href="/contattaci?topic=sito" class="btn-primary px-8 py-4">Preventivo gratuito</a>
+          <a href="/lavori" class="btn-secondary px-8 py-4">Vedi progetti</a>
+        </div>
+      </div>
+    </section>
+
+    <AnswerFirst
+      question="Chi realizza siti web professionali a Torino?"
+      answer="Bitora realizza siti web professionali per aziende di Torino e provincia: design su misura, SEO locale, performance LCP < 2.5s ed e-commerce. Sede a Carmagnola (TO), preventivo gratuito e consegna in 2–6 settimane."
+    />
+
+    <section class="py-20 px-6 md:px-12 border-y border-gray-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+        {
+          [
+            {
+              title: 'Design su misura',
+              desc: 'Niente template generici. UI orientata a conversione e brand.',
+            },
+            {
+              title: 'SEO Torino',
+              desc: 'Schema, performance e contenuti per ricerche locali e nazionali.',
+            },
+            {
+              title: 'Supporto continuo',
+              desc: 'Monitoraggio, aggiornamenti e ottimizzazioni post-lancio.',
+            },
+          ].map(item => (
+            <div class="rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/[0.03] p-6">
+              <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h2>
+              <p class="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="py-20 px-6 md:px-12">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Aree servite</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-8">
+          Torino centro, corso Francia, Mirafiori, Lingotto, Collegno, Rivoli, Moncalieri, Nichelino e
+          tutta la cintura torinese. Scopri anche
+          <a href="/siti-web-piemonte" class="text-gray-900 dark:text-white underline"
+            >siti web Piemonte</a
+          > e
+          <a href="/blog/quanto-costa-sito-web-pmi" class="text-gray-900 dark:text-white underline"
+            >guida prezzi siti web PMI</a
+          >.
+        </p>
+        <a
+          href="https://wa.me/393514979670?text=Ciao,%20vorrei%20un%20preventivo%20per%20un%20sito%20web%20a%20Torino."
+          data-track="whatsapp_click"
+          data-track-location="siti_web_torino"
+          class="btn-secondary inline-flex items-center gap-2"
+        >
+          WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<ServiceSchema
+  name="Realizzazione Siti Web Torino"
+  url="https://www.bitora.it/siti-web-torino/"
+  serviceType={['Siti Web', 'Web Design Torino', 'SEO Locale']}
+  areaServed={['Torino', 'Piemonte', 'Italia']}
+/>
+
+<FAQPageSchema items={faqItems} />
+
+<BreadcrumbListSchema
+  crumbs={[
+    { name: 'Home', item: 'https://www.bitora.it/' },
+    { name: 'Siti Web Torino', item: 'https://www.bitora.it/siti-web-torino/' },
+  ]}
+/>

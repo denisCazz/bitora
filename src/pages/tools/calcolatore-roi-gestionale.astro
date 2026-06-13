@@ -220,6 +220,56 @@ import Layout from '../../layouts/Layout.astro';
             Il calcolo è una stima basata sui parametri inseriti. Per una valutazione completa,
             integra costi indiretti, tempi amministrativi e crescita dei volumi.
           </p>
+
+          <!-- Lead magnet: report via email -->
+          <div
+            class="mt-8 pt-8 border-t border-gray-200 dark:border-white/10"
+            id="roi-lead-magnet"
+          >
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
+              Ricevi il report ROI via email
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              Salva la stima e ricevi un riepilogo con i numeri calcolati. Consulenza gratuita inclusa.
+            </p>
+            <form id="roi-report-form" class="space-y-4">
+              <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+              <input type="hidden" id="roi-savedHours" name="savedHours" />
+              <input type="hidden" id="roi-grossSaving" name="grossSaving" />
+              <input type="hidden" id="roi-netMonthly" name="netMonthly" />
+              <input type="hidden" id="roi-netYearly" name="netYearly" />
+              <input type="hidden" id="roi-roiMonthly" name="roiMonthly" />
+              <input type="hidden" id="roi-payback" name="payback" />
+              <div class="grid sm:grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  id="roi-nome"
+                  name="nome"
+                  required
+                  minlength="2"
+                  placeholder="Il tuo nome"
+                  class="w-full bg-white dark:bg-black/40 border border-gray-300 dark:border-white/15 rounded-xl px-4 py-3 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+                />
+                <input
+                  type="email"
+                  id="roi-email"
+                  name="email"
+                  required
+                  placeholder="tua@email.it"
+                  class="w-full bg-white dark:bg-black/40 border border-gray-300 dark:border-white/15 rounded-xl px-4 py-3 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+                />
+              </div>
+              <div id="roi-form-error" class="hidden p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm"></div>
+              <div id="roi-form-success" class="hidden p-3 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-sm"></div>
+              <button
+                type="submit"
+                id="roi-submit-btn"
+                class="w-full sm:w-auto px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-xl font-bold text-sm hover:opacity-90 transition-opacity disabled:opacity-60"
+              >
+                <span id="roi-submit-label">Invia report ROI</span>
+              </button>
+            </form>
+          </div>
         </article>
       </div>
     </section>
@@ -389,6 +439,18 @@ import Layout from '../../layouts/Layout.astro';
             write('payback', `${decimal.format(paybackMonths)} mesi`);
           }
 
+          const syncHidden = (id: string, sourceId: string) => {
+            const hidden = document.getElementById(id) as HTMLInputElement | null;
+            const source = document.getElementById(sourceId);
+            if (hidden && source) hidden.value = source.textContent ?? '';
+          };
+          syncHidden('roi-savedHours', 'savedHours');
+          syncHidden('roi-grossSaving', 'grossSaving');
+          syncHidden('roi-netMonthly', 'netMonthly');
+          syncHidden('roi-netYearly', 'netYearly');
+          syncHidden('roi-roiMonthly', 'roiMonthly');
+          syncHidden('roi-payback', 'payback');
+
           const perOperator = savedHoursMonthly / operators;
           const paybackNode = document.getElementById('savedHours');
           if (paybackNode) {
@@ -433,6 +495,73 @@ import Layout from '../../layouts/Layout.astro';
       }
 
       document.addEventListener('astro:page-load', initRoiCalculator);
+
+      const initRoiLeadForm = () => {
+        const form = document.getElementById('roi-report-form') as HTMLFormElement | null;
+        if (!form || form.getAttribute('data-bound') === '1') return;
+        form.setAttribute('data-bound', '1');
+
+        const errorEl = document.getElementById('roi-form-error');
+        const successEl = document.getElementById('roi-form-success');
+        const submitBtn = document.getElementById('roi-submit-btn');
+        const submitLabel = document.getElementById('roi-submit-label');
+
+        form.addEventListener('submit', async e => {
+          e.preventDefault();
+          if (!errorEl || !successEl || !submitBtn) return;
+
+          errorEl.classList.add('hidden');
+          successEl.classList.add('hidden');
+          submitBtn.setAttribute('disabled', '');
+          if (submitLabel) submitLabel.textContent = 'Invio in corso…';
+
+          const payload = {
+            nome: (document.getElementById('roi-nome') as HTMLInputElement).value.trim(),
+            email: (document.getElementById('roi-email') as HTMLInputElement).value.trim(),
+            savedHours: (document.getElementById('roi-savedHours') as HTMLInputElement).value,
+            grossSaving: (document.getElementById('roi-grossSaving') as HTMLInputElement).value,
+            netMonthly: (document.getElementById('roi-netMonthly') as HTMLInputElement).value,
+            netYearly: (document.getElementById('roi-netYearly') as HTMLInputElement).value,
+            roiMonthly: (document.getElementById('roi-roiMonthly') as HTMLInputElement).value,
+            payback: (document.getElementById('roi-payback') as HTMLInputElement).value,
+            _gotcha: (form.querySelector('[name="_gotcha"]') as HTMLInputElement).value,
+          };
+
+          try {
+            const res = await fetch('/api/roi-report', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+              body: JSON.stringify(payload),
+            });
+            const data = await res.json().catch(() => null);
+
+            if (res.ok && data?.ok) {
+              const w = window as Window & { bitoraTrack?: (n: string, p?: Record<string, string>) => void };
+              w.bitoraTrack?.('roi_report_submit', { location: 'calcolatore_roi' });
+              successEl.textContent = 'Report inviato! Controlla la tua email.';
+              successEl.classList.remove('hidden');
+              form.reset();
+              return;
+            }
+
+            errorEl.textContent = data?.error || "Errore durante l'invio. Riprova.";
+            errorEl.classList.remove('hidden');
+          } catch {
+            errorEl.textContent = 'Errore di connessione. Riprova.';
+            errorEl.classList.remove('hidden');
+          } finally {
+            submitBtn.removeAttribute('disabled');
+            if (submitLabel) submitLabel.textContent = 'Invia report ROI';
+          }
+        });
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initRoiLeadForm);
+      } else {
+        initRoiLeadForm();
+      }
+      document.addEventListener('astro:page-load', initRoiLeadForm);
     </script>
   </main>
 </Layout>

@@ -6,6 +6,7 @@ import Analyticsgoogle from '../components/Analyticsgoogle.astro';
 import PerformanceMonitorSimple from '../components/PerformanceMonitorSimple.astro';
 import PerformanceOptimizer from '../components/PerformanceOptimizer.astro';
 import LocalBusinessSchema from '../components/schema/LocalBusiness.astro';
+import StickyContactBar from '../components/StickyContactBar.astro';
 import '../styles/global.css';
 
 export interface Props {
@@ -132,10 +133,8 @@ const ogImage = image?.startsWith('http')
     <meta name="geo.placename" content="Carmagnola" />
     <meta name="geo.position" content="44.8477;7.6833" />
     <meta name="ICBM" content="44.8477, 7.6833" />
-    <meta
-      name="keywords"
-      content="sistemi digitali su misura, gestionali, CRM, CMMS, siti web, e-commerce, PMI, software aziendale"
-    />
+
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
 
     <style is:global>
       html {
@@ -219,9 +218,33 @@ const ogImage = image?.startsWith('http')
       {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": "https://www.bitora.it/#organization",
         "name": "Bitora",
+        "alternateName": "Bitora Italia",
         "url": "https://www.bitora.it",
         "logo": "https://www.bitora.it/bitora.png",
+        "description": "Sistemi digitali su misura per PMI italiane: siti web, e-commerce, CRM, gestionali, CMMS e tessere NFC. Sede a Carmagnola (TO), servizio in tutta Italia.",
+        "foundingDate": "2020",
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Carmagnola, Piemonte, Italia"
+        },
+        "email": "info@bitora.it",
+        "telephone": "+39 351 497 9670",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "50",
+          "bestRating": "5"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+39 351 497 9670",
+          "contactType": "customer service",
+          "email": "info@bitora.it",
+          "availableLanguage": ["Italian"],
+          "areaServed": "IT"
+        },
         "sameAs": [
           "https://www.instagram.com/bitorait/",
           "https://www.facebook.com/people/Bitora-Italia/pfbid0JubiVqBfxyM2nY6CoHLW3P5vQkjhUGE5UF5Pa16f491fzGsneW512MdMTiEpgvJCl/?mibextid=wwXIfr&rdid=xyslEd78VfiU5dPK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BTziLdEef%2F%3Fmibextid%3DwwXIfr"
@@ -233,8 +256,12 @@ const ogImage = image?.startsWith('http')
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": "https://www.bitora.it/#website",
         "name": "Bitora - Sistemi Digitali su Misura",
-        "url": "https://www.bitora.it/"
+        "url": "https://www.bitora.it/",
+        "dateModified": "2026-06-13",
+        "publisher": { "@id": "https://www.bitora.it/#organization" },
+        "inLanguage": "it-IT"
       }
     </script>
 
@@ -248,11 +275,54 @@ const ogImage = image?.startsWith('http')
       <slot />
     </main>
     <Footer />
+    <StickyContactBar />
+
+    <!-- Conversion & event tracking -->
+    <script is:inline>
+      window.bitoraTrack = function (eventName, props) {
+        props = props || {};
+        try {
+          if (typeof umami !== 'undefined' && umami.track) {
+            umami.track(eventName, props);
+          }
+        } catch (e) {}
+        try {
+          if (typeof gtag !== 'undefined') {
+            gtag('event', eventName, props);
+            if (
+              eventName === 'lead_form_submit' ||
+              eventName === 'roi_report_submit' ||
+              eventName === 'generate_lead'
+            ) {
+              gtag('event', 'conversion', { send_to: 'AW-17047013851' });
+              gtag('event', 'generate_lead', { event_category: 'lead', ...props });
+            }
+          }
+        } catch (e) {}
+      };
+
+      function bindTrackableClicks() {
+        document.querySelectorAll('[data-track]').forEach(function (el) {
+          if (el.getAttribute('data-track-bound') === '1') return;
+          el.setAttribute('data-track-bound', '1');
+          el.addEventListener('click', function () {
+            var eventName = el.getAttribute('data-track');
+            var location = el.getAttribute('data-track-location') || 'page';
+            if (eventName) {
+              window.bitoraTrack(eventName, { location: location });
+            }
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', bindTrackableClicks);
+      document.addEventListener('astro:page-load', bindTrackableClicks);
+    </script>
 
     <!-- Back to Top Button -->
     <button
       id="back-to-top"
-      class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-gray-900 dark:bg-white text-white dark:text-black p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-gray-400"
+      class="fixed bottom-20 sm:bottom-4 right-4 sm:right-6 z-50 bg-gray-900 dark:bg-white text-white dark:text-black p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-gray-400"
       aria-label="Torna in cima"
     >
       <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

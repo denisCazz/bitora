@@ -1,0 +1,125 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+import FAQPageSchema from '../../components/schema/FAQPage.astro';
+import ArticleSchema from '../../components/schema/Article.astro';
+
+const faqItems = [
+  {
+    question: 'Quanto costa un sito web professionale per una PMI nel 2026?',
+    answer:
+      'Un sito web professionale per PMI parte da circa €20/mese (soluzione essenziale, 5 pagine con hosting) fino a €49+/mese per siti business con e-commerce e integrazioni. Progetti su misura hanno preventivo personalizzato.',
+  },
+  {
+    question: 'Quanto tempo serve per realizzare un sito web?',
+    answer:
+      'Una landing efficace richiede 7–14 giorni. Un sito completo 2–6 settimane, in base a contenuti, pagine e revisioni.',
+  },
+  {
+    question: 'Cosa include un sito web professionale?',
+    answer:
+      'Design responsive, SEO tecnico, performance ottimizzate, SSL, form contatti, Analytics e supporto post-lancio. Opzionali: blog, e-commerce, CRM.',
+  },
+  {
+    question: 'Conviene un sito con abbonamento o progetto una tantum?',
+    answer:
+      'L\'abbonamento (da €20/mese) include hosting e manutenzione. Il progetto una tantum conviene se hai già infrastruttura e team interno per aggiornamenti.',
+  },
+];
+---
+
+<Layout
+  title="Quanto Costa un Sito Web per PMI nel 2026 | Prezzi e Tempi | Bitora"
+  description="Quanto costa un sito web per PMI? Guida 2026 con fasce di prezzo, tempi di consegna, cosa include un sito professionale e errori da evitare. Preventivo gratuito Bitora Piemonte."
+>
+  <ArticleSchema
+    headline="Quanto costa un sito web per PMI nel 2026"
+    description="Guida prezzi siti web PMI: fasce, tempi, inclusioni e consigli."
+    datePublished="2026-06-13"
+    dateModified="2026-06-13"
+    url="https://www.bitora.it/blog/quanto-costa-sito-web-pmi"
+    image="https://www.bitora.it/bitora.jpg"
+  />
+
+  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
+    <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div class="relative z-10 max-w-3xl">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors mb-6"
+        >
+          ← Blog
+        </a>
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/10 rounded-full"
+            >Siti Web</span
+          >
+          <span class="text-sm text-gray-500">13 Giugno 2026</span>
+          <span class="text-sm text-gray-500">· 6 min</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tight leading-[1.15] mb-6">
+          Quanto costa un sito web per PMI nel 2026?
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          <strong class="text-gray-900 dark:text-white"
+            >Un sito web professionale per PMI parte da circa €20/mese</strong
+          > (essenziale con hosting) fino a progetti business da €49+/mese o preventivi su misura.
+          Ecco cosa aspettarti.
+        </p>
+      </div>
+    </section>
+
+    <article class="py-16 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
+      <div class="max-w-3xl mx-auto space-y-8 text-gray-600 dark:text-gray-400 leading-relaxed">
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Fasce di prezzo</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li><strong class="text-gray-900 dark:text-white">Essenziale:</strong> da €20/mese — fino a 5 pagine, hosting, SSL, SEO base.</li>
+            <li><strong class="text-gray-900 dark:text-white">Business:</strong> da €49/mese — pagine illimitate, blog, e-commerce, CRM.</li>
+            <li><strong class="text-gray-900 dark:text-white">Premium su misura:</strong> preventivo personalizzato per design e funzioni custom.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Tempi di consegna</h2>
+          <p>
+            Landing page: 7–14 giorni. Sito vetrina completo: 2–4 settimane. Sito con e-commerce o
+            integrazioni: 3–6 settimane. I tempi dipendono da quanto rapidamente fornisci testi,
+            foto e feedback.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Cosa non risparmiare</h2>
+          <p>
+            Performance (LCP &lt; 2.5s), SEO tecnico, mobile-first e CTA chiare convertono più di
+            effetti grafici costosi. Per il territorio piemontese, valuta anche
+            <a href="/siti-web-piemonte" class="text-gray-900 dark:text-white underline"
+              >SEO locale</a
+            > e pagine dedicate come
+            <a href="/siti-web-torino" class="text-gray-900 dark:text-white underline"
+              >siti web Torino</a
+            >. Approfondisci con la guida
+            <a href="/blog/web-design-carmagnola-2025" class="text-gray-900 dark:text-white underline"
+              >web design Carmagnola</a
+            >.
+          </p>
+        </section>
+
+        <div
+          class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-center"
+        >
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            Vuoi un preventivo per il tuo sito?
+          </h3>
+          <p class="mb-6">Audit gratuito + proposta modulare in 24h.</p>
+          <a href="/contattaci?topic=sito" class="btn-primary inline-flex items-center gap-2"
+            >Richiedi preventivo</a
+          >
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<FAQPageSchema items={faqItems} />
