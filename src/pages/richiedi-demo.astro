@@ -6,7 +6,7 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
 ---
 
 <Layout
-  title="Richiedi una demo | Gestione interventi | Bitora"
+  title="Richiedi una demo della piattaforma Bitora"
   description="Compila un breve questionario per richiedere una demo della piattaforma Bitora: ticket, tecnici, rapportini e controllo operativo."
 >
   <div class="bg-black text-white overflow-x-hidden">
@@ -17,7 +17,7 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
           Richiedi una demo della piattaforma.
         </h1>
         <p class="text-white/65 text-lg leading-relaxed">
-          Poche domande per capire la tua operatività. Ti rispondiamo entro 24 ore e organizziamo la demo.
+          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una configurazione dimostrativa costruita intorno al tuo processo.
         </p>
       </div>
     </section>
@@ -143,6 +143,10 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
               Ho letto e accetto la <a href="/privacy-policy" class="text-white underline" target="_blank">Privacy Policy</a>. I dati saranno usati per rispondere alla richiesta di demo. *
             </label>
           </div>
+
+          <p class="text-sm text-white/45 leading-relaxed">
+            La demo è conoscitiva e non comporta alcun impegno. Le funzionalità e i costi vengono definiti dopo l’analisi del processo aziendale.
+          </p>
 
           <div id="form-error" class="hidden p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm"></div>
 

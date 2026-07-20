@@ -4,8 +4,8 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Bitora | Software gestione interventi, ticket e rapportini digitali"
-  description="Piattaforma operativa per aziende di assistenza tecnica e manutenzione: ticket, assegnazione tecnici, rapportini digitali, firme, documenti e statistiche. Sede in Piemonte, serviamo tutta Italia."
+  title="Software per interventi, ticket e rapportini | Bitora"
+  description="Bitora sviluppa piattaforme personalizzabili per organizzare richieste di assistenza, assegnazioni, interventi sul territorio, rapportini digitali e documentazione."
 >
   <div class="home">
 
@@ -25,15 +25,14 @@ import Layout from '../layouts/Layout.astro';
       <div class="shell hero-copy">
         <p class="eyebrow hero-item">Field service · Assistenza tecnica</p>
         <h1 class="display hero-item">
-          Interventi.<br />Tecnici.<br />Rapportini.
+          Gestisci interventi,<br />tecnici e rapportini<br />in un unico sistema
         </h1>
         <p class="lede hero-item">
-          Una piattaforma sola al posto di Excel, WhatsApp e carta.<br class="hidden md:block" />
-          Dalla richiesta al PDF firmato.
+          Bitora sviluppa piattaforme personalizzabili per organizzare richieste di assistenza, assegnazioni, interventi sul territorio, rapportini digitali e documentazione.
         </p>
         <div class="cta-row hero-item">
           <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="home_hero">Richiedi una demo</a>
-          <a href="/gestione-interventi" class="sl-btn-secondary">Scopri l’ecosistema</a>
+          <a href="/gestione-interventi" class="sl-btn-secondary">Scopri la piattaforma</a>
         </div>
       </div>
 
@@ -47,15 +46,15 @@ import Layout from '../layouts/Layout.astro';
       <div class="shell band-inner">
         <div class="split">
           <div class="split-lead" data-reveal>
-            <p class="eyebrow">Il problema</p>
+            <p class="eyebrow">Il punto di partenza</p>
             <h2 class="headline">
-              Telefonate,<br />fogli, chat.<br />
-              <span class="text-secondary">Ogni giorno perdi tempo.</span>
+              Una piattaforma sola<br />al posto di Excel,<br />
+              <span class="text-secondary">WhatsApp e carta.</span>
             </h2>
           </div>
           <div class="split-body">
             <p class="body-lg" data-reveal data-reveal-delay="1">
-              Richieste dimenticate, stato intervento sconosciuto, documenti sparsi. Nessuno storico. Nessun controllo reale.
+              Ogni azienda gestisce l’assistenza in modo diverso. Bitora parte dal processo esistente e costruisce una piattaforma capace di collegare ufficio, centri assistenza, manutentori e tecnici.
             </p>
             <ul class="list-rows" data-reveal-group>
               {[
@@ -83,16 +82,19 @@ import Layout from '../layouts/Layout.astro';
         <header class="band-head" data-reveal>
           <p class="eyebrow">Come funziona</p>
           <h2 class="headline">
-            Quattro passi.<br />Zero strumenti sparsi.
+            Dalla richiesta<br />al PDF firmato.
           </h2>
+          <p class="body-lg" style="margin-top:1rem;max-width:40rem">
+            La pratica accompagna l’intero processo di assistenza. Il rapportino documenta invece il singolo intervento svolto dal tecnico.
+          </p>
         </header>
 
         <div class="flow" data-reveal-group>
           {[
-            { n: '01', t: 'Richiesta', d: 'Ticket con priorità e allegati.' },
-            { n: '02', t: 'Assegnazione', d: 'Tecnico o centro, con calendario.' },
-            { n: '03', t: 'Intervento', d: 'Avanzamento, foto, materiali.' },
-            { n: '04', t: 'Chiusura', d: 'Rapportino firmato e PDF.' },
+            { n: '01', t: 'Richiesta', d: 'Apertura pratica con priorità e allegati.' },
+            { n: '02', t: 'Assegnazione', d: 'Pianificazione a CAT, manutentore o tecnico.' },
+            { n: '03', t: 'Intervento', d: 'Lavoro sul campo, foto e materiali.' },
+            { n: '04', t: 'Rapportino', d: 'Firma, PDF e chiusura documentale.' },
           ].map((step, i) => (
             <article class="flow-cell" data-reveal data-reveal-delay={String(i + 1)}>
               <span class="flow-num">{step.n}</span>
@@ -131,7 +133,7 @@ import Layout from '../layouts/Layout.astro';
           Aziende con tecnici<br />sul territorio.
         </h2>
         <p class="lede audience-lede">
-          Manutenzione, impiantistica, post-vendita, reti di installatori. Da 5–10 tecnici in su.
+          Pensata per aziende che gestiscono interventi ricorrenti, da piccoli team operativi fino a reti di centri assistenza.
         </p>
         <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="home_audience">Richiedi una demo</a>
       </div>
@@ -154,10 +156,10 @@ import Layout from '../layouts/Layout.astro';
           <div class="split-body" data-reveal data-reveal-delay="1">
             <div class="offer-rows">
               {[
-                { t: 'Demo', d: 'Sulla tua operatività reale' },
+                { t: 'Demo', d: 'Configurazione dimostrativa sul tuo processo' },
                 { t: 'Onboarding', d: 'Import dati e formazione' },
-                { t: 'Moduli', d: 'Ticket, rapportini, ricambi, AI' },
-                { t: 'Hosting', d: 'EU · GDPR' },
+                { t: 'Moduli', d: 'Ticket, rapportini, ricambi e altri moduli' },
+                { t: 'Infrastruttura', d: 'Definita in base al progetto' },
               ].map(row => (
                 <div class="offer-row">
                   <span class="offer-label">{row.t}</span>
@@ -207,8 +209,7 @@ import Layout from '../layouts/Layout.astro';
           Vedi la piattaforma<br />sulla tua operatività.
         </h2>
         <p class="body-lg cta-copy">
-          Ti mostriamo ticket, assegnazioni e rapportini con i tuoi flussi reali.
-          Demo gratuita, senza impegno.
+          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una configurazione dimostrativa costruita intorno al tuo processo.
         </p>
 
         <ol class="cta-steps" aria-label="Come funziona la demo">

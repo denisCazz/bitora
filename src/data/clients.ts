@@ -30,7 +30,7 @@ export const clientLogos: ClientLogo[] = [
     location: 'Carmagnola',
   },
   {
-    name: 'Eva',
+    name: 'RicambiXStufe',
     logo: '/logo_eva.png',
     tier: 'premium',
     url: 'https://ricambixstufe.it',

@@ -264,11 +264,10 @@ const flowChips = [
       <div class="shell prod-hero-copy">
         <p class="eyebrow">Gestione pratiche · Ticketing operativo</p>
         <h1 class="display">
-          Ogni richiesta sotto controllo,<br />dall’apertura alla chiusura
+          Ogni pratica sotto controllo,<br />dall’apertura alla chiusura
         </h1>
         <p class="lede">
-          Una piattaforma per registrare, assegnare e monitorare le pratiche di assistenza, mantenendo
-          clienti, operatori, centri assistenza e tecnici sempre allineati.
+          Una piattaforma per registrare, assegnare e monitorare le richieste di assistenza, mantenendo operatori, centri assistenza e tecnici allineati.
         </p>
         <div class="cta-row">
           <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="ticketing_hero"
@@ -285,12 +284,10 @@ const flowChips = [
         <div class="max-w-3xl mb-12" data-reveal>
           <p class="eyebrow">Il messaggio</p>
           <h2 class="headline">
-            Ogni richiesta viene registrata, assegnata, monitorata e accompagnata fino alla conclusione
+            Ogni segnalazione diventa una pratica tracciabile
           </h2>
           <p class="body">
-            Senza perdere informazioni tra telefonate, email, chat e fogli Excel. Non è un help desk
-            informatico: è un sistema operativo per pratiche di assistenza tecnica, manutenzioni e
-            post-vendita.
+            L’operatore seleziona il cliente, descrive il problema, assegna il centro assistenza o il tecnico e aggiorna lo stato fino alla conclusione. Non è un help desk informatico: è una piattaforma per pratiche di assistenza tecnica, manutenzioni e post-vendita.
           </p>
         </div>
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-16" data-reveal>
@@ -430,7 +427,7 @@ const flowChips = [
               </div>
             </div>
             <p class="text-xs text-[var(--prod-faint)] mt-4">
-              Anteprima della schermata di apertura. I dati sono illustrativi.
+              Esempio di apertura di una nuova pratica. L’operatore associa il cliente, descrive la richiesta, assegna il centro assistenza e imposta lo stato iniziale. Interfaccia dimostrativa: i dati sono illustrativi.
             </p>
           </div>
         </div>
@@ -474,13 +471,13 @@ const flowChips = [
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-14" data-reveal>
           <div class="lg:col-span-5">
             <p class="eyebrow">Stati della pratica</p>
-            <h2 class="headline">Il ciclo di lavorazione, a colpo d’occhio</h2>
+            <h2 class="headline">Esempio di configurazione degli stati</h2>
             <p class="body mb-4">
-              Non è più necessario telefonare a più persone per sapere a che punto è un intervento. Lo stato
-              della pratica mostra subito se la richiesta è stata ricevuta, assegnata, presa in carico,
-              sospesa in attesa di ricambi o completata.
+              Lo stato della pratica può mostrare se la richiesta è stata ricevuta, assegnata, presa in carico, sospesa in attesa di ricambi o completata.
             </p>
-            <p class="body-sm">Stati e ordine possono essere personalizzati in base al processo dell’azienda.</p>
+            <p class="body-sm">
+              Gli stati mostrati rappresentano un esempio configurativo. Denominazioni, ordine e regole di avanzamento possono essere adattati al processo dell’azienda.
+            </p>
           </div>
           <div class="lg:col-span-7 space-y-2.5">
             {stati.map((s) => (
@@ -637,7 +634,7 @@ const flowChips = [
                 <span class="status-pill">{c}</span>
               ))}
             </ul>
-            <p class="eyebrow" style="margin-bottom:1rem">Moduli e possibilità progettuali</p>
+            <p class="eyebrow" style="margin-bottom:1rem">Moduli configurabili</p>
             <ul class="space-y-2.5">
               {moduli.map((m) => (
                 <li class="flex gap-3 text-sm text-[var(--prod-secondary)]">
@@ -646,6 +643,9 @@ const flowChips = [
                 </li>
               ))}
             </ul>
+            <p class="text-xs text-[var(--prod-faint)] mt-5 leading-relaxed">
+              Le integrazioni e i moduli vengono valutati e configurati in base ai processi e agli strumenti già utilizzati dall’azienda.
+            </p>
           </div>
         </div>
       </div>
@@ -659,9 +659,7 @@ const flowChips = [
           Vuoi sapere sempre a che punto si trova ogni pratica?
         </h2>
         <p class="lede" style="margin-inline:auto;margin-bottom:2.5rem;text-align:center">
-          Mostraci come gestisci oggi le richieste di assistenza. Bitora può trasformare il tuo flusso
-          operativo in una piattaforma centralizzata, semplice da utilizzare e costruita intorno alla tua
-          organizzazione.
+          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una configurazione dimostrativa costruita intorno al tuo processo.
         </p>
         <div class="cta-row" style="justify-content:center">
           <a
@@ -672,6 +670,9 @@ const flowChips = [
           >
           <a href="/contattaci" class="sl-btn-secondary">Parla con Bitora</a>
         </div>
+        <p class="text-xs text-[var(--prod-faint)] mt-10 max-w-xl mx-auto leading-relaxed text-center">
+          Le interfacce mostrate appartengono a un ambiente dimostrativo. Funzionalità, moduli, campi e flussi possono variare in base alla configurazione scelta per il progetto.
+        </p>
       </div>
     </section>
   </div>

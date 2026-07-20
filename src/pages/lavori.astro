@@ -7,8 +7,8 @@ const projects = caseStudies.filter(c => !c.isWip);
 ---
 
 <Layout
-  title="I nostri lavori | Portfolio Bitora - Progetti Reali in Piemonte"
-  description="Progetti realizzati da Bitora: siti web, e-commerce, tessere NFC, sistemi aziendali. Clienti reali, risultati misurabili. Sede in Piemonte."
+  title="Lavori e prototipi | Portfolio Bitora"
+  description="Progetti realizzati e prototipi software Bitora: siti web, e-commerce e piattaforme dimostrative per assistenza tecnica. Sede in Piemonte."
 >
   <main class="bg-black text-white overflow-x-hidden">
 
@@ -33,10 +33,47 @@ const projects = caseStudies.filter(c => !c.isWip);
             <p class="text-xs uppercase tracking-[0.2em] text-white/35">Template usati</p>
           </div>
           <div>
-            <p class="text-4xl font-bold mb-1">&#8734;</p>
-            <p class="text-xs uppercase tracking-[0.2em] text-white/35">Revisioni</p>
+            <p class="text-4xl font-bold mb-1">Demo</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-white/35">Disponibile</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- PROTOTIPI -->
+    <section class="border-b border-white/[0.06] bg-white/[0.02]">
+      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-20 md:py-28" data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/40 uppercase mb-6">Prototipi e soluzioni dimostrative</p>
+        <h2 class="text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight leading-[1.07] mb-4 max-w-3xl">
+          Piattaforma per la gestione dell’assistenza tecnica
+        </h2>
+        <p class="text-sm font-medium text-white/40 mb-6">Prototipo software Bitora · Demo disponibile</p>
+        <p class="text-base md:text-[1.05rem] text-white/58 leading-relaxed mb-8 max-w-[56ch]">
+          Prototipo modulare per la gestione di pratiche, assegnazioni, centri assistenza, tecnici e rapportini digitali. La piattaforma è pensata per essere configurata sui processi delle aziende che gestiscono interventi sul territorio.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-9">
+          {[
+            'Gestione pratiche',
+            'Stati di lavorazione',
+            'Assegnazione CAT',
+            'Assegnazione manutentori',
+            'Rapportini digitali',
+            'Firme e fotografie',
+            'Ricambi e PDF',
+            'Dashboard',
+          ].map((m) => (
+            <span class="text-xs font-semibold text-white/65 bg-white/[0.06] border border-white/10 rounded-full px-3.5 py-1.5 tracking-wide">
+              {m}
+            </span>
+          ))}
+        </div>
+        <a
+          href="/richiedi-demo"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-semibold rounded hover:bg-white/88 transition-colors"
+        >
+          Richiedi una demo
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
 

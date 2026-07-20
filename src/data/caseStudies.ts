@@ -75,7 +75,7 @@ export const caseStudies: CaseStudy[] = [
       'Copywriting professionale',
     ],
 
-    metricsPreview: ['+25% Richieste qualificate', 'Top 5 Ranking locale'],
+    metricsPreview: ['Percorso di contatto semplificato', 'SEO locale strutturata'],
 
     fonti: [{ testo: 'Sito ufficiale Mistral Impianti', url: 'https://mistralimpianti.it' }],
   },
@@ -264,7 +264,7 @@ export const caseStudies: CaseStudy[] = [
       'SEO locale',
     ],
 
-    metricsPreview: ['+3 Clienti/mese', '60% Conversione'],
+    metricsPreview: ['Canale digitale per richieste', 'Percorso verso il contatto'],
 
     fonti: [{ testo: 'Sartist - Portale Sartorie', url: 'https://sartist.it' }],
   },
@@ -307,7 +307,7 @@ export const caseStudies: CaseStudy[] = [
 
     tecnologie: ['Astro', 'Coolify', 'Menù digitale', 'Tessere NFC per recensioni', 'SEO locale'],
 
-    metricsPreview: ['+30% Visibilità', '-15min Gestione telefonate'],
+    metricsPreview: ['Visibilità locale strutturata', 'Contatto e menù più diretti'],
 
     fonti: [{ testo: 'Sito ufficiale Speedy Pizza', url: 'https://speedy-pizza.it' }],
   },
@@ -350,7 +350,7 @@ export const caseStudies: CaseStudy[] = [
 
     tecnologie: ['Astro', 'Coolify', 'Menù digitale', 'Tessere NFC per recensioni', 'SEO locale'],
 
-    metricsPreview: ['+25% Brand Awareness', '150+ Visite organiche'],
+    metricsPreview: ['Identità digitale rafforzata', 'Presenza online ordinata'],
 
     fonti: [
       { testo: 'Sito ufficiale Bar Tabacchi Chantilly', url: 'https://bartabacchichantilly.it' },
@@ -433,11 +433,10 @@ export const caseStudies: CaseStudy[] = [
     ],
 
     risultati: [
-      'Vendita di ricambi digitalizzata con catalogo chiaro e consultabile',
+      'E-commerce verticale per la vendita di ricambi e componenti per stufe, con catalogo pubblico e pannello amministrativo personalizzato',
+      'La piattaforma è operativa e ha già registrato i primi ordini',
       'Gestione autonoma di prodotti, ordini e clienti dal pannello admin',
-      'Riduzione di lavoro manuale e richieste ripetitive',
-      'Canale commerciale proprietario, scalabile e indipendente dai marketplace',
-      'Base pronta per evoluzioni: compatibilità avanzata, magazzino, AI e integrazioni Bitora',
+      'Canale commerciale proprietario, indipendente dai marketplace',
     ],
 
     tecnologie: [
@@ -448,7 +447,7 @@ export const caseStudies: CaseStudy[] = [
       'Responsive design',
     ],
 
-    metricsPreview: ['E-commerce verticale', 'Catalogo + Admin'],
+    metricsPreview: ['E-commerce verticale', 'Primi ordini registrati'],
 
     fonti: [{ testo: 'Sito ufficiale RicambiXStufe', url: 'https://ricambixstufe.it' }],
   },

@@ -19,11 +19,18 @@ Allow: /
 Sitemap: https://www.bitora.it/sitemap-index.xml
 
 # Important pages
+Allow: /
 Allow: /gestione-interventi
-Allow: /richiedi-demo
-Allow: /servizi
-Allow: /contattaci
+Allow: /rapportini
+Allow: /ticketing
 Allow: /sistemi-aziendali
+Allow: /lavori
+Allow: /progetti/ricambixstufe
+Allow: /richiedi-demo
+Allow: /contattaci
+Allow: /privacy-policy
+Allow: /cookie-policy
+Allow: /servizi
 Allow: /siti-web-professionali
 Allow: /e-commerce-piemonte
 

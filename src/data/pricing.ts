@@ -1,4 +1,4 @@
-export interface PricingPlan {
+﻿export interface PricingPlan {
   title: string;
   price: string;
   period?: string;
@@ -122,7 +122,7 @@ export const nfcEcosystemPlans: PricingPlan[] = [
       'Supporto email per configurazione',
     ],
     benefits: [
-      'Wow effect garantito sui clienti',
+      'Presenza digitale curata e professionale',
       'Setup rapido e senza complicazioni',
       'Prima impressione digitale professionale',
     ],
@@ -172,7 +172,7 @@ export const nfcEcosystemPlans: PricingPlan[] = [
     description:
       '💎 Soluzione NFC enterprise su misura. Integrazioni avanzate, multi-location, dashboard personalizzata.',
     features: [
-      'Tessere NFC illimitate',
+      'Tessere NFC secondo quantità concordata',
       'Integrazioni ERP/CRM custom',
       'Multi-location e multi-utente',
       'Branding completo white-label',

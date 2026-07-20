@@ -1,4 +1,4 @@
-export interface Testimonial {
+﻿export interface Testimonial {
   quote: string;
   author: string;
   company: string;
@@ -20,19 +20,19 @@ export const testimonials: Testimonial[] = [
     role: 'Titolare',
     image: '/sartoria_kristina.png',
     site: 'https://sartoriakristina.it',
-    results: '+35% prenotazioni in 3 mesi',
+    results: 'Vetrina digitale per le creazioni',
     rating: 5,
     category: 'web',
   },
   {
     quote:
-      "Sito consegnato in tempi record! Design minimale e perfettamente mirato alla mia clientela. Interfaccia intuitiva che rende l'ordinazione semplice per tutti i clienti, dalle nonne ai giovani. Ordini online aumentati del 60%!",
+      "Sito consegnato in tempi record! Design minimale e perfettamente mirato alla mia clientela. Interfaccia intuitiva che rende l'ordinazione semplice per tutti i clienti, dalle nonne ai giovani.",
     author: 'Adele',
     company: 'Speedy Pizza',
     role: 'Proprietario',
     image: 'https://www.speedy-pizza.it/logo.jpeg',
     site: 'https://speedy-pizza.it',
-    results: '+60% ordini online',
+    results: 'Menù e contatto più diretti',
     rating: 5,
     category: 'web',
   },
@@ -44,19 +44,19 @@ export const testimonials: Testimonial[] = [
     role: 'Creative Developer',
     image: '/code.jpg',
     site: 'https://aboutdenis.eu',
-    results: '+80% visibilità online',
+    results: 'Portfolio professionale online',
     rating: 5,
     category: 'web',
   },
   {
     quote:
-      'Il nuovo percorso digitale di Bar Chantilly racconta la nostra storia e permette ai clienti di lasciare recensioni con un tap grazie alle tessere NFC. Abbiamo raddoppiato le richieste per eventi privati e la visibilità locale cresce ogni settimana.',
+      'Il nuovo percorso digitale di Bar Chantilly racconta la nostra storia e permette ai clienti di lasciare recensioni con un tap grazie alle tessere NFC.',
     author: 'Federica',
     company: 'Bar Chantilly Carmagnola',
     role: 'Responsabile marketing',
     image: '/client.jpg',
     site: 'https://www.barchantilly.it',
-    results: '2× richieste eventi in 3 mesi',
+    results: 'Sito e tessere NFC per recensioni',
     rating: 5,
     category: 'nfc',
   },
