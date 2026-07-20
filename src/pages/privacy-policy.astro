@@ -26,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           La tua privacy è importante. Ecco come proteggiamo i tuoi dati.
         </p>
-        <div class="mt-8 text-sm text-gray-500 font-mono">Ultimo aggiornamento: 11 giugno 2025</div>
+        <div class="mt-8 text-sm text-gray-500 font-mono">Ultimo aggiornamento: 20 luglio 2026</div>
       </div>
     </header>
 
@@ -83,9 +83,10 @@ import Layout from '../layouts/Layout.astro';
               Raccolti tramite moduli di contatto o email dirette.
             </p>
             <ul class="space-y-2 text-sm text-gray-500">
-              <li>• Nome e cognome</li>
-              <li>• Email e telefono</li>
-              <li>• Messaggio</li>
+              <li>• Nome, azienda, email e telefono</li>
+              <li>• Ruolo, n. tecnici, volume interventi (form demo)</li>
+              <li>• Messaggio e preferenze di contatto</li>
+              <li>• Parametri campagna (UTM, gclid, fbclid) se presenti</li>
             </ul>
           </div>
 
@@ -141,6 +142,25 @@ import Layout from '../layouts/Layout.astro';
             <h3 class="text-gray-900 dark:text-white font-bold mb-2">Obblighi</h3>
             <p class="text-gray-600 dark:text-gray-400 text-sm">
               Per adempimenti fiscali e legali obbligatori.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900/30 border border-gray-200 dark:border-white/5"
+          >
+            <h3 class="text-gray-900 dark:text-white font-bold mb-2">Marketing e campagne</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Con consenso: misurazione conversioni e remarketing tramite Google Ads e Meta Pixel.
+              Base giuridica: consenso (art. 6.1.a GDPR). Conservazione tipica: fino a 24 mesi o fino
+              a revoca.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-2xl bg-gray-50 dark:bg-zinc-900/30 border border-gray-200 dark:border-white/5"
+          >
+            <h3 class="text-gray-900 dark:text-white font-bold mb-2">Analisi</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Con consenso: Google Analytics 4 e Umami per statistiche di utilizzo. Conservazione
+              tipica fino a 14 mesi (GA4) / configurazione Umami.
             </p>
           </div>
           <div

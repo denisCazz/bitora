@@ -1,4 +1,4 @@
-export type PartnerTier = 'premium' | 'gold';
+﻿export type PartnerTier = 'premium' | 'gold';
 
 export interface ClientLogo {
   name: string;
@@ -27,8 +27,14 @@ export const clientLogos: ClientLogo[] = [
     name: 'Bar Wine Café',
     logo: '/wine.png',
     tier: 'gold',
-    url: 'https://barwinecafe.it',
     location: 'Carmagnola',
+  },
+  {
+    name: 'Eva',
+    logo: '/logo_eva.png',
+    tier: 'premium',
+    url: 'https://ricambixstufe.it',
+    location: 'Italia',
   },
   {
     name: 'Sergio Contegiacomo',

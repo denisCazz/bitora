@@ -91,7 +91,7 @@ const projects = caseStudies.filter(c => !c.isWip);
                 ))}
               </div>
               <div class="flex flex-wrap items-center gap-4">
-                {p.siteUrl && (
+                {p.siteUrl && p.siteUrl !== '#' && (
                   <a
                     href={p.siteUrl}
                     target="_blank"

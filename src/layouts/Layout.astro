@@ -1,8 +1,7 @@
----
+﻿---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-import Analyticsgoogle from '../components/Analyticsgoogle.astro';
 import PerformanceMonitorSimple from '../components/PerformanceMonitorSimple.astro';
 import PerformanceOptimizer from '../components/PerformanceOptimizer.astro';
 import LocalBusinessSchema from '../components/schema/LocalBusiness.astro';
@@ -16,7 +15,6 @@ export interface Props {
 }
 
 const { title, description, image } = Astro.props;
-// Costruisci l'URL canonico corretto - più robusto
 const pathname = Astro.url.pathname || '/';
 const canonicalUrl =
   pathname === '/'
@@ -28,6 +26,9 @@ const ogImage = image?.startsWith('http')
   : image
     ? `https://www.bitora.it${image.startsWith('/') ? image : `/${image}`}`
     : 'https://www.bitora.it/bitora.jpg';
+
+const defaultDescription =
+  'Software per gestione interventi, ticket, tecnici e rapportini digitali. Siti web ed e-commerce come servizi complementari. Sede in Piemonte, copertura Italia.';
 ---
 
 <!doctype html>
@@ -42,93 +43,39 @@ const ogImage = image?.startsWith('http')
         }
       })();
     </script>
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1145664477751927');
-    fbq('track', 'PageView');
+
+    <!-- Consent Mode v2 defaults (denied until opt-in) -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
+        security_storage: 'granted',
+        wait_for_update: 500,
+      });
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1145664477751927&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
+
     <meta
       name="trustpilot-one-time-domain-verification-id"
       content="a73b7189-4327-406d-9010-8bc27db1d6c1"
     />
-    <!-- Performance Optimizer - Critical Resources -->
     <PerformanceOptimizer />
-
-    <!-- Analytics (caricato condizionalmente) -->
-    <Analyticsgoogle />
-
-    <!-- Performance Monitoring -->
     <PerformanceMonitorSimple />
 
-    <!-- Analytics - Load conditionally based on consent -->
-    <script is:inline>
-      // Check cookie consent before loading analytics
-      function getCookieConsent() {
-        const cookies = document.cookie.split(';');
-        for (let cookie of cookies) {
-          const [name, value] = cookie.trim().split('=');
-          if (name === 'bitora_cookie_consent') {
-            try {
-              return JSON.parse(decodeURIComponent(value));
-            } catch (e) {
-              return null;
-            }
-          }
-        }
-        return null;
-      }
-
-      // Load analytics script only if consent given
-      function loadAnalyticsScript() {
-        const consent = getCookieConsent();
-        if (consent && consent.analytics) {
-          // Check if script is already loaded
-          if (
-            !document.querySelector(
-              'script[data-website-id="a078fba7-a632-4f51-826e-986e1d8fa5c4"]'
-            )
-          ) {
-            const script = document.createElement('script');
-            script.defer = true;
-            script.src = 'https://umami.bitora.it/script.js';
-            script.setAttribute('data-website-id', 'a078fba7-a632-4f51-826e-986e1d8fa5c4');
-            document.head.appendChild(script);
-          }
-        }
-      }
-
-      // Initial load
-      document.addEventListener('DOMContentLoaded', loadAnalyticsScript);
-
-      // Listen for consent changes
-      window.addEventListener('cookieConsentChanged', loadAnalyticsScript);
-    </script>
-    <!-- Essential Meta -->
     <meta name="generator" content={Astro.generator} />
-
-    <!-- SEO -->
     <title>{title}</title>
     <meta name="robots" content="index,follow,max-image-preview:large" />
-    <meta
-      name="description"
-      content={description ??
-        'Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia.'}
-    />
+    <meta name="description" content={description ?? defaultDescription} />
     <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Geo Tags per SEO locale -->
     <meta name="geo.region" content="IT-21" />
     <meta name="geo.placename" content="Carmagnola" />
     <meta name="geo.position" content="44.8477;7.6833" />
@@ -139,22 +86,21 @@ const ogImage = image?.startsWith('http')
     <style is:global>
       html {
         scroll-behavior: smooth;
+        overflow-x: clip;
       }
       body {
         margin: 0;
         padding: 0;
-        overflow-x: hidden;
+        overflow-x: clip;
       }
     </style>
 
     <script>
-      // Global Intersection Observer for Reveal Animations
       const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1,
       };
-
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -163,57 +109,53 @@ const ogImage = image?.startsWith('http')
           }
         });
       }, observerOptions);
-
       document.addEventListener('astro:page-load', () => {
-        const elements = document.querySelectorAll('.reveal-on-scroll');
-        elements.forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
       });
-
-      // Fallback for initial load if View Transitions are not used or for first paint
       document.addEventListener('DOMContentLoaded', () => {
-        const elements = document.querySelectorAll('.reveal-on-scroll');
-        elements.forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
       });
     </script>
 
-    <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/bitora.png" />
 
-    <!-- Fonts: async non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" /></noscript>
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      /></noscript
+    >
 
-    <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <!-- Open Graph / Facebook -->
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
-    <meta
-      property="og:description"
-      content={description ??
-        'Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia.'}
-    />
+    <meta property="og:description" content={description ?? defaultDescription} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content="it_IT" />
-    <meta property="og:site_name" content="Bitora - Sistemi Digitali su Misura" />
+    <meta property="og:site_name" content="Bitora - Gestione Interventi e Software Operativi" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={title} />
-    <meta
-      name="twitter:description"
-      content={description ??
-        'Sistemi digitali su misura per aziende e PMI. Gestionali, CRM, CMMS, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia.'}
-    />
+    <meta name="twitter:description" content={description ?? defaultDescription} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -223,7 +165,7 @@ const ogImage = image?.startsWith('http')
         "alternateName": "Bitora Italia",
         "url": "https://www.bitora.it",
         "logo": "https://www.bitora.it/bitora.png",
-        "description": "Sistemi digitali su misura per PMI italiane: siti web, e-commerce, CRM, gestionali, CMMS e tessere NFC. Sede a Carmagnola (TO), servizio in tutta Italia.",
+        "description": "Bitora sviluppa piattaforme operative per assistenza tecnica e manutenzione: ticket, assegnazione tecnici, rapportini digitali, documenti e statistiche. Sede a Carmagnola (TO).",
         "foundingDate": "2020",
         "foundingLocation": {
           "@type": "Place",
@@ -231,23 +173,17 @@ const ogImage = image?.startsWith('http')
         },
         "email": "info@bitora.it",
         "telephone": "+39 351 497 9670",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5",
-          "reviewCount": "50",
-          "bestRating": "5"
-        },
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+39 351 497 9670",
-          "contactType": "customer service",
+          "contactType": "sales",
           "email": "info@bitora.it",
           "availableLanguage": ["Italian"],
           "areaServed": "IT"
         },
         "sameAs": [
           "https://www.instagram.com/bitorait/",
-          "https://www.facebook.com/people/Bitora-Italia/pfbid0JubiVqBfxyM2nY6CoHLW3P5vQkjhUGE5UF5Pa16f491fzGsneW512MdMTiEpgvJCl/?mibextid=wwXIfr&rdid=xyslEd78VfiU5dPK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BTziLdEef%2F%3Fmibextid%3DwwXIfr"
+          "https://www.facebook.com/people/Bitora-Italia/"
         ]
       }
     </script>
@@ -257,9 +193,9 @@ const ogImage = image?.startsWith('http')
         "@context": "https://schema.org",
         "@type": "WebSite",
         "@id": "https://www.bitora.it/#website",
-        "name": "Bitora - Sistemi Digitali su Misura",
+        "name": "Bitora - Gestione Interventi e Software Operativi",
         "url": "https://www.bitora.it/",
-        "dateModified": "2026-06-13",
+        "dateModified": "2026-07-20",
         "publisher": { "@id": "https://www.bitora.it/#organization" },
         "inLanguage": "it-IT"
       }
@@ -268,8 +204,9 @@ const ogImage = image?.startsWith('http')
     <LocalBusinessSchema />
   </head>
   <body
-    class="flex flex-col min-h-screen font-['Inter',sans-serif] transition-colors duration-300 bg-white dark:bg-black text-gray-900 dark:text-white"
+    class="flex flex-col min-h-screen font-['Plus_Jakarta_Sans',system-ui,sans-serif] transition-colors duration-300 bg-white dark:bg-black text-gray-900 dark:text-white"
   >
+    <a href="#main-content" class="skip-link">Vai al contenuto</a>
     <Header />
     <main id="main-content" class="flex-grow" tabindex="-1">
       <slot />
@@ -277,8 +214,149 @@ const ogImage = image?.startsWith('http')
     <Footer />
     <StickyContactBar />
 
-    <!-- Conversion & event tracking -->
     <script is:inline>
+      window.__bitoraTags = window.__bitoraTags || { ga: false, ads: false, meta: false, umami: false };
+
+      function getCookieConsent() {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var parts = cookies[i].trim().split('=');
+          if (parts[0] === 'bitora_cookie_consent') {
+            try {
+              return JSON.parse(decodeURIComponent(parts.slice(1).join('=')));
+            } catch (e) {
+              return null;
+            }
+          }
+        }
+        return null;
+      }
+
+      function updateConsentMode(consent) {
+        if (typeof gtag !== 'function') return;
+        var analytics = !!(consent && consent.analytics);
+        var marketing = !!(consent && consent.marketing);
+        var functional = !!(consent && consent.functional);
+        gtag('consent', 'update', {
+          analytics_storage: analytics ? 'granted' : 'denied',
+          ad_storage: marketing ? 'granted' : 'denied',
+          ad_user_data: marketing ? 'granted' : 'denied',
+          ad_personalization: marketing ? 'granted' : 'denied',
+          functionality_storage: functional ? 'granted' : 'denied',
+          personalization_storage: functional ? 'granted' : 'denied',
+        });
+      }
+
+      function loadScriptOnce(src, attrs, onload) {
+        if (document.querySelector('script[src="' + src + '"]')) {
+          if (onload) onload();
+          return;
+        }
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = src;
+        if (attrs) {
+          Object.keys(attrs).forEach(function (k) {
+            s.setAttribute(k, attrs[k]);
+          });
+        }
+        if (onload) s.onload = onload;
+        document.head.appendChild(s);
+      }
+
+      function loadGA4() {
+        if (window.__bitoraTags.ga) return;
+        loadScriptOnce('https://www.googletagmanager.com/gtag/js?id=G-EL32YTDTYH', null, function () {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-EL32YTDTYH', {
+            anonymize_ip: true,
+            send_page_view: true,
+            transport_type: 'beacon',
+          });
+          window.__bitoraTags.ga = true;
+        });
+      }
+
+      function loadGoogleAds() {
+        if (window.__bitoraTags.ads) return;
+        loadScriptOnce('https://www.googletagmanager.com/gtag/js?id=AW-17047013851', null, function () {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'AW-17047013851');
+          window.__bitoraTags.ads = true;
+        });
+      }
+
+      function loadMetaPixel() {
+        if (window.__bitoraTags.meta || typeof fbq === 'function') {
+          window.__bitoraTags.meta = true;
+          return;
+        }
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = '2.0';
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1145664477751927');
+        fbq('track', 'PageView');
+        window.__bitoraTags.meta = true;
+      }
+
+      function loadUmami() {
+        if (window.__bitoraTags.umami) return;
+        if (document.querySelector('script[data-website-id="a078fba7-a632-4f51-826e-986e1d8fa5c4"]')) {
+          window.__bitoraTags.umami = true;
+          return;
+        }
+        var script = document.createElement('script');
+        script.defer = true;
+        script.src = 'https://umami.bitora.it/script.js';
+        script.setAttribute('data-website-id', 'a078fba7-a632-4f51-826e-986e1d8fa5c4');
+        document.head.appendChild(script);
+        window.__bitoraTags.umami = true;
+      }
+
+      function applyTagLoading(consent) {
+        updateConsentMode(consent);
+        if (consent && consent.analytics) {
+          loadGA4();
+          loadUmami();
+        }
+        if (consent && consent.marketing) {
+          loadGoogleAds();
+          loadMetaPixel();
+        }
+      }
+
+      function bootConsentTags() {
+        applyTagLoading(getCookieConsent());
+      }
+
+      document.addEventListener('DOMContentLoaded', bootConsentTags);
+      window.addEventListener('cookieConsentChanged', function (e) {
+        applyTagLoading(e.detail || getCookieConsent());
+      });
+
       window.bitoraTrack = function (eventName, props) {
         props = props || {};
         try {
@@ -287,16 +365,26 @@ const ogImage = image?.startsWith('http')
           }
         } catch (e) {}
         try {
-          if (typeof gtag !== 'undefined') {
+          if (typeof gtag === 'function') {
             gtag('event', eventName, props);
             if (
               eventName === 'lead_form_submit' ||
-              eventName === 'roi_report_submit' ||
-              eventName === 'generate_lead'
+              eventName === 'generate_lead' ||
+              eventName === 'roi_report_submit'
             ) {
-              gtag('event', 'conversion', { send_to: 'AW-17047013851' });
-              gtag('event', 'generate_lead', { event_category: 'lead', ...props });
+              gtag('event', 'generate_lead', Object.assign({ event_category: 'lead' }, props));
+              if (window.__bitoraTags.ads) {
+                gtag('event', 'conversion', { send_to: 'AW-17047013851' });
+              }
             }
+          }
+        } catch (e) {}
+        try {
+          if (
+            typeof fbq === 'function' &&
+            (eventName === 'lead_form_submit' || eventName === 'generate_lead')
+          ) {
+            fbq('track', 'Lead', props);
           }
         } catch (e) {}
       };
@@ -308,18 +396,14 @@ const ogImage = image?.startsWith('http')
           el.addEventListener('click', function () {
             var eventName = el.getAttribute('data-track');
             var location = el.getAttribute('data-track-location') || 'page';
-            if (eventName) {
-              window.bitoraTrack(eventName, { location: location });
-            }
+            if (eventName) window.bitoraTrack(eventName, { location: location });
           });
         });
       }
-
       document.addEventListener('DOMContentLoaded', bindTrackableClicks);
       document.addEventListener('astro:page-load', bindTrackableClicks);
     </script>
 
-    <!-- Back to Top Button -->
     <button
       id="back-to-top"
       class="fixed bottom-20 sm:bottom-4 right-4 sm:right-6 z-50 bg-gray-900 dark:bg-white text-white dark:text-black p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-gray-400"
@@ -335,11 +419,8 @@ const ogImage = image?.startsWith('http')
     </button>
 
     <script>
-      // Back to Top functionality
       const backToTopButton = document.getElementById('back-to-top');
-
       if (backToTopButton) {
-        // Show/hide button based on scroll position
         function toggleBackToTop() {
           if (window.scrollY > 300) {
             backToTopButton.classList.remove('opacity-0', 'invisible');
@@ -349,61 +430,15 @@ const ogImage = image?.startsWith('http')
             backToTopButton.classList.remove('opacity-100', 'visible');
           }
         }
-
-        // Smooth scroll to top
         function scrollToTop() {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        // Add event listeners
         window.addEventListener('scroll', toggleBackToTop);
         backToTopButton.addEventListener('click', scrollToTop);
-
-        // Initial check
         toggleBackToTop();
       }
     </script>
 
-    <!-- Google Tag Manager - Loaded only with marketing cookie consent -->
-    <script is:inline>
-      function loadGTMIfConsented() {
-        if (document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) return;
-        var cookies = document.cookie.split(';');
-        var consent = null;
-        for (var i = 0; i < cookies.length; i++) {
-          var parts = cookies[i].trim().split('=');
-          if (parts[0] === 'bitora_cookie_consent') {
-            try {
-              consent = JSON.parse(decodeURIComponent(parts[1]));
-            } catch (e) {}
-          }
-        }
-        if (consent && consent.marketing) {
-          var gtmScript = document.createElement('script');
-          gtmScript.async = true;
-          gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17047013851';
-          document.head.appendChild(gtmScript);
-          gtmScript.onload = function () {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-              dataLayer.push(arguments);
-            }
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', 'AW-17047013851');
-          };
-        }
-      }
-      if (typeof window !== 'undefined') {
-        window.addEventListener('load', function () {
-          setTimeout(loadGTMIfConsented, 100);
-        });
-        window.addEventListener('cookieConsentChanged', loadGTMIfConsented);
-      }
-    </script>
     <CookieBanner />
   </body>
 </html>

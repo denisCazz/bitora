@@ -1,4 +1,4 @@
-export interface CaseStudy {
+﻿export interface CaseStudy {
   id: string;
   slug: string;
   title: string;
@@ -88,7 +88,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Food & Beverage',
     location: 'Carmagnola (TO)',
     imageUrl: '/wine.png',
-    siteUrl: 'https://barwinecafe.it',
+    siteUrl: '#',
     featured: true,
     isWip: false,
 
@@ -364,7 +364,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Immobiliare',
     location: 'Italia',
     imageUrl: '/myzone.jpg',
-    siteUrl: 'https://immobiliaremyzone.it',
+    siteUrl: '#',
     featured: true,
     isWip: false,
 
@@ -395,7 +395,62 @@ export const caseStudies: CaseStudy[] = [
 
     metricsPreview: ['Nuovo progetto', 'Settore immobiliare'],
 
-    fonti: [{ testo: 'Sito ufficiale MyZone', url: 'https://immobiliaremyzone.it' }],
+    fonti: [],
+  },
+
+  {
+    id: 'ricambixstufe',
+    slug: 'ricambixstufe',
+    title: 'RicambiXStufe',
+    subtitle: 'E-commerce verticale per ricambi stufe',
+    category: 'E-commerce • B2B',
+    location: 'Italia',
+    imageUrl: '/logo_eva.png',
+    siteUrl: 'https://ricambixstufe.it',
+    featured: true,
+    isWip: false,
+
+    clientDescription: `RicambiXStufe è una piattaforma e-commerce specializzata nella vendita online di ricambi, componenti e accessori per stufe, sviluppata da Bitora. Il progetto nasce con l'obiettivo di trasformare un'attività tradizionale di vendita di ricambi in un sistema digitale strutturato, semplice da utilizzare per il cliente finale e facilmente gestibile dall'azienda.`,
+
+    problema: `Nel settore dei ricambi per stufe, uno dei principali problemi è l'identificazione del componente corretto. I clienti spesso non conoscono il nome tecnico del ricambio, il codice del componente, il modello preciso della stufa o la compatibilità tra prodotto e ricambio. Serviva quindi una piattaforma che permettesse di trovare e acquistare rapidamente il ricambio corretto, riducendo richieste manuali, telefonate e tempi di identificazione, e che consentisse all'azienda di gestire autonomamente prodotti, ordini, clienti e contenuti.`,
+
+    soluzione: [
+      {
+        titolo: 'E-commerce pubblico',
+        descrizione:
+          'Catalogo consultabile con immagini, descrizioni, prezzi, ricerca e navigazione per categorie, marchi e tipologie. Gli utenti verificano la compatibilità, aggiungono prodotti al carrello e completano l’ordine online con dati di spedizione e fatturazione, ricevendo conferme e comunicazioni relative all’ordine. Interfaccia utilizzabile da computer, smartphone e tablet.',
+      },
+      {
+        titolo: 'Pannello amministrativo personalizzato',
+        descrizione:
+          'Area admin dedicata per inserire e modificare prodotti, aggiornare prezzi e descrizioni, caricare immagini, organizzare categorie e marchi, controllare disponibilità, gestire ordini e clienti, aggiornare contenuti del sito e monitorare l’attività commerciale — riducendo la dipendenza da strumenti esterni.',
+      },
+      {
+        titolo: 'Canale commerciale proprietario',
+        descrizione:
+          'La piattaforma centralizza catalogo, clienti e ordini, permette di vendere anche fuori dall’area geografica e di ricevere ordini in qualsiasi momento, costruendo un archivio digitale dei ricambi indipendente dai marketplace esterni.',
+      },
+    ],
+
+    risultati: [
+      'Vendita di ricambi digitalizzata con catalogo chiaro e consultabile',
+      'Gestione autonoma di prodotti, ordini e clienti dal pannello admin',
+      'Riduzione di lavoro manuale e richieste ripetitive',
+      'Canale commerciale proprietario, scalabile e indipendente dai marketplace',
+      'Base pronta per evoluzioni: compatibilità avanzata, magazzino, AI e integrazioni Bitora',
+    ],
+
+    tecnologie: [
+      'E-commerce custom',
+      'Catalogo prodotti',
+      'Pannello amministrativo',
+      'Gestione ordini',
+      'Responsive design',
+    ],
+
+    metricsPreview: ['E-commerce verticale', 'Catalogo + Admin'],
+
+    fonti: [{ testo: 'Sito ufficiale RicambiXStufe', url: 'https://ricambixstufe.it' }],
   },
 
   {

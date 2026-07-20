@@ -1,43 +1,69 @@
 ﻿---
 const navItems = [
   { name: 'Home', url: '/' },
+  { name: 'Ecosistema', url: '/gestione-interventi' },
+  { name: 'Rapportini', url: '/rapportini' },
+  { name: 'Ticketing', url: '/ticketing' },
   { name: 'Servizi', url: '/servizi' },
-  { name: 'I nostri lavori', url: '/lavori' },
-  { name: 'Free Tools', url: '/tools' },
+  { name: 'Lavori', url: '/lavori' },
   { name: 'Contatti', url: '/contattaci' },
 ];
 const currentPath = Astro.url.pathname;
+
+function isActive(url: string) {
+  if (url === '/') return currentPath === '/' || currentPath === '';
+  return currentPath === url || currentPath.startsWith(url + '/');
+}
 ---
 
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50">
-
-  <div class="flex items-center justify-between px-8 md:px-16 lg:px-24 py-4">
+  <div class="flex items-center justify-between px-6 md:px-10 lg:px-16 xl:px-24 py-4 gap-4">
     <a href="/" class="flex-shrink-0 z-10 flex items-center gap-3" aria-label="Bitora home">
       <img src="/bitora.png" alt="Bitora" class="h-10 w-10 rounded-full object-cover" />
-      <span class="text-sm font-semibold text-white/75 hidden md:block tracking-tight">bitora<span class="text-white/30">.it</span></span>
+      <span class="text-sm font-semibold text-white/75 hidden lg:block tracking-tight"
+        >bitora<span class="text-white/30">.it</span></span
+      >
     </a>
 
-    <nav class="hidden md:flex items-center gap-0.5" aria-label="Navigazione principale">
-      {navItems.filter(i => i.name !== 'Contatti').map(item => (
-        <a
-          href={item.url}
-          class={(currentPath === item.url || currentPath.startsWith(item.url + '/'))
-            ? 'px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-white bg-white/[0.09]'
-            : 'px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-white/60 hover:text-white hover:bg-white/[0.06]'}
-        >
-          {item.name}
-        </a>
-      ))}
+    <nav class="hidden md:flex items-center gap-0.5 flex-wrap justify-end" aria-label="Navigazione principale">
+      {
+        navItems
+          .filter((i) => i.name !== 'Contatti')
+          .map((item) => (
+            <a
+              href={item.url}
+              class={
+                isActive(item.url)
+                  ? 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white bg-white/[0.09]'
+                  : 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white/60 hover:text-white hover:bg-white/[0.06]'
+              }
+            >
+              {item.name}
+            </a>
+          ))
+      }
     </nav>
 
-    <div class="flex items-center gap-3">
-      <a href="/contattaci" class="sl-cta-btn hidden md:inline-flex">Contattaci</a>
-      <button id="mob-toggle" class="md:hidden text-white p-2 rounded-lg transition-colors hover:bg-white/10" aria-label="Menu" aria-expanded="false">
+    <div class="flex items-center gap-3 shrink-0">
+      <a
+        href="/richiedi-demo"
+        class="sl-cta-btn hidden md:inline-flex"
+        data-track="cta_click"
+        data-track-location="header">Richiedi demo</a
+      >
+      <button
+        id="mob-toggle"
+        class="md:hidden text-white p-2 rounded-lg transition-colors hover:bg-white/10"
+        aria-label="Menu"
+        aria-expanded="false"
+      >
         <svg id="mob-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"
+          ></path>
         </svg>
         <svg id="mob-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"
+          ></path>
         </svg>
       </button>
     </div>
@@ -45,19 +71,25 @@ const currentPath = Astro.url.pathname;
 
   <div id="mob-menu" class="hidden md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 px-8 py-5">
     <nav class="flex flex-col gap-0.5">
-      {navItems.map(item => (
-        <a
-          href={item.url}
-          class={currentPath === item.url
-            ? 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white bg-white/[0.08]'
-            : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/65 hover:text-white hover:bg-white/[0.05]'}
-        >
-          {item.name}
-        </a>
-      ))}
+      {
+        navItems.map((item) => (
+          <a
+            href={item.url}
+            class={
+              isActive(item.url)
+                ? 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white bg-white/[0.08]'
+                : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/65 hover:text-white hover:bg-white/[0.05]'
+            }
+          >
+            {item.name}
+          </a>
+        ))
+      }
+      <a href="/richiedi-demo" class="py-3 px-3 text-sm font-semibold rounded-lg text-white bg-white/10 mt-2"
+        >Richiedi demo</a
+      >
     </nav>
   </div>
-
 </header>
 
 <script>
@@ -101,21 +133,39 @@ const currentPath = Astro.url.pathname;
 </script>
 
 <style>
-  #site-header { transition: background .35s ease, border-color .35s ease, box-shadow .35s ease; }
+  #site-header {
+    transition:
+      background 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+  }
   #site-header.scrolled {
-    background: rgba(0,0,0,0.75);
+    background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
   }
   .sl-cta-btn {
-    display:inline-flex;align-items:center;gap:.5rem;
-    background:rgba(255,255,255,0.11);color:#fff;font-weight:600;font-size:.875rem;
-    padding:.5rem 1.25rem;border-radius:8px;
-    border:1px solid rgba(255,255,255,0.18);
-    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-    transition:background .2s,border-color .2s;white-space:nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.11);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition:
+      background 0.2s,
+      border-color 0.2s;
+    white-space: nowrap;
   }
-  .sl-cta-btn:hover{background:rgba(255,255,255,0.20);border-color:rgba(255,255,255,0.32);}
+  .sl-cta-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.32);
+  }
 </style>

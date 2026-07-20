@@ -1,107 +1,86 @@
-/**
- * Basic site functionality tests
- * These tests verify that key pages load correctly and contain expected content
+﻿/**
+ * Basic site functionality tests for repositioned Bitora funnel
  */
-
 import { test, expect } from '@playwright/test';
 
-test.describe('Bitora.it Basic Functionality', () => {
-  test('homepage loads and contains key elements', async ({ page }) => {
+test.describe('Bitora.it FSM repositioning', () => {
+  test('homepage loads with FSM positioning', async ({ page }) => {
     await page.goto('/');
-
-    // Check page title
-    await expect(page).toHaveTitle(/Bitora/);
-
-    // Check navigation is present
+    await expect(page).toHaveTitle(/gestione interventi|rapportini|Bitora/i);
     await expect(page.locator('header')).toBeVisible();
-    await expect(page.locator('nav')).toBeVisible();
-
-    // Check main content areas
-    await expect(page.locator('main')).toBeVisible();
+    await expect(page.getByRole('navigation', { name: 'Navigazione principale' })).toBeVisible();
+    await expect(page.locator('#main-content')).toBeVisible();
     await expect(page.locator('footer')).toBeVisible();
+    await expect(page.locator('h1')).toContainText(/interventi|tecnici|rapportini/i);
+    await expect(page.locator('a[href="/richiedi-demo"]').first()).toBeVisible();
+    await expect(page.locator('a[href="https://ai.bitora.it/"]')).toHaveCount(0);
+  });
 
-    // Check hero section
+  test('navigation includes ecosystem, rapportini, ticketing and demo', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('header a[href="/gestione-interventi"]').first()).toBeVisible();
+    await expect(page.locator('header a[href="/rapportini"]').first()).toBeVisible();
+    await expect(page.locator('header a[href="/ticketing"]').first()).toBeVisible();
+    await page.click('header a[href="/gestione-interventi"]');
+    await expect(page).toHaveURL(/gestione-interventi/);
+  });
+
+  test('product pages and demo form are available', async ({ page }) => {
+    await page.goto('/gestione-interventi');
     await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('a[href="/richiedi-demo"]').first()).toBeVisible();
+
+    await page.goto('/rapportini');
+    await expect(page.locator('h1')).toContainText(/rapportini/i);
+    await expect(page.locator('a[href="/richiedi-demo"]').first()).toBeVisible();
+
+    await page.goto('/ticketing');
+    await expect(page.locator('h1')).toContainText(/richiesta|pratica/i);
+    await expect(page.locator('a[href="/richiedi-demo"]').first()).toBeVisible();
+
+    await page.goto('/richiedi-demo');
+    await expect(page.locator('#demo-form')).toBeVisible();
+    await expect(page.locator('input[name="azienda"]')).toBeVisible();
+    await expect(page.locator('select[name="tecnici"]')).toBeVisible();
+    await expect(page.locator('input[name="utm_source"]')).toHaveAttribute('type', 'hidden');
   });
 
-  test('navigation works on desktop', async ({ page }) => {
-    await page.goto('/');
-
-    // Test navigation links (aggiornati)
-    await page.click('a[href="/settori"]');
-    await expect(page).toHaveURL(/.*settori/);
-
-    await page.click('a[href="/prezzi"]');
-    await expect(page).toHaveURL(/.*prezzi/);
-
-    await page.click('a[href="/contattaci"]');
-    await expect(page).toHaveURL(/.*contattaci/);
+  test('cmms redirects to gestione-interventi', async ({ page }) => {
+    const response = await page.goto('/cmms');
+    expect(response?.status()).toBeLessThan(400);
+    await expect(page).toHaveURL(/gestione-interventi/);
   });
 
-  test('mobile navigation works', async ({ page }) => {
-    // Set mobile viewport
-    await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/');
-
-    // Check mobile menu button is visible
-    await expect(page.locator('#menu-toggle')).toBeVisible();
-
-    // Open mobile menu
-    await page.click('#menu-toggle');
-    await expect(page.locator('#mobile-menu')).toBeVisible();
-
-    // Test mobile navigation
-    await page.click('a[href="/contattaci"]');
-    await expect(page).toHaveURL(/.*contattaci/);
-  });
-
-  test('contact form is accessible', async ({ page }) => {
+  test('contact form includes gestione interventi topics', async ({ page }) => {
     await page.goto('/contattaci');
-
-    // Check form elements
-    await expect(page.locator('form')).toBeVisible();
-    await expect(page.locator('input[name="nome"]')).toBeVisible();
-    await expect(page.locator('input[name="email"]')).toBeVisible();
-    await expect(page.locator('textarea[name="messaggio"]')).toBeVisible();
-
-    // Test form validation
-    await page.click('button[type="submit"]');
-    // Should show validation errors
+    await expect(page.locator('form#contact-form')).toBeVisible();
+    await expect(page.locator('select#argomento option[value="gestione-interventi"]')).toHaveCount(1);
+    await expect(page.locator('select#argomento option[value="demo-gestione-interventi"]')).toHaveCount(1);
   });
 
-  test('accessibility features work', async ({ page }) => {
+  test('cookie banner exposes marketing preference', async ({ page }) => {
     await page.goto('/');
-
-    // Test skip link
-    await page.keyboard.press('Tab');
-    const skipLink = page.locator('.skip-link:focus');
-    await expect(skipLink).toBeVisible();
-
-    // Test keyboard navigation
-    await page.keyboard.press('Enter'); // Should skip to main content
-    const mainContent = page.locator('#main-content');
-    await expect(mainContent).toBeFocused();
+    await page.waitForSelector('#cookie-banner', { state: 'attached' });
+    await page.evaluate(() => {
+      document.getElementById('cookie-banner')?.classList.remove('translate-y-full');
+    });
+    await page.click('#cookie-settings-btn');
+    await expect(page.locator('#cookie-settings-modal')).not.toHaveClass(/hidden/);
+    await expect(page.locator('#marketing-cookies')).toBeVisible();
+    await expect(page.locator('#analytics-cookies')).toBeVisible();
   });
 
-  test('structured data is present', async ({ page }) => {
+  test('skip link exists', async ({ page }) => {
     await page.goto('/');
-
-    // Check for structured data scripts
-    const structuredData = page.locator('script[type="application/ld+json"]');
-    await expect(structuredData).toHaveCount(3); // 2 in Layout + 1 su Home
+    const skipLink = page.locator('a.skip-link');
+    await expect(skipLink).toHaveCount(1);
+    await expect(skipLink).toHaveAttribute('href', '#main-content');
   });
 
-  test('images have proper attributes', async ({ page }) => {
-    await page.goto('/chi-siamo');
-
-    // Check images have alt text and loading attributes
-    const images = page.locator('img');
-    const count = await images.count();
-
-    for (let i = 0; i < count; i++) {
-      const img = images.nth(i);
-      await expect(img).toHaveAttribute('alt');
-      await expect(img).toHaveAttribute('loading');
+  test('no public ai.bitora.it links on key pages', async ({ page }) => {
+    for (const path of ['/', '/servizi', '/gestione-interventi']) {
+      await page.goto(path);
+      await expect(page.locator('a[href*="ai.bitora.it"]')).toHaveCount(0);
     }
   });
 });

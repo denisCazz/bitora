@@ -1,0 +1,708 @@
+﻿---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import ProductUi from '../components/product/ProductUi.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
+
+const contenutiPratica = [
+  'cliente',
+  'recapiti',
+  'indirizzo',
+  'tipo di intervento',
+  'descrizione del problema',
+  'prodotto o impianto interessato',
+  'priorità',
+  'centro assistenza assegnato',
+  'manutentore o tecnico incaricato',
+  'stato della lavorazione',
+  'note operative',
+  'documenti',
+  'fotografie',
+  'appuntamenti',
+  'rapportini collegati',
+  'cronologia delle attività',
+  'esito finale',
+];
+
+const visibilita = [
+  'quali richieste sono appena arrivate',
+  'quali devono essere assegnate',
+  'quali sono già state prese in carico',
+  'quali sono ferme',
+  'quali attendono un ricambio',
+  'quali sono state completate',
+  'quali non possono essere risolte',
+];
+
+const steps = [
+  {
+    n: '01',
+    t: 'Arriva una richiesta',
+    d: 'Il cliente segnala un problema tramite telefono, email, modulo online o un altro canale utilizzato dall’azienda.',
+  },
+  {
+    n: '02',
+    t: 'L’operatore apre la pratica',
+    d: 'La richiesta viene registrata nel sistema associandola al cliente e indicando il problema da risolvere.',
+  },
+  {
+    n: '03',
+    t: 'La pratica viene classificata',
+    d: 'L’operatore definisce il tipo di intervento, lo stato, l’eventuale priorità e le informazioni necessarie alla lavorazione.',
+  },
+  {
+    n: '04',
+    t: 'Viene assegnato il centro assistenza',
+    d: 'La pratica può essere assegnata a un CAT, a un reparto, a un tecnico o a un manutentore.',
+  },
+  {
+    n: '05',
+    t: 'Lo stato viene aggiornato',
+    d: 'Ogni soggetto coinvolto può aggiornare l’avanzamento, aggiungere note, documenti e informazioni operative.',
+  },
+  {
+    n: '06',
+    t: 'La pratica viene conclusa',
+    d: 'Quando il problema viene risolto, la pratica viene completata. Se non può essere eseguita, viene annullata o classificata come non risolvibile.',
+  },
+];
+
+const stati = [
+  {
+    t: 'Ricevuta',
+    d: 'La richiesta è stata registrata nel sistema, ma non è ancora stata lavorata o assegnata definitivamente.',
+    c: '#60a5fa',
+  },
+  {
+    t: 'Presa in carico',
+    d: 'La pratica è stata accettata dall’azienda o dal centro assistenza e la lavorazione può iniziare.',
+    c: '#a78bfa',
+  },
+  {
+    t: 'Presa in carico dal manutentore',
+    d: 'Il tecnico o manutentore incaricato ha accettato il lavoro ed è diventato il responsabile operativo dell’intervento.',
+    c: '#fbbf24',
+  },
+  {
+    t: 'In attesa di ricambi',
+    d: 'L’intervento non può essere completato perché uno o più componenti devono essere ordinati o resi disponibili.',
+    c: '#fb923c',
+  },
+  {
+    t: 'Completata',
+    d: 'L’attività prevista è terminata e il problema è stato risolto oppure il lavoro richiesto è stato eseguito.',
+    c: '#4ade80',
+  },
+  {
+    t: 'Annullata',
+    d: 'La pratica non deve più essere lavorata, per esempio perché la richiesta è stata ritirata, duplicata o aperta per errore.',
+    c: '#94a3b8',
+  },
+  {
+    t: 'Non risolvibile',
+    d: 'Il problema non può essere risolto nelle condizioni attuali. La pratica rimane archiviata con motivazioni e storico.',
+    c: '#f87171',
+  },
+];
+
+const features = [
+  {
+    t: 'Apertura guidata delle pratiche',
+    d: 'Registrazione semplice delle nuove richieste con cliente, problema, tipologia di intervento e note.',
+    icon: 'M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    t: 'Anagrafica clienti',
+    d: 'Ricerca e associazione immediata della pratica al cliente corretto.',
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+  },
+  {
+    t: 'Assegnazione ai CAT',
+    d: 'Distribuzione delle richieste ai Centri Assistenza Tecnica competenti.',
+    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  },
+  {
+    t: 'Assegnazione ai manutentori',
+    d: 'Possibilità di affidare il lavoro a uno specifico tecnico o manutentore.',
+    icon: 'M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2',
+  },
+  {
+    t: 'Stati personalizzabili',
+    d: 'Monitoraggio dell’avanzamento attraverso stati adattabili al processo aziendale.',
+    icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
+  },
+  {
+    t: 'Cronologia completa',
+    d: 'Registrazione delle modifiche, delle assegnazioni e delle attività effettuate sulla pratica.',
+    icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    t: 'Note operative',
+    d: 'Spazio per comunicazioni interne destinate agli operatori e ai soggetti coinvolti.',
+    icon: 'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z',
+  },
+  {
+    t: 'Documenti e allegati',
+    d: 'Possibilità di collegare fotografie, documenti tecnici, preventivi e altri file.',
+    icon: 'M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13',
+  },
+  {
+    t: 'Ricerca e filtri',
+    d: 'Consultazione delle pratiche per cliente, stato, CAT, tecnico, periodo o tipologia.',
+    icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
+  },
+  {
+    t: 'Dashboard e statistiche',
+    d: 'Panoramica delle pratiche aperte, in lavorazione, ferme, completate o in ritardo.',
+    icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  },
+];
+
+const flussoRapportini = [
+  'Pratica aperta',
+  'Assegnazione al CAT',
+  'Assegnazione al manutentore',
+  'Intervento',
+  'Compilazione del rapportino',
+  'Firma del cliente',
+  'Generazione PDF',
+  'Aggiornamento della pratica',
+  'Completamento',
+];
+
+const vantaggi = [
+  'Tutte le richieste raccolte in un unico sistema',
+  'Minore dipendenza da telefonate, email e WhatsApp',
+  'Assegnazioni più chiare',
+  'Visibilità immediata sullo stato delle pratiche',
+  'Riduzione delle richieste dimenticate',
+  'Migliore coordinamento tra azienda, CAT e tecnici',
+  'Storico completo per ogni cliente',
+  'Maggiore controllo sui tempi di lavorazione',
+  'Documenti e note sempre collegati alla pratica corretta',
+  'Possibilità di analizzare carichi di lavoro e prestazioni',
+  'Assistenza più ordinata e professionale',
+];
+
+const destinatari = [
+  'Produttori con rete di centri assistenza',
+  'Distributori',
+  'Aziende di manutenzione',
+  'Aziende di installazione',
+  'Imprese di climatizzazione',
+  'Assistenza su caldaie e stufe',
+  'Impiantisti',
+  'Facility management',
+  'Aziende con tecnici sul territorio',
+  'Società di assistenza post-vendita',
+  'Aziende che coordinano collaboratori esterni',
+  'Reti di installatori e manutentori',
+  'Assistenza su macchinari e attrezzature professionali',
+];
+
+const config = [
+  'stati personalizzati',
+  'categorie di intervento',
+  'priorità',
+  'ruoli e permessi',
+  'campi aggiuntivi',
+  'centri assistenza',
+  'tecnici e manutentori',
+  'modelli di assegnazione',
+  'notifiche',
+  'documenti richiesti',
+  'dashboard',
+  'statistiche',
+  'regole operative',
+];
+
+const moduli = [
+  'app dei rapportini digitali',
+  'calendario degli interventi',
+  'gestione dei ricambi',
+  'magazzino',
+  'notifiche automatiche',
+  'preventivi',
+  'area riservata per i CAT',
+  'area riservata per i clienti',
+  'invio documentazione',
+  'CRM',
+  'sistemi amministrativi',
+  'gestione delle garanzie',
+  'intelligenza artificiale documentale',
+  'integrazione con email e moduli del sito',
+];
+
+const flowChips = [
+  'Richiesta',
+  'Apertura pratica',
+  'Assegnazione',
+  'Presa in carico',
+  'Intervento',
+  'Chiusura',
+];
+---
+
+<Layout
+  title="Software ticketing e gestione pratiche di assistenza | Bitora"
+  description="Gestisci richieste, pratiche, centri assistenza, tecnici e stati di lavorazione in un’unica piattaforma personalizzabile sviluppata da Bitora."
+  image="/field-maintenance.jpg"
+>
+  <div class="product-page">
+    <!-- HERO -->
+    <section class="prod-hero">
+      <div class="prod-hero-media" aria-hidden="true">
+        <img
+          src="/field-maintenance.jpg"
+          alt=""
+          class="prod-hero-img"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="prod-hero-scrim"></div>
+      </div>
+      <div class="shell prod-hero-copy">
+        <p class="eyebrow">Gestione pratiche · Ticketing operativo</p>
+        <h1 class="display">
+          Ogni richiesta sotto controllo,<br />dall’apertura alla chiusura
+        </h1>
+        <p class="lede">
+          Una piattaforma per registrare, assegnare e monitorare le pratiche di assistenza, mantenendo
+          clienti, operatori, centri assistenza e tecnici sempre allineati.
+        </p>
+        <div class="cta-row">
+          <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="ticketing_hero"
+            >Richiedi una demo</a
+          >
+          <a href="#come-funziona" class="sl-btn-secondary">Scopri come funziona</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="band">
+      <div class="shell band-inner">
+        <div class="max-w-3xl mb-12" data-reveal>
+          <p class="eyebrow">Il messaggio</p>
+          <h2 class="headline">
+            Ogni richiesta viene registrata, assegnata, monitorata e accompagnata fino alla conclusione
+          </h2>
+          <p class="body">
+            Senza perdere informazioni tra telefonate, email, chat e fogli Excel. Non è un help desk
+            informatico: è un sistema operativo per pratiche di assistenza tecnica, manutenzioni e
+            post-vendita.
+          </p>
+        </div>
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16" data-reveal>
+          <div class="lg:col-span-6">
+            <p class="eyebrow" style="margin-bottom:1rem">Cosa contiene una pratica</p>
+            <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
+              {contenutiPratica.map((c) => (
+                <li class="flex gap-3 text-sm text-[var(--prod-secondary)]">
+                  <span class="text-[var(--prod-faint)]">—</span>
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="lg:col-span-5 lg:col-start-8">
+            <p class="eyebrow" style="margin-bottom:1rem">In ogni momento sapete</p>
+            <ul class="space-y-0">
+              {visibilita.map((v) => (
+                <li class="flex gap-3 text-sm text-[var(--prod-secondary)] border-b border-[var(--prod-line-soft)] py-3">
+                  <span class="text-[var(--prod-faint)]">→</span>
+                  <span>{v}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUOVA PRATICA -->
+    <section id="nuova-pratica" class="band band-alt">
+      <div class="shell band-inner">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-14 items-start" data-reveal>
+          <div class="lg:col-span-5">
+            <p class="eyebrow">Apertura pratica</p>
+            <h2 class="headline">Nuova pratica in pochi passaggi</h2>
+            <p class="body mb-7">
+              L’operatore registra la richiesta in pochi passaggi, seleziona il cliente, descrive il
+              problema e può assegnare immediatamente la pratica al centro assistenza competente. Da quel
+              momento ogni aggiornamento rimane archiviato e consultabile.
+            </p>
+            <ul class="space-y-3 text-sm text-[var(--prod-secondary)] mb-8">
+              {[
+                'Cercare e selezionare il cliente',
+                'Indicare il tipo di intervento',
+                'Descrivere il problema segnalato',
+                'Assegnare la pratica a un CAT',
+                'Impostare lo stato iniziale e le note',
+              ].map((line) => (
+                <li class="flex gap-3">
+                  <span class="text-[var(--prod-faint)]">→</span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="body-sm">
+              <strong class="text-[var(--prod-secondary)] font-semibold">CAT</strong> = Centro Assistenza
+              Tecnica: riceve o coordina la pratica. Il
+              <strong class="text-[var(--prod-secondary)] font-semibold">manutentore</strong> è chi esegue
+              materialmente l’intervento.
+            </p>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="ui-frame" aria-hidden="true">
+              <div class="ui-chrome">
+                <span class="ui-dot"></span><span class="ui-dot"></span><span class="ui-dot"></span>
+                <span class="ml-3 text-xs text-[var(--prod-faint)] tracking-wide">Pratiche · Nuova pratica</span>
+              </div>
+              <div class="p-5 md:p-8">
+                <div class="flex items-center justify-between mb-6 gap-4">
+                  <h3 class="text-lg font-bold tracking-tight">Nuova pratica</h3>
+                  <span class="text-xs text-[var(--prod-faint)] shrink-0">Stato: Ricevuta</span>
+                </div>
+                <div class="space-y-4">
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
+                        >Cliente</span
+                      >
+                      <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm">
+                        Rossi Impianti Srl
+                      </div>
+                    </div>
+                    <div>
+                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
+                        >Tipo intervento</span
+                      >
+                      <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm">
+                        Manutenzione
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
+                      >Descrizione problema</span
+                    >
+                    <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-3 text-sm text-[var(--prod-secondary)] min-h-[72px]">
+                      Caldaia in blocco dopo intervento precedente. Cliente segnala rumore anomalo.
+                    </div>
+                  </div>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
+                        >Centro assistenza (CAT)</span
+                      >
+                      <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm">
+                        CAT Nord-Ovest
+                      </div>
+                    </div>
+                    <div>
+                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
+                        >Stato</span
+                      >
+                      <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm flex items-center gap-2">
+                        <span class="status-dot" style="background:#60a5fa"></span>
+                        Ricevuta
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
+                      >Note per gli operatori</span
+                    >
+                    <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm text-[var(--prod-muted)]">
+                      Preferenza intervento entro 48 ore · accesso cortile
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-3 pt-2">
+                    <span class="px-4 py-2 text-xs font-semibold rounded-full bg-[#f5f5f7] text-black"
+                      >Crea pratica</span
+                    >
+                    <span class="px-4 py-2 text-xs font-semibold rounded-full border border-white/20 text-[var(--prod-muted)]"
+                      >Annulla</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-[var(--prod-faint)] mt-4">
+              Anteprima della schermata di apertura. I dati sono illustrativi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COME FUNZIONA -->
+    <section id="come-funziona" class="band">
+      <div class="shell band-inner">
+        <div class="mb-12" data-reveal>
+          <p class="eyebrow">Come funziona</p>
+          <h2 class="headline max-w-3xl">Sei passaggi, dalla segnalazione alla chiusura</h2>
+          <div class="flow-rail mt-2">
+            {
+              flowChips.flatMap((chip, i) =>
+                i < flowChips.length - 1
+                  ? [
+                      <span class="flow-chip">{chip}</span>,
+                      <span class="flow-arrow" aria-hidden="true">→</span>,
+                    ]
+                  : [<span class="flow-chip">{chip}</span>]
+              )
+            }
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-px bg-[var(--prod-line-soft)] rounded-2xl overflow-hidden" data-reveal>
+          {steps.map((s) => (
+            <div class="step-cell">
+              <span class="text-3xl font-bold text-white/10 tabular-nums mb-4 block tracking-tight">{s.n}</span>
+              <h3 class="text-base font-bold mb-2.5 tracking-tight">{s.t}</h3>
+              <p class="text-sm text-[var(--prod-muted)] leading-relaxed">{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATI -->
+    <section id="stati" class="band band-alt">
+      <div class="shell band-inner">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-14" data-reveal>
+          <div class="lg:col-span-5">
+            <p class="eyebrow">Stati della pratica</p>
+            <h2 class="headline">Il ciclo di lavorazione, a colpo d’occhio</h2>
+            <p class="body mb-4">
+              Non è più necessario telefonare a più persone per sapere a che punto è un intervento. Lo stato
+              della pratica mostra subito se la richiesta è stata ricevuta, assegnata, presa in carico,
+              sospesa in attesa di ricambi o completata.
+            </p>
+            <p class="body-sm">Stati e ordine possono essere personalizzati in base al processo dell’azienda.</p>
+          </div>
+          <div class="lg:col-span-7 space-y-2.5">
+            {stati.map((s) => (
+              <div class="rounded-xl border border-[var(--prod-line-soft)] bg-black/30 p-5 flex gap-4 items-start">
+                <span class="status-dot mt-1.5 shrink-0" style={`background:${s.c}`}></span>
+                <div>
+                  <h3 class="font-bold mb-1 tracking-tight">{s.t}</h3>
+                  <p class="text-sm text-[var(--prod-muted)] leading-relaxed">{s.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNZIONALITÀ -->
+    <section id="funzionalita" class="band">
+      <div class="shell band-inner">
+        <div class="mb-12 max-w-2xl" data-reveal>
+          <p class="eyebrow">Funzionalità</p>
+          <h2 class="headline">Cosa gestisce la piattaforma</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5" data-reveal>
+          {features.map((f) => (
+            <div class="feat-card">
+              <svg
+                class="w-5 h-5 text-[var(--prod-muted)] mb-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={f.icon}></path>
+              </svg>
+              <h3 class="text-[0.95rem] font-bold mb-2 tracking-tight">{f.t}</h3>
+              <p class="text-sm text-[var(--prod-muted)] leading-relaxed">{f.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLEGAMENTO RAPPORTINI -->
+    <section class="band band-alt">
+      <div class="shell band-inner">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-14" data-reveal>
+          <div class="lg:col-span-5">
+            <p class="eyebrow">Ecosistema</p>
+            <h2 class="headline">Collegata ai rapportini digitali</h2>
+            <p class="body mb-5">
+              Il ticket rappresenta l’intera richiesta di assistenza. Il rapportino rappresenta il singolo
+              intervento svolto dal tecnico. Quando il tecnico conclude l’intervento, il rapportino digitale
+              può essere collegato alla pratica.
+            </p>
+            <p class="body-sm mb-8">
+              L’azienda dispone così, in un unico punto, della richiesta iniziale, delle attività svolte,
+              dei ricambi utilizzati, delle fotografie, delle firme e del documento finale. Una pratica può
+              avere più rapportini quando servono più interventi.
+            </p>
+            <div class="cta-row">
+              <a href="/rapportini" class="sl-btn-secondary">Vai ai rapportini</a>
+              <a
+                href="/gestione-interventi"
+                class="text-sm text-[var(--prod-muted)] hover:text-white underline underline-offset-4 self-center"
+                >Vedi l’ecosistema</a
+              >
+            </div>
+          </div>
+          <div class="lg:col-span-6 lg:col-start-7">
+            <div class="rounded-2xl border border-[var(--prod-line-soft)] bg-black/40 p-6 md:p-8">
+              <p class="eyebrow" style="margin-bottom:1.25rem">Flusso collegato</p>
+              <ol class="space-y-0">
+                {flussoRapportini.map((step, i) => (
+                  <li class="flex gap-4 items-start">
+                    <div class="flex flex-col items-center">
+                      <span class="w-2.5 h-2.5 rounded-full bg-white/40 mt-1.5"></span>
+                      {i < flussoRapportini.length - 1 && (
+                        <span class="w-px flex-1 min-h-[28px] bg-white/10"></span>
+                      )}
+                    </div>
+                    <span class="text-sm text-[var(--prod-secondary)] pb-5">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VANTAGGI -->
+    <section class="band">
+      <div class="shell band-inner">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16" data-reveal>
+          <div class="lg:col-span-5">
+            <p class="eyebrow">Vantaggi</p>
+            <h2 class="headline">Meno richieste perse,<br />più controllo sull’assistenza</h2>
+            <p class="body">
+              Ogni pratica conserva il proprio storico. L’azienda può sapere quando è stata aperta, chi
+              l’ha presa in carico, a quale centro assistenza è stata assegnata, quali attività sono state
+              eseguite e perché è stata chiusa.
+            </p>
+          </div>
+          <div class="lg:col-span-6 lg:col-start-7">
+            <ul class="grid sm:grid-cols-2 gap-2.5">
+              {vantaggi.map((v) => (
+                <li class="rounded-xl border border-[var(--prod-line-soft)] bg-white/[0.02] px-4 py-3.5 text-sm text-[var(--prod-secondary)]">
+                  {v}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTINATARI -->
+    <section class="band band-alt">
+      <div class="shell band-inner">
+        <div class="mb-10 max-w-3xl" data-reveal>
+          <p class="eyebrow">Destinatari</p>
+          <h2 class="headline">Pensata per aziende che coordinano assistenza e interventi</h2>
+        </div>
+        <div class="flex flex-wrap gap-2.5" data-reveal>
+          {destinatari.map((d) => (
+            <span class="status-pill">{d}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONALIZZAZIONE -->
+    <section class="band">
+      <div class="shell band-inner">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16" data-reveal>
+          <div class="lg:col-span-6">
+            <p class="eyebrow">Personalizzazione</p>
+            <h2 class="headline">Configurata sul vostro modo di lavorare</h2>
+            <p class="body mb-5">
+              Il software viene adattato al modo in cui l’azienda lavora realmente. Stati, ruoli, campi,
+              assegnazioni e flussi possono essere configurati per rappresentare il processo di assistenza
+              già utilizzato.
+            </p>
+            <p class="body-sm">
+              Bitora trasforma ogni richiesta di assistenza in un processo tracciabile, assegnabile e
+              controllabile, dalla prima segnalazione fino alla chiusura dell’intervento.
+            </p>
+          </div>
+          <div class="lg:col-span-5 lg:col-start-8">
+            <p class="eyebrow" style="margin-bottom:1rem">Configurabile</p>
+            <ul class="flex flex-wrap gap-2 mb-10">
+              {config.map((c) => (
+                <span class="status-pill">{c}</span>
+              ))}
+            </ul>
+            <p class="eyebrow" style="margin-bottom:1rem">Moduli e possibilità progettuali</p>
+            <ul class="space-y-2.5">
+              {moduli.map((m) => (
+                <li class="flex gap-3 text-sm text-[var(--prod-secondary)]">
+                  <span class="text-[var(--prod-faint)]">+</span>
+                  <span>{m}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="band-cta">
+      <div class="shell band-cta-inner" data-reveal>
+        <p class="eyebrow">Demo</p>
+        <h2 class="display" style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:1.25rem">
+          Vuoi sapere sempre a che punto si trova ogni pratica?
+        </h2>
+        <p class="lede" style="margin-inline:auto;margin-bottom:2.5rem;text-align:center">
+          Mostraci come gestisci oggi le richieste di assistenza. Bitora può trasformare il tuo flusso
+          operativo in una piattaforma centralizzata, semplice da utilizzare e costruita intorno alla tua
+          organizzazione.
+        </p>
+        <div class="cta-row" style="justify-content:center">
+          <a
+            href="/richiedi-demo"
+            class="sl-btn-primary"
+            data-track="cta_click"
+            data-track-location="ticketing_final">Richiedi una demo</a
+          >
+          <a href="/contattaci" class="sl-btn-secondary">Parla con Bitora</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <ProductUi />
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Bitora Gestione Pratiche e Ticketing',
+      applicationCategory: 'BusinessApplication',
+      applicationSubCategory: 'Field Service Ticketing',
+      operatingSystem: 'Web',
+      url: 'https://www.bitora.it/ticketing/',
+      description:
+        'Piattaforma di ticketing per la gestione delle richieste di assistenza tecnica. Permette di aprire pratiche, assegnarle a centri assistenza e manutentori, monitorarne lo stato e collegare documenti e rapportini di intervento.',
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'EUR',
+        description: 'Attivazione iniziale + canone. Demo su richiesta.',
+      },
+    })}
+  />
+
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://www.bitora.it/' },
+      { name: 'Ecosistema', item: 'https://www.bitora.it/gestione-interventi/' },
+      { name: 'Ticketing', item: 'https://www.bitora.it/ticketing/' },
+    ]}
+  />
+</Layout>

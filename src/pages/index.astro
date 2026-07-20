@@ -4,268 +4,981 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Bitora | Siti Web e Servizi Digitali su Misura | Piemonte"
-  description="Siti web, e-commerce e servizi digitali su misura per la tua azienda. Gestionali, CRM, CMMS e tessere NFC. Ti seguiamo dall'inizio alla fine. Sede a Carmagnola, Piemonte."
+  title="Bitora | Software gestione interventi, ticket e rapportini digitali"
+  description="Piattaforma operativa per aziende di assistenza tecnica e manutenzione: ticket, assegnazione tecnici, rapportini digitali, firme, documenti e statistiche. Sede in Piemonte, serviamo tutta Italia."
 >
-  <main class="bg-black text-white overflow-x-hidden">
+  <div class="home">
 
     <!-- HERO -->
-    <section class="relative h-screen min-h-[640px] flex flex-col justify-end">
-      <div class="absolute inset-0">
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true">
         <img
-          src="/world-tech.jpg"
-          alt="Sistemi digitali su misura per aziende"
-          class="w-full h-full object-cover"
+          src="/hero-field-service.jpg"
+          alt="Tecnico in intervento su impianto elettrico"
+          class="hero-img"
           fetchpriority="high"
           decoding="async"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10"></div>
+        <div class="hero-scrim"></div>
       </div>
-      <div class="relative z-10 px-8 md:px-16 lg:px-24 pb-20 md:pb-28 hero-text">
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-4">
-          Sede in Piemonte · Serviamo tutta Italia
-        </p>
-        <h1 class="text-5xl md:text-6xl lg:text-[5.5rem] font-bold leading-[1.04] tracking-tight mb-5 max-w-3xl">
-          Sistemi digitali<br />su misura.
+
+      <div class="shell hero-copy">
+        <p class="eyebrow hero-item">Field service · Assistenza tecnica</p>
+        <h1 class="display hero-item">
+          Interventi.<br />Tecnici.<br />Rapportini.
         </h1>
-        <p class="text-base md:text-lg text-white/70 mb-9 max-w-lg leading-relaxed">
-          Gestionali, siti web, e-commerce e tessere NFC.<br class="hidden md:block" />
-          Ti seguiamo dall'analisi al deploy.
+        <p class="lede hero-item">
+          Una piattaforma sola al posto di Excel, WhatsApp e carta.<br class="hidden md:block" />
+          Dalla richiesta al PDF firmato.
         </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="/contattaci" class="sl-btn-primary">Richiedi consulenza</a>
-          <a href="/servizi" class="sl-btn-secondary">Scopri i servizi</a>
+        <div class="cta-row hero-item">
+          <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="home_hero">Richiedi una demo</a>
+          <a href="/gestione-interventi" class="sl-btn-secondary">Scopri l’ecosistema</a>
         </div>
       </div>
+
+      <a href="#problema" class="hero-scroll" aria-label="Scorri">
+        <span></span>
+      </a>
     </section>
 
-    <!-- SITI WEB & E-COMMERCE -->
-    <section class="relative min-h-screen flex flex-col md:flex-row overflow-hidden">
-      <!-- mobile: immagine come sfondo a bassa opacità -->
-      <div class="absolute inset-0 md:hidden">
-        <img src="/programming.jpg" alt="Sviluppo siti web su misura per aziende" class="w-full h-full object-cover opacity-15" loading="lazy" decoding="async" />
-      </div>
-      <!-- pannello sinistro: testo su nero pieno -->
-      <div class="relative z-10 flex flex-col justify-center bg-black md:w-1/2 px-8 md:px-14 lg:px-20 py-32 md:py-0 min-h-screen" data-reveal-left>
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">Siti Web &amp; E-commerce</p>
-        <h2 class="text-5xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-6">
-          Il tuo sito.<br />La tua<br />vetrina.&nbsp;→
-        </h2>
-        <p class="text-base md:text-lg text-white/70 mb-10 max-w-sm leading-relaxed">
-          Veloci, SEO-ottimizzati e costruiti per convertire. Sviluppati su misura, codice proprietario.
-        </p>
-        <a href="/servizi" class="sl-btn-secondary self-start">Scopri i servizi</a>
-      </div>
-      <!-- pannello destro: immagine (solo desktop) -->
-      <div class="hidden md:block md:w-1/2 relative overflow-hidden" data-reveal-right>
-        <img
-          src="/programming.jpg"
-          alt="Siti web professionali ed e-commerce"
-          class="w-full h-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-        <div class="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-black to-transparent pointer-events-none"></div>
-        <div class="absolute bottom-0 inset-x-0 h-52 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
-      </div>
-    </section>
-
-    <!-- TESSERE NFC -->
-    <section class="bg-black py-24 md:py-36">
-      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
-        <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <div data-reveal-left>
-            <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">Tessere NFC</p>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-6">
-              Un tap.<br />Tutto connesso.
+    <!-- PROBLEMA -->
+    <section id="problema" class="band">
+      <div class="shell band-inner">
+        <div class="split">
+          <div class="split-lead" data-reveal>
+            <p class="eyebrow">Il problema</p>
+            <h2 class="headline">
+              Telefonate,<br />fogli, chat.<br />
+              <span class="text-secondary">Ogni giorno perdi tempo.</span>
             </h2>
-            <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
-              Biglietti da visita intelligenti. Recensioni Google, menu digitali, contatti. Un solo tocco.
+          </div>
+          <div class="split-body">
+            <p class="body-lg" data-reveal data-reveal-delay="1">
+              Richieste dimenticate, stato intervento sconosciuto, documenti sparsi. Nessuno storico. Nessun controllo reale.
             </p>
-            <div class="flex flex-wrap gap-2 mb-10">
-              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Biglietti da visita</span>
-              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Menu digitali</span>
-              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Recensioni Google</span>
-              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Prog. illimitata</span>
+            <ul class="list-rows" data-reveal-group>
+              {[
+                { n: '01', t: 'Richieste perse', d: 'Email, WhatsApp, telefono — senza tracciamento.' },
+                { n: '02', t: 'Zero controllo', d: 'Non sai chi fa cosa, né quanto ci mette.' },
+                { n: '03', t: 'Documenti sparsi', d: 'Rapportini e firme tra chat, PDF e cartelle.' },
+              ].map(item => (
+                <li class="list-row" data-reveal>
+                  <span class="list-num">{item.n}</span>
+                  <div>
+                    <h3 class="list-title">{item.t}</h3>
+                    <p class="body-sm">{item.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLUSSO -->
+    <section class="band band-alt">
+      <div class="shell band-inner">
+        <header class="band-head" data-reveal>
+          <p class="eyebrow">Come funziona</p>
+          <h2 class="headline">
+            Quattro passi.<br />Zero strumenti sparsi.
+          </h2>
+        </header>
+
+        <div class="flow" data-reveal-group>
+          {[
+            { n: '01', t: 'Richiesta', d: 'Ticket con priorità e allegati.' },
+            { n: '02', t: 'Assegnazione', d: 'Tecnico o centro, con calendario.' },
+            { n: '03', t: 'Intervento', d: 'Avanzamento, foto, materiali.' },
+            { n: '04', t: 'Chiusura', d: 'Rapportino firmato e PDF.' },
+          ].map((step, i) => (
+            <article class="flow-cell" data-reveal data-reveal-delay={String(i + 1)}>
+              <span class="flow-num">{step.n}</span>
+              <div>
+                <h3 class="list-title">{step.t}</h3>
+                <p class="body-sm">{step.d}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="band-foot" data-reveal data-reveal-delay="2">
+          <a href="/gestione-interventi" class="text-link">
+            Vedi moduli e dettagli
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PER CHI -->
+    <section class="audience">
+      <div class="audience-media" aria-hidden="true">
+        <img
+          src="/field-maintenance.jpg"
+          alt="Tecnico in manutenzione industriale sul campo"
+          class="audience-img"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="audience-scrim"></div>
+      </div>
+      <div class="shell audience-copy" data-reveal>
+        <p class="eyebrow">Per chi</p>
+        <h2 class="display-sm">
+          Aziende con tecnici<br />sul territorio.
+        </h2>
+        <p class="lede audience-lede">
+          Manutenzione, impiantistica, post-vendita, reti di installatori. Da 5–10 tecnici in su.
+        </p>
+        <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="home_audience">Richiedi una demo</a>
+      </div>
+    </section>
+
+    <!-- OFFERTA -->
+    <section class="band">
+      <div class="shell band-inner">
+        <div class="split split-offer">
+          <div class="split-lead" data-reveal>
+            <p class="eyebrow">Offerta</p>
+            <h2 class="headline">
+              Setup iniziale.<br />Poi un canone.
+            </h2>
+            <p class="body-lg offer-copy">
+              Configurazione, personalizzazioni e formazione all’avvio. Canone mensile o annuale in base a utenti, tecnici o centri.
+            </p>
+            <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="home_offer">Parliamone</a>
+          </div>
+          <div class="split-body" data-reveal data-reveal-delay="1">
+            <div class="offer-rows">
+              {[
+                { t: 'Demo', d: 'Sulla tua operatività reale' },
+                { t: 'Onboarding', d: 'Import dati e formazione' },
+                { t: 'Moduli', d: 'Ticket, rapportini, ricambi, AI' },
+                { t: 'Hosting', d: 'EU · GDPR' },
+              ].map(row => (
+                <div class="offer-row">
+                  <span class="offer-label">{row.t}</span>
+                  <span class="offer-value">{row.d}</span>
+                </div>
+              ))}
             </div>
-            <a href="/servizi#nfc" class="sl-btn-secondary">Scopri le tessere NFC</a>
-          </div>
-          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10" data-reveal-right>
-            <img
-              src="/nfc.jpg"
-              alt="Tessere NFC intelligenti in uso"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SISTEMI AZIENDALI -->
-    <section class="relative min-h-screen flex items-center justify-center py-24">
-      <div class="absolute inset-0">
-        <img
-          src="/customers.jpg"
-          alt="Gestionali CRM e sistemi aziendali su misura"
-          class="w-full h-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-        <div class="absolute inset-0 bg-black/60"></div>
-        <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
-        <div class="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
-      </div>
-      <div class="relative z-10 w-full max-w-2xl mx-6 md:mx-auto text-center backdrop-blur-xl bg-white/[0.07] border border-white/15 rounded-3xl px-8 md:px-16 py-14" data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">Sistemi Aziendali</p>
-        <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-6">
-          Automatizza.<br />Controlla.<br />Scala.
-        </h2>
-        <p class="text-base md:text-lg text-white/70 mb-10 max-w-md mx-auto leading-relaxed">
-          Gestionali, CRM, CMMS e software custom. Dall'analisi dei processi al deploy in produzione.
-        </p>
-        <a href="/servizi#sistemi" class="sl-btn-secondary">Scopri i sistemi</a>
-      </div>
-    </section>
+    <!-- ALTRI SERVIZI -->
+    <section class="band band-alt">
+      <div class="shell band-inner">
+        <header class="band-head" data-reveal>
+          <p class="eyebrow">Altri servizi</p>
+          <h2 class="headline">Siti web ed e-commerce</h2>
+        </header>
 
-    <!-- AI -->
-    <section class="relative bg-black py-32 md:py-44 overflow-hidden text-center">
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-600/15 blur-[120px]"></div>
-      </div>
-      <div class="relative z-10 px-8 max-w-3xl mx-auto" data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-indigo-400/70 uppercase mb-6">Intelligenza Artificiale</p>
-        <h2 class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.04] tracking-tight mb-6">
-          Il tuo assistente AI.<br />Già operativo.
-        </h2>
-        <p class="text-base md:text-lg text-white/65 mb-12 max-w-md mx-auto leading-relaxed">
-          Automazioni, chatbot e strumenti AI integrati nei tuoi processi. Su misura, non soluzioni preconfezionate.
-        </p>
-        <a href="https://ai.bitora.it/" class="sl-btn-primary" target="_blank" rel="noopener">Scopri Bitora AI →</a>
-      </div>
-    </section>
-
-    <!-- PIEMONTE -->
-    <section class="relative h-[90vh] min-h-[580px] flex flex-col items-center justify-center text-center">
-      <div class="absolute inset-0">
-        <img
-          src="/italy.jpg"
-          alt="Da Carmagnola a tutta Italia"
-          class="w-full h-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-        <div class="absolute inset-0 bg-black/55"></div>
-        <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
-        <div class="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
-      </div>
-      <div class="relative z-10 px-8 max-w-3xl" data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-8">Radicati in Piemonte</p>
-        <h2 class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.04] tracking-tight mb-6">
-          Da Carmagnola<br />a tutta Italia.
-        </h2>
-        <p class="text-base md:text-lg text-white/70 mb-10 max-w-md mx-auto leading-relaxed">
-          Sede a Carmagnola, Provincia di Torino. Serviamo PMI e aziende in tutta Italia.
-        </p>
-        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/45">
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white/35 inline-block"></span>Carmagnola</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white/35 inline-block"></span>Torino</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white/35 inline-block"></span>Piemonte</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white/35 inline-block"></span>Tutta Italia</span>
+        <div class="services" data-reveal-group>
+          <a href="/siti-web-professionali" class="service-cell" data-reveal>
+            <div>
+              <p class="service-num">01</p>
+              <h3 class="service-title">Siti web professionali</h3>
+              <p class="body-sm">Vetrine veloci, SEO e contenuti per PMI.</p>
+            </div>
+            <span class="service-cta">Scopri <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="/e-commerce-piemonte" class="service-cell" data-reveal data-reveal-delay="1">
+            <div>
+              <p class="service-num">02</p>
+              <h3 class="service-title">E-commerce</h3>
+              <p class="body-sm">Negozi online su misura, integrazioni e cataloghi.</p>
+            </div>
+            <span class="service-cta">Scopri <span aria-hidden="true">→</span></span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- CTA FINALE -->
-    <section class="bg-black py-28 px-8 md:px-16 lg:px-24 text-center">
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-5 max-w-2xl mx-auto" data-reveal>
-        Pronto a digitalizzare<br />la tua azienda?
-      </h2>
-      <p class="text-base md:text-lg text-white/60 mb-10 max-w-md mx-auto" data-reveal data-delay="2">
-        Consulenza gratuita. Ti rispondiamo entro 24 ore.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center" data-reveal data-delay="3">
-        <a href="/contattaci" class="sl-btn-primary">Richiedi consulenza</a>
-        <a href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20informazioni%20sui%20vostri%20servizi.%20Ho%20visitato%20bitora.it" class="sl-btn-secondary">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
+    <!-- CTA -->
+    <section class="band band-cta" id="demo">
+      <div class="shell band-cta-inner" data-reveal>
+        <p class="eyebrow">Inizia da qui</p>
+        <h2 class="display-cta">
+          Vedi la piattaforma<br />sulla tua operatività.
+        </h2>
+        <p class="body-lg cta-copy">
+          Ti mostriamo ticket, assegnazioni e rapportini con i tuoi flussi reali.
+          Demo gratuita, senza impegno.
+        </p>
+
+        <ol class="cta-steps" aria-label="Come funziona la demo">
+          <li>
+            <span class="cta-step-n">1</span>
+            <div>
+              <strong>2 minuti</strong>
+              <span>Questionario breve sulla tua azienda</span>
+            </div>
+          </li>
+          <li>
+            <span class="cta-step-n">2</span>
+            <div>
+              <strong>Entro 24 ore</strong>
+              <span>Ti ricontattiamo noi</span>
+            </div>
+          </li>
+          <li>
+            <span class="cta-step-n">3</span>
+            <div>
+              <strong>Demo guidata</strong>
+              <span>Sul tuo caso, non una presentazione generica</span>
+            </div>
+          </li>
+        </ol>
+
+        <div class="cta-row cta-row-center">
+          <a href="/richiedi-demo" class="sl-btn-primary sl-btn-lg" data-track="cta_click" data-track-location="home_final">
+            Prenota la demo gratuita
+            <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20una%20demo%20della%20piattaforma%20gestione%20interventi."
+            class="sl-btn-whatsapp"
+            data-track="whatsapp_click"
+            data-track-location="home_final"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"
+              ><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg
+            >
+            Scrivici su WhatsApp
+          </a>
+        </div>
+
+        <p class="cta-trust">
+          Gratuita · Senza impegno · Risposta entro 24 ore
+        </p>
       </div>
     </section>
-
-  <script>
-
-    // ── Scroll reveal ─────────────────────────────────────────
-    const _revEls = document.querySelectorAll('[data-reveal],[data-reveal-left],[data-reveal-right]');
-    const _revObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); _revObs.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    _revEls.forEach(el => _revObs.observe(el));
-  </script>
-  </main>
+  </div>
 </Layout>
 
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Bitora",
-  image: "https://www.bitora.it/bitora.jpg",
-  url: "https://www.bitora.it",
-  areaServed: ["Carmagnola","Torino","Piemonte","Italia"],
+  "@type": "SoftwareApplication",
+  name: "Bitora Gestione Interventi",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: "https://www.bitora.it/gestione-interventi/",
+  description: "Piattaforma per ticket, assegnazione tecnici, rapportini digitali, documenti e statistiche operative.",
+  provider: {
+    "@type": "Organization",
+    name: "Bitora",
+    url: "https://www.bitora.it",
+  },
 })} />
 
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveals with stagger support
+  const reveals = document.querySelectorAll('[data-reveal]');
+  if (reduced) {
+    reveals.forEach((el) => el.classList.add('is-visible'));
+  } else {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          const delay = Number(el.dataset.revealDelay || 0);
+          el.style.transitionDelay = `${delay * 90}ms`;
+          el.classList.add('is-visible');
+          obs.unobserve(el);
+        });
+      },
+      { threshold: 0.14, rootMargin: '0px 0px -8% 0px' }
+    );
+    reveals.forEach((el) => obs.observe(el));
+  }
+
+  // Subtle hero parallax + fade on scroll
+  const hero = document.querySelector('.hero') as HTMLElement | null;
+  const heroMedia = document.querySelector('.hero-media') as HTMLElement | null;
+  const heroCopy = document.querySelector('.hero-copy') as HTMLElement | null;
+  const heroScroll = document.querySelector('.hero-scroll') as HTMLElement | null;
+
+  if (!reduced && hero && heroMedia && heroCopy) {
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const h = hero.offsetHeight;
+        const y = Math.min(window.scrollY, h);
+        const p = y / h;
+        heroMedia.style.transform = `translate3d(0, ${y * 0.28}px, 0) scale(${1.04 - p * 0.04})`;
+        heroCopy.style.opacity = String(Math.max(0, 1 - p * 1.35));
+        heroCopy.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
+        if (heroScroll) heroScroll.style.opacity = String(Math.max(0, 1 - p * 3));
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+</script>
+
 <style>
-  /* ── Hero entrance ── */
-  .hero-text > * { opacity:0; animation: heroUp 1s cubic-bezier(0.16,1,0.3,1) forwards; }
-  .hero-text > *:nth-child(1) { animation-delay:.15s; }
-  .hero-text > *:nth-child(2) { animation-delay:.32s; }
-  .hero-text > *:nth-child(3) { animation-delay:.48s; }
-  .hero-text > *:nth-child(4) { animation-delay:.64s; }
-  @keyframes heroUp {
-    from { opacity:0; transform:translateY(36px); }
-    to   { opacity:1; transform:translateY(0); }
+  .home {
+    --home-bg: #000000;
+    --home-bg-alt: #0d0d0f;
+    --home-surface: #141416;
+    --home-text: #f5f5f7;
+    --home-secondary: #a1a1a6;
+    --home-muted: #86868b;
+    --home-faint: #6e6e73;
+    --home-line: rgba(255, 255, 255, 0.14);
+    --home-line-soft: rgba(255, 255, 255, 0.1);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --shell: min(1120px, calc(100% - 3rem));
+    background: var(--home-bg);
+    color: var(--home-text);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
   }
-  /* ── Scroll reveal ── */
-  [data-reveal] {
-    opacity:0; transform:translateY(52px);
-    transition: opacity .85s cubic-bezier(0.16,1,0.3,1), transform .85s cubic-bezier(0.16,1,0.3,1);
+
+  @media (min-width: 768px) {
+    .home { --shell: min(1120px, calc(100% - 6rem)); }
   }
-  [data-reveal-left] {
-    opacity:0; transform:translateX(-52px);
-    transition: opacity .85s cubic-bezier(0.16,1,0.3,1), transform .85s cubic-bezier(0.16,1,0.3,1);
+  @media (min-width: 1024px) {
+    .home { --shell: min(1120px, calc(100% - 8rem)); }
   }
-  [data-reveal-right] {
-    opacity:0; transform:translateX(52px);
-    transition: opacity .85s cubic-bezier(0.16,1,0.3,1), transform .85s cubic-bezier(0.16,1,0.3,1);
+
+  .shell {
+    width: var(--shell);
+    margin-inline: auto;
   }
-  [data-reveal].is-visible,
-  [data-reveal-left].is-visible,
-  [data-reveal-right].is-visible { opacity:1; transform:translate(0,0); }
-  [data-delay="2"] { transition-delay:.22s; }
-  [data-delay="3"] { transition-delay:.4s; }
-  /* ── Parallax ── */
-  .parallax-img { will-change:transform; }
-  /* ── Reduced motion ── */
-  @media (prefers-reduced-motion: reduce) {
-    [data-reveal],[data-reveal-left],[data-reveal-right],.hero-text > * {
-      opacity:1!important; transform:none!important; animation:none!important; transition:none!important;
+
+  .text-secondary { color: var(--home-secondary); }
+
+  /* ——— Type ——— */
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--home-muted);
+    margin: 0 0 1.25rem;
+  }
+
+  .display {
+    font-size: clamp(3rem, 8vw, 6.25rem);
+    font-weight: 700;
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+    margin: 0 0 1.5rem;
+    color: var(--home-text);
+  }
+
+  .display-sm {
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    margin: 0 0 1.25rem;
+    color: var(--home-text);
+  }
+
+  .display-cta {
+    font-size: clamp(2.4rem, 6.5vw, 5rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin: 0 0 1.25rem;
+    color: var(--home-text);
+  }
+
+  .headline {
+    font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--home-text);
+  }
+
+  .lede {
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--home-secondary);
+    margin: 0 0 2.25rem;
+    max-width: 28rem;
+  }
+
+  .body-lg {
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: var(--home-secondary);
+    margin: 0;
+  }
+
+  .body-sm {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--home-muted);
+    margin: 0;
+  }
+
+  /* ——— Bands ——— */
+  .band {
+    border-top: 1px solid var(--home-line-soft);
+  }
+
+  .band-alt {
+    background: var(--home-bg-alt);
+  }
+
+  .band-inner {
+    padding: clamp(4.5rem, 10vw, 8rem) 0;
+  }
+
+  .band-head {
+    margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+    max-width: 36rem;
+  }
+
+  .band-foot {
+    margin-top: 2rem;
+  }
+
+  .band-cta {
+    text-align: center;
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
+      var(--home-bg);
+  }
+
+  .band-cta-inner {
+    padding: clamp(5.5rem, 12vw, 9rem) 0 clamp(4.5rem, 10vw, 7rem);
+    max-width: 52rem;
+  }
+
+  .cta-copy {
+    margin: 0 auto 2.75rem;
+    max-width: 32rem;
+  }
+
+  .cta-steps {
+    list-style: none;
+    margin: 0 auto 2.75rem;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+    max-width: 40rem;
+    text-align: left;
+  }
+
+  @media (min-width: 768px) {
+    .cta-steps {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
   }
-  .sl-btn-primary {
-    display:inline-flex;align-items:center;gap:.5rem;
-    background:#fff;color:#000;font-weight:600;font-size:.875rem;
-    padding:.75rem 1.75rem;border-radius:4px;transition:background .2s;white-space:nowrap;
+
+  .cta-steps li {
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+    padding: 1.15rem 1.1rem;
+    border: 1px solid var(--home-line-soft);
+    border-radius: 1.1rem;
+    background: rgba(255, 255, 255, 0.03);
   }
-  .sl-btn-primary:hover{background:#e5e5e5;}
+
+  .cta-step-n {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: #f5f5f7;
+    color: #000;
+  }
+
+  .cta-steps strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--home-text);
+    margin-bottom: 0.2rem;
+  }
+
+  .cta-steps span {
+    display: block;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--home-muted);
+  }
+
+  .cta-trust {
+    margin: 1.75rem 0 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--home-faint);
+  }
+
+  .sl-btn-lg {
+    padding: 1.05rem 1.9rem;
+    font-size: 1rem;
+  }
+
+  .sl-btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 1.7rem;
+    border-radius: 980px;
+    white-space: nowrap;
+    color: #fff;
+    background: #1f8f4e;
+    border: 1px solid transparent;
+    transition: background 0.25s, transform 0.25s var(--ease-out);
+  }
+  .sl-btn-whatsapp:hover {
+    background: #22a358;
+    transform: translateY(-1px);
+  }
+
+  /* ——— Split ——— */
+  .split {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  @media (min-width: 1024px) {
+    .split {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: end;
+    }
+    .split-offer {
+      align-items: center;
+    }
+  }
+
+  .split-body .body-lg {
+    margin-bottom: 2.5rem;
+    max-width: 28rem;
+  }
+
+  .offer-copy {
+    margin: 1.75rem 0 2rem;
+    max-width: 26rem;
+  }
+
+  /* ——— Hero ——— */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: clamp(5rem, 12vh, 8rem);
+    overflow: hidden;
+  }
+
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% center;
+    transform: scale(1.08);
+    animation: heroKen 20s var(--ease-out) forwards;
+  }
+
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.45) 40%, #000 100%),
+      linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 55%, transparent 100%);
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+    will-change: transform, opacity;
+  }
+
+  .hero-item {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    animation: riseIn 1.05s var(--ease-out) forwards;
+  }
+  .hero-item:nth-child(1) { animation-delay: 0.1s; }
+  .hero-item:nth-child(2) { animation-delay: 0.26s; }
+  .hero-item:nth-child(3) { animation-delay: 0.42s; }
+  .hero-item:nth-child(4) { animation-delay: 0.56s; }
+
+  .hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 1.75rem;
+    z-index: 3;
+    width: 24px;
+    height: 38px;
+    margin-left: -12px;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    transition: opacity 0.3s;
+  }
+  .hero-scroll span {
+    width: 3px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.7);
+    animation: scrollDot 1.6s var(--ease-out) infinite;
+  }
+
+  /* ——— Lists ——— */
+  .list-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--home-line);
+  }
+
+  .list-row {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--home-line-soft);
+  }
+
+  @media (min-width: 768px) {
+    .list-row {
+      grid-template-columns: 3rem 1fr;
+      gap: 1.75rem;
+      padding: 1.5rem 0;
+    }
+  }
+
+  .list-num {
+    color: var(--home-faint);
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.3rem;
+  }
+
+  .list-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.3rem;
+    color: var(--home-text);
+  }
+
+  /* ——— Flow ——— */
+  .flow {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .flow { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+  }
+  @media (min-width: 1024px) {
+    .flow { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .flow-cell {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--home-line-soft);
+    border-radius: 1.25rem;
+    padding: 1.75rem 1.5rem;
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.35s var(--ease-out), border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+  }
+
+  .flow-cell:hover {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+  }
+
+  .flow-num {
+    display: block;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: rgba(245, 245, 247, 0.16);
+    margin-bottom: 2rem;
+  }
+
+  .flow-cell .list-title { margin-bottom: 0.4rem; }
+
+  /* ——— Audience ——— */
+  .audience {
+    position: relative;
+    min-height: min(88vh, 820px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .audience-media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .audience-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    transform: scale(1.04);
+  }
+
+  .audience-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 40%, #000 100%);
+  }
+
+  .audience-copy {
+    position: relative;
+    z-index: 2;
+    padding: clamp(4rem, 10vw, 6.5rem) 0;
+    max-width: 40rem;
+  }
+
+  .audience-lede {
+    margin-bottom: 2rem;
+  }
+
+  /* ——— Offer ——— */
+  .offer-rows {
+    border-top: 1px solid var(--home-line);
+  }
+
+  .offer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--home-line);
+  }
+
+  .offer-label {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--home-text);
+  }
+
+  .offer-value {
+    font-size: 0.95rem;
+    color: var(--home-muted);
+    text-align: right;
+  }
+
+  /* ——— Services ——— */
+  .services {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  @media (min-width: 768px) {
+    .services { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .service-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 240px;
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--home-line-soft);
+    border-radius: 1.25rem;
+    transition: background 0.35s var(--ease-out), border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+  }
+
+  .service-cell:hover {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+  }
+
+  .service-num {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--home-faint);
+    margin: 0 0 1rem;
+  }
+
+  .service-title {
+    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 0.65rem;
+    color: var(--home-text);
+    transition: transform 0.35s var(--ease-out);
+  }
+
+  .service-cell:hover .service-title {
+    transform: translateX(4px);
+  }
+
+  .service-cta {
+    margin-top: 2.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--home-muted);
+    transition: color 0.25s;
+  }
+
+  .service-cell:hover .service-cta {
+    color: var(--home-text);
+  }
+
+  /* ——— Links / CTAs ——— */
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .cta-row-center {
+    justify-content: center;
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--home-secondary);
+    transition: color 0.25s, gap 0.25s;
+  }
+  .text-link:hover {
+    color: var(--home-text);
+    gap: 0.8rem;
+  }
+
+  .sl-btn-primary,
   .sl-btn-secondary {
-    display:inline-flex;align-items:center;gap:.5rem;
-    background:transparent;color:#fff;font-weight:600;font-size:.875rem;
-    padding:.75rem 1.75rem;border-radius:4px;
-    border:1.5px solid rgba(255,255,255,.55);
-    transition:border-color .2s,background .2s;white-space:nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 1.7rem;
+    border-radius: 980px;
+    white-space: nowrap;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s var(--ease-out), box-shadow 0.25s;
   }
-  .sl-btn-secondary:hover{border-color:rgba(255,255,255,.9);background:rgba(255,255,255,.08);}
+
+  .sl-btn-primary {
+    background: #f5f5f7;
+    color: #000;
+  }
+  .sl-btn-primary:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .sl-btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--home-text);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(12px);
+  }
+  .sl-btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  /* ——— Motion ——— */
+  @keyframes heroKen {
+    from { transform: scale(1.08); }
+    to { transform: scale(1); }
+  }
+
+  @keyframes riseIn {
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes scrollDot {
+    0% { opacity: 0; transform: translateY(0); }
+    30% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(12px); }
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    transition:
+      opacity 0.85s var(--ease-out),
+      transform 0.85s var(--ease-out);
+    will-change: opacity, transform;
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-img,
+    .hero-item,
+    .hero-scroll span {
+      animation: none !important;
+    }
+    .hero-img { transform: none; }
+    .hero-item {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .flow-cell:hover,
+    .service-cell:hover,
+    .sl-btn-primary:hover {
+      transform: none;
+    }
+  }
 </style>

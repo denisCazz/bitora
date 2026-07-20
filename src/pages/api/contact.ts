@@ -1,4 +1,4 @@
-import type { APIRoute } from 'astro';
+﻿import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 import crypto from 'node:crypto';
 import { renderAdminEmail } from '../../emails/adminNotification';
@@ -36,6 +36,10 @@ function isRateLimited(ip: string): boolean {
   return entry.count > RATE_LIMIT_MAX;
 }
 
+function pick(data: FormData, key: string): string {
+  return ((data.get(key) as string) || '').trim();
+}
+
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   const ip = clientAddress || request.headers.get('x-forwarded-for') || 'unknown';
 
@@ -61,7 +65,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
     const data = await request.formData();
 
-    const honeypot = (data.get('_gotcha') as string)?.trim() || '';
+    const honeypot = pick(data, '_gotcha');
     if (honeypot) {
       return new Response(JSON.stringify({ ok: true }), {
         status: 200,
@@ -69,17 +73,42 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       });
     }
 
-    const nome = (data.get('nome') as string)?.trim() || '';
-    const email = (data.get('email') as string)?.trim() || '';
-    const telefono = (data.get('telefono') as string)?.trim() || '';
-    const argomento = (data.get('argomento') as string)?.trim() || '';
-    const messaggio = (data.get('messaggio') as string)?.trim() || '';
+    const nome = pick(data, 'nome');
+    const email = pick(data, 'email');
+    const telefono = pick(data, 'telefono');
+    const argomento = pick(data, 'argomento');
+    const messaggio = pick(data, 'messaggio');
+    const formType = pick(data, 'form_type') || 'contact';
+    const azienda = pick(data, 'azienda');
+    const ruolo = pick(data, 'ruolo');
+    const tecnici = pick(data, 'tecnici');
+    const interventiMensili = pick(data, 'interventi_mensili');
+    const strumentiAttuali = pick(data, 'strumenti_attuali');
+    const esigenza = pick(data, 'esigenza');
+    const landingPage = pick(data, 'landing_page');
+    const referrer = pick(data, 'referrer');
+    const utmSource = pick(data, 'utm_source');
+    const utmMedium = pick(data, 'utm_medium');
+    const utmCampaign = pick(data, 'utm_campaign');
+    const utmContent = pick(data, 'utm_content');
+    const utmTerm = pick(data, 'utm_term');
+    const gclid = pick(data, 'gclid');
+    const fbclid = pick(data, 'fbclid');
 
     if (!nome || !email || !messaggio) {
       return new Response(
         JSON.stringify({ ok: false, error: 'Nome, email e messaggio sono obbligatori' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
+    }
+
+    if (formType === 'demo') {
+      if (!azienda || !telefono || !ruolo || !tecnici || !interventiMensili || !strumentiAttuali || !esigenza) {
+        return new Response(
+          JSON.stringify({ ok: false, error: 'Compila tutti i campi obbligatori della demo' }),
+          { status: 400, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
     }
 
     if (!isValidEmail(email)) {
@@ -90,13 +119,14 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     const resend = new Resend(apiKey);
-    const argomentoClean = argomento || '';
-    const subject = `[Bitora] Contatto da ${escapeHtml(nome)}${argomentoClean ? ` - ${escapeHtml(argomentoClean)}` : ''}`;
+    const argomentoClean = argomento || (formType === 'demo' ? 'demo-gestione-interventi' : '');
+    const subjectPrefix = formType === 'demo' ? '[Bitora Demo]' : '[Bitora]';
+    const subject = `${subjectPrefix} Contatto da ${escapeHtml(nome)}${argomentoClean ? ` - ${escapeHtml(argomentoClean)}` : ''}`;
 
     const minuteBucket = Math.floor(Date.now() / 60_000);
     const idempotencyKey = crypto
       .createHash('sha256')
-      .update(`${email}|${minuteBucket}|${nome}|${argomentoClean}`.toLowerCase())
+      .update(`${email}|${minuteBucket}|${nome}|${argomentoClean}|${formType}`.toLowerCase())
       .digest('hex');
 
     const siteUrl = 'https://www.bitora.it';
@@ -109,6 +139,22 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       messaggio,
       siteUrl,
       ip: typeof ip === 'string' ? ip : String(ip),
+      formType,
+      azienda,
+      ruolo,
+      tecnici,
+      interventiMensili,
+      strumentiAttuali,
+      esigenza,
+      landingPage,
+      referrer,
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      utmContent,
+      utmTerm,
+      gclid,
+      fbclid,
     });
 
     const customerHtml = renderCustomerReplyEmail({
@@ -133,7 +179,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         from: mailFrom,
         to: email,
         replyTo: mailTo,
-        subject: 'Bitora · Abbiamo ricevuto la tua richiesta',
+        subject:
+          formType === 'demo'
+            ? 'Bitora · Richiesta demo ricevuta'
+            : 'Bitora · Abbiamo ricevuto la tua richiesta',
         html: customerHtml,
         headers: { 'Idempotency-Key': `${idempotencyKey}-reply` },
       }),

@@ -10,19 +10,21 @@ const argomentoPreselezionato =
     ? 'e-commerce'
     : topic === 'nfc'
       ? 'nfc'
-      : topic === 'sistemi'
-        ? 'sistemi-aziendali'
+      : topic === 'sistemi' || topic === 'cmms' || topic === 'interventi'
+        ? 'gestione-interventi'
         : topic === 'crm'
           ? 'gestionali-crm'
           : topic === 'sito'
             ? 'siti-web'
-            : '';
+            : topic === 'demo'
+              ? 'demo-gestione-interventi'
+              : '';
 const topTestimonials = testimonials.slice(0, 2);
 ---
 
 <Layout
-  title="Contattaci | Consulenza Gratuita | Bitora"
-  description="Richiedi una consulenza gratuita per sistemi aziendali, gestionali, siti web ed e-commerce. Sede in Piemonte, serviamo tutta Italia. Risposta in 24 ore."
+  title="Contattaci | Demo e consulenza | Bitora"
+  description="Richiedi una demo della piattaforma gestione interventi o una consulenza su siti web ed e-commerce. Risposta in 24 ore."
 >
   <main class="bg-black text-white overflow-x-hidden">
     <!-- Hero -->
@@ -241,10 +243,16 @@ const topTestimonials = testimonials.slice(0, 2);
                         >Seleziona...</option
                       >
                       <option
-                        value="sistemi-aziendali"
+                        value="demo-gestione-interventi"
                         class="bg-white dark:bg-zinc-900"
-                        selected={argomentoPreselezionato === 'sistemi-aziendali'}
-                        >Sistemi aziendali</option
+                        selected={argomentoPreselezionato === 'demo-gestione-interventi'}
+                        >Demo gestione interventi</option
+                      >
+                      <option
+                        value="gestione-interventi"
+                        class="bg-white dark:bg-zinc-900"
+                        selected={argomentoPreselezionato === 'gestione-interventi'}
+                        >Piattaforma ticket / rapportini</option
                       >
                       <option
                         value="gestionali-crm"
@@ -351,9 +359,9 @@ const topTestimonials = testimonials.slice(0, 2);
                   </div>
                 </div>
                 <p class="text-white font-bold text-lg mb-1">
-                  50+ progetti realizzati
+                  Demo personalizzata
                 </p>
-                <p class="text-gray-500 text-sm">Clienti soddisfatti in tutta Italia</p>
+                <p class="text-gray-500 text-sm">Piattaforma mostrata sulla tua operatività</p>
               </div>
 
               {

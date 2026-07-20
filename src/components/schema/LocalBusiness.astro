@@ -1,4 +1,4 @@
----
+﻿---
 export interface Props {
   url?: string;
   name?: string;
@@ -33,9 +33,11 @@ const {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'ProfessionalService',
   '@id': `${url}#localbusiness`,
   name,
+  description:
+    'Piattaforme operative per assistenza tecnica e manutenzione: ticket, tecnici, rapportini digitali e software su misura.',
   url,
   image,
   telephone,

@@ -23,6 +23,9 @@ export default defineConfig({
   base: '/',
   trailingSlash: 'ignore',
   output: 'server',
+  redirects: {
+    '/cmms': '/gestione-interventi',
+  },
   // Production fix: prevent false-positive CSRF blocks behind proxies/CDNs
   // (e.g. apex vs www, https termination). If you later ensure correct
   // X-Forwarded-* headers, you can re-enable this.
