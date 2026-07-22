@@ -83,4 +83,20 @@ test.describe('Bitora.it FSM repositioning', () => {
       await expect(page.locator('a[href*="ai.bitora.it"]')).toHaveCount(0);
     }
   });
+
+  test('lavori page opens individual projects', async ({ page }) => {
+    await page.goto('/lavori');
+    await expect(page.locator('h1')).toContainText(/lavori/i);
+
+    const projectLink = page.locator('a[href^="/progetti/"]').first();
+    await expect(projectLink).toBeVisible();
+
+    const href = await projectLink.getAttribute('href');
+    expect(href).toMatch(/^\/progetti\/[a-z0-9-]+$/);
+
+    await projectLink.click();
+    await expect(page).toHaveURL(new RegExp(href!.replace(/\//g, '\\/')));
+    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('a[href="/lavori"]').first()).toBeVisible();
+  });
 });
