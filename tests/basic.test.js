@@ -95,7 +95,7 @@ test.describe('Bitora.it FSM repositioning', () => {
     expect(href).toMatch(/^\/progetti\/[a-z0-9-]+$/);
 
     await projectLink.click();
-    await expect(page).toHaveURL(new RegExp(href!.replace(/\//g, '\\/')));
+    await expect(page).toHaveURL(href);
     await expect(page.locator('h1')).toBeVisible();
     await expect(page.locator('a[href="/lavori"]').first()).toBeVisible();
   });
