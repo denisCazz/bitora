@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 import Layout from '../../layouts/Layout.astro';
-import { caseStudies, getCaseStudyBySlug, type CaseStudy } from '../../data/caseStudies';
+import { caseStudies, type CaseStudy } from '../../data/caseStudies';
 
 export function getStaticPaths() {
   return caseStudies.map(caseStudy => ({
@@ -16,222 +16,186 @@ interface Props {
 
 const { caseStudy } = Astro.props;
 
-const altriProgetti = caseStudies.filter(cs => cs.slug !== caseStudy.slug).slice(0, 3);
+const altriProgetti = caseStudies
+  .filter(cs => cs.slug !== caseStudy.slug && !cs.isWip)
+  .slice(0, 3);
 ---
 
 <Layout
   title={`${caseStudy.title} - Case Study | Bitora`}
   description={`Case study ${caseStudy.title}: ${caseStudy.subtitle}. Scopri come Bitora ha aiutato ${caseStudy.title} a migliorare la presenza digitale.`}
 >
-  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    <!-- Hero Section -->
-    <section class="relative min-h-[60vh] flex flex-col justify-end pb-16 px-6">
+  <main class="bg-black text-white overflow-x-hidden">
+    <!-- Hero -->
+    <section class="relative min-h-[58vh] flex flex-col justify-end pb-16 md:pb-20 px-8 md:px-16 lg:px-24 border-b border-white/[0.06]">
       <div class="absolute inset-0">
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-white dark:from-black via-white/80 dark:via-black/80 to-white/40 dark:to-black/40 z-10"
-        >
-        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/35 z-10"></div>
         <img
           src={caseStudy.imageUrl}
-          alt={caseStudy.title}
-          class="w-full h-full object-cover opacity-40 dark:opacity-60"
+          alt=""
+          class="w-full h-full object-cover opacity-45"
+          decoding="async"
         />
       </div>
 
-      <div class="relative z-20 max-w-5xl mx-auto w-full">
+      <div class="relative z-20 max-w-7xl mx-auto w-full">
         <a
           href="/lavori"
-          class="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors mb-8 group"
+          class="inline-flex items-center text-white/45 hover:text-white transition-colors mb-10 group"
         >
           <svg
-            class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform"
+            class="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
           </svg>
           Torna ai lavori
         </a>
 
-        <div class="space-y-4">
-          <div class="flex flex-wrap items-center gap-4">
-            <span class="text-gray-500 text-sm font-medium tracking-wider uppercase"
-              >{caseStudy.category}</span
-            >
-            <span class="text-gray-400">•</span>
-            <span class="text-gray-500 dark:text-gray-400 text-sm">{caseStudy.location}</span>
+        <div class="space-y-5" data-reveal>
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="text-xs font-semibold tracking-[0.2em] text-white/40 uppercase">{caseStudy.category}</span>
+            <span class="text-white/25" aria-hidden="true">•</span>
+            <span class="text-sm text-white/45">{caseStudy.location}</span>
             {
               caseStudy.isWip && (
-                <span class="bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-600 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider text-gray-700 dark:text-gray-300">
-                  In Corso
+                <span class="bg-white/[0.08] border border-white/15 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-white/70">
+                  In corso
                 </span>
               )
             }
           </div>
 
-          <h1 class="text-4xl md:text-7xl font-bold tracking-tight">{caseStudy.title}</h1>
-          <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light">
-            {caseStudy.subtitle}
-          </p>
+          <h1 class="text-[clamp(2.75rem,8vw,6.5rem)] font-bold tracking-tight leading-[0.95]">
+            {caseStudy.title}
+          </h1>
+          <p class="text-lg md:text-xl text-white/50 font-light max-w-2xl">{caseStudy.subtitle}</p>
+
+          {
+            caseStudy.siteUrl && caseStudy.siteUrl !== '#' && (
+              <div class="pt-2">
+                <a
+                  href={caseStudy.siteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-semibold rounded hover:bg-white/88 transition-colors"
+                >
+                  Visita il sito
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                </a>
+              </div>
+            )
+          }
         </div>
       </div>
     </section>
 
-    <!-- Content -->
-    <article class="max-w-5xl mx-auto px-6 py-16 space-y-20">
-      <!-- Chi è il cliente -->
-      <section class="reveal-on-scroll">
-        <h2 class="text-3xl font-bold mb-6 flex items-center">
-          <span class="w-12 h-[2px] bg-gray-900 dark:bg-white mr-4"></span>
-          Chi è il cliente
-        </h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl">
+    <article class="max-w-5xl mx-auto px-8 md:px-16 py-20 md:py-28 space-y-20 md:space-y-24">
+      <section data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Cliente</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Chi è il cliente</h2>
+        <p class="text-base md:text-lg text-white/60 leading-relaxed max-w-3xl">
           {caseStudy.clientDescription}
         </p>
       </section>
 
-      <!-- Il problema -->
-      <section class="reveal-on-scroll">
-        <h2 class="text-3xl font-bold mb-6 flex items-center">
-          <span class="w-12 h-[2px] bg-red-500 mr-4"></span>
-          La sfida
-        </h2>
-        <div
-          class="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/30 rounded-2xl p-8"
-        >
-          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            {caseStudy.problema}
-          </p>
-        </div>
+      <section data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Sfida</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">La sfida</h2>
+        <p class="text-base md:text-lg text-white/70 leading-relaxed max-w-3xl border-l border-white/20 pl-6">
+          {caseStudy.problema}
+        </p>
       </section>
 
-      <!-- La soluzione -->
-      <section class="reveal-on-scroll">
-        <h2 class="text-3xl font-bold mb-8 flex items-center">
-          <span class="w-12 h-[2px] bg-green-500 mr-4"></span>
-          La soluzione Bitora
-        </h2>
+      <section data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Soluzione</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-10">La soluzione Bitora</h2>
         <div class="grid md:grid-cols-2 gap-6">
           {
             caseStudy.soluzione.map((sol, i) => (
-              <div class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-8 hover:border-gray-400 dark:hover:border-white/30 transition-colors">
-                <div class="w-10 h-10 bg-gray-100 dark:bg-white/10 rounded-xl flex items-center justify-center mb-4">
-                  <span class="text-gray-600 dark:text-gray-400 font-bold">{i + 1}</span>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">{sol.titolo}</h3>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{sol.descrizione}</p>
+              <div class="border border-white/10 bg-white/[0.02] rounded-2xl p-7 md:p-8">
+                <p class="text-xs font-semibold tracking-[0.2em] text-white/30 uppercase mb-4 tabular-nums">
+                  {String(i + 1).padStart(2, '0')}
+                </p>
+                <h3 class="text-xl font-bold mb-3">{sol.titolo}</h3>
+                <p class="text-white/55 leading-relaxed">{sol.descrizione}</p>
               </div>
             ))
           }
         </div>
       </section>
 
-      <!-- Risultati -->
-      <section class="reveal-on-scroll">
-        <h2 class="text-3xl font-bold mb-8 flex items-center">
-          <span class="w-12 h-[2px] bg-gray-900 dark:bg-white mr-4"></span>
-          I risultati
-        </h2>
-        <div
-          class="bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-gray-700 rounded-2xl p-8"
-        >
-          <ul class="space-y-4">
-            {
-              caseStudy.risultati.map(risultato => (
-                <li class="flex items-start">
-                  <svg
-                    class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span class="text-lg text-gray-700 dark:text-gray-300">{risultato}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
+      <section data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Risultati</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-8">I risultati</h2>
+        <ul class="space-y-4">
+          {
+            caseStudy.risultati.map(risultato => (
+              <li class="flex items-start gap-3">
+                <span class="mt-2 w-1.5 h-1.5 rounded-full bg-white/70 flex-shrink-0" aria-hidden="true"></span>
+                <span class="text-base md:text-lg text-white/65 leading-relaxed">{risultato}</span>
+              </li>
+            ))
+          }
+        </ul>
       </section>
 
-      <!-- Tecnologie -->
-      <section class="reveal-on-scroll">
-        <h2 class="text-3xl font-bold mb-6 flex items-center">
-          <span class="w-12 h-[2px] bg-gray-400 mr-4"></span>
-          Tecnologie e servizi
-        </h2>
-        <div class="flex flex-wrap gap-3">
+      <section data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Stack</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Tecnologie e servizi</h2>
+        <div class="flex flex-wrap gap-2">
           {
             caseStudy.tecnologie.map(tech => (
-              <span class="bg-gray-100 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm text-gray-700 dark:text-gray-300">
+              <span class="text-xs font-semibold text-white/65 bg-white/[0.06] border border-white/10 rounded-full px-3.5 py-1.5 tracking-wide">
                 {tech}
               </span>
             ))
           }
         </div>
       </section>
-
-      <!-- CTA -->
-      {
-        caseStudy.siteUrl && caseStudy.siteUrl !== '#' && (
-          <section class="text-center py-12 reveal-on-scroll">
-            <a
-              href={caseStudy.siteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-black px-8 py-4 rounded-full font-medium text-lg transition-all hover:scale-105"
-            >
-              Visita il sito
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
-          </section>
-        )
-      }
     </article>
 
     <!-- Altri progetti -->
-    <section class="py-24 px-6 border-t border-gray-200 dark:border-white/5">
+    <section class="py-24 md:py-32 px-8 md:px-16 lg:px-24 border-t border-white/[0.06]">
       <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl font-bold mb-12 text-center">Altri progetti</h2>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-4 text-center" data-reveal>
+          Continua
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-14 text-center tracking-tight" data-reveal>Altri progetti</h2>
         <div class="grid md:grid-cols-3 gap-8">
           {
             altriProgetti.map(progetto => (
-              <a href={`/progetti/${progetto.slug}`} class="group block">
-                <article class="bg-gray-50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 rounded-2xl overflow-hidden hover:border-gray-400 dark:hover:border-white/30 transition-all duration-300">
-                  <div class="aspect-video overflow-hidden">
+              <a
+                href={`/progetti/${progetto.slug}`}
+                class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-2xl"
+                data-reveal
+              >
+                <article class="overflow-hidden">
+                  <div class="aspect-[16/10] overflow-hidden rounded-2xl bg-white/[0.03] mb-5">
                     <img
                       src={progetto.imageUrl}
                       alt={progetto.title}
-                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04] opacity-80 group-hover:opacity-100"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
-                  <div class="p-6">
-                    <span class="text-gray-500 text-xs font-medium tracking-wider uppercase">
-                      {progetto.category}
-                    </span>
-                    <h3 class="text-xl font-bold mt-2 text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
-                      {progetto.title}
-                    </h3>
-                    <p class="text-gray-500 text-sm mt-1">{progetto.location}</p>
-                  </div>
+                  <span class="text-xs font-semibold tracking-[0.2em] text-white/35 uppercase">
+                    {progetto.category}
+                  </span>
+                  <h3 class="text-xl font-bold mt-2 group-hover:text-white/75 transition-colors">
+                    {progetto.title}
+                  </h3>
+                  <p class="text-white/40 text-sm mt-1">{progetto.location}</p>
+                  <p class="mt-4 text-sm font-medium text-white/50 group-hover:text-white transition-colors inline-flex items-center gap-2">
+                    Apri progetto
+                    <span aria-hidden="true">→</span>
+                  </p>
                 </article>
               </a>
             ))
@@ -240,55 +204,39 @@ const altriProgetti = caseStudies.filter(cs => cs.slug !== caseStudy.slug).slice
       </div>
     </section>
 
-    <!-- CTA Finale -->
-    <section class="py-32 px-6 text-center">
-      <div class="max-w-4xl mx-auto reveal-on-scroll">
-        <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight">Vuoi risultati simili?</h2>
-        <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-          Raccontaci la tua sfida. Costruiremo insieme la soluzione su misura.
-        </p>
-        <a
-          href="/contattaci"
-          class="inline-block px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium text-lg transition-all hover:scale-105"
-        >
+    <!-- CTA -->
+    <section class="py-32 md:py-36 px-8 md:px-16 lg:px-24 text-center border-t border-white/[0.06]">
+      <p class="text-xs font-semibold tracking-[0.25em] text-white/30 uppercase mb-8" data-reveal>Prossimo passo</p>
+      <h2 class="text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.03] tracking-tight mb-6 max-w-2xl mx-auto" data-reveal>
+        Vuoi risultati simili?
+      </h2>
+      <p class="text-base md:text-lg text-white/50 mb-12 max-w-md mx-auto leading-relaxed" data-reveal>
+        Raccontaci la tua sfida. Costruiremo insieme la soluzione su misura.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
+        <a href="/contattaci" class="px-7 py-3.5 bg-white text-black rounded font-semibold text-sm hover:bg-white/90 transition-colors">
           Inizia il tuo progetto
+        </a>
+        <a href="/lavori" class="px-7 py-3.5 border border-white/25 text-white rounded font-semibold text-sm hover:border-white/60 hover:bg-white/[0.06] transition-all">
+          Torna ai lavori
         </a>
       </div>
     </section>
   </main>
 </Layout>
 
-<style>
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
-
 <script>
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1,
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
+  const _els = document.querySelectorAll('[data-reveal]');
+  const _obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('rv'); _obs.unobserve(e.target); }
     });
-  }, observerOptions);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-    elements.forEach(el => observer.observe(el));
-  });
+  }, { threshold: 0.08 });
+  _els.forEach(el => _obs.observe(el));
 </script>
+
+<style>
+  [data-reveal] { opacity:0; transform:translateY(38px); transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); }
+  [data-reveal].rv { opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion:reduce) { [data-reveal] { opacity:1!important;transform:none!important;transition:none!important; } }
+</style>
