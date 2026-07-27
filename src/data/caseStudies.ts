@@ -356,6 +356,59 @@ export const caseStudies: CaseStudy[] = [
       { testo: 'Sito ufficiale Bar Tabacchi Chantilly', url: 'https://bartabacchichantilly.it' },
     ],
   },
+
+  {
+    id: 'agriturismo-la-natura',
+    slug: 'agriturismo-la-natura',
+    title: 'Agriturismo La Natura',
+    subtitle: 'Sito vetrina multilanguage',
+    category: 'Food & Hospitality',
+    location: 'Savigliano (CN)',
+    imageUrl: '/logo_natura.png',
+    siteUrl: 'https://lanaturasavigliano.it',
+    featured: true,
+    isWip: false,
+
+    clientDescription: `Agriturismo La Natura è un agriturismo a Savigliano gestito da Alfred e Silvana. Tra campagna cuneese e giardino, offre cucina di campagna con sapori piemontesi, prodotti dell'orto e sola carne italiana: pranzi di lavoro, cene e tavolate conviviali in un ambiente familiare.`,
+
+    problema: `Serviva una presenza digitale chiara e credibile per far trovare l'agriturismo online, comunicare orari, prezzi e posizione, e semplificare le prenotazioni — anche per ospiti che parlano inglese o francese.`,
+
+    soluzione: [
+      {
+        titolo: 'Sito vetrina orientato alle prenotazioni',
+        descrizione:
+          "Bitora ha realizzato un sito che presenta cucina, luogo e info pratiche (orari, prezzi, mappa) con call-to-action dirette per chiamare o prenotare su WhatsApp.",
+      },
+      {
+        titolo: 'Esperienza multilanguage e mobile-first',
+        descrizione:
+          'Il sito è disponibile in italiano, inglese e francese, ottimizzato per smartphone e per la ricerca locale su Savigliano e dintorni.',
+      },
+    ],
+
+    risultati: [
+      'Presenza digitale che racconta cucina di campagna e accoglienza dell’agriturismo',
+      'Prenotazioni facilitate con telefono e WhatsApp in evidenza',
+      'Contenuti accessibili a ospiti IT, EN e FR',
+      'Visibilità locale strutturata per Savigliano (CN)',
+    ],
+
+    tecnologie: [
+      'Astro',
+      'Coolify',
+      'Multilingua IT/EN/FR',
+      'SEO locale',
+      'WhatsApp booking',
+      'Responsive design',
+    ],
+
+    metricsPreview: ['Prenotazioni più dirette', 'Sito multilanguage'],
+
+    fonti: [
+      { testo: 'Sito ufficiale Agriturismo La Natura', url: 'https://lanaturasavigliano.it' },
+    ],
+  },
+
   {
     id: 'myzone',
     slug: 'myzone',

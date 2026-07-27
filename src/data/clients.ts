@@ -64,4 +64,11 @@ export const clientLogos: ClientLogo[] = [
     url: '#',
     location: 'Piemonte',
   },
+  {
+    name: 'Agriturismo La Natura',
+    logo: '/logo_natura.png',
+    tier: 'gold',
+    url: 'https://lanaturasavigliano.it',
+    location: 'Savigliano',
+  },
 ];
