@@ -16,6 +16,7 @@
     "analyze": "npx vite-bundle-analyzer dist",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
+    "verify:seo": "node scripts/verify-seo-build.mjs",
     "security-check": "npm audit && npm outdated"
   },
   "dependencies": {

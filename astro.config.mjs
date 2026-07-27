@@ -6,12 +6,25 @@ import react from '@astrojs/react';
 import node from '@astrojs/node';
 import compressor from 'astro-compressor';
 
+const SITEMAP_EXCLUDE = new Set([
+  'https://bitora.it/services/',
+  'https://bitora.it/404/',
+  'https://bitora.it/landing/',
+  'https://bitora.it/cmms/',
+  'https://bitora.it/shop/',
+  'https://bitora.it/demo/',
+  'https://bitora.it/progetti/hololux/',
+  'https://bitora.it/progetti/kristina/',
+]);
+
 // https://astro.build/config
 export default defineConfig({
   adapter: node({ mode: 'standalone' }),
   integrations: [
     tailwind(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !SITEMAP_EXCLUDE.has(page),
+    }),
     react(),
     compressor({
       gzip: true,
@@ -19,12 +32,17 @@ export default defineConfig({
     }),
   ],
   // Canonical production origin (affects sitemap, etc.)
-  site: 'https://www.bitora.it/',
+  site: 'https://bitora.it/',
   base: '/',
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
   output: 'server',
   redirects: {
-    '/cmms': '/gestione-interventi',
+    '/cmms/': '/gestione-interventi/',
+    '/services/': '/servizi/',
+    '/shop/': '/e-commerce-piemonte/',
+    '/demo/': '/richiedi-demo/',
+    '/progetti/hololux/': '/lavori/',
+    '/progetti/kristina/': '/progetti/sartoria-kristina/',
   },
   // Production fix: prevent false-positive CSRF blocks behind proxies/CDNs
   // (e.g. apex vs www, https termination). If you later ensure correct

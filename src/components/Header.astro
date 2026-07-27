@@ -1,18 +1,50 @@
 ﻿---
 const navItems = [
   { name: 'Home', url: '/' },
-  { name: 'Ecosistema', url: '/gestione-interventi' },
-  { name: 'Rapportini', url: '/rapportini' },
-  { name: 'Ticketing', url: '/ticketing' },
-  { name: 'Servizi', url: '/servizi' },
-  { name: 'Lavori', url: '/lavori' },
-  { name: 'Contatti', url: '/contattaci' },
+  { name: 'Ecosistema', url: '/gestione-interventi/' },
+  { name: 'Rapportini', url: '/rapportini/' },
+  { name: 'Ticketing', url: '/ticketing/' },
+  { name: 'Servizi', url: '/servizi/' },
+  { name: 'Lavori', url: '/lavori/' },
+  { name: 'Contatti', url: '/contattaci/' },
 ];
+
 const currentPath = Astro.url.pathname;
+const normalizedPath = (currentPath.replace(/\/$/, '') || '/') as string;
+
+const webTopicByPath: Record<string, string> = {
+  '/siti-web-professionali': 'sito',
+  '/siti-web-piemonte': 'sito',
+  '/siti-web-torino': 'sito',
+  '/e-commerce-piemonte': 'ecommerce',
+  '/nfc-ecosystem': 'nfc',
+  '/tessere-nfc-torino': 'nfc',
+  '/grafica-digitale-social-media': 'sito',
+  '/carmagnola': 'sito',
+};
+
+const informativePrefixes = ['/lavori', '/chi-siamo', '/blog', '/privacy-policy', '/cookie-policy'];
+
+function resolveHeaderCta(path: string) {
+  const topic = webTopicByPath[path];
+  if (topic) {
+    return {
+      href: `/contattaci/?topic=${topic}`,
+      label: topic === 'ecommerce' ? 'Preventivo e-commerce' : 'Richiedi preventivo',
+    };
+  }
+  if (informativePrefixes.some((p) => path === p || path.startsWith(p + '/'))) {
+    return { href: '/contattaci/', label: 'Contattaci' };
+  }
+  return { href: '/richiedi-demo/', label: 'Richiedi demo' };
+}
+
+const headerCta = resolveHeaderCta(normalizedPath);
 
 function isActive(url: string) {
-  if (url === '/') return currentPath === '/' || currentPath === '';
-  return currentPath === url || currentPath.startsWith(url + '/');
+  if (url === '/') return normalizedPath === '/';
+  const clean = url.replace(/\/$/, '');
+  return normalizedPath === clean || normalizedPath.startsWith(clean + '/');
 }
 ---
 
@@ -21,7 +53,7 @@ function isActive(url: string) {
     <a href="/" class="flex-shrink-0 z-10 flex items-center gap-3" aria-label="Bitora home">
       <img src="/bitora.png" alt="Bitora" class="h-10 w-10 rounded-full object-cover" />
       <span class="text-sm font-semibold text-white/75 hidden lg:block tracking-tight"
-        >bitora<span class="text-white/30">.it</span></span
+        >bitora<span class="text-white/55">.it</span></span
       >
     </a>
 
@@ -35,7 +67,7 @@ function isActive(url: string) {
               class={
                 isActive(item.url)
                   ? 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white bg-white/[0.09]'
-                  : 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white/60 hover:text-white hover:bg-white/[0.06]'
+                  : 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white/70 hover:text-white hover:bg-white/[0.06]'
               }
             >
               {item.name}
@@ -46,10 +78,10 @@ function isActive(url: string) {
 
     <div class="flex items-center gap-3 shrink-0">
       <a
-        href="/richiedi-demo"
+        href={headerCta.href}
         class="sl-cta-btn hidden md:inline-flex"
         data-track="cta_click"
-        data-track-location="header">Richiedi demo</a
+        data-track-location="header">{headerCta.label}</a
       >
       <button
         id="mob-toggle"
@@ -78,15 +110,15 @@ function isActive(url: string) {
             class={
               isActive(item.url)
                 ? 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white bg-white/[0.08]'
-                : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/65 hover:text-white hover:bg-white/[0.05]'
+                : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/70 hover:text-white hover:bg-white/[0.05]'
             }
           >
             {item.name}
           </a>
         ))
       }
-      <a href="/richiedi-demo" class="py-3 px-3 text-sm font-semibold rounded-lg text-white bg-white/10 mt-2"
-        >Richiedi demo</a
+      <a href={headerCta.href} class="py-3 px-3 text-sm font-semibold rounded-lg text-white bg-white/10 mt-2"
+        >{headerCta.label}</a
       >
     </nav>
   </div>

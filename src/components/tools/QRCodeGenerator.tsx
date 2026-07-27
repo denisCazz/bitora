@@ -33,7 +33,7 @@ const ERROR_CORRECTION: { value: 'L' | 'M' | 'Q' | 'H'; label: string }[] = [
 ];
 
 export default function QRCodeGenerator() {
-  const [data, setData] = useState('https://www.bitora.it');
+  const [data, setData] = useState('https://bitora.it');
   const [size, setSize] = useState(300);
   const [dotColor, setDotColor] = useState('#000000');
   const [bgColor, setBgColor] = useState('#ffffff');
@@ -78,7 +78,7 @@ export default function QRCodeGenerator() {
     qrCode.current.update({
       width: size,
       height: size,
-      data: data || 'https://www.bitora.it',
+      data: data || 'https://bitora.it',
       dotsOptions: { color: dotColor, type: dotStyle },
       backgroundOptions: { color: transparentBg ? 'transparent' : bgColor },
       cornersSquareOptions: { color: cornerSquareColor, type: cornerSquareStyle },
@@ -133,7 +133,7 @@ export default function QRCodeGenerator() {
       const tempQR = new QRCodeStyling({
         width: size,
         height: size,
-        data: data || 'https://www.bitora.it',
+        data: data || 'https://bitora.it',
         dotsOptions: { color: dotColor, type: dotStyle },
         backgroundOptions: { color: bgColor },
         cornersSquareOptions: { color: cornerSquareColor, type: cornerSquareStyle },

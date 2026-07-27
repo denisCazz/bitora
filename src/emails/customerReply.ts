@@ -16,7 +16,7 @@ function esc(s: string): string {
 }
 
 export function renderCustomerReplyEmail(data: CustomerReplyData): string {
-  const siteUrl = data.siteUrl ?? 'https://www.bitora.it';
+  const siteUrl = data.siteUrl ?? 'https://bitora.it';
   const argomento = (data.argomento ?? '').trim();
   const preheader = 'Abbiamo ricevuto la tua richiesta. Risposta entro 24 ore.';
 

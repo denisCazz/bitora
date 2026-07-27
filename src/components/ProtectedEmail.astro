@@ -1,4 +1,4 @@
----
+﻿---
 // Component per proteggere email da spam e bot
 interface Props {
   email: string;
@@ -35,10 +35,9 @@ const encodedEmail = btoa(email); // Base64 encoding
       const subject = element.getAttribute('data-subject') || '';
       const email = atob(encodedEmail);
       // Log per analytics (se disponibile)
-      if (window.trackEvent) {
-        window.trackEvent('email_click', {
-          category: 'contact',
-          label: 'protected_email',
+      if (typeof window.bitoraTrack === 'function') {
+        window.bitoraTrack('email_click', {
+          location: 'protected_email',
         });
       }
 

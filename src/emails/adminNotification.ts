@@ -43,7 +43,7 @@ function row(label: string, value?: string): string {
 }
 
 export function renderAdminEmail(data: ContactEmailData): string {
-  const siteUrl = data.siteUrl ?? 'https://www.bitora.it';
+  const siteUrl = data.siteUrl ?? 'https://bitora.it';
   const telefono = (data.telefono ?? '').trim() || '-';
   const argomento = (data.argomento ?? '').trim() || '-';
   const ip = (data.ip ?? '').trim();

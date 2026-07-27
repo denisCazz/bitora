@@ -85,7 +85,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     };
 
     const resend = new Resend(apiKey);
-    const siteUrl = 'https://www.bitora.it';
+    const siteUrl = 'https://bitora.it';
     const minuteBucket = Math.floor(Date.now() / 60_000);
     const idempotencyKey = crypto
       .createHash('sha256')

@@ -12,20 +12,25 @@ export interface Props {
   title: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, noindex = false } = Astro.props;
+const siteOrigin = (Astro.site?.origin ?? 'https://bitora.it').replace(/\/$/, '');
 const pathname = Astro.url.pathname || '/';
-const canonicalUrl =
-  pathname === '/'
-    ? 'https://www.bitora.it/'
-    : `https://www.bitora.it${pathname.endsWith('/') ? pathname : pathname + '/'}`;
+const normalizedPath =
+  pathname === '/' ? '/' : pathname.endsWith('/') ? pathname : `${pathname}/`;
+const canonicalUrl = `${siteOrigin}${normalizedPath}`;
 
 const ogImage = image?.startsWith('http')
   ? image
   : image
-    ? `https://www.bitora.it${image.startsWith('/') ? image : `/${image}`}`
-    : 'https://www.bitora.it/bitora.jpg';
+    ? `${siteOrigin}${image.startsWith('/') ? image : `/${image}`}`
+    : `${siteOrigin}/bitora.jpg`;
+
+const robotsContent = noindex
+  ? 'noindex,follow'
+  : 'index,follow,max-image-preview:large';
 
 const defaultDescription =
   'Software per gestione interventi, ticket, tecnici e rapportini digitali. Siti web ed e-commerce come servizi complementari. Sede in Piemonte, copertura Italia.';
@@ -72,7 +77,7 @@ const defaultDescription =
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="robots" content={robotsContent} />
     <meta name="description" content={description ?? defaultDescription} />
     <link rel="canonical" href={canonicalUrl} />
 
@@ -156,59 +161,55 @@ const defaultDescription =
     <meta name="twitter:description" content={description ?? defaultDescription} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "https://www.bitora.it/#organization",
-        "name": "Bitora",
-        "legalName": "Bitora di Denis Cazzulo",
-        "alternateName": "Bitora Italia",
-        "url": "https://www.bitora.it",
-        "logo": "https://www.bitora.it/bitora.png",
-        "description": "Bitora sviluppa piattaforme personalizzabili per gestire richieste, interventi, tecnici, rapportini e documentazione in un unico sistema. Sede a Carmagnola (TO).",
-        "taxID": "13359170019",
-        "vatID": "IT13359170019",
-        "foundingDate": "2020",
-        "foundingLocation": {
-          "@type": "Place",
-          "name": "Carmagnola, Piemonte, Italia"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Carmagnola",
-          "addressRegion": "TO",
-          "addressCountry": "IT"
-        },
-        "email": "info@bitora.it",
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": `${siteOrigin}/#organization`,
+      "name": "Bitora",
+      "legalName": "Bitora di Denis Cazzulo",
+      "alternateName": "Bitora Italia",
+      "url": siteOrigin,
+      "logo": `${siteOrigin}/bitora.png`,
+      "description": "Bitora sviluppa piattaforme personalizzabili per gestire richieste, interventi, tecnici, rapportini e documentazione in un unico sistema. Sede a Carmagnola (TO).",
+      "taxID": "13359170019",
+      "vatID": "IT13359170019",
+      "foundingDate": "2020",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Carmagnola, Piemonte, Italia"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Carmagnola",
+        "addressRegion": "TO",
+        "addressCountry": "IT"
+      },
+      "email": "info@bitora.it",
+      "telephone": "+39 351 497 9670",
+      "contactPoint": {
+        "@type": "ContactPoint",
         "telephone": "+39 351 497 9670",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+39 351 497 9670",
-          "contactType": "sales",
-          "email": "info@bitora.it",
-          "availableLanguage": ["Italian"],
-          "areaServed": "IT"
-        },
-        "sameAs": [
-          "https://www.instagram.com/bitorait/",
-          "https://www.facebook.com/people/Bitora-Italia/"
-        ]
-      }
-    </script>
+        "contactType": "sales",
+        "email": "info@bitora.it",
+        "availableLanguage": ["Italian"],
+        "areaServed": "IT"
+      },
+      "sameAs": [
+        "https://www.instagram.com/bitorait/",
+        "https://www.facebook.com/people/Bitora-Italia/"
+      ]
+    })} />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "https://www.bitora.it/#website",
-        "name": "Bitora - Gestione Interventi e Software Operativi",
-        "url": "https://www.bitora.it/",
-        "dateModified": "2026-07-20",
-        "publisher": { "@id": "https://www.bitora.it/#organization" },
-        "inLanguage": "it-IT"
-      }
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${siteOrigin}/#website`,
+      "name": "Bitora - Gestione Interventi e Software Operativi",
+      "url": `${siteOrigin}/`,
+      "dateModified": "2026-07-20",
+      "publisher": { "@id": `${siteOrigin}/#organization` },
+      "inLanguage": "it-IT"
+    })} />
 
     <LocalBusinessSchema />
   </head>

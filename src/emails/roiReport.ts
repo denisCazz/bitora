@@ -20,7 +20,7 @@ function esc(s: string): string {
 }
 
 export function renderRoiReportEmail(data: RoiReportData): string {
-  const siteUrl = data.siteUrl ?? 'https://www.bitora.it';
+  const siteUrl = data.siteUrl ?? 'https://bitora.it';
 
   return `<!doctype html>
 <html lang="it">

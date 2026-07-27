@@ -129,7 +129,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       .update(`${email}|${minuteBucket}|${nome}|${argomentoClean}|${formType}`.toLowerCase())
       .digest('hex');
 
-    const siteUrl = 'https://www.bitora.it';
+    const siteUrl = 'https://bitora.it';
 
     const adminHtml = renderAdminEmail({
       nome,

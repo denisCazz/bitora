@@ -1,39 +1,31 @@
----
-// Monitoraggio performance base per Aruba hosting
+﻿---
+// Monitoraggio performance base
 ---
 
 <script is:inline>
-  // Performance monitoring essenziale e compatibile
   (function () {
-    function initPerformanceTracking() {
-      // Solo se trackEvent è disponibile (caricato da Analytics)
-      if (!window.trackEvent) {
-        // Retry dopo 1 secondo se Analytics non è ancora caricato
-        setTimeout(initPerformanceTracking, 1000);
-        return;
+    function track(eventName, props) {
+      if (typeof window.bitoraTrack === 'function') {
+        window.bitoraTrack(eventName, props || {});
       }
+    }
 
-      // Tempo di caricamento pagina
+    function initPerformanceTracking() {
       window.addEventListener('load', function () {
         setTimeout(function () {
-          window.trackEvent('page_load', {
-            category: 'performance',
+          track('page_load', {
             value: Math.round(performance.now()),
           });
         }, 100);
       });
 
-      // Prima interazione utente
       let interactionTracked = false;
       function trackFirstInteraction(e) {
         if (!interactionTracked) {
           interactionTracked = true;
-          window.trackEvent('first_interaction', {
-            category: 'engagement',
+          track('first_interaction', {
             label: e.type,
           });
-
-          // Rimuovi listener
           document.removeEventListener('click', trackFirstInteraction);
           document.removeEventListener('scroll', trackFirstInteraction);
           document.removeEventListener('keydown', trackFirstInteraction);
@@ -44,26 +36,21 @@
       document.addEventListener('scroll', trackFirstInteraction);
       document.addEventListener('keydown', trackFirstInteraction);
 
-      // Errori JavaScript
       window.addEventListener('error', function (e) {
-        window.trackEvent('js_error', {
-          category: 'error',
+        track('js_error', {
           label: e.message || 'unknown',
         });
       });
 
-      // Tempo sulla pagina
       let startTime = Date.now();
       window.addEventListener('beforeunload', function () {
         const timeOnPage = Math.round((Date.now() - startTime) / 1000);
-        window.trackEvent('time_on_page', {
-          category: 'engagement',
+        track('time_on_page', {
           value: timeOnPage,
         });
       });
     }
 
-    // Inizializza quando possibile
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initPerformanceTracking);
     } else {

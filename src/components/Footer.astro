@@ -1,7 +1,7 @@
 ﻿---
 const currentYear = new Date().getFullYear();
 const pathname = (Astro.url.pathname || '/').replace(/\/$/, '') || '/';
-// Hide banner on pages that already end with their own demo CTA
+
 const hideFooterCta = [
   '/',
   '/rapportini',
@@ -10,29 +10,109 @@ const hideFooterCta = [
   '/richiedi-demo',
   '/contattaci',
 ].includes(pathname);
+
+type FooterCta = {
+  title: string;
+  body: string;
+  primaryHref: string;
+  primaryLabel: string;
+  whatsappText: string;
+};
+
+const webCtaByPath: Record<string, FooterCta> = {
+  '/siti-web-professionali': {
+    title: 'Pronto a richiedere un preventivo per il tuo sito?',
+    body: 'Raccontaci obiettivi, tempi e vincoli. Ti rispondiamo con una proposta concreta.',
+    primaryHref: '/contattaci/?topic=sito',
+    primaryLabel: 'Richiedi un preventivo sito',
+    whatsappText: 'Ciao, vorrei un preventivo per un sito web.',
+  },
+  '/siti-web-piemonte': {
+    title: 'Serve un sito professionale in Piemonte?',
+    body: 'Parliamo di struttura, contenuti e obiettivi di acquisizione.',
+    primaryHref: '/contattaci/?topic=sito',
+    primaryLabel: 'Richiedi un preventivo sito',
+    whatsappText: 'Ciao, vorrei informazioni su un sito web in Piemonte.',
+  },
+  '/siti-web-torino': {
+    title: 'Serve un sito professionale a Torino?',
+    body: 'Parliamo di struttura, contenuti e obiettivi di acquisizione.',
+    primaryHref: '/contattaci/?topic=sito',
+    primaryLabel: 'Richiedi un preventivo sito',
+    whatsappText: 'Ciao, vorrei informazioni su un sito web a Torino.',
+  },
+  '/e-commerce-piemonte': {
+    title: 'Pronto a richiedere un preventivo e-commerce?',
+    body: 'Catalogo, pagamenti, logistica e gestione ordini: partiamo dal tuo flusso reale.',
+    primaryHref: '/contattaci/?topic=ecommerce',
+    primaryLabel: 'Richiedi un preventivo e-commerce',
+    whatsappText: 'Ciao, vorrei un preventivo per un e-commerce.',
+  },
+  '/nfc-ecosystem': {
+    title: 'Vuoi valutare un progetto NFC?',
+    body: 'Raccontaci il caso d’uso e ti proponiamo un’architettura adatta.',
+    primaryHref: '/contattaci/?topic=nfc',
+    primaryLabel: 'Richiedi consulenza NFC',
+    whatsappText: 'Ciao, vorrei informazioni sulle soluzioni NFC.',
+  },
+  '/tessere-nfc-torino': {
+    title: 'Vuoi valutare tessere NFC per la tua attività?',
+    body: 'Ti aiutiamo a capire se NFC è utile e come integrarlo.',
+    primaryHref: '/contattaci/?topic=nfc',
+    primaryLabel: 'Richiedi consulenza NFC',
+    whatsappText: 'Ciao, vorrei informazioni sulle tessere NFC.',
+  },
+  '/grafica-digitale-social-media': {
+    title: 'Serve supporto su grafica e social?',
+    body: 'Definiamo obiettivi, formato e frequenza di pubblicazione.',
+    primaryHref: '/contattaci/?topic=sito',
+    primaryLabel: 'Richiedi un preventivo',
+    whatsappText: 'Ciao, vorrei un preventivo per grafica e social media.',
+  },
+  '/carmagnola': {
+    title: 'Cerchi un partner digitale a Carmagnola?',
+    body: 'Siti, e-commerce o software operativo: partiamo dalla tua priorità.',
+    primaryHref: '/contattaci/?topic=sito',
+    primaryLabel: 'Contattaci',
+    whatsappText: 'Ciao, vorrei informazioni sui servizi Bitora a Carmagnola.',
+  },
+};
+
+const defaultInfoCta: FooterCta = {
+  title: 'Hai un progetto da discutere?',
+  body: 'Scrivici: rispondiamo entro 24 ore con i prossimi passi utili.',
+  primaryHref: '/contattaci/',
+  primaryLabel: 'Contattaci',
+  whatsappText: 'Ciao, vorrei informazioni su Bitora.',
+};
+
+const footerCta = hideFooterCta ? null : (webCtaByPath[pathname] ?? defaultInfoCta);
+const whatsappHref = footerCta
+  ? `https://wa.me/393514979670?text=${encodeURIComponent(footerCta.whatsappText)}`
+  : '';
 ---
 
-{!hideFooterCta && (
+{footerCta && (
   <section class="relative py-14 px-6 md:px-12 bg-black border-t border-white/10">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
-        Pronto a vedere il flusso sulla tua azienda?
+        {footerCta.title}
       </h2>
-      <p class="text-white/55 mb-7 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
-        Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una configurazione dimostrativa costruita intorno al tuo processo.
+      <p class="text-white/70 mb-7 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
+        {footerCta.body}
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
         <a
-          href="/richiedi-demo"
+          href={footerCta.primaryHref}
           data-track="cta_click"
           data-track-location="footer_cta"
           class="inline-flex items-center justify-center gap-2 bg-white text-black font-semibold rounded-full px-7 py-3.5 hover:bg-gray-100 transition-colors"
         >
-          Prenota la demo gratuita
+          {footerCta.primaryLabel}
           <span aria-hidden="true">→</span>
         </a>
         <a
-          href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20una%20demo%20della%20piattaforma%20gestione%20interventi."
+          href={whatsappHref}
           data-track="whatsapp_click"
           data-track-location="footer_cta"
           class="inline-flex items-center justify-center gap-2 bg-[#1f8f4e] text-white font-semibold rounded-full px-7 py-3.5 hover:bg-[#22a358] transition-colors"
@@ -52,13 +132,13 @@ const hideFooterCta = [
         <a href="/" class="flex items-center gap-3">
           <img src="/bitora.png" alt="Bitora" class="h-10 w-10 rounded-full object-cover" />
           <span class="text-lg font-semibold tracking-tight"
-            >bitora<span class="text-white/35">.it</span></span
+            >bitora<span class="text-white/55">.it</span></span
           >
         </a>
-        <p class="text-sm leading-relaxed text-white/50 max-w-xs">
+        <p class="text-sm leading-relaxed text-white/60 max-w-xs">
           Bitora di Denis Cazzulo. Piattaforme operative per assistenza tecnica, manutenzione e interventi sul territorio. Sede a Carmagnola (TO).
         </p>
-        <p class="text-xs leading-relaxed text-white/35">
+        <p class="text-xs leading-relaxed text-white/55">
           P.IVA 13359170019
         </p>
         <div class="space-y-3 text-sm">
@@ -134,7 +214,7 @@ const hideFooterCta = [
 
       <!-- Piattaforma -->
       <div>
-        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/30 mb-6">Piattaforma</h4>
+        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 mb-6">Piattaforma</h4>
         <ul class="space-y-3.5 text-sm">
           <li>
             <a href="/gestione-interventi" class="text-white/55 hover:text-white transition-colors"
@@ -168,7 +248,7 @@ const hideFooterCta = [
 
       <!-- Servizi -->
       <div>
-        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/30 mb-6">Servizi</h4>
+        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 mb-6">Servizi</h4>
         <ul class="space-y-3.5 text-sm">
           <li>
             <a href="/servizi" class="text-white/55 hover:text-white transition-colors">Panoramica</a>
@@ -194,7 +274,7 @@ const hideFooterCta = [
 
       <!-- Legale -->
       <div>
-        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/30 mb-6">Legale</h4>
+        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 mb-6">Legale</h4>
         <ul class="space-y-3.5 text-sm">
           <li>
             <a href="/privacy-policy" class="text-white/55 hover:text-white transition-colors"
@@ -211,13 +291,13 @@ const hideFooterCta = [
     </div>
 
     <div
-      class="mt-14 pt-6 border-t border-white/[0.07] flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-white/28"
+      class="mt-14 pt-6 border-t border-white/[0.07] flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-white/55"
     >
       <p>
         &copy; {currentYear}
-        <span class="text-white/45">Bitora di Denis Cazzulo</span>
+        <span class="text-white/70">Bitora di Denis Cazzulo</span>
         · P.IVA 13359170019 ·
-        <span class="text-white/45">bitora.it</span>
+        <span class="text-white/70">bitora.it</span>
       </p>
       <div class="flex items-center gap-5">
         <a href="/privacy-policy" class="hover:text-white/60 transition-colors">Privacy</a>

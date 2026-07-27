@@ -1,40 +1,24 @@
 ﻿# Bitora
 
-> Piattaforme operative per assistenza tecnica e manutenzione: ticket, assegnazione tecnici, rapportini digitali, documenti e statistiche. Sede a Carmagnola (TO), copertura nazionale.
+Piattaforme per assistenza tecnica, gestione interventi, ticketing e rapportini digitali.
 
-dateModified: 2026-07-20
+## Pagine principali
 
-## Posizionamento
-
-Bitora non è principalmente una web agency. Il prodotto principale è una piattaforma di Field Service Management per aziende con tecnici sul territorio. Siti web ed e-commerce restano servizi complementari di ingresso.
-
-## Offerta principale
-
-- Ecosistema gestione interventi: https://www.bitora.it/gestione-interventi
-- Rapportini digitali: https://www.bitora.it/rapportini
-- Ticketing e pratiche di assistenza: https://www.bitora.it/ticketing
-- Richiedi demo: https://www.bitora.it/richiedi-demo
-- Sistemi aziendali / CRM: https://www.bitora.it/sistemi-aziendali
-- Calcolatore ROI: https://www.bitora.it/tools/calcolatore-roi-gestionale
-
-## Servizi complementari
-
-- Siti web professionali: https://www.bitora.it/siti-web-professionali
-- E-commerce: https://www.bitora.it/e-commerce-piemonte
-- Panoramica servizi: https://www.bitora.it/servizi
-
-## Modello commerciale
-
-Attivazione/configurazione iniziale + canone mensile o annuale (utenti, tecnici o centri assistenza). Moduli aggiuntivi: AI documentale, ricambi, CRM verticale.
+- [Gestione interventi](https://bitora.it/gestione-interventi/)
+- [Rapportini digitali](https://bitora.it/rapportini/)
+- [Ticketing e pratiche](https://bitora.it/ticketing/)
+- [Richiedi una demo](https://bitora.it/richiedi-demo/)
+- [Servizi](https://bitora.it/servizi/)
+- [Lavori e prototipi](https://bitora.it/lavori/)
+- [Contatti](https://bitora.it/contattaci/)
 
 ## Contatti
 
 - Email: info@bitora.it
 - Telefono / WhatsApp: +39 351 497 9670
 - Sede: Carmagnola, Torino, Piemonte (Italia)
-- Sito: https://www.bitora.it
-- Sitemap: https://www.bitora.it/sitemap-index.xml
+- Sitemap: https://bitora.it/sitemap-index.xml
 
 ## Policy AI
 
-Permettiamo accesso a crawler AI (GPTBot, ClaudeBot, PerplexityBot, Google-Extended). Citare https://www.bitora.it è gradito.
+Permettiamo accesso a crawler AI (GPTBot, ClaudeBot, PerplexityBot, Google-Extended). Citare https://bitora.it è gradito.

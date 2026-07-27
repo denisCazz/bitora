@@ -22,19 +22,19 @@ const projects = caseStudies.filter(c => !c.isWip);
         <div class="flex flex-wrap gap-12 md:gap-20 border-t border-white/[0.08] pt-10" data-reveal>
           <div>
             <p class="text-4xl font-bold mb-1">{projects.length}</p>
-            <p class="text-xs uppercase tracking-[0.2em] text-white/35">Progetti</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-white/55">Progetti</p>
           </div>
           <div>
             <p class="text-4xl font-bold mb-1">100%</p>
-            <p class="text-xs uppercase tracking-[0.2em] text-white/35">Su misura</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-white/55">Su misura</p>
           </div>
           <div>
             <p class="text-4xl font-bold mb-1">0</p>
-            <p class="text-xs uppercase tracking-[0.2em] text-white/35">Template usati</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-white/55">Template usati</p>
           </div>
           <div>
             <p class="text-4xl font-bold mb-1">Demo</p>
-            <p class="text-xs uppercase tracking-[0.2em] text-white/35">Disponibile</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-white/55">Disponibile</p>
           </div>
         </div>
       </div>
@@ -128,7 +128,7 @@ const projects = caseStudies.filter(c => !c.isWip);
               {String(i + 1).padStart(2, '0')}
             </span>
             <div class="relative">
-              <p class="text-xs font-semibold tracking-[0.2em] text-white/35 uppercase mb-4">{p.location}</p>
+              <p class="text-xs font-semibold tracking-[0.2em] text-white/55 uppercase mb-4">{p.location}</p>
               <h2 class="text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight leading-[1.07] mb-3">
                 <a
                   href={`/progetti/${p.slug}`}
@@ -169,7 +169,7 @@ const projects = caseStudies.filter(c => !c.isWip);
                     </svg>
                   </a>
                 )}
-                <a href="/contattaci" class="text-sm font-medium text-white/38 hover:text-white transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-white/60">
+                <a href="/contattaci" class="text-sm font-medium text-white/60 hover:text-white transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-white/60">
                   Progetto simile?
                 </a>
               </div>
@@ -182,7 +182,7 @@ const projects = caseStudies.filter(c => !c.isWip);
 
     <!-- CTA -->
     <section class="py-36 px-8 md:px-16 lg:px-24 text-center">
-      <p class="text-xs font-semibold tracking-[0.25em] text-white/30 uppercase mb-8" data-reveal>Prossimo progetto</p>
+      <p class="text-xs font-semibold tracking-[0.25em] text-white/55 uppercase mb-8" data-reveal>Prossimo progetto</p>
       <h2 class="text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[1.03] tracking-tight mb-6 max-w-2xl mx-auto" data-reveal>
         Il tuo nome<br />potrebbe essere qui.
       </h2>
