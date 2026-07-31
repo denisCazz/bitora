@@ -17,19 +17,6 @@ export const clientLogos: ClientLogo[] = [
     location: 'Roreto di Cherasco',
   },
   {
-    name: 'Sartoria Kristina',
-    logo: '/sartoria_kristina.png',
-    tier: 'premium',
-    url: 'https://sartoriakristina.it',
-    location: 'Carmagnola',
-  },
-  {
-    name: 'Bar Wine Café',
-    logo: '/wine.png',
-    tier: 'gold',
-    location: 'Carmagnola',
-  },
-  {
     name: 'RicambiXStufe',
     logo: '/logo_eva.png',
     tier: 'premium',
@@ -37,10 +24,24 @@ export const clientLogos: ClientLogo[] = [
     location: 'Italia',
   },
   {
+    name: 'Sartoria Kristina',
+    logo: '/sartoria_kristina.png',
+    tier: 'premium',
+    url: 'https://sartoriakristina.it',
+    location: 'Carmagnola',
+  },
+  {
     name: 'Sergio Contegiacomo',
     logo: '/logo_sergio.png',
     tier: 'premium',
     url: 'https://sergiocontegiacomo.it',
+    location: 'Bra',
+  },
+  {
+    name: 'Simone Contegiacomo',
+    logo: '/simone.jpg',
+    tier: 'premium',
+    url: 'https://simonecontegiacomo.it',
     location: 'Bra',
   },
   {
@@ -61,7 +62,7 @@ export const clientLogos: ClientLogo[] = [
     name: 'Barbara Toffano',
     logo: '/btoffano.jpg',
     tier: 'gold',
-    url: '#',
+    url: 'https://barbaratoffano.it',
     location: 'Piemonte',
   },
   {
@@ -70,5 +71,11 @@ export const clientLogos: ClientLogo[] = [
     tier: 'gold',
     url: 'https://lanaturasavigliano.it',
     location: 'Savigliano',
+  },
+  {
+    name: 'Bar Wine Café',
+    logo: '/wine.png',
+    tier: 'gold',
+    location: 'Carmagnola',
   },
 ];
