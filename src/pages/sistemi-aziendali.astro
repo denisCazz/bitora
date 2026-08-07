@@ -11,21 +11,59 @@ import HowToSchema from '../components/schema/HowTo.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 import AnswerFirst from '../components/AnswerFirst.astro';
 import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
+
+const faqItems = [
+  {
+    question: 'Quando conviene un software su misura invece di un SaaS?',
+    answer:
+      'Quando i tuoi processi sono il tuo vantaggio competitivo e un SaaS ti costringe ad adattarti al software. Se il flusso standard copre il 90% delle esigenze, un SaaS va benissimo: te lo diciamo noi, anche se significa non venderti nulla.',
+  },
+  {
+    question: 'Quanto costa un gestionale o CRM su misura?',
+    answer:
+      'Dipende da moduli, integrazioni e infrastruttura. Con l’audit gratuito definiamo una roadmap a fasi: parti dal modulo con più impatto e investi il resto solo se vedi risultati.',
+  },
+  {
+    question: 'Quanto tempo serve per partire?',
+    answer:
+      'Dopo l’analisi iniziale viene definita una roadmap con fasi, tempi e priorità. Lo sviluppo è organizzato per rilasci iterativi: il primo modulo operativo arriva molto prima del progetto completo.',
+  },
+  {
+    question: 'Si integra con gli strumenti che uso già?',
+    answer:
+      'Email, WhatsApp, fogli, gestionali esistenti, API esterne: la piattaforma può essere collegata agli strumenti attuali dopo una verifica tecnica di compatibilità.',
+  },
+  {
+    question: 'Posso accedere da mobile?',
+    answer:
+      'Sì: web app responsive o, se previsto dal progetto, app dedicata per operatori sul campo con firme, foto e lavoro offline.',
+  },
+  {
+    question: 'I dati sono al sicuro?',
+    answer:
+      'Autenticazione, permessi per ruolo, backup e gestione dei dati vengono progettati in funzione dei requisiti del progetto. Hosting in Italia o UE quando richiesto.',
+  },
+  {
+    question: 'E dopo il lancio?',
+    answer:
+      'Supporto, monitoraggio ed evoluzione inclusi nella roadmap. Il software cresce con l’azienda: nuovi moduli quando servono, non un progetto unico che invecchia.',
+  },
+];
 ---
 
 <Layout
   title="Sistemi Aziendali su Misura | Gestionali, CRM, CMMS | Bitora"
-  description="Software gestionali, CRM, CMMS e strumenti aziendali su misura. Riduci lavoro manuale, integra processi, aumenta efficienza. Sviluppo italiano."
+  description="Software gestionali, CRM, CMMS e strumenti aziendali su misura. Riduci lavoro manuale, integra processi, aumenta efficienza. Audit gratuito e roadmap a fasi."
   image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80"
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <VideoHero
       variant="background"
-      eyebrow="Sistemi Aziendali su Misura"
-      title="Software gestionali"
-      highlight="che lavorano per te."
-      description="CRM, gestionali, CMMS e tool custom. Integrati con email, WhatsApp, fogli e API. Riduci lavoro manuale, aumenta efficienza."
-      primaryCta={{ label: 'Richiedi consulenza', href: '/contattaci?topic=sistemi' }}
+      eyebrow="Soluzioni tailormade · Sistemi aziendali"
+      title="Software su misura"
+      highlight="che lavora come lavori tu."
+      description="CRM, gestionali, CMMS e tool custom costruiti sul tuo processo. Integrati con email, WhatsApp, fogli e API. Meno lavoro manuale, più controllo."
+      primaryCta={{ label: 'Audit gratuito', href: '/contattaci/?topic=sistemi' }}
       secondaryCta={{ label: 'Cosa realizziamo', href: '#cosa' }}
       posterSrc="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80"
       videoSrc="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4"
@@ -33,10 +71,11 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
     />
 
     <AnswerFirst
-      question="Quanto costa un gestionale o CRM su misura per una PMI?"
-      answer="Tempi, infrastruttura, integrazioni, sicurezza e modalità di hosting vengono definiti in base alla complessità e ai requisiti del progetto. Dopo l’analisi iniziale viene definita una roadmap con fasi, tempi e priorità."
+      question="Quando conviene un sistema aziendale su misura?"
+      answer="Quando i tuoi processi sono il tuo vantaggio e i software standard ti costringono ad adattarti. Bitora parte da un audit gratuito del flusso reale e costruisce una roadmap a fasi: prima il modulo con più impatto, poi il resto solo se vedi risultati."
     />
 
+    <!-- COSA COSTRUIAMO -->
     <section
       id="cosa"
       class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5"
@@ -46,26 +85,25 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
           <p
             class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
           >
-            Cos'è un sistema aziendale
+            Cosa costruiamo
           </p>
           <h2
             class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
           >
-            Software che riduce lavoro manuale.
+            Un sistema, non dieci tool scollegati.
           </h2>
           <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Centralizza dati, automatizza task ripetitivi, integra strumenti che usi già.
+            Centralizza dati, automatizza task ripetitivi, integra gli strumenti che usi già. Ogni
+            modulo è progettato sul tuo processo, non su un template.
           </p>
 
           <dl class="mt-8 space-y-4">
             <div
               class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
             >
-              <dt class="font-bold text-slate-950 dark:text-white">
-                CRM (Customer Relationship Management)
-              </dt>
+              <dt class="font-bold text-slate-950 dark:text-white">CRM</dt>
               <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                Lead, clienti, pipeline, follow-up automatizzati.
+                Lead, clienti, pipeline e follow-up automatizzati. Nessun cliente perso nei fogli.
               </dd>
             </div>
             <div
@@ -73,15 +111,15 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
             >
               <dt class="font-bold text-slate-950 dark:text-white">Gestionale</dt>
               <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                Ordini, magazzino, fatturazione, integrazione contabile.
+                Ordini, magazzino, fatturazione, integrazione contabile. Dati unici, niente doppi inserimenti.
               </dd>
             </div>
             <div
               class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-5"
             >
-              <dt class="font-bold text-slate-950 dark:text-white">CMMS (Manutenzione)</dt>
+              <dt class="font-bold text-slate-950 dark:text-white">CMMS</dt>
               <dd class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                Interventi, ticket, asset, ricambi, firme digitali.
+                Interventi, ticket, asset, ricambi e firme digitali. Il campo collegato all’ufficio.
               </dd>
             </div>
           </dl>
@@ -111,8 +149,112 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
       </div>
     </section>
 
-    <!-- Prima/Dopo rimosso: evitiamo blocchi ridondanti -->
+    <!-- SEGNALI -->
+    <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <p
+          class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
+        >
+          I segnali
+        </p>
+        <h2
+          class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white mb-12 max-w-2xl"
+        >
+          Se riconosci anche solo due di questi, ne parliamo.
+        </h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            {
+              t: 'Dati duplicati',
+              d: 'Lo stesso cliente inserito in tre fogli diversi. Ogni aggiornamento diventa un rischio.',
+            },
+            {
+              t: 'Ore perse in copia-incolla',
+              d: 'Il team sposta dati tra strumenti invece di usarli. Ore pagate per lavoro meccanico.',
+            },
+            {
+              t: 'Richieste che spariscono',
+              d: 'Email, WhatsApp e telefono senza tracciamento. Le richieste si perdono e i clienti si lamentano.',
+            },
+            {
+              t: 'Report fatti a mano',
+              d: 'Per rispondere a “come sta andando?” servono ore di Excel. E i numeri non combaciano mai.',
+            },
+            {
+              t: 'Il SaaS non si adatta',
+              d: 'Stai piegando il tuo processo al software invece del contrario. Funzionalità mancanti o inutili.',
+            },
+            {
+              t: 'Dipendenza da una persona',
+              d: 'Il processo “è in testa” a qualcuno. Se quella persona è in ferie, tutto si ferma.',
+            },
+          ].map((item) => (
+            <div
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] p-6"
+            >
+              <h3 class="font-bold text-slate-950 dark:text-white mb-2">{item.t}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{item.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
+    <!-- METODO -->
+    <section
+      id="metodo"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
+    >
+      <div class="max-w-6xl mx-auto">
+        <p
+          class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
+        >
+          Come lavoriamo
+        </p>
+        <h2
+          class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white mb-12 max-w-2xl"
+        >
+          Dall’audit al primo modulo operativo.
+        </h2>
+        <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            {
+              n: '01',
+              t: 'Audit',
+              d: 'Analizziamo i processi esistenti e identifichiamo i colli di bottiglia. Gratuito, senza impegno.',
+            },
+            {
+              n: '02',
+              t: 'Mappa',
+              d: 'Disegniamo i flussi target con priorità e KPI misurabili. Roadmap e preventivo prima di scrivere codice.',
+            },
+            {
+              n: '03',
+              t: 'MVP',
+              d: 'Sviluppo per fasi con roadmap condivisa. Il primo modulo arriva in produzione appena è pronto.',
+            },
+            {
+              n: '04',
+              t: 'Evoluzione',
+              d: 'Rilasci frequenti, feedback, miglioramenti. Nuovi moduli quando servono davvero.',
+            },
+          ].map((step) => (
+            <li
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6"
+            >
+              <span
+                class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-slate-950 dark:bg-white text-white dark:text-slate-950 font-bold text-sm mb-4"
+                >{step.n}</span
+              >
+              <h3 class="font-bold text-slate-950 dark:text-white mb-2">{step.t}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{step.d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- GARANZIE -->
     <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20">
       <div class="max-w-6xl mx-auto">
         <p
@@ -129,6 +271,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
       </div>
     </section>
 
+    <!-- FAQ -->
     <section
       class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
     >
@@ -144,44 +287,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
           </p>
         </div>
         <div class="lg:col-span-7">
-          <FAQ
-            items={[
-              {
-                question: 'Cos’è un CRM?',
-                answer:
-                  'Software per gestire clienti, lead, pipeline e follow-up. Centralizza dati e comunicazioni.',
-              },
-              {
-                question: 'Cos’è un CMMS?',
-                answer:
-                  'Computerized Maintenance Management System: gestione interventi, asset, ricambi, ticket, firme.',
-              },
-              {
-                question: 'Quanto costa un gestionale su misura?',
-                answer:
-                  'Dipende da moduli e integrazioni. Audit gratuito e roadmap modulare in base a priorità.',
-              },
-              {
-                question: 'Si integra con strumenti esistenti?',
-                answer:
-                  'La piattaforma può essere collegata a strumenti e servizi esterni dopo una verifica tecnica di compatibilità.',
-              },
-              {
-                question: 'Tempo medio di sviluppo?',
-                answer:
-                  'Dopo l’analisi iniziale viene definita una roadmap con fasi, tempi e priorità. Lo sviluppo è organizzato per fasi con rilasci iterativi.',
-              },
-              {
-                question: 'Posso accedere da mobile?',
-                answer: 'Sì: web app responsive o, se previsto dal progetto, app dedicata per operatori sul campo.',
-              },
-              {
-                question: 'I dati sono al sicuro?',
-                answer:
-                  'Autenticazione, permessi, backup e gestione dei dati vengono progettati in funzione dei requisiti del progetto.',
-              },
-            ]}
-          />
+          <FAQ items={faqItems} />
         </div>
       </div>
     </section>
@@ -189,27 +295,27 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
     <ServiceRelatedLinks
       links={[
         {
-          href: '/bitora-crm',
-          label: 'Bitora CRM',
-          desc: 'CRM professionale per PMI',
-        },
-        {
-          href: '/gestione-interventi',
-          label: 'Gestione interventi',
+          href: '/gestione-interventi/',
+          label: 'Ecosistema gestione interventi',
           desc: 'Ticket, tecnici e rapportini digitali',
         },
         {
-          href: '/blog/quanto-costa-crm-pmi',
+          href: '/bitora-crm/',
+          label: 'Bitora CRM',
+          desc: 'CRM pronto all’uso per PMI',
+        },
+        {
+          href: '/blog/quanto-costa-crm-pmi/',
           label: 'Quanto costa un CRM PMI',
           desc: 'Guida prezzi e scelta 2026',
         },
         {
-          href: '/blog/gestionale-pmi-2026',
+          href: '/blog/gestionale-pmi-2026/',
           label: 'Come scegliere un gestionale',
           desc: 'Criteri e errori da evitare',
         },
         {
-          href: '/tools/calcolatore-roi-gestionale',
+          href: '/tools/calcolatore-roi-gestionale/',
           label: 'Calcolatore ROI gestionale',
           desc: 'Stima risparmio in pochi click',
         },
@@ -224,10 +330,14 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
           Vuoi digitalizzare i processi?
         </h2>
         <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
-          Audit gratuito + roadmap modulare. Risposta in 24h.
+          Audit gratuito + roadmap a fasi. Risposta in 24h.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contattaci?topic=sistemi" class="btn-primary min-w-[220px] shine-on-hover"
+          <a
+            href="/contattaci/?topic=sistemi"
+            data-track="cta_click"
+            data-track-location="sistemi_final"
+            class="btn-primary min-w-[220px] shine-on-hover"
             >Richiedi consulenza</a
           >
           <a
@@ -258,48 +368,11 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
     { name: 'Audit', text: 'Analisi processi esistenti e identificazione colli di bottiglia.' },
     { name: 'Mappa', text: 'Mappa flussi target con priorità e KPI misurabili.' },
     { name: 'MVP', text: 'Sviluppo per fasi con roadmap condivisa e rilascio iterativo.' },
-    { name: 'Ottimizza', text: 'Rilasci frequenti, raccolta feedback, miglioramenti continui.' },
+    { name: 'Evoluzione', text: 'Rilasci frequenti, raccolta feedback, miglioramenti continui.' },
   ]}
 />
 
-<FAQPageSchema
-  items={[
-    {
-      question: 'Cos’è un CRM?',
-      answer:
-        'Software per gestire clienti, lead, pipeline e follow-up. Centralizza dati e comunicazioni.',
-    },
-    {
-      question: 'Cos’è un CMMS?',
-      answer:
-        'Computerized Maintenance Management System: gestione interventi, asset, ricambi, ticket, firme.',
-    },
-    {
-      question: 'Quanto costa un gestionale su misura?',
-      answer:
-        'Dipende da moduli e integrazioni. Audit gratuito e roadmap modulare in base a priorità.',
-    },
-    {
-      question: 'Si integra con strumenti esistenti?',
-      answer:
-        'La piattaforma può essere collegata a strumenti e servizi esterni dopo una verifica tecnica di compatibilità.',
-    },
-    {
-      question: 'Tempo medio di sviluppo?',
-      answer:
-        'Dopo l’analisi iniziale viene definita una roadmap con fasi, tempi e priorità. Lo sviluppo è organizzato per fasi con rilasci iterativi.',
-    },
-    {
-      question: 'Posso accedere da mobile?',
-      answer: 'Sì: web app responsive o, se previsto dal progetto, app dedicata per operatori sul campo.',
-    },
-    {
-      question: 'I dati sono al sicuro?',
-      answer:
-        'Autenticazione, permessi, backup e gestione dei dati vengono progettati in funzione dei requisiti del progetto.',
-    },
-  ]}
-/>
+<FAQPageSchema items={faqItems} />
 
 <BreadcrumbListSchema
   crumbs={[

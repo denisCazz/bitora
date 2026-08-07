@@ -77,7 +77,7 @@ export function renderCustomerReplyEmail(data: CustomerReplyData): string {
             <tr>
               <td style="background:#F8FAFC;padding:18px 28px;font-size:12px;line-height:1.5;color:#64748B;">
                 Bitora · Carmagnola (TO) · <a href="mailto:info@bitora.it" style="color:#0369A1;text-decoration:none;">info@bitora.it</a> · +39 351 497 9670<br/>
-                <a href="${esc(siteUrl)}/privacy-policy" style="color:#0369A1;text-decoration:none;">Privacy</a>
+                <a href="${esc(siteUrl)}/privacy-policy/" style="color:#0369A1;text-decoration:none;">Privacy</a>
               </td>
             </tr>
           </table>

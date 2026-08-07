@@ -16,12 +16,13 @@ test.describe('Bitora.it FSM repositioning', () => {
     await expect(page.locator('a[href="https://ai.bitora.it/"]')).toHaveCount(0);
   });
 
-  test('navigation includes ecosystem, rapportini, ticketing and demo', async ({ page }) => {
+  test('navigation exposes all three services', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('header a[href="/gestione-interventi/"]').first()).toBeVisible();
-    await expect(page.locator('header a[href="/rapportini/"]').first()).toBeVisible();
-    await expect(page.locator('header a[href="/ticketing/"]').first()).toBeVisible();
-    await page.click('header a[href="/gestione-interventi/"]');
+    await expect(page.locator('header a[href="/siti-web-professionali/"]').first()).toBeVisible();
+    await expect(page.locator('header a[href="/e-commerce/"]').first()).toBeVisible();
+    await expect(page.locator('header a[href="/servizi/"]').first()).toBeVisible();
+    await page.click('header nav > div a[href="/gestione-interventi/"]');
     await expect(page).toHaveURL(/gestione-interventi\/?$/);
   });
 

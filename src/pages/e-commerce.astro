@@ -14,22 +14,23 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 ---
 
 <Layout
-  title="E-commerce Piemonte | Negozi Online Chiavi in Mano | Bitora"
-  description="E-commerce professionali per aziende in Piemonte. WooCommerce, Shopify, sviluppo custom. Dalla strategia al lancio con supporto continuo. Preventivo gratuito."
+  title="E-commerce | Negozi Online Chiavi in Mano | Bitora"
+  description="E-commerce professionali in Piemonte: WooCommerce, Shopify o sviluppo custom. Dalla strategia al lancio con supporto continuo, come nel caso studio RicambiXStufe. Preventivo gratuito."
   image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80"
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <VideoHero
       variant="background"
-      eyebrow="E-commerce Piemonte"
-      title="Vendi online,"
-      highlight="senza compromessi."
-      description="WooCommerce, Shopify o sviluppo custom. Dalla strategia al lancio: pagamenti, spedizioni, SEO e supporto inclusi."
-      primaryCta={{ label: 'Richiedi preventivo', href: '/contattaci?topic=ecommerce' }}
+      overlay="light"
+      eyebrow="E-commerce"
+      title="Il tuo negozio online,"
+      highlight="chiavi in mano."
+      description="WooCommerce, Shopify o sviluppo custom. Dalla strategia al lancio: catalogo, pagamenti, spedizioni, SEO e supporto inclusi."
+      primaryCta={{ label: 'Richiedi preventivo', href: '/contattaci/?topic=ecommerce' }}
       secondaryCta={{ label: 'Come funziona', href: '#come' }}
       posterSrc="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80"
-      videoSrc="https://videos.pexels.com/video-files/4994040/4994040-uhd_2732_1440_25fps.mp4"
-      videoLabel="E-commerce checkout in azione"
+      videoSrc="https://videos.pexels.com/video-files/7855449/7855449-uhd_2560_1440_25fps.mp4"
+      videoLabel="Team prepara e imballa ordini e-commerce"
     />
 
     <AnswerFirst
@@ -110,7 +111,72 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
       </div>
     </section>
 
-    <!-- Prima/Dopo rimosso: evitiamo blocchi ridondanti -->
+    <section
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7">
+            <p
+              class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
+            >
+              Case study
+            </p>
+            <h2
+              class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+            >
+              RicambiXStufe: e-commerce verticale già online.
+            </h2>
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+              Abbiamo progettato e sviluppato RicambiXStufe, negozio online di ricambi per stufe a
+              pellet: oltre 180 prodotti a catalogo, ricerca per categoria e compatibilità
+              verificata per stufe Eva Calor, Extraflame e decine di altri marchi. Pannello admin
+              custom per gestire prodotti, ordini e clienti senza dipendere dai marketplace.
+            </p>
+            <ul class="mt-6 flex flex-wrap gap-2">
+              {
+                [
+                  'Compatibile Eva Calor',
+                  '180+ prodotti a catalogo',
+                  'Pannello admin custom',
+                  'Ordini già attivi',
+                ].map((chip) => (
+                  <li class="text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-white/[0.06] border border-gray-200 dark:border-white/10 rounded-full px-3.5 py-1.5 tracking-wide">
+                    {chip}
+                  </li>
+                ))
+              }
+            </ul>
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="/progetti/ricambixstufe/" class="btn-primary shine-on-hover"
+                >Vedi il case study</a
+              >
+              <a
+                href="https://ricambixstufe.it"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-secondary"
+                >Visita ricambixstufe.it</a
+              >
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <a
+              href="/progetti/ricambixstufe/"
+              class="media-frame overflow-hidden block group"
+              aria-label="Apri il case study RicambiXStufe"
+            >
+              <img
+                src="/logo_eva.png"
+                alt="RicambiXStufe: e-commerce di ricambi per stufe Eva Calor e altri marchi"
+                class="w-full h-full object-cover aspect-[16/10] transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="py-24 px-6 md:px-12 lg:px-20">
       <div class="max-w-6xl mx-auto">
@@ -234,27 +300,32 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
     <ServiceRelatedLinks
       links={[
         {
-          href: '/siti-web-piemonte',
-          label: 'Web agency Piemonte',
-          desc: 'Siti e negozi online nel territorio',
-        },
-        {
-          href: '/siti-web-professionali',
+          href: '/siti-web-professionali/',
           label: 'Siti web professionali',
           desc: 'Vetrina e conversione prima del negozio',
         },
         {
-          href: '/blog/quanto-costa-sito-web-pmi',
+          href: '/blog/quanto-costa-sito-web-pmi/',
           label: 'Guida costi digitali PMI',
           desc: 'Confronto investimenti web 2026',
         },
         {
-          href: '/prezzi',
-          label: 'Investimenti',
-          desc: 'Piani e preventivi personalizzati',
+          href: '/servizi/',
+          label: 'Tutti i servizi Bitora',
+          desc: 'Siti, e-commerce e soluzioni tailormade',
         },
         {
-          href: '/lavori',
+          href: '/gestione-interventi/',
+          label: 'Ecosistema gestione interventi',
+          desc: 'Ordini e assistenza in un unico sistema',
+        },
+        {
+          href: '/progetti/ricambixstufe/',
+          label: 'Case study RicambiXStufe',
+          desc: 'E-commerce verticale per ricambi stufe Eva Calor',
+        },
+        {
+          href: '/lavori/',
           label: 'Progetti e-commerce',
           desc: 'Case study con risultati',
         },
@@ -272,7 +343,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
           Preventivo gratuito. Ti rispondiamo entro 24h.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contattaci?topic=ecommerce" class="btn-primary min-w-[220px] shine-on-hover"
+          <a href="/contattaci/?topic=ecommerce" class="btn-primary min-w-[220px] shine-on-hover"
             >Richiedi preventivo</a
           >
           <a
@@ -291,7 +362,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 
 <ServiceSchema
   name="Realizzazione E-commerce Piemonte"
-  url="https://bitora.it/e-commerce-piemonte/"
+  url="https://bitora.it/e-commerce/"
   serviceType={['E-commerce', 'WooCommerce', 'Shopify', 'Negozi Online']}
   areaServed={[
     'Carmagnola',
@@ -358,6 +429,6 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 <BreadcrumbListSchema
   crumbs={[
     { name: 'Home', item: 'https://bitora.it/' },
-    { name: 'E-commerce', item: 'https://bitora.it/e-commerce-piemonte/' },
+    { name: 'E-commerce', item: 'https://bitora.it/e-commerce/' },
   ]}
 />

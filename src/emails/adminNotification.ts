@@ -104,7 +104,7 @@ export function renderAdminEmail(data: ContactEmailData): string {
                 </div>
 
                 <div style="margin-top:22px;">
-                  <a href="${esc(siteUrl)}/richiedi-demo" style="display:inline-block;background:#0369A1;color:#ffffff;text-decoration:none;font-weight:800;border-radius:999px;padding:12px 18px;font-size:13px;">
+                  <a href="${esc(siteUrl)}/richiedi-demo/" style="display:inline-block;background:#0369A1;color:#ffffff;text-decoration:none;font-weight:800;border-radius:999px;padding:12px 18px;font-size:13px;">
                     Apri pagina demo
                   </a>
                 </div>

@@ -335,6 +335,13 @@ a:hover {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+.hero-panel--light {
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.48), rgba(2, 6, 23, 0.22));
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 24px 60px -36px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
 
 /* Lightweight parallax (opt-in) */
 .parallax-layer {

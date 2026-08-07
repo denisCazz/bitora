@@ -55,7 +55,7 @@ export function renderRoiReportEmail(data: RoiReportData): string {
                   <tr><td style="padding:12px 16px;font-size:13px;color:#64748B;border-top:1px solid #E2E8F0;">Payback avvio</td><td style="padding:12px 16px;font-size:14px;font-weight:700;text-align:right;border-top:1px solid #E2E8F0;">${esc(data.payback)}</td></tr>
                 </table>
                 <div style="margin-top:20px;">
-                  <a href="${esc(siteUrl)}/contattaci?topic=crm" style="display:inline-block;background:#0369A1;color:#ffffff;text-decoration:none;font-weight:800;border-radius:999px;padding:12px 18px;font-size:13px;">
+                  <a href="${esc(siteUrl)}/contattaci/?topic=crm" style="display:inline-block;background:#0369A1;color:#ffffff;text-decoration:none;font-weight:800;border-radius:999px;padding:12px 18px;font-size:13px;">
                     Richiedi analisi dedicata
                   </a>
                 </div>

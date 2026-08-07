@@ -4,167 +4,169 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Servizi | Gestione interventi, siti web ed e-commerce | Bitora"
-  description="Piattaforma per ticket, tecnici e rapportini digitali. Siti web ed e-commerce come servizi complementari. Sede in Piemonte, copertura nazionale."
+  title="Servizi | Siti web, e-commerce e soluzioni su misura | Bitora"
+  description="Tre servizi, un unico partner: siti web vetrina, e-commerce e soluzioni tailormade con pratiche digitalizzate, rapportini e ticketing. Sede in Piemonte, copertura nazionale."
 >
   <div class="bg-black text-white overflow-x-hidden">
 
-    <section class="relative h-[70vh] min-h-[560px] flex flex-col justify-end">
-      <div class="absolute inset-0">
-        <img
-          src="/field-tablet.jpg"
-          alt="Digitalizzazione operativa e assistenza tecnica"
-          class="w-full h-full object-cover"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/20"></div>
+    <!-- HERO -->
+    <section class="relative pt-40 pb-20 md:pt-52 md:pb-28 border-b border-white/[0.06]">
+      <div class="absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[820px] h-[420px] rounded-full bg-white/[0.04] blur-[140px]"></div>
       </div>
-      <div class="relative z-10 px-8 md:px-16 lg:px-24 pb-16 md:pb-24">
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-4">Cosa facciamo</p>
-        <h1 class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-[1.04] tracking-tight mb-5 max-w-3xl">
-          Digitalizziamo<br />l’assistenza tecnica.
+      <div class="relative z-10 px-8 md:px-16 lg:px-24 max-w-7xl mx-auto">
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-5">Cosa facciamo</p>
+        <h1 class="text-4xl md:text-6xl lg:text-[4.5rem] font-bold leading-[1.05] tracking-tight mb-6 max-w-4xl">
+          Siti vetrina, e-commerce e pratiche digitalizzate.
         </h1>
-        <p class="text-base md:text-lg text-white/70 max-w-lg leading-relaxed">
-          Il nucleo è la piattaforma di gestione interventi. Siti web ed e-commerce restano servizi di ingresso e supporto.
+        <p class="text-base md:text-lg text-white/70 max-w-2xl leading-relaxed">
+          Chi ci cerca per un sito professionale e chi vuole digitalizzare l’operatività: stesse competenze, tre servizi chiari. Scegli da dove partire, combiniamo il resto quando serve.
         </p>
       </div>
     </section>
 
-    <!-- PIATTAFORMA -->
-    <section id="gestione-interventi" class="bg-black py-24 md:py-36 border-t border-white/[0.06]">
-      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
-        <div class="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <div>
-            <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">01 — Priorità</p>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-6">
-              Ticket, tecnici<br />e rapportini.
-            </h2>
-            <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
-              Una piattaforma unica per richieste, assegnazioni, calendario, interventi sul campo, firme, PDF, ricambi e statistiche.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-10">
-              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Ticketing</span>
-              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Rapportini</span>
-              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Centri assistenza</span>
-              <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm text-white/60">Statistiche</span>
-            </div>
-            <div class="flex flex-wrap gap-4">
-              <a href="/gestione-interventi" class="sl-btn-primary">Scopri la piattaforma</a>
-              <a href="/richiedi-demo" class="sl-btn-secondary">Richiedi demo</a>
-            </div>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-8 space-y-4">
-            {[
-              'Apertura pratiche e priorità',
-              'Assegnazione a centri e tecnici',
-              'Rapportino digitale con firma',
-              'Documenti, foto e storico',
-              'Controllo tempi e performance',
-            ].map(item => (
-              <div class="flex items-start gap-3 text-white/75 text-sm">
-                <span class="text-white mt-0.5">✓</span>
+    <!-- 3 PILASTRI -->
+    <section class="py-16 md:py-24 px-8 md:px-16 lg:px-24 max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-3 gap-6">
+
+        <!-- 1. SITI WEB -->
+        <article class="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-8 hover:border-white/25 transition-colors">
+          <p class="text-xs font-semibold tracking-[0.25em] text-white/45 uppercase mb-4">01 · Siti web</p>
+          <h2 class="text-2xl md:text-[1.75rem] font-bold leading-tight mb-4">
+            Presenza online che converte.
+          </h2>
+          <p class="text-white/65 text-sm leading-relaxed mb-6">
+            Siti vetrina professionali per PMI e professionisti: design su misura, SEO tecnico, performance e contenuti. Perfetti per chi vuole farsi trovare e contattare.
+          </p>
+          <ul class="space-y-2.5 mb-8">
+            {['Design mobile-first e accessibile', 'SEO tecnico e velocità reali', 'Contenuti che portano richieste', 'Manutenzione e aggiornamenti'].map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <span class="text-white/50 mt-px" aria-hidden="true">✓</span>
                 <span>{item}</span>
-              </div>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-auto flex flex-wrap gap-3">
+            <a href="/siti-web-professionali/" class="sl-btn-primary">Scopri siti web</a>
+          </div>
+        </article>
+
+        <!-- 2. E-COMMERCE -->
+        <article class="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-8 hover:border-white/25 transition-colors">
+          <p class="text-xs font-semibold tracking-[0.25em] text-white/45 uppercase mb-4">02 · E-commerce</p>
+          <h2 class="text-2xl md:text-[1.75rem] font-bold leading-tight mb-4">
+            Negozi online su misura.
+          </h2>
+          <p class="text-white/65 text-sm leading-relaxed mb-6">
+            WooCommerce, Shopify o sviluppo custom: catalogo, pagamenti, spedizioni e gestione ordini. Per vendere online con un canale tuo, senza dipendere dai marketplace.
+          </p>
+          <ul class="space-y-2.5 mb-8">
+            {['Catalogo, carrello e pagamenti', 'Integrazioni ordini e spedizioni', 'SEO prodotto e conversione', 'Supporto post-lancio continuo'].map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <span class="text-white/50 mt-px" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-auto flex flex-wrap gap-3">
+            <a href="/e-commerce/" class="sl-btn-primary">Scopri e-commerce</a>
+          </div>
+        </article>
+
+        <!-- 3. SOLUZIONI TAILORMADE -->
+        <article class="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-8 hover:border-white/25 transition-colors">
+          <p class="text-xs font-semibold tracking-[0.25em] text-white/45 uppercase mb-4">03 · Soluzioni tailormade</p>
+          <h2 class="text-2xl md:text-[1.75rem] font-bold leading-tight mb-4">
+            Ecosistema e pratiche digitalizzate.
+          </h2>
+          <p class="text-white/65 text-sm leading-relaxed mb-6">
+            Rapportini, ticketing e pratiche adattabili al tuo processo. Per aziende con tecnici sul territorio che vogliono abbandonare carta, Excel e WhatsApp sparsi.
+          </p>
+          <ul class="space-y-2.5 mb-8">
+            {['Ecosistema gestione interventi', 'Rapportini digitali con firma', 'Ticketing e pratiche adattabili', 'Gestionali e CRM su misura'].map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <span class="text-white/50 mt-px" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-auto flex flex-wrap gap-3">
+            <a href="/gestione-interventi/" class="sl-btn-primary">Scopri ecosistema</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PER CHI -->
+    <section class="py-16 md:py-24 border-t border-white/[0.06] bg-white/[0.015]">
+      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 grid md:grid-cols-2 gap-10 lg:gap-16">
+        <div class="rounded-2xl border border-white/10 p-8 md:p-10">
+          <p class="text-xs font-semibold tracking-[0.25em] text-white/45 uppercase mb-4">Se vuoi un sito</p>
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">Aziende che cercano visibilità.</h2>
+          <p class="text-white/65 text-sm leading-relaxed mb-6">
+            Partiamo dal sito vetrina: presenza credibile, SEO locale, richieste che arrivano. Quando serve, colleghiamo e-commerce o strumenti operativi.
+          </p>
+          <div class="flex flex-wrap gap-x-2 gap-y-2 mb-8">
+            {['Sito vetrina', 'Sito professionale', 'SEO locale', 'Restyle', 'Landing page'].map((tag) => (
+              <span class="px-3.5 py-1.5 rounded-full border border-white/20 text-xs text-white/60">{tag}</span>
             ))}
           </div>
+          <a href="/siti-web-professionali/" class="sl-btn-secondary">Vai ai siti web →</a>
         </div>
-      </div>
-    </section>
-
-    <!-- AI MODULO -->
-    <section id="ai" class="relative bg-black py-24 md:py-32 overflow-hidden border-t border-white/[0.06]">
-      <div class="relative z-10 px-8 md:px-16 lg:px-24 max-w-4xl mx-auto text-center">
-        <p class="text-xs font-semibold tracking-[0.25em] text-indigo-400/70 uppercase mb-6">02 — Modulo AI documentale</p>
-        <h2 class="text-4xl md:text-5xl font-bold leading-[1.04] tracking-tight mb-6">
-          AI al servizio dei processi,<br />non come fine.
-        </h2>
-        <p class="text-base md:text-lg text-white/65 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Ricerca nei manuali, estrazione dati da documenti, compilazione assistita e supporto ai tecnici. Utile quando è collegata a ticket e rapportini.
-        </p>
-        <a href="/gestione-interventi#ai-documentale" class="sl-btn-secondary">Come si integra</a>
-      </div>
-    </section>
-
-    <!-- SITI WEB -->
-    <section id="siti-web" class="relative min-h-[70vh] flex flex-col justify-center py-24 border-t border-white/[0.06]">
-      <div class="absolute inset-0">
-        <img
-          src="/programming.jpg"
-          alt="Siti web professionali"
-          class="w-full h-full object-cover opacity-25"
-          loading="lazy"
-          decoding="async"
-        />
-        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40"></div>
-      </div>
-      <div class="relative z-10 px-8 md:px-16 lg:px-24 max-w-2xl">
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-4">03 — Siti Web</p>
-        <h2 class="text-4xl md:text-5xl font-bold leading-[1.05] tracking-tight mb-4">
-          Presenza online<br />che converte.
-        </h2>
-        <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
-          Siti professionali, SEO tecnico e performance. Servizio complementare e di ingresso verso software operativi.
-        </p>
-        <a href="/siti-web-professionali" class="sl-btn-secondary">Scopri i siti web</a>
-      </div>
-    </section>
-
-    <!-- E-COMMERCE -->
-    <section id="ecommerce" class="bg-black py-24 md:py-36 border-t border-white/[0.06]">
-      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">04 — E-commerce</p>
-          <h2 class="text-4xl md:text-5xl font-bold leading-[1.05] tracking-tight mb-6">
-            Negozi online<br />su misura.
-          </h2>
-          <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
-            Cataloghi, carrello, pagamenti e gestione ordini. Ideale come canale digitale aggiuntivo, non come messaggio principale di Bitora.
+        <div class="rounded-2xl border border-white/10 p-8 md:p-10">
+          <p class="text-xs font-semibold tracking-[0.25em] text-white/45 uppercase mb-4">Se vuoi digitalizzare</p>
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">Aziende con pratiche da ordinare.</h2>
+          <p class="text-white/65 text-sm leading-relaxed mb-6">
+            Richieste, interventi, rapportini e documentazione in un sistema unico, configurato sul tuo processo. Si parte da una demo sul tuo caso reale.
           </p>
-          <a href="/e-commerce-piemonte" class="sl-btn-secondary">Scopri e-commerce</a>
-        </div>
-        <div class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
-          <img
-            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=85"
-            alt="E-commerce su misura"
-            class="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
+          <div class="flex flex-wrap gap-x-2 gap-y-2 mb-8">
+            {['Pratiche digitalizzate', 'Rapportini con firma', 'Ticketing', 'Gestionali custom', 'CRM'].map((tag) => (
+              <span class="px-3.5 py-1.5 rounded-full border border-white/20 text-xs text-white/60">{tag}</span>
+            ))}
+          </div>
+          <a href="/gestione-interventi/" class="sl-btn-secondary">Vai alle soluzioni tailormade →</a>
         </div>
       </div>
     </section>
 
-    <!-- ALTRI -->
-    <section id="altri" class="bg-black py-24 border-t border-white/[0.06]">
+    <!-- STRUMENTI EXTRA -->
+    <section class="py-16 md:py-24 border-t border-white/[0.06]">
       <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/50 uppercase mb-6">Altri strumenti</p>
-        <h2 class="text-3xl md:text-4xl font-bold mb-8">Moduli e servizi complementari</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-          <a href="/sistemi-aziendali" class="rounded-2xl border border-white/10 p-6 hover:border-white/30 transition-colors">
-            <h3 class="font-bold text-lg mb-2">Sistemi aziendali</h3>
-            <p class="text-white/60 text-sm">CRM e gestionali verticali integrati ai processi.</p>
+        <p class="text-xs font-semibold tracking-[0.25em] text-white/45 uppercase mb-4">Strumenti</p>
+        <h2 class="text-2xl md:text-3xl font-bold mb-8">Da aggiungere quando servono</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <a href="/sistemi-aziendali/" class="rounded-2xl border border-white/10 p-6 hover:border-white/30 transition-colors">
+            <h3 class="font-bold mb-2">Sistemi aziendali</h3>
+            <p class="text-white/60 text-sm">Gestionali, CRM e CMMS integrati ai processi.</p>
           </a>
-          <a href="/nfc-ecosystem" class="rounded-2xl border border-white/10 p-6 hover:border-white/30 transition-colors">
-            <h3 class="font-bold text-lg mb-2">Tessere NFC</h3>
+          <a href="/nfc-ecosystem/" class="rounded-2xl border border-white/10 p-6 hover:border-white/30 transition-colors">
+            <h3 class="font-bold mb-2">Tessere NFC</h3>
             <p class="text-white/60 text-sm">Recensioni, menu e contatti con un tap.</p>
           </a>
-          <a href="/grafica-digitale-social-media" class="rounded-2xl border border-white/10 p-6 hover:border-white/30 transition-colors">
-            <h3 class="font-bold text-lg mb-2">Grafica & social</h3>
-            <p class="text-white/60 text-sm">Identità visiva e contenuti, in collaborazione.</p>
+          <a href="/bitora-crm/" class="rounded-2xl border border-white/10 p-6 hover:border-white/30 transition-colors">
+            <h3 class="font-bold mb-2">Bitora CRM</h3>
+            <p class="text-white/60 text-sm">Clienti, lead ed email in un’unica app.</p>
+          </a>
+          <a href="/tools/" class="rounded-2xl border border-white/10 p-6 hover:border-white/30 transition-colors">
+            <h3 class="font-bold mb-2">Tools gratuiti</h3>
+            <p class="text-white/60 text-sm">QR code, password e calcolatore ROI.</p>
           </a>
         </div>
       </div>
     </section>
 
-    <section class="bg-black py-28 px-8 md:px-16 lg:px-24 text-center border-t border-white/10">
-      <h2 class="text-4xl md:text-5xl font-bold leading-[1.05] tracking-tight mb-5 max-w-2xl mx-auto">
-        Parti dalla piattaforma operativa.
+    <!-- CTA -->
+    <section class="py-24 md:py-32 px-8 md:px-16 lg:px-24 text-center border-t border-white/10">
+      <h2 class="text-3xl md:text-5xl font-bold leading-[1.05] tracking-tight mb-5 max-w-2xl mx-auto">
+        Non sai da quale servizio partire?
       </h2>
-      <p class="text-base md:text-lg text-white/60 mb-10 max-w-md mx-auto">
-        Richiedi una demo e valuta se il flusso si adatta alla tua rete di tecnici.
+      <p class="text-base md:text-lg text-white/60 mb-10 max-w-lg mx-auto">
+        Raccontaci obiettivo e situazione attuale: ti proponiamo il percorso più diretto, senza venderti quello che non serve.
       </p>
-      <a href="/richiedi-demo" class="sl-btn-primary">Richiedi una demo</a>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/contattaci/" class="sl-btn-primary">Parla con noi</a>
+        <a href="/richiedi-demo/" class="sl-btn-secondary">Demo soluzioni tailormade</a>
+      </div>
     </section>
 
   </div>

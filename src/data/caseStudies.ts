@@ -31,6 +31,48 @@
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    id: 'tropini-service',
+    slug: 'tropini-service',
+    title: 'Tropini Service',
+    subtitle: 'Sito web per assistenza stufe a pellet',
+    category: 'B2B • Assistenza tecnica',
+    location: 'Cavallermaggiore (CN)',
+    imageUrl: '/logo_tropini.png',
+    siteUrl: '#',
+    featured: true,
+    isWip: true,
+
+    clientDescription: `Tropini Service di Gianfranco Tropini è un centro di assistenza tecnica specializzato in stufe a pellet e a legna a Cavallermaggiore, in provincia di Cuneo. Da oltre vent'anni opera sul territorio piemontese con competenza artigiana e rapporto diretto con i clienti: oltre 4.000 impianti seguiti, ricambi originali e intervento rapido su Extraflame, Eva Calor e decine di altre marche.`,
+
+    problema: `L'azienda aveva bisogno di una presenza digitale chiara e professionale che raccontasse esperienza, zone di intervento e servizi di assistenza, facilitando le richieste di intervento da parte di clienti privati e aziende del territorio.`,
+
+    soluzione: [
+      {
+        titolo: 'Sito vetrina orientato alle conversioni',
+        descrizione:
+          'Bitora sta realizzando un sito web dedicato all’assistenza stufe, con messaggi chiari su servizi, marche trattate e reperibilità, pensato per generare chiamate e richieste di intervento.',
+      },
+      {
+        titolo: 'SEO locale e identità di brand',
+        descrizione:
+          'Il progetto include ottimizzazione per le ricerche locali in Piemonte e una presentazione coerente del brand Tropini Service, dal logo alla comunicazione istituzionale.',
+      },
+    ],
+
+    risultati: [
+      'Progetto in corso: vetrina digitale in fase di completamento',
+      'Identità online allineata all’esperienza sul campo di Tropini Service',
+      'Base pronta per SEO locale e raccolta richieste di assistenza',
+    ],
+
+    tecnologie: ['Astro', 'Coolify', 'SEO locale', 'Copywriting', 'Web design'],
+
+    metricsPreview: ['In corso', 'Assistenza stufe', 'SEO locale'],
+
+    fonti: [],
+  },
+
 {
     id: 'mistral-impianti',
     slug: 'mistral-impianti',
@@ -92,7 +134,7 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
     isWip: false,
 
-    clientDescription: `RicambiXStufe è una piattaforma e-commerce specializzata nella vendita online di ricambi, componenti e accessori per stufe, sviluppata da Bitora. Il progetto nasce con l'obiettivo di trasformare un'attività tradizionale di vendita di ricambi in un sistema digitale strutturato, semplice da utilizzare per il cliente finale e facilmente gestibile dall'azienda.`,
+    clientDescription: `RicambiXStufe è una piattaforma e-commerce specializzata nella vendita online di ricambi, componenti e accessori per stufe a pellet e a legna, sviluppata da Bitora. Il catalogo copre i principali produttori — Eva Calor, Extraflame e decine di altri marchi — con motoriduttori, ventilatori, resistenze, schede elettroniche e guarnizioni. Il progetto nasce con l'obiettivo di trasformare un'attività tradizionale di vendita di ricambi in un sistema digitale strutturato, semplice da utilizzare per il cliente finale e facilmente gestibile dall'azienda.`,
 
     problema: `Nel settore dei ricambi per stufe, uno dei principali problemi è l'identificazione del componente corretto. I clienti spesso non conoscono il nome tecnico del ricambio, il codice del componente, il modello preciso della stufa o la compatibilità tra prodotto e ricambio. Serviva quindi una piattaforma che permettesse di trovare e acquistare rapidamente il ricambio corretto, riducendo richieste manuali, telefonate e tempi di identificazione, e che consentisse all'azienda di gestire autonomamente prodotti, ordini, clienti e contenuti.`,
 
@@ -569,48 +611,6 @@ export const caseStudies: CaseStudy[] = [
     tecnologie: ['Astro', 'Coolify', 'Copywriting', 'Web design'],
 
     metricsPreview: ['Nuovo progetto', 'Settore immobiliare'],
-
-    fonti: [],
-  },
-
-  {
-    id: 'tropini-service',
-    slug: 'tropini-service',
-    title: 'Tropini Service',
-    subtitle: 'Sito web per assistenza stufe a pellet',
-    category: 'B2B • Assistenza tecnica',
-    location: 'Cavallermaggiore (CN)',
-    imageUrl: '/logo_tropini.png',
-    siteUrl: '#',
-    featured: true,
-    isWip: true,
-
-    clientDescription: `Tropini Service di Gianfranco Tropini è un centro di assistenza tecnica specializzato in stufe a pellet e a legna a Cavallermaggiore, in provincia di Cuneo. Da oltre vent'anni opera sul territorio piemontese con competenza artigiana e rapporto diretto con i clienti: oltre 4.000 impianti seguiti, ricambi originali e intervento rapido su Extraflame, Eva Calor e decine di altre marche.`,
-
-    problema: `L'azienda aveva bisogno di una presenza digitale chiara e professionale che raccontasse esperienza, zone di intervento e servizi di assistenza, facilitando le richieste di intervento da parte di clienti privati e aziende del territorio.`,
-
-    soluzione: [
-      {
-        titolo: 'Sito vetrina orientato alle conversioni',
-        descrizione:
-          'Bitora sta realizzando un sito web dedicato all’assistenza stufe, con messaggi chiari su servizi, marche trattate e reperibilità, pensato per generare chiamate e richieste di intervento.',
-      },
-      {
-        titolo: 'SEO locale e identità di brand',
-        descrizione:
-          'Il progetto include ottimizzazione per le ricerche locali in Piemonte e una presentazione coerente del brand Tropini Service, dal logo alla comunicazione istituzionale.',
-      },
-    ],
-
-    risultati: [
-      'Progetto in corso: vetrina digitale in fase di completamento',
-      'Identità online allineata all’esperienza sul campo di Tropini Service',
-      'Base pronta per SEO locale e raccolta richieste di assistenza',
-    ],
-
-    tecnologie: ['Astro', 'Coolify', 'SEO locale', 'Copywriting', 'Web design'],
-
-    metricsPreview: ['In corso', 'Assistenza stufe', 'SEO locale'],
 
     fonti: [],
   },

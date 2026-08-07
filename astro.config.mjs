@@ -39,10 +39,24 @@ export default defineConfig({
   redirects: {
     '/cmms/': '/gestione-interventi/',
     '/services/': '/servizi/',
-    '/shop/': '/e-commerce-piemonte/',
+    '/shop/': '/e-commerce/',
     '/demo/': '/richiedi-demo/',
     '/progetti/hololux/': '/lavori/',
     '/progetti/kristina/': '/progetti/sartoria-kristina/',
+    // Consolidated pages — preserve SEO equity
+    '/soluzioni/': '/servizi/',
+    '/siti-web-piemonte/': '/siti-web-professionali/',
+    '/e-commerce-piemonte/': '/e-commerce/',
+    '/siti-web-torino/': '/siti-web-professionali/',
+    '/carmagnola/': '/siti-web-professionali/',
+    '/grafica-digitale-social-media/': '/servizi/',
+    '/prezzi/': '/servizi/',
+    '/progetto-fuoco/': '/chi-siamo/',
+    '/settori/': '/contattaci/',
+    '/settori/ristoranti/': '/nfc-ecosystem/',
+    '/settori/turismo/': '/contattaci/',
+    '/settori/professionisti/': '/contattaci/',
+    '/tessere-nfc-torino/': '/nfc-ecosystem/',
   },
   // Production fix: prevent false-positive CSRF blocks behind proxies/CDNs
   // (e.g. apex vs www, https termination). If you later ensure correct

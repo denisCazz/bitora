@@ -1,14 +1,16 @@
 ﻿# Bitora
 
-Piattaforme per assistenza tecnica, gestione interventi, ticketing e rapportini digitali.
+Siti web, e-commerce e soluzioni tailormade: piattaforme per gestione interventi, ticketing, rapportini digitali e pratiche digitalizzate.
 
 ## Pagine principali
 
-- [Gestione interventi](https://bitora.it/gestione-interventi/)
+- [Servizi](https://bitora.it/servizi/)
+- [Siti web professionali](https://bitora.it/siti-web-professionali/)
+- [E-commerce](https://bitora.it/e-commerce/)
+- [Gestione interventi (ecosistema)](https://bitora.it/gestione-interventi/)
 - [Rapportini digitali](https://bitora.it/rapportini/)
 - [Ticketing e pratiche](https://bitora.it/ticketing/)
 - [Richiedi una demo](https://bitora.it/richiedi-demo/)
-- [Servizi](https://bitora.it/servizi/)
 - [Lavori e prototipi](https://bitora.it/lavori/)
 - [Contatti](https://bitora.it/contattaci/)
 

@@ -58,7 +58,7 @@ test.describe('Contextual CTAs', () => {
   });
 
   test('footer CTA on web pages is not ticketing-demo copy', async ({ page }) => {
-    await page.goto('/e-commerce-piemonte/');
+    await page.goto('/e-commerce/');
     const footerBanner = page.locator('section').filter({ hasText: /preventivo|e-commerce|contatt/i }).first();
     await expect(footerBanner).toBeVisible();
     await expect(page.locator('text=Pronto a vedere il flusso sulla tua azienda?')).toHaveCount(0);
@@ -85,6 +85,12 @@ test.describe('Legacy redirects', () => {
     const response = await page.goto('/services/');
     expect(response?.status()).toBeLessThan(400);
     await expect(page).toHaveURL(/servizi\/?$/);
+  });
+
+  test('e-commerce-piemonte redirects to e-commerce', async ({ page }) => {
+    const response = await page.goto('/e-commerce-piemonte/');
+    expect(response?.status()).toBeLessThan(400);
+    await expect(page).toHaveURL(/e-commerce\/?$/);
   });
 
   test('progetti/kristina redirects to sartoria-kristina', async ({ page }) => {

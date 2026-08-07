@@ -9,6 +9,7 @@ const hideFooterCta = [
   '/gestione-interventi',
   '/richiedi-demo',
   '/contattaci',
+  '/servizi',
 ].includes(pathname);
 
 type FooterCta = {
@@ -27,21 +28,7 @@ const webCtaByPath: Record<string, FooterCta> = {
     primaryLabel: 'Richiedi un preventivo sito',
     whatsappText: 'Ciao, vorrei un preventivo per un sito web.',
   },
-  '/siti-web-piemonte': {
-    title: 'Serve un sito professionale in Piemonte?',
-    body: 'Parliamo di struttura, contenuti e obiettivi di acquisizione.',
-    primaryHref: '/contattaci/?topic=sito',
-    primaryLabel: 'Richiedi un preventivo sito',
-    whatsappText: 'Ciao, vorrei informazioni su un sito web in Piemonte.',
-  },
-  '/siti-web-torino': {
-    title: 'Serve un sito professionale a Torino?',
-    body: 'Parliamo di struttura, contenuti e obiettivi di acquisizione.',
-    primaryHref: '/contattaci/?topic=sito',
-    primaryLabel: 'Richiedi un preventivo sito',
-    whatsappText: 'Ciao, vorrei informazioni su un sito web a Torino.',
-  },
-  '/e-commerce-piemonte': {
+  '/e-commerce': {
     title: 'Pronto a richiedere un preventivo e-commerce?',
     body: 'Catalogo, pagamenti, logistica e gestione ordini: partiamo dal tuo flusso reale.',
     primaryHref: '/contattaci/?topic=ecommerce',
@@ -55,26 +42,19 @@ const webCtaByPath: Record<string, FooterCta> = {
     primaryLabel: 'Richiedi consulenza NFC',
     whatsappText: 'Ciao, vorrei informazioni sulle soluzioni NFC.',
   },
-  '/tessere-nfc-torino': {
-    title: 'Vuoi valutare tessere NFC per la tua attività?',
-    body: 'Ti aiutiamo a capire se NFC è utile e come integrarlo.',
-    primaryHref: '/contattaci/?topic=nfc',
-    primaryLabel: 'Richiedi consulenza NFC',
-    whatsappText: 'Ciao, vorrei informazioni sulle tessere NFC.',
+  '/sistemi-aziendali': {
+    title: 'Vuoi digitalizzare un processo aziendale?',
+    body: 'Gestionali, CRM e strumenti su misura: partiamo dal tuo processo reale.',
+    primaryHref: '/contattaci/?topic=sistemi',
+    primaryLabel: 'Richiedi consulenza',
+    whatsappText: 'Ciao, vorrei informazioni sui sistemi aziendali su misura.',
   },
-  '/grafica-digitale-social-media': {
-    title: 'Serve supporto su grafica e social?',
-    body: 'Definiamo obiettivi, formato e frequenza di pubblicazione.',
-    primaryHref: '/contattaci/?topic=sito',
-    primaryLabel: 'Richiedi un preventivo',
-    whatsappText: 'Ciao, vorrei un preventivo per grafica e social media.',
-  },
-  '/carmagnola': {
-    title: 'Cerchi un partner digitale a Carmagnola?',
-    body: 'Siti, e-commerce o software operativo: partiamo dalla tua priorità.',
-    primaryHref: '/contattaci/?topic=sito',
-    primaryLabel: 'Contattaci',
-    whatsappText: 'Ciao, vorrei informazioni sui servizi Bitora a Carmagnola.',
+  '/bitora-crm': {
+    title: 'Vuoi provare Bitora CRM?',
+    body: 'Ti mostriamo il CRM con i tuoi dati: clienti, lead ed email integrate.',
+    primaryHref: '/contattaci/?topic=crm',
+    primaryLabel: 'Richiedi una demo',
+    whatsappText: 'Ciao, vorrei una demo di Bitora CRM.',
   },
 };
 
@@ -217,29 +197,29 @@ const whatsappHref = footerCta
         <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 mb-6">Piattaforma</h4>
         <ul class="space-y-3.5 text-sm">
           <li>
-            <a href="/gestione-interventi" class="text-white/55 hover:text-white transition-colors"
+            <a href="/gestione-interventi/" class="text-white/55 hover:text-white transition-colors"
               >Ecosistema</a
             >
           </li>
           <li>
-            <a href="/rapportini" class="text-white/55 hover:text-white transition-colors">Rapportini</a>
+            <a href="/rapportini/" class="text-white/55 hover:text-white transition-colors">Rapportini</a>
           </li>
           <li>
-            <a href="/ticketing" class="text-white/55 hover:text-white transition-colors">Ticketing</a>
+            <a href="/ticketing/" class="text-white/55 hover:text-white transition-colors">Ticketing</a>
           </li>
           <li>
-            <a href="/richiedi-demo" class="text-white/55 hover:text-white transition-colors"
+            <a href="/richiedi-demo/" class="text-white/55 hover:text-white transition-colors"
               >Richiedi demo</a
             >
           </li>
           <li>
-            <a href="/sistemi-aziendali" class="text-white/55 hover:text-white transition-colors"
+            <a href="/sistemi-aziendali/" class="text-white/55 hover:text-white transition-colors"
               >Sistemi aziendali</a
             >
           </li>
           <li>
             <a
-              href="/tools/calcolatore-roi-gestionale"
+              href="/tools/calcolatore-roi-gestionale/"
               class="text-white/55 hover:text-white transition-colors">Calcolatore ROI</a
             >
           </li>
@@ -251,23 +231,23 @@ const whatsappHref = footerCta
         <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 mb-6">Servizi</h4>
         <ul class="space-y-3.5 text-sm">
           <li>
-            <a href="/servizi" class="text-white/55 hover:text-white transition-colors">Panoramica</a>
+            <a href="/servizi/" class="text-white/55 hover:text-white transition-colors">Panoramica</a>
           </li>
           <li>
-            <a href="/siti-web-professionali" class="text-white/55 hover:text-white transition-colors"
+            <a href="/siti-web-professionali/" class="text-white/55 hover:text-white transition-colors"
               >Siti web</a
             >
           </li>
           <li>
-            <a href="/e-commerce-piemonte" class="text-white/55 hover:text-white transition-colors"
+            <a href="/e-commerce/" class="text-white/55 hover:text-white transition-colors"
               >E-commerce</a
             >
           </li>
           <li>
-            <a href="/lavori" class="text-white/55 hover:text-white transition-colors">Lavori</a>
+            <a href="/lavori/" class="text-white/55 hover:text-white transition-colors">Lavori</a>
           </li>
           <li>
-            <a href="/contattaci" class="text-white/55 hover:text-white transition-colors">Contatti</a>
+            <a href="/contattaci/" class="text-white/55 hover:text-white transition-colors">Contatti</a>
           </li>
         </ul>
       </div>
@@ -277,12 +257,12 @@ const whatsappHref = footerCta
         <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 mb-6">Legale</h4>
         <ul class="space-y-3.5 text-sm">
           <li>
-            <a href="/privacy-policy" class="text-white/55 hover:text-white transition-colors"
+            <a href="/privacy-policy/" class="text-white/55 hover:text-white transition-colors"
               >Privacy policy</a
             >
           </li>
           <li>
-            <a href="/cookie-policy" class="text-white/55 hover:text-white transition-colors"
+            <a href="/cookie-policy/" class="text-white/55 hover:text-white transition-colors"
               >Cookie policy</a
             >
           </li>
@@ -300,8 +280,8 @@ const whatsappHref = footerCta
         <span class="text-white/70">bitora.it</span>
       </p>
       <div class="flex items-center gap-5">
-        <a href="/privacy-policy" class="hover:text-white/60 transition-colors">Privacy</a>
-        <a href="/cookie-policy" class="hover:text-white/60 transition-colors">Cookie</a>
+        <a href="/privacy-policy/" class="hover:text-white/60 transition-colors">Privacy</a>
+        <a href="/cookie-policy/" class="hover:text-white/60 transition-colors">Cookie</a>
       </div>
     </div>
   </div>

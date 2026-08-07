@@ -9,32 +9,49 @@ import ServiceSchema from '../components/schema/Service.astro';
 import FAQPageSchema from '../components/schema/FAQPage.astro';
 import HowToSchema from '../components/schema/HowTo.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
-import AnswerFirst from '../components/AnswerFirst.astro';
 import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import ReviewsSchema from '../components/schema/Reviews.astro';
+import { getCaseStudyBySlug } from '../data/caseStudies';
+import { testimonials } from '../data/testimonials';
+
+const featuredCase = getCaseStudyBySlug('mistral-impianti');
+const proofCases = ['agriturismo-la-natura', 'sartoria-kristina', 'speedy-pizza']
+  .map(getCaseStudyBySlug)
+  .filter((cs): cs is NonNullable<typeof cs> => Boolean(cs));
+
+const caseBlurbs: Record<string, string> = {
+  'mistral-impianti':
+    "Oltre trent'anni di impiantistica tecnologica meritavano una presenza digitale all'altezza: sito vetrina ottimizzato per la ricerca locale e tessere NFC per condividere i contatti in fiera e sui cantieri.",
+  'agriturismo-la-natura':
+    'Sito multilanguage (IT/EN/FR) orientato alle prenotazioni: cucina di campagna, orari, mappa e contatto diretto via telefono e WhatsApp.',
+  'sartoria-kristina':
+    'Vetrina elegante con portfolio delle creazioni e recensioni in evidenza: la qualità artigiana si racconta online.',
+  'speedy-pizza':
+    'Menù digitale chiaro e veloce, con tessere NFC che portano i clienti dritti alla pagina delle recensioni.',
+};
+
+const proofQuotes = ['Mistral Impianti', 'Sartoria Kristina', 'Speedy Pizza']
+  .map(company => testimonials.find(t => t.company === company))
+  .filter((t): t is NonNullable<typeof t> => Boolean(t));
 ---
 
 <Layout
   title="Siti Web Professionali | Veloci, SEO, Mobile-First | Bitora"
-  description="Siti web professionali per aziende e PMI. Design su misura, performance, SEO tecnico, contenuti. Sede in Piemonte, copertura Italia."
+  description="Siti web professionali per aziende e PMI: design su misura, performance, SEO tecnico e contenuti. Scelti da Mistral Impianti, Agriturismo La Natura, Sartoria Kristina e Speedy Pizza. Sede in Piemonte, copertura Italia."
   image="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1600&q=80"
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <VideoHero
-      variant="background"
+      variant="split"
       eyebrow="Siti Web Professionali"
-      title="Siti web"
-      highlight="che fanno la differenza."
-      description="Design su misura, performance reali, SEO tecnico e contenuti. Mobile-first, accessibili, indicizzati al meglio."
-      primaryCta={{ label: 'Richiedi preventivo', href: '/contattaci?topic=sito' }}
-      secondaryCta={{ label: 'Cosa includiamo', href: '#cosa' }}
-      posterSrc="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1600&q=80"
-      videoSrc="https://videos.pexels.com/video-files/3192293/3192293-uhd_2560_1440_25fps.mp4"
+      title="Il sito giusto"
+      highlight="porta clienti, non solo visite."
+      description="Progettiamo siti veloci, mobile-first e ottimizzati per la ricerca locale. Ogni progetto parte dai tuoi obiettivi e si misura in contatti, recensioni e prenotazioni."
+      primaryCta={{ label: 'Richiedi preventivo', href: '/contattaci/?topic=sito' }}
+      secondaryCta={{ label: 'Guarda i progetti reali', href: '#progetti' }}
+      posterSrc="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1600&q=80"
       videoLabel="Sviluppo siti web professionali"
-    />
-
-    <AnswerFirst
-      question="Quanto costa un sito web professionale per una PMI?"
-      answer="Un sito web professionale per PMI parte da circa €20/mese per soluzioni essenziali (fino a 5 pagine con hosting) fino a progetti business da €49/mese o preventivi su misura. Bitora offre audit gratuito e consegna in 7–14 giorni per landing, 2–6 settimane per siti completi."
     />
 
     <section
@@ -109,7 +126,137 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
       </div>
     </section>
 
-    <!-- Prima/Dopo rimosso: evitiamo blocchi ridondanti -->
+    <section
+      id="progetti"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div>
+            <p
+              class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
+            >
+              Progetti reali
+            </p>
+            <h2
+              class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+            >
+              Gi&agrave; online. Gi&agrave; scelti.
+            </h2>
+          </div>
+          <p class="max-w-md text-sm md:text-base text-slate-600 dark:text-slate-300">
+            Dall'impiantistica industriale alla ristorazione, dall'artigianato all'hospitality: siti
+            pensati per generare contatti, recensioni e prenotazioni.
+          </p>
+        </div>
+
+        {
+          featuredCase ? (
+            <article
+              class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] glass-panel overflow-hidden p-6 md:p-10"
+            >
+              <a
+                href="/progetti/mistral-impianti/"
+                class="lg:col-span-5 group block rounded-2xl overflow-hidden"
+                aria-label="Apri il progetto Mistral Impianti"
+              >
+                <img
+                  src={featuredCase.imageUrl}
+                  alt="Mistral Impianti"
+                  class="w-full aspect-[4/3] object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                  loading="lazy"
+                />
+              </a>
+              <div class="lg:col-span-7">
+                <p class="text-xs font-bold tracking-widest uppercase text-[color:var(--brand-cta)] mb-3">
+                  Progetto in evidenza
+                </p>
+                <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white">
+                  Mistral Impianti
+                </h3>
+                <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-400">
+                  B2B &bull; Impianti &mdash; {featuredCase.location}
+                </p>
+                <p class="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+                  {caseBlurbs[featuredCase.slug]}
+                </p>
+                <blockquote class="mt-5 border-l-2 border-[color:var(--brand-cta)] pl-4 text-sm italic text-slate-700 dark:text-slate-300">
+                  &ldquo;La realizzazione del sito web è stata eseguita in modo puntuale,
+                  professionale e con elevata attenzione ai dettagli.&rdquo;
+                  <cite class="not-italic block mt-1 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                    &mdash; Lello Bottero, CEO Mistral Impianti
+                  </cite>
+                </blockquote>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="/progetti/mistral-impianti/"
+                    class="btn-primary text-sm"
+                  >
+                    Vedi progetto
+                  </a>
+                  <a
+                    href="https://mistralimpianti.it"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-secondary text-sm"
+                  >
+                    Visita mistralimpianti.it
+                  </a>
+                </div>
+              </div>
+            </article>
+          ) : null
+        }
+
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          {
+            proofCases.map(cs => (
+              <CaseStudyCard
+                title={cs.title}
+                image={cs.imageUrl}
+                alt={cs.title}
+                metric={cs.metricsPreview[0]}
+                description={caseBlurbs[cs.slug] ?? cs.clientDescription.slice(0, 140)}
+                href={`/progetti/${cs.slug}/`}
+              />
+            ))
+          }
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          {
+            proofQuotes.map(t => (
+              <figure class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6">
+                <blockquote class="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption class="mt-4 text-xs font-semibold text-slate-950 dark:text-white">
+                  {t.author} &middot; {t.company}
+                  <span class="block text-slate-500 dark:text-slate-400 font-normal">{t.role}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="/lavori/"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--brand-cta)] hover:opacity-90"
+          >
+            Guarda tutti i progetti
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <section class="py-20 md:py-24 px-6 md:px-12 lg:px-20">
       <div class="max-w-6xl mx-auto">
@@ -210,63 +357,27 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
     <ServiceRelatedLinks
       links={[
         {
-          href: '/siti-web-piemonte',
-          label: 'Siti web Piemonte',
-          desc: 'Web agency per Torino e provincia',
-        },
-        {
-          href: '/siti-web-torino',
-          label: 'Siti web Torino',
-          desc: 'Progetti per aziende torinesi',
-        },
-        {
-          href: '/blog/quanto-costa-sito-web-pmi',
-          label: 'Quanto costa un sito web PMI',
-          desc: 'Guida prezzi e tempi 2026',
-        },
-        {
-          href: '/carmagnola',
-          label: 'Web design Carmagnola',
-          desc: 'Sede Bitora e clienti locali',
-        },
-        {
-          href: '/e-commerce-piemonte',
+          href: '/e-commerce/',
           label: 'E-commerce Piemonte',
           desc: 'Negozi online chiavi in mano',
         },
         {
-          href: '/lavori',
+          href: '/servizi/',
+          label: 'Tutti i servizi Bitora',
+          desc: 'Siti, e-commerce e soluzioni tailormade',
+        },
+        {
+          href: '/gestione-interventi/',
+          label: 'Ecosistema gestione interventi',
+          desc: 'Pratiche digitalizzate e rapportini',
+        },
+        {
+          href: '/lavori/',
           label: 'Case study',
           desc: 'Progetti reali con metriche',
         },
       ]}
     />
-
-    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
-      <div class="max-w-6xl mx-auto text-center">
-        <h2
-          class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-        >
-          Vuoi un sito che converte?
-        </h2>
-        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
-          Audit gratuito + preventivo modulare in 24h.
-        </p>
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contattaci?topic=sito" class="btn-primary min-w-[220px] shine-on-hover"
-            >Richiedi preventivo</a
-          >
-          <a
-            href="https://wa.me/393514979670?text=Ciao,%20vorrei%20un%20preventivo%20per%20un%20sito%20web."
-            data-track="whatsapp_click"
-            data-track-location="siti_web_cta"
-            class="btn-secondary min-w-[220px]"
-          >
-            WhatsApp
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
 </Layout>
 
@@ -330,4 +441,15 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
     { name: 'Home', item: 'https://bitora.it/' },
     { name: 'Siti Web Professionali', item: 'https://bitora.it/siti-web-professionali/' },
   ]}
+/>
+
+<ReviewsSchema
+  itemName="Bitora - Siti Web Professionali"
+  ratingValue={5}
+  reviewCount={proofQuotes.length}
+  reviews={proofQuotes.map(t => ({
+    author: `${t.author}, ${t.company}`,
+    body: t.quote,
+    rating: t.rating ?? 5,
+  }))}
 />

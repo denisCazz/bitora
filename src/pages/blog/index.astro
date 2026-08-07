@@ -100,7 +100,7 @@ const articles = [
           {
             articles.map((article, i) => (
               <a
-                href={`/blog/${article.slug}`}
+                href={`/blog/${article.slug}/`}
                 class="group block p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/30 transition-all duration-300 reveal-on-scroll"
                 style={`transition-delay: ${i * 100}ms`}
               >
@@ -146,7 +146,7 @@ const articles = [
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="/contattaci"
+            href="/contattaci/"
             class="btn-primary inline-flex items-center justify-center gap-2 min-w-[200px]"
             >Richiedi consulenza gratuita</a
           >

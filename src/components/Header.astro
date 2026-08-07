@@ -1,9 +1,14 @@
 ﻿---
 const navItems = [
   { name: 'Home', url: '/' },
-  { name: 'Ecosistema', url: '/gestione-interventi/' },
-  { name: 'Rapportini', url: '/rapportini/' },
-  { name: 'Ticketing', url: '/ticketing/' },
+  { name: 'Ecosistema', url: '/gestione-interventi/', children: [
+    { name: 'Panoramica ecosistema', url: '/gestione-interventi/' },
+    { name: 'Rapportini digitali', url: '/rapportini/' },
+    { name: 'Ticketing e pratiche', url: '/ticketing/' },
+    { name: 'Sistemi aziendali su misura', url: '/sistemi-aziendali/' },
+  ] },
+  { name: 'Siti web', url: '/siti-web-professionali/' },
+  { name: 'E-commerce', url: '/e-commerce/' },
   { name: 'Servizi', url: '/servizi/' },
   { name: 'Lavori', url: '/lavori/' },
   { name: 'Contatti', url: '/contattaci/' },
@@ -14,13 +19,8 @@ const normalizedPath = (currentPath.replace(/\/$/, '') || '/') as string;
 
 const webTopicByPath: Record<string, string> = {
   '/siti-web-professionali': 'sito',
-  '/siti-web-piemonte': 'sito',
-  '/siti-web-torino': 'sito',
-  '/e-commerce-piemonte': 'ecommerce',
+  '/e-commerce': 'ecommerce',
   '/nfc-ecosystem': 'nfc',
-  '/tessere-nfc-torino': 'nfc',
-  '/grafica-digitale-social-media': 'sito',
-  '/carmagnola': 'sito',
 };
 
 const informativePrefixes = ['/lavori', '/chi-siamo', '/blog', '/privacy-policy', '/cookie-policy'];
@@ -32,6 +32,9 @@ function resolveHeaderCta(path: string) {
       href: `/contattaci/?topic=${topic}`,
       label: topic === 'ecommerce' ? 'Preventivo e-commerce' : 'Richiedi preventivo',
     };
+  }
+  if (path === '/servizi') {
+    return { href: '/contattaci/', label: 'Richiedi preventivo' };
   }
   if (informativePrefixes.some((p) => path === p || path.startsWith(p + '/'))) {
     return { href: '/contattaci/', label: 'Contattaci' };
@@ -45,6 +48,10 @@ function isActive(url: string) {
   if (url === '/') return normalizedPath === '/';
   const clean = url.replace(/\/$/, '');
   return normalizedPath === clean || normalizedPath.startsWith(clean + '/');
+}
+
+function isGroupActive(item: (typeof navItems)[number]) {
+  return isActive(item.url) || (item.children ?? []).some((c) => isActive(c.url));
 }
 ---
 
@@ -61,18 +68,53 @@ function isActive(url: string) {
       {
         navItems
           .filter((i) => i.name !== 'Contatti')
-          .map((item) => (
-            <a
-              href={item.url}
-              class={
-                isActive(item.url)
-                  ? 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white bg-white/[0.09]'
-                  : 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white/70 hover:text-white hover:bg-white/[0.06]'
-              }
-            >
-              {item.name}
-            </a>
-          ))
+          .map((item) =>
+            item.children ? (
+              <div class="nav-group relative">
+                <a
+                  href={item.url}
+                  class={
+                    isGroupActive(item)
+                      ? 'nav-group-trigger px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white bg-white/[0.09] inline-flex items-center gap-1'
+                      : 'nav-group-trigger px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white/70 hover:text-white hover:bg-white/[0.06] inline-flex items-center gap-1'
+                  }
+                  aria-haspopup="true"
+                >
+                  {item.name}
+                  <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </a>
+                <div class="nav-group-panel absolute right-0 top-full pt-2 w-64" role="none">
+                  <div class="rounded-xl bg-[#0c0c0e]/95 backdrop-blur-xl border border-white/10 shadow-2xl p-2">
+                    {item.children.map((child) => (
+                      <a
+                        href={child.url}
+                        class={
+                          isActive(child.url)
+                            ? 'block px-3.5 py-2.5 rounded-lg text-[13px] font-medium text-white bg-white/[0.09]'
+                            : 'block px-3.5 py-2.5 rounded-lg text-[13px] font-medium text-white/70 hover:text-white hover:bg-white/[0.06] transition-colors'
+                        }
+                      >
+                        {child.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a
+                href={item.url}
+                class={
+                  isActive(item.url)
+                    ? 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white bg-white/[0.09]'
+                    : 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white/70 hover:text-white hover:bg-white/[0.06]'
+                }
+              >
+                {item.name}
+              </a>
+            )
+          )
       }
     </nav>
 
@@ -102,19 +144,39 @@ function isActive(url: string) {
   </div>
 
   <div id="mob-menu" class="hidden md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 px-8 py-5">
-    <nav class="flex flex-col gap-0.5">
+    <nav class="flex flex-col gap-0.5" aria-label="Navigazione mobile">
       {
         navItems.map((item) => (
-          <a
-            href={item.url}
-            class={
-              isActive(item.url)
-                ? 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white bg-white/[0.08]'
-                : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/70 hover:text-white hover:bg-white/[0.05]'
-            }
-          >
-            {item.name}
-          </a>
+          <>
+            <a
+              href={item.url}
+              class={
+                isActive(item.url)
+                  ? 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white bg-white/[0.08]'
+                  : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/70 hover:text-white hover:bg-white/[0.05]'
+              }
+            >
+              {item.name}
+            </a>
+            {item.children && (
+              <div class="pl-6 flex flex-col gap-0.5">
+                {item.children
+                  .filter((c) => c.url !== item.url)
+                  .map((child) => (
+                    <a
+                      href={child.url}
+                      class={
+                        isActive(child.url)
+                          ? 'py-2 px-3 text-[13px] font-medium rounded-lg text-white bg-white/[0.08]'
+                          : 'py-2 px-3 text-[13px] font-medium rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-colors'
+                      }
+                    >
+                      {child.name}
+                    </a>
+                  ))}
+              </div>
+            )}
+          </>
         ))
       }
       <a href={headerCta.href} class="py-3 px-3 text-sm font-semibold rounded-lg text-white bg-white/10 mt-2"
@@ -178,6 +240,23 @@ function isActive(url: string) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     box-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
   }
+
+  .nav-group-panel {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease,
+      visibility 0.18s;
+  }
+  .nav-group:hover .nav-group-panel,
+  .nav-group:focus-within .nav-group-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
   .sl-cta-btn {
     display: inline-flex;
     align-items: center;

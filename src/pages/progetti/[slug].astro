@@ -40,7 +40,7 @@ const altriProgetti = caseStudies
 
       <div class="relative z-20 max-w-7xl mx-auto w-full">
         <a
-          href="/lavori"
+          href="/lavori/"
           class="inline-flex items-center text-white/45 hover:text-white transition-colors mb-10 group"
         >
           <svg
@@ -171,7 +171,7 @@ const altriProgetti = caseStudies
           {
             altriProgetti.map(progetto => (
               <a
-                href={`/progetti/${progetto.slug}`}
+                href={`/progetti/${progetto.slug}/`}
                 class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-2xl"
                 data-reveal
               >
@@ -214,10 +214,10 @@ const altriProgetti = caseStudies
         Raccontaci la tua sfida. Costruiremo insieme la soluzione su misura.
       </p>
       <div class="flex flex-wrap gap-4 justify-center" data-reveal>
-        <a href="/contattaci" class="px-7 py-3.5 bg-white text-black rounded font-semibold text-sm hover:bg-white/90 transition-colors">
+        <a href="/contattaci/" class="px-7 py-3.5 bg-white text-black rounded font-semibold text-sm hover:bg-white/90 transition-colors">
           Inizia il tuo progetto
         </a>
-        <a href="/lavori" class="px-7 py-3.5 border border-white/25 text-white rounded font-semibold text-sm hover:border-white/60 hover:bg-white/[0.06] transition-all">
+        <a href="/lavori/" class="px-7 py-3.5 border border-white/25 text-white rounded font-semibold text-sm hover:border-white/60 hover:bg-white/[0.06] transition-all">
           Torna ai lavori
         </a>
       </div>

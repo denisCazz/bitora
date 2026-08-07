@@ -3,14 +3,14 @@ export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 
 const suggestedPages = [
-  { title: 'Homepage', url: '/', description: 'Scopri i nostri servizi NFC' },
-  { title: 'Prezzi', url: '/prezzi', description: 'Tutti i nostri piani tariffari' },
-  { title: 'Chi Siamo', url: '/chi-siamo', description: 'La nostra storia e missione' },
-  { title: 'Contatti', url: '/contattaci', description: 'Mettiti in contatto con noi' },
+  { title: 'Homepage', url: '/', description: 'Tutti i servizi Bitora' },
+  { title: 'Servizi', url: '/servizi/', description: 'Siti web, e-commerce e soluzioni tailormade' },
+  { title: 'Chi Siamo', url: '/chi-siamo/', description: 'La nostra storia e missione' },
+  { title: 'Contatti', url: '/contattaci/', description: 'Mettiti in contatto con noi' },
   {
-    title: 'Ecosistema NFC',
-    url: '/nfc-ecosystem',
-    description: 'Come funziona la tecnologia NFC',
+    title: 'Ecosistema',
+    url: '/gestione-interventi/',
+    description: 'Pratiche digitalizzate e rapportini',
   },
 ];
 
@@ -96,7 +96,7 @@ const currentPath = Astro.url.pathname;
             Torna alla Homepage
           </a>
           <a
-            href="/contattaci"
+            href="/contattaci/"
             class="px-8 py-4 bg-gray-100 dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-full font-bold text-lg hover:bg-gray-200 dark:hover:bg-white/20 transition-all"
           >
             Contattaci

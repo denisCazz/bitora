@@ -4,8 +4,8 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Software per interventi, ticket e rapportini | Bitora"
-  description="Bitora sviluppa piattaforme personalizzabili per organizzare richieste di assistenza, assegnazioni, interventi sul territorio, rapportini digitali e documentazione."
+  title="Bitora | Software gestionale, siti web ed e-commerce su misura"
+  description="Bitora sviluppa piattaforme per interventi, ticket e rapportini, e realizza siti vetrina ed e-commerce per PMI. Dal sito alla digitalizzazione delle pratiche."
 >
   <div class="home">
 
@@ -31,9 +31,12 @@ import Layout from '../layouts/Layout.astro';
           Bitora sviluppa piattaforme personalizzabili per organizzare richieste di assistenza, assegnazioni, interventi sul territorio, rapportini digitali e documentazione.
         </p>
         <div class="cta-row hero-item">
-          <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="home_hero">Richiedi una demo</a>
-          <a href="/gestione-interventi" class="sl-btn-secondary">Scopri la piattaforma</a>
+          <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="home_hero">Richiedi una demo</a>
+          <a href="/gestione-interventi/" class="sl-btn-secondary">Scopri la piattaforma</a>
         </div>
+        <p class="hero-alt hero-item">
+          Cerchi un sito web o un e-commerce? <a href="/servizi/">Vedi tutti i servizi</a>
+        </p>
       </div>
 
       <a href="#problema" class="hero-scroll" aria-label="Scorri">
@@ -107,7 +110,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="band-foot" data-reveal data-reveal-delay="2">
-          <a href="/gestione-interventi" class="text-link">
+          <a href="/gestione-interventi/" class="text-link">
             Vedi moduli e dettagli
             <span aria-hidden="true">→</span>
           </a>
@@ -135,7 +138,41 @@ import Layout from '../layouts/Layout.astro';
         <p class="lede audience-lede">
           Pensata per aziende che gestiscono interventi ricorrenti, da piccoli team operativi fino a reti di centri assistenza.
         </p>
-        <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="home_audience">Richiedi una demo</a>
+        <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="home_audience">Richiedi una demo</a>
+      </div>
+    </section>
+
+    <!-- DUE STRADE -->
+    <section class="band">
+      <div class="shell band-inner">
+        <header class="band-head" data-reveal>
+          <p class="eyebrow">Due strade, un partner</p>
+          <h2 class="headline">Scegli il punto di partenza.</h2>
+        </header>
+        <div class="paths" data-reveal-group>
+          <div class="path-cell" data-reveal>
+            <p class="eyebrow">Strada A</p>
+            <h3 class="list-title">Voglio un sito o un e-commerce.</h3>
+            <p class="body-sm" style="margin-top:.5rem">
+              Sito vetrina, negozio online o restyle: presenza credibile e richieste che arrivano.
+            </p>
+            <div class="cta-row" style="margin-top:1.5rem">
+              <a href="/siti-web-professionali/" class="sl-btn-secondary">Siti web</a>
+              <a href="/e-commerce/" class="sl-btn-secondary">E-commerce</a>
+            </div>
+          </div>
+          <div class="path-cell" data-reveal data-reveal-delay="1">
+            <p class="eyebrow">Strada B</p>
+            <h3 class="list-title">Voglio pratiche digitalizzate.</h3>
+            <p class="body-sm" style="margin-top:.5rem">
+              Richieste, interventi, rapportini e firme in un sistema unico, adattato al tuo processo.
+            </p>
+            <div class="cta-row" style="margin-top:1.5rem">
+              <a href="/gestione-interventi/" class="sl-btn-secondary">Ecosistema</a>
+              <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="home_paths">Demo</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -151,7 +188,7 @@ import Layout from '../layouts/Layout.astro';
             <p class="body-lg offer-copy">
               Configurazione, personalizzazioni e formazione all’avvio. Canone mensile o annuale in base a utenti, tecnici o centri.
             </p>
-            <a href="/richiedi-demo" class="sl-btn-primary" data-track="cta_click" data-track-location="home_offer">Parliamone</a>
+            <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="home_offer">Parliamone</a>
           </div>
           <div class="split-body" data-reveal data-reveal-delay="1">
             <div class="offer-rows">
@@ -172,30 +209,45 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
-    <!-- ALTRI SERVIZI -->
-    <section class="band band-alt">
+    <!-- SERVIZI -->
+    <section class="band band-alt" id="servizi">
       <div class="shell band-inner">
         <header class="band-head" data-reveal>
-          <p class="eyebrow">Altri servizi</p>
-          <h2 class="headline">Siti web ed e-commerce</h2>
+          <p class="eyebrow">Tutti i servizi</p>
+          <h2 class="headline">Dal sito vetrina alle pratiche digitalizzate</h2>
         </header>
 
         <div class="services" data-reveal-group>
-          <a href="/siti-web-professionali" class="service-cell" data-reveal>
+          <a href="/siti-web-professionali/" class="service-cell" data-reveal>
             <div>
-              <p class="service-num">01</p>
+              <p class="service-num">01 · Siti web</p>
               <h3 class="service-title">Siti web professionali</h3>
-              <p class="body-sm">Vetrine veloci, SEO e contenuti per PMI.</p>
+              <p class="body-sm">Vetrine veloci, SEO e contenuti per farti trovare e contattare.</p>
             </div>
             <span class="service-cta">Scopri <span aria-hidden="true">→</span></span>
           </a>
-          <a href="/e-commerce-piemonte" class="service-cell" data-reveal data-reveal-delay="1">
+          <a href="/e-commerce/" class="service-cell" data-reveal data-reveal-delay="1">
             <div>
-              <p class="service-num">02</p>
+              <p class="service-num">02 · E-commerce</p>
               <h3 class="service-title">E-commerce</h3>
-              <p class="body-sm">Negozi online su misura, integrazioni e cataloghi.</p>
+              <p class="body-sm">Negozi online su misura: catalogo, pagamenti e gestione ordini.</p>
             </div>
             <span class="service-cta">Scopri <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="/gestione-interventi/" class="service-cell" data-reveal data-reveal-delay="2">
+            <div>
+              <p class="service-num">03 · Soluzioni tailormade</p>
+              <h3 class="service-title">Ecosistema e pratiche</h3>
+              <p class="body-sm">Rapportini, ticketing e pratiche adattabili al tuo processo.</p>
+            </div>
+            <span class="service-cta">Scopri <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+
+        <div class="band-foot" data-reveal data-reveal-delay="3">
+          <a href="/servizi/" class="text-link">
+            Panoramica completa dei servizi
+            <span aria-hidden="true">→</span>
           </a>
         </div>
       </div>
@@ -237,7 +289,7 @@ import Layout from '../layouts/Layout.astro';
         </ol>
 
         <div class="cta-row cta-row-center">
-          <a href="/richiedi-demo" class="sl-btn-primary sl-btn-lg" data-track="cta_click" data-track-location="home_final">
+          <a href="/richiedi-demo/" class="sl-btn-primary sl-btn-lg" data-track="cta_click" data-track-location="home_final">
             Prenota la demo gratuita
             <span aria-hidden="true">→</span>
           </a>
@@ -634,6 +686,23 @@ import Layout from '../layouts/Layout.astro';
   .hero-item:nth-child(2) { animation-delay: 0.26s; }
   .hero-item:nth-child(3) { animation-delay: 0.42s; }
   .hero-item:nth-child(4) { animation-delay: 0.56s; }
+  .hero-item:nth-child(5) { animation-delay: 0.7s; }
+
+  .hero-alt {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--home-muted);
+  }
+  .hero-alt a {
+    color: var(--home-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+    transition: text-decoration-color 0.2s;
+  }
+  .hero-alt a:hover {
+    text-decoration-color: rgba(255, 255, 255, 0.9);
+  }
 
   .hero-scroll {
     position: absolute;
@@ -814,7 +883,24 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @media (min-width: 768px) {
-    .services { grid-template-columns: repeat(2, 1fr); }
+    .services { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ——— Paths (due strade) ——— */
+  .paths {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  @media (min-width: 768px) {
+    .paths { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .path-cell {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--home-line-soft);
+    border-radius: 1.25rem;
   }
 
   .service-cell {

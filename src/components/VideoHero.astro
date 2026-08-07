@@ -5,6 +5,8 @@ export interface Props {
   highlight?: string;
   description?: string;
   variant?: 'split' | 'background';
+  /** How dark the video overlay is. Use "light" when the video should stay more visible. */
+  overlay?: 'default' | 'light';
   primaryCta: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   posterSrc?: string;
@@ -19,6 +21,7 @@ const {
   highlight,
   description,
   variant = 'split',
+  overlay = 'default',
   primaryCta,
   secondaryCta,
   posterSrc,
@@ -26,6 +29,8 @@ const {
   videoLabel = 'Video di presentazione',
   images = [],
 } = Astro.props;
+
+const isLightOverlay = overlay === 'light';
 ---
 
 <section class="relative overflow-hidden">
@@ -43,8 +48,20 @@ const {
           poster={posterSrc}
           aria-label={videoLabel}
         />
-        <div class="absolute inset-0 bg-black/60 dark:bg-black/70" />
-        <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-[color:var(--bg-primary)]" />
+        <div
+          class={`absolute inset-0 ${
+            isLightOverlay
+              ? 'bg-black/30 dark:bg-black/40'
+              : 'bg-black/60 dark:bg-black/70'
+          }`}
+        />
+        <div
+          class={`absolute inset-0 bg-gradient-to-b ${
+            isLightOverlay
+              ? 'from-black/30 via-black/15 to-[color:var(--bg-primary)]'
+              : 'from-black/55 via-black/35 to-[color:var(--bg-primary)]'
+          }`}
+        />
       </div>
     ) : null
   }
@@ -58,7 +75,7 @@ const {
 
   <div
     class={`absolute inset-0 pointer-events-none ${
-      variant === 'background' ? 'opacity-25' : 'opacity-40'
+      variant === 'background' ? (isLightOverlay ? 'opacity-10' : 'opacity-25') : 'opacity-40'
     }`}
   >
     <div
@@ -83,9 +100,11 @@ const {
     >
       <div class={variant === 'background' ? '' : 'lg:col-span-6'}>
         <div
-          class={variant === 'background'
-            ? 'hero-panel rounded-[32px] px-7 py-9 md:px-10 md:py-12'
-            : ''}
+          class={
+            variant === 'background'
+              ? `${isLightOverlay ? 'hero-panel hero-panel--light' : 'hero-panel'} rounded-[32px] px-7 py-9 md:px-10 md:py-12`
+              : ''
+          }
         >
           {
             eyebrow ? (

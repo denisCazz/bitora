@@ -23,7 +23,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
       title="Biglietti da visita"
       highlight="smart (1 tap)."
       description="Recensioni Google, contatti, menu digitale e link utili. Programmazione inclusa, pellicola intercambiabile e aggiornamenti inclusi nella proposta."
-      primaryCta={{ label: 'Richiedi informazioni', href: '/contattaci?topic=nfc' }}
+      primaryCta={{ label: 'Richiedi informazioni', href: '/contattaci/?topic=nfc' }}
       secondaryCta={{ label: 'Come funziona', href: '#come-funziona' }}
       posterSrc="/nfc.png"
       videoSrc="https://videos.pexels.com/video-files/6963744/6963744-hd_1920_1080_25fps.mp4"
@@ -166,29 +166,24 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
     <ServiceRelatedLinks
       links={[
         {
-          href: '/tessere-nfc-torino',
-          label: 'Tessere NFC Torino',
-          desc: 'Consegna in provincia torinese',
-        },
-        {
-          href: '/blog/tessere-nfc-ristoranti',
+          href: '/blog/tessere-nfc-ristoranti/',
           label: 'NFC per ristoranti',
           desc: 'Guida recensioni Google con un tap',
         },
         {
-          href: '/settori/ristoranti',
-          label: 'Soluzioni ristoranti',
-          desc: 'Menu digitale, ordini, NFC',
+          href: '/siti-web-professionali/',
+          label: 'Siti web professionali',
+          desc: 'La vetrina che il tap apre',
         },
         {
-          href: '/carmagnola',
-          label: 'Bitora Carmagnola',
-          desc: 'Sede e clienti locali NFC',
+          href: '/servizi/',
+          label: 'Tutti i servizi Bitora',
+          desc: 'Siti, e-commerce e soluzioni tailormade',
         },
         {
-          href: '/prezzi',
-          label: 'Prezzi tessere NFC',
-          desc: 'Da €15, senza abbonamento',
+          href: '/contattaci/?topic=nfc',
+          label: 'Consulenza NFC',
+          desc: 'Programmazione inclusa, niente abbonamento',
         },
       ]}
     />
@@ -204,7 +199,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
           Programmazione inclusa, nessun abbonamento. Consegna in pochi giorni.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contattaci?topic=nfc" class="btn-primary min-w-[220px] shine-on-hover"
+          <a href="/contattaci/?topic=nfc" class="btn-primary min-w-[220px] shine-on-hover"
             >Richiedi informazioni</a
           >
           <a
