@@ -10,6 +10,12 @@ export interface ClientLogo {
 
 export const clientLogos: ClientLogo[] = [
   {
+    name: 'Tropini Service',
+    logo: '/logo_tropini.png',
+    tier: 'premium',
+    location: 'Cavallermaggiore',
+  },
+  {
     name: 'Mistral Impianti',
     logo: '/mistral.jpg',
     tier: 'premium',

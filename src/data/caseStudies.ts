@@ -572,6 +572,48 @@ export const caseStudies: CaseStudy[] = [
 
     fonti: [],
   },
+
+  {
+    id: 'tropini-service',
+    slug: 'tropini-service',
+    title: 'Tropini Service',
+    subtitle: 'Sito web per assistenza stufe a pellet',
+    category: 'B2B • Assistenza tecnica',
+    location: 'Cavallermaggiore (CN)',
+    imageUrl: '/logo_tropini.png',
+    siteUrl: '#',
+    featured: true,
+    isWip: true,
+
+    clientDescription: `Tropini Service di Gianfranco Tropini è un centro di assistenza tecnica specializzato in stufe a pellet e a legna a Cavallermaggiore, in provincia di Cuneo. Da oltre vent'anni opera sul territorio piemontese con competenza artigiana e rapporto diretto con i clienti: oltre 4.000 impianti seguiti, ricambi originali e intervento rapido su Extraflame, Eva Calor e decine di altre marche.`,
+
+    problema: `L'azienda aveva bisogno di una presenza digitale chiara e professionale che raccontasse esperienza, zone di intervento e servizi di assistenza, facilitando le richieste di intervento da parte di clienti privati e aziende del territorio.`,
+
+    soluzione: [
+      {
+        titolo: 'Sito vetrina orientato alle conversioni',
+        descrizione:
+          'Bitora sta realizzando un sito web dedicato all’assistenza stufe, con messaggi chiari su servizi, marche trattate e reperibilità, pensato per generare chiamate e richieste di intervento.',
+      },
+      {
+        titolo: 'SEO locale e identità di brand',
+        descrizione:
+          'Il progetto include ottimizzazione per le ricerche locali in Piemonte e una presentazione coerente del brand Tropini Service, dal logo alla comunicazione istituzionale.',
+      },
+    ],
+
+    risultati: [
+      'Progetto in corso: vetrina digitale in fase di completamento',
+      'Identità online allineata all’esperienza sul campo di Tropini Service',
+      'Base pronta per SEO locale e raccolta richieste di assistenza',
+    ],
+
+    tecnologie: ['Astro', 'Coolify', 'SEO locale', 'Copywriting', 'Web design'],
+
+    metricsPreview: ['In corso', 'Assistenza stufe', 'SEO locale'],
+
+    fonti: [],
+  },
 ];
 
 // Funzione helper per ottenere un case study per slug

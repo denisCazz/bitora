@@ -3,7 +3,8 @@ export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import { caseStudies } from '../data/caseStudies';
 
-const projects = caseStudies.filter(c => !c.isWip);
+// Mostra tutti i progetti, inclusi quelli WIP (badge "In corso" in pagina)
+const projects = caseStudies;
 ---
 
 <Layout
@@ -110,8 +111,15 @@ const projects = caseStudies.filter(c => !c.isWip);
                 decoding="async"
               />
             </div>
-            <span class="absolute top-4 left-4 text-xs font-semibold tracking-wider bg-black/65 backdrop-blur-sm text-white/60 border border-white/10 rounded-full px-3 py-1.5">
-              {p.category}
+            <span class="absolute top-4 left-4 flex flex-wrap gap-2">
+              <span class="text-xs font-semibold tracking-wider bg-black/65 backdrop-blur-sm text-white/60 border border-white/10 rounded-full px-3 py-1.5">
+                {p.category}
+              </span>
+              {p.isWip && (
+                <span class="text-xs font-semibold tracking-wider uppercase bg-white/90 text-black border border-white/20 rounded-full px-3 py-1.5">
+                  In corso
+                </span>
+              )}
             </span>
             <span class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 px-5 py-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <span class="text-sm font-semibold text-white">Apri progetto</span>
