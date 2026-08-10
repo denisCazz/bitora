@@ -45,17 +45,37 @@ if (!existsSync(sitemapIndex)) {
 }
 
 const sitemapFiles = readdirSync(CLIENT).filter(
-  (f) => f.startsWith('sitemap-') && f.endsWith('.xml') && f !== 'sitemap-index.xml'
+  f => f.startsWith('sitemap-') && f.endsWith('.xml') && f !== 'sitemap-index.xml'
 );
 
-const bannedPaths = ['/services/', '/404/', '/landing/', '/cmms/', '/shop/', '/demo/'];
+const bannedPaths = [
+  '/services/',
+  '/404/',
+  '/landing/',
+  '/cmms/',
+  '/shop/',
+  '/demo/',
+  '/soluzioni/',
+  '/siti-web-piemonte/',
+  '/e-commerce-piemonte/',
+  '/siti-web-torino/',
+  '/carmagnola/',
+  '/grafica-digitale-social-media/',
+  '/prezzi/',
+  '/progetto-fuoco/',
+  '/settori/',
+  '/settori/ristoranti/',
+  '/settori/turismo/',
+  '/settori/professionisti/',
+  '/tessere-nfc-torino/',
+];
 let urlCount = 0;
 
 for (const file of sitemapFiles) {
   const xml = read(join(CLIENT, file));
   if (xml.includes('www.bitora.it')) fail(`${file} contains www.bitora.it`);
 
-  const locs = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
+  const locs = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
   urlCount += locs.length;
 
   for (const loc of locs) {
@@ -67,7 +87,7 @@ for (const file of sitemapFiles) {
     if (path !== '/' && !path.endsWith('/')) {
       fail(`Missing trailing slash in sitemap: ${loc}`);
     }
-    if (bannedPaths.some((b) => path === b)) {
+    if (bannedPaths.some(b => path === b)) {
       fail(`Banned path in sitemap: ${loc}`);
     }
   }
@@ -82,7 +102,7 @@ if (existsSync(llmsPath)) {
 }
 
 if (errors.length) {
-  console.error('SEO build verification failed:\n' + errors.map((e) => ` - ${e}`).join('\n'));
+  console.error('SEO build verification failed:\n' + errors.map(e => ` - ${e}`).join('\n'));
   process.exit(1);
 }
 

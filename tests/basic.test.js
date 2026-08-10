@@ -3,16 +3,16 @@
  */
 import { test, expect } from '@playwright/test';
 
-test.describe('Bitora.it FSM repositioning', () => {
-  test('homepage loads with FSM positioning', async ({ page }) => {
+test.describe('Bitora.it web and e-commerce positioning', () => {
+  test('homepage loads with websites and e-commerce positioning', async ({ page }) => {
     await page.goto('/');
-    await expect(page).toHaveTitle(/gestione interventi|rapportini|Bitora/i);
+    await expect(page).toHaveTitle(/Siti Web ed E-commerce per PMI in Piemonte/i);
     await expect(page.locator('#site-header')).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Navigazione principale' })).toBeVisible();
     await expect(page.locator('#main-content')).toBeVisible();
     await expect(page.locator('footer').last()).toBeVisible();
-    await expect(page.locator('h1')).toContainText(/interventi|tecnici|rapportini/i);
-    await expect(page.locator('a[href*="richiedi-demo"]').first()).toBeVisible();
+    await expect(page.locator('h1')).toContainText(/siti web ed e-commerce/i);
+    await expect(page.locator('a[href="/contattaci/?topic=sito"]').first()).toBeVisible();
     await expect(page.locator('a[href="https://ai.bitora.it/"]')).toHaveCount(0);
   });
 
@@ -55,8 +55,12 @@ test.describe('Bitora.it FSM repositioning', () => {
   test('contact form includes gestione interventi topics', async ({ page }) => {
     await page.goto('/contattaci/');
     await expect(page.locator('form#contact-form')).toBeVisible();
-    await expect(page.locator('select#argomento option[value="gestione-interventi"]')).toHaveCount(1);
-    await expect(page.locator('select#argomento option[value="demo-gestione-interventi"]')).toHaveCount(1);
+    await expect(page.locator('select#argomento option[value="gestione-interventi"]')).toHaveCount(
+      1
+    );
+    await expect(
+      page.locator('select#argomento option[value="demo-gestione-interventi"]')
+    ).toHaveCount(1);
   });
 
   test('cookie banner exposes marketing preference', async ({ page }) => {

@@ -11,21 +11,61 @@ import HowToSchema from '../components/schema/HowTo.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 import AnswerFirst from '../components/AnswerFirst.astro';
 import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
+
+const ecommerceFaqs = [
+  {
+    question: 'Realizzate e-commerce B2B?',
+    answer:
+      'Sì. Possiamo configurare accessi approvati, cataloghi riservati, listini per cliente, preventivi, riordini e integrazioni con gestionali tramite API.',
+  },
+  {
+    question: 'Quanto costa un e-commerce?',
+    answer:
+      'Dipende da piattaforma, catalogo e integrazioni. Partiamo da audit gratuito e preventivo modulare.',
+  },
+  {
+    question: 'WooCommerce o Shopify?',
+    answer:
+      'WooCommerce per controllo + personalizzazioni. Shopify per partenza veloce. Custom per casi B2B/marketplace.',
+  },
+  {
+    question: 'Quanto tempo serve per il lancio?',
+    answer: 'Tipicamente 3–6 settimane dal brief al go-live, in base a contenuti e prodotti.',
+  },
+  {
+    question: 'Gestite pagamenti e fatture?',
+    answer:
+      'Sì: Stripe, PayPal, bonifico. Integrazione fatturazione automatica con gestionali italiani.',
+  },
+  {
+    question: 'Posso vendere in tutta Italia?',
+    answer: 'Sì. Configuriamo spedizioni nazionali con GLS, BRT, Poste e ritiro in negozio.',
+  },
+  {
+    question: 'Fate SEO per il negozio?',
+    answer:
+      'Sì: schema product, sitemap, Merchant Center, contenuti ottimizzati per ricerche prodotto.',
+  },
+  {
+    question: 'Offrite supporto post-lancio?',
+    answer: 'Sì: monitoraggio, aggiornamenti, ottimizzazioni continue. Niente abbandono al lancio.',
+  },
+];
 ---
 
 <Layout
-  title="E-commerce | Negozi Online Chiavi in Mano | Bitora"
-  description="E-commerce professionali in Piemonte: WooCommerce, Shopify o sviluppo custom. Dalla strategia al lancio con supporto continuo, come nel caso studio RicambiXStufe. Preventivo gratuito."
+  title="Realizzazione E-commerce in Piemonte | B2B e B2C | Bitora"
+  description="Realizziamo e-commerce B2B e B2C in Piemonte con WooCommerce, Shopify o sviluppo custom: cataloghi, pagamenti e integrazioni. Preventivo gratuito."
   image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80"
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <VideoHero
       variant="background"
       overlay="light"
-      eyebrow="E-commerce"
-      title="Il tuo negozio online,"
+      eyebrow="E-commerce B2B e B2C · Piemonte"
+      title="Il tuo e-commerce B2B o B2C,"
       highlight="chiavi in mano."
-      description="WooCommerce, Shopify o sviluppo custom. Dalla strategia al lancio: catalogo, pagamenti, spedizioni, SEO e supporto inclusi."
+      description="WooCommerce, Shopify o sviluppo custom. Dalla strategia al lancio: catalogo, pagamenti, spedizioni, SEO e integrazioni incluse."
       primaryCta={{ label: 'Richiedi preventivo', href: '/contattaci/?topic=ecommerce' }}
       secondaryCta={{ label: 'Come funziona', href: '#come' }}
       posterSrc="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80"
@@ -112,6 +152,75 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
     </section>
 
     <section
+      id="b2b"
+      class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-3xl">
+          <p
+            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
+          >
+            E-commerce B2B
+          </p>
+          <h2
+            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+          >
+            Vendita online per aziende, con regole commerciali reali.
+          </h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Realizziamo e-commerce B2B in Piemonte su WooCommerce, Shopify o stack custom. La
+            configurazione parte dal processo commerciale esistente e dalle integrazioni necessarie.
+          </p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            [
+              {
+                title: 'Cataloghi riservati',
+                text: 'Prodotti, assortimenti e contenuti visibili in base al cliente o al gruppo.',
+              },
+              {
+                title: 'Listini per cliente',
+                text: 'Prezzi, sconti, quantità minime e condizioni commerciali differenziate.',
+              },
+              {
+                title: 'Preventivi e riordini',
+                text: 'Richieste di offerta, ordini ricorrenti e storico acquisti nello stesso flusso.',
+              },
+              {
+                title: 'Accessi aziendali',
+                text: 'Account approvati, ruoli, referenti e indirizzi multipli per ogni cliente.',
+              },
+              {
+                title: 'Pagamenti e fatture',
+                text: 'Bonifico, carte, condizioni concordate e collegamenti alla fatturazione.',
+              },
+              {
+                title: 'Integrazioni gestionali',
+                text: 'Sincronizzazione di prodotti, disponibilità, clienti e ordini tramite API.',
+              },
+            ].map(item => (
+              <article class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6">
+                <h3 class="text-lg font-extrabold tracking-tight text-slate-950 dark:text-white">
+                  {item.title}
+                </h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  {item.text}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+        <p class="mt-8 text-sm text-slate-500 dark:text-slate-400">
+          Le funzionalità vengono definite nel preventivo in base al flusso commerciale e ai sistemi
+          già presenti in azienda.
+        </p>
+      </div>
+    </section>
+
+    <section
       class="py-20 md:py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.02]"
     >
       <div class="max-w-6xl mx-auto">
@@ -140,7 +249,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
                   '180+ prodotti a catalogo',
                   'Pannello admin custom',
                   'Ordini già attivi',
-                ].map((chip) => (
+                ].map(chip => (
                   <li class="text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-white/[0.06] border border-gray-200 dark:border-white/10 rounded-full px-3.5 py-1.5 tracking-wide">
                     {chip}
                   </li>
@@ -155,8 +264,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
                 href="https://ricambixstufe.it"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn-secondary"
-                >Visita ricambixstufe.it</a
+                class="btn-secondary">Visita ricambixstufe.it</a
               >
             </div>
           </div>
@@ -254,45 +362,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
           </p>
         </div>
         <div class="lg:col-span-7">
-          <FAQ
-            items={[
-              {
-                question: 'Quanto costa un e-commerce?',
-                answer:
-                  'Dipende da piattaforma, catalogo e integrazioni. Partiamo da audit gratuito e preventivo modulare.',
-              },
-              {
-                question: 'WooCommerce o Shopify?',
-                answer:
-                  'WooCommerce per controllo + personalizzazioni. Shopify per partenza veloce. Custom per casi B2B/marketplace.',
-              },
-              {
-                question: 'Quanto tempo serve per il lancio?',
-                answer:
-                  'Tipicamente 3–6 settimane dal brief al go-live, in base a contenuti e prodotti.',
-              },
-              {
-                question: 'Gestite pagamenti e fatture?',
-                answer:
-                  'Sì: Stripe, PayPal, bonifico. Integrazione fatturazione automatica con gestionali italiani.',
-              },
-              {
-                question: 'Posso vendere in tutta Italia?',
-                answer:
-                  'Sì. Configuriamo spedizioni nazionali con GLS, BRT, Poste e ritiro in negozio.',
-              },
-              {
-                question: 'Fate SEO per il negozio?',
-                answer:
-                  'Sì: schema product, sitemap, Merchant Center, contenuti ottimizzati per ricerche prodotto.',
-              },
-              {
-                question: 'Offrite supporto post-lancio?',
-                answer:
-                  'Sì: monitoraggio, aggiornamenti, ottimizzazioni continue. Niente abbandono al lancio.',
-              },
-            ]}
-          />
+          <FAQ items={ecommerceFaqs} />
         </div>
       </div>
     </section>
@@ -363,7 +433,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 <ServiceSchema
   name="Realizzazione E-commerce Piemonte"
   url="https://bitora.it/e-commerce/"
-  serviceType={['E-commerce', 'WooCommerce', 'Shopify', 'Negozi Online']}
+  serviceType={['E-commerce B2B', 'E-commerce B2C', 'WooCommerce', 'Shopify', 'Negozi Online']}
   areaServed={[
     'Carmagnola',
     'Carignano',
@@ -377,52 +447,22 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
   ]}
 />
 
-<FAQPageSchema
-  items={[
-    {
-      question: 'Quanto costa un e-commerce?',
-      answer:
-        'Dipende da piattaforma, catalogo e integrazioni. Partiamo da audit gratuito e preventivo modulare.',
-    },
-    {
-      question: 'WooCommerce o Shopify?',
-      answer:
-        'WooCommerce per controllo + personalizzazioni. Shopify per partenza veloce. Custom per casi B2B/marketplace.',
-    },
-    {
-      question: 'Quanto tempo serve per il lancio?',
-      answer: 'Tipicamente 3–6 settimane dal brief al go-live, in base a contenuti e prodotti.',
-    },
-    {
-      question: 'Gestite pagamenti e fatture?',
-      answer:
-        'Sì: Stripe, PayPal, bonifico. Integrazione fatturazione automatica con gestionali italiani.',
-    },
-    {
-      question: 'Posso vendere in tutta Italia?',
-      answer: 'Sì. Configuriamo spedizioni nazionali con GLS, BRT, Poste e ritiro in negozio.',
-    },
-    {
-      question: 'Fate SEO per il negozio?',
-      answer:
-        'Sì: schema product, sitemap, Merchant Center, contenuti ottimizzati per ricerche prodotto.',
-    },
-    {
-      question: 'Offrite supporto post-lancio?',
-      answer:
-        'Sì: monitoraggio, aggiornamenti, ottimizzazioni continue. Niente abbandono al lancio.',
-    },
-  ]}
-/>
+<FAQPageSchema items={ecommerceFaqs} />
 
 <HowToSchema
   name="Come lanciamo un e-commerce per PMI"
   description="Metodo Bitora: strategia, piattaforma, sviluppo, go-live."
   steps={[
-    { name: 'Strategia', text: 'Analisi catalogo, target, piattaforma (WooCommerce, Shopify o custom).' },
+    {
+      name: 'Strategia',
+      text: 'Analisi catalogo, target, piattaforma (WooCommerce, Shopify o custom).',
+    },
     { name: 'Setup', text: 'Design checkout, pagamenti Stripe/PayPal, spedizioni GLS/BRT/Poste.' },
     { name: 'Sviluppo', text: 'Caricamento prodotti, SEO product schema, tracking conversioni.' },
-    { name: 'Go-live', text: 'Test ordini, Merchant Center, supporto e ottimizzazioni post-lancio.' },
+    {
+      name: 'Go-live',
+      text: 'Test ordini, Merchant Center, supporto e ottimizzazioni post-lancio.',
+    },
   ]}
 />
 

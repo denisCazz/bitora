@@ -18,8 +18,7 @@ export interface Props {
 const { title, description, image, noindex = false } = Astro.props;
 const siteOrigin = (Astro.site?.origin ?? 'https://bitora.it').replace(/\/$/, '');
 const pathname = Astro.url.pathname || '/';
-const normalizedPath =
-  pathname === '/' ? '/' : pathname.endsWith('/') ? pathname : `${pathname}/`;
+const normalizedPath = pathname === '/' ? '/' : pathname.endsWith('/') ? pathname : `${pathname}/`;
 const canonicalUrl = `${siteOrigin}${normalizedPath}`;
 
 const ogImage = image?.startsWith('http')
@@ -28,12 +27,10 @@ const ogImage = image?.startsWith('http')
     ? `${siteOrigin}${image.startsWith('/') ? image : `/${image}`}`
     : `${siteOrigin}/bitora.jpg`;
 
-const robotsContent = noindex
-  ? 'noindex,follow'
-  : 'index,follow,max-image-preview:large';
+const robotsContent = noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large';
 
 const defaultDescription =
-  'Software per gestione interventi, ticket, tecnici e rapportini digitali. Siti web ed e-commerce come servizi complementari. Sede in Piemonte, copertura Italia.';
+  'Siti web ed e-commerce su misura per PMI in Piemonte, oltre a software per interventi, ticket e rapportini. Progetti, integrazioni e supporto in Italia.';
 ---
 
 <!doctype html>
@@ -153,7 +150,7 @@ const defaultDescription =
     <meta property="og:description" content={description ?? defaultDescription} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content="it_IT" />
-    <meta property="og:site_name" content="Bitora - Gestione Interventi e Software Operativi" />
+    <meta property="og:site_name" content="Bitora" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalUrl} />
@@ -161,55 +158,62 @@ const defaultDescription =
     <meta name="twitter:description" content={description ?? defaultDescription} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": `${siteOrigin}/#organization`,
-      "name": "Bitora",
-      "legalName": "Bitora di Denis Cazzulo",
-      "alternateName": "Bitora Italia",
-      "url": siteOrigin,
-      "logo": `${siteOrigin}/bitora.png`,
-      "description": "Bitora sviluppa piattaforme personalizzabili per gestire richieste, interventi, tecnici, rapportini e documentazione in un unico sistema. Sede a Carmagnola (TO).",
-      "taxID": "13359170019",
-      "vatID": "IT13359170019",
-      "foundingDate": "2020",
-      "foundingLocation": {
-        "@type": "Place",
-        "name": "Carmagnola, Piemonte, Italia"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Carmagnola",
-        "addressRegion": "TO",
-        "addressCountry": "IT"
-      },
-      "email": "info@bitora.it",
-      "telephone": "+39 351 497 9670",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+39 351 497 9670",
-        "contactType": "sales",
-        "email": "info@bitora.it",
-        "availableLanguage": ["Italian"],
-        "areaServed": "IT"
-      },
-      "sameAs": [
-        "https://www.instagram.com/bitorait/",
-        "https://www.facebook.com/people/Bitora-Italia/"
-      ]
-    })} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        '@id': `${siteOrigin}/#organization`,
+        name: 'Bitora',
+        legalName: 'Bitora di Denis Cazzulo',
+        alternateName: 'Bitora Italia',
+        url: siteOrigin,
+        logo: `${siteOrigin}/bitora.png`,
+        description:
+          'Bitora realizza siti web ed e-commerce su misura per PMI e sviluppa piattaforme per interventi, ticket e rapportini. Sede a Carmagnola (TO), operativa in Piemonte e in Italia.',
+        taxID: '13359170019',
+        vatID: 'IT13359170019',
+        foundingDate: '2020',
+        foundingLocation: {
+          '@type': 'Place',
+          name: 'Carmagnola, Piemonte, Italia',
+        },
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Carmagnola',
+          addressRegion: 'TO',
+          addressCountry: 'IT',
+        },
+        email: 'info@bitora.it',
+        telephone: '+39 351 497 9670',
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: '+39 351 497 9670',
+          contactType: 'sales',
+          email: 'info@bitora.it',
+          availableLanguage: ['Italian'],
+          areaServed: 'IT',
+        },
+        sameAs: [
+          'https://www.instagram.com/bitorait/',
+          'https://www.facebook.com/people/Bitora-Italia/',
+        ],
+      })}
+    />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": `${siteOrigin}/#website`,
-      "name": "Bitora - Gestione Interventi e Software Operativi",
-      "url": `${siteOrigin}/`,
-      "dateModified": "2026-07-20",
-      "publisher": { "@id": `${siteOrigin}/#organization` },
-      "inLanguage": "it-IT"
-    })} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        '@id': `${siteOrigin}/#website`,
+        name: 'Bitora',
+        url: `${siteOrigin}/`,
+        dateModified: '2026-08-10',
+        publisher: { '@id': `${siteOrigin}/#organization` },
+        inLanguage: 'it-IT',
+      })}
+    />
 
     <LocalBusinessSchema />
   </head>
@@ -225,7 +229,12 @@ const defaultDescription =
     <StickyContactBar />
 
     <script is:inline>
-      window.__bitoraTags = window.__bitoraTags || { ga: false, ads: false, meta: false, umami: false };
+      window.__bitoraTags = window.__bitoraTags || {
+        ga: false,
+        ads: false,
+        meta: false,
+        umami: false,
+      };
 
       function getCookieConsent() {
         var cookies = document.cookie.split(';');
@@ -276,34 +285,42 @@ const defaultDescription =
 
       function loadGA4() {
         if (window.__bitoraTags.ga) return;
-        loadScriptOnce('https://www.googletagmanager.com/gtag/js?id=G-EL32YTDTYH', null, function () {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
+        loadScriptOnce(
+          'https://www.googletagmanager.com/gtag/js?id=G-EL32YTDTYH',
+          null,
+          function () {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-EL32YTDTYH', {
+              anonymize_ip: true,
+              send_page_view: true,
+              transport_type: 'beacon',
+            });
+            window.__bitoraTags.ga = true;
           }
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', 'G-EL32YTDTYH', {
-            anonymize_ip: true,
-            send_page_view: true,
-            transport_type: 'beacon',
-          });
-          window.__bitoraTags.ga = true;
-        });
+        );
       }
 
       function loadGoogleAds() {
         if (window.__bitoraTags.ads) return;
-        loadScriptOnce('https://www.googletagmanager.com/gtag/js?id=AW-17047013851', null, function () {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
+        loadScriptOnce(
+          'https://www.googletagmanager.com/gtag/js?id=AW-17047013851',
+          null,
+          function () {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'AW-17047013851');
+            window.__bitoraTags.ads = true;
           }
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', 'AW-17047013851');
-          window.__bitoraTags.ads = true;
-        });
+        );
       }
 
       function loadMetaPixel() {
@@ -334,7 +351,9 @@ const defaultDescription =
 
       function loadUmami() {
         if (window.__bitoraTags.umami) return;
-        if (document.querySelector('script[data-website-id="a078fba7-a632-4f51-826e-986e1d8fa5c4"]')) {
+        if (
+          document.querySelector('script[data-website-id="a078fba7-a632-4f51-826e-986e1d8fa5c4"]')
+        ) {
           window.__bitoraTags.umami = true;
           return;
         }

@@ -12,6 +12,7 @@ const samplePages = [
   '/ticketing/',
   '/richiedi-demo/',
   '/siti-web-professionali/',
+  '/e-commerce/',
   '/lavori/',
 ];
 
@@ -59,7 +60,10 @@ test.describe('Contextual CTAs', () => {
 
   test('footer CTA on web pages is not ticketing-demo copy', async ({ page }) => {
     await page.goto('/e-commerce/');
-    const footerBanner = page.locator('section').filter({ hasText: /preventivo|e-commerce|contatt/i }).first();
+    const footerBanner = page
+      .locator('section')
+      .filter({ hasText: /preventivo|e-commerce|contatt/i })
+      .first();
     await expect(footerBanner).toBeVisible();
     await expect(page.locator('text=Pronto a vedere il flusso sulla tua azienda?')).toHaveCount(0);
   });
@@ -70,6 +74,25 @@ test.describe('Heading hierarchy', () => {
     test(`${path} has a single H1`, async ({ page }) => {
       await page.goto(path);
       await expect(page.locator('h1')).toHaveCount(1);
+    });
+  }
+});
+
+const priorityLegacyRedirects = [
+  ['/e-commerce-piemonte/', '/e-commerce/'],
+  ['/siti-web-torino/', '/siti-web-professionali/'],
+  ['/tessere-nfc-torino/', '/nfc-ecosystem/'],
+];
+
+test.describe('Priority legacy redirects', () => {
+  for (const [source, destination] of priorityLegacyRedirects) {
+    test(`${source} returns a permanent redirect to ${destination}`, async ({ request }) => {
+      const response = await request.get(source, { maxRedirects: 0 });
+      expect(response.status()).toBe(301);
+
+      const location = response.headers().location;
+      expect(location).toBeTruthy();
+      expect(new URL(location, 'https://bitora.it').pathname).toBe(destination);
     });
   }
 });
@@ -85,12 +108,6 @@ test.describe('Legacy redirects', () => {
     const response = await page.goto('/services/');
     expect(response?.status()).toBeLessThan(400);
     await expect(page).toHaveURL(/servizi\/?$/);
-  });
-
-  test('e-commerce-piemonte redirects to e-commerce', async ({ page }) => {
-    const response = await page.goto('/e-commerce-piemonte/');
-    expect(response?.status()).toBeLessThan(400);
-    await expect(page).toHaveURL(/e-commerce\/?$/);
   });
 
   test('progetti/kristina redirects to sartoria-kristina', async ({ page }) => {

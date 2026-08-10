@@ -34,10 +34,10 @@ const {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  '@id': `${url}#localbusiness`,
+  '@id': `${url.replace(/\/$/, '')}/#organization`,
   name,
   description:
-    'Piattaforme operative per assistenza tecnica e manutenzione: ticket, tecnici, rapportini digitali e software su misura.',
+    'Siti web ed e-commerce su misura per PMI in Piemonte, con piattaforme operative per interventi, ticket e rapportini digitali.',
   url,
   image,
   telephone,

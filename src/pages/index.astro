@@ -4,38 +4,38 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Bitora | Software gestionale, siti web ed e-commerce su misura"
-  description="Bitora sviluppa piattaforme per interventi, ticket e rapportini, e realizza siti vetrina ed e-commerce per PMI. Dal sito alla digitalizzazione delle pratiche."
+  title="Siti Web ed E-commerce per PMI in Piemonte | Bitora"
+  description="Bitora realizza siti web ed e-commerce su misura per PMI in Piemonte: SEO, performance, integrazioni e supporto. Guarda i progetti e richiedi un preventivo."
 >
   <div class="home">
-
     <!-- HERO -->
     <section class="hero">
       <div class="hero-media" aria-hidden="true">
-        <img
-          src="/hero-field-service.jpg"
-          alt="Tecnico in intervento su impianto elettrico"
-          class="hero-img"
-          fetchpriority="high"
-          decoding="async"
-        />
+        <img src="/programming.jpg" alt="" class="hero-img" fetchpriority="high" decoding="async" />
         <div class="hero-scrim"></div>
       </div>
 
       <div class="shell hero-copy">
-        <p class="eyebrow hero-item">Field service · Assistenza tecnica</p>
+        <p class="eyebrow hero-item">Siti web · E-commerce · Piemonte</p>
         <h1 class="display hero-item">
-          Gestisci interventi,<br />tecnici e rapportini<br />in un unico sistema
+          Siti web ed e-commerce<br /> su misura per PMI
         </h1>
         <p class="lede hero-item">
-          Bitora sviluppa piattaforme personalizzabili per organizzare richieste di assistenza, assegnazioni, interventi sul territorio, rapportini digitali e documentazione.
+          Progettiamo esperienze veloci, credibili e misurabili: dal sito vetrina al negozio online,
+          con SEO, contenuti, integrazioni e supporto dopo il lancio.
         </p>
         <div class="cta-row hero-item">
-          <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="home_hero">Richiedi una demo</a>
-          <a href="/gestione-interventi/" class="sl-btn-secondary">Scopri la piattaforma</a>
+          <a
+            href="/contattaci/?topic=sito"
+            class="sl-btn-primary"
+            data-track="cta_click"
+            data-track-location="home_hero">Richiedi un preventivo</a
+          >
+          <a href="/lavori/" class="sl-btn-secondary">Guarda i progetti</a>
         </div>
         <p class="hero-alt hero-item">
-          Cerchi un sito web o un e-commerce? <a href="/servizi/">Vedi tutti i servizi</a>
+          Cerchi una piattaforma operativa?
+          <a href="/gestione-interventi/">Software per interventi, ticket e rapportini</a>
         </p>
       </div>
 
@@ -51,28 +51,43 @@ import Layout from '../layouts/Layout.astro';
           <div class="split-lead" data-reveal>
             <p class="eyebrow">Il punto di partenza</p>
             <h2 class="headline">
-              Una piattaforma sola<br />al posto di Excel,<br />
-              <span class="text-secondary">WhatsApp e carta.</span>
+              Un sito deve essere<br />chiaro, veloce e<br />
+              <span class="text-secondary">capace di convertire.</span>
             </h2>
           </div>
           <div class="split-body">
             <p class="body-lg" data-reveal data-reveal-delay="1">
-              Ogni azienda gestisce l’assistenza in modo diverso. Bitora parte dal processo esistente e costruisce una piattaforma capace di collegare ufficio, centri assistenza, manutentori e tecnici.
+              Bitora parte dagli obiettivi commerciali e costruisce un percorso digitale coerente,
+              dalla ricerca su Google fino alla richiesta di contatto o all'ordine.
             </p>
             <ul class="list-rows" data-reveal-group>
-              {[
-                { n: '01', t: 'Richieste perse', d: 'Email, WhatsApp, telefono — senza tracciamento.' },
-                { n: '02', t: 'Zero controllo', d: 'Non sai chi fa cosa, né quanto ci mette.' },
-                { n: '03', t: 'Documenti sparsi', d: 'Rapportini e firme tra chat, PDF e cartelle.' },
-              ].map(item => (
-                <li class="list-row" data-reveal>
-                  <span class="list-num">{item.n}</span>
-                  <div>
-                    <h3 class="list-title">{item.t}</h3>
-                    <p class="body-sm">{item.d}</p>
-                  </div>
-                </li>
-              ))}
+              {
+                [
+                  {
+                    n: '01',
+                    t: 'Poche richieste',
+                    d: 'Il traffico arriva, ma il valore dell’offerta non è immediato.',
+                  },
+                  {
+                    n: '02',
+                    t: 'Immagine poco credibile',
+                    d: 'Design, contenuti e prove non raccontano la qualità reale.',
+                  },
+                  {
+                    n: '03',
+                    t: 'Gestione frammentata',
+                    d: 'Sito, catalogo, ordini e contatti non lavorano insieme.',
+                  },
+                ].map(item => (
+                  <li class="list-row" data-reveal>
+                    <span class="list-num">{item.n}</span>
+                    <div>
+                      <h3 class="list-title">{item.t}</h3>
+                      <p class="body-sm">{item.d}</p>
+                    </div>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
@@ -83,35 +98,38 @@ import Layout from '../layouts/Layout.astro';
     <section class="band band-alt">
       <div class="shell band-inner">
         <header class="band-head" data-reveal>
-          <p class="eyebrow">Come funziona</p>
+          <p class="eyebrow">Come lavoriamo</p>
           <h2 class="headline">
-            Dalla richiesta<br />al PDF firmato.
+            Dal brief<br />al lancio.
           </h2>
           <p class="body-lg" style="margin-top:1rem;max-width:40rem">
-            La pratica accompagna l’intero processo di assistenza. Il rapportino documenta invece il singolo intervento svolto dal tecnico.
+            Strategia, contenuti, sviluppo e misurazione restano nello stesso progetto, con un
+            referente unico e obiettivi verificabili.
           </p>
         </header>
 
         <div class="flow" data-reveal-group>
-          {[
-            { n: '01', t: 'Richiesta', d: 'Apertura pratica con priorità e allegati.' },
-            { n: '02', t: 'Assegnazione', d: 'Pianificazione a CAT, manutentore o tecnico.' },
-            { n: '03', t: 'Intervento', d: 'Lavoro sul campo, foto e materiali.' },
-            { n: '04', t: 'Rapportino', d: 'Firma, PDF e chiusura documentale.' },
-          ].map((step, i) => (
-            <article class="flow-cell" data-reveal data-reveal-delay={String(i + 1)}>
-              <span class="flow-num">{step.n}</span>
-              <div>
-                <h3 class="list-title">{step.t}</h3>
-                <p class="body-sm">{step.d}</p>
-              </div>
-            </article>
-          ))}
+          {
+            [
+              { n: '01', t: 'Strategia', d: 'Obiettivi, pubblico, struttura e priorità.' },
+              { n: '02', t: 'Contenuti', d: 'Messaggi, prove, pagine e call to action.' },
+              { n: '03', t: 'Sviluppo', d: 'Performance, mobile, SEO e integrazioni.' },
+              { n: '04', t: 'Misurazione', d: 'Analytics, Search Console e miglioramenti.' },
+            ].map((step, i) => (
+              <article class="flow-cell" data-reveal data-reveal-delay={String(i + 1)}>
+                <span class="flow-num">{step.n}</span>
+                <div>
+                  <h3 class="list-title">{step.t}</h3>
+                  <p class="body-sm">{step.d}</p>
+                </div>
+              </article>
+            ))
+          }
         </div>
 
         <div class="band-foot" data-reveal data-reveal-delay="2">
-          <a href="/gestione-interventi/" class="text-link">
-            Vedi moduli e dettagli
+          <a href="/siti-web-professionali/" class="text-link">
+            Scopri come realizziamo i siti
             <span aria-hidden="true">→</span>
           </a>
         </div>
@@ -121,24 +139,24 @@ import Layout from '../layouts/Layout.astro';
     <!-- PER CHI -->
     <section class="audience">
       <div class="audience-media" aria-hidden="true">
-        <img
-          src="/field-maintenance.jpg"
-          alt="Tecnico in manutenzione industriale sul campo"
-          class="audience-img"
-          loading="lazy"
-          decoding="async"
-        />
+        <img src="/communication.jpg" alt="" class="audience-img" loading="lazy" decoding="async" />
         <div class="audience-scrim"></div>
       </div>
       <div class="shell audience-copy" data-reveal>
         <p class="eyebrow">Per chi</p>
         <h2 class="display-sm">
-          Aziende con tecnici<br />sul territorio.
+          PMI che vogliono<br />crescere online.
         </h2>
         <p class="lede audience-lede">
-          Pensata per aziende che gestiscono interventi ricorrenti, da piccoli team operativi fino a reti di centri assistenza.
+          Per aziende che cercano una presenza digitale credibile, più richieste qualificate e
+          strumenti semplici da gestire.
         </p>
-        <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="home_audience">Richiedi una demo</a>
+        <a
+          href="/contattaci/?topic=sito"
+          class="sl-btn-primary"
+          data-track="cta_click"
+          data-track-location="home_audience">Parlaci del progetto</a
+        >
       </div>
     </section>
 
@@ -165,11 +183,17 @@ import Layout from '../layouts/Layout.astro';
             <p class="eyebrow">Strada B</p>
             <h3 class="list-title">Voglio pratiche digitalizzate.</h3>
             <p class="body-sm" style="margin-top:.5rem">
-              Richieste, interventi, rapportini e firme in un sistema unico, adattato al tuo processo.
+              Richieste, interventi, rapportini e firme in un sistema unico, adattato al tuo
+              processo.
             </p>
             <div class="cta-row" style="margin-top:1.5rem">
               <a href="/gestione-interventi/" class="sl-btn-secondary">Ecosistema</a>
-              <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="home_paths">Demo</a>
+              <a
+                href="/richiedi-demo/"
+                class="sl-btn-primary"
+                data-track="cta_click"
+                data-track-location="home_paths">Demo</a
+              >
             </div>
           </div>
         </div>
@@ -181,28 +205,36 @@ import Layout from '../layouts/Layout.astro';
       <div class="shell band-inner">
         <div class="split split-offer">
           <div class="split-lead" data-reveal>
-            <p class="eyebrow">Offerta</p>
+            <p class="eyebrow">Metodo</p>
             <h2 class="headline">
-              Setup iniziale.<br />Poi un canone.
+              Un progetto chiaro.<br />Nessun pacchetto standard.
             </h2>
             <p class="body-lg offer-copy">
-              Configurazione, personalizzazioni e formazione all’avvio. Canone mensile o annuale in base a utenti, tecnici o centri.
+              Definiamo insieme obiettivi, contenuti, funzionalità e tempi. Il preventivo separa ciò
+              che serve ora dalle evoluzioni successive.
             </p>
-            <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="home_offer">Parliamone</a>
+            <a
+              href="/contattaci/"
+              class="sl-btn-primary"
+              data-track="cta_click"
+              data-track-location="home_offer">Richiedi un confronto</a
+            >
           </div>
           <div class="split-body" data-reveal data-reveal-delay="1">
             <div class="offer-rows">
-              {[
-                { t: 'Demo', d: 'Configurazione dimostrativa sul tuo processo' },
-                { t: 'Onboarding', d: 'Import dati e formazione' },
-                { t: 'Moduli', d: 'Ticket, rapportini, ricambi e altri moduli' },
-                { t: 'Infrastruttura', d: 'Definita in base al progetto' },
-              ].map(row => (
-                <div class="offer-row">
-                  <span class="offer-label">{row.t}</span>
-                  <span class="offer-value">{row.d}</span>
-                </div>
-              ))}
+              {
+                [
+                  { t: 'Analisi', d: 'Obiettivi, pubblico e priorità' },
+                  { t: 'Progetto', d: 'Design, contenuti e sviluppo' },
+                  { t: 'Lancio', d: 'Test, SEO, tracking e formazione' },
+                  { t: 'Supporto', d: 'Manutenzione ed evoluzioni concordate' },
+                ].map(row => (
+                  <div class="offer-row">
+                    <span class="offer-label">{row.t}</span>
+                    <span class="offer-value">{row.d}</span>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -258,76 +290,49 @@ import Layout from '../layouts/Layout.astro';
       <div class="shell band-cta-inner" data-reveal>
         <p class="eyebrow">Inizia da qui</p>
         <h2 class="display-cta">
-          Vedi la piattaforma<br />sulla tua operatività.
+          Raccontaci il progetto.<br />Prepariamo il percorso.
         </h2>
-        <p class="body-lg cta-copy">
-          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una configurazione dimostrativa costruita intorno al tuo processo.
+        <p class="lede cta-lede">
+          Sito vetrina, e-commerce o restyle: partiamo dagli obiettivi e ti rispondiamo entro 24
+          ore.
         </p>
 
-        <ol class="cta-steps" aria-label="Come funziona la demo">
+        <ol class="cta-steps">
           <li>
             <span class="cta-step-n">1</span>
-            <div>
-              <strong>2 minuti</strong>
-              <span>Questionario breve sulla tua azienda</span>
-            </div>
+            <div><strong>2 minuti</strong><span>Raccontaci azienda e obiettivi</span></div>
           </li>
           <li>
             <span class="cta-step-n">2</span>
-            <div>
-              <strong>Entro 24 ore</strong>
-              <span>Ti ricontattiamo noi</span>
-            </div>
+            <div><strong>Entro 24 ore</strong><span>Ti ricontattiamo noi</span></div>
           </li>
           <li>
             <span class="cta-step-n">3</span>
-            <div>
-              <strong>Demo guidata</strong>
-              <span>Sul tuo caso, non una presentazione generica</span>
-            </div>
+            <div><strong>Proposta chiara</strong><span>Priorità, tempi e prossimi passi</span></div>
           </li>
         </ol>
 
         <div class="cta-row cta-row-center">
-          <a href="/richiedi-demo/" class="sl-btn-primary sl-btn-lg" data-track="cta_click" data-track-location="home_final">
-            Prenota la demo gratuita
+          <a
+            href="/contattaci/?topic=sito"
+            class="sl-btn-primary sl-btn-lg"
+            data-track="cta_click"
+            data-track-location="home_final"
+          >
+            Richiedi un preventivo
             <span aria-hidden="true">→</span>
           </a>
           <a
-            href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20una%20demo%20della%20piattaforma%20gestione%20interventi."
+            href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20parlarvi%20di%20un%20sito%20web%20o%20e-commerce."
             class="sl-btn-whatsapp"
             data-track="whatsapp_click"
-            data-track-location="home_final"
+            data-track-location="home_final">Scrivici su WhatsApp</a
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"
-              ><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg
-            >
-            Scrivici su WhatsApp
-          </a>
         </div>
-
-        <p class="cta-trust">
-          Gratuita · Senza impegno · Risposta entro 24 ore
-        </p>
       </div>
     </section>
   </div>
 </Layout>
-
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Bitora Gestione Interventi",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  url: "https://bitora.it/gestione-interventi/",
-  description: "Piattaforma per ticket, assegnazione tecnici, rapportini digitali, documenti e statistiche operative.",
-  provider: {
-    "@type": "Organization",
-    name: "Bitora",
-    url: "https://bitora.it",
-  },
-})} />
 
 <script>
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -335,11 +340,11 @@ import Layout from '../layouts/Layout.astro';
   // Scroll reveals with stagger support
   const reveals = document.querySelectorAll('[data-reveal]');
   if (reduced) {
-    reveals.forEach((el) => el.classList.add('is-visible'));
+    reveals.forEach(el => el.classList.add('is-visible'));
   } else {
     const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (!entry.isIntersecting) return;
           const el = entry.target as HTMLElement;
           const delay = Number(el.dataset.revealDelay || 0);
@@ -350,7 +355,7 @@ import Layout from '../layouts/Layout.astro';
       },
       { threshold: 0.14, rootMargin: '0px 0px -8% 0px' }
     );
-    reveals.forEach((el) => obs.observe(el));
+    reveals.forEach(el => obs.observe(el));
   }
 
   // Subtle hero parallax + fade on scroll
@@ -400,10 +405,14 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @media (min-width: 768px) {
-    .home { --shell: min(1120px, calc(100% - 6rem)); }
+    .home {
+      --shell: min(1120px, calc(100% - 6rem));
+    }
   }
   @media (min-width: 1024px) {
-    .home { --shell: min(1120px, calc(100% - 8rem)); }
+    .home {
+      --shell: min(1120px, calc(100% - 8rem));
+    }
   }
 
   .shell {
@@ -411,7 +420,9 @@ import Layout from '../layouts/Layout.astro';
     margin-inline: auto;
   }
 
-  .text-secondary { color: var(--home-secondary); }
+  .text-secondary {
+    color: var(--home-secondary);
+  }
 
   /* ——— Type ——— */
   .eyebrow {
@@ -516,11 +527,6 @@ import Layout from '../layouts/Layout.astro';
     max-width: 52rem;
   }
 
-  .cta-copy {
-    margin: 0 auto 2.75rem;
-    max-width: 32rem;
-  }
-
   .cta-steps {
     list-style: none;
     margin: 0 auto 2.75rem;
@@ -578,13 +584,6 @@ import Layout from '../layouts/Layout.astro';
     color: var(--home-muted);
   }
 
-  .cta-trust {
-    margin: 1.75rem 0 0;
-    font-size: 0.85rem;
-    letter-spacing: 0.02em;
-    color: var(--home-faint);
-  }
-
   .sl-btn-lg {
     padding: 1.05rem 1.9rem;
     font-size: 1rem;
@@ -602,7 +601,9 @@ import Layout from '../layouts/Layout.astro';
     color: #fff;
     background: #1f8f4e;
     border: 1px solid transparent;
-    transition: background 0.25s, transform 0.25s var(--ease-out);
+    transition:
+      background 0.25s,
+      transform 0.25s var(--ease-out);
   }
   .sl-btn-whatsapp:hover {
     background: #22a358;
@@ -667,8 +668,8 @@ import Layout from '../layouts/Layout.astro';
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.45) 40%, #000 100%),
-      linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 55%, transparent 100%);
+      linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.45) 40%, #000 100%),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.15) 55%, transparent 100%);
   }
 
   .hero-copy {
@@ -682,11 +683,21 @@ import Layout from '../layouts/Layout.astro';
     transform: translate3d(0, 28px, 0);
     animation: riseIn 1.05s var(--ease-out) forwards;
   }
-  .hero-item:nth-child(1) { animation-delay: 0.1s; }
-  .hero-item:nth-child(2) { animation-delay: 0.26s; }
-  .hero-item:nth-child(3) { animation-delay: 0.42s; }
-  .hero-item:nth-child(4) { animation-delay: 0.56s; }
-  .hero-item:nth-child(5) { animation-delay: 0.7s; }
+  .hero-item:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .hero-item:nth-child(2) {
+    animation-delay: 0.26s;
+  }
+  .hero-item:nth-child(3) {
+    animation-delay: 0.42s;
+  }
+  .hero-item:nth-child(4) {
+    animation-delay: 0.56s;
+  }
+  .hero-item:nth-child(5) {
+    animation-delay: 0.7s;
+  }
 
   .hero-alt {
     margin-top: 1.25rem;
@@ -712,7 +723,7 @@ import Layout from '../layouts/Layout.astro';
     width: 24px;
     height: 38px;
     margin-left: -12px;
-    border: 1.5px solid rgba(255,255,255,0.35);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
     border-radius: 999px;
     display: flex;
     justify-content: center;
@@ -723,7 +734,7 @@ import Layout from '../layouts/Layout.astro';
     width: 3px;
     height: 8px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.7);
+    background: rgba(255, 255, 255, 0.7);
     animation: scrollDot 1.6s var(--ease-out) infinite;
   }
 
@@ -775,10 +786,15 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @media (min-width: 768px) {
-    .flow { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+    .flow {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+    }
   }
   @media (min-width: 1024px) {
-    .flow { grid-template-columns: repeat(4, 1fr); }
+    .flow {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   .flow-cell {
@@ -790,7 +806,10 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: background 0.35s var(--ease-out), border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+    transition:
+      background 0.35s var(--ease-out),
+      border-color 0.35s var(--ease-out),
+      transform 0.35s var(--ease-out);
   }
 
   .flow-cell:hover {
@@ -809,7 +828,9 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 2rem;
   }
 
-  .flow-cell .list-title { margin-bottom: 0.4rem; }
+  .flow-cell .list-title {
+    margin-bottom: 0.4rem;
+  }
 
   /* ——— Audience ——— */
   .audience {
@@ -836,7 +857,7 @@ import Layout from '../layouts/Layout.astro';
   .audience-scrim {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 40%, #000 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.45) 40%, #000 100%);
   }
 
   .audience-copy {
@@ -883,7 +904,9 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @media (min-width: 768px) {
-    .services { grid-template-columns: repeat(3, 1fr); }
+    .services {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   /* ——— Paths (due strade) ——— */
@@ -893,7 +916,9 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @media (min-width: 768px) {
-    .paths { grid-template-columns: repeat(2, 1fr); }
+    .paths {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .path-cell {
@@ -912,7 +937,10 @@ import Layout from '../layouts/Layout.astro';
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--home-line-soft);
     border-radius: 1.25rem;
-    transition: background 0.35s var(--ease-out), border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+    transition:
+      background 0.35s var(--ease-out),
+      border-color 0.35s var(--ease-out),
+      transform 0.35s var(--ease-out);
   }
 
   .service-cell:hover {
@@ -972,7 +1000,9 @@ import Layout from '../layouts/Layout.astro';
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--home-secondary);
-    transition: color 0.25s, gap 0.25s;
+    transition:
+      color 0.25s,
+      gap 0.25s;
   }
   .text-link:hover {
     color: var(--home-text);
@@ -989,7 +1019,11 @@ import Layout from '../layouts/Layout.astro';
     padding: 0.9rem 1.7rem;
     border-radius: 980px;
     white-space: nowrap;
-    transition: background 0.25s, border-color 0.25s, transform 0.25s var(--ease-out), box-shadow 0.25s;
+    transition:
+      background 0.25s,
+      border-color 0.25s,
+      transform 0.25s var(--ease-out),
+      box-shadow 0.25s;
   }
 
   .sl-btn-primary {
@@ -1015,8 +1049,12 @@ import Layout from '../layouts/Layout.astro';
 
   /* ——— Motion ——— */
   @keyframes heroKen {
-    from { transform: scale(1.08); }
-    to { transform: scale(1); }
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
   }
 
   @keyframes riseIn {
@@ -1027,9 +1065,17 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @keyframes scrollDot {
-    0% { opacity: 0; transform: translateY(0); }
-    30% { opacity: 1; }
-    100% { opacity: 0; transform: translateY(12px); }
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
   }
 
   [data-reveal] {
@@ -1052,7 +1098,9 @@ import Layout from '../layouts/Layout.astro';
     .hero-scroll span {
       animation: none !important;
     }
-    .hero-img { transform: none; }
+    .hero-img {
+      transform: none;
+    }
     .hero-item {
       opacity: 1 !important;
       transform: none !important;
