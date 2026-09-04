@@ -10,6 +10,13 @@ export interface ClientLogo {
 
 export const clientLogos: ClientLogo[] = [
   {
+    name: 'Garavella 7',
+    logo: '/logo_garavella.png',
+    tier: 'premium',
+    url: 'https://www.bardairagazzicarmagnola.it',
+    location: 'Carmagnola',
+  },
+  {
     name: 'Tropini Service',
     logo: '/logo_tropini.png',
     tier: 'premium',

@@ -32,6 +32,126 @@
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: 'garavella-7',
+    slug: 'garavella-7',
+    title: 'Garavella 7',
+    subtitle: 'Sito web & menu digitale',
+    category: 'Food & Beverage',
+    location: 'Carmagnola (TO)',
+    imageUrl: '/garavella_spritz.jpg',
+    siteUrl: 'https://www.bardairagazzicarmagnola.it',
+    featured: true,
+    isWip: false,
+
+    clientDescription: `Garavella 7 è il progetto digitale del Bar Dai Ragazzi, in Piazza Garavella 7 a Carmagnola. Il locale è un punto di riferimento per colazioni, tavola calda, panini, hamburger e aperitivi, con tagline “Less stress, more spritz!”: tutti i venerdì aperitivo a buffet, dal giovedì alla domenica (escluso il venerdì) aperitivo con tagliere.`,
+
+    problema: `Il bar aveva bisogno di una vetrina online chiara, allineata al brand Garavella 7, che facesse trovare il locale in centro a Carmagnola e mostrasse in tempo reale quello che c’è al banco — senza aggiornare il sito a mano ogni volta che cambia il menu.`,
+
+    soluzione: [
+      {
+        titolo: 'Sito vetrina con identità Garavella 7',
+        descrizione:
+          'Bitora ha realizzato un sito veloce e mobile-first che racconta il locale, gli aperitivi e i recapiti (telefono, WhatsApp, mappa). Il nome pubblico del progetto è Garavella 7, in linea con l’indirizzo e con il marchio del locale.',
+      },
+      {
+        titolo: 'Menu digitale collegato al gestionale',
+        descrizione:
+          'Il menu del sito si aggiorna dal gestionale interno: se un ingrediente finisce in magazzino, le voci che lo usano spariscono automaticamente dalla carta online. Il cliente vede quello che trova davvero al banco.',
+      },
+      {
+        titolo: 'SEO locale e conversioni via WhatsApp',
+        descrizione:
+          'Il sito è ottimizzato per le ricerche locali su Carmagnola, con schemi strutturati, orari, recensioni in evidenza e call-to-action dirette su WhatsApp e telefono.',
+      },
+    ],
+
+    risultati: [
+      'Presenza digitale live su bardairagazzicarmagnola.it con brand Garavella 7',
+      'Menu pubblico allineato al magazzino, senza aggiornamenti manuali',
+      'Percorso di contatto immediato: chiamata, WhatsApp e indicazioni stradali',
+      'Identità visiva coerente con il locale in Piazza Garavella',
+    ],
+
+    tecnologie: [
+      'Astro',
+      'Coolify',
+      'Menu digitale live',
+      'SEO locale',
+      'WhatsApp CTA',
+      'Responsive design',
+    ],
+
+    metricsPreview: ['Menu dal gestionale', 'SEO locale Carmagnola'],
+
+    fonti: [
+      {
+        testo: 'Sito ufficiale Garavella 7',
+        url: 'https://www.bardairagazzicarmagnola.it',
+      },
+    ],
+  },
+
+  {
+    id: 'garavella-7-gestionale',
+    slug: 'garavella-7-gestionale',
+    title: 'Garavella 7',
+    subtitle: 'Gestionale bar',
+    category: 'Software • Food',
+    location: 'Carmagnola (TO)',
+    imageUrl: '/logo_garavella.png',
+    siteUrl: '#',
+    featured: true,
+    isWip: false,
+
+    clientDescription: `Garavella 7 è anche il gestionale interno del Bar Dai Ragazzi, pensato per il lavoro di ogni giorno in Piazza Garavella 7 a Carmagnola: magazzino, menu, dipendenti e cassa in un’unica piattaforma, collegata al sito pubblico.`,
+
+    problema: `Magazzino, carta del bar, presenze del personale e movimenti di cassa vivevano su fogli, appunti e strumenti staccati. Serviva un sistema unico, usabile dal telefono dietro al banco, che tenesse allineati scorte e menu — anche quello visibile ai clienti sul sito.`,
+
+    soluzione: [
+      {
+        titolo: 'Magazzino con scanner barcode',
+        descrizione:
+          'Articoli con codice e EAN, soglie di scorta e movimenti di entrata, uscita e rettifica. Dietro al banco si scansiona il prodotto con la fotocamera del telefono per caricare o scaricare merce in pochi secondi.',
+      },
+      {
+        titolo: 'Menu operativo legato alle scorte',
+        descrizione:
+          'Le voci della carta usano ingredienti del magazzino. Se un prodotto finisce, i piatti che lo richiedono spariscono dal menu operativo e dall’API pubblica che alimenta il sito Garavella 7.',
+      },
+      {
+        titolo: 'Cassa e presenze in un colpo d’occhio',
+        descrizione:
+          'Registro entrate e uscite (vendite banco, aperitivo, fornitori, stipendi) e calendario presenze del personale (presente, ferie, malattia, riposo), con dashboard che collega cassa, magazzino e menu.',
+      },
+    ],
+
+    risultati: [
+      'Gestionale unico per magazzino, menu, cassa e dipendenti',
+      'Scorte e carta del bar allineate, anche sul sito pubblico',
+      'Carico e scarico merce via scanner barcode da smartphone',
+      'Quadro operativo per titolare e staff, senza POS da sala né comande da cucina',
+    ],
+
+    tecnologie: [
+      'Next.js',
+      'Prisma',
+      'MySQL',
+      'Scanner barcode',
+      'API menu pubblica',
+      'Dashboard operativa',
+    ],
+
+    metricsPreview: ['Magazzino e cassa', 'Menu collegato alle scorte'],
+
+    fonti: [
+      {
+        testo: 'Sito pubblico Garavella 7',
+        url: 'https://www.bardairagazzicarmagnola.it',
+      },
+    ],
+  },
+
+  {
     id: 'tropini-service',
     slug: 'tropini-service',
     title: 'Tropini Service',
