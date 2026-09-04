@@ -38,7 +38,7 @@ export const caseStudies: CaseStudy[] = [
     subtitle: 'Sito web & menu digitale',
     category: 'Food & Beverage',
     location: 'Carmagnola (TO)',
-    imageUrl: '/garavella_spritz.jpg',
+    imageUrl: '/logo_garavella.png',
     siteUrl: 'https://www.bardairagazzicarmagnola.it',
     featured: true,
     isWip: false,
@@ -94,7 +94,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'garavella-7-gestionale',
     slug: 'garavella-7-gestionale',
-    title: 'Garavella 7',
+    title: 'Gestionale Garavella 7',
     subtitle: 'Gestionale bar',
     category: 'Software • Food',
     location: 'Carmagnola (TO)',
