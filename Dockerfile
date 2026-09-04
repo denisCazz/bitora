@@ -1,8 +1,12 @@
+# syntax=docker/dockerfile:1
+
 # Stage 1: Install ALL dependencies (needed for build)
 FROM node:22-alpine AS deps
 WORKDIR /app
+ENV NPM_CONFIG_UPDATE_NOTIFIER=false
 COPY package.json package-lock.json* ./
-RUN npm ci
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --no-audit --no-fund
 
 # Stage 2: Build the Astro site
 FROM node:22-alpine AS build
@@ -11,11 +15,12 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
-# Stage 3: Production dependencies only
+# Stage 3: Drop devDependencies from the already-installed tree
 FROM node:22-alpine AS prod-deps
 WORKDIR /app
 COPY package.json package-lock.json* ./
-RUN npm ci --omit=dev
+COPY --from=deps /app/node_modules ./node_modules
+RUN npm prune --omit=dev --no-audit --no-fund
 
 # Stage 4: Minimal runtime image
 FROM node:22-alpine AS runtime
