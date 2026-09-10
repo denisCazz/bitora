@@ -1,0 +1,144 @@
+---
+export const prerender = false;
+import OpsLayout from '../../layouts/OpsLayout.astro';
+import { VPS_DISK_WARN, VPS_LOAD_WARN, VPS_MEM_WARN } from '../../lib/ops/env';
+import {
+  formatBytes,
+  formatClock,
+  formatDuration,
+  formatPercent,
+  formatRelative,
+} from '../../lib/ops/format';
+import { currentSnapshot } from '../../lib/ops/monitor';
+import type { VpsMetrics } from '../../lib/ops/store';
+
+const snapshot = currentSnapshot();
+const diskWarn = VPS_DISK_WARN();
+const memWarn = VPS_MEM_WARN();
+const loadWarn = VPS_LOAD_WARN();
+
+function meterTone(pct: number | null, warn: number): string {
+  if (pct == null) return '';
+  if (pct >= warn + 8) return 'down';
+  if (pct >= warn) return 'warn';
+  return '';
+}
+
+function loadPct(metrics: VpsMetrics): number {
+  return Math.min(100, (metrics.load1 / Math.max(1, metrics.cpuCount * loadWarn)) * 100);
+}
+
+function cards(metrics: VpsMetrics, label: string) {
+  const mem = formatPercent(metrics.memUsedBytes, metrics.memTotalBytes);
+  const disk = formatPercent(metrics.diskUsedBytes, metrics.diskTotalBytes);
+  return { metrics, label, mem, disk };
+}
+
+const blocks = [
+  snapshot.runtime ? cards(snapshot.runtime, 'Runtime container') : null,
+  snapshot.agent
+    ? cards(snapshot.agent, snapshot.agentStale ? 'Host VPS (dati vecchi)' : 'Host VPS')
+    : null,
+].filter(Boolean);
+---
+
+<OpsLayout title="Monitoraggio VPS | Bitora Ops" heading="Monitoraggio VPS">
+  <div class="ops-cards" style="margin-bottom: 22px;">
+    <div class="ops-card">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', snapshot.vpsIssues.length ? 'warn' : undefined]}></span>
+        Segnalazioni
+      </p>
+      <h2>{snapshot.vpsIssues.length}</h2>
+      <p class="ops-muted">Soglie RAM {memWarn}%, disco {diskWarn}%, load {loadWarn} per CPU</p>
+    </div>
+    <div class="ops-card">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', snapshot.agent && !snapshot.agentStale ? undefined : 'warn']}
+        ></span>
+        Agent host
+      </p>
+      <h2>{snapshot.agent ? formatRelative(snapshot.agent.receivedAt) : 'non attivo'}</h2>
+      <p class="ops-muted">
+        {
+          snapshot.agent
+            ? formatClock(snapshot.agent.receivedAt)
+            : 'Invia metriche dal VPS con lo script agent'
+        }
+      </p>
+    </div>
+  </div>
+
+  {
+    snapshot.vpsIssues.length > 0 && (
+      <div class="ops-card" style="margin-bottom: 22px;">
+        <h2>Problemi aperti</h2>
+        <ul class="ops-muted" style="margin: 12px 0 0; padding-left: 18px;">
+          {snapshot.vpsIssues.map(issue => (
+            <li>
+              <strong style="color:#fff">{issue.label}</strong> — {issue.detail}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    blocks.map(
+      block =>
+        block && (
+          <section style="margin-bottom: 24px;">
+            <h2 style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin: 0 0 12px;">
+              {block.label} · {block.metrics.hostname}
+            </h2>
+            <div class="ops-cards">
+              <div class="ops-card">
+                <p class="ops-muted">RAM</p>
+                <h2>{block.mem != null ? `${block.mem.toFixed(0)}%` : '—'}</h2>
+                <p class="ops-muted">
+                  {formatBytes(block.metrics.memUsedBytes)} /{' '}
+                  {formatBytes(block.metrics.memTotalBytes)}
+                </p>
+                <div class:list={['ops-meter', meterTone(block.mem, memWarn)]}>
+                  <span style={`width:${block.mem ?? 0}%`} />
+                </div>
+              </div>
+              <div class="ops-card">
+                <p class="ops-muted">Disco</p>
+                <h2>{block.disk != null ? `${block.disk.toFixed(0)}%` : '—'}</h2>
+                <p class="ops-muted">
+                  {formatBytes(block.metrics.diskUsedBytes)} /{' '}
+                  {formatBytes(block.metrics.diskTotalBytes)}
+                </p>
+                <div class:list={['ops-meter', meterTone(block.disk, diskWarn)]}>
+                  <span style={`width:${block.disk ?? 0}%`} />
+                </div>
+              </div>
+              <div class="ops-card">
+                <p class="ops-muted">Load average</p>
+                <h2>{block.metrics.load1.toFixed(2)}</h2>
+                <p class="ops-muted">
+                  {block.metrics.load5.toFixed(2)} / {block.metrics.load15.toFixed(2)} ·{' '}
+                  {block.metrics.cpuCount} CPU · uptime {formatDuration(block.metrics.uptimeSec)}
+                </p>
+                <div class:list={['ops-meter', meterTone(loadPct(block.metrics), 100)]}>
+                  <span style={`width:${loadPct(block.metrics)}%`} />
+                </div>
+              </div>
+            </div>
+          </section>
+        )
+    )
+  }
+
+  <form method="POST" action="/api/ops/check/" style="margin-bottom: 18px;">
+    <button class="ops-btn" type="submit">Aggiorna runtime</button>
+  </form>
+
+  <div class="ops-note">
+    Il cron raccoglie load, RAM e disco visti dal container. Per disco e RAM del <strong
+      style="color:#fff">VPS host</strong>, sul server:
+    <pre><code>OPS_CRON_SECRET=… OPS_INGEST_URL=https://bitora.it/api/ops/vps/ ./scripts/ops-vps-agent.sh</code></pre>
+  </div>
+</OpsLayout>

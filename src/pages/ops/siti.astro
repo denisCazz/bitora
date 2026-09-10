@@ -1,0 +1,94 @@
+---
+export const prerender = false;
+import OpsLayout from '../../layouts/OpsLayout.astro';
+import { monitoredSites } from '../../data/monitoredTargets';
+import { formatClock, formatMs, formatRelative } from '../../lib/ops/format';
+import { currentSnapshot } from '../../lib/ops/monitor';
+
+const snapshot = currentSnapshot();
+const byId = new Map(snapshot.sites.map(s => [s.id, s]));
+const rows = monitoredSites.map(site => {
+  const result = byId.get(site.id);
+  return { site, result };
+});
+const groups = [
+  { id: 'infrastruttura', label: 'Infrastruttura' },
+  { id: 'clienti', label: 'Siti clienti' },
+] as const;
+---
+
+<OpsLayout title="Stato siti | Bitora Ops" heading="Stato siti">
+  <div class="ops-cards" style="margin-bottom: 22px;">
+    <div class="ops-card">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', snapshot.downCount ? 'down' : undefined]}></span>
+        Online
+      </p>
+      <h2>{snapshot.sites.length ? `${snapshot.upCount}/${monitoredSites.length}` : '—'}</h2>
+      <p class="ops-muted">Ultimo check {formatRelative(snapshot.checkedAt)}</p>
+    </div>
+    <div class="ops-card">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', snapshot.downCount ? 'down' : undefined]}></span>
+        Problemi
+      </p>
+      <h2>{snapshot.sites.length ? snapshot.downCount : '—'}</h2>
+      <p class="ops-muted">{formatClock(snapshot.checkedAt)}</p>
+    </div>
+  </div>
+
+  <form method="POST" action="/api/ops/check/" style="margin-bottom: 18px;">
+    <button class="ops-btn" type="submit">Aggiorna stato</button>
+  </form>
+
+  {
+    groups.map(group => (
+      <section style="margin-bottom: 28px;">
+        <h2 style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin: 0 0 12px;">
+          {group.label}
+        </h2>
+        <div class="ops-table-wrap">
+          <table class="ops-table">
+            <thead>
+              <tr>
+                <th>Stato</th>
+                <th>Nome</th>
+                <th>HTTP</th>
+                <th>Tempo</th>
+                <th>Check</th>
+                <th>Dettaglio</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows
+                .filter(row => row.site.group === group.id)
+                .map(({ site, result }) => {
+                  const tone = !result ? 'warn' : result.ok ? 'ok' : 'down';
+                  const label = !result ? 'in attesa' : result.ok ? 'online' : 'down';
+                  return (
+                    <tr>
+                      <td>
+                        <span class="ops-pill">
+                          <span class:list={['ops-dot', tone !== 'ok' && tone]} />
+                          {label}
+                        </span>
+                      </td>
+                      <td>
+                        <a href={site.url} target="_blank" rel="noreferrer">
+                          {site.name}
+                        </a>
+                      </td>
+                      <td>{result?.statusCode ?? '—'}</td>
+                      <td>{formatMs(result?.latencyMs)}</td>
+                      <td>{formatRelative(result?.checkedAt)}</td>
+                      <td>{result?.error || site.url.replace(/^https?:\/\//, '')}</td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    ))
+  }
+</OpsLayout>

@@ -10,6 +10,13 @@ export interface ClientLogo {
 
 export const clientLogos: ClientLogo[] = [
   {
+    name: "D'Alina",
+    logo: '/logo_dalina.png',
+    tier: 'premium',
+    url: 'https://dalina.bitora.it',
+    location: 'Sommariva del Bosco',
+  },
+  {
     name: 'Garavella 7',
     logo: '/logo_garavella.png',
     tier: 'premium',

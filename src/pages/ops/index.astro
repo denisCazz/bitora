@@ -1,0 +1,86 @@
+---
+export const prerender = false;
+import OpsLayout from '../../layouts/OpsLayout.astro';
+import { monitoredSites } from '../../data/monitoredTargets';
+import { formatRelative } from '../../lib/ops/format';
+import { currentSnapshot } from '../../lib/ops/monitor';
+import { getOpsState } from '../../lib/ops/store';
+
+const snapshot = currentSnapshot();
+const state = getOpsState();
+const lastCheck = state.lastCronAt ?? state.lastManualCheckAt;
+const siteHealth = snapshot.sites.length === 0 ? 'warn' : snapshot.downCount > 0 ? 'down' : 'ok';
+const vpsHealth = snapshot.vpsIssues.some(i => i.severity === 'critical')
+  ? 'down'
+  : snapshot.vpsIssues.length > 0
+    ? 'warn'
+    : snapshot.runtime
+      ? 'ok'
+      : 'warn';
+---
+
+<OpsLayout title="Bitora Ops" heading="Panoramica">
+  <div class="ops-cards">
+    <a class="ops-card" href="/ops/siti/">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', siteHealth !== 'ok' && siteHealth]}></span>
+        Stato siti
+      </p>
+      <h2>
+        {
+          snapshot.sites.length
+            ? `${snapshot.upCount}/${snapshot.sites.length} online`
+            : `${monitoredSites.length} siti da controllare`
+        }
+      </h2>
+      <p class="ops-muted">
+        Uptime HTTP dei siti clienti e dell’infrastruttura Bitora. Ultimo check: {
+          formatRelative(lastCheck)
+        }.
+      </p>
+    </a>
+    <a class="ops-card" href="/ops/vps/">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', vpsHealth !== 'ok' && vpsHealth]}></span>
+        Monitoraggio VPS
+      </p>
+      <h2>
+        {
+          snapshot.vpsIssues.length
+            ? `${snapshot.vpsIssues.length} ${snapshot.vpsIssues.length === 1 ? 'segnalazione' : 'segnalazioni'}`
+            : 'Risorse nella norma'
+        }
+      </h2>
+      <p class="ops-muted">Load, RAM e disco del runtime, più metriche host se l’agent è attivo.</p>
+    </a>
+    <div class="ops-card">
+      <p class="ops-pill">
+        <span class="ops-dot warn"></span>
+        Prossimi tool
+      </p>
+      <h2>Spazio per altri strumenti</h2>
+      <p class="ops-muted">
+        Backup, certificati, code e report si possono aggiungere qui senza toccare il sito pubblico.
+      </p>
+    </div>
+  </div>
+
+  <form method="POST" action="/api/ops/check/" style="margin-top: 22px;">
+    <button class="ops-btn" type="submit">Esegui check ora</button>
+  </form>
+
+  <div class="ops-note">
+    <strong style="color:#fff">Cron Coolify</strong> (ogni 5 minuti), con header di autenticazione:<br
+    />
+    <code>
+      curl -fsS -X POST -H "Authorization: Bearer $OPS_CRON_SECRET" https://bitora.it/api/ops/cron/
+    </code>
+    {
+      !state.lastCronAt && (
+        <p style="margin: 10px 0 0">
+          Nessun cron registrato finora: finché non gira, gli alert email non partono da soli.
+        </p>
+      )
+    }
+  </div>
+</OpsLayout>

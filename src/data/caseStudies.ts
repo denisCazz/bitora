@@ -32,6 +32,66 @@
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: 'dalina',
+    slug: 'dalina',
+    title: "D'Alina",
+    subtitle: 'Sito web & menu digitale',
+    category: 'Food & Beverage',
+    location: 'Sommariva del Bosco (CN)',
+    imageUrl: '/logo_dalina.png',
+    siteUrl: 'https://dalina.bitora.it',
+    featured: true,
+    isWip: false,
+
+    clientDescription: `D'Alina è ristorante e pizzeria in Via Canale 48 a Sommariva del Bosco, nel Roero. Pizza al forno, cucina e serate in compagnia: un locale per restare a tavola, non solo per un asporto veloce. Aperto mercoledì–domenica dalle 18:30 all’1:00.`,
+
+    problema: `Il locale aveva bisogno di una vetrina online chiara per farsi trovare nel Roero, mostrare pizza e cucina, e far prenotare un tavolo senza passaggi inutili — telefono, WhatsApp, orari e mappa in un colpo d’occhio.`,
+
+    soluzione: [
+      {
+        titolo: 'Sito vetrina con identità D’Alina',
+        descrizione:
+          'Bitora ha realizzato un sito veloce e mobile-first che racconta forno, tavola e serate. Design allineato al marchio, con logo, tono e colori del locale, pensato per smartphone prima di tutto.',
+      },
+      {
+        titolo: 'Menu digitale pizza e cucina',
+        descrizione:
+          'La carta è online: pizze classiche e speciali, cucina e dolci, con prezzi e descrizioni. Il cliente vede cosa c’è in tavola prima di arrivare; il menu si aggiorna dal codice, senza un CMS da gestire in sala.',
+      },
+      {
+        titolo: 'SEO locale e prenotazione diretta',
+        descrizione:
+          'Il sito è ottimizzato per le ricerche su Sommariva del Bosco e il Roero, con schemi strutturati, FAQ, orari, mappa e call-to-action su telefono e WhatsApp.',
+      },
+    ],
+
+    risultati: [
+      'Presenza digitale live su dalina.bitora.it con brand D’Alina',
+      'Menu pubblico di pizza e cucina, consultabile da mobile',
+      'Percorso di contatto immediato: chiamata, WhatsApp e indicazioni stradali',
+      'Visibilità locale strutturata per Sommariva del Bosco e il Roero',
+    ],
+
+    tecnologie: [
+      'Astro',
+      'Coolify',
+      'Menu digitale',
+      'SEO locale',
+      'WhatsApp CTA',
+      'Responsive design',
+    ],
+
+    metricsPreview: ['Menu pizza e cucina', 'SEO locale Roero'],
+
+    fonti: [
+      {
+        testo: 'Sito ufficiale D’Alina',
+        url: 'https://dalina.bitora.it',
+      },
+    ],
+  },
+
+  {
     id: 'garavella-7',
     slug: 'garavella-7',
     title: 'Garavella 7',

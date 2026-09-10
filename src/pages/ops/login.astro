@@ -1,0 +1,148 @@
+---
+export const prerender = false;
+import { isAuthenticated, safeOpsNext } from '../../lib/ops/auth';
+import { isOpsConfigured } from '../../lib/ops/env';
+
+if (isAuthenticated(Astro.cookies)) {
+  return Astro.redirect(safeOpsNext(Astro.url.searchParams.get('next')));
+}
+
+const errore = Astro.url.searchParams.get('errore');
+const next = safeOpsNext(Astro.url.searchParams.get('next'));
+const configured = isOpsConfigured();
+
+const messages: Record<string, string> = {
+  password: 'Password non corretta.',
+  rate: 'Troppi tentativi. Riprova tra qualche minuto.',
+  config: 'Area non configurata: imposta OPS_PASSWORD nelle variabili ambiente.',
+};
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>Accesso area privata | Bitora</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <p class="kicker">Bitora Ops</p>
+      <h1>Area privata</h1>
+      <p class="lede">Strumenti interni: stato siti, VPS e alert.</p>
+      {
+        errore && messages[errore] && (
+          <p class="error" role="alert">
+            {messages[errore]}
+          </p>
+        )
+      }
+      {
+        configured ? (
+          <form method="POST" action="/api/ops/login/">
+            <input type="hidden" name="next" value={next} />
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              autofocus
+            />
+            <button type="submit">Entra</button>
+          </form>
+        ) : (
+          <p class="error" role="alert">
+            Imposta <code>OPS_PASSWORD</code> e <code>OPS_CRON_SECRET</code> per attivare l’area.
+          </p>
+        )
+      }
+    </main>
+  </body>
+</html>
+
+<style is:inline>
+  :root {
+    color-scheme: dark;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #050505;
+    color: #f5f5f7;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  main {
+    width: min(420px, calc(100% - 2rem));
+  }
+  .kicker {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 700;
+  }
+  h1 {
+    margin: 8px 0 8px;
+    letter-spacing: -0.04em;
+    font-size: 2.2rem;
+  }
+  .lede {
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 24px;
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: #111;
+    color: #fff;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font: inherit;
+    margin-bottom: 14px;
+    color-scheme: dark;
+  }
+  button {
+    appearance: none;
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    background: #fff;
+    color: #050505;
+    color-scheme: light;
+  }
+  button:hover {
+    background: #e8e8ea;
+  }
+  .error {
+    background: rgba(248, 113, 113, 0.12);
+    color: #fecaca;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+  code {
+    font-size: 12px;
+  }
+</style>

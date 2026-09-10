@@ -23,7 +23,11 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => !SITEMAP_EXCLUDE.has(page),
+      filter: page => {
+        if (SITEMAP_EXCLUDE.has(page)) return false;
+        if (page.includes('/ops/')) return false;
+        return true;
+      },
     }),
     react(),
     compressor({

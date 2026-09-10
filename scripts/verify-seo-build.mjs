@@ -87,7 +87,7 @@ for (const file of sitemapFiles) {
     if (path !== '/' && !path.endsWith('/')) {
       fail(`Missing trailing slash in sitemap: ${loc}`);
     }
-    if (bannedPaths.some(b => path === b)) {
+    if (bannedPaths.some(b => path === b) || path.startsWith('/ops/')) {
       fail(`Banned path in sitemap: ${loc}`);
     }
   }
