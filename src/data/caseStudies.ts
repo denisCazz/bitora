@@ -99,7 +99,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Food & Beverage',
     location: 'Carmagnola (TO)',
     imageUrl: '/logo_garavella.png',
-    siteUrl: 'https://www.bardairagazzicarmagnola.it',
+    siteUrl: 'https://garavella7.it',
     featured: true,
     isWip: false,
 
@@ -126,7 +126,7 @@ export const caseStudies: CaseStudy[] = [
     ],
 
     risultati: [
-      'Presenza digitale live su bardairagazzicarmagnola.it con brand Garavella 7',
+      'Presenza digitale live su garavella7.it',
       'Menu pubblico allineato al magazzino, senza aggiornamenti manuali',
       'Percorso di contatto immediato: chiamata, WhatsApp e indicazioni stradali',
       'Identità visiva coerente con il locale in Piazza Garavella',
@@ -146,7 +146,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [
       {
         testo: 'Sito ufficiale Garavella 7',
-        url: 'https://www.bardairagazzicarmagnola.it',
+        url: 'https://garavella7.it',
       },
     ],
   },
@@ -206,7 +206,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [
       {
         testo: 'Sito pubblico Garavella 7',
-        url: 'https://www.bardairagazzicarmagnola.it',
+        url: 'https://garavella7.it',
       },
     ],
   },

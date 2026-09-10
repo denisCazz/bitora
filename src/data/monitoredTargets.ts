@@ -33,7 +33,7 @@ export const monitoredSites: MonitoredSite[] = [
   {
     id: 'garavella-7',
     name: 'Garavella 7',
-    url: 'https://www.bardairagazzicarmagnola.it/',
+    url: 'https://garavella7.it/',
     group: 'clienti',
   },
   {

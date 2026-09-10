@@ -20,7 +20,7 @@ export const clientLogos: ClientLogo[] = [
     name: 'Garavella 7',
     logo: '/logo_garavella.png',
     tier: 'premium',
-    url: 'https://www.bardairagazzicarmagnola.it',
+    url: 'https://garavella7.it',
     location: 'Carmagnola',
   },
   {
