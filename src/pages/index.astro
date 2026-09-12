@@ -37,11 +37,56 @@ import Layout from '../layouts/Layout.astro';
           Cerchi una piattaforma operativa?
           <a href="/gestione-interventi/">Software per interventi, ticket e rapportini</a>
         </p>
+        <p class="hero-alt hero-item">
+          Nuova branchia Bitora:
+          <a href="https://shopnfc.bitora.it/">Shop NFC — tag, tessere e lettori</a>
+        </p>
       </div>
 
-      <a href="#problema" class="hero-scroll" aria-label="Scorri">
+      <a href="#shop-nfc" class="hero-scroll" aria-label="Scorri">
         <span></span>
       </a>
+    </section>
+
+    <!-- SHOP NFC — nuova branchia -->
+    <section class="nfc-launch" id="shop-nfc" aria-labelledby="nfc-launch-title">
+      <div class="shell nfc-launch-inner">
+        <div class="nfc-launch-copy" data-reveal>
+          <p class="nfc-kicker">Nuova branchia · Progetto Bitora</p>
+          <h2 id="nfc-launch-title" class="headline">Shop NFC Bitora</h2>
+          <p class="nfc-lede">
+            Catalogo online di tag, tessere, braccialetti e lettori NFC. Programmazione inclusa,
+            assistenza Bitora, spedizioni in Italia.
+          </p>
+          <ul class="nfc-meta">
+            <li>Sticker e tessere</li>
+            <li>Tag industriali</li>
+            <li>Lettori e chip</li>
+            <li>Programmazione inclusa</li>
+          </ul>
+          <div class="cta-row">
+            <a
+              href="https://shopnfc.bitora.it/"
+              class="nfc-btn-primary"
+              data-track="cta_click"
+              data-track-location="home_shopnfc"
+            >
+              Entra nello shop
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="/nfc-ecosystem/" class="nfc-btn-ghost">Soluzioni NFC su misura</a>
+          </div>
+        </div>
+        <div class="nfc-launch-media" data-reveal data-reveal-delay="1">
+          <img
+            src="/nfc.png"
+            alt="Tessera NFC Bitora"
+            width="480"
+            height="480"
+            decoding="async"
+          />
+        </div>
+      </div>
     </section>
 
     <!-- PROBLEMA -->
@@ -248,6 +293,23 @@ import Layout from '../layouts/Layout.astro';
           <p class="eyebrow">Tutti i servizi</p>
           <h2 class="headline">Dal sito vetrina alle pratiche digitalizzate</h2>
         </header>
+
+        <a
+          href="https://shopnfc.bitora.it/"
+          class="service-cell service-nfc"
+          data-reveal
+          data-track="cta_click"
+          data-track-location="home_servizi_shopnfc"
+        >
+          <div>
+            <p class="service-num">Nuova branchia</p>
+            <h3 class="service-title">Shop NFC Bitora</h3>
+            <p class="body-sm">
+              Tag, tessere, braccialetti e lettori NFC. Catalogo online con programmazione inclusa.
+            </p>
+          </div>
+          <span class="service-cta">Entra nello shop <span aria-hidden="true">→</span></span>
+        </a>
 
         <div class="services" data-reveal-group>
           <a href="/siti-web-professionali/" class="service-cell" data-reveal>
@@ -698,6 +760,9 @@ import Layout from '../layouts/Layout.astro';
   .hero-item:nth-child(5) {
     animation-delay: 0.7s;
   }
+  .hero-item:nth-child(6) {
+    animation-delay: 0.82s;
+  }
 
   .hero-alt {
     margin-top: 1.25rem;
@@ -897,6 +962,122 @@ import Layout from '../layouts/Layout.astro';
     text-align: right;
   }
 
+  /* ——— Shop NFC launch ——— */
+  .nfc-launch {
+    background:
+      radial-gradient(ellipse 70% 80% at 88% 20%, rgba(14, 116, 179, 0.12) 0%, transparent 55%),
+      #f3f6fa;
+    color: #0b1220;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nfc-launch-inner {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding: clamp(4rem, 9vw, 6.5rem) 0;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .nfc-launch-inner {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 4.5rem;
+    }
+  }
+
+  .nfc-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0369a1;
+    margin: 0 0 1.1rem;
+  }
+
+  .nfc-launch .headline {
+    color: #0b1220;
+    margin-bottom: 1.15rem;
+  }
+
+  .nfc-lede {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #3d4a5c;
+    margin: 0 0 1.5rem;
+    max-width: 34rem;
+  }
+
+  .nfc-meta {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .nfc-meta li {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #0b1220;
+    background: rgba(3, 105, 161, 0.08);
+    border: 1px solid rgba(3, 105, 161, 0.16);
+    border-radius: 999px;
+    padding: 0.45rem 0.85rem;
+  }
+
+  .nfc-btn-primary,
+  .nfc-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 1.7rem;
+    border-radius: 980px;
+    white-space: nowrap;
+    transition:
+      background 0.25s,
+      border-color 0.25s,
+      transform 0.25s var(--ease-out),
+      box-shadow 0.25s;
+  }
+
+  .nfc-btn-primary {
+    background: #0b1220;
+    color: #fff;
+  }
+  .nfc-btn-primary:hover {
+    background: #000;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(11, 18, 32, 0.22);
+  }
+
+  .nfc-btn-ghost {
+    background: transparent;
+    color: #0b1220;
+    border: 1.5px solid rgba(11, 18, 32, 0.22);
+  }
+  .nfc-btn-ghost:hover {
+    border-color: rgba(11, 18, 32, 0.55);
+    background: rgba(11, 18, 32, 0.04);
+  }
+
+  .nfc-launch-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nfc-launch-media img {
+    width: min(100%, 28rem);
+    height: auto;
+    border-radius: 1.5rem;
+    box-shadow: 0 28px 60px rgba(11, 18, 32, 0.16);
+    background: #fff;
+  }
+
   /* ——— Services ——— */
   .services {
     display: grid;
@@ -980,6 +1161,46 @@ import Layout from '../layouts/Layout.astro';
 
   .service-cell:hover .service-cta {
     color: var(--home-text);
+  }
+
+  .service-nfc {
+    margin-bottom: 0.85rem;
+    min-height: auto;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1.5rem;
+    background:
+      linear-gradient(120deg, rgba(3, 105, 161, 0.22) 0%, rgba(255, 255, 255, 0.05) 55%),
+      rgba(255, 255, 255, 0.04);
+    border-color: rgba(125, 211, 252, 0.38);
+    box-shadow: 0 0 0 1px rgba(3, 105, 161, 0.12);
+  }
+
+  .service-nfc .service-num {
+    color: #7dd3fc;
+  }
+
+  .service-nfc .service-cta {
+    margin-top: 0;
+    color: var(--home-text);
+    white-space: nowrap;
+  }
+
+  .service-nfc:hover {
+    background:
+      linear-gradient(120deg, rgba(3, 105, 161, 0.3) 0%, rgba(255, 255, 255, 0.07) 55%),
+      rgba(255, 255, 255, 0.05);
+    border-color: rgba(125, 211, 252, 0.55);
+  }
+
+  @media (max-width: 639px) {
+    .service-nfc {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .service-nfc .service-cta {
+      margin-top: 1.5rem;
+    }
   }
 
   /* ——— Links / CTAs ——— */

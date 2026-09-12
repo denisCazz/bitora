@@ -13,6 +13,9 @@ test.describe('Bitora.it web and e-commerce positioning', () => {
     await expect(page.locator('footer').last()).toBeVisible();
     await expect(page.locator('h1')).toContainText(/siti web ed e-commerce/i);
     await expect(page.locator('a[href="/contattaci/?topic=sito"]').first()).toBeVisible();
+    await expect(page.locator('a[href="https://shopnfc.bitora.it/"]').first()).toBeVisible();
+    await expect(page.locator('#shop-nfc')).toBeVisible();
+    await expect(page.locator('#shop-nfc h2')).toContainText(/Shop NFC Bitora/i);
     await expect(page.locator('a[href="https://ai.bitora.it/"]')).toHaveCount(0);
   });
 

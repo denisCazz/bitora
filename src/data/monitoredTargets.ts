@@ -25,6 +25,12 @@ export const monitoredSites: MonitoredSite[] = [
     group: 'infrastruttura',
   },
   {
+    id: 'shopnfc',
+    name: 'Shop NFC Bitora',
+    url: 'https://shopnfc.bitora.it/',
+    group: 'infrastruttura',
+  },
+  {
     id: 'dalina',
     name: "D'Alina",
     url: 'https://dalina.bitora.it/',

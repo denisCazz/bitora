@@ -7,6 +7,7 @@ Siti web, e-commerce e soluzioni tailormade: piattaforme per gestione interventi
 - [Servizi](https://bitora.it/servizi/)
 - [Siti web professionali](https://bitora.it/siti-web-professionali/)
 - [E-commerce](https://bitora.it/e-commerce/)
+- [Shop NFC Bitora](https://shopnfc.bitora.it/)
 - [Gestione interventi (ecosistema)](https://bitora.it/gestione-interventi/)
 - [Rapportini digitali](https://bitora.it/rapportini/)
 - [Ticketing e pratiche](https://bitora.it/ticketing/)

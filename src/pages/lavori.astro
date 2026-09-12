@@ -86,6 +86,51 @@ const projects = caseStudies;
       </div>
     </section>
 
+    <!-- SHOP NFC — nuova branchia -->
+    <section class="border-b border-white/[0.06] bg-gradient-to-br from-sky-500/[0.12] via-white/[0.03] to-transparent">
+      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-20 md:py-28" data-reveal>
+        <p class="text-xs font-semibold tracking-[0.25em] text-sky-300 uppercase mb-6">Nuova branchia · Progetto Bitora</p>
+        <h2 class="text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight leading-[1.07] mb-4 max-w-3xl">
+          Shop NFC Bitora
+        </h2>
+        <p class="text-sm font-medium text-white/40 mb-6">Catalogo NFC · shopnfc.bitora.it</p>
+        <p class="text-base md:text-[1.05rem] text-white/58 leading-relaxed mb-8 max-w-[56ch]">
+          E-commerce Bitora per tag, tessere, braccialetti, tag industriali e lettori NFC. Programmazione inclusa e assistenza diretta, per aziende e professionisti.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-9">
+          {[
+            'Tessere NFC',
+            'Sticker e tag',
+            'Braccialetti',
+            'Lettori',
+            'Programmazione inclusa',
+          ].map((m) => (
+            <span class="text-xs font-semibold text-white/65 bg-white/[0.06] border border-white/10 rounded-full px-3.5 py-1.5 tracking-wide">
+              {m}
+            </span>
+          ))}
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <a
+            href="https://shopnfc.bitora.it/"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-semibold rounded hover:bg-white/88 transition-colors"
+            data-track="cta_click"
+            data-track-location="lavori_shopnfc"
+          >
+            Entra nello shop
+            <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href="/nfc-ecosystem/"
+            class="inline-flex items-center gap-2 px-5 py-2.5 border border-white/25 text-white text-sm font-semibold rounded hover:border-white/60 hover:bg-white/[0.06] transition-all"
+          >
+            Soluzioni NFC su misura
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- PROJECTS -->
     {projects.map((p, i) => (
       <article class="border-b border-white/[0.06]">

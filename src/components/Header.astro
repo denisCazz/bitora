@@ -13,6 +13,7 @@ const navItems = [
   },
   { name: 'Siti web', url: '/siti-web-professionali/' },
   { name: 'E-commerce', url: '/e-commerce/' },
+  { name: 'Shop NFC', url: 'https://shopnfc.bitora.it/', badge: 'Nuovo', external: true },
   { name: 'Servizi', url: '/servizi/' },
   { name: 'Lavori', url: '/lavori/' },
   { name: 'Contatti', url: '/contattaci/' },
@@ -52,6 +53,7 @@ function resolveHeaderCta(path: string) {
 const headerCta = resolveHeaderCta(normalizedPath);
 
 function isActive(url: string) {
+  if (url.startsWith('http')) return false;
   if (url === '/') return normalizedPath === '/';
   const clean = url.replace(/\/$/, '');
   return normalizedPath === clean || normalizedPath.startsWith(clean + '/');
@@ -128,11 +130,15 @@ function isGroupActive(item: (typeof navItems)[number]) {
                 href={item.url}
                 class={
                   isActive(item.url)
-                    ? 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white bg-white/[0.09]'
-                    : 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white/70 hover:text-white hover:bg-white/[0.06]'
+                    ? 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white bg-white/[0.09] inline-flex items-center gap-1.5'
+                    : 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white/70 hover:text-white hover:bg-white/[0.06] inline-flex items-center gap-1.5'
                 }
+                {...('external' in item && item.external
+                  ? { rel: 'noopener noreferrer', 'data-track': 'cta_click', 'data-track-location': 'header_nav_shopnfc' }
+                  : {})}
               >
                 {item.name}
+                {'badge' in item && item.badge ? <span class="nav-new">{item.badge}</span> : null}
               </a>
             )
           )
@@ -194,11 +200,15 @@ function isGroupActive(item: (typeof navItems)[number]) {
               href={item.url}
               class={
                 isActive(item.url)
-                  ? 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white bg-white/[0.08]'
-                  : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/70 hover:text-white hover:bg-white/[0.05]'
+                  ? 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white bg-white/[0.08] inline-flex items-center gap-2'
+                  : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/70 hover:text-white hover:bg-white/[0.05] inline-flex items-center gap-2'
               }
+              {...('external' in item && item.external
+                ? { rel: 'noopener noreferrer', 'data-track': 'cta_click', 'data-track-location': 'header_nav_shopnfc' }
+                : {})}
             >
               {item.name}
+              {'badge' in item && item.badge ? <span class="nav-new">{item.badge}</span> : null}
             </a>
             {item.children && (
               <div class="pl-6 flex flex-col gap-0.5">
@@ -322,5 +332,19 @@ function isGroupActive(item: (typeof navItems)[number]) {
   .sl-cta-btn:hover {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.32);
+  }
+
+  .nav-new {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0b1220;
+    background: #7dd3fc;
+    border-radius: 999px;
+    padding: 0.12rem 0.42rem;
+    line-height: 1.2;
   }
 </style>
