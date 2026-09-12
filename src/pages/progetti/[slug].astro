@@ -1,10 +1,10 @@
 ---
 export const prerender = true;
 import Layout from '../../layouts/Layout.astro';
-import { caseStudies, type CaseStudy } from '../../data/caseStudies';
+import { caseStudies, getPublicCaseStudies, type CaseStudy } from '../../data/caseStudies';
 
 export function getStaticPaths() {
-  return caseStudies.map(caseStudy => ({
+  return getPublicCaseStudies().map(caseStudy => ({
     params: { slug: caseStudy.slug },
     props: { caseStudy },
   }));
@@ -17,7 +17,7 @@ interface Props {
 const { caseStudy } = Astro.props;
 
 const altriProgetti = caseStudies
-  .filter(cs => cs.slug !== caseStudy.slug && !cs.isWip)
+  .filter(cs => cs.slug !== caseStudy.slug && !cs.isWip && !cs.hidden)
   .slice(0, 3);
 ---
 
@@ -201,25 +201,6 @@ const altriProgetti = caseStudies
             ))
           }
         </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-32 md:py-36 px-8 md:px-16 lg:px-24 text-center border-t border-white/[0.06]">
-      <p class="text-xs font-semibold tracking-[0.25em] text-white/30 uppercase mb-8" data-reveal>Prossimo passo</p>
-      <h2 class="text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.03] tracking-tight mb-6 max-w-2xl mx-auto" data-reveal>
-        Vuoi risultati simili?
-      </h2>
-      <p class="text-base md:text-lg text-white/50 mb-12 max-w-md mx-auto leading-relaxed" data-reveal>
-        Raccontaci la tua sfida. Costruiremo insieme la soluzione su misura.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
-        <a href="/contattaci/" class="px-7 py-3.5 bg-white text-black rounded font-semibold text-sm hover:bg-white/90 transition-colors">
-          Inizia il tuo progetto
-        </a>
-        <a href="/lavori/" class="px-7 py-3.5 border border-white/25 text-white rounded font-semibold text-sm hover:border-white/60 hover:bg-white/[0.06] transition-all">
-          Torna ai lavori
-        </a>
       </div>
     </section>
   </main>

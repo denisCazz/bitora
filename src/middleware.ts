@@ -1,9 +1,17 @@
 import { defineMiddleware } from 'astro:middleware';
 import { isAuthenticated, isOpsRoute, isPublicOpsPath } from './lib/ops/auth';
 
+const HIDDEN_PUBLIC_PREFIXES = ['/landing', '/chi-siamo'];
+
+function isHiddenPublicPath(path: string) {
+  const normalized = path.replace(/\/$/, '') || '/';
+  return HIDDEN_PUBLIC_PREFIXES.some(prefix => normalized === prefix || normalized.startsWith(`${prefix}/`));
+}
+
 export const onRequest = defineMiddleware(async (context, next) => {
   const path = context.url.pathname;
   const ops = isOpsRoute(path);
+  const hiddenPublic = isHiddenPublicPath(path);
 
   if (ops && !isPublicOpsPath(path) && !isAuthenticated(context.cookies)) {
     if (path.startsWith('/api/')) {
@@ -25,6 +33,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (ops) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
     response.headers.set('Cache-Control', 'no-store, max-age=0');
+  } else if (hiddenPublic) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
   }
   return response;
 });

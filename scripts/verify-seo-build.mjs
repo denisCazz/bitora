@@ -68,6 +68,10 @@ const bannedPaths = [
   '/settori/turismo/',
   '/settori/professionisti/',
   '/tessere-nfc-torino/',
+  '/chi-siamo/',
+  '/tools/',
+  '/progetti/wine-cafe/',
+  '/progetti/myzone/',
 ];
 let urlCount = 0;
 

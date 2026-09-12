@@ -1,6 +1,7 @@
 ﻿---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
+import EditorialImage from '../components/EditorialImage.astro';
 ---
 
 <Layout
@@ -23,6 +24,16 @@ import Layout from '../layouts/Layout.astro';
           Chi ci cerca per un sito professionale e chi vuole digitalizzare l’operatività: stesse competenze, tre servizi chiari. Scegli da dove partire, combiniamo il resto quando serve.
         </p>
       </div>
+    </section>
+
+    <section class="px-8 md:px-16 lg:px-24 max-w-7xl mx-auto pt-10">
+      <EditorialImage
+        src="/editorial/digital-process.png"
+        alt="Passaggio da strumenti e documenti separati a un sistema digitale organizzato"
+        eyebrow="Il risultato"
+        caption="Partiamo dal punto che oggi rallenta di più: visibilità, vendita online oppure processi interni. Le integrazioni arrivano dopo, solo quando servono."
+        loading="eager"
+      />
     </section>
 
     <!-- SHOP NFC — nuova branchia -->
@@ -175,10 +186,6 @@ import Layout from '../layouts/Layout.astro';
           <a href="/bitora-crm/" class="rounded-2xl border border-white/10 p-6 hover:border-white/30 transition-colors">
             <h3 class="font-bold mb-2">Bitora CRM</h3>
             <p class="text-white/60 text-sm">Clienti, lead ed email in un’unica app.</p>
-          </a>
-          <a href="/tools/" class="rounded-2xl border border-white/10 p-6 hover:border-white/30 transition-colors">
-            <h3 class="font-bold mb-2">Tools gratuiti</h3>
-            <p class="text-white/60 text-sm">QR code, password e calcolatore ROI.</p>
           </a>
         </div>
       </div>

@@ -3,6 +3,8 @@ export const prerender = true;
 import Layout from '../../layouts/Layout.astro';
 import FAQPageSchema from '../../components/schema/FAQPage.astro';
 import ArticleSchema from '../../components/schema/Article.astro';
+import EditorialImage from '../../components/EditorialImage.astro';
+import FAQ from '../../components/FAQ.astro';
 
 const faqItems = [
   {
@@ -31,6 +33,7 @@ const faqItems = [
 <Layout
   title="Quanto Costa un Sito Web per PMI nel 2026 | Prezzi e Tempi | Bitora"
   description="Quanto costa un sito web per PMI? Guida 2026 con fasce di prezzo, tempi di consegna, cosa include un sito professionale e errori da evitare. Preventivo gratuito Bitora Piemonte."
+  image="/editorial/web-offer.png"
 >
   <ArticleSchema
     headline="Quanto costa un sito web per PMI nel 2026"
@@ -38,8 +41,9 @@ const faqItems = [
     datePublished="2026-06-13"
     dateModified="2026-06-13"
     url="https://bitora.it/blog/quanto-costa-sito-web-pmi/"
-    image="https://bitora.it/bitora.jpg"
+    image="https://bitora.it/editorial/web-offer.png"
   />
+  <FAQPageSchema items={faqItems} />
 
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
@@ -71,6 +75,13 @@ const faqItems = [
 
     <article class="py-16 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
       <div class="max-w-3xl mx-auto space-y-8 text-gray-600 dark:text-gray-400 leading-relaxed">
+        <EditorialImage
+          src="/editorial/web-offer.png"
+          alt="Sito professionale visualizzato su computer e smartphone"
+          eyebrow="Sito professionale"
+          caption="Design responsive, contenuti, SEO, misurazione e supporto: il prezzo cambia in base a ciò che il sito deve ottenere e integrare."
+          loading="eager"
+        />
         <section>
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Fasce di prezzo</h2>
           <ul class="list-disc pl-6 space-y-2">
@@ -103,20 +114,11 @@ const faqItems = [
           </p>
         </section>
 
-        <div
-          class="p-8 rounded-2xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-center"
-        >
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            Vuoi un preventivo per il tuo sito?
-          </h3>
-          <p class="mb-6">Audit gratuito + proposta modulare in 24h.</p>
-          <a href="/contattaci/?topic=sito" class="btn-primary inline-flex items-center gap-2"
-            >Richiedi preventivo</a
-          >
-        </div>
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-5">Domande frequenti</h2>
+          <FAQ items={faqItems} />
+        </section>
       </div>
     </article>
   </main>
 </Layout>
-
-<FAQPageSchema items={faqItems} />

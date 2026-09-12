@@ -9,6 +9,7 @@
   siteUrl: string;
   featured: boolean;
   isWip?: boolean;
+  hidden?: boolean;
 
   // Dettagli completi
   clientDescription: string;
@@ -719,6 +720,7 @@ export const caseStudies: CaseStudy[] = [
     siteUrl: '#',
     featured: true,
     isWip: false,
+    hidden: true,
 
     clientDescription: `Bar Wine Café è un locale di Carmagnola con proposta bar e aperitivi. In questa fase il progetto web resta online in forma ridotta, con il dominio presidiato e una comunicazione chiara verso i visitatori.`,
 
@@ -764,6 +766,7 @@ export const caseStudies: CaseStudy[] = [
     siteUrl: '#',
     featured: true,
     isWip: false,
+    hidden: true,
 
     clientDescription: `MyZone è un progetto immobiliare pensato per presentare immobili e opportunità in modo chiaro, ordinato e professionale, con una presenza digitale coerente con il settore.`,
 
@@ -796,17 +799,22 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-// Funzione helper per ottenere un case study per slug
+export function isPublicCaseStudy(cs: CaseStudy): boolean {
+  return !cs.hidden;
+}
+
+export function getPublicCaseStudies(): CaseStudy[] {
+  return caseStudies.filter(isPublicCaseStudy);
+}
+
 export function getCaseStudyBySlug(slug: string): CaseStudy | undefined {
-  return caseStudies.find(cs => cs.slug === slug);
+  return getPublicCaseStudies().find(cs => cs.slug === slug);
 }
 
-// Funzione helper per ottenere i case study featured
 export function getFeaturedCaseStudies(): CaseStudy[] {
-  return caseStudies.filter(cs => cs.featured);
+  return getPublicCaseStudies().filter(cs => cs.featured);
 }
 
-// Funzione helper per ottenere i case study completati (non WIP)
 export function getCompletedCaseStudies(): CaseStudy[] {
-  return caseStudies.filter(cs => !cs.isWip);
+  return getPublicCaseStudies().filter(cs => !cs.isWip);
 }

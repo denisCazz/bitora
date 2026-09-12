@@ -35,19 +35,31 @@ const isLightOverlay = overlay === 'light';
 
 <section class="relative overflow-hidden">
   {
-    variant === 'background' && videoSrc ? (
+    variant === 'background' && (videoSrc || posterSrc) ? (
       <div class="absolute inset-0" data-hero-bg>
-        <video
-          class="absolute inset-0 w-full h-full object-cover"
-          src={videoSrc}
-          autoplay
-          muted
-          playsinline
-          loop
-          preload="metadata"
-          poster={posterSrc}
-          aria-label={videoLabel}
-        />
+        {videoSrc ? (
+          <video
+            class="absolute inset-0 w-full h-full object-cover"
+            src={videoSrc}
+            autoplay
+            muted
+            playsinline
+            loop
+            preload="metadata"
+            poster={posterSrc}
+            aria-label={videoLabel}
+          />
+        ) : (
+          <img
+            class="absolute inset-0 w-full h-full object-cover"
+            src={posterSrc}
+            alt={videoLabel}
+            width="1024"
+            height="576"
+            fetchpriority="high"
+            decoding="async"
+          />
+        )}
         <div
           class={`absolute inset-0 ${
             isLightOverlay

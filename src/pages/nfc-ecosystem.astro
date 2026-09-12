@@ -15,7 +15,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 <Layout
   title="Tessere NFC | Biglietti da Visita Smart per Bar, Ristoranti, Professionisti | Bitora"
   description="Tessere NFC programmate su misura: recensioni Google, contatti, menu digitali. Per bar, ristoranti, professionisti. Pellicola intercambiabile. Molto richieste in Piemonte."
-  image="/nfc.png"
+  image="/editorial/nfc-restaurant.png"
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <VideoHero
@@ -25,8 +25,7 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
       description="Recensioni Google, contatti, menu digitale e link utili. Programmazione inclusa, pellicola intercambiabile e aggiornamenti inclusi nella proposta."
       primaryCta={{ label: 'Richiedi informazioni', href: '/contattaci/?topic=nfc' }}
       secondaryCta={{ label: 'Come funziona', href: '#come-funziona' }}
-      posterSrc="/nfc.png"
-      videoSrc="https://videos.pexels.com/video-files/6963744/6963744-hd_1920_1080_25fps.mp4"
+      posterSrc="/editorial/nfc-restaurant.png"
       videoLabel="Tessera NFC in uso"
       images={[
         { src: '/chanty.JPG', alt: 'Bar Chantilly Carmagnola' },
@@ -93,14 +92,14 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
           <MediaShowcase
             items={[
               {
-                src: 'https://images.unsplash.com/photo-1592664474505-43b716088775?auto=format&fit=crop&w=1600&q=80',
-                alt: 'Cliente usa smartphone',
-                caption: 'Un tap: niente app, niente frizioni.',
+                src: '/editorial/nfc-restaurant.png',
+                alt: 'Cliente avvicina lo smartphone a una tessera NFC',
+                caption: 'Un tap: niente app, niente ricerca manuale.',
               },
               {
-                src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1600&q=80',
-                alt: 'Tecnologia e accessori',
-                caption: 'Compatibile con smartphone moderni.',
+                src: '/shop-nfc-products.jpg',
+                alt: 'Tessere, tag, braccialetto e lettore NFC',
+                caption: 'Formati diversi, programmati per il tuo utilizzo.',
               },
               {
                 src: '/nfc.png',
@@ -187,32 +186,6 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
         },
       ]}
     />
-
-    <section class="py-24 px-6 md:px-12 lg:px-20 border-t border-gray-200 dark:border-white/5">
-      <div class="max-w-6xl mx-auto text-center">
-        <h2
-          class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-        >
-          Pronto per le tessere NFC?
-        </h2>
-        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
-          Programmazione inclusa, nessun abbonamento. Consegna in pochi giorni.
-        </p>
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://shopnfc.bitora.it/" class="btn-primary min-w-[220px] shine-on-hover"
-            >Entra nello shop</a
-          >
-          <a
-            href="https://wa.me/393514979670?text=Ciao,%20vorrei%20informazioni%20sulle%20tessere%20NFC."
-            data-track="whatsapp_click"
-            data-track-location="nfc_cta"
-            class="btn-secondary min-w-[220px]"
-          >
-            WhatsApp
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
 </Layout>
 

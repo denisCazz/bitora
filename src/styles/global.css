@@ -545,3 +545,51 @@ a:hover {
 .rotateY-12 {
   transform: rotateY(12deg);
 }
+
+/* Editorial reading rhythm shared by all long-form articles */
+.prose-custom {
+  color: var(--text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.78;
+}
+
+.prose-custom > * + * {
+  margin-top: 2rem;
+}
+
+.prose-custom p {
+  max-width: 70ch;
+}
+
+.prose-custom h2 {
+  text-wrap: balance;
+}
+
+.prose-custom h3 {
+  scroll-margin-top: 7rem;
+}
+
+.prose-custom a {
+  text-decoration-color: color-mix(in srgb, var(--brand-cta), transparent 30%);
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

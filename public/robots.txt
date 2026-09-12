@@ -34,7 +34,9 @@ Allow: /servizi/
 Allow: /siti-web-professionali/
 Allow: /e-commerce/
 
-# Block private / admin areas
+# Block private / admin areas and unused public pages
 Disallow: /ops/
 Disallow: /admin/
 Disallow: /.well-known/
+Disallow: /landing/
+Disallow: /chi-siamo/

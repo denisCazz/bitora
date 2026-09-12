@@ -1,10 +1,9 @@
 ﻿---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
-import { caseStudies } from '../data/caseStudies';
+import { getPublicCaseStudies } from '../data/caseStudies';
 
-// Mostra tutti i progetti, inclusi quelli WIP (badge "In corso" in pagina)
-const projects = caseStudies;
+const projects = getPublicCaseStudies();
 ---
 
 <Layout
@@ -232,21 +231,6 @@ const projects = caseStudies;
         </div>
       </article>
     ))}
-
-    <!-- CTA -->
-    <section class="py-36 px-8 md:px-16 lg:px-24 text-center">
-      <p class="text-xs font-semibold tracking-[0.25em] text-white/55 uppercase mb-8" data-reveal>Prossimo progetto</p>
-      <h2 class="text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[1.03] tracking-tight mb-6 max-w-2xl mx-auto" data-reveal>
-        Il tuo nome<br />potrebbe essere qui.
-      </h2>
-      <p class="text-base md:text-lg text-white/50 mb-12 max-w-sm mx-auto leading-relaxed" data-reveal>
-        Consulenza gratuita, risposta entro 24 ore.<br />Nessun impegno.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
-        <a href="/contattaci/" class="px-7 py-3.5 bg-white text-black rounded font-semibold text-sm hover:bg-white/90 transition-colors">Inizia il tuo progetto</a>
-        <a href="/servizi/" class="px-7 py-3.5 border border-white/25 text-white rounded font-semibold text-sm hover:border-white/60 hover:bg-white/[0.06] transition-all">Scopri i servizi</a>
-      </div>
-    </section>
 
   </main>
 </Layout>

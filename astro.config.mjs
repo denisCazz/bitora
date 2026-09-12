@@ -10,11 +10,15 @@ const SITEMAP_EXCLUDE = new Set([
   'https://bitora.it/services/',
   'https://bitora.it/404/',
   'https://bitora.it/landing/',
+  'https://bitora.it/chi-siamo/',
+  'https://bitora.it/tools/',
   'https://bitora.it/cmms/',
   'https://bitora.it/shop/',
   'https://bitora.it/demo/',
   'https://bitora.it/progetti/hololux/',
   'https://bitora.it/progetti/kristina/',
+  'https://bitora.it/progetti/wine-cafe/',
+  'https://bitora.it/progetti/myzone/',
 ]);
 
 // https://astro.build/config
@@ -61,6 +65,9 @@ export default defineConfig({
     '/settori/turismo/': '/contattaci/',
     '/settori/professionisti/': '/contattaci/',
     '/tessere-nfc-torino/': '/nfc-ecosystem/',
+    '/tools/': '/tools/calcolatore-roi-gestionale/',
+    '/progetti/wine-cafe/': '/lavori/',
+    '/progetti/myzone/': '/lavori/',
   },
   // Production fix: prevent false-positive CSRF blocks behind proxies/CDNs
   // (e.g. apex vs www, https termination). If you later ensure correct

@@ -1,0 +1,80 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  eyebrow?: string;
+  loading?: 'eager' | 'lazy';
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  caption,
+  eyebrow,
+  loading = 'lazy',
+  class: className = '',
+} = Astro.props;
+---
+
+<figure class:list={['editorial-visual', className]}>
+  <div class="editorial-visual__frame">
+    <img
+      src={src}
+      alt={alt}
+      width="1024"
+      height="576"
+      loading={loading}
+      decoding="async"
+    />
+    {eyebrow && <span class="editorial-visual__eyebrow">{eyebrow}</span>}
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .editorial-visual {
+    margin: 2.5rem 0;
+  }
+
+  .editorial-visual__frame {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-primary);
+    border-radius: 1.35rem;
+    background: var(--bg-tertiary);
+    box-shadow: 0 24px 70px var(--shadow-primary);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .editorial-visual__eyebrow {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(5, 10, 18, 0.76);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    backdrop-filter: blur(12px);
+  }
+
+  figcaption {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+</style>
