@@ -53,16 +53,31 @@ const vpsHealth = snapshot.vpsIssues.some(i => i.severity === 'critical')
       </h2>
       <p class="ops-muted">Load, RAM e disco del runtime, più metriche host se l’agent è attivo.</p>
     </a>
-    <div class="ops-card">
+    <a class="ops-card" href="/ops/infrastruttura/">
       <p class="ops-pill">
-        <span class="ops-dot warn"></span>
-        Prossimi tool
+        <span class:list={['ops-dot', snapshot.vpsIssues.length ? 'warn' : undefined]}></span>
+        Infrastruttura
       </p>
-      <h2>Spazio per altri strumenti</h2>
-      <p class="ops-muted">
-        Backup, certificati, code e report si possono aggiungere qui senza toccare il sito pubblico.
+      <h2>{Object.keys(state.services).length} container rilevati</h2>
+      <p class="ops-muted">Certificati, domini, backup, container e ultimo deploy.</p>
+    </a>
+    <a class="ops-card" href="/ops/incidenti/">
+      <p class="ops-pill">
+        <span
+          class:list={[
+            'ops-dot',
+            state.incidents.some(incident => !incident.resolvedAt) ? 'down' : undefined,
+          ]}></span>
+        Incidenti
       </p>
-    </div>
+      <h2>{state.incidents.filter(incident => !incident.resolvedAt).length} aperti</h2>
+      <p class="ops-muted">Timeline, durata, presa in carico e note operative.</p>
+    </a>
+    <a class="ops-card" href="/ops/storico/">
+      <p class="ops-pill"><span class="ops-dot"></span> Storico</p>
+      <h2>{state.history.length} rilevazioni</h2>
+      <p class="ops-muted">Uptime e latenza fino a 30 giorni.</p>
+    </a>
   </div>
 
   <form method="POST" action="/api/ops/check/" style="margin-top: 22px;">
@@ -74,6 +89,11 @@ const vpsHealth = snapshot.vpsIssues.some(i => i.severity === 'critical')
     />
     <code>
       curl -fsS -X POST -H "Authorization: Bearer $OPS_CRON_SECRET" https://bitora.it/api/ops/cron/
+    </code>
+    <br />Watchdog separato (ogni 10 minuti):
+    <code>
+      curl -fsS -X POST -H "Authorization: Bearer $OPS_CRON_SECRET"
+      https://bitora.it/api/ops/watchdog/
     </code>
     {
       !state.lastCronAt && (

@@ -86,7 +86,8 @@ export function isPublicOpsPath(pathname: string): boolean {
     path === '/ops/login' ||
     path === '/api/ops/login' ||
     path === '/api/ops/cron' ||
-    path === '/api/ops/vps'
+    path === '/api/ops/vps' ||
+    path === '/api/ops/watchdog'
   );
 }
 

@@ -1,43 +1,32 @@
-import crypto from 'node:crypto';
-import { Resend } from 'resend';
-import { renderOpsAlertEmail, type OpsAlertEvent } from '../../emails/opsAlert';
-import { ALERT_REMIND_MS, env, opsAlertEmail } from './env';
+import type { OpsAlertEvent } from '../../emails/opsAlert';
+import { ALERT_REMIND_MS, env } from './env';
 import type { MonitorRun } from './monitor';
-import { getOpsState, updateOpsState } from './store';
-
-function eventKey(events: OpsAlertEvent[]): string {
-  return events
-    .map(e => `${e.kind}:${e.id}`)
-    .sort()
-    .join('|');
-}
+import { updateOpsState } from './store';
 
 export function collectAlertEvents(run: MonitorRun): OpsAlertEvent[] {
-  const prev = getOpsState();
+  const prev = run.previousState;
   const now = Date.now();
   const remindAfter = ALERT_REMIND_MS();
   const events: OpsAlertEvent[] = [];
 
   for (const site of run.sites) {
-    const previous = prev.sites[site.id];
     const lastAlert = prev.lastAlertAt[`site:${site.id}`] ?? 0;
-    const wasOk = previous ? previous.ok : true;
 
-    if (!site.ok && wasOk) {
+    if (!site.ok && lastAlert === 0) {
       events.push({
         kind: 'down',
         id: site.id,
         title: site.name,
         detail: `${site.url} · ${site.error || 'non raggiungibile'}`,
       });
-    } else if (!site.ok && !wasOk && now - lastAlert >= remindAfter) {
+    } else if (!site.ok && now - lastAlert >= remindAfter) {
       events.push({
         kind: 'reminder',
         id: site.id,
         title: site.name,
         detail: `Ancora down · ${site.url} · ${site.error || 'non raggiungibile'}`,
       });
-    } else if (site.ok && previous && !previous.ok) {
+    } else if (site.ok && lastAlert > 0) {
       events.push({
         kind: 'recovery',
         id: site.id,
@@ -74,21 +63,30 @@ export function collectAlertEvents(run: MonitorRun): OpsAlertEvent[] {
     });
   }
 
-  return events;
+  return events.filter(event => {
+    const resourceId = event.id;
+    const window = prev.maintenance[resourceId] ?? prev.maintenance['*'];
+    return !window || window.until <= now;
+  });
 }
 
-export async function sendOpsAlerts(run: MonitorRun): Promise<{ sent: boolean; events: number }> {
-  const events = collectAlertEvents(run);
-  if (events.length === 0) return { sent: false, events: 0 };
+function plainText(events: OpsAlertEvent[]): string {
+  return events
+    .map(event => {
+      const icon = event.kind === 'recovery' ? '✅' : event.kind === 'reminder' ? '⏰' : '🚨';
+      return `${icon} ${event.title}: ${event.detail}`;
+    })
+    .join('\n');
+}
 
-  const apiKey = env('RESEND_API_KEY');
-  const mailFrom = env('MAIL_FROM');
-  const mailTo = opsAlertEmail();
+export async function sendOpsEvents(
+  events: OpsAlertEvent[],
+  persist = true
+): Promise<{ sent: boolean; events: number; channels: string[] }> {
+  if (events.length === 0) return { sent: false, events: 0, channels: [] };
 
-  if (!apiKey || !mailFrom || !mailTo) {
-    console.error('[ops] alert non inviato: configurazione email incompleta');
-    return { sent: false, events: events.length };
-  }
+  const telegramToken = env('OPS_TELEGRAM_BOT_TOKEN');
+  const telegramChatId = env('OPS_TELEGRAM_CHAT_ID');
 
   const problems = events.filter(e => e.kind !== 'recovery').length;
   const subject =
@@ -96,43 +94,49 @@ export async function sendOpsAlerts(run: MonitorRun): Promise<{ sent: boolean; e
       ? `[Bitora Ops] ${problems} problem${problems === 1 ? 'a' : 'i'} rilevati`
       : '[Bitora Ops] Servizi tornati online';
 
-  const minuteBucket = new Date().toISOString().slice(0, 16);
-  const idempotencyKey = crypto
-    .createHash('sha256')
-    .update(`ops-alert|${minuteBucket}|${eventKey(events)}`)
-    .digest('hex');
-
-  const resend = new Resend(apiKey);
-  const { error } = await resend.emails.send(
-    {
-      from: mailFrom,
-      to: mailTo,
-      subject,
-      html: renderOpsAlertEmail(events, 'https://bitora.it/ops/'),
-      headers: { 'Idempotency-Key': idempotencyKey },
-    },
-    { idempotencyKey }
-  );
-
-  if (error) {
-    console.error('[ops] invio alert fallito:', error.message);
-    return { sent: false, events: events.length };
+  const channels: string[] = [];
+  const text = `${subject}\n\n${plainText(events)}\n\nhttps://bitora.it/ops/`;
+  if (telegramToken && telegramChatId) {
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: telegramChatId, text, disable_web_page_preview: true }),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      channels.push('telegram');
+    } catch (error) {
+      console.error('[ops] invio Telegram fallito:', error);
+    }
   }
 
-  const now = Date.now();
-  updateOpsState(state => {
-    state.lastDigestAt = now;
-    for (const event of events) {
-      if (event.kind === 'recovery') {
-        delete state.lastAlertAt[`site:${event.id}`];
-        delete state.lastAlertAt[`vps:${event.id}`];
-      } else if (event.kind === 'vps') {
-        state.lastAlertAt[`vps:${event.id}`] = now;
-      } else {
-        state.lastAlertAt[`site:${event.id}`] = now;
-      }
-    }
-  });
+  if (channels.length === 0) {
+    console.error('[ops] alert non inviato: Telegram non configurato o non disponibile');
+    return { sent: false, events: events.length, channels };
+  }
 
-  return { sent: true, events: events.length };
+  if (persist) {
+    const now = Date.now();
+    updateOpsState(state => {
+      state.lastDigestAt = now;
+      for (const event of events) {
+        if (event.kind === 'recovery') {
+          delete state.lastAlertAt[`site:${event.id}`];
+          delete state.lastAlertAt[`vps:${event.id}`];
+        } else if (event.kind === 'vps') {
+          state.lastAlertAt[`vps:${event.id}`] = now;
+        } else {
+          state.lastAlertAt[`site:${event.id}`] = now;
+        }
+      }
+    });
+  }
+
+  return { sent: true, events: events.length, channels };
+}
+
+export async function sendOpsAlerts(
+  run: MonitorRun
+): Promise<{ sent: boolean; events: number; channels: string[] }> {
+  return sendOpsEvents(collectAlertEvents(run));
 }

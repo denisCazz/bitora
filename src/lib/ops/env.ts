@@ -31,10 +31,6 @@ export function opsStatePath(): string {
   return env('OPS_STATE_PATH') || '/tmp/bitora-ops-state.json';
 }
 
-export function opsAlertEmail(): string {
-  return env('OPS_ALERT_EMAIL') || env('MAIL_TO');
-}
-
 export const VPS_DISK_WARN = () => envNumber('OPS_VPS_DISK_WARN', 85);
 export const VPS_MEM_WARN = () => envNumber('OPS_VPS_MEM_WARN', 90);
 export const VPS_LOAD_WARN = () => envNumber('OPS_VPS_LOAD_WARN', 1);

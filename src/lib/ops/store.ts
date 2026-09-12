@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { opsStatePath } from './env';
 
@@ -31,17 +31,106 @@ export interface VpsMetrics {
   receivedAt: number;
 }
 
+export interface HistoryPoint {
+  at: number;
+  sites: Record<string, { ok: boolean; latencyMs: number | null }>;
+  host?: {
+    memPct: number | null;
+    diskPct: number | null;
+    loadRatio: number;
+  };
+}
+
+export interface OpsIncident {
+  id: string;
+  resourceId: string;
+  resourceType: 'site' | 'vps' | 'watchdog';
+  title: string;
+  detail: string;
+  severity: 'warn' | 'critical';
+  openedAt: number;
+  resolvedAt?: number;
+  acknowledgedAt?: number;
+  note?: string;
+}
+
+export interface MaintenanceWindow {
+  resourceId: string;
+  until: number;
+  reason?: string;
+  createdAt: number;
+}
+
+export interface CertificateCheck {
+  targetId: string;
+  hostname: string;
+  checkedAt: number;
+  validTo?: number;
+  daysRemaining?: number;
+  issuer?: string;
+  error?: string;
+}
+
+export interface DomainCheck {
+  domain: string;
+  checkedAt: number;
+  expiresAt?: number;
+  daysRemaining?: number;
+  registrar?: string;
+  error?: string;
+}
+
+export interface BackupReport {
+  id: string;
+  name: string;
+  path?: string;
+  ok: boolean;
+  lastBackupAt?: number;
+  sizeBytes?: number;
+  restoreVerifiedAt?: number;
+  detail?: string;
+  receivedAt: number;
+}
+
+export interface ServiceReport {
+  id: string;
+  name: string;
+  status: string;
+  image?: string;
+  createdAt?: number;
+  restartCount?: number;
+  receivedAt: number;
+}
+
 export interface OpsState {
   sites: Record<string, SiteCheckResult>;
   runtime?: VpsMetrics;
   agent?: VpsMetrics;
   lastCronAt?: number;
   lastManualCheckAt?: number;
+  lastWatchdogAlertAt?: number;
   lastAlertAt: Record<string, number>;
   lastDigestAt?: number;
+  history: HistoryPoint[];
+  incidents: OpsIncident[];
+  maintenance: Record<string, MaintenanceWindow>;
+  certificates: Record<string, CertificateCheck>;
+  domains: Record<string, DomainCheck>;
+  backups: Record<string, BackupReport>;
+  services: Record<string, ServiceReport>;
 }
 
-const EMPTY_STATE: OpsState = { sites: {}, lastAlertAt: {} };
+const EMPTY_STATE: OpsState = {
+  sites: {},
+  lastAlertAt: {},
+  history: [],
+  incidents: [],
+  maintenance: {},
+  certificates: {},
+  domains: {},
+  backups: {},
+  services: {},
+};
 
 let memory: OpsState | null = null;
 
@@ -59,8 +148,16 @@ function readFromDisk(): OpsState {
       agent: parsed.agent,
       lastCronAt: parsed.lastCronAt,
       lastManualCheckAt: parsed.lastManualCheckAt,
+      lastWatchdogAlertAt: parsed.lastWatchdogAlertAt,
       lastAlertAt: parsed.lastAlertAt ?? {},
       lastDigestAt: parsed.lastDigestAt,
+      history: parsed.history ?? [],
+      incidents: parsed.incidents ?? [],
+      maintenance: parsed.maintenance ?? {},
+      certificates: parsed.certificates ?? {},
+      domains: parsed.domains ?? {},
+      backups: parsed.backups ?? {},
+      services: parsed.services ?? {},
     };
   } catch {
     return clone(EMPTY_STATE);
@@ -71,7 +168,9 @@ function persist(state: OpsState): void {
   const path = opsStatePath();
   try {
     mkdirSync(dirname(path), { recursive: true });
-    writeFileSync(path, JSON.stringify(state), 'utf8');
+    const temporary = `${path}.${process.pid}.tmp`;
+    writeFileSync(temporary, JSON.stringify(state), 'utf8');
+    renameSync(temporary, path);
   } catch (err) {
     console.error('[ops] impossibile salvare lo stato:', err);
   }

@@ -12,6 +12,9 @@ const nav = [
   { href: '/ops/', label: 'Panoramica' },
   { href: '/ops/siti/', label: 'Stato siti' },
   { href: '/ops/vps/', label: 'Monitoraggio VPS' },
+  { href: '/ops/storico/', label: 'Storico' },
+  { href: '/ops/infrastruttura/', label: 'Infrastruttura' },
+  { href: '/ops/incidenti/', label: 'Incidenti' },
 ];
 ---
 
@@ -227,6 +230,13 @@ const nav = [
     margin: 0 0 8px;
     font-size: 18px;
   }
+  .ops-section-title {
+    margin: 0 0 12px;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
   .ops-muted {
     color: rgba(255, 255, 255, 0.55);
     font-size: 14px;
@@ -276,6 +286,17 @@ const nav = [
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.16);
   }
+  .ops-main input,
+  .ops-main select,
+  .ops-main textarea {
+    min-height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    padding: 8px 11px;
+    background: #111113;
+    color: #fff;
+    font: inherit;
+  }
   .ops-table-wrap {
     overflow-x: auto;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -303,6 +324,19 @@ const nav = [
   }
   .ops-table a {
     color: inherit;
+  }
+  .ops-link {
+    color: #93c5fd;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .ops-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .ops-missing {
+    color: #fbbf24;
+    font-weight: 600;
   }
   .ops-meter {
     height: 8px;

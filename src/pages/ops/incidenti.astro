@@ -1,0 +1,83 @@
+---
+export const prerender = false;
+import OpsLayout from '../../layouts/OpsLayout.astro';
+import { formatClock, formatDuration } from '../../lib/ops/format';
+import { getOpsState } from '../../lib/ops/store';
+
+const incidents = getOpsState()
+  .incidents.slice()
+  .sort((a, b) => b.openedAt - a.openedAt);
+const now = Date.now();
+---
+
+<OpsLayout title="Incidenti | Bitora Ops" heading="Incidenti">
+  {
+    incidents.length ? (
+      <div class="ops-table-wrap">
+        <table class="ops-table">
+          <thead>
+            <tr>
+              <>
+                <th>Stato</th>
+                <th>Risorsa</th>
+                <th>Apertura</th>
+                <th>Durata</th>
+                <th>Dettaglio</th>
+                <th>Gestione</th>
+              </>
+            </tr>
+          </thead>
+          <tbody>
+            {incidents.map(incident => (
+              <tr>
+                <td>
+                  <span class="ops-pill">
+                    <span
+                      class:list={[
+                        'ops-dot',
+                        incident.resolvedAt
+                          ? undefined
+                          : incident.severity === 'critical'
+                            ? 'down'
+                            : 'warn',
+                      ]}
+                    />
+                    {incident.resolvedAt
+                      ? 'risolto'
+                      : incident.acknowledgedAt
+                        ? 'preso in carico'
+                        : 'aperto'}
+                  </span>
+                </td>
+                <td>{incident.title}</td>
+                <td>{formatClock(incident.openedAt)}</td>
+                <td>{formatDuration(((incident.resolvedAt ?? now) - incident.openedAt) / 1000)}</td>
+                <td>
+                  {incident.detail}
+                  {incident.note ? ` · ${incident.note}` : ''}
+                </td>
+                <td>
+                  {!incident.resolvedAt && !incident.acknowledgedAt ? (
+                    <form method="POST" action="/api/ops/incident/" style="display:flex;gap:8px;">
+                      <input type="hidden" name="id" value={incident.id} />
+                      <input name="note" placeholder="Nota opzionale" maxlength="500" />
+                      <button class="ops-btn ghost" type="submit">
+                        Prendi in carico
+                      </button>
+                    </form>
+                  ) : (
+                    '—'
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <div class="ops-card">
+        <p class="ops-muted">Nessun incidente registrato.</p>
+      </div>
+    )
+  }
+</OpsLayout>

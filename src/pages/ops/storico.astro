@@ -1,0 +1,112 @@
+---
+export const prerender = false;
+import OpsLayout from '../../layouts/OpsLayout.astro';
+import { monitoredSites } from '../../data/monitoredTargets';
+import { formatMs, formatRelative } from '../../lib/ops/format';
+import { getOpsState } from '../../lib/ops/store';
+
+const state = getOpsState();
+const now = Date.now();
+
+function stats(id: string, days: number) {
+  const points = state.history.filter(
+    point => point.at >= now - days * 86_400_000 && point.sites[id]
+  );
+  const values = points.map(point => point.sites[id]);
+  const up = values.filter(value => value.ok).length;
+  const latencies = values
+    .map(value => value.latencyMs)
+    .filter((value): value is number => value != null);
+  return {
+    uptime: values.length ? (up / values.length) * 100 : null,
+    latency: latencies.length
+      ? latencies.reduce((total, value) => total + value, 0) / latencies.length
+      : null,
+  };
+}
+
+const chartValues = state.history.slice(-96).map(point => {
+  const values = Object.values(point.sites)
+    .map(site => site.latencyMs)
+    .filter((value): value is number => value != null);
+  return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : 0;
+});
+const maxChart = Math.max(1, ...chartValues);
+const chartPoints = chartValues
+  .map((value, index) => {
+    const x = chartValues.length > 1 ? (index / (chartValues.length - 1)) * 800 : 0;
+    const y = 170 - (value / maxChart) * 150;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  })
+  .join(' ');
+---
+
+<OpsLayout title="Storico | Bitora Ops" heading="Storico 30 giorni">
+  <section class="ops-card" style="margin-bottom:22px;">
+    <h2>Latenza media recente</h2>
+    <p class="ops-muted" style="margin-bottom:12px;">
+      Ultime {chartValues.length} rilevazioni · picco {formatMs(maxChart)}
+    </p>
+    {
+      chartValues.length ? (
+        <svg
+          viewBox="0 0 800 180"
+          role="img"
+          aria-label="Andamento latenza media"
+          style="width:100%;height:auto;"
+        >
+          <line x1="0" y1="170" x2="800" y2="170" stroke="rgba(255,255,255,.16)" />
+          <polyline
+            points={chartPoints}
+            fill="none"
+            stroke="#34d399"
+            stroke-width="3"
+            vector-effect="non-scaling-stroke"
+          />
+        </svg>
+      ) : (
+        <p class="ops-muted">Storico non ancora disponibile.</p>
+      )
+    }
+  </section>
+
+  <div class="ops-table-wrap">
+    <table class="ops-table">
+      <thead>
+        <tr>
+          <th>Servizio</th>
+          <th>24 ore</th>
+          <th>7 giorni</th>
+          <th>30 giorni</th>
+          <th>Latenza 24h</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          monitoredSites.map(site => {
+            const day = stats(site.id, 1);
+            const week = stats(site.id, 7);
+            const month = stats(site.id, 30);
+            const pct = (value: number | null) => (value == null ? '—' : `${value.toFixed(2)}%`);
+            return (
+              <tr>
+                <td>
+                  <a href={site.url} target="_blank" rel="noreferrer">
+                    {site.name}
+                  </a>
+                </td>
+                <td>{pct(day.uptime)}</td>
+                <td>{pct(week.uptime)}</td>
+                <td>{pct(month.uptime)}</td>
+                <td>{formatMs(day.latency)}</td>
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
+  </div>
+  <p class="ops-muted" style="margin-top:12px;">
+    Ultima rilevazione {formatRelative(state.history.at(-1)?.at)}. Dati conservati per 30 giorni.
+  </p>
+</OpsLayout>

@@ -1,0 +1,176 @@
+---
+export const prerender = false;
+import OpsLayout from '../../layouts/OpsLayout.astro';
+import { env } from '../../lib/ops/env';
+import { formatBytes, formatClock, formatRelative } from '../../lib/ops/format';
+import { getOpsState } from '../../lib/ops/store';
+
+const state = getOpsState();
+const certificates = Object.values(state.certificates).sort(
+  (a, b) => (a.daysRemaining ?? 99999) - (b.daysRemaining ?? 99999)
+);
+const domains = Object.values(state.domains).sort(
+  (a, b) => (a.daysRemaining ?? 99999) - (b.daysRemaining ?? 99999)
+);
+const backups = Object.values(state.backups);
+const services = Object.values(state.services).sort((a, b) => a.name.localeCompare(b.name));
+const coolifyUrl = env('OPS_COOLIFY_URL');
+const telegramStatus = Astro.url.searchParams.get('telegram');
+---
+
+<OpsLayout title="Infrastruttura | Bitora Ops" heading="Infrastruttura">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px;">
+    {
+      coolifyUrl && (
+        <a class="ops-btn ghost" href={coolifyUrl} target="_blank" rel="noreferrer">
+          Apri dashboard Coolify
+        </a>
+      )
+    }
+    <form method="POST" action="/api/ops/test-alert/">
+      <button class="ops-btn ghost" type="submit">Invia test Telegram</button>
+    </form>
+  </div>
+  {
+    telegramStatus && (
+      <div class="ops-note" style="margin:0 0 22px;">
+        {telegramStatus === 'ok'
+          ? 'Messaggio Telegram inviato.'
+          : 'Invio fallito: controlla token e chat ID in Coolify.'}
+      </div>
+    )
+  }
+  <section style="margin-bottom:28px;">
+    <h2 class="ops-section-title">Certificati TLS</h2>
+    <div class="ops-table-wrap">
+      <table class="ops-table">
+        <thead
+          ><tr><th>Host</th><th>Scadenza</th><th>Giorni</th><th>Issuer</th><th>Stato</th></tr
+          ></thead
+        >
+        <tbody>
+          {
+            certificates.map(cert => (
+              <tr>
+                <td>{cert.hostname}</td>
+                <td>{formatClock(cert.validTo)}</td>
+                <td>{cert.daysRemaining ?? '—'}</td>
+                <td>{cert.issuer ?? '—'}</td>
+                <td>
+                  {cert.error ??
+                    (cert.daysRemaining != null && cert.daysRemaining < 21
+                      ? 'in scadenza'
+                      : 'valido')}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:28px;">
+    <h2 class="ops-section-title">Domini</h2>
+    <div class="ops-table-wrap">
+      <table class="ops-table">
+        <thead
+          ><tr><th>Dominio</th><th>Scadenza</th><th>Giorni</th><th>Registrar</th><th>RDAP</th></tr
+          ></thead
+        >
+        <tbody>
+          {
+            domains.map(domain => (
+              <tr>
+                <td>{domain.domain}</td>
+                <td>{formatClock(domain.expiresAt)}</td>
+                <td>{domain.daysRemaining ?? '—'}</td>
+                <td>{domain.registrar ?? '—'}</td>
+                <td>{domain.error ?? formatRelative(domain.checkedAt)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:28px;">
+    <h2 class="ops-section-title">Backup</h2>
+    {
+      backups.length ? (
+        <div class="ops-table-wrap">
+          <table class="ops-table">
+            <thead>
+              <tr>
+                <>
+                  <th>Nome</th>
+                  <th>Ultimo file</th>
+                  <th>Dimensione</th>
+                  <th>Restore verificato</th>
+                  <th>Stato</th>
+                </>
+              </tr>
+            </thead>
+            <tbody>
+              {backups.map(backup => (
+                <tr>
+                  <td>{backup.name}</td>
+                  <td>{formatRelative(backup.lastBackupAt)}</td>
+                  <td>{formatBytes(backup.sizeBytes)}</td>
+                  <td>{formatRelative(backup.restoreVerifiedAt)}</td>
+                  <td>{backup.ok ? 'ok' : backup.detail || 'errore'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div class="ops-note">
+          Configura agent con{' '}
+          <code>OPS_BACKUP_PATHS="postgres=/backup/postgres,files=/backup/files"</code>. Crea file{' '}
+          <code>.restore-verified</code> nella cartella dopo un test restore.
+        </div>
+      )
+    }
+  </section>
+
+  <section>
+    <h2 class="ops-section-title">Container e deploy</h2>
+    {
+      services.length ? (
+        <div class="ops-table-wrap">
+          <table class="ops-table">
+            <thead>
+              <tr>
+                <>
+                  <th>Container</th>
+                  <th>Stato</th>
+                  <th>Immagine/versione</th>
+                  <th>Avviato</th>
+                  <th>Restart</th>
+                </>
+              </tr>
+            </thead>
+            <tbody>
+              {services.map(service => (
+                <tr>
+                  <td>{service.name}</td>
+                  <td>{service.status}</td>
+                  <td>{service.image ?? '—'}</td>
+                  <td>{formatRelative(service.createdAt)}</td>
+                  <td>{service.restartCount ?? '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div class="ops-note">
+          Nessun container ricevuto. Agent deve poter eseguire <code>docker ps</code> e{' '}
+          <code>docker inspect</code>.
+        </div>
+      )
+    }
+  </section>
+</OpsLayout>
