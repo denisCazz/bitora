@@ -26,8 +26,8 @@ RUN npm prune --omit=dev --no-audit --no-fund
 FROM node:22-alpine AS runtime
 WORKDIR /app
 
-# Install curl for Coolify healthcheck
-RUN apk add --no-cache curl
+# Install curl for Coolify healthcheck and su-exec to drop privileges at startup
+RUN apk add --no-cache curl su-exec
 
 # Security: run as non-root user
 RUN addgroup -S astro && adduser -S astro -G astro
@@ -35,10 +35,12 @@ RUN addgroup -S astro && adduser -S astro -G astro
 COPY --from=prod-deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY package.json ./
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
-# Set ownership
-RUN chown -R astro:astro /app
-USER astro
+# The entrypoint starts as root only to repair persistent-volume permissions,
+# then immediately runs the application as the non-root astro user.
+RUN chown -R astro:astro /app \
+    && chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENV HOST=0.0.0.0
 ENV PORT=4321
@@ -48,4 +50,5 @@ EXPOSE 4321
 HEALTHCHECK --interval=10s --timeout=5s --start-period=30s --retries=3 \
   CMD curl -f http://127.0.0.1:${PORT:-4321}/ || exit 1
 
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["node", "./dist/server/entry.mjs"]
