@@ -40,7 +40,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Food & Beverage',
     location: 'Sommariva del Bosco (CN)',
     imageUrl: '/logo_dalina.png',
-    siteUrl: 'https://dalina.bitora.it',
+    siteUrl: 'https://ristorantedalina.it',
     featured: true,
     isWip: false,
 
@@ -67,7 +67,7 @@ export const caseStudies: CaseStudy[] = [
     ],
 
     risultati: [
-      'Presenza digitale live su dalina.bitora.it con brand D’Alina',
+      'Presenza digitale live su ristorantedalina.it con brand D’Alina',
       'Menu pubblico di pizza e cucina, consultabile da mobile',
       'Percorso di contatto immediato: chiamata, WhatsApp e indicazioni stradali',
       'Visibilità locale strutturata per Sommariva del Bosco e il Roero',
@@ -87,7 +87,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [
       {
         testo: 'Sito ufficiale D’Alina',
-        url: 'https://dalina.bitora.it',
+        url: 'https://ristorantedalina.it',
       },
     ],
   },

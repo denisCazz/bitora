@@ -89,7 +89,7 @@ export const monitoredSites: MonitoredSite[] = [
   {
     id: 'dalina',
     name: "D'Alina",
-    url: 'https://dalina.bitora.it/',
+    url: 'https://ristorantedalina.it/',
     group: 'clienti',
   },
   {

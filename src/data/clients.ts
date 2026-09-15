@@ -13,7 +13,7 @@ export const clientLogos: ClientLogo[] = [
     name: "D'Alina",
     logo: '/logo_dalina.png',
     tier: 'premium',
-    url: 'https://dalina.bitora.it',
+    url: 'https://ristorantedalina.it',
     location: 'Sommariva del Bosco',
   },
   {
