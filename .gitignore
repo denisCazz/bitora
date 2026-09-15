@@ -17,6 +17,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# recovered project credentials for the ops vault — never commit
+data/ops-vault.seed.json
+
 # macOS-specific files
 .DS_Store
 

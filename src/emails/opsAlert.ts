@@ -1,5 +1,5 @@
 export interface OpsAlertEvent {
-  kind: 'down' | 'recovery' | 'vps' | 'reminder';
+  kind: 'down' | 'recovery' | 'vps' | 'reminder' | 'deadline';
   id: string;
   title: string;
   detail: string;
@@ -19,12 +19,14 @@ function row(event: OpsAlertEvent): string {
     down: '#B91C1C',
     reminder: '#B45309',
     vps: '#B45309',
+    deadline: '#B45309',
     recovery: '#047857',
   };
   const labels: Record<OpsAlertEvent['kind'], string> = {
     down: 'DOWN',
     reminder: 'ANCORA DOWN',
     vps: 'VPS',
+    deadline: 'SCADENZA',
     recovery: 'RECOVERY',
   };
   const color = colors[event.kind];
@@ -41,7 +43,7 @@ function row(event: OpsAlertEvent): string {
 
 export function renderOpsAlertEmail(events: OpsAlertEvent[], dashboardUrl: string): string {
   const down = events.filter(
-    e => e.kind === 'down' || e.kind === 'reminder' || e.kind === 'vps'
+    e => e.kind === 'down' || e.kind === 'reminder' || e.kind === 'vps' || e.kind === 'deadline'
   ).length;
   const recovery = events.filter(e => e.kind === 'recovery').length;
   const header = down > 0 ? 'Bitora Ops · Problemi rilevati' : 'Bitora Ops · Recupero servizi';

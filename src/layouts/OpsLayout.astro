@@ -12,6 +12,8 @@ const nav = [
   { href: '/ops/', label: 'Panoramica' },
   { href: '/ops/siti/', label: 'Stato siti' },
   { href: '/ops/vps/', label: 'Monitoraggio VPS' },
+  { href: '/ops/scadenze/', label: 'Scadenziario' },
+  { href: '/ops/password/', label: 'Password' },
   { href: '/ops/storico/', label: 'Storico' },
   { href: '/ops/infrastruttura/', label: 'Infrastruttura' },
   { href: '/ops/incidenti/', label: 'Incidenti' },
@@ -372,6 +374,93 @@ const nav = [
     color: #fff;
     white-space: pre-wrap;
     word-break: break-word;
+  }
+  .ops-form {
+    display: grid;
+    gap: 14px;
+  }
+  .ops-form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+  }
+  .ops-form label,
+  .ops-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+  .ops-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .ops-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 16px;
+  }
+  .ops-filters a {
+    color: rgba(255, 255, 255, 0.62);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .ops-filters a:hover,
+  .ops-filters a.is-active {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+  .ops-row-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .ops-table td.ops-wrap {
+    white-space: normal;
+    min-width: 160px;
+  }
+  .ops-project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 12px;
+  }
+  .ops-secret-cell {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .ops-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    word-break: break-all;
+  }
+  .ops-secret-value {
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ops-secret-value[data-shown='1'] {
+    white-space: pre-wrap;
+    overflow: auto;
+    max-width: min(520px, 46vw);
+    max-height: 180px;
   }
   @media (max-width: 860px) {
     .ops-shell {

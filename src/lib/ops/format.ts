@@ -52,6 +52,30 @@ export function formatClock(ts: number | undefined): string {
   }).format(new Date(ts));
 }
 
+export function formatDate(dueOn: string | number | undefined): string {
+  if (dueOn == null || dueOn === '') return '—';
+  if (typeof dueOn === 'number') {
+    return new Intl.DateTimeFormat('it-IT', {
+      dateStyle: 'medium',
+      timeZone: 'Europe/Rome',
+    }).format(new Date(dueOn));
+  }
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dueOn);
+  if (!match) return dueOn;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  return new Intl.DateTimeFormat('it-IT', {
+    dateStyle: 'medium',
+    timeZone: 'UTC',
+  }).format(new Date(Date.UTC(year, month - 1, day)));
+}
+
+export function formatEuro(amount: number | undefined): string {
+  if (amount == null || !Number.isFinite(amount)) return '—';
+  return new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(amount);
+}
+
 export function formatMs(ms: number | null | undefined): string {
   if (ms == null) return '—';
   if (ms < 1000) return `${Math.round(ms)} ms`;

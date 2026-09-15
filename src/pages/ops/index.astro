@@ -3,11 +3,15 @@ export const prerender = false;
 import OpsLayout from '../../layouts/OpsLayout.astro';
 import { monitoredSites } from '../../data/monitoredTargets';
 import { formatRelative } from '../../lib/ops/format';
+import { collectDeadlineViews, deadlineSummary } from '../../lib/ops/deadlines';
 import { currentSnapshot } from '../../lib/ops/monitor';
 import { getOpsState } from '../../lib/ops/store';
+import { ensureVaultSeeded, vaultSummary } from '../../lib/ops/vault';
 
+ensureVaultSeeded();
 const snapshot = currentSnapshot();
 const state = getOpsState();
+const vault = vaultSummary(state.vault);
 const lastCheck = state.lastCronAt ?? state.lastManualCheckAt;
 const siteHealth = snapshot.sites.length === 0 ? 'warn' : snapshot.downCount > 0 ? 'down' : 'ok';
 const vpsHealth = snapshot.vpsIssues.some(i => i.severity === 'critical')
@@ -17,6 +21,8 @@ const vpsHealth = snapshot.vpsIssues.some(i => i.severity === 'critical')
     : snapshot.runtime
       ? 'ok'
       : 'warn';
+const deadlines = deadlineSummary(collectDeadlineViews(state));
+const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : undefined;
 ---
 
 <OpsLayout title="Bitora Ops" heading="Panoramica">
@@ -52,6 +58,41 @@ const vpsHealth = snapshot.vpsIssues.some(i => i.severity === 'critical')
         }
       </h2>
       <p class="ops-muted">Load, RAM e disco del runtime, più metriche host se l’agent è attivo.</p>
+    </a>
+    <a class="ops-card" href="/ops/password/">
+      <p class="ops-pill"><span class="ops-dot"></span> Password</p>
+      <h2>
+        {
+          vault.count
+            ? `${vault.count} ${vault.count === 1 ? 'credenziale' : 'credenziali'}`
+            : 'Nessuna credenziale'
+        }
+      </h2>
+      <p class="ops-muted">
+        {
+          vault.projects
+            ? `${vault.projects} ${vault.projects === 1 ? 'progetto' : 'progetti'} con accessi, database e API.`
+            : 'Casseforte per progetto: login, database e chiavi API.'
+        }
+      </p>
+    </a>
+    <a class="ops-card" href="/ops/scadenze/">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', deadlineHealth]}></span>
+        Scadenziario
+      </p>
+      <h2>
+        {
+          deadlines.overdue
+            ? `${deadlines.overdue} ${deadlines.overdue === 1 ? 'scaduta' : 'scadute'}`
+            : deadlines.week
+              ? `${deadlines.week} in settimana`
+              : deadlines.open
+                ? `${deadlines.open} ${deadlines.open === 1 ? 'scadenza aperta' : 'scadenze aperte'}`
+                : 'Nessuna scadenza'
+        }
+      </h2>
+      <p class="ops-muted">Domini, hosting, contratti, licenze e fatture. Alert Telegram in arrivo.</p>
     </a>
     <a class="ops-card" href="/ops/infrastruttura/">
       <p class="ops-pill">

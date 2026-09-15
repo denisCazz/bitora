@@ -102,6 +102,51 @@ export interface ServiceReport {
   receivedAt: number;
 }
 
+export type DeadlineCategory =
+  | 'dominio'
+  | 'hosting'
+  | 'certificato'
+  | 'contratto'
+  | 'fattura'
+  | 'licenza'
+  | 'fiscale'
+  | 'altro';
+
+export type DeadlineRecurrence = 'none' | 'monthly' | 'yearly';
+
+export interface OpsDeadline {
+  id: string;
+  title: string;
+  category: DeadlineCategory;
+  dueOn: string;
+  amount?: number;
+  client?: string;
+  notes?: string;
+  recurrence: DeadlineRecurrence;
+  remindDays: number;
+  doneAt?: number;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export type VaultKind = 'login' | 'database' | 'api' | 'email' | 'hosting' | 'pagamento' | 'altro';
+
+export type VaultSource = 'import' | 'manual';
+
+export interface OpsVaultEntry {
+  id: string;
+  projectId: string;
+  title: string;
+  kind: VaultKind;
+  username?: string;
+  secret: string;
+  url?: string;
+  notes?: string;
+  source: VaultSource;
+  createdAt: number;
+  updatedAt: number;
+}
+
 export interface OpsState {
   sites: Record<string, SiteCheckResult>;
   runtime?: VpsMetrics;
@@ -118,6 +163,9 @@ export interface OpsState {
   domains: Record<string, DomainCheck>;
   backups: Record<string, BackupReport>;
   services: Record<string, ServiceReport>;
+  deadlines: OpsDeadline[];
+  vault: OpsVaultEntry[];
+  vaultImportedAt?: number;
 }
 
 const EMPTY_STATE: OpsState = {
@@ -130,6 +178,8 @@ const EMPTY_STATE: OpsState = {
   domains: {},
   backups: {},
   services: {},
+  deadlines: [],
+  vault: [],
 };
 
 let memory: OpsState | null = null;
@@ -158,6 +208,9 @@ function readFromDisk(): OpsState {
       domains: parsed.domains ?? {},
       backups: parsed.backups ?? {},
       services: parsed.services ?? {},
+      deadlines: Array.isArray(parsed.deadlines) ? parsed.deadlines : [],
+      vault: Array.isArray(parsed.vault) ? parsed.vault : [],
+      vaultImportedAt: parsed.vaultImportedAt,
     };
   } catch {
     return clone(EMPTY_STATE);

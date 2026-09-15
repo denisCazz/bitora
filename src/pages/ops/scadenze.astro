@@ -1,0 +1,335 @@
+---
+export const prerender = false;
+import OpsLayout from '../../layouts/OpsLayout.astro';
+import {
+  collectDeadlineViews,
+  deadlineSummary,
+  DEADLINE_CATEGORIES,
+  DEADLINE_CATEGORY_LABELS,
+  DEADLINE_RECURRENCE_LABELS,
+  DEADLINE_RECURRENCES,
+  isDeadlineCategory,
+} from '../../lib/ops/deadlines';
+import { formatDate, formatEuro } from '../../lib/ops/format';
+import { getOpsState } from '../../lib/ops/store';
+import type { DeadlineView } from '../../lib/ops/deadlines';
+
+const state = getOpsState();
+const all = collectDeadlineViews(state);
+const summary = deadlineSummary(all);
+const errore = Astro.url.searchParams.get('errore');
+const modifica = Astro.url.searchParams.get('modifica') || '';
+const stato = Astro.url.searchParams.get('stato') || 'aperte';
+const categoria = Astro.url.searchParams.get('cat') || '';
+const editing = state.deadlines.find(item => item.id === modifica);
+
+const filters = [
+  { id: 'aperte', label: 'Aperte' },
+  { id: 'scadute', label: 'Scadute' },
+  { id: 'settimana', label: '7 giorni' },
+  { id: 'mese', label: '30 giorni' },
+  { id: 'completate', label: 'Completate' },
+] as const;
+
+function matchesFilter(item: DeadlineView, selected: string): boolean {
+  if (selected === 'completate') return Boolean(item.doneAt);
+  if (item.doneAt) return false;
+  if (selected === 'scadute') return item.urgency === 'overdue';
+  if (selected === 'settimana') return item.urgency === 'overdue' || item.urgency === 'week';
+  if (selected === 'mese')
+    return item.urgency === 'overdue' || item.urgency === 'week' || item.urgency === 'month';
+  return true;
+}
+
+const rows = all.filter(item => {
+  if (!matchesFilter(item, stato)) return false;
+  if (categoria && isDeadlineCategory(categoria) && item.category !== categoria) return false;
+  return true;
+});
+
+function filterHref(nextStato = stato, nextCat = categoria): string {
+  const params = new URLSearchParams();
+  if (nextStato && nextStato !== 'aperte') params.set('stato', nextStato);
+  if (nextCat) params.set('cat', nextCat);
+  const query = params.toString();
+  return query ? `/ops/scadenze/?${query}` : '/ops/scadenze/';
+}
+
+function daysLabel(item: DeadlineView): string {
+  if (item.doneAt) return 'completata';
+  if (item.daysRemaining == null) return '—';
+  if (item.daysRemaining < 0) {
+    const n = Math.abs(item.daysRemaining);
+    return `scaduta da ${n}g`;
+  }
+  if (item.daysRemaining === 0) return 'oggi';
+  if (item.daysRemaining === 1) return 'domani';
+  return `${item.daysRemaining}g`;
+}
+
+const errorMessages: Record<string, string> = {
+  dati: 'Controlla titolo, categoria e data di scadenza.',
+  mancante: 'Scadenza non trovata.',
+};
+---
+
+<OpsLayout title="Scadenziario | Bitora Ops" heading="Scadenziario">
+  <div class="ops-cards" style="margin-bottom: 22px;">
+    <div class="ops-card">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', summary.overdue ? 'down' : undefined]}></span>
+        Scadute
+      </p>
+      <h2>{summary.overdue}</h2>
+      <p class="ops-muted">Da rinnovare o chiudere subito.</p>
+    </div>
+    <div class="ops-card">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', summary.week ? 'warn' : undefined]}></span>
+        Entro 7 giorni
+      </p>
+      <h2>{summary.week}</h2>
+      <p class="ops-muted">Promemoria della settimana.</p>
+    </div>
+    <div class="ops-card">
+      <p class="ops-pill">
+        <span class:list={['ops-dot', summary.month ? 'warn' : undefined]}></span>
+        Entro 30 giorni
+      </p>
+      <h2>{summary.month}</h2>
+      <p class="ops-muted">Finestra operativa del mese.</p>
+    </div>
+    <div class="ops-card">
+      <p class="ops-pill"><span class="ops-dot"></span> Aperte</p>
+      <h2>{summary.open}</h2>
+      <p class="ops-muted">Include anche domini e certificati monitorati.</p>
+    </div>
+  </div>
+
+  {
+    errore && errorMessages[errore] && (
+      <div class="ops-note" style="margin: 0 0 22px;" role="alert">
+        {errorMessages[errore]}
+      </div>
+    )
+  }
+
+  <section class="ops-card" style="margin-bottom: 28px;" id="modulo">
+    <h2 class="ops-section-title">{editing ? 'Modifica scadenza' : 'Nuova scadenza'}</h2>
+    <form class="ops-form" method="POST" action="/api/ops/deadline/">
+      <input type="hidden" name="action" value={editing ? 'update' : 'create'} />
+      {editing && <input type="hidden" name="id" value={editing.id} />}
+      <div class="ops-form-row">
+        <label>
+          Titolo
+          <input
+            name="title"
+            required
+            maxlength="120"
+            placeholder="Es. Dominio cliente.it"
+            value={editing?.title ?? ''}
+          />
+        </label>
+        <label>
+          Categoria
+          <select name="category">
+            {
+              DEADLINE_CATEGORIES.map(category => (
+                <option value={category} selected={editing?.category === category}>
+                  {DEADLINE_CATEGORY_LABELS[category]}
+                </option>
+              ))
+            }
+          </select>
+        </label>
+        <label>
+          Scadenza
+          <input name="dueOn" type="date" required value={editing?.dueOn ?? ''} />
+        </label>
+        <label>
+          Cliente / soggetto
+          <input
+            name="client"
+            maxlength="80"
+            placeholder="Opzionale"
+            value={editing?.client ?? ''}
+          />
+        </label>
+      </div>
+      <div class="ops-form-row">
+        <label>
+          Importo €
+          <input
+            name="amount"
+            inputmode="decimal"
+            placeholder="Opzionale"
+            value={editing?.amount != null ? String(editing.amount) : ''}
+          />
+        </label>
+        <label>
+          Ricorrenza
+          <select name="recurrence">
+            {
+              DEADLINE_RECURRENCES.map(recurrence => (
+                <option value={recurrence} selected={(editing?.recurrence ?? 'none') === recurrence}>
+                  {DEADLINE_RECURRENCE_LABELS[recurrence]}
+                </option>
+              ))
+            }
+          </select>
+        </label>
+        <label>
+          Alert (giorni prima)
+          <input
+            name="remindDays"
+            type="number"
+            min="0"
+            max="365"
+            value={editing?.remindDays ?? 14}
+          />
+        </label>
+        <label>
+          Note
+          <input name="notes" maxlength="1000" placeholder="Opzionale" value={editing?.notes ?? ''} />
+        </label>
+      </div>
+      <div class="ops-form-actions">
+        <button class="ops-btn" type="submit">{editing ? 'Salva modifiche' : 'Aggiungi scadenza'}</button>
+        {
+          editing && (
+            <a class="ops-btn ghost" href="/ops/scadenze/">
+              Annulla
+            </a>
+          )
+        }
+      </div>
+    </form>
+  </section>
+
+  <div class="ops-filters" aria-label="Filtri scadenze">
+    {
+      filters.map(filter => (
+        <a href={filterHref(filter.id, categoria)} class:list={[stato === filter.id && 'is-active']}>
+          {filter.label}
+        </a>
+      ))
+    }
+  </div>
+  <div class="ops-filters" aria-label="Categorie">
+    <a href={filterHref(stato, '')} class:list={[!categoria && 'is-active']}>Tutte</a>
+    {
+      DEADLINE_CATEGORIES.map(category => (
+        <a
+          href={filterHref(stato, category)}
+          class:list={[categoria === category && 'is-active']}
+        >
+          {DEADLINE_CATEGORY_LABELS[category]}
+        </a>
+      ))
+    }
+  </div>
+
+  {
+    rows.length ? (
+      <div class="ops-table-wrap">
+        <table class="ops-table">
+          <thead>
+            <tr>
+              <th>Stato</th>
+              <th>Titolo</th>
+              <th>Categoria</th>
+              <th>Cliente</th>
+              <th>Scadenza</th>
+              <th>Importo</th>
+              <th>Fonte</th>
+              <th>Gestione</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(item => (
+              <tr>
+                <td>
+                  <span class="ops-pill">
+                    <span
+                      class:list={[
+                        'ops-dot',
+                        item.urgency === 'overdue' && 'down',
+                        (item.urgency === 'week' || item.urgency === 'month') && 'warn',
+                      ]}
+                    />
+                    {daysLabel(item)}
+                  </span>
+                </td>
+                <td class="ops-wrap">
+                  {item.title}
+                  {item.notes ? <div class="ops-muted">{item.notes}</div> : null}
+                </td>
+                <td>{DEADLINE_CATEGORY_LABELS[item.category]}</td>
+                <td>{item.client ?? '—'}</td>
+                <td>
+                  {formatDate(item.dueOn)}
+                  {item.recurrence !== 'none' ? ` · ${DEADLINE_RECURRENCE_LABELS[item.recurrence]}` : ''}
+                </td>
+                <td>{formatEuro(item.amount)}</td>
+                <td>{item.source === 'manual' ? 'manuale' : 'monitoraggio'}</td>
+                <td class="ops-wrap">
+                  {item.editable ? (
+                    <div class="ops-row-actions">
+                      {item.doneAt ? (
+                        <form method="POST" action="/api/ops/deadline/">
+                          <input type="hidden" name="id" value={item.id} />
+                          <input type="hidden" name="action" value="reopen" />
+                          <button class="ops-btn ghost" type="submit">
+                            Riapri
+                          </button>
+                        </form>
+                      ) : (
+                        <form method="POST" action="/api/ops/deadline/">
+                          <input type="hidden" name="id" value={item.id} />
+                          <input type="hidden" name="action" value="complete" />
+                          <button class="ops-btn ghost" type="submit">
+                            {item.recurrence === 'none' ? 'Completa' : 'Rinnova'}
+                          </button>
+                        </form>
+                      )}
+                      <a class="ops-link" href={`/ops/scadenze/?modifica=${item.id}`}>
+                        Modifica
+                      </a>
+                      <form method="POST" action="/api/ops/deadline/">
+                        <input type="hidden" name="id" value={item.id} />
+                        <input type="hidden" name="action" value="delete" />
+                        <button
+                          class="ops-link"
+                          type="submit"
+                          style="background:none;border:0;padding:0;font:inherit;cursor:pointer;"
+                          onclick="return confirm('Eliminare questa scadenza?')"
+                        >
+                          Elimina
+                        </button>
+                      </form>
+                    </div>
+                  ) : (
+                    <a class="ops-link" href="/ops/infrastruttura/">
+                      Infrastruttura
+                    </a>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <div class="ops-card">
+        <p class="ops-muted">Nessuna scadenza in questo filtro. Aggiungine una dal modulo sopra.</p>
+      </div>
+    )
+  }
+
+  <div class="ops-note">
+    Le scadenze ricorrenti, una volta rinnovate, slittano al periodo successivo. Il cron invia un
+    promemoria Telegram quando manca il numero di giorni impostato, e ogni giorno se è già scaduta.
+    Domini e certificati TLS arrivano dal monitoraggio; per evitarne il doppione crea una scadenza
+    manuale con lo stesso nome.
+  </div>
+</OpsLayout>

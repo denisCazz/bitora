@@ -13,6 +13,7 @@ interface ImportMetaEnv {
   readonly OPS_SESSION_SECRET?: string;
   readonly OPS_CRON_SECRET?: string;
   readonly OPS_STATE_PATH?: string;
+  readonly OPS_VAULT_SEED_PATH?: string;
   readonly OPS_TELEGRAM_BOT_TOKEN?: string;
   readonly OPS_TELEGRAM_CHAT_ID?: string;
   readonly OPS_COOLIFY_URL?: string;

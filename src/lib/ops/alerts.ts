@@ -1,4 +1,5 @@
 import type { OpsAlertEvent } from '../../emails/opsAlert';
+import { collectDeadlineAlertEvents } from './deadlines';
 import { ALERT_REMIND_MS, env } from './env';
 import type { MonitorRun } from './monitor';
 import { updateOpsState } from './store';
@@ -63,7 +64,17 @@ export function collectAlertEvents(run: MonitorRun): OpsAlertEvent[] {
     });
   }
 
+  for (const deadline of collectDeadlineAlertEvents(prev.deadlines ?? [], prev.lastAlertAt, now)) {
+    events.push({
+      kind: 'deadline',
+      id: deadline.id,
+      title: deadline.title,
+      detail: deadline.detail,
+    });
+  }
+
   return events.filter(event => {
+    if (event.kind === 'deadline') return true;
     const resourceId = event.id;
     const window = prev.maintenance[resourceId] ?? prev.maintenance['*'];
     return !window || window.until <= now;
@@ -73,7 +84,8 @@ export function collectAlertEvents(run: MonitorRun): OpsAlertEvent[] {
 function plainText(events: OpsAlertEvent[]): string {
   return events
     .map(event => {
-      const icon = event.kind === 'recovery' ? '✅' : event.kind === 'reminder' ? '⏰' : '🚨';
+      const icon =
+        event.kind === 'recovery' ? '✅' : event.kind === 'reminder' ? '⏰' : event.kind === 'deadline' ? '📅' : '🚨';
       return `${icon} ${event.title}: ${event.detail}`;
     })
     .join('\n');
@@ -125,6 +137,8 @@ export async function sendOpsEvents(
           delete state.lastAlertAt[`vps:${event.id}`];
         } else if (event.kind === 'vps') {
           state.lastAlertAt[`vps:${event.id}`] = now;
+        } else if (event.kind === 'deadline') {
+          state.lastAlertAt[`deadline:${event.id}`] = now;
         } else {
           state.lastAlertAt[`site:${event.id}`] = now;
         }
