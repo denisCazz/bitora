@@ -21,7 +21,9 @@ const vpsHealth = snapshot.vpsIssues.some(i => i.severity === 'critical')
     : snapshot.runtime
       ? 'ok'
       : 'warn';
-const deadlines = deadlineSummary(collectDeadlineViews(state));
+const deadlines = deadlineSummary(
+  collectDeadlineViews(state).filter(item => item.source === 'manual')
+);
 const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : undefined;
 ---
 

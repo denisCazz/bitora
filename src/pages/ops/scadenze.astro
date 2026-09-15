@@ -16,12 +16,16 @@ import type { DeadlineView } from '../../lib/ops/deadlines';
 
 const state = getOpsState();
 const all = collectDeadlineViews(state);
-const summary = deadlineSummary(all);
 const errore = Astro.url.searchParams.get('errore');
 const modifica = Astro.url.searchParams.get('modifica') || '';
 const stato = Astro.url.searchParams.get('stato') || 'aperte';
 const categoria = Astro.url.searchParams.get('cat') || '';
+const fonte = Astro.url.searchParams.get('fonte') === 'infra' ? 'infra' : 'manuale';
 const editing = state.deadlines.find(item => item.id === modifica);
+const mine = all.filter(item => item.source === 'manual');
+const infra = all.filter(item => item.source !== 'manual');
+const scoped = fonte === 'infra' ? infra : mine;
+const summary = deadlineSummary(scoped);
 
 const filters = [
   { id: 'aperte', label: 'Aperte' },
@@ -41,18 +45,28 @@ function matchesFilter(item: DeadlineView, selected: string): boolean {
   return true;
 }
 
-const rows = all.filter(item => {
+const rows = scoped.filter(item => {
   if (!matchesFilter(item, stato)) return false;
   if (categoria && isDeadlineCategory(categoria) && item.category !== categoria) return false;
   return true;
 });
 
-function filterHref(nextStato = stato, nextCat = categoria): string {
+function filterHref(nextStato = stato, nextCat = categoria, nextFonte = fonte): string {
   const params = new URLSearchParams();
   if (nextStato && nextStato !== 'aperte') params.set('stato', nextStato);
   if (nextCat) params.set('cat', nextCat);
+  if (nextFonte === 'infra') params.set('fonte', 'infra');
   const query = params.toString();
   return query ? `/ops/scadenze/?${query}` : '/ops/scadenze/';
+}
+
+function editHref(id: string): string {
+  const params = new URLSearchParams();
+  if (stato && stato !== 'aperte') params.set('stato', stato);
+  if (categoria) params.set('cat', categoria);
+  if (fonte === 'infra') params.set('fonte', 'infra');
+  params.set('modifica', id);
+  return `/ops/scadenze/?${params.toString()}`;
 }
 
 function daysLabel(item: DeadlineView): string {
@@ -102,7 +116,9 @@ const errorMessages: Record<string, string> = {
     <div class="ops-card">
       <p class="ops-pill"><span class="ops-dot"></span> Aperte</p>
       <h2>{summary.open}</h2>
-      <p class="ops-muted">Include anche domini e certificati monitorati.</p>
+      <p class="ops-muted">
+        {fonte === 'infra' ? 'Domini e certificati dal monitoraggio.' : 'Solo le scadenze che inserisci tu.'}
+      </p>
     </div>
   </div>
 
@@ -197,7 +213,7 @@ const errorMessages: Record<string, string> = {
         <button class="ops-btn" type="submit">{editing ? 'Salva modifiche' : 'Aggiungi scadenza'}</button>
         {
           editing && (
-            <a class="ops-btn ghost" href="/ops/scadenze/">
+            <a class="ops-btn ghost" href={filterHref()}>
               Annulla
             </a>
           )
@@ -206,6 +222,14 @@ const errorMessages: Record<string, string> = {
     </form>
   </section>
 
+  <div class="ops-filters" aria-label="Fonte">
+    <a href={filterHref(stato, categoria, 'manuale')} class:list={[fonte === 'manuale' && 'is-active']}>
+      Le mie ({mine.filter(item => !item.doneAt).length})
+    </a>
+    <a href={filterHref(stato, categoria, 'infra')} class:list={[fonte === 'infra' && 'is-active']}>
+      Infrastruttura ({infra.length})
+    </a>
+  </div>
   <div class="ops-filters" aria-label="Filtri scadenze">
     {
       filters.map(filter => (
@@ -292,7 +316,7 @@ const errorMessages: Record<string, string> = {
                           </button>
                         </form>
                       )}
-                      <a class="ops-link" href={`/ops/scadenze/?modifica=${item.id}`}>
+                      <a class="ops-link" href={editHref(item.id)}>
                         Modifica
                       </a>
                       <form method="POST" action="/api/ops/deadline/">
@@ -321,7 +345,13 @@ const errorMessages: Record<string, string> = {
       </div>
     ) : (
       <div class="ops-card">
-        <p class="ops-muted">Nessuna scadenza in questo filtro. Aggiungine una dal modulo sopra.</p>
+        <p class="ops-muted">
+          {
+            fonte === 'infra'
+              ? 'Nessuna scadenza di infrastruttura in questo filtro. Domini e certificati arrivano dal monitoraggio.'
+              : 'Nessuna scadenza in questo filtro. Aggiungine una dal modulo sopra.'
+          }
+        </p>
       </div>
     )
   }
@@ -329,7 +359,7 @@ const errorMessages: Record<string, string> = {
   <div class="ops-note">
     Le scadenze ricorrenti, una volta rinnovate, slittano al periodo successivo. Il cron invia un
     promemoria Telegram quando manca il numero di giorni impostato, e ogni giorno se è già scaduta.
-    Domini e certificati TLS arrivano dal monitoraggio; per evitarne il doppione crea una scadenza
+    Domini e certificati TLS restano nel filtro Infrastruttura; per gestirli da qui crea una scadenza
     manuale con lo stesso nome.
   </div>
 </OpsLayout>
