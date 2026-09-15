@@ -1,9 +1,14 @@
 import crypto from 'node:crypto';
 import type { AstroCookies } from 'astro';
 import { env, isOpsConfigured, opsCronSecret, opsPassword, opsSessionSecret } from './env';
+import { totpVersion } from './totp';
 
 export const OPS_COOKIE = 'bitora_ops';
+export const OPS_PENDING_COOKIE = 'bitora_ops_pending';
 const SESSION_MAX_AGE_SEC = 60 * 60 * 24 * 7;
+const PENDING_MAX_AGE_SEC = 10 * 60;
+
+export type PendingPurpose = 'otp' | 'setup';
 
 function timingSafeEqualString(a: string, b: string): boolean {
   const aBuf = Buffer.from(a);
@@ -30,21 +35,31 @@ function sign(payload: string): string {
   return crypto.createHmac('sha256', opsSessionSecret()).update(payload).digest('base64url');
 }
 
+function parseSigned(token: string | undefined): string | null {
+  if (!token || !opsSessionSecret()) return null;
+  const lastDot = token.lastIndexOf('.');
+  if (lastDot <= 0) return null;
+  const payload = token.slice(0, lastDot);
+  const sig = token.slice(lastDot + 1);
+  if (!payload || !sig) return null;
+  if (!timingSafeEqualString(sig, sign(payload))) return null;
+  return payload;
+}
+
 export function createSessionToken(): string {
   const exp = Math.floor(Date.now() / 1000) + SESSION_MAX_AGE_SEC;
-  const payload = String(exp);
+  const payload = `${exp}.${totpVersion()}`;
   return `${payload}.${sign(payload)}`;
 }
 
 export function isValidSessionToken(token: string | undefined): boolean {
-  if (!token || !opsSessionSecret()) return false;
-  const [payload, sig] = token.split('.');
-  if (!payload || !sig) return false;
-  const expected = sign(payload);
-  if (!timingSafeEqualString(sig, expected)) return false;
-  const exp = Number(payload);
+  const payload = parseSigned(token);
+  if (!payload) return false;
+  const [expRaw, versionRaw] = payload.split('.');
+  const exp = Number(expRaw);
   if (!Number.isFinite(exp) || exp * 1000 < Date.now()) return false;
-  return true;
+  if (versionRaw == null || !Number.isFinite(Number(versionRaw))) return false;
+  return Number(versionRaw) === totpVersion();
 }
 
 export function isAuthenticated(cookies: AstroCookies): boolean {
@@ -59,10 +74,47 @@ export function setSessionCookie(cookies: AstroCookies, secure: boolean): void {
     path: '/',
     maxAge: SESSION_MAX_AGE_SEC,
   });
+  clearPendingCookie(cookies);
 }
 
 export function clearSessionCookie(cookies: AstroCookies): void {
   cookies.delete(OPS_COOKIE, { path: '/' });
+  clearPendingCookie(cookies);
+}
+
+export function createPendingToken(purpose: PendingPurpose): string {
+  const exp = Math.floor(Date.now() / 1000) + PENDING_MAX_AGE_SEC;
+  const payload = `pending.${exp}.${purpose}`;
+  return `${payload}.${sign(payload)}`;
+}
+
+export function readPendingPurpose(token: string | undefined): PendingPurpose | null {
+  const payload = parseSigned(token);
+  if (!payload) return null;
+  const [kind, expRaw, purpose] = payload.split('.');
+  if (kind !== 'pending') return null;
+  const exp = Number(expRaw);
+  if (!Number.isFinite(exp) || exp * 1000 < Date.now()) return null;
+  if (purpose !== 'otp' && purpose !== 'setup') return null;
+  return purpose;
+}
+
+export function getPendingPurpose(cookies: AstroCookies): PendingPurpose | null {
+  return readPendingPurpose(cookies.get(OPS_PENDING_COOKIE)?.value);
+}
+
+export function setPendingCookie(cookies: AstroCookies, purpose: PendingPurpose, secure: boolean): void {
+  cookies.set(OPS_PENDING_COOKIE, createPendingToken(purpose), {
+    httpOnly: true,
+    secure,
+    sameSite: 'lax',
+    path: '/',
+    maxAge: PENDING_MAX_AGE_SEC,
+  });
+}
+
+export function clearPendingCookie(cookies: AstroCookies): void {
+  cookies.delete(OPS_PENDING_COOKIE, { path: '/' });
 }
 
 function normalizePath(pathname: string): string {

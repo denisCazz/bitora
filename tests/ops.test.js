@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Area privata ops', () => {
   test('unauthenticated visitors are sent to login', async ({ page }) => {
-    for (const path of ['/ops/', '/ops/scadenze/', '/ops/password/']) {
+    for (const path of ['/ops/', '/ops/scadenze/', '/ops/password/', '/ops/sicurezza/']) {
       const response = await page.goto(path);
       expect(response?.status(), path).toBeLessThan(400);
       await expect(page).toHaveURL(/\/ops\/login\/?/);

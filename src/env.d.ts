@@ -11,6 +11,7 @@ interface ImportMetaEnv {
   readonly UMAMI_API_TOKEN?: string;
   readonly OPS_PASSWORD?: string;
   readonly OPS_SESSION_SECRET?: string;
+  readonly OPS_TOTP_SECRET?: string;
   readonly OPS_CRON_SECRET?: string;
   readonly OPS_STATE_PATH?: string;
   readonly OPS_VAULT_SEED_PATH?: string;

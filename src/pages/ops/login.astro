@@ -1,7 +1,13 @@
 ---
 export const prerender = false;
-import { isAuthenticated, safeOpsNext } from '../../lib/ops/auth';
+import { getPendingPurpose, isAuthenticated, safeOpsNext } from '../../lib/ops/auth';
 import { isOpsConfigured } from '../../lib/ops/env';
+import {
+  beginTotpEnrollment,
+  formatTotpSecret,
+  otpauthUrl,
+  pendingEnrollmentSecret,
+} from '../../lib/ops/totp';
 
 if (isAuthenticated(Astro.cookies)) {
   return Astro.redirect(safeOpsNext(Astro.url.searchParams.get('next')));
@@ -10,12 +16,33 @@ if (isAuthenticated(Astro.cookies)) {
 const errore = Astro.url.searchParams.get('errore');
 const next = safeOpsNext(Astro.url.searchParams.get('next'));
 const configured = isOpsConfigured();
+const pending = getPendingPurpose(Astro.cookies);
+const step = pending ?? 'password';
+
+let setupSecret = '';
+let setupOtpauth = '';
+if (step === 'setup') {
+  setupSecret = pendingEnrollmentSecret();
+  if (!setupSecret) {
+    const started = beginTotpEnrollment();
+    setupSecret = started.secret;
+    setupOtpauth = started.otpauth;
+  } else {
+    setupOtpauth = otpauthUrl(setupSecret);
+  }
+}
 
 const messages: Record<string, string> = {
   password: 'Password non corretta.',
+  otp: 'Codice non valido o già usato.',
+  setup: 'Codice non valido. Scansiona di nuovo e riprova.',
+  sessione: 'Sessione di accesso scaduta. Inserisci di nuovo la password.',
   rate: 'Troppi tentativi. Riprova tra qualche minuto.',
   config: 'Area non configurata: imposta OPS_PASSWORD nelle variabili ambiente.',
 };
+
+const title =
+  step === 'setup' ? 'Configura authenticator' : step === 'otp' ? 'Codice authenticator' : 'Area privata';
 ---
 
 <!doctype html>
@@ -36,8 +63,16 @@ const messages: Record<string, string> = {
   <body>
     <main>
       <p class="kicker">Bitora Ops</p>
-      <h1>Area privata</h1>
-      <p class="lede">Strumenti interni: stato siti, VPS e alert.</p>
+      <h1>{title}</h1>
+      <p class="lede">
+        {
+          step === 'setup'
+            ? 'Password corretta. Collega Google Authenticator, Authy o le Password di iCloud.'
+            : step === 'otp'
+              ? 'Inserisci il codice a 6 cifre dell’app authenticator.'
+              : 'Strumenti interni: stato siti, VPS e alert. Accesso con password e authenticator.'
+        }
+      </p>
       {
         errore && messages[errore] && (
           <p class="error" role="alert">
@@ -46,7 +81,53 @@ const messages: Record<string, string> = {
         )
       }
       {
-        configured ? (
+        !configured ? (
+          <p class="error" role="alert">
+            Imposta <code>OPS_PASSWORD</code> e <code>OPS_CRON_SECRET</code> per attivare l’area.
+          </p>
+        ) : step === 'setup' ? (
+          <form method="POST" action="/api/ops/login/" autocomplete="off">
+            <input type="hidden" name="next" value={next} />
+            <div class="qr-wrap" id="totp-qr" data-otpauth={setupOtpauth}></div>
+            <p class="hint">Oppure inserisci la chiave manualmente:</p>
+            <p class="secret">{formatTotpSecret(setupSecret)}</p>
+            <label for="code">Codice a 6 cifre</label>
+            <input
+              id="code"
+              name="code"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              pattern={'[0-9]{6}'}
+              maxlength="8"
+              required
+              autofocus
+            />
+            <button name="action" value="setup" type="submit">Attiva authenticator</button>
+            <button class="ghost" name="action" value="cancel" type="submit" formnovalidate>
+              Annulla
+            </button>
+          </form>
+        ) : step === 'otp' ? (
+          <form method="POST" action="/api/ops/login/">
+            <input type="hidden" name="next" value={next} />
+            <label for="code">Codice authenticator</label>
+            <input
+              id="code"
+              name="code"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              maxlength="16"
+              required
+              autofocus
+              placeholder="123456"
+            />
+            <p class="hint">Puoi anche usare un codice di recupero.</p>
+            <button name="action" value="otp" type="submit">Verifica</button>
+            <button class="ghost" name="action" value="cancel" type="submit" formnovalidate>
+              Usa un’altra sessione
+            </button>
+          </form>
+        ) : (
           <form method="POST" action="/api/ops/login/">
             <input type="hidden" name="next" value={next} />
             <label for="password">Password</label>
@@ -58,15 +139,32 @@ const messages: Record<string, string> = {
               required
               autofocus
             />
-            <button type="submit">Entra</button>
+            <button type="submit">Continua</button>
           </form>
-        ) : (
-          <p class="error" role="alert">
-            Imposta <code>OPS_PASSWORD</code> e <code>OPS_CRON_SECRET</code> per attivare l’area.
-          </p>
         )
       }
     </main>
+    {
+      step === 'setup' && (
+        <script>
+          import QRCodeStyling from 'qr-code-styling';
+          const el = document.getElementById('totp-qr');
+          const data = el?.dataset.otpauth;
+          if (el && data) {
+            const qr = new QRCodeStyling({
+              width: 200,
+              height: 200,
+              type: 'svg',
+              data,
+              dotsOptions: { color: '#111111', type: 'square' },
+              backgroundOptions: { color: '#ffffff' },
+              qrOptions: { errorCorrectionLevel: 'M' },
+            });
+            qr.append(el);
+          }
+        </script>
+      )
+    }
   </body>
 </html>
 
@@ -84,7 +182,7 @@ const messages: Record<string, string> = {
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
   main {
-    width: min(420px, calc(100% - 2rem));
+    width: min(440px, calc(100% - 2rem));
   }
   .kicker {
     font-size: 11px;
@@ -101,6 +199,7 @@ const messages: Record<string, string> = {
   .lede {
     color: rgba(255, 255, 255, 0.55);
     margin: 0 0 24px;
+    line-height: 1.5;
   }
   label {
     display: block;
@@ -118,6 +217,12 @@ const messages: Record<string, string> = {
     font: inherit;
     margin-bottom: 14px;
     color-scheme: dark;
+    box-sizing: border-box;
+  }
+  #code {
+    letter-spacing: 0.18em;
+    font-size: 1.15rem;
+    font-variant-numeric: tabular-nums;
   }
   button {
     appearance: none;
@@ -135,12 +240,47 @@ const messages: Record<string, string> = {
   button:hover {
     background: #e8e8ea;
   }
+  button.ghost {
+    margin-top: 10px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color-scheme: dark;
+  }
+  button.ghost:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
   .error {
     background: rgba(248, 113, 113, 0.12);
     color: #fecaca;
     padding: 12px 14px;
     border-radius: 12px;
     font-size: 14px;
+  }
+  .hint {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    margin: 0 0 10px;
+  }
+  .secret {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 0.12em;
+    font-size: 15px;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin: 0 0 18px;
+    word-break: break-all;
+  }
+  .qr-wrap {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 18px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 16px;
+    box-sizing: content-box;
   }
   code {
     font-size: 12px;

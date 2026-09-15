@@ -166,6 +166,17 @@ export interface OpsState {
   deadlines: OpsDeadline[];
   vault: OpsVaultEntry[];
   vaultImportedAt?: number;
+  totp?: OpsTotp;
+}
+
+export interface OpsTotp {
+  secret?: string;
+  pendingSecret?: string;
+  enabledAt?: number;
+  version: number;
+  backupHashes: string[];
+  lastCounter?: number;
+  backupCodesOnce?: string[];
 }
 
 const EMPTY_STATE: OpsState = {
@@ -211,6 +222,7 @@ function readFromDisk(): OpsState {
       deadlines: Array.isArray(parsed.deadlines) ? parsed.deadlines : [],
       vault: Array.isArray(parsed.vault) ? parsed.vault : [],
       vaultImportedAt: parsed.vaultImportedAt,
+      totp: parsed.totp,
     };
   } catch {
     return clone(EMPTY_STATE);
