@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { monitoredSites } from '../../../data/monitoredTargets';
+import { getTrackedSites } from '../../../lib/ops/trackedSites';
 import { updateOpsState } from '../../../lib/ops/store';
 
 export const prerender = false;
@@ -8,7 +8,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const form = await request.formData();
   const resourceId = String(form.get('resourceId') || '');
   const action = String(form.get('action') || 'set');
-  const allowed = new Set(['*', ...monitoredSites.map(site => site.id)]);
+  const allowed = new Set(['*', ...getTrackedSites().map(site => site.id)]);
   if (!allowed.has(resourceId)) {
     return Response.json({ ok: false, error: 'Risorsa non valida' }, { status: 400 });
   }

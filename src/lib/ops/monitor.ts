@@ -1,9 +1,10 @@
 import os from 'node:os';
 import { statfsSync } from 'node:fs';
-import { DEFAULT_OK_STATUSES, monitoredSites } from '../../data/monitoredTargets';
+import { DEFAULT_OK_STATUSES, type MonitoredSite } from '../../data/monitoredTargets';
 import { AGENT_STALE_MS, SITE_TIMEOUT_MS, VPS_DISK_WARN, VPS_LOAD_WARN, VPS_MEM_WARN } from './env';
 import { formatPercent } from './format';
 import { refreshInfrastructure } from './infrastructure';
+import { resolveTrackedSites } from './trackedSites';
 import {
   getOpsState,
   updateOpsState,
@@ -70,22 +71,7 @@ function diskSafe(n: number): number | undefined {
   return Number.isFinite(n) && n > 0 ? n : undefined;
 }
 
-async function checkSite(id: string): Promise<SiteCheckResult> {
-  const site = monitoredSites.find(s => s.id === id);
-  if (!site) {
-    return {
-      id,
-      name: id,
-      url: '',
-      group: '',
-      ok: false,
-      statusCode: null,
-      latencyMs: null,
-      error: 'Target sconosciuto',
-      checkedAt: Date.now(),
-    };
-  }
-
+async function checkSite(site: MonitoredSite): Promise<SiteCheckResult> {
   const okStatuses = site.okStatuses ?? DEFAULT_OK_STATUSES;
   const started = Date.now();
   const controller = new AbortController();
@@ -283,11 +269,12 @@ function evaluateInfrastructure(state: OpsState): VpsIssue[] {
 export async function runMonitor(kind: 'cron' | 'manual' = 'manual'): Promise<MonitorRun> {
   const checkedAt = Date.now();
   const previous = getOpsState();
-  const results = await Promise.all(monitoredSites.map(site => checkSite(site.id)));
+  const targets = resolveTrackedSites(previous);
+  const results = await Promise.all(targets.map(site => checkSite(site)));
   const runtime = collectRuntimeMetrics();
   const agent = previous.agent;
   const agentStale = Boolean(agent && checkedAt - agent.receivedAt > AGENT_STALE_MS());
-  const infrastructure = await refreshInfrastructure(monitoredSites, previous);
+  const infrastructure = await refreshInfrastructure(targets, previous);
   const infrastructureState = {
     ...previous,
     certificates: infrastructure.certificates,

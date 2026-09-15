@@ -1,8 +1,8 @@
 import { createCipheriv, createDecipheriv, createHash, randomBytes } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { monitoredSites } from '../../data/monitoredTargets';
 import { env, opsSessionSecret, opsVaultSeedPath } from './env';
 import type { OpsVaultEntry, VaultKind, VaultSource } from './store';
+import { getTrackedSites } from './trackedSites';
 import { updateOpsState } from './store';
 
 export const VAULT_KINDS = [
@@ -50,17 +50,18 @@ export const VAULT_GROUP_LABELS: Record<VaultGroup, string> = {
   altro: 'Altri progetti',
 };
 
-export const VAULT_PROJECTS: VaultProject[] = [
-  ...monitoredSites.map(site => ({
+export function vaultProjects(): VaultProject[] {
+  const tracked = getTrackedSites().map(site => ({
     id: site.id,
     name: site.name,
     group: site.group as VaultGroup,
     url: site.url,
-  })),
-  ...EXTRA_PROJECTS.filter(project => !monitoredSites.some(site => site.id === project.id)),
-];
-
-const PROJECT_BY_ID = new Map(VAULT_PROJECTS.map(project => [project.id, project]));
+  }));
+  return [
+    ...tracked,
+    ...EXTRA_PROJECTS.filter(project => !tracked.some(site => site.id === project.id)),
+  ];
+}
 
 export interface VaultSeedEntry {
   projectId: string;
@@ -91,12 +92,12 @@ export function isVaultKind(value: string): value is VaultKind {
 }
 
 export function vaultProject(id: string): VaultProject | undefined {
-  return PROJECT_BY_ID.get(id);
+  return vaultProjects().find(project => project.id === id);
 }
 
 export function resolveVaultProject(id: string): VaultProject {
   return (
-    PROJECT_BY_ID.get(id) ?? {
+    vaultProject(id) ?? {
       id,
       name: id,
       group: 'altro',
@@ -242,7 +243,7 @@ export function groupVaultByProject(views: VaultView[]): VaultProjectGroup[] {
   }
 
   const groups: VaultProjectGroup[] = [];
-  for (const project of VAULT_PROJECTS) {
+  for (const project of vaultProjects()) {
     const entries = byId.get(project.id);
     if (!entries?.length) continue;
     groups.push({
@@ -268,7 +269,7 @@ export function groupVaultByProject(views: VaultView[]): VaultProjectGroup[] {
 
 export function emptyVaultProjects(entries: OpsVaultEntry[]): VaultProject[] {
   const used = new Set(entries.map(entry => entry.projectId));
-  return VAULT_PROJECTS.filter(project => !used.has(project.id));
+  return vaultProjects().filter(project => !used.has(project.id));
 }
 
 export interface VaultFields {

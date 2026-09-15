@@ -1,26 +1,44 @@
 ---
 export const prerender = false;
 import OpsLayout from '../../layouts/OpsLayout.astro';
-import { monitoredSites, umamiDashboardUrl } from '../../data/monitoredTargets';
+import {
+  MONITOR_GROUP_LABELS,
+  MONITOR_GROUPS,
+  umamiDashboardUrl,
+} from '../../data/monitoredTargets';
 import { formatClock, formatMs, formatRelative } from '../../lib/ops/format';
 import { currentSnapshot } from '../../lib/ops/monitor';
 import { getOpsState } from '../../lib/ops/store';
+import { getTrackedSiteViews } from '../../lib/ops/trackedSites';
 
 const snapshot = currentSnapshot();
 const state = getOpsState();
+const tracked = getTrackedSiteViews();
 const byId = new Map(snapshot.sites.map(s => [s.id, s]));
-const rows = monitoredSites.map(site => {
+const rows = tracked.map(site => {
   const result = byId.get(site.id);
   return { site, result };
 });
-const groups = [
-  { id: 'infrastruttura', label: 'Infrastruttura' },
-  { id: 'gestionali', label: 'Gestionali' },
-  { id: 'clienti', label: 'Siti clienti' },
-] as const;
-const clientSites = monitoredSites.filter(site => site.group === 'clienti');
+const groups = MONITOR_GROUPS.map(id => ({ id, label: MONITOR_GROUP_LABELS[id] }));
+const clientSites = tracked.filter(site => site.group === 'clienti');
 const clientsWithUmami = clientSites.filter(site => site.umamiWebsiteId).length;
 const clientsMissingUmami = clientSites.length - clientsWithUmami;
+const errore = Astro.url.searchParams.get('errore');
+const modifica = Astro.url.searchParams.get('modifica') || '';
+const editing = tracked.find(site => site.id === modifica);
+const errorMessages: Record<string, string> = {
+  dati: 'Controlla nome, dominio e gruppo. L’URL Umami, se presente, deve essere un UUID.',
+  mancante: 'Sito non trovato.',
+};
+
+function hostLabel(url: string): string {
+  try {
+    const parsed = new URL(url);
+    return `${parsed.hostname}${parsed.pathname === '/' ? '' : parsed.pathname}`;
+  } catch {
+    return url.replace(/^https?:\/\//, '');
+  }
+}
 ---
 
 <OpsLayout title="Stato siti | Bitora Ops" heading="Stato siti">
@@ -30,7 +48,7 @@ const clientsMissingUmami = clientSites.length - clientsWithUmami;
         <span class:list={['ops-dot', snapshot.downCount ? 'down' : undefined]}></span>
         Online
       </p>
-      <h2>{snapshot.sites.length ? `${snapshot.upCount}/${monitoredSites.length}` : '—'}</h2>
+      <h2>{snapshot.sites.length ? `${snapshot.upCount}/${tracked.length}` : `${tracked.length}`}</h2>
       <p class="ops-muted">Ultimo check {formatRelative(snapshot.checkedAt)}</p>
     </div>
     <div class="ops-card">
@@ -57,12 +75,106 @@ const clientsMissingUmami = clientSites.length - clientsWithUmami;
     </div>
   </div>
 
+  {
+    errore && errorMessages[errore] && (
+      <div class="ops-note" style="margin: 0 0 22px;" role="alert">
+        {errorMessages[errore]}
+      </div>
+    )
+  }
+
+  <section class="ops-card" style="margin-bottom: 22px;" id="modulo">
+    <h2 class="ops-section-title">{editing ? 'Modifica dominio tracciato' : 'Nuovo dominio da tracciare'}</h2>
+    <p class="ops-muted" style="margin: 0 0 14px;">
+      Cambia URL, nome o gruppo dei siti già in elenco, oppure aggiungi un dominio da monitorare.
+    </p>
+    <form class="ops-form" method="POST" action="/api/ops/site/">
+      <input type="hidden" name="action" value={editing ? 'update' : 'create'} />
+      {editing && <input type="hidden" name="id" value={editing.id} />}
+      <div class="ops-form-row">
+        <label>
+          Nome
+          <input
+            name="name"
+            required
+            maxlength="80"
+            placeholder="Es. D'Alina"
+            value={editing?.name ?? ''}
+          />
+        </label>
+        <label>
+          Dominio / URL
+          <input
+            name="url"
+            required
+            maxlength="300"
+            placeholder="ristorantedalina.it"
+            value={editing?.url ?? ''}
+          />
+        </label>
+        <label>
+          Gruppo
+          <select name="group">
+            {
+              MONITOR_GROUPS.map(group => (
+                <option value={group} selected={(editing?.group ?? 'clienti') === group}>
+                  {MONITOR_GROUP_LABELS[group]}
+                </option>
+              ))
+            }
+          </select>
+        </label>
+      </div>
+      <div class="ops-form-row">
+        <label>
+          Testo atteso
+          <input
+            name="expectedText"
+            maxlength="120"
+            placeholder="Opzionale, nel HTML"
+            value={editing?.expectedText ?? ''}
+          />
+        </label>
+        <label>
+          Health URL
+          <input
+            name="healthUrl"
+            maxlength="300"
+            placeholder="Opzionale, es. /api/auth/session"
+            value={editing?.healthUrl ?? ''}
+          />
+        </label>
+        <label>
+          Umami website ID
+          <input
+            name="umamiWebsiteId"
+            maxlength="36"
+            placeholder="UUID dashboard"
+            value={editing?.umamiWebsiteId ?? ''}
+          />
+        </label>
+      </div>
+      <div class="ops-form-actions">
+        <button class="ops-btn" type="submit">{editing ? 'Salva dominio' : 'Aggiungi sito'}</button>
+        {
+          editing && (
+            <a class="ops-btn ghost" href="/ops/siti/">
+              Annulla
+            </a>
+          )
+        }
+      </div>
+    </form>
+  </section>
+
   <form method="POST" action="/api/ops/check/" style="margin-bottom: 18px;">
     <button class="ops-btn" type="submit">Aggiorna stato</button>
   </form>
 
   {
-    groups.map(group => (
+    groups
+      .filter(group => rows.some(row => row.site.group === group.id))
+      .map(group => (
       <section style="margin-bottom: 28px;">
         <h2 style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin: 0 0 12px;">
           {group.label}
@@ -78,7 +190,7 @@ const clientsMissingUmami = clientSites.length - clientsWithUmami;
                 <th>Check</th>
                 <th>Umami</th>
                 <th>Dettaglio</th>
-                <th>Alert</th>
+                <th>Gestione</th>
               </tr>
             </thead>
             <tbody>
@@ -101,10 +213,11 @@ const clientsMissingUmami = clientSites.length - clientsWithUmami;
                           {label}
                         </span>
                       </td>
-                      <td>
+                      <td class="ops-wrap">
                         <a href={site.url} target="_blank" rel="noreferrer">
                           {site.name}
                         </a>
+                        {site.overridden ? <div class="ops-muted">dominio modificato</div> : null}
                       </td>
                       <td>{result?.statusCode ?? '—'}</td>
                       <td>{formatMs(result?.latencyMs)}</td>
@@ -118,20 +231,37 @@ const clientsMissingUmami = clientSites.length - clientsWithUmami;
                           <span class="ops-missing">manca</span>
                         )}
                       </td>
-                      <td>{result?.error || site.url.replace(/^https?:\/\//, '')}</td>
-                      <td>
-                        <form method="POST" action="/api/ops/maintenance/">
-                          <input type="hidden" name="resourceId" value={site.id} />
-                          <input
-                            type="hidden"
-                            name="action"
-                            value={maintenance ? 'clear' : 'set'}
-                          />
-                          <input type="hidden" name="hours" value="1" />
-                          <button class="ops-btn ghost" type="submit">
-                            {maintenance ? 'Riattiva' : 'Silenzia 1h'}
-                          </button>
-                        </form>
+                      <td>{result?.error || hostLabel(site.url)}</td>
+                      <td class="ops-wrap">
+                        <div class="ops-row-actions">
+                          <form method="POST" action="/api/ops/maintenance/">
+                            <input type="hidden" name="resourceId" value={site.id} />
+                            <input
+                              type="hidden"
+                              name="action"
+                              value={maintenance ? 'clear' : 'set'}
+                            />
+                            <input type="hidden" name="hours" value="1" />
+                            <button class="ops-btn ghost" type="submit">
+                              {maintenance ? 'Riattiva' : 'Silenzia 1h'}
+                            </button>
+                          </form>
+                          <a class="ops-link" href={`/ops/siti/?modifica=${site.id}#modulo`}>
+                            Modifica
+                          </a>
+                          <form method="POST" action="/api/ops/site/">
+                            <input type="hidden" name="id" value={site.id} />
+                            <input type="hidden" name="action" value="delete" />
+                            <button
+                              class="ops-link"
+                              type="submit"
+                              style="background:none;border:0;padding:0;font:inherit;cursor:pointer;"
+                              onclick={`return confirm(${JSON.stringify(`Smettere di tracciare ${site.name}?`)})`}
+                            >
+                              Elimina
+                            </button>
+                          </form>
+                        </div>
                       </td>
                     </tr>
                   );

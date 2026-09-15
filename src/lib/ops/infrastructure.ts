@@ -101,7 +101,13 @@ export async function refreshInfrastructure(
   const now = Date.now();
   const certificates = { ...previous.certificates };
   const domains = { ...previous.domains };
-  const httpsTargets = targets.filter(target => new URL(target.url).protocol === 'https:');
+  const httpsTargets = targets.filter(target => {
+    try {
+      return new URL(target.url).protocol === 'https:';
+    } catch {
+      return false;
+    }
+  });
 
   await Promise.all(
     httpsTargets.map(async target => {
@@ -122,6 +128,15 @@ export async function refreshInfrastructure(
       domains[domain] = await checkDomain(domain);
     })
   );
+
+  const activeTargetIds = new Set(httpsTargets.map(target => target.id));
+  for (const key of Object.keys(certificates)) {
+    if (!activeTargetIds.has(key)) delete certificates[key];
+  }
+  const activeDomains = new Set(uniqueDomains);
+  for (const key of Object.keys(domains)) {
+    if (!activeDomains.has(key)) delete domains[key];
+  }
 
   return { certificates, domains };
 }

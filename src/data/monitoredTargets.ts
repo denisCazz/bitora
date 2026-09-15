@@ -1,4 +1,16 @@
-export type MonitorGroup = 'infrastruttura' | 'gestionali' | 'clienti';
+export const MONITOR_GROUPS = ['infrastruttura', 'gestionali', 'clienti'] as const;
+
+export type MonitorGroup = (typeof MONITOR_GROUPS)[number];
+
+export const MONITOR_GROUP_LABELS: Record<MonitorGroup, string> = {
+  infrastruttura: 'Infrastruttura',
+  gestionali: 'Gestionali',
+  clienti: 'Siti clienti',
+};
+
+export function isMonitorGroup(value: string): value is MonitorGroup {
+  return (MONITOR_GROUPS as readonly string[]).includes(value);
+}
 
 export const UMAMI_ORIGIN = 'https://umami.bitora.it';
 

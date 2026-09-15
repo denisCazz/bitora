@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 import OpsLayout from '../../layouts/OpsLayout.astro';
-import { monitoredSites } from '../../data/monitoredTargets';
+import { getTrackedSites } from '../../lib/ops/trackedSites';
 import { formatRelative } from '../../lib/ops/format';
 import { collectDeadlineViews, deadlineSummary } from '../../lib/ops/deadlines';
 import { currentSnapshot } from '../../lib/ops/monitor';
@@ -11,6 +11,7 @@ import { ensureVaultSeeded, vaultSummary } from '../../lib/ops/vault';
 ensureVaultSeeded();
 const snapshot = currentSnapshot();
 const state = getOpsState();
+const trackedSites = getTrackedSites();
 const vault = vaultSummary(state.vault);
 const lastCheck = state.lastCronAt ?? state.lastManualCheckAt;
 const siteHealth = snapshot.sites.length === 0 ? 'warn' : snapshot.downCount > 0 ? 'down' : 'ok';
@@ -38,7 +39,7 @@ const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : un
         {
           snapshot.sites.length
             ? `${snapshot.upCount}/${snapshot.sites.length} online`
-            : `${monitoredSites.length} siti da controllare`
+            : `${trackedSites.length} siti da controllare`
         }
       </h2>
       <p class="ops-muted">

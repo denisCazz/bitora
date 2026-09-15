@@ -1,11 +1,12 @@
 ---
 export const prerender = false;
 import OpsLayout from '../../layouts/OpsLayout.astro';
-import { monitoredSites } from '../../data/monitoredTargets';
+import { getTrackedSites } from '../../lib/ops/trackedSites';
 import { formatMs, formatRelative } from '../../lib/ops/format';
 import { getOpsState } from '../../lib/ops/store';
 
 const state = getOpsState();
+const trackedSites = getTrackedSites();
 const now = Date.now();
 
 function stats(id: string, days: number) {
@@ -83,7 +84,7 @@ const chartPoints = chartValues
       </thead>
       <tbody>
         {
-          monitoredSites.map(site => {
+          trackedSites.map(site => {
             const day = stats(site.id, 1);
             const week = stats(site.id, 7);
             const month = stats(site.id, 30);

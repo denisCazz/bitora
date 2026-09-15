@@ -80,6 +80,16 @@ export interface DomainCheck {
   error?: string;
 }
 
+export interface TrackedSiteRecord {
+  id: string;
+  name: string;
+  url: string;
+  group: string;
+  expectedText?: string;
+  healthUrl?: string;
+  umamiWebsiteId?: string;
+}
+
 export interface BackupReport {
   id: string;
   name: string;
@@ -167,6 +177,8 @@ export interface OpsState {
   vault: OpsVaultEntry[];
   vaultImportedAt?: number;
   totp?: OpsTotp;
+  trackedSites: TrackedSiteRecord[];
+  removedSiteIds: string[];
 }
 
 export interface OpsTotp {
@@ -191,6 +203,8 @@ const EMPTY_STATE: OpsState = {
   services: {},
   deadlines: [],
   vault: [],
+  trackedSites: [],
+  removedSiteIds: [],
 };
 
 let memory: OpsState | null = null;
@@ -223,6 +237,8 @@ function readFromDisk(): OpsState {
       vault: Array.isArray(parsed.vault) ? parsed.vault : [],
       vaultImportedAt: parsed.vaultImportedAt,
       totp: parsed.totp,
+      trackedSites: Array.isArray(parsed.trackedSites) ? parsed.trackedSites : [],
+      removedSiteIds: Array.isArray(parsed.removedSiteIds) ? parsed.removedSiteIds : [],
     };
   } catch {
     return clone(EMPTY_STATE);
