@@ -65,7 +65,6 @@ export default defineConfig({
     '/settori/turismo/': '/contattaci/',
     '/settori/professionisti/': '/contattaci/',
     '/tessere-nfc-torino/': '/nfc-ecosystem/',
-    '/tools/': '/tools/calcolatore-roi-gestionale/',
     '/progetti/wine-cafe/': '/lavori/',
     '/progetti/myzone/': '/lavori/',
   },
