@@ -95,7 +95,9 @@ const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : un
                 : 'Nessuna scadenza'
         }
       </h2>
-      <p class="ops-muted">Domini, hosting, contratti, licenze e fatture. Alert Telegram in arrivo.</p>
+      <p class="ops-muted">
+        Domini, hosting, contratti, licenze e fatture. Alert Telegram in arrivo.
+      </p>
     </a>
     <a class="ops-card" href="/ops/infrastruttura/">
       <p class="ops-pill">
@@ -104,6 +106,11 @@ const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : un
       </p>
       <h2>{Object.keys(state.services).length} container rilevati</h2>
       <p class="ops-muted">Certificati, domini, backup, container e ultimo deploy.</p>
+    </a>
+    <a class="ops-card" href="/ops/editoriale/">
+      <p class="ops-pill"><span class="ops-dot"></span> Editoriale</p>
+      <h2>Radar blog</h2>
+      <p class="ops-muted">Trend, bozze AI, pubblicazione manuale e lead del magazine.</p>
     </a>
     <a class="ops-card" href="/ops/incidenti/">
       <p class="ops-pill">

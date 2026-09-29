@@ -1,0 +1,81 @@
+---
+export const prerender = false;
+import OpsLayout from '../../../../layouts/OpsLayout.astro';
+import { isDatabaseConfigured, getPrisma } from '../../../../lib/db';
+import { formatClock, formatUsd } from '../../../../lib/editorial/format';
+
+const { id } = Astro.params;
+if (!isDatabaseConfigured() || !id) {
+  return Astro.redirect('/ops/editoriale/');
+}
+
+const run = await getPrisma().editorialRun.findUnique({
+  where: { id },
+  include: { events: { orderBy: { createdAt: 'asc' } } },
+});
+if (!run) {
+  return Astro.redirect('/ops/editoriale/');
+}
+
+const meta = run.meta && typeof run.meta === 'object' ? run.meta : {};
+---
+
+<OpsLayout title={`Run ${run.status}`} heading="Log pipeline">
+  <p class="ops-muted" style="margin-bottom: 16px;">
+    <a class="ops-link" href="/ops/editoriale/">← Editoriale</a>
+  </p>
+
+  <div class="ops-cards">
+    <div class="ops-card">
+      <p class="ops-pill">{run.status}</p>
+      <h2>{run.kind}</h2>
+      <p class="ops-muted">{run.triggeredBy} · {formatClock(run.startedAt)}</p>
+    </div>
+    <div class="ops-card">
+      <p class="ops-pill">Costo</p>
+      <h2>{formatUsd(run.costUsd)}</h2>
+      <p class="ops-muted">{run.tokensIn ?? 0} in · {run.tokensOut ?? 0} out</p>
+    </div>
+    <div class="ops-card">
+      <p class="ops-pill">Eventi</p>
+      <h2>{run.events.length}</h2>
+      <p class="ops-muted">{run.error || 'nessun errore'}</p>
+    </div>
+  </div>
+
+  {
+    run.error && (
+      <p class="ops-note" style="margin-top: 18px;">
+        {run.error}
+      </p>
+    )
+  }
+
+  <h2 class="ops-section-title" style="margin-top:28px">Log</h2>
+  <ol class="ops-log">
+    {
+      run.events.map(event => (
+        <li class={`ops-log-item is-${event.level}`}>
+          <div class="ops-log-meta">
+            <span class="ops-log-level">{event.level}</span>
+            <span class="ops-log-step">{event.step}</span>
+            <span class="ops-log-time">{formatClock(event.createdAt)}</span>
+          </div>
+          <p>{event.message}</p>
+          {event.data != null && <pre>{JSON.stringify(event.data, null, 2)}</pre>}
+        </li>
+      ))
+    }
+    {
+      run.events.length === 0 && (
+        <li class="ops-log-item">
+          <p>Nessun evento registrato su questo run (run precedente alla tabella log).</p>
+        </li>
+      )
+    }
+  </ol>
+
+  <p class="ops-muted" style="margin-top: 18px;">
+    Meta: <code>{JSON.stringify(meta)}</code>
+  </p>
+</OpsLayout>

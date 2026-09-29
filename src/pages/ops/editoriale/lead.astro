@@ -1,0 +1,50 @@
+---
+export const prerender = false;
+import OpsLayout from '../../../layouts/OpsLayout.astro';
+import { getPrisma, isDatabaseConfigured } from '../../../lib/db';
+import { formatClock } from '../../../lib/editorial/format';
+
+const leads = isDatabaseConfigured()
+  ? await getPrisma().lead.findMany({
+      orderBy: { createdAt: 'desc' },
+      take: 100,
+      include: { article: true },
+    })
+  : [];
+---
+
+<OpsLayout title="Lead blog" heading="Lead editoriali">
+  <div class="ops-table-wrap">
+    <table class="ops-table">
+      <thead>
+        <tr>
+          <th>Quando</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>CTA</th>
+          <th>Articolo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          leads.map(lead => (
+            <tr>
+              <td>{formatClock(lead.createdAt)}</td>
+              <td>{lead.name}</td>
+              <td>{lead.email}</td>
+              <td>{lead.cta}</td>
+              <td class="ops-wrap">{lead.article?.title || lead.articleSlug || '—'}</td>
+            </tr>
+          ))
+        }
+        {
+          leads.length === 0 && (
+            <tr>
+              <td colspan="5">Nessun lead dal magazine.</td>
+            </tr>
+          )
+        }
+      </tbody>
+    </table>
+  </div>
+</OpsLayout>

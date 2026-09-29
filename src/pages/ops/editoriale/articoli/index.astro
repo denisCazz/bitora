@@ -1,0 +1,77 @@
+---
+export const prerender = false;
+import OpsLayout from '../../../../layouts/OpsLayout.astro';
+import { isDatabaseConfigured, getPrisma } from '../../../../lib/db';
+import { formatClock } from '../../../../lib/editorial/format';
+
+const configured = isDatabaseConfigured();
+const status = Astro.url.searchParams.get('status') || '';
+const articles = configured
+  ? await getPrisma().article.findMany({
+      where: status
+        ? { status: status as 'DRAFT' | 'IN_REVIEW' | 'PUBLISHED' | 'ARCHIVED' }
+        : undefined,
+      orderBy: { updatedAt: 'desc' },
+    })
+  : [];
+---
+
+<OpsLayout title="Articoli" heading="Articoli">
+  <div class="ops-filters">
+    <a href="/ops/editoriale/articoli/" class:list={[!status && 'is-active']}>Tutti</a>
+    <a
+      href="/ops/editoriale/articoli/?status=DRAFT"
+      class:list={[status === 'DRAFT' && 'is-active']}>Bozze</a
+    >
+    <a
+      href="/ops/editoriale/articoli/?status=IN_REVIEW"
+      class:list={[status === 'IN_REVIEW' && 'is-active']}>Review</a
+    >
+    <a
+      href="/ops/editoriale/articoli/?status=PUBLISHED"
+      class:list={[status === 'PUBLISHED' && 'is-active']}>Pubblicati</a
+    >
+    <a
+      href="/ops/editoriale/articoli/?status=ARCHIVED"
+      class:list={[status === 'ARCHIVED' && 'is-active']}>Archivio</a
+    >
+    <a href="/ops/editoriale/articoli/nuovo/">Nuovo</a>
+  </div>
+  <div class="ops-table-wrap">
+    <table class="ops-table">
+      <thead>
+        <tr>
+          <th>Titolo</th>
+          <th>Stato</th>
+          <th>Topic</th>
+          <th>AI</th>
+          <th>Aggiornato</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          articles.map(article => (
+            <tr>
+              <td>
+                <a class="ops-link" href={`/ops/editoriale/articoli/${article.id}/`}>
+                  {article.title}
+                </a>
+              </td>
+              <td>{article.status}</td>
+              <td>{article.topic}</td>
+              <td>{article.generatedByAi ? 'sì' : 'no'}</td>
+              <td>{formatClock(article.updatedAt)}</td>
+            </tr>
+          ))
+        }
+        {
+          articles.length === 0 && (
+            <tr>
+              <td colspan="5">Nessun articolo.</td>
+            </tr>
+          )
+        }
+      </tbody>
+    </table>
+  </div>
+</OpsLayout>

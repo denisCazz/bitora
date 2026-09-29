@@ -1,0 +1,103 @@
+---
+import type { PublicArticle } from '../../lib/editorial/articles';
+import { ctaHrefWithArticle, ctaSpec } from '../../lib/editorial/cta';
+
+interface Props {
+  article: PublicArticle;
+  answers?: string;
+}
+
+const { article } = Astro.props;
+const spec = ctaSpec(article.ctaVariant, article.topic, article.category);
+const href = ctaHrefWithArticle(spec.href, article.slug);
+---
+
+<form
+  class="lead-capture mt-10 p-6 md:p-8 rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/[0.03]"
+  method="POST"
+  action="/api/blog/lead/"
+  data-track-form="blog_lead"
+>
+  <p class="text-xs uppercase tracking-[0.16em] text-gray-500 mb-2">Fine del percorso</p>
+  <h2 class="text-2xl font-bold mb-2">{spec.magnet}</h2>
+  <p class="text-gray-600 dark:text-gray-400 mb-6">
+    Nome, email e consenso. Ti rispondiamo noi, non una sequenza automatica infinita.
+  </p>
+  <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+  <input type="hidden" name="articleId" value={article.id} />
+  <input type="hidden" name="articleSlug" value={article.slug} />
+  <input type="hidden" name="cta" value={spec.variant} />
+  <input type="hidden" name="topic" value={article.topic} />
+  <input type="hidden" name="magnet" value={spec.magnet} />
+  <input type="hidden" name="answers" value="" data-diagnostic-output />
+  <input type="hidden" name="landingPage" value={Astro.url.pathname} />
+  <input
+    type="hidden"
+    name="utm_source"
+    value={Astro.url.searchParams.get('utm_source') ?? 'blog'}
+  />
+  <input
+    type="hidden"
+    name="utm_medium"
+    value={Astro.url.searchParams.get('utm_medium') ?? 'article'}
+  />
+  <input
+    type="hidden"
+    name="utm_campaign"
+    value={Astro.url.searchParams.get('utm_campaign') ?? article.slug}
+  />
+  <div class="grid gap-3 md:grid-cols-2">
+    <label class="grid gap-1 text-sm">
+      Nome
+      <input
+        required
+        name="name"
+        class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
+      />
+    </label>
+    <label class="grid gap-1 text-sm">
+      Email
+      <input
+        required
+        type="email"
+        name="email"
+        class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
+      />
+    </label>
+    <label class="grid gap-1 text-sm">
+      Telefono
+      <input
+        name="phone"
+        class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
+      />
+    </label>
+    <label class="grid gap-1 text-sm">
+      Azienda
+      <input
+        name="company"
+        class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
+      />
+    </label>
+  </div>
+  <label class="grid gap-1 text-sm mt-3">
+    Cosa ti serve
+    <textarea
+      name="message"
+      rows="3"
+      class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
+    ></textarea>
+  </label>
+  <label class="flex gap-2 items-start text-sm mt-4">
+    <input required type="checkbox" name="consent" value="1" class="mt-1" />
+    <span>
+      Acconsento al trattamento dei dati secondo la
+      <a class="underline" href="/privacy-policy/">privacy policy</a>.
+    </span>
+  </label>
+  <div class="flex flex-wrap gap-3 mt-6">
+    <button class="btn-primary" type="submit">Invia e ricevi {spec.magnet.toLowerCase()}</button>
+    <a class="btn-secondary" href={href}>{spec.label}</a>
+    <a class="text-sm underline self-center" href={spec.secondaryHref}>{spec.secondaryLabel}</a>
+  </div>
+  <p class="lead-status text-sm mt-4 hidden" data-lead-status></p>
+</form>

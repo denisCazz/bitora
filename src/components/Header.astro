@@ -16,6 +16,7 @@ const navItems = [
   { name: 'Shop NFC', url: 'https://shopnfc.bitora.it/', badge: 'Nuovo', external: true },
   { name: 'Servizi', url: '/servizi/' },
   { name: 'Lavori', url: '/lavori/' },
+  { name: 'Blog', url: '/blog/' },
   { name: 'Contatti', url: '/contattaci/' },
 ];
 
@@ -134,7 +135,11 @@ function isGroupActive(item: (typeof navItems)[number]) {
                     : 'px-2.5 lg:px-3.5 py-2 rounded-lg text-[13px] lg:text-sm font-medium transition-all duration-200 text-white/70 hover:text-white hover:bg-white/[0.06] inline-flex items-center gap-1.5'
                 }
                 {...('external' in item && item.external
-                  ? { rel: 'noopener noreferrer', 'data-track': 'cta_click', 'data-track-location': 'header_nav_shopnfc' }
+                  ? {
+                      rel: 'noopener noreferrer',
+                      'data-track': 'cta_click',
+                      'data-track-location': 'header_nav_shopnfc',
+                    }
                   : {})}
               >
                 {item.name}
@@ -204,7 +209,11 @@ function isGroupActive(item: (typeof navItems)[number]) {
                   : 'py-3 px-3 text-sm font-medium rounded-lg transition-colors text-white/70 hover:text-white hover:bg-white/[0.05] inline-flex items-center gap-2'
               }
               {...('external' in item && item.external
-                ? { rel: 'noopener noreferrer', 'data-track': 'cta_click', 'data-track-location': 'header_nav_shopnfc' }
+                ? {
+                    rel: 'noopener noreferrer',
+                    'data-track': 'cta_click',
+                    'data-track-location': 'header_nav_shopnfc',
+                  }
                 : {})}
             >
               {item.name}

@@ -1,0 +1,104 @@
+---
+export const prerender = false;
+import OpsLayout from '../../../../layouts/OpsLayout.astro';
+import { TOPIC_PILLARS } from '../../../../lib/editorial/topics';
+import { CTA_VARIANTS } from '../../../../lib/editorial/types';
+
+const errore = Astro.url.searchParams.get('errore');
+const emptyContent = JSON.stringify(
+  {
+    stages: [
+      { id: 'signal', label: 'Segnale' },
+      { id: 'deep', label: 'Lettura' },
+      { id: 'proof', label: 'Prove' },
+      { id: 'field', label: 'Sul campo' },
+      { id: 'act', label: 'Azione' },
+    ],
+    blocks: [
+      { type: 'signal', heading: '', body: '', seconds: 60, stageId: 'signal' },
+      { type: 'paragraph', html: '', stageId: 'deep' },
+    ],
+  },
+  null,
+  2
+);
+---
+
+<OpsLayout title="Nuovo articolo" heading="Nuovo articolo">
+  {errore && <p class="ops-note">{errore}</p>}
+  <form class="ops-form" method="POST" action="/api/ops/editorial/article/">
+    <label>
+      Titolo
+      <input name="title" required />
+    </label>
+    <div class="ops-form-row">
+      <label>
+        Slug
+        <input name="slug" required />
+      </label>
+      <label>
+        Topic
+        <select name="topic">
+          {TOPIC_PILLARS.map(pillar => <option value={pillar.id}>{pillar.label}</option>)}
+        </select>
+      </label>
+      <label>
+        Categoria
+        <input name="category" value="Siti Web" />
+      </label>
+    </div>
+    <label>
+      Excerpt
+      <textarea name="excerpt" rows="3"></textarea>
+    </label>
+    <div class="ops-form-row">
+      <label>
+        SEO title
+        <input name="seoTitle" />
+      </label>
+      <label>
+        SEO description
+        <input name="seoDescription" />
+      </label>
+    </div>
+    <div class="ops-form-row">
+      <label>
+        Cover
+        <input name="coverImage" value="/editorial/web-offer.png" />
+      </label>
+      <label>
+        Cover alt
+        <input name="coverAlt" />
+      </label>
+      <label>
+        CTA
+        <select name="ctaVariant">
+          {CTA_VARIANTS.map(variant => <option value={variant}>{variant}</option>)}
+        </select>
+      </label>
+    </div>
+    <label>
+      Case study slug (virgola)
+      <input name="caseStudySlugs" />
+    </label>
+    <label>
+      Angle
+      <input name="angle" />
+    </label>
+    <label>
+      Abstract
+      <textarea name="abstract" rows="3"></textarea>
+    </label>
+    <label>
+      Blocchi JSON
+      <textarea name="content" rows="18">{emptyContent}</textarea>
+    </label>
+    <label>
+      Fonti JSON
+      <textarea name="sources" rows="5">[]</textarea>
+    </label>
+    <div class="ops-form-actions">
+      <button class="ops-btn" type="submit">Salva bozza</button>
+    </div>
+  </form>
+</OpsLayout>

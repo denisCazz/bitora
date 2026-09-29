@@ -62,7 +62,12 @@ export function isValidSessionToken(token: string | undefined): boolean {
   return Number(versionRaw) === totpVersion();
 }
 
+export function isDevLoginBypass(): boolean {
+  return Boolean(import.meta.env.DEV);
+}
+
 export function isAuthenticated(cookies: AstroCookies): boolean {
+  if (isDevLoginBypass()) return true;
   return isValidSessionToken(cookies.get(OPS_COOKIE)?.value);
 }
 
@@ -103,7 +108,11 @@ export function getPendingPurpose(cookies: AstroCookies): PendingPurpose | null 
   return readPendingPurpose(cookies.get(OPS_PENDING_COOKIE)?.value);
 }
 
-export function setPendingCookie(cookies: AstroCookies, purpose: PendingPurpose, secure: boolean): void {
+export function setPendingCookie(
+  cookies: AstroCookies,
+  purpose: PendingPurpose,
+  secure: boolean
+): void {
   cookies.set(OPS_PENDING_COOKIE, createPendingToken(purpose), {
     httpOnly: true,
     secure,
@@ -139,7 +148,9 @@ export function isPublicOpsPath(pathname: string): boolean {
     path === '/api/ops/login' ||
     path === '/api/ops/cron' ||
     path === '/api/ops/vps' ||
-    path === '/api/ops/watchdog'
+    path === '/api/ops/watchdog' ||
+    path === '/api/ops/vault-import' ||
+    path === '/api/ops/editorial/run'
   );
 }
 

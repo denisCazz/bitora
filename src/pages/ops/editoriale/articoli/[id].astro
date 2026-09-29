@@ -1,0 +1,239 @@
+---
+export const prerender = false;
+import OpsLayout from '../../../../layouts/OpsLayout.astro';
+import { getPrisma, isDatabaseConfigured } from '../../../../lib/db';
+import { collectSeoIssues, evaluatePublishReadiness } from '../../../../lib/editorial/validate';
+import { TOPIC_PILLARS } from '../../../../lib/editorial/topics';
+import { CTA_VARIANTS } from '../../../../lib/editorial/types';
+import { formatClock } from '../../../../lib/editorial/format';
+
+const id = Astro.params.id ?? '';
+if (!isDatabaseConfigured()) {
+  return Astro.redirect('/ops/editoriale/?errore=db');
+}
+const article = await getPrisma().article.findUnique({
+  where: { id },
+  include: { sources: true, revisions: { orderBy: { createdAt: 'desc' }, take: 12 } },
+});
+if (!article) {
+  return new Response(null, { status: 404 });
+}
+
+const errore = Astro.url.searchParams.get('errore');
+const ok = Astro.url.searchParams.get('ok');
+const uploaded = Astro.url.searchParams.get('url');
+const contentJson = JSON.stringify(article.content, null, 2);
+const sourcesJson = JSON.stringify(
+  article.sources.map(source => ({
+    title: source.title,
+    url: source.url,
+    excerpt: source.excerpt,
+  })),
+  null,
+  2
+);
+const seo = collectSeoIssues(article);
+const publish = evaluatePublishReadiness({
+  slug: article.slug,
+  title: article.title,
+  seoTitle: article.seoTitle,
+  seoDescription: article.seoDescription,
+  excerpt: article.excerpt,
+  coverImage: article.coverImage,
+  coverAlt: article.coverAlt,
+  content: article.content,
+  sourceCount: article.sources.length,
+  caseStudySlugs: article.caseStudySlugs,
+  confirm: true,
+});
+---
+
+<OpsLayout title={article.title} heading={article.title}>
+  <p class="ops-muted">
+    {article.status} · {article.generatedByAi ? 'AI + review' : 'manuale'} · slug /blog/{
+      article.slug
+    }/
+  </p>
+  {errore && <p class="ops-note">{errore}</p>}
+  {ok && <p class="ops-note">Salvato.</p>}
+  {uploaded && <p class="ops-note">Media: {uploaded}</p>}
+
+  <div class="ops-form-actions" style="margin: 16px 0 24px">
+    <a class="ops-btn ghost" href={`/ops/editoriale/anteprima/${article.id}/`}>Anteprima</a>
+    <a class="ops-btn ghost" href={`/blog/${article.slug}/?preview=1`}
+      >Anteprima pubblica autenticata</a
+    >
+  </div>
+
+  <form class="ops-form" method="POST" action="/api/ops/editorial/article/">
+    <input type="hidden" name="id" value={article.id} />
+    <label>
+      Titolo
+      <input name="title" required value={article.title} />
+    </label>
+    <div class="ops-form-row">
+      <label>
+        Slug
+        <input name="slug" required value={article.slug} />
+      </label>
+      <label>
+        Topic
+        <select name="topic">
+          {
+            TOPIC_PILLARS.map(pillar => (
+              <option value={pillar.id} selected={pillar.id === article.topic}>
+                {pillar.label}
+              </option>
+            ))
+          }
+        </select>
+      </label>
+      <label>
+        Categoria
+        <input name="category" value={article.category} />
+      </label>
+      <label>
+        Lettura
+        <input name="readTime" value={article.readTime ?? ''} />
+      </label>
+    </div>
+    <label>
+      Excerpt
+      <textarea name="excerpt" rows="3">{article.excerpt}</textarea>
+    </label>
+    <label>
+      Angle
+      <input name="angle" value={article.angle ?? ''} />
+    </label>
+    <label>
+      Abstract
+      <textarea name="abstract" rows="3">{article.abstract ?? ''}</textarea>
+    </label>
+    <div class="ops-form-row">
+      <label>
+        SEO title
+        <input name="seoTitle" value={article.seoTitle} />
+      </label>
+      <label>
+        SEO description
+        <input name="seoDescription" value={article.seoDescription} />
+      </label>
+    </div>
+    <div class="ops-form-row">
+      <label>
+        Cover
+        <input name="coverImage" value={article.coverImage ?? ''} />
+      </label>
+      <label>
+        Cover alt
+        <input name="coverAlt" value={article.coverAlt ?? ''} />
+      </label>
+      <label>
+        CTA
+        <select name="ctaVariant">
+          {
+            CTA_VARIANTS.map(variant => (
+              <option value={variant} selected={variant === article.ctaVariant}>
+                {variant}
+              </option>
+            ))
+          }
+        </select>
+      </label>
+    </div>
+    <label>
+      Case study slug (virgola)
+      <input name="caseStudySlugs" value={article.caseStudySlugs.join(', ')} />
+    </label>
+    <label>
+      Visual hints (una riga ciascuno)
+      <textarea name="visualHints" rows="3"
+        >{(Array.isArray(article.visualHints) ? article.visualHints : []).join('\n')}</textarea
+      >
+    </label>
+    <label>
+      Blocchi JSON
+      <textarea name="content" rows="22">{contentJson}</textarea>
+    </label>
+    <label>
+      Fonti JSON
+      <textarea name="sources" rows="7">{sourcesJson}</textarea>
+    </label>
+    <label>
+      Nota revisione
+      <input name="note" placeholder="Cosa hai cambiato" />
+    </label>
+    <div class="ops-form-actions">
+      <button class="ops-btn" type="submit">Salva</button>
+    </div>
+  </form>
+
+  <h2 class="ops-section-title" style="margin-top:32px">Controlli pubblicazione</h2>
+  <ul class="ops-muted">
+    {
+      seo.map(issue => (
+        <li>
+          {issue.level}: {issue.message}
+        </li>
+      ))
+    }
+    {publish.errors.map(item => <li>error: {item}</li>)}
+    {publish.ok && <li>Pronto: slug, SEO, fonti/casi e blocchi ok.</li>}
+  </ul>
+
+  <form
+    method="POST"
+    action="/api/ops/editorial/article/"
+    class="ops-form-actions"
+    style="margin-top:16px"
+  >
+    <input type="hidden" name="id" value={article.id} />
+    <input type="hidden" name="action" value="status" />
+    <input type="hidden" name="confirm" value="1" />
+    <button class="ops-btn ghost" name="status" value="IN_REVIEW">Metti in review</button>
+    <button class="ops-btn ghost" name="status" value="DRAFT">Torna in bozza</button>
+    <button class="ops-btn" name="status" value="PUBLISHED">Pubblica</button>
+    <button class="ops-btn ghost" name="status" value="ARCHIVED">Archivia</button>
+  </form>
+
+  <h2 class="ops-section-title" style="margin-top:32px">Media</h2>
+  <form
+    class="ops-form"
+    method="POST"
+    action="/api/ops/editorial/media/"
+    enctype="multipart/form-data"
+  >
+    <input type="hidden" name="articleId" value={article.id} />
+    <label>
+      File
+      <input type="file" name="file" accept="image/*" />
+    </label>
+    <label>
+      Alt
+      <input name="alt" />
+    </label>
+    <button class="ops-btn" type="submit">Carica</button>
+  </form>
+
+  <h2 class="ops-section-title" style="margin-top:32px">Revisioni</h2>
+  <div class="ops-table-wrap">
+    <table class="ops-table">
+      <thead>
+        <tr>
+          <th>Quando</th>
+          <th>Nota</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          article.revisions.map(rev => (
+            <tr>
+              <td>{formatClock(rev.createdAt)}</td>
+              <td class="ops-wrap">{rev.note || '—'}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</OpsLayout>

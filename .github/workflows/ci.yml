@@ -16,6 +16,8 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - run: npx prisma validate
+      - run: npx tsx --test src/lib/editorial/editorial.test.ts
       - run: npx astro check
       - run: npx prettier --check .
       - run: npx eslint .

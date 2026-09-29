@@ -56,5 +56,5 @@ module.exports = {
     es2022: true,
     node: true,
   },
-  ignorePatterns: ['dist/', 'node_modules/', '.astro/'],
+  ignorePatterns: ['dist/', 'node_modules/', '.astro/', 'generated/'],
 };

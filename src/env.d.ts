@@ -25,6 +25,20 @@ interface ImportMetaEnv {
   readonly OPS_AGENT_STALE_MS?: string;
   readonly OPS_ALERT_REMIND_MS?: string;
   readonly OPS_CRON_STALE_MS?: string;
+  readonly DATABASE_URL?: string;
+  readonly TAVILY_API_KEY?: string;
+  readonly OPENAI_API_KEY?: string;
+  readonly OPENAI_MODEL?: string;
+  readonly EDITORIAL_CRON_ENABLED?: string;
+  readonly EDITORIAL_CRON_INTERVAL_HOURS?: string;
+  readonly EDITORIAL_TOPICS_PER_RUN?: string;
+  readonly EDITORIAL_QUERIES_PER_TOPIC?: string;
+  readonly EDITORIAL_TAVILY_DEPTH?: string;
+  readonly EDITORIAL_TAVILY_MAX_RESULTS?: string;
+  readonly EDITORIAL_MAX_DRAFTS_PER_RUN?: string;
+  readonly EDITORIAL_MAX_OPEN_DRAFTS?: string;
+  readonly EDITORIAL_DAILY_BUDGET_USD?: string;
+  readonly EDITORIAL_MEDIA_PATH?: string;
 }
 
 interface ImportMeta {

@@ -84,6 +84,16 @@ const defaultDescription =
     <meta name="ICBM" content="44.8477, 7.6833" />
 
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
+    {
+      normalizedPath === '/blog' || normalizedPath.startsWith('/blog/') ? (
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          href="/blog/rss.xml"
+          title="Radar Bitora"
+        />
+      ) : null
+    }
 
     <style is:global>
       html {

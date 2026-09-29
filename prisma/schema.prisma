@@ -1,0 +1,207 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ArticleStatus {
+  DRAFT
+  IN_REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+enum TrendStatus {
+  NEW
+  USED
+  DISMISSED
+}
+
+enum EditorialRunKind {
+  TREND_SCAN
+  DRAFT_GENERATE
+  MANUAL
+}
+
+enum EditorialRunStatus {
+  RUNNING
+  SUCCESS
+  FAILED
+  SKIPPED
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  CLOSED
+}
+
+model Article {
+  id             String        @id @default(cuid())
+  slug           String        @unique
+  title          String
+  excerpt        String
+  category       String
+  topic          String
+  status         ArticleStatus @default(DRAFT)
+  angle          String?
+  abstract       String?
+  seoTitle       String
+  seoDescription String
+  coverImage     String?
+  coverAlt       String?
+  readTime       String?
+  ctaVariant     String        @default("contact")
+  caseStudySlugs String[]      @default([])
+  visualHints    Json?
+  content        Json
+  publishedAt    DateTime?
+  generatedByAi  Boolean       @default(false)
+  trendId        String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  trend          TrendCandidate? @relation(fields: [trendId], references: [id], onDelete: SetNull)
+  revisions      ArticleRevision[]
+  sources        Source[]
+  leads          Lead[]
+
+  @@index([status])
+  @@index([category])
+  @@index([publishedAt])
+  @@index([status, publishedAt])
+  @@index([topic])
+}
+
+model ArticleRevision {
+  id        String   @id @default(cuid())
+  articleId String
+  snapshot  Json
+  note      String?
+  createdAt DateTime @default(now())
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@index([articleId, createdAt])
+}
+
+model TrendCandidate {
+  id           String       @id @default(cuid())
+  fingerprint  String       @unique
+  title        String
+  url          String
+  excerpt      String
+  topic        String
+  score        Float
+  publishedAt  DateTime?
+  raw          Json?
+  status       TrendStatus  @default(NEW)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  articles     Article[]
+  sources      Source[]
+
+  @@index([status, score])
+  @@index([topic])
+}
+
+model Source {
+  id          String          @id @default(cuid())
+  url         String
+  title       String
+  excerpt     String?
+  domain      String?
+  publishedAt DateTime?
+  articleId   String?
+  trendId     String?
+  createdAt   DateTime        @default(now())
+  article     Article?        @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  trend       TrendCandidate? @relation(fields: [trendId], references: [id], onDelete: Cascade)
+
+  @@index([articleId])
+  @@index([trendId])
+  @@index([url])
+}
+
+model EditorialRun {
+  id          String              @id @default(cuid())
+  kind        EditorialRunKind
+  status      EditorialRunStatus
+  triggeredBy String
+  startedAt   DateTime            @default(now())
+  finishedAt  DateTime?
+  error       String?
+  costUsd     Decimal?            @db.Decimal(10, 4)
+  tokensIn    Int?
+  tokensOut   Int?
+  meta        Json?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  events      EditorialRunEvent[]
+
+  @@index([kind, startedAt])
+  @@index([status])
+  @@index([triggeredBy, startedAt])
+}
+
+model EditorialRunEvent {
+  id        String       @id @default(cuid())
+  runId     String
+  level     String
+  step      String
+  message   String
+  data      Json?
+  createdAt DateTime     @default(now())
+  run       EditorialRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId, createdAt])
+}
+
+model Lead {
+  id          String     @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  message     String?
+  consent     Boolean
+  articleId   String?
+  articleSlug String?
+  cta         String
+  topic       String?
+  answers     Json?
+  magnet      String?
+  landingPage String?
+  referrer    String?
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  utmContent  String?
+  utmTerm     String?
+  gclid       String?
+  fbclid      String?
+  status      LeadStatus @default(NEW)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  article     Article?   @relation(fields: [articleId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+  @@index([articleId])
+  @@index([email])
+  @@index([status])
+}
+
+model MediaAsset {
+  id         String   @id @default(cuid())
+  filename   String
+  storedName String   @unique
+  mimeType   String
+  sizeBytes  Int
+  url        String
+  alt        String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([createdAt])
+}

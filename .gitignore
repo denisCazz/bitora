@@ -17,6 +17,12 @@ pnpm-debug.log*
 .env
 .env.production
 
+# prisma generated client
+generated/
+
+# editorial uploads
+data/editorial-media/
+
 # recovered project credentials for the ops vault — never commit
 data/ops-vault.seed.json
 
@@ -27,3 +33,5 @@ data/ops-vault.seed.json
 .idea/
 .vercel
 .cursor
+playwright-report/
+test-results/

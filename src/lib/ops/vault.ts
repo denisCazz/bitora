@@ -140,19 +140,25 @@ export function importId(projectId: string, title: string): string {
   return `imp-${createHash('sha256').update(`vault:${projectId}:${title}`).digest('hex').slice(0, 16)}`;
 }
 
+export function isVaultSeedEntry(entry: VaultSeedEntry): boolean {
+  return Boolean(
+    entry &&
+    typeof entry.projectId === 'string' &&
+    entry.projectId.trim() &&
+    typeof entry.title === 'string' &&
+    entry.title.trim() &&
+    typeof entry.secret === 'string' &&
+    entry.secret &&
+    isVaultKind(entry.kind)
+  );
+}
+
 function loadSeedFile(): VaultSeedEntry[] {
   try {
     const raw = readFileSync(opsVaultSeedPath(), 'utf8');
     const parsed = JSON.parse(raw) as { entries?: VaultSeedEntry[] };
     if (!Array.isArray(parsed.entries)) return [];
-    return parsed.entries.filter(
-      entry =>
-        entry &&
-        typeof entry.projectId === 'string' &&
-        typeof entry.title === 'string' &&
-        typeof entry.secret === 'string' &&
-        isVaultKind(entry.kind)
-    );
+    return parsed.entries.filter(isVaultSeedEntry);
   } catch {
     return [];
   }
@@ -174,16 +180,19 @@ function toStoredEntry(seed: VaultSeedEntry, now: number, source: VaultSource): 
   };
 }
 
-export function mergeVaultSeed(force = false): { imported: number; updated: number; available: number } {
-  const seed = loadSeedFile();
-  if (!seed.length) return { imported: 0, updated: 0, available: 0 };
+export function importVaultEntries(
+  seed: VaultSeedEntry[],
+  force = false
+): { imported: number; updated: number; available: number } {
+  const entries = seed.filter(isVaultSeedEntry);
+  if (!entries.length) return { imported: 0, updated: 0, available: 0 };
   let imported = 0;
   let updated = 0;
   updateOpsState(state => {
     if (!Array.isArray(state.vault)) state.vault = [];
     if (!force && state.vaultImportedAt) return;
     const now = Date.now();
-    for (const item of seed) {
+    for (const item of entries) {
       const entry = toStoredEntry(item, now, 'import');
       const existing = state.vault.find(current => current.id === entry.id);
       if (!existing) {
@@ -203,7 +212,11 @@ export function mergeVaultSeed(force = false): { imported: number; updated: numb
     }
     state.vaultImportedAt = now;
   });
-  return { imported, updated, available: seed.length };
+  return { imported, updated, available: entries.length };
+}
+
+export function mergeVaultSeed(force = false): { imported: number; updated: number; available: number } {
+  return importVaultEntries(loadSeedFile(), force);
 }
 
 export function ensureVaultSeeded(): { imported: number; updated: number; available: number } {

@@ -32,6 +32,7 @@ export default defineConfig({
         if (page.includes('/ops/')) return false;
         return true;
       },
+      customPages: ['https://bitora.it/blog/'],
     }),
     react(),
     compressor({
@@ -117,6 +118,7 @@ export default defineConfig({
     },
     ssr: {
       noExternal: ['react-icons'],
+      external: ['@prisma/adapter-pg', '@prisma/client', 'pg'],
     },
   },
 });

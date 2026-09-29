@@ -17,7 +17,13 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "verify:seo": "node scripts/verify-seo-build.mjs",
-    "security-check": "npm audit && npm outdated"
+    "security-check": "npm audit && npm outdated",
+    "postinstall": "prisma generate",
+    "db:generate": "prisma generate",
+    "db:validate": "prisma validate",
+    "db:deploy": "prisma migrate deploy",
+    "db:seed": "tsx prisma/seed.ts",
+    "test:unit": "tsx --test src/lib/editorial/editorial.test.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.5",
@@ -25,9 +31,14 @@
     "@astrojs/react": "^5.0.1",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^6.0.2",
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
     "astro": "^5.16.0",
     "astro-compressor": "^1.0.0",
     "astro-robots-txt": "^1.0.0",
+    "dotenv": "^17.4.2",
+    "pg": "^8.23.0",
+    "prisma": "^7.10.0",
     "qr-code-styling": "^1.9.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -39,6 +50,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",
+    "@types/pg": "^8.23.1",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "astro-eslint-parser": "^1.2.2",
@@ -47,7 +59,12 @@
     "lightningcss": "^1.30.1",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.13.0",
+    "tsx": "^4.23.13",
     "typescript": "^5.8.3",
     "vite-bundle-analyzer": "^0.10.4"
+  },
+  "allowScripts": {
+    "prisma@7.10.0": true,
+    "@prisma/engines@7.10.0": true
   }
 }

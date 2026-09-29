@@ -1,0 +1,48 @@
+---
+export const prerender = false;
+import Layout from '../../layouts/Layout.astro';
+import SignalJourney from '../../components/blog/SignalJourney.astro';
+import ArticleSchema from '../../components/schema/Article.astro';
+import { getArticleBySlug } from '../../lib/editorial/articles';
+import { isAuthenticated } from '../../lib/ops/auth';
+
+const slug = Astro.params.slug ?? '';
+const preview = Astro.url.searchParams.get('preview') === '1';
+const canPreview = preview && isAuthenticated(Astro.cookies);
+const article = await getArticleBySlug(slug, {
+  preview: canPreview,
+  allowStatuses: ['DRAFT', 'IN_REVIEW', 'PUBLISHED', 'ARCHIVED'],
+});
+
+if (!article) {
+  return new Response(null, { status: 404, statusText: 'Not Found' });
+}
+
+const siteOrigin = (Astro.site?.origin ?? 'https://bitora.it').replace(/\/$/, '');
+const canonical = `${siteOrigin}/blog/${article.slug}/`;
+const isPreview = article.status !== 'PUBLISHED';
+---
+
+<Layout
+  title={article.seoTitle}
+  description={article.seoDescription}
+  image={article.coverImage ?? undefined}
+  noindex={isPreview}
+>
+  {
+    !isPreview && (
+      <ArticleSchema
+        headline={article.title}
+        description={article.seoDescription}
+        url={canonical}
+        image={article.coverImage ? `${siteOrigin}${article.coverImage}` : undefined}
+        datePublished={article.publishedAt?.toISOString()}
+        dateModified={article.updatedAt.toISOString()}
+        authorName="Bitora"
+      />
+    )
+  }
+  <main id="main-content">
+    <SignalJourney article={article} preview={isPreview} />
+  </main>
+</Layout>

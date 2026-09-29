@@ -20,7 +20,7 @@ test.describe('Area privata ops', () => {
   });
 
   test('monitor automation endpoints reject missing token', async ({ request }) => {
-    for (const endpoint of ['/api/ops/cron/', '/api/ops/watchdog/']) {
+    for (const endpoint of ['/api/ops/cron/', '/api/ops/watchdog/', '/api/ops/vault-import/']) {
       const response = await request.get(endpoint);
       expect(response.status(), endpoint).toBe(401);
     }

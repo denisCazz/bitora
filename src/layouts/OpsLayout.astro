@@ -10,6 +10,7 @@ const normalized = path.endsWith('/') ? path : `${path}/`;
 
 const nav = [
   { href: '/ops/', label: 'Panoramica' },
+  { href: '/ops/editoriale/', label: 'Editoriale' },
   { href: '/ops/siti/', label: 'Stato siti' },
   { href: '/ops/vps/', label: 'Monitoraggio VPS' },
   { href: '/ops/scadenze/', label: 'Scadenziario' },
@@ -462,6 +463,61 @@ const nav = [
     overflow: auto;
     max-width: min(520px, 46vw);
     max-height: 180px;
+  }
+  .ops-log {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .ops-log-item {
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #111113;
+  }
+  .ops-log-item p {
+    margin: 8px 0 0;
+    line-height: 1.5;
+  }
+  .ops-log-item pre {
+    margin: 10px 0 0;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.35);
+    font-size: 12px;
+    line-height: 1.45;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .ops-log-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+  .ops-log-level {
+    font-weight: 800;
+    color: #93c5fd;
+  }
+  .ops-log-item.is-warn .ops-log-level {
+    color: #fbbf24;
+  }
+  .ops-log-item.is-error .ops-log-level {
+    color: #f87171;
+  }
+  .ops-log-item.is-skip .ops-log-level {
+    color: #94a3b8;
+  }
+  .ops-log-item.is-cost .ops-log-level {
+    color: #34d399;
   }
   @media (max-width: 860px) {
     .ops-shell {
