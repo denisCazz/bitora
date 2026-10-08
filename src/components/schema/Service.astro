@@ -1,37 +1,63 @@
 ---
+import { ORG_ID, SITE, areaServed as defaultAreaServed } from '../../data/seo';
+
 export interface Props {
   name: string;
+  description?: string;
   serviceType?: string | string[];
   url?: string;
-  areaServed?: string[];
-  providerName?: string;
-  providerUrl?: string;
+  areaServed?: (string | Record<string, unknown>)[];
   image?: string;
+  offerings?: string[];
 }
 
 const {
   name,
+  description,
   serviceType,
-  url = 'https://bitora.it/',
-  areaServed = ['Carmagnola', 'Torino', 'Piemonte', 'Italia'],
-  providerName = 'Bitora',
-  providerUrl = 'https://bitora.it/',
-  image = 'https://bitora.it/bitora.jpg',
+  url = `${SITE}/`,
+  areaServed = defaultAreaServed,
+  image = `${SITE}/og-bitora.jpg`,
+  offerings = [],
 } = Astro.props;
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
+  '@id': `${url}#service`,
   name,
   url,
   image,
-  provider: {
-    '@type': 'LocalBusiness',
-    name: providerName,
-    url: providerUrl,
-  },
-  areaServed,
+  ...(description ? { description } : {}),
   ...(serviceType ? { serviceType } : {}),
+  provider: { '@id': ORG_ID },
+  brand: { '@id': ORG_ID },
+  areaServed,
+  audience: { '@type': 'BusinessAudience', audienceType: 'PMI, professionisti e attività locali' },
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: `${SITE}/contattaci/`,
+    servicePhone: { '@type': 'ContactPoint', telephone: '+393514979670', contactType: 'sales' },
+  },
+  ...(offerings.length
+    ? {
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name,
+          itemListElement: offerings.map(o => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: o },
+          })),
+        },
+      }
+    : {}),
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    description: 'Preventivo gratuito entro 24 ore lavorative',
+    url: `${SITE}/contattaci/`,
+  },
 };
 ---
 

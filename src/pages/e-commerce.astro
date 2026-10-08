@@ -1,488 +1,89 @@
 ---
 export const prerender = true;
-import Layout from '../layouts/Layout.astro';
-import ProductUi from '../components/product/ProductUi.astro';
-import FAQ from '../components/FAQ.astro';
-import ServiceSchema from '../components/schema/Service.astro';
-import FAQPageSchema from '../components/schema/FAQPage.astro';
-import HowToSchema from '../components/schema/HowTo.astro';
-import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
-
-const ecommerceFaqs = [
-  {
-    question: 'Realizzate e-commerce B2B?',
-    answer:
-      'Sì. Possiamo configurare accessi approvati, cataloghi riservati, listini per cliente, preventivi, riordini e integrazioni con gestionali tramite API.',
-  },
-  {
-    question: 'Quanto costa un e-commerce?',
-    answer:
-      'Dipende da piattaforma, catalogo e integrazioni. Partiamo da audit gratuito e preventivo modulare.',
-  },
-  {
-    question: 'WooCommerce o Shopify?',
-    answer:
-      'WooCommerce per controllo + personalizzazioni. Shopify per partenza veloce. Custom per casi B2B/marketplace.',
-  },
-  {
-    question: 'Quanto tempo serve per il lancio?',
-    answer: 'Tipicamente 3–6 settimane dal brief al go-live, in base a contenuti e prodotti.',
-  },
-  {
-    question: 'Gestite pagamenti e fatture?',
-    answer:
-      'Sì: Stripe, PayPal, bonifico. Integrazione fatturazione automatica con gestionali italiani.',
-  },
-  {
-    question: 'Posso vendere in tutta Italia?',
-    answer: 'Sì. Configuriamo spedizioni nazionali con GLS, BRT, Poste e ritiro in negozio.',
-  },
-  {
-    question: 'Fate SEO per il negozio?',
-    answer:
-      'Sì: schema product, sitemap, Merchant Center, contenuti ottimizzati per ricerche prodotto.',
-  },
-  {
-    question: 'Offrite supporto post-lancio?',
-    answer: 'Sì: monitoraggio, aggiornamenti, ottimizzazioni continue. Niente abbandono al lancio.',
-  },
-];
-
-const qualities = [
-  { n: '01', t: 'Pagamenti sicuri', d: 'Stripe, PayPal, bonifico, Klarna. Conformità PCI.' },
-  { n: '02', t: 'Spedizioni integrate', d: 'GLS, BRT, Poste, ritiro in negozio. Tracking automatico.' },
-  { n: '03', t: 'SEO + tracking', d: 'Schema product, Google Merchant, GA4, Pixel.' },
-];
-
-const b2bItems = [
-  {
-    title: 'Cataloghi riservati',
-    text: 'Prodotti, assortimenti e contenuti visibili in base al cliente o al gruppo.',
-  },
-  {
-    title: 'Listini per cliente',
-    text: 'Prezzi, sconti, quantità minime e condizioni commerciali differenziate.',
-  },
-  {
-    title: 'Preventivi e riordini',
-    text: 'Richieste di offerta, ordini ricorrenti e storico acquisti nello stesso flusso.',
-  },
-  {
-    title: 'Accessi aziendali',
-    text: 'Account approvati, ruoli, referenti e indirizzi multipli per ogni cliente.',
-  },
-  {
-    title: 'Pagamenti e fatture',
-    text: 'Bonifico, carte, condizioni concordate e collegamenti alla fatturazione.',
-  },
-  {
-    title: 'Integrazioni gestionali',
-    text: 'Sincronizzazione di prodotti, disponibilità, clienti e ordini tramite API.',
-  },
-];
-
-const related = [
-  {
-    href: '/siti-web-professionali/',
-    label: 'Siti web professionali',
-    desc: 'Vetrina e conversione prima del negozio',
-  },
-  {
-    href: '/blog/quanto-costa-sito-web-pmi/',
-    label: 'Guida costi digitali PMI',
-    desc: 'Confronto investimenti web 2026',
-  },
-  {
-    href: '/servizi/',
-    label: 'Tutti i servizi Bitora',
-    desc: 'Siti, e-commerce e soluzioni tailormade',
-  },
-  {
-    href: '/gestione-interventi/',
-    label: 'Ecosistema gestione interventi',
-    desc: 'Ordini e assistenza in un unico sistema',
-  },
-  {
-    href: '/progetti/ricambixstufe/',
-    label: 'Case study RicambiXStufe',
-    desc: 'E-commerce verticale per ricambi stufe Eva Calor',
-  },
-  {
-    href: '/lavori/',
-    label: 'Progetti e-commerce',
-    desc: 'Case study con risultati',
-  },
-];
+import ServiceLanding from '../components/ui/ServiceLanding.astro';
 ---
 
-<Layout
-  title="Realizzazione E-commerce in Piemonte | B2B e B2C | Bitora"
-  description="Realizziamo e-commerce B2B e B2C in Piemonte con WooCommerce, Shopify o sviluppo custom: cataloghi, pagamenti e integrazioni. Preventivo gratuito."
-  image="/editorial/ecommerce.png"
->
-  <div class="product-page">
-    <section class="prod-hero">
-      <div class="prod-hero-media" aria-hidden="true">
-        <img
-          src="/editorial/ecommerce.png"
-          alt=""
-          class="prod-hero-img"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div class="prod-hero-scrim ecommerce-scrim"></div>
-      </div>
-      <div class="shell prod-hero-copy">
-        <p class="eyebrow">E-commerce B2B e B2C · Piemonte</p>
-        <h1 class="display">
-          Il tuo e-commerce<br />B2B o B2C,<br />chiavi in mano.
-        </h1>
-        <p class="lede">
-          WooCommerce, Shopify o sviluppo custom. Dalla strategia al lancio: catalogo, pagamenti,
-          spedizioni, SEO e integrazioni incluse.
-        </p>
-        <div class="cta-row">
-          <a
-            href="/contattaci/?topic=ecommerce"
-            class="sl-btn-primary"
-            data-track="cta_click"
-            data-track-location="ecommerce_hero">Richiedi preventivo</a
-          >
-          <a href="#come" class="sl-btn-secondary">Come funziona</a>
-        </div>
-      </div>
-    </section>
-
-    <section
-      class="band"
-      itemscope
-      itemtype="https://schema.org/Question"
-    >
-      <div class="shell band-inner" data-reveal>
-        <p class="eyebrow">Risposta rapida</p>
-        <h2 class="headline" itemprop="name">
-          Quanto costa un e-commerce per una PMI in Piemonte?
-        </h2>
-        <p
-          class="body max-w-3xl"
-          itemprop="acceptedAnswer"
-          itemscope
-          itemtype="https://schema.org/Answer"
-        >
-          <span itemprop="text">
-            Un e-commerce professionale costa in base a catalogo, piattaforma e integrazioni. Bitora
-            realizza negozi WooCommerce, Shopify o custom con preventivo modulare gratuito. Tempi
-            tipici: 3–6 settimane dal brief al go-live, con pagamenti, spedizioni e SEO inclusi.
-          </span>
-        </p>
-      </div>
-    </section>
-
-    <section id="come" class="band band-alt">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div class="lg:col-span-5" data-reveal>
-            <p class="eyebrow">Cos'è un e-commerce</p>
-            <h2 class="headline">Negozio online che vende davvero.</h2>
-            <p class="body">
-              Sito che mostra catalogo, accetta pagamenti, gestisce spedizioni, traccia conversioni.
-              Aperto 24/7.
-            </p>
-          </div>
-          <div class="lg:col-span-6 lg:col-start-7" data-reveal>
-            <ul class="border-t border-[var(--prod-line)]">
-              {
-                qualities.map(item => (
-                  <li class="grid grid-cols-[2.5rem_1fr] gap-5 py-6 border-b border-[var(--prod-line-soft)]">
-                    <span class="text-sm font-bold tabular-nums text-[var(--prod-faint)] pt-1">
-                      {item.n}
-                    </span>
-                    <div>
-                      <h3 class="text-xl font-bold tracking-tight mb-1">{item.t}</h3>
-                      <p class="body-sm">{item.d}</p>
-                    </div>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch" data-reveal>
-          <figure class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--prod-line-soft)] m-0">
-            <img
-              src="/editorial/web-offer.png"
-              alt="Negozio online coordinato su desktop e mobile"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <figcaption class="absolute bottom-5 left-5 right-5 text-sm text-white/85 font-medium tracking-tight">
-              Esperienza coerente su desktop e smartphone
-            </figcaption>
-          </figure>
-          <figure class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--prod-line-soft)] m-0">
-            <img
-              src="/editorial/digital-process.png"
-              alt="Ordini e dati riuniti in un sistema organizzato"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <figcaption class="absolute bottom-5 left-5 right-5 text-sm text-white/85 font-medium tracking-tight">
-              Ordini, clienti e operatività senza fogli scollegati
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section id="b2b" class="band band-alt">
-      <div class="shell band-inner">
-        <header class="max-w-3xl mb-12" data-reveal>
-          <p class="eyebrow">E-commerce B2B</p>
-          <h2 class="headline">Vendita online per aziende, con regole commerciali reali.</h2>
-          <p class="body">
-            Realizziamo e-commerce B2B in Piemonte su WooCommerce, Shopify o stack custom. La
-            configurazione parte dal processo commerciale esistente e dalle integrazioni necessarie.
-          </p>
-        </header>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3" data-reveal>
-          {
-            b2bItems.map(item => (
-              <article class="feat-card">
-                <h3 class="text-lg font-bold tracking-tight mb-2">{item.title}</h3>
-                <p class="body-sm">{item.text}</p>
-              </article>
-            ))
-          }
-        </div>
-        <p class="body-sm mt-8" data-reveal>
-          Le funzionalità vengono definite nel preventivo in base al flusso commerciale e ai sistemi
-          già presenti in azienda.
-        </p>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div class="lg:col-span-6" data-reveal>
-            <p class="eyebrow">Case study</p>
-            <h2 class="headline">RicambiXStufe: e-commerce verticale già online.</h2>
-            <p class="body mb-6">
-              Abbiamo progettato e sviluppato RicambiXStufe, negozio online di ricambi per stufe a
-              pellet: oltre 180 prodotti a catalogo, ricerca per categoria e compatibilità
-              verificata per stufe Eva Calor, Extraflame e decine di altri marchi. Pannello admin
-              custom per gestire prodotti, ordini e clienti senza dipendere dai marketplace.
-            </p>
-            <ul class="flow-rail mb-8">
-              {
-                [
-                  'Compatibile Eva Calor',
-                  '180+ prodotti a catalogo',
-                  'Pannello admin custom',
-                  'Ordini già attivi',
-                ].map(chip => (
-                  <li class="flow-chip">{chip}</li>
-                ))
-              }
-            </ul>
-            <div class="cta-row">
-              <a href="/progetti/ricambixstufe/" class="sl-btn-primary">Vedi il case study</a>
-              <a
-                href="https://ricambixstufe.it"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="sl-btn-secondary">Visita ricambixstufe.it</a
-              >
-            </div>
-          </div>
-          <div class="lg:col-span-6" data-reveal>
-            <a
-              href="/progetti/ricambixstufe/"
-              class="block overflow-hidden rounded-2xl border border-[var(--prod-line-soft)]"
-              aria-label="Apri il case study RicambiXStufe"
-            >
-              <img
-                src="/logo_eva.png"
-                alt="RicambiXStufe: e-commerce di ricambi per stufe Eva Calor e altri marchi"
-                class="w-full aspect-[16/10] object-cover"
-                loading="lazy"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band-alt">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-12 gap-12 items-start">
-          <div class="lg:col-span-6" data-reveal>
-            <p class="eyebrow">Risultato</p>
-            <h2 class="headline">Online + offline, stessa regia.</h2>
-            <p class="body mb-6">
-              Catalogo, pagamenti, spedizioni e tracking lavorano insieme. Tu vedi ordini e clienti
-              in un’unica dashboard.
-            </p>
-            <ul class="border-t border-[var(--prod-line)] max-w-lg">
-              {
-                ['Vendita 24/7', 'SEO + Merchant', 'Remarketing pronto', 'Automazioni ordini'].map(
-                  item => (
-                    <li class="flex justify-between gap-6 py-4 border-b border-[var(--prod-line-soft)]">
-                      <span class="text-[var(--prod-secondary)]">{item}</span>
-                      <span class="text-[var(--prod-faint)]">→</span>
-                    </li>
-                  )
-                )
-              }
-            </ul>
-          </div>
-          <div class="lg:col-span-5 lg:col-start-8" data-reveal>
-            <p class="eyebrow">Garanzie</p>
-            <div class="space-y-3">
-              {
-                [
-                  { t: 'Made in Italy', d: 'Sviluppo e supporto in Italia' },
-                  { t: 'Privacy e consenso', d: 'Gestione cookie e dati personali' },
-                  { t: 'Risposta 24h', d: 'Preventivo e audit iniziale' },
-                  { t: 'Progetti pubblicati', d: 'Casi selezionati su bitora.it/lavori' },
-                ].map(b => (
-                  <div class="feat-card">
-                    <p class="font-semibold tracking-tight">{b.t}</p>
-                    <p class="body-sm mt-1">{b.d}</p>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-12 gap-12" data-reveal>
-          <div class="lg:col-span-4">
-            <p class="eyebrow">FAQ</p>
-            <h2 class="headline">FAQ e-commerce</h2>
-            <p class="body">Risposte chiare su costi, tempi e piattaforme.</p>
-          </div>
-          <div class="lg:col-span-7 lg:col-start-6">
-            <FAQ items={ecommerceFaqs} tone="on-dark" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band-alt">
-      <div class="shell band-inner">
-        <header class="max-w-3xl mb-10" data-reveal>
-          <p class="eyebrow">Approfondimenti</p>
-          <h2 class="headline">Pagine correlate</h2>
-        </header>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3" data-reveal>
-          {
-            related.map(link => (
-              <a href={link.href} class="feat-card group">
-                <h3 class="text-lg font-bold tracking-tight group-hover:translate-x-0.5 transition-transform">
-                  {link.label}
-                </h3>
-                <p class="body-sm mt-1">{link.desc}</p>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="band-cta">
-      <div class="shell band-cta-inner" data-reveal>
-        <p class="eyebrow">Inizia da qui</p>
-        <h2 class="display" style="font-size:clamp(2.4rem,6.5vw,4.5rem)">
-          Pronto a vendere online?
-        </h2>
-        <p class="lede" style="margin-inline:auto;margin-bottom:2rem">
-          Preventivo gratuito. Ti rispondiamo entro 24h.
-        </p>
-        <div class="cta-row" style="justify-content:center">
-          <a
-            href="/contattaci/?topic=ecommerce"
-            class="sl-btn-primary sl-btn-lg"
-            data-track="cta_click"
-            data-track-location="ecommerce_final"
-          >
-            Richiedi preventivo
-            <span aria-hidden="true">→</span>
-          </a>
-          <a
-            href="https://wa.me/393514979670?text=Ciao,%20vorrei%20un%20preventivo%20per%20un%20e-commerce."
-            class="sl-btn-whatsapp"
-            data-track="whatsapp_click"
-            data-track-location="ecommerce_cta">Scrivici su WhatsApp</a
-          >
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <ProductUi />
-
-  <style>
-    .ecommerce-scrim {
-      background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.58) 42%, #000 90%),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.28) 52%, transparent 100%);
-    }
-  </style>
-</Layout>
-
-<ServiceSchema
-  name="Realizzazione E-commerce Piemonte"
-  url="https://bitora.it/e-commerce/"
-  serviceType={['E-commerce B2B', 'E-commerce B2C', 'WooCommerce', 'Shopify', 'Negozi Online']}
-  areaServed={[
-    'Carmagnola',
-    'Carignano',
-    'Poirino',
-    'Torino',
-    'Cuneo',
-    'Asti',
-    'Alessandria',
-    'Piemonte',
-    'Italia',
-  ]}
-/>
-
-<FAQPageSchema items={ecommerceFaqs} />
-
-<HowToSchema
-  name="Come lanciamo un e-commerce per PMI"
-  description="Metodo Bitora: strategia, piattaforma, sviluppo, go-live."
-  steps={[
-    {
-      name: 'Strategia',
-      text: 'Analisi catalogo, target, piattaforma (WooCommerce, Shopify o custom).',
-    },
-    { name: 'Setup', text: 'Design checkout, pagamenti Stripe/PayPal, spedizioni GLS/BRT/Poste.' },
-    { name: 'Sviluppo', text: 'Caricamento prodotti, SEO product schema, tracking conversioni.' },
-    {
-      name: 'Go-live',
-      text: 'Test ordini, Merchant Center, supporto e ottimizzazioni post-lancio.',
-    },
-  ]}
-/>
-
-<BreadcrumbListSchema
-  crumbs={[
-    { name: 'Home', item: 'https://bitora.it/' },
-    { name: 'E-commerce', item: 'https://bitora.it/e-commerce/' },
+<ServiceLanding
+  pillar="ecommerce"
+  topic="ecommerce"
+  seo={{
+    title: 'E-commerce su misura B2C e B2B | Bitora, Piemonte',
+    description:
+      'Negozi online su misura per aziende in Piemonte e in Italia: catalogo, pagamenti Stripe e PayPal, spedizioni, listini B2B e integrazione con il gestionale. Preventivo gratuito.',
+  }}
+  hero={{
+    eyebrow: 'E-commerce',
+    title: 'Il tuo negozio online, <span class="b-grad">aperto 24 ore su 24</span>.',
+    lede: 'Costruiamo e-commerce che vendono davvero: catalogo chiaro, checkout veloce, pagamenti sicuri e una gestione ordini che non ti ruba la giornata. Per privati e per rivenditori.',
+    chips: ['Stripe, PayPal, bonifico', 'Listini B2B', 'Spedizioni integrate', 'Google Shopping'],
+  }}
+  ctaLabel="Preventivo e-commerce gratuito"
+  signals={{
+    title: 'Vendere online è difficile <span class="b-accent">quando lo strumento è sbagliato</span>.',
+    items: [
+      { t: 'Carrelli abbandonati', d: 'Checkout lungo, costi di spedizione a sorpresa, pagamenti limitati. Il cliente arriva in fondo e se ne va.' },
+      { t: 'Catalogo ingestibile', d: 'Centinaia di prodotti, varianti e compatibilità da aggiornare a mano su piattaforme rigide.' },
+      { t: 'Ordini su più canali', d: 'Telefono, email, WhatsApp e sito: ordini sparsi e giacenze che non tornano mai.' },
+      { t: 'Commissioni che mangiano margine', d: 'Marketplace e piattaforme che trattengono percentuali su ogni vendita.' },
+      { t: 'Rivenditori trattati come privati', d: 'Nessun listino dedicato, nessun riordino rapido, preventivi fatti a mano.' },
+      { t: 'Invisibile su Google', d: 'Le schede prodotto non compaiono nelle ricerche né su Google Shopping.' },
+    ],
+  }}
+  deliverables={{
+    title: 'Un e-commerce che <span class="b-accent">lavora mentre dormi</span>.',
+    lede: 'Dalla scheda prodotto alla consegna: progettiamo l’intero flusso di vendita e lo colleghiamo ai tuoi strumenti.',
+    items: [
+      { t: 'Catalogo intelligente', d: 'Categorie, filtri, varianti e ricerca per modello o codice. Il cliente trova il prodotto giusto in pochi secondi.' },
+      { t: 'Checkout senza attriti', d: 'Pochi passaggi, pagamenti con carta, PayPal, Apple Pay e bonifico. Costi chiari fin dall’inizio.' },
+      { t: 'Area B2B', d: 'Accessi approvati, listini per cliente, riordini e preventivi per rivenditori e installatori.' },
+      { t: 'Spedizioni e ordini', d: 'Calcolo costi, etichette, tracking e notifiche automatiche al cliente.' },
+      { t: 'Integrazioni', d: 'Sincronizzazione con gestionale, fornitori e magazzino via API. Prezzi e giacenze sempre aggiornati.' },
+      { t: 'SEO prodotto', d: 'Dati strutturati, Google Merchant Center e schede ottimizzate per le ricerche di prodotto.' },
+    ],
+  }}
+  feature={{
+    slug: 'ricambixstufe',
+    eyebrow: 'Caso in evidenza',
+    title: 'RicambiXStufe',
+    text: 'E-commerce verticale per ricambi di stufe a pellet: un catalogo tecnico di centinaia di articoli, ricercabile per modello e marca, con pagamenti online e spedizioni in tutta Italia.',
+    points: [
+      'Catalogo per marca, modello e categoria',
+      'Pagamenti PayPal e carta',
+      'API partner per rivenditori collegati',
+      'Gestione ordini e magazzino integrata',
+    ],
+  }}
+  formats={{
+    title: 'Tre modi per <span class="b-accent">iniziare a vendere</span>.',
+    items: [
+      {
+        t: 'Shop essenziale',
+        time: '3–4 settimane',
+        d: 'Per chi vende un catalogo contenuto e vuole partire rapidamente.',
+        bullets: ['Fino a 100 prodotti', 'Pagamenti e spedizioni', 'Email automatiche'],
+      },
+      {
+        t: 'E-commerce su misura',
+        time: '4–8 settimane',
+        d: 'Catalogo ampio, filtri avanzati e integrazione con i tuoi strumenti.',
+        bullets: ['Catalogo illimitato', 'Ricerca per modello/codice', 'Integrazione gestionale', 'Google Shopping'],
+      },
+      {
+        t: 'B2B & multi-canale',
+        time: '6–12 settimane',
+        d: 'Per produttori e distributori che vendono a privati e rivenditori.',
+        bullets: ['Listini per cliente', 'Area rivenditori', 'API e sincronizzazioni', 'Multilingua'],
+      },
+    ],
+  }}
+  projects={['ricambixstufe', 'barbara-toffano']}
+  stack={['Next.js', 'PostgreSQL', 'Stripe', 'PayPal', 'Cloudflare R2', 'Google Merchant Center', 'Resend']}
+  faq={[
+    { question: 'Realizzate e-commerce B2B?', answer: 'Sì. Accessi approvati, cataloghi riservati, listini per cliente, preventivi, riordini e integrazioni con gestionali tramite API.' },
+    { question: 'Quanto costa un e-commerce?', answer: 'Dipende da catalogo, integrazioni e funzioni. Dopo la call gratuita ricevi un preventivo modulare a prezzo fisso: parti dall’essenziale e aggiungi il resto quando serve.' },
+    { question: 'Shopify, WooCommerce o su misura?', answer: 'Ti consigliamo la soluzione più adatta, anche se non è la più costosa. Per cataloghi tecnici, B2B e integrazioni complesse lo sviluppo su misura evita commissioni e limiti.' },
+    { question: 'Quanto tempo serve per il lancio?', answer: 'Da 3–4 settimane per uno shop essenziale a 6–12 settimane per progetti B2B con integrazioni.' },
+    { question: 'Gestite pagamenti, spedizioni e fatture?', answer: 'Sì: Stripe, PayPal, bonifico, corrieri nazionali e ritiro in negozio. Possiamo collegare la fatturazione al tuo gestionale.' },
+    { question: 'Mi seguite anche dopo?', answer: 'Sì: monitoraggio, aggiornamenti, nuove funzioni e ottimizzazione delle conversioni. Non spariamo al lancio.' },
   ]}
 />

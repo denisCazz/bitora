@@ -1,223 +1,345 @@
 ---
 export const prerender = true;
 import Layout from '../../layouts/Layout.astro';
-import { caseStudies, getPublicCaseStudies, type CaseStudy } from '../../data/caseStudies';
+import ProjectCard from '../../components/ui/ProjectCard.astro';
+import UiMock from '../../components/ui/UiMock.astro';
+import BreadcrumbListSchema from '../../components/schema/BreadcrumbList.astro';
+import { getPublicCaseStudies } from '../../data/caseStudies';
+import { getWork, workKindLabels, type WorkItem } from '../../data/work';
+import { ORG_ID } from '../../data/seo';
 
 export function getStaticPaths() {
-  return getPublicCaseStudies().map(caseStudy => ({
-    params: { slug: caseStudy.slug },
-    props: { caseStudy },
-  }));
+  return getPublicCaseStudies().map(cs => ({ params: { slug: cs.slug } }));
 }
 
-interface Props {
-  caseStudy: CaseStudy;
-}
-
-const { caseStudy } = Astro.props;
-
-const altriProgetti = caseStudies
-  .filter(cs => cs.slug !== caseStudy.slug && !cs.isWip && !cs.hidden)
-  .slice(0, 3);
+const { slug } = Astro.params;
+const all = getWork();
+const item = all.find(w => w.slug === slug) as WorkItem;
+const others = all.filter(w => w.slug !== item.slug && !w.isWip);
+const related = [
+  ...others.filter(w => w.kinds.some(k => item.kinds.includes(k))),
+  ...others.filter(w => !w.kinds.some(k => item.kinds.includes(k))),
+].slice(0, 3);
+const hasSite = item.siteUrl && item.siteUrl !== '#';
+const pageUrl = `https://bitora.it/progetti/${item.slug}/`;
+const ogImage = item.og;
+const clip = (t: string, n = 158) => (t.length <= n ? t : `${t.slice(0, t.lastIndexOf(' ', n - 1))}…`);
+const client = item.client ?? item.title;
+const metaDescription = clip(
+  `${item.title}${client !== item.title ? ` per ${client}` : ''}, ${item.location}. Caso studio Bitora: ${item.soluzione.map(s => s.titolo).join(' · ')}.`
+);
+const projectSchema = {
+  '@type': 'CreativeWork',
+  '@id': `${pageUrl}#project`,
+  name: item.title,
+  headline: `${item.title}: ${item.subtitle}`,
+  description: item.problema,
+  url: pageUrl,
+  inLanguage: 'it-IT',
+  genre: item.category,
+  keywords: item.tecnologie.join(', '),
+  creator: { '@id': ORG_ID },
+  publisher: { '@id': ORG_ID },
+  mainEntityOfPage: { '@id': `${pageUrl}#webpage` },
+  locationCreated: { '@type': 'Place', name: item.location },
+  ...(ogImage ? { image: `https://bitora.it${ogImage}` } : {}),
+  about: {
+    '@type': 'Organization',
+    name: client,
+    ...(hasSite ? { url: item.siteUrl } : {}),
+    description: item.clientDescription,
+  },
+  ...(hasSite ? { sameAs: item.siteUrl } : {}),
+};
+const topic = item.kinds.includes('software') ? 'sistemi' : item.kinds.includes('app') ? 'app' : item.kinds.includes('ecommerce') ? 'ecommerce' : 'sito';
 ---
 
 <Layout
-  title={`${caseStudy.title} · ${caseStudy.subtitle} | Bitora`}
-  description={`Case study ${caseStudy.title}: ${caseStudy.subtitle}. Scopri come Bitora ha aiutato ${caseStudy.title} a migliorare la presenza digitale.`}
+  title={item.client && item.client !== item.title ? `${item.title} · ${item.client} | Bitora` : `${item.title}: ${item.subtitle} | Bitora`}
+  description={metaDescription}
+  image={ogImage}
+  imageAlt={`${item.title}, progetto realizzato da Bitora`}
+  pageType="ItemPage"
+  ogType="article"
+  schema={[projectSchema]}
 >
-  <main class="bg-black text-white overflow-x-hidden">
-    <!-- Hero -->
-    <section class="relative min-h-[58vh] flex flex-col justify-end pb-16 md:pb-20 px-8 md:px-16 lg:px-24 border-b border-white/[0.06]">
-      <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/35 z-10"></div>
-        <img
-          src={caseStudy.imageUrl}
-          alt=""
-          class="w-full h-full object-cover opacity-45"
-          decoding="async"
-        />
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Lavori', item: 'https://bitora.it/lavori/' },
+      { name: item.title, item: pageUrl },
+    ]}
+  />
+
+  <section class="cs-hero">
+    <div class="b-glow-orb cs-hero__orb" aria-hidden="true"></div>
+    <div class="b-shell cs-hero__inner">
+      <a href="/lavori/" class="cs-back b-rise">← Tutti i lavori</a>
+      <div class="b-chips b-rise" style="animation-delay:.05s">
+        {item.kinds.map(k => <span class="b-chip">{workKindLabels[k]}</span>)}
+        <span class="b-chip">{item.location}</span>
+        {item.isWip && <span class="b-chip cs-wip">In corso</span>}
       </div>
-
-      <div class="relative z-20 max-w-7xl mx-auto w-full">
-        <a
-          href="/lavori/"
-          class="inline-flex items-center text-white/45 hover:text-white transition-colors mb-10 group"
-        >
-          <svg
-            class="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          Torna ai lavori
-        </a>
-
-        <div class="space-y-5" data-reveal>
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="text-xs font-semibold tracking-[0.2em] text-white/40 uppercase">{caseStudy.category}</span>
-            <span class="text-white/25" aria-hidden="true">•</span>
-            <span class="text-sm text-white/45">{caseStudy.location}</span>
-            {
-              caseStudy.isWip && (
-                <span class="bg-white/[0.08] border border-white/15 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-white/70">
-                  In corso
-                </span>
-              )
-            }
+      <h1 class="b-display cs-title b-rise" style="animation-delay:.12s">{item.title}</h1>
+      <p class="b-lede b-rise" style="animation-delay:.2s">{item.subtitle}</p>
+      {
+        hasSite && (
+          <div class="b-cta-row b-rise" style="animation-delay:.28s">
+            <a href={item.siteUrl} target="_blank" rel="noopener" class="b-btn b-btn--light">
+              Visita il sito <span class="b-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
-
-          <h1 class="text-[clamp(2.75rem,8vw,6.5rem)] font-bold tracking-tight leading-[0.95]">
-            {caseStudy.title}
-          </h1>
-          <p class="text-lg md:text-xl text-white/50 font-light max-w-2xl">{caseStudy.subtitle}</p>
-
-          {
-            caseStudy.siteUrl && caseStudy.siteUrl !== '#' && (
-              <div class="pt-2">
-                <a
-                  href={caseStudy.siteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-semibold rounded hover:bg-white/88 transition-colors"
-                >
-                  Visita il sito
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                  </svg>
-                </a>
+        )
+      }
+      <div class="cs-media b-rise" style="animation-delay:.36s">
+        {
+          item.shot ? (
+            <div class="b-browser">
+              <div class="b-browser__bar">
+                <i />
+                <i />
+                <i />
+                <span class="b-browser__url">{item.siteUrl.replace(/^https?:\/\//, '')}</span>
               </div>
-            )
-          }
+              <img src={item.shot} alt={`Homepage del sito ${item.title}`} width="1200" height="750" fetchpriority="high" />
+            </div>
+          ) : (
+            <UiMock variant={item.mock ?? 'dashboard'} eager />
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="b-section b-section--line">
+    <div class="b-shell cs-body">
+      <aside class="cs-aside" data-reveal>
+        <dl>
+          <div><dt>Cliente</dt><dd>{item.title}</dd></div>
+          <div><dt>Settore</dt><dd>{item.category}</dd></div>
+          <div><dt>Luogo</dt><dd>{item.location}</dd></div>
+          <div><dt>Servizi</dt><dd>{item.kinds.map(k => workKindLabels[k]).join(', ')}</dd></div>
+        </dl>
+        <div class="b-chips">
+          {item.tecnologie.map(t => <span class="b-chip">{t}</span>)}
+        </div>
+      </aside>
+      <div class="cs-main">
+        <div data-reveal>
+          <p class="b-eyebrow">Il cliente</p>
+          <p class="cs-big">{item.clientDescription}</p>
+        </div>
+        <div class="cs-problem" data-reveal>
+          <p class="b-eyebrow">La sfida</p>
+          <p class="b-text cs-text">{item.problema}</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <article class="max-w-5xl mx-auto px-8 md:px-16 py-20 md:py-28 space-y-20 md:space-y-24">
-      <section data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Cliente</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Chi è il cliente</h2>
-        <p class="text-base md:text-lg text-white/60 leading-relaxed max-w-3xl">
-          {caseStudy.clientDescription}
-        </p>
-      </section>
-
-      <section data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Sfida</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">La sfida</h2>
-        <p class="text-base md:text-lg text-white/70 leading-relaxed max-w-3xl border-l border-white/20 pl-6">
-          {caseStudy.problema}
-        </p>
-      </section>
-
-      <section data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Soluzione</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-10">La soluzione Bitora</h2>
-        <div class="grid md:grid-cols-2 gap-6">
-          {
-            caseStudy.soluzione.map((sol, i) => (
-              <div class="border border-white/10 bg-white/[0.02] rounded-2xl p-7 md:p-8">
-                <p class="text-xs font-semibold tracking-[0.2em] text-white/30 uppercase mb-4 tabular-nums">
-                  {String(i + 1).padStart(2, '0')}
-                </p>
-                <h3 class="text-xl font-bold mb-3">{sol.titolo}</h3>
-                <p class="text-white/55 leading-relaxed">{sol.descrizione}</p>
-              </div>
-            ))
-          }
-        </div>
-      </section>
-
-      <section data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Risultati</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-8">I risultati</h2>
-        <ul class="space-y-4">
-          {
-            caseStudy.risultati.map(risultato => (
-              <li class="flex items-start gap-3">
-                <span class="mt-2 w-1.5 h-1.5 rounded-full bg-white/70 flex-shrink-0" aria-hidden="true"></span>
-                <span class="text-base md:text-lg text-white/65 leading-relaxed">{risultato}</span>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-
-      <section data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-5">Stack</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Tecnologie e servizi</h2>
-        <div class="flex flex-wrap gap-2">
-          {
-            caseStudy.tecnologie.map(tech => (
-              <span class="text-xs font-semibold text-white/65 bg-white/[0.06] border border-white/10 rounded-full px-3.5 py-1.5 tracking-wide">
-                {tech}
-              </span>
-            ))
-          }
-        </div>
-      </section>
-    </article>
-
-    <!-- Altri progetti -->
-    <section class="py-24 md:py-32 px-8 md:px-16 lg:px-24 border-t border-white/[0.06]">
-      <div class="max-w-7xl mx-auto">
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/35 uppercase mb-4 text-center" data-reveal>
-          Continua
-        </p>
-        <h2 class="text-3xl md:text-4xl font-bold mb-14 text-center tracking-tight" data-reveal>Altri progetti</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          {
-            altriProgetti.map(progetto => (
-              <a
-                href={`/progetti/${progetto.slug}/`}
-                class="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-2xl"
-                data-reveal
-              >
-                <article class="overflow-hidden">
-                  <div class="aspect-[16/10] overflow-hidden rounded-2xl bg-white/[0.03] mb-5">
-                    <img
-                      src={progetto.imageUrl}
-                      alt={progetto.title}
-                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04] opacity-80 group-hover:opacity-100"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <span class="text-xs font-semibold tracking-[0.2em] text-white/35 uppercase">
-                    {progetto.category}
-                  </span>
-                  <h3 class="text-xl font-bold mt-2 group-hover:text-white/75 transition-colors">
-                    {progetto.title}
-                  </h3>
-                  <p class="text-white/40 text-sm mt-1">{progetto.location}</p>
-                  <p class="mt-4 text-sm font-medium text-white/50 group-hover:text-white transition-colors inline-flex items-center gap-2">
-                    Apri progetto
-                    <span aria-hidden="true">→</span>
-                  </p>
-                </article>
-              </a>
-            ))
-          }
-        </div>
+  <section class="b-section b-section--alt b-section--line">
+    <div class="b-shell">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">La soluzione</p>
+        <h2 class="b-h2">Cosa abbiamo costruito.</h2>
       </div>
-    </section>
-  </main>
+      <div class="cs-sol">
+        {
+          item.soluzione.map((s, i) => (
+            <article class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+              <span class="b-step__n">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="b-h3 b-step__t">{s.titolo}</h3>
+              <p class="b-text">{s.descrizione}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="b-section b-section--line">
+    <div class="b-shell cs-res">
+      <div data-reveal>
+        <p class="b-eyebrow">Risultati</p>
+        <h2 class="b-h2">Cosa è cambiato.</h2>
+      </div>
+      <ul class="b-checks cs-res__list" data-reveal data-reveal-delay="1">
+        {item.risultati.map(r => <li>{r}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="b-section b-section--tight b-section--line">
+    <div class="b-shell">
+      <div class="b-card cs-cta" data-reveal>
+        <div>
+          <h2 class="b-h3">Ti serve qualcosa di simile?</h2>
+          <p class="b-text">Raccontaci il tuo caso: ti rispondiamo entro 24 ore con un’idea concreta.</p>
+        </div>
+        <a href={`/contattaci/?topic=${topic}`} class="b-btn b-btn--primary" data-track="cta_click" data-track-location="case_study">
+          Parliamone <span class="b-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {
+    related.length > 0 && (
+      <section class="b-section b-section--line">
+        <div class="b-shell">
+          <div class="b-head" data-reveal>
+            <p class="b-eyebrow">Altri lavori</p>
+            <h2 class="b-h2">Continua a guardare.</h2>
+          </div>
+          <div class="cs-rel">
+            {related.map((w, i) => (
+              <div data-reveal data-reveal-delay={String(i + 1)}>
+                <ProjectCard item={w} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 </Layout>
 
-<script>
-  const _els = document.querySelectorAll('[data-reveal]');
-  const _obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('rv'); _obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  _els.forEach(el => _obs.observe(el));
-</script>
-
 <style>
-  [data-reveal] { opacity:0; transform:translateY(38px); transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); }
-  [data-reveal].rv { opacity:1; transform:translateY(0); }
-  @media (prefers-reduced-motion:reduce) { [data-reveal] { opacity:1!important;transform:none!important;transition:none!important; } }
+  .cs-hero {
+    position: relative;
+    overflow: hidden;
+    padding: calc(72px + clamp(2.5rem, 6vw, 5rem)) 0 clamp(3rem, 6vw, 5rem);
+  }
+  .cs-hero__orb {
+    top: -20rem;
+    right: -15rem;
+  }
+  .cs-hero__inner {
+    position: relative;
+  }
+  .cs-back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--b-fg-3);
+    text-decoration: none;
+  }
+  .cs-back:hover {
+    color: var(--b-fg);
+    opacity: 1;
+  }
+  .cs-wip {
+    color: var(--b-cyan);
+    border-color: rgba(34, 211, 238, 0.4);
+  }
+  .cs-title {
+    margin-top: 1.5rem;
+  }
+  .cs-media {
+    max-width: 1080px;
+    margin: clamp(3rem, 6vw, 4.5rem) auto 0;
+  }
+  .cs-media :global(.b-browser) {
+    box-shadow: 0 60px 120px -40px rgba(34, 211, 238, 0.25);
+  }
+
+  .cs-body {
+    display: grid;
+    gap: 3rem;
+  }
+  @media (min-width: 960px) {
+    .cs-body {
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 5rem;
+    }
+    .cs-aside {
+      position: sticky;
+      top: 110px;
+      align-self: start;
+    }
+  }
+  .cs-aside dl {
+    margin: 0 0 2rem;
+    border-top: 1px solid var(--b-line);
+  }
+  .cs-aside dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--b-line);
+    font-size: 0.92rem;
+  }
+  .cs-aside dt {
+    color: var(--b-fg-3);
+  }
+  .cs-aside dd {
+    margin: 0;
+    text-align: right;
+    color: var(--b-fg);
+  }
+  .cs-big {
+    margin: 0;
+    font-family: var(--f-display);
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: var(--b-fg);
+  }
+  .cs-problem {
+    margin-top: 3rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--b-cyan);
+  }
+  .cs-text {
+    font-size: 1.1rem;
+  }
+
+  .cs-sol {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 900px) {
+    .cs-sol {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .cs-res {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 900px) {
+    .cs-res {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+  .cs-res__list li {
+    font-size: 1.08rem;
+  }
+
+  .cs-cta {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    border-color: rgba(34, 211, 238, 0.3);
+    background: linear-gradient(120deg, rgba(34, 211, 238, 0.08), rgba(255, 255, 255, 0.015));
+  }
+  .cs-cta .b-text {
+    margin-top: 0.4rem;
+  }
+
+  .cs-rel {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 900px) {
+    .cs-rel {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 </style>

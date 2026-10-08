@@ -1,37 +1,27 @@
-export interface FAQ {
-  question: string;
-  answer: string;
-}
-
-export const faqs: FAQ[] = [
+export const homeFaq = [
   {
-    question: 'Quanto tempo richiede la realizzazione del sito?',
+    question: 'Quanto costa un progetto con Bitora?',
     answer:
-      'I nostri siti essenziali sono pronti in 3-5 giorni lavorativi. I progetti Premium e Business possono richiedere più tempo, in base alla complessità e alle personalizzazioni richieste.',
+      'Dipende da cosa serve davvero. Dopo una call gratuita di 30 minuti ricevi un preventivo diviso in fasi: parti da ciò che porta risultati subito e decidi tu se e quando proseguire.',
   },
   {
-    question: 'Posso aggiornare autonomamente i contenuti?',
+    question: 'In quanto tempo è pronto?',
     answer:
-      "Tutti i piani includono 5 modifiche gratuite. Per modifiche aggiuntive o l'implementazione di un sistema di gestione dei contenuti, possiamo fornirti un preventivo personalizzato.",
+      'Una landing page in 1–2 settimane, un sito completo in 2–6 settimane, un e-commerce in 3–8. Per gestionali e app rilasciamo il primo modulo utilizzabile in poche settimane e poi cresciamo per fasi.',
   },
   {
-    question: "È possibile passare da un piano all'altro?",
+    question: 'Lavorate solo in Piemonte?',
     answer:
-      "Certamente! Puoi passare dal piano mensile a quello Premium in qualsiasi momento, con un calcolo proporzionale dell'investimento già effettuato.",
+      'Abbiamo sede a Carmagnola (TO) e molti clienti tra Torino e Cuneo, dove possiamo incontrarci di persona. Lavoriamo comunque con aziende di tutta Italia da remoto.',
   },
   {
-    question: 'Cosa succede se non sono soddisfatto del sito?',
+    question: 'Dopo il lancio chi mi segue?',
     answer:
-      "Offriamo una garanzia di rimborso entro 30 giorni dalla consegna. Se non sei soddisfatto, ti rimborseremo l'intero importo. Salvo per i costi di registrazione del dominio e hosting, che non sono rimborsabili.",
+      'Sempre noi. Offriamo manutenzione, hosting, backup, aggiornamenti e nuove funzioni quando servono. Hai un referente diretto su WhatsApp, telefono ed email.',
   },
   {
-    question: 'Il sito è ottimizzato per i motori di ricerca?',
+    question: 'Il sito, il codice e i dati sono miei?',
     answer:
-      'Sì, tutti i nostri siti sono progettati con le migliori pratiche SEO in mente. Offriamo anche servizi SEO avanzati per migliorare la tua visibilità online.',
-  },
-  {
-    question: 'Cosa include il supporto?',
-    answer:
-      'Il supporto via email è incluso in tutti i piani. Per assistenza prioritaria o consulenze personalizzate, puoi contattarci per un preventivo.',
+      'Sì. Dominio, contenuti, codice e database sono di tua proprietà. Se un giorno vorrai cambiare fornitore, ti consegniamo tutto.',
   },
 ];

@@ -4,18 +4,32 @@ import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import PerformanceMonitorSimple from '../components/PerformanceMonitorSimple.astro';
 import PerformanceOptimizer from '../components/PerformanceOptimizer.astro';
-import LocalBusinessSchema from '../components/schema/LocalBusiness.astro';
 import StickyContactBar from '../components/StickyContactBar.astro';
+import { founderNode, organizationNode, webPageNode, websiteNode, type PageType } from '../data/seo';
 import '../styles/global.css';
+import '../styles/brand.css';
 
 export interface Props {
   title: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   noindex?: boolean;
+  pageType?: PageType;
+  ogType?: 'website' | 'article';
+  schema?: Record<string, unknown>[];
 }
 
-const { title, description, image, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  noindex = false,
+  pageType = 'WebPage',
+  ogType = 'website',
+  schema = [],
+} = Astro.props;
 const siteOrigin = (Astro.site?.origin ?? 'https://bitora.it').replace(/\/$/, '');
 const pathname = Astro.url.pathname || '/';
 const normalizedPath = pathname === '/' ? '/' : pathname.endsWith('/') ? pathname : `${pathname}/`;
@@ -25,12 +39,36 @@ const ogImage = image?.startsWith('http')
   ? image
   : image
     ? `${siteOrigin}${image.startsWith('/') ? image : `/${image}`}`
-    : `${siteOrigin}/bitora.jpg`;
+    : `${siteOrigin}/og-bitora.jpg`;
 
 const robotsContent = noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large';
 
 const defaultDescription =
-  'Siti web ed e-commerce su misura per PMI in Piemonte, oltre a software per interventi, ticket e rapportini. Progetti, integrazioni e supporto in Italia.';
+  'Bitora è lo studio digitale di Carmagnola (TO): siti web, e-commerce, gestionali su misura, app mobile e AI per aziende del Piemonte e di tutta Italia. Preventivo gratuito in 24 ore.';
+const metaDescription = description ?? defaultDescription;
+const ogImageAlt = imageAlt ?? (image ? title : 'Bitora: siti web, e-commerce, gestionali e app su misura');
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    organizationNode(),
+    founderNode(),
+    websiteNode(),
+    ...(noindex
+      ? []
+      : [
+          webPageNode({
+            url: canonicalUrl,
+            title,
+            description: metaDescription,
+            image: ogImage,
+            type: pageType,
+            dateModified: new Date().toISOString().slice(0, 10),
+          }),
+        ]),
+    ...schema,
+  ],
+};
 ---
 
 <!doctype html>
@@ -38,12 +76,7 @@ const defaultDescription =
   <head>
     <meta charset="UTF-8" />
     <script is:inline>
-      (function () {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        }
-      })();
+      document.documentElement.classList.add('dark');
     </script>
 
     <!-- Consent Mode v2 defaults (denied until opt-in) -->
@@ -75,11 +108,13 @@ const defaultDescription =
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="robots" content={robotsContent} />
-    <meta name="description" content={description ?? defaultDescription} />
+    <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="it-IT" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
 
-    <meta name="geo.region" content="IT-21" />
-    <meta name="geo.placename" content="Carmagnola" />
+    <meta name="geo.region" content="IT-TO" />
+    <meta name="geo.placename" content="Carmagnola, Torino" />
     <meta name="geo.position" content="44.8477;7.6833" />
     <meta name="ICBM" content="44.8477, 7.6833" />
 
@@ -108,128 +143,70 @@ const defaultDescription =
     </style>
 
     <script>
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1,
-      };
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target as HTMLElement;
+            const delay = Number(el.dataset.revealDelay || 0);
+            if (delay) el.style.transitionDelay = `${delay * 90}ms`;
+            el.classList.add('is-in', 'is-visible', 'rv');
+            observer.unobserve(el);
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+      );
+      function bootReveal() {
+        document.querySelectorAll('[data-reveal], .reveal-on-scroll').forEach(el => {
+          if (reduced) el.classList.add('is-in', 'is-visible', 'rv');
+          else observer.observe(el);
         });
-      }, observerOptions);
-      document.addEventListener('astro:page-load', () => {
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-      });
-      document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-      });
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootReveal);
+      else bootReveal();
     </script>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/bitora.png" />
+    <meta name="theme-color" content="#050607" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    />
-    <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      media="print"
-      onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Unbounded:wght@500;600;700&display=swap"
     />
-    <noscript
-      ><link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      /></noscript
-    >
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description ?? defaultDescription} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    {
+      (!image || image.startsWith('/og/')) && (
+        <>
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+        </>
+      )
+    }
     <meta property="og:locale" content="it_IT" />
     <meta property="og:site_name" content="Bitora" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description ?? defaultDescription} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Organization',
-        '@id': `${siteOrigin}/#organization`,
-        name: 'Bitora',
-        legalName: 'Bitora di Denis Cazzulo',
-        alternateName: 'Bitora Italia',
-        url: siteOrigin,
-        logo: `${siteOrigin}/bitora.png`,
-        description:
-          'Bitora realizza siti web ed e-commerce su misura per PMI e sviluppa piattaforme per interventi, ticket e rapportini. Sede a Carmagnola (TO), operativa in Piemonte e in Italia.',
-        taxID: '13359170019',
-        vatID: 'IT13359170019',
-        foundingDate: '2020',
-        foundingLocation: {
-          '@type': 'Place',
-          name: 'Carmagnola, Piemonte, Italia',
-        },
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Carmagnola',
-          addressRegion: 'TO',
-          addressCountry: 'IT',
-        },
-        email: 'info@bitora.it',
-        telephone: '+39 351 497 9670',
-        contactPoint: {
-          '@type': 'ContactPoint',
-          telephone: '+39 351 497 9670',
-          contactType: 'sales',
-          email: 'info@bitora.it',
-          availableLanguage: ['Italian'],
-          areaServed: 'IT',
-        },
-        sameAs: [
-          'https://www.instagram.com/bitorait/',
-          'https://www.facebook.com/people/Bitora-Italia/',
-        ],
-      })}
-    />
-
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'WebSite',
-        '@id': `${siteOrigin}/#website`,
-        name: 'Bitora',
-        url: `${siteOrigin}/`,
-        dateModified: '2026-08-10',
-        publisher: { '@id': `${siteOrigin}/#organization` },
-        inLanguage: 'it-IT',
-      })}
-    />
-
-    <LocalBusinessSchema />
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
   </head>
-  <body
-    class="flex flex-col min-h-screen font-['Plus_Jakarta_Sans',system-ui,sans-serif] transition-colors duration-300 bg-white dark:bg-black text-gray-900 dark:text-white"
-  >
+  <body class="b-body flex flex-col min-h-screen antialiased">
     <a href="#main-content" class="skip-link">Vai al contenuto</a>
     <Header />
     <main id="main-content" class="flex-grow" tabindex="-1">
@@ -441,41 +418,6 @@ const defaultDescription =
       }
       document.addEventListener('DOMContentLoaded', bindTrackableClicks);
       document.addEventListener('astro:page-load', bindTrackableClicks);
-    </script>
-
-    <button
-      id="back-to-top"
-      class="fixed bottom-20 sm:bottom-4 right-4 sm:right-6 z-50 bg-gray-900 dark:bg-white text-white dark:text-black p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 focus:outline-none focus:ring-2 focus:ring-gray-400"
-      aria-label="Torna in cima"
-    >
-      <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-      </svg>
-    </button>
-
-    <script>
-      const backToTopButton = document.getElementById('back-to-top');
-      if (backToTopButton) {
-        function toggleBackToTop() {
-          if (window.scrollY > 300) {
-            backToTopButton.classList.remove('opacity-0', 'invisible');
-            backToTopButton.classList.add('opacity-100', 'visible');
-          } else {
-            backToTopButton.classList.add('opacity-0', 'invisible');
-            backToTopButton.classList.remove('opacity-100', 'visible');
-          }
-        }
-        function scrollToTop() {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        window.addEventListener('scroll', toggleBackToTop);
-        backToTopButton.addEventListener('click', scrollToTop);
-        toggleBackToTop();
-      }
     </script>
 
     <CookieBanner />

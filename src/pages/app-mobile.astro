@@ -1,0 +1,89 @@
+---
+export const prerender = true;
+import ServiceLanding from '../components/ui/ServiceLanding.astro';
+---
+
+<ServiceLanding
+  pillar="app"
+  topic="app"
+  seo={{
+    title: 'Sviluppo app iOS e Android su misura | Bitora, Piemonte',
+    description:
+      'App mobile iOS e Android per clienti, tecnici e dipendenti: notifiche, funzionamento offline, integrazione con gestionali e dispositivi IoT. Pubblicazione sugli store inclusa.',
+  }}
+  hero={{
+    eyebrow: 'App mobile',
+    title: 'La tua azienda, <span class="b-grad">in tasca</span> a chi serve.',
+    lede: 'Sviluppiamo app iOS e Android per i tuoi clienti, i tuoi tecnici e il tuo team. Un solo codice per entrambe le piattaforme, collegato ai tuoi sistemi, pubblicato sugli store da noi.',
+    chips: ['iOS e Android', 'Notifiche push', 'Funziona offline', 'IoT e dispositivi'],
+  }}
+  ctaLabel="Parliamo della tua app"
+  signals={{
+    title: 'Un’app ha senso <span class="b-accent">quando risolve un problema vero</span>.',
+    items: [
+      { t: 'Tecnici con moduli di carta', d: 'Rapportini compilati a mano, foto su WhatsApp, firme da ricopiare in ufficio.' },
+      { t: 'Clienti che chiamano per tutto', d: 'Stato dell’ordine, prenotazioni, documenti: domande che un’app risolverebbe da sola.' },
+      { t: 'Telecomandi, badge e chiavi', d: 'Accessi fisici gestiti con oggetti da distribuire, duplicare e recuperare.' },
+      { t: 'Comunicazioni che non arrivano', d: 'Email ignorate e gruppi caotici. Le notifiche push arrivano e si leggono.' },
+      { t: 'Zone senza segnale', d: 'Cantieri e cantine dove il web non funziona. Serve qualcosa che lavori anche offline.' },
+      { t: 'Una web app non basta', d: 'Fotocamera, NFC, GPS, Bluetooth: alcune funzioni richiedono un’app nativa.' },
+    ],
+  }}
+  deliverables={{
+    title: 'Dall’idea allo store, <span class="b-accent">senza intermediari</span>.',
+    lede: 'Progettiamo l’esperienza, sviluppiamo app e backend, gestiamo pubblicazione e aggiornamenti su App Store e Google Play.',
+    items: [
+      { t: 'Una base per iOS e Android', d: 'React Native ed Expo: un unico progetto, due app native. Costi e tempi dimezzati.' },
+      { t: 'Backend e pannello admin', d: 'Server, database e pannello web per gestire utenti, contenuti e permessi.' },
+      { t: 'Ruoli e permessi', d: 'Amministratori, gestori e utenti con accessi diversi, inviti e scadenze.' },
+      { t: 'Funzioni native', d: 'Fotocamera, scanner, NFC, geolocalizzazione, notifiche push e funzionamento offline.' },
+      { t: 'IoT e dispositivi', d: 'Comandi sicuri verso cancelli, sbarre, sensori e macchinari tramite moduli connessi.' },
+      { t: 'Store e aggiornamenti', d: 'Pubblicazione pubblica o distribuzione privata aziendale, build e aggiornamenti gestiti da noi.' },
+    ],
+  }}
+  feature={{
+    slug: 'accessi-aziendali-franchina',
+    eyebrow: 'Caso in evidenza',
+    title: 'Accessi aziendali automatizzati e centralizzati',
+    text: 'Per Società Agricola Franchina tutti i varchi FAAC rispondono a un’unica centrale: dipendenti, fornitori e ospiti aprono dall’app, ognuno solo dove e quando è autorizzato. Ogni apertura viene registrata.',
+    points: [
+      'Un pannello per tutti i varchi e le sedi',
+      'App iOS e Android con distribuzione privata',
+      'Permessi per sbarra, giorno e orario',
+      'Inviti temporanei per fornitori e ospiti',
+      'Registro completo e backup giornalieri',
+    ],
+  }}
+  formats={{
+    title: 'Che tipo di app <span class="b-accent">ti serve</span>?',
+    items: [
+      {
+        t: 'App per il team',
+        time: 'primo rilascio in 4–8 settimane',
+        d: 'Per tecnici, agenti e dipendenti: rapportini, ordini, presenze, accessi.',
+        bullets: ['Distribuzione privata', 'Offline e sincronizzazione', 'Collegata al gestionale'],
+      },
+      {
+        t: 'App per i clienti',
+        time: '6–12 settimane',
+        d: 'Fidelizzazione, prenotazioni, ordini e notifiche per chi compra da te.',
+        bullets: ['Pubblicata sugli store', 'Notifiche push', 'Pagamenti in app', 'Area personale'],
+      },
+      {
+        t: 'App + dispositivi',
+        time: 'su progetto',
+        d: 'App che comandano cancelli, sbarre, macchinari o leggono sensori.',
+        bullets: ['Moduli IoT sicuri', 'Ruoli e registro', 'Prototipo sul banco prima del collaudo'],
+      },
+    ],
+  }}
+  projects={['accessi-aziendali-franchina', 'mistral-gestionale', 'garavella-7-gestionale']}
+  stack={['React Native', 'Expo', 'EAS Build', 'Node.js', 'PostgreSQL', 'MQTT', 'Push notifications']}
+  faq={[
+    { question: 'Meglio un’app o una web app?', answer: 'Se ti servono notifiche affidabili, funzioni del telefono come NFC o Bluetooth, o la presenza sugli store, un’app. Per molti strumenti interni basta una web app installabile, e costa meno: te lo diciamo in modo onesto.' },
+    { question: 'Quanto costa sviluppare un’app?', answer: 'Dipende da funzioni, integrazioni e backend. Dopo la call gratuita ricevi una proposta a fasi con un primo rilascio utilizzabile e costi chiari.' },
+    { question: 'Pubblicate voi sugli store?', answer: 'Sì: account, build, schede store, revisione Apple e Google, aggiornamenti. Oppure distribuzione privata solo per il tuo team.' },
+    { question: 'Funziona offline?', answer: 'Sì, se serve: i dati vengono salvati sul telefono e sincronizzati appena torna la connessione.' },
+    { question: 'Si collega al mio gestionale?', answer: 'Sì, tramite API. Se il gestionale lo abbiamo fatto noi, il collegamento è nativo.' },
+  ]}
+/>

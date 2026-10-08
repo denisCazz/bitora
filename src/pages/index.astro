@@ -1,1304 +1,904 @@
 ﻿---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ui/ProjectCard.astro';
+import ShotMarquee from '../components/ui/ShotMarquee.astro';
+import FaqList from '../components/ui/FaqList.astro';
+import { pillars, whatsappLink } from '../data/services';
+import { getWork, getWorkBySlugs } from '../data/work';
+import { testimonials } from '../data/testimonials';
+import { clientLogos } from '../data/clients';
+import { homeFaq as faq } from '../data/faq';
+
+const work = getWork();
+const liveProjects = work.filter(w => !w.isWip).length;
+const featured = getWorkBySlugs(['garavella-7', 'mistral-gestionale']);
+const more = getWorkBySlugs(['ricambixstufe', 'accessi-aziendali-franchina', 'dalina', 'sartoria-kristina']);
+
+const quotes = ['Mistral Impianti', 'Sartoria Kristina', 'Speedy Pizza', 'Bar Chantilly Carmagnola']
+  .map(c => testimonials.find(t => t.company === c))
+  .filter((t): t is NonNullable<typeof t> => Boolean(t));
+
+const month = new Intl.DateTimeFormat('it-IT', { month: 'long', year: 'numeric' }).format(new Date());
+
+const pains = [
+  {
+    q: '“Il sito c’è, ma non chiama nessuno.”',
+    a: 'Lento, datato, introvabile su Google. Lo rifacciamo per portare richieste vere, non solo visite.',
+  },
+  {
+    q: '“Gestiamo tutto con Excel, WhatsApp e post-it.”',
+    a: 'Ordini, interventi, magazzino e clienti in un gestionale unico, costruito sul tuo modo di lavorare.',
+  },
+  {
+    q: '“Perdiamo ore in lavoro ripetitivo.”',
+    a: 'Preventivi, report, email e promemoria che si fanno da soli. L’AI lavora, il team decide.',
+  },
+];
+
+const reasons = [
+  {
+    t: 'Un solo referente',
+    d: 'Parli sempre con chi progetta e scrive il codice. Niente rimpalli tra agenzia, grafico e sviluppatore.',
+  },
+  {
+    t: 'Tutto collegato',
+    d: 'Sito, gestionale e app parlano tra loro. Il menu online si aggiorna dal magazzino, le richieste finiscono nel CRM.',
+  },
+  {
+    t: 'Codice su misura, veloce',
+    d: 'Niente template pesanti: siti che si aprono in meno di un secondo e software che fa solo quello che ti serve.',
+  },
+  {
+    t: 'È tutto tuo',
+    d: 'Dominio, codice e dati restano di tua proprietà. Nessun vincolo, nessun canone nascosto.',
+  },
+];
+
+const steps = [
+  { n: '01', t: 'Call conoscitiva', time: '30 min · gratis', d: 'Ci racconti obiettivi e problemi. Ti diciamo subito se e come possiamo aiutarti.' },
+  { n: '02', t: 'Proposta chiara', time: 'entro 48 ore', d: 'Cosa facciamo, in che ordine, con che tempi e costi. Diviso in fasi, senza sorprese.' },
+  { n: '03', t: 'Sviluppo visibile', time: 'anteprime settimanali', d: 'Vedi il progetto crescere online e dai feedback mentre lo costruiamo.' },
+  { n: '04', t: 'Lancio e crescita', time: 'supporto continuo', d: 'Formazione, misurazione e miglioramenti. Non spariamo dopo la consegna.' },
+];
+
 ---
 
 <Layout
-  title="Siti Web ed E-commerce per PMI in Piemonte | Bitora"
-  description="Bitora realizza siti web ed e-commerce su misura per PMI in Piemonte: SEO, performance, integrazioni e supporto. Guarda i progetti e richiedi un preventivo."
+  title="Bitora · Siti web, e-commerce, gestionali e app su misura | Carmagnola (TO)"
+  description="Studio digitale a Carmagnola: siti web che portano clienti, e-commerce, gestionali su misura, app mobile e AI per aziende in Piemonte e in Italia. Preventivo gratuito in 24 ore."
 >
-  <div class="home">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-media" aria-hidden="true">
-        <picture>
-          <source srcset="/hero-atelier.webp" type="image/webp" />
-          <img
-            src="/hero-atelier.jpg"
-            alt=""
-            class="hero-img"
-            width="1280"
-            height="720"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </picture>
-        <div class="hero-scrim"></div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <picture>
+        <source srcset="/hero-bitora.webp" type="image/webp" />
+        <img src="/hero-bitora.jpg" alt="" width="1920" height="1074" fetchpriority="high" decoding="async" />
+      </picture>
+      <div class="hero__scrim"></div>
+      <div class="hero__grid b-grid-bg"></div>
+    </div>
+
+    <div class="b-shell hero__inner">
+      <p class="hero__status b-rise">
+        <span class="hero__dot" aria-hidden="true"></span>
+        Disponibili per nuovi progetti · {month}
+      </p>
+      <h1 class="b-display b-rise" style="animation-delay:.1s">
+        Siti che vendono.<br />
+        Software che <span class="b-grad">lavora&nbsp;per&nbsp;te.</span>
+      </h1>
+      <p class="b-lede b-rise" style="animation-delay:.22s">
+        Siamo lo studio digitale di Carmagnola che costruisce siti, e-commerce, gestionali, app e
+        automazioni AI per le aziende. Un unico referente, dal primo schizzo al supporto dopo il lancio.
+      </p>
+      <div class="b-cta-row b-rise" style="animation-delay:.34s">
+        <a href="/contattaci/" class="b-btn b-btn--primary b-btn--lg" data-track="cta_click" data-track-location="home_hero">
+          Preventivo gratuito in 24h <span class="b-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#lavori" class="b-btn b-btn--ghost b-btn--lg">Guarda i lavori</a>
       </div>
-
-      <div class="shell hero-copy">
-        <p class="eyebrow hero-item">Siti web · E-commerce · Piemonte</p>
-        <h1 class="display hero-item">
-          Siti web ed e-commerce<br /> su misura per PMI
-        </h1>
-        <p class="lede hero-item">
-          Progettiamo esperienze veloci, credibili e misurabili: dal sito vetrina al negozio online,
-          con SEO, contenuti, integrazioni e supporto dopo il lancio.
-        </p>
-        <div class="cta-row hero-item">
-          <a
-            href="/contattaci/?topic=sito"
-            class="sl-btn-primary"
-            data-track="cta_click"
-            data-track-location="home_hero">Richiedi un preventivo</a
-          >
-          <a href="/lavori/" class="sl-btn-secondary">Guarda i progetti</a>
-        </div>
-        <p class="hero-alt hero-item">
-          Cerchi una piattaforma operativa?
-          <a href="/gestione-interventi/">Software per interventi, ticket e rapportini</a>
-        </p>
-        <p class="hero-alt hero-item">
-          Nuova branchia Bitora:
-          <a href="https://shopnfc.bitora.it/">Shop NFC — tag, tessere e lettori</a>
-        </p>
-      </div>
-
-      <a href="#shop-nfc" class="hero-scroll" aria-label="Scorri">
-        <span></span>
-      </a>
-    </section>
-
-    <!-- SHOP NFC — nuova branchia -->
-    <section class="nfc-launch" id="shop-nfc" aria-labelledby="nfc-launch-title">
-      <div class="shell nfc-launch-inner">
-        <div class="nfc-launch-copy" data-reveal>
-          <p class="nfc-kicker">Nuova branchia · Progetto Bitora</p>
-          <h2 id="nfc-launch-title" class="headline">Shop NFC Bitora</h2>
-          <p class="nfc-lede">
-            Catalogo online di tag, tessere, braccialetti e lettori NFC. Programmazione inclusa,
-            assistenza Bitora, spedizioni in Italia.
-          </p>
-          <ul class="nfc-meta">
-            <li>Sticker e tessere</li>
-            <li>Tag industriali</li>
-            <li>Lettori e chip</li>
-            <li>Programmazione inclusa</li>
-          </ul>
-          <div class="cta-row">
-            <a
-              href="https://shopnfc.bitora.it/"
-              class="nfc-btn-primary"
-              data-track="cta_click"
-              data-track-location="home_shopnfc"
-            >
-              Entra nello shop
-              <span aria-hidden="true">→</span>
-            </a>
-            <a href="/nfc-ecosystem/" class="nfc-btn-ghost">Soluzioni NFC su misura</a>
-          </div>
-        </div>
-        <div class="nfc-launch-media" data-reveal data-reveal-delay="1">
-          <picture>
-            <source srcset="/shop-nfc-products.webp" type="image/webp" />
-            <img
-              src="/shop-nfc-products.jpg"
-              alt="Tessere, tag, braccialetto e lettore NFC Bitora"
-              width="1024"
-              height="1024"
-              decoding="async"
-            />
-          </picture>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROBLEMA -->
-    <section id="problema" class="band">
-      <div class="shell band-inner">
-        <div class="split">
-          <div class="split-lead" data-reveal>
-            <p class="eyebrow">Il punto di partenza</p>
-            <h2 class="headline">
-              Un sito deve essere<br />chiaro, veloce e<br />
-              <span class="text-secondary">capace di convertire.</span>
-            </h2>
-          </div>
-          <div class="split-body">
-            <p class="body-lg" data-reveal data-reveal-delay="1">
-              Bitora parte dagli obiettivi commerciali e costruisce un percorso digitale coerente,
-              dalla ricerca su Google fino alla richiesta di contatto o all'ordine.
-            </p>
-            <ul class="list-rows" data-reveal-group>
-              {
-                [
-                  {
-                    n: '01',
-                    t: 'Poche richieste',
-                    d: 'Il traffico arriva, ma il valore dell’offerta non è immediato.',
-                  },
-                  {
-                    n: '02',
-                    t: 'Immagine poco credibile',
-                    d: 'Design, contenuti e prove non raccontano la qualità reale.',
-                  },
-                  {
-                    n: '03',
-                    t: 'Gestione frammentata',
-                    d: 'Sito, catalogo, ordini e contatti non lavorano insieme.',
-                  },
-                ].map(item => (
-                  <li class="list-row" data-reveal>
-                    <span class="list-num">{item.n}</span>
-                    <div>
-                      <h3 class="list-title">{item.t}</h3>
-                      <p class="body-sm">{item.d}</p>
-                    </div>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FLUSSO -->
-    <section class="band band-alt">
-      <div class="shell band-inner">
-        <header class="band-head" data-reveal>
-          <p class="eyebrow">Come lavoriamo</p>
-          <h2 class="headline">
-            Dal brief<br />al lancio.
-          </h2>
-          <p class="body-lg" style="margin-top:1rem;max-width:40rem">
-            Strategia, contenuti, sviluppo e misurazione restano nello stesso progetto, con un
-            referente unico e obiettivi verificabili.
-          </p>
-        </header>
-
-        <div class="flow" data-reveal-group>
+      <div class="hero__proof b-rise" style="animation-delay:.46s">
+        <div class="hero__faces" aria-hidden="true">
           {
-            [
-              { n: '01', t: 'Strategia', d: 'Obiettivi, pubblico, struttura e priorità.' },
-              { n: '02', t: 'Contenuti', d: 'Messaggi, prove, pagine e call to action.' },
-              { n: '03', t: 'Sviluppo', d: 'Performance, mobile, SEO e integrazioni.' },
-              { n: '04', t: 'Misurazione', d: 'Analytics, Search Console e miglioramenti.' },
-            ].map((step, i) => (
-              <article class="flow-cell" data-reveal data-reveal-delay={String(i + 1)}>
-                <span class="flow-num">{step.n}</span>
-                <div>
-                  <h3 class="list-title">{step.t}</h3>
-                  <p class="body-sm">{step.d}</p>
-                </div>
-              </article>
+            ['/logo_garavella.png', '/mistral.jpg', '/sartoria_kristina.png', '/logo_dalina.png', '/logo_natura.png'].map(src => (
+              <img src={src} alt="" width="36" height="36" loading="lazy" />
             ))
           }
         </div>
-
-        <div class="band-foot" data-reveal data-reveal-delay="2">
-          <a href="/siti-web-professionali/" class="text-link">
-            Scopri come realizziamo i siti
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PER CHI -->
-    <section class="audience">
-      <div class="audience-media" aria-hidden="true">
-        <img src="/communication.jpg" alt="" class="audience-img" loading="lazy" decoding="async" />
-        <div class="audience-scrim"></div>
-      </div>
-      <div class="shell audience-copy" data-reveal>
-        <p class="eyebrow">Per chi</p>
-        <h2 class="display-sm">
-          PMI che vogliono<br />crescere online.
-        </h2>
-        <p class="lede audience-lede">
-          Per aziende che cercano una presenza digitale credibile, più richieste qualificate e
-          strumenti semplici da gestire.
+        <p>
+          <strong>{liveProjects}+ progetti online</strong> per attività e aziende tra Torino e Cuneo
         </p>
-        <a
-          href="/contattaci/?topic=sito"
-          class="sl-btn-primary"
-          data-track="cta_click"
-          data-track-location="home_audience">Parlaci del progetto</a
-        >
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- DUE STRADE -->
-    <section class="band">
-      <div class="shell band-inner">
-        <header class="band-head" data-reveal>
-          <p class="eyebrow">Due strade, un partner</p>
-          <h2 class="headline">Scegli il punto di partenza.</h2>
-        </header>
-        <div class="paths" data-reveal-group>
-          <div class="path-cell" data-reveal>
-            <p class="eyebrow">Strada A</p>
-            <h3 class="list-title">Voglio un sito o un e-commerce.</h3>
-            <p class="body-sm" style="margin-top:.5rem">
-              Sito vetrina, negozio online o restyle: presenza credibile e richieste che arrivano.
-            </p>
-            <div class="cta-row" style="margin-top:1.5rem">
-              <a href="/siti-web-professionali/" class="sl-btn-secondary">Siti web</a>
-              <a href="/e-commerce/" class="sl-btn-secondary">E-commerce</a>
-            </div>
+  <!-- CLIENT STRIP -->
+  <section class="strip" aria-label="Alcuni clienti">
+    <div class="b-marquee" style="--b-marquee-speed:45s">
+      {
+        [0, 1].map(copy => (
+          <div class="b-marquee__track" aria-hidden={copy === 1 ? 'true' : undefined}>
+            {clientLogos.map(c => (
+              <span class="strip__name">{c.name}</span>
+            ))}
           </div>
-          <div class="path-cell" data-reveal data-reveal-delay="1">
-            <p class="eyebrow">Strada B</p>
-            <h3 class="list-title">Voglio pratiche digitalizzate.</h3>
-            <p class="body-sm" style="margin-top:.5rem">
-              Richieste, interventi, rapportini e firme in un sistema unico, adattato al tuo
-              processo.
-            </p>
-            <div class="cta-row" style="margin-top:1.5rem">
-              <a href="/gestione-interventi/" class="sl-btn-secondary">Ecosistema</a>
-              <a
-                href="/richiedi-demo/"
-                class="sl-btn-primary"
-                data-track="cta_click"
-                data-track-location="home_paths">Demo</a
-              >
-            </div>
-          </div>
-        </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- PAINS -->
+  <section class="b-section">
+    <div class="b-shell">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">Ti suona familiare?</p>
+        <h2 class="b-h2">Il digitale dovrebbe farti guadagnare tempo e clienti. <span class="b-accent">Non il contrario.</span></h2>
       </div>
-    </section>
-
-    <!-- OFFERTA -->
-    <section class="band">
-      <div class="shell band-inner">
-        <div class="split split-offer">
-          <div class="split-lead" data-reveal>
-            <p class="eyebrow">Metodo</p>
-            <h2 class="headline">
-              Un progetto chiaro.<br />Nessun pacchetto standard.
-            </h2>
-            <p class="body-lg offer-copy">
-              Definiamo insieme obiettivi, contenuti, funzionalità e tempi. Il preventivo separa ciò
-              che serve ora dalle evoluzioni successive.
-            </p>
-            <a
-              href="/contattaci/"
-              class="sl-btn-primary"
-              data-track="cta_click"
-              data-track-location="home_offer">Richiedi un confronto</a
-            >
-          </div>
-          <div class="split-body" data-reveal data-reveal-delay="1">
-            <div class="offer-rows">
-              {
-                [
-                  { t: 'Analisi', d: 'Obiettivi, pubblico e priorità' },
-                  { t: 'Progetto', d: 'Design, contenuti e sviluppo' },
-                  { t: 'Lancio', d: 'Test, SEO, tracking e formazione' },
-                  { t: 'Supporto', d: 'Manutenzione ed evoluzioni concordate' },
-                ].map(row => (
-                  <div class="offer-row">
-                    <span class="offer-label">{row.t}</span>
-                    <span class="offer-value">{row.d}</span>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
+      <div class="pains">
+        {
+          pains.map((p, i) => (
+            <article class="b-card pains__card" data-reveal data-reveal-delay={String(i + 1)}>
+              <p class="pains__q">{p.q}</p>
+              <p class="b-text">{p.a}</p>
+            </article>
+          ))
+        }
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SERVIZI -->
-    <section class="band band-alt" id="servizi">
-      <div class="shell band-inner">
-        <header class="band-head" data-reveal>
-          <p class="eyebrow">Tutti i servizi</p>
-          <h2 class="headline">Dal sito vetrina alle pratiche digitalizzate</h2>
-        </header>
-
-        <a
-          href="https://shopnfc.bitora.it/"
-          class="service-cell service-nfc"
-          data-reveal
-          data-track="cta_click"
-          data-track-location="home_servizi_shopnfc"
-        >
-          <div>
-            <p class="service-num">Nuova branchia</p>
-            <h3 class="service-title">Shop NFC Bitora</h3>
-            <p class="body-sm">
-              Tag, tessere, braccialetti e lettori NFC. Catalogo online con programmazione inclusa.
-            </p>
-          </div>
-          <span class="service-cta">Entra nello shop <span aria-hidden="true">→</span></span>
-        </a>
-
-        <div class="services" data-reveal-group>
-          <a href="/siti-web-professionali/" class="service-cell" data-reveal>
-            <div>
-              <p class="service-num">01 · Siti web</p>
-              <h3 class="service-title">Siti web professionali</h3>
-              <p class="body-sm">Vetrine veloci, SEO e contenuti per farti trovare e contattare.</p>
-            </div>
-            <span class="service-cta">Scopri <span aria-hidden="true">→</span></span>
-          </a>
-          <a href="/e-commerce/" class="service-cell" data-reveal data-reveal-delay="1">
-            <div>
-              <p class="service-num">02 · E-commerce</p>
-              <h3 class="service-title">E-commerce</h3>
-              <p class="body-sm">Negozi online su misura: catalogo, pagamenti e gestione ordini.</p>
-            </div>
-            <span class="service-cta">Scopri <span aria-hidden="true">→</span></span>
-          </a>
-          <a href="/gestione-interventi/" class="service-cell" data-reveal data-reveal-delay="2">
-            <div>
-              <p class="service-num">03 · Soluzioni tailormade</p>
-              <h3 class="service-title">Ecosistema e pratiche</h3>
-              <p class="body-sm">Rapportini, ticketing e pratiche adattabili al tuo processo.</p>
-            </div>
-            <span class="service-cta">Scopri <span aria-hidden="true">→</span></span>
-          </a>
+  <!-- PILLARS -->
+  <section class="b-section b-section--alt b-section--line" id="soluzioni">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Cosa facciamo</p>
+          <h2 class="b-h2">Tutto il tuo digitale. <br />Da un solo studio.</h2>
         </div>
-
-        <div class="band-foot" data-reveal data-reveal-delay="3">
-          <a href="/servizi/" class="text-link">
-            Panoramica completa dei servizi
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="band band-cta" id="demo">
-      <div class="shell band-cta-inner" data-reveal>
-        <p class="eyebrow">Inizia da qui</p>
-        <h2 class="display-cta">
-          Raccontaci il progetto.<br />Prepariamo il percorso.
-        </h2>
-        <p class="lede cta-lede">
-          Sito vetrina, e-commerce o restyle: partiamo dagli obiettivi e ti rispondiamo entro 24
-          ore.
+        <p class="b-text">
+          Puoi partire da un sito e arrivare a un gestionale con app e AI, senza cambiare fornitore e
+          senza ricominciare da capo. Ogni pezzo è progettato per collegarsi al successivo.
         </p>
+      </div>
+      <div class="pillars">
+        {
+          pillars.map((p, i) => (
+            <a href={p.href} class="b-card pillar" data-reveal data-reveal-delay={String((i % 3) + 1)}>
+              <div class="pillar__top">
+                <span class="b-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d={p.icon} />
+                  </svg>
+                </span>
+                <span class="b-mono pillar__n">{p.n}</span>
+              </div>
+              <p class="pillar__kicker">{p.kicker}</p>
+              <h3 class="b-h3">{p.title}</h3>
+              <p class="b-text pillar__short">{p.short}</p>
+              <div class="b-chips">
+                {p.bullets.map(b => <span class="b-chip">{b}</span>)}
+              </div>
+              <span class="pillar__go" aria-hidden="true">→</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-        <ol class="cta-steps">
-          <li>
-            <span class="cta-step-n">01</span>
-            <strong>2 minuti</strong>
-            <span class="cta-step-copy">Raccontaci azienda e obiettivi</span>
-          </li>
-          <li>
-            <span class="cta-step-n">02</span>
-            <strong>Entro 24 ore</strong>
-            <span class="cta-step-copy">Ti ricontattiamo noi</span>
-          </li>
-          <li>
-            <span class="cta-step-n">03</span>
-            <strong>Proposta chiara</strong>
-            <span class="cta-step-copy">Priorità, tempi e prossimi passi</span>
-          </li>
-        </ol>
+  <!-- WORK -->
+  <section class="b-section b-section--line" id="lavori">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Lavori</p>
+          <h2 class="b-h2">Progetti veri. <span class="b-accent">Online adesso.</span></h2>
+        </div>
+        <p class="b-text">
+          Dal bar in piazza all’azienda di impianti con 35 anni di storia: ogni progetto parte da un
+          problema concreto e finisce con uno strumento che si usa ogni giorno.
+        </p>
+      </div>
+      <div class="work-feat">
+        {featured.map((w, i) => <div data-reveal data-reveal-delay={String(i + 1)}><ProjectCard item={w} size="lg" /></div>)}
+      </div>
+      <div class="work-more">
+        {more.map((w, i) => <div data-reveal data-reveal-delay={String((i % 4) + 1)}><ProjectCard item={w} /></div>)}
+      </div>
+      <div class="work-cta" data-reveal>
+        <a href="/lavori/" class="b-btn b-btn--ghost">Vedi tutti i {work.length} progetti <span class="b-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="work-marquee" data-reveal>
+      <ShotMarquee />
+    </div>
+  </section>
 
-        <div class="cta-row cta-row-center">
-          <a
-            href="/contattaci/?topic=sito"
-            class="sl-btn-primary sl-btn-lg"
-            data-track="cta_click"
-            data-track-location="home_final"
-          >
-            Richiedi un preventivo
-            <span aria-hidden="true">→</span>
-          </a>
-          <a
-            href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20parlarvi%20di%20un%20sito%20web%20o%20e-commerce."
-            class="sl-btn-secondary"
-            data-track="whatsapp_click"
-            data-track-location="home_final">Scrivici su WhatsApp</a
-          >
+  <!-- CONNECTED: GARAVELLA STORY -->
+  <section class="b-section b-section--alt b-section--line">
+    <div class="b-shell story">
+      <div data-reveal>
+        <p class="b-eyebrow">Il nostro vantaggio</p>
+        <h2 class="b-h2">Quando sito e gestionale <span class="b-grad">si parlano</span>, succedono cose.</h2>
+        <p class="b-lede">
+          Da Garavella 7, a Carmagnola, se un ingrediente finisce in magazzino i piatti che lo usano
+          spariscono da soli dal menu sul sito. Nessuno deve ricordarsi di aggiornarlo.
+        </p>
+        <p class="b-text story__p">
+          È questo che intendiamo con “software che lavora per te”: strumenti collegati che tolgono
+          lavoro invece di aggiungerne.
+        </p>
+        <a href="/progetti/garavella-7-gestionale/" class="b-link">Leggi il caso Garavella 7 <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="flow" data-reveal data-reveal-delay="1" aria-hidden="true">
+        <div class="flow__node">
+          <span class="b-mono">Magazzino</span>
+          <b>Spritz Aperol</b>
+          <em class="is-out">Scorte: 0</em>
+        </div>
+        <div class="flow__line"><i></i></div>
+        <div class="flow__node">
+          <span class="b-mono">Gestionale</span>
+          <b>Menu aggiornato</b>
+          <em>2 voci nascoste</em>
+        </div>
+        <div class="flow__line"><i></i></div>
+        <div class="flow__node is-live">
+          <span class="b-mono">garavella7.it</span>
+          <b>Menu online</b>
+          <em class="is-ok">Allineato in tempo reale</em>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="b-section b-section--line">
+    <div class="b-shell">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">Perché Bitora</p>
+        <h2 class="b-h2">Uno studio piccolo, <br />di proposito.</h2>
+      </div>
+      <div class="reasons">
+        {
+          reasons.map((r, i) => (
+            <div class="reason" data-reveal data-reveal-delay={String(i + 1)}>
+              <span class="b-mono reason__n">0{i + 1}</span>
+              <h3 class="b-h3">{r.t}</h3>
+              <p class="b-text">{r.d}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="b-kpis why__kpis" data-reveal>
+        <div class="b-kpi"><div class="b-kpi__v">{liveProjects}+</div><div class="b-kpi__l">Progetti pubblicati</div></div>
+        <div class="b-kpi"><div class="b-kpi__v">24h</div><div class="b-kpi__l">Tempo di risposta</div></div>
+        <div class="b-kpi"><div class="b-kpi__v">2020</div><div class="b-kpi__l">Attivi dal</div></div>
+        <div class="b-kpi"><div class="b-kpi__v">100%</div><div class="b-kpi__l">Sviluppato in Italia</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI BAND -->
+  <section class="b-section b-section--alt b-section--line ai">
+    <div class="b-glow-orb ai__orb" aria-hidden="true"></div>
+    <div class="b-shell ai__inner">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">AI & automazioni</p>
+        <h2 class="b-h2">Intelligenza artificiale <span class="b-accent">concreta</span>. <br />Non slide.</h2>
+        <p class="b-lede">
+          Usiamo l’AI dove fa risparmiare ore misurabili, collegata ai tuoi dati e ai tuoi documenti.
+        </p>
+      </div>
+      <div class="ai__grid">
+        <article class="b-card" data-reveal data-reveal-delay="1">
+          <p class="b-mono ai__tag">Preventivi</p>
+          <h3 class="b-h3">Bozza pronta in minuti</h3>
+          <p class="b-text">L’AI legge documenti e lavori passati e prepara il preventivo. L’ufficio rivede ed esporta in PDF.</p>
+          <a href="/progetti/mistral-gestionale/" class="b-link ai__link">Caso Mistral Impianti →</a>
+        </article>
+        <article class="b-card" data-reveal data-reveal-delay="2">
+          <p class="b-mono ai__tag">Assistenti</p>
+          <h3 class="b-h3">Chiedi ai tuoi documenti</h3>
+          <p class="b-text">Manuali, schede tecniche, procedure: il team fa una domanda e ottiene la risposta con la fonte.</p>
+        </article>
+        <article class="b-card" data-reveal data-reveal-delay="3">
+          <p class="b-mono ai__tag">Crescita</p>
+          <h3 class="b-h3">Lead e contenuti automatici</h3>
+          <p class="b-text">Ricerca di potenziali clienti, articoli del blog e report che si preparano da soli, con te che approvi.</p>
+        </article>
+      </div>
+      <div data-reveal>
+        <a href="/intelligenza-artificiale/" class="b-btn b-btn--ghost">Scopri cosa può fare l’AI per te <span class="b-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="b-section b-section--line" id="metodo">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Come lavoriamo</p>
+          <h2 class="b-h2">Dalla prima call al lancio, <span class="b-accent">senza sorprese.</span></h2>
+        </div>
+        <p class="b-text">Sai sempre cosa stiamo facendo, quanto manca e quanto costa. Il primo passo è gratuito.</p>
+      </div>
+      <ol class="b-steps steps">
+        {
+          steps.map((s, i) => (
+            <li class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+              <span class="b-step__n">{s.n}</span>
+              <h3 class="b-h3 b-step__t">{s.t}</h3>
+              <p class="steps__time b-mono">{s.time}</p>
+              <p class="b-text">{s.d}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="b-section b-section--alt b-section--line">
+    <div class="b-shell">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">Dicono di noi</p>
+        <h2 class="b-h2">Clienti che ci <span class="b-accent">consigliano</span>.</h2>
+      </div>
+      <div class="quotes">
+        {
+          quotes.map((t, i) => (
+            <figure class="b-card quote" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+              <div class="quote__stars" aria-label="5 stelle su 5">★★★★★</div>
+              <blockquote>“{t.quote}”</blockquote>
+              <figcaption>
+                <img src={t.image} alt="" width="44" height="44" loading="lazy" />
+                <span>
+                  <strong>{t.author}</strong>
+                  <small>{t.role} · {t.company}</small>
+                </span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP NFC -->
+  <section class="b-section b-section--tight b-section--line">
+    <div class="b-shell">
+      <a href="https://shopnfc.bitora.it/" class="b-card nfc" rel="noopener" data-track="cta_click" data-track-location="home_shopnfc" data-reveal>
+        <div>
+          <p class="b-eyebrow">Novità · Shop NFC Bitora</p>
+          <h2 class="b-h2 nfc__title">Tessere, tag e lettori NFC. <br /><span class="b-accent">Programmazione inclusa.</span></h2>
+          <p class="b-text">Recensioni Google con un tap, biglietti da visita smart, tag industriali. Da 10 a 100.000 pezzi, spediti in tutta Italia.</p>
+          <span class="b-btn b-btn--light nfc__btn">Entra nello shop <span class="b-arrow" aria-hidden="true">→</span></span>
+        </div>
+        <picture class="nfc__img">
+          <source srcset="/shop-nfc-products.webp" type="image/webp" />
+          <img src="/shop-nfc-products.jpg" alt="Tessere, tag, braccialetto e lettore NFC Bitora" width="1024" height="1024" loading="lazy" decoding="async" />
+        </picture>
+      </a>
+    </div>
+  </section>
+
+  <FaqList items={faq} />
+
+  <section class="b-section b-section--tight b-section--line">
+    <div class="b-shell quick" data-reveal>
+      <p class="b-h3">Preferisci parlarne a voce?</p>
+      <div class="quick__btns">
+        <a href="tel:+393514979670" class="b-btn b-btn--ghost" data-track="phone_click" data-track-location="home_quick">Chiama +39 351 497 9670</a>
+        <a href={whatsappLink('Ciao Bitora, vorrei fissare una call conoscitiva.')} class="b-btn b-btn--wa" data-track="whatsapp_click" data-track-location="home_quick" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </section>
 </Layout>
 
-<script>
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Scroll reveals with stagger support
-  const reveals = document.querySelectorAll('[data-reveal]');
-  if (reduced) {
-    reveals.forEach(el => el.classList.add('is-visible'));
-  } else {
-    const obs = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target as HTMLElement;
-          const delay = Number(el.dataset.revealDelay || 0);
-          el.style.transitionDelay = `${delay * 90}ms`;
-          el.classList.add('is-visible');
-          obs.unobserve(el);
-        });
-      },
-      { threshold: 0.14, rootMargin: '0px 0px -8% 0px' }
-    );
-    reveals.forEach(el => obs.observe(el));
-  }
-
-  // Subtle hero parallax + fade on scroll
-  const hero = document.querySelector('.hero') as HTMLElement | null;
-  const heroMedia = document.querySelector('.hero-media') as HTMLElement | null;
-  const heroCopy = document.querySelector('.hero-copy') as HTMLElement | null;
-  const heroScroll = document.querySelector('.hero-scroll') as HTMLElement | null;
-
-  if (!reduced && hero && heroMedia && heroCopy) {
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const h = hero.offsetHeight;
-        const y = Math.min(window.scrollY, h);
-        const p = y / h;
-        heroMedia.style.transform = `translate3d(0, ${y * 0.28}px, 0) scale(${1.04 - p * 0.04})`;
-        heroCopy.style.opacity = String(Math.max(0, 1 - p * 1.35));
-        heroCopy.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
-        if (heroScroll) heroScroll.style.opacity = String(Math.max(0, 1 - p * 3));
-        ticking = false;
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
-</script>
-
 <style>
-  .home {
-    --home-bg: #000000;
-    --home-bg-alt: #0d0d0f;
-    --home-surface: #141416;
-    --home-text: #f5f5f7;
-    --home-secondary: #a1a1a6;
-    --home-muted: #86868b;
-    --home-faint: #8e8e93;
-    --home-line: rgba(255, 255, 255, 0.14);
-    --home-line-soft: rgba(255, 255, 255, 0.1);
-    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-    --shell: min(1120px, calc(100% - 3rem));
-    background: var(--home-bg);
-    color: var(--home-text);
-    overflow-x: clip;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  @media (min-width: 768px) {
-    .home {
-      --shell: min(1120px, calc(100% - 6rem));
-    }
-  }
-  @media (min-width: 1024px) {
-    .home {
-      --shell: min(1120px, calc(100% - 8rem));
-    }
-  }
-
-  .shell {
-    width: var(--shell);
-    margin-inline: auto;
-  }
-
-  .text-secondary {
-    color: var(--home-secondary);
-  }
-
-  /* ——— Type ——— */
-  .eyebrow {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--home-muted);
-    margin: 0 0 1.25rem;
-  }
-
-  .display {
-    font-size: clamp(3rem, 8vw, 6.25rem);
-    font-weight: 700;
-    line-height: 0.94;
-    letter-spacing: -0.04em;
-    margin: 0 0 1.5rem;
-    color: var(--home-text);
-  }
-
-  .display-sm {
-    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
-    font-weight: 700;
-    letter-spacing: -0.035em;
-    line-height: 1.02;
-    margin: 0 0 1.25rem;
-    color: var(--home-text);
-  }
-
-  .display-cta {
-    font-size: clamp(2.4rem, 6.5vw, 5rem);
-    font-weight: 700;
-    line-height: 1.02;
-    letter-spacing: -0.035em;
-    margin: 0 0 1.25rem;
-    color: var(--home-text);
-  }
-
-  .headline {
-    font-size: clamp(2.1rem, 4.2vw, 3.5rem);
-    font-weight: 700;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
-    margin: 0;
-    color: var(--home-text);
-  }
-
-  .lede {
-    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-    line-height: 1.55;
-    color: var(--home-secondary);
-    margin: 0 0 2.25rem;
-    max-width: 28rem;
-  }
-
-  .body-lg {
-    font-size: 1.125rem;
-    line-height: 1.65;
-    color: var(--home-secondary);
-    margin: 0;
-  }
-
-  .body-sm {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--home-muted);
-    margin: 0;
-  }
-
-  /* ——— Bands ——— */
-  .band {
-    border-top: 1px solid var(--home-line-soft);
-  }
-
-  .band-alt {
-    background: var(--home-bg-alt);
-  }
-
-  .band-inner {
-    padding: clamp(4.5rem, 10vw, 8rem) 0;
-  }
-
-  .band-head {
-    margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
-    max-width: 36rem;
-  }
-
-  .band-foot {
-    margin-top: 2rem;
-  }
-
-  .band-cta {
-    text-align: center;
-    position: relative;
-    background: var(--home-bg);
-  }
-
-  .band-cta-inner {
-    padding: clamp(5.5rem, 12vw, 9rem) 0 clamp(4.5rem, 10vw, 7rem);
-    max-width: 56rem;
-  }
-
-  .cta-lede {
-    margin-inline: auto;
-    margin-bottom: 3.25rem;
-    max-width: 34rem;
-  }
-
-  .cta-steps {
-    list-style: none;
-    margin: 0 auto 3.25rem;
-    padding: 0;
-    display: grid;
-    gap: 1.75rem;
-    width: 100%;
-    max-width: none;
-    text-align: left;
-  }
-
-  @media (min-width: 768px) {
-    .cta-steps {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.75rem;
-    }
-  }
-
-  .cta-steps li {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding: 1.5rem 0 0;
-    border: 0;
-    border-top: 1px solid var(--home-line);
-    border-radius: 0;
-    background: transparent;
-  }
-
-  .cta-step-n {
-    display: block;
-    width: auto;
-    height: auto;
-    padding: 0;
-    border-radius: 0;
-    background: none;
-    font-size: clamp(2.4rem, 4vw, 3.25rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    font-variant-numeric: tabular-nums;
-    color: rgba(245, 245, 247, 0.18);
-    margin-bottom: 1.15rem;
-  }
-
-  .cta-steps strong {
-    display: block;
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--home-text);
-    margin-bottom: 0.4rem;
-  }
-
-  .cta-step-copy {
-    display: block;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--home-muted);
-  }
-
-  .sl-btn-lg {
-    padding: 1.05rem 1.9rem;
-    font-size: 1rem;
-  }
-
-  /* ——— Split ——— */
-  .split {
-    display: grid;
-    gap: clamp(2.5rem, 6vw, 5rem);
-  }
-
-  @media (min-width: 1024px) {
-    .split {
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: end;
-    }
-    .split-offer {
-      align-items: center;
-    }
-  }
-
-  .split-body .body-lg {
-    margin-bottom: 2.5rem;
-    max-width: 28rem;
-  }
-
-  .offer-copy {
-    margin: 1.75rem 0 2rem;
-    max-width: 26rem;
-  }
-
-  /* ——— Hero ——— */
+  /* Hero */
   .hero {
     position: relative;
     min-height: 100svh;
-    min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: clamp(5rem, 12vh, 8rem);
-    overflow: hidden;
-  }
-
-  .hero-media {
-    position: absolute;
-    inset: 0;
-    will-change: transform;
-  }
-
-  .hero-media picture,
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  .hero-img {
-    object-fit: cover;
-    object-position: 72% center;
-    transform: scale(1.08);
-    animation: heroKen 20s var(--ease-out) forwards;
-  }
-
-  @media (max-width: 767px) {
-    .hero-img {
-      object-position: 18% 42%;
-    }
-  }
-
-  .hero-scrim {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.42) 42%, #000 100%),
-      linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.28) 48%, rgba(0, 0, 0, 0.08) 72%, transparent 100%);
-  }
-
-  @media (max-width: 767px) {
-    .hero-scrim {
-      background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.58) 38%, #000 100%),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.28) 100%);
-    }
-  }
-
-  .hero-copy {
-    position: relative;
-    z-index: 2;
-    will-change: transform, opacity;
-  }
-
-  .hero-item {
-    opacity: 0;
-    transform: translate3d(0, 28px, 0);
-    animation: riseIn 1.05s var(--ease-out) forwards;
-  }
-  .hero-item:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-  .hero-item:nth-child(2) {
-    animation-delay: 0.26s;
-  }
-  .hero-item:nth-child(3) {
-    animation-delay: 0.42s;
-  }
-  .hero-item:nth-child(4) {
-    animation-delay: 0.56s;
-  }
-  .hero-item:nth-child(5) {
-    animation-delay: 0.7s;
-  }
-  .hero-item:nth-child(6) {
-    animation-delay: 0.82s;
-  }
-
-  .hero-alt {
-    margin-top: 1.25rem;
-    font-size: 0.9rem;
-    color: var(--home-muted);
-  }
-  .hero-alt a {
-    color: var(--home-text);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: rgba(255, 255, 255, 0.4);
-    transition: text-decoration-color 0.2s;
-  }
-  .hero-alt a:hover {
-    text-decoration-color: rgba(255, 255, 255, 0.9);
-  }
-
-  .hero-scroll {
-    position: absolute;
-    left: 50%;
-    bottom: 1.75rem;
-    z-index: 3;
-    width: 24px;
-    height: 38px;
-    margin-left: -12px;
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
-    border-radius: 999px;
-    display: flex;
-    justify-content: center;
-    padding-top: 8px;
-    transition: opacity 0.3s;
-  }
-  .hero-scroll span {
-    width: 3px;
-    height: 8px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.7);
-    animation: scrollDot 1.6s var(--ease-out) infinite;
-  }
-
-  /* ——— Lists ——— */
-  .list-rows {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-top: 1px solid var(--home-line);
-  }
-
-  .list-row {
-    display: grid;
-    grid-template-columns: 2.25rem 1fr;
-    gap: 1.25rem;
-    align-items: start;
-    padding: 1.35rem 0;
-    border-bottom: 1px solid var(--home-line-soft);
-  }
-
-  @media (min-width: 768px) {
-    .list-row {
-      grid-template-columns: 3rem 1fr;
-      gap: 1.75rem;
-      padding: 1.5rem 0;
-    }
-  }
-
-  .list-num {
-    color: var(--home-faint);
-    font-size: 0.85rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    padding-top: 0.3rem;
-  }
-
-  .list-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0 0 0.3rem;
-    color: var(--home-text);
-  }
-
-  /* ——— Flow ——— */
-  .flow {
-    display: grid;
-    gap: 0.75rem;
-  }
-
-  @media (min-width: 768px) {
-    .flow {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.85rem;
-    }
-  }
-  @media (min-width: 1024px) {
-    .flow {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  .flow-cell {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--home-line-soft);
-    border-radius: 1.25rem;
-    padding: 1.75rem 1.5rem;
-    min-height: 210px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition:
-      background 0.35s var(--ease-out),
-      border-color 0.35s var(--ease-out),
-      transform 0.35s var(--ease-out);
-  }
-
-  .flow-cell:hover {
-    background: rgba(255, 255, 255, 0.055);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
-  }
-
-  .flow-num {
-    display: block;
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-    color: rgba(245, 245, 247, 0.16);
-    margin-bottom: 2rem;
-  }
-
-  .flow-cell .list-title {
-    margin-bottom: 0.4rem;
-  }
-
-  /* ——— Audience ——— */
-  .audience {
-    position: relative;
-    min-height: min(88vh, 820px);
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-
-  .audience-media {
-    position: absolute;
-    inset: 0;
-  }
-
-  .audience-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 35%;
-    transform: scale(1.04);
-  }
-
-  .audience-scrim {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.45) 40%, #000 100%);
-  }
-
-  .audience-copy {
-    position: relative;
-    z-index: 2;
-    padding: clamp(4rem, 10vw, 6.5rem) 0;
-    max-width: 40rem;
-  }
-
-  .audience-lede {
-    margin-bottom: 2rem;
-  }
-
-  /* ——— Offer ——— */
-  .offer-rows {
-    border-top: 1px solid var(--home-line);
-  }
-
-  .offer-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1.5rem;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid var(--home-line);
-  }
-
-  .offer-label {
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--home-text);
-  }
-
-  .offer-value {
-    font-size: 0.95rem;
-    color: var(--home-muted);
-    text-align: right;
-  }
-
-  /* ——— Shop NFC launch ——— */
-  .nfc-launch {
-    background:
-      radial-gradient(ellipse 70% 80% at 88% 20%, rgba(14, 116, 179, 0.12) 0%, transparent 55%),
-      #f3f6fa;
-    color: #0b1220;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .nfc-launch-inner {
-    display: grid;
-    gap: clamp(2rem, 5vw, 4rem);
-    padding: clamp(4rem, 9vw, 6.5rem) 0;
     align-items: center;
+    overflow: hidden;
+    padding: calc(72px + 3rem) 0 4rem;
   }
-
-  @media (min-width: 900px) {
-    .nfc-launch-inner {
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 4.5rem;
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+  }
+  .hero__bg picture,
+  .hero__bg img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .hero__bg img {
+    object-fit: cover;
+    object-position: 70% center;
+    animation: heroZoom 18s var(--b-ease) forwards;
+  }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(5, 6, 7, 0.96) 0%, rgba(5, 6, 7, 0.8) 38%, rgba(5, 6, 7, 0.2) 70%, rgba(5, 6, 7, 0.1) 100%),
+      linear-gradient(180deg, rgba(5, 6, 7, 0.4) 0%, transparent 25%, transparent 70%, var(--b-ink) 100%);
+  }
+  @media (max-width: 900px) {
+    .hero__bg img {
+      object-position: 78% center;
+      opacity: 0.55;
+    }
+    .hero__scrim {
+      background: linear-gradient(180deg, rgba(5, 6, 7, 0.6) 0%, rgba(5, 6, 7, 0.75) 50%, var(--b-ink) 100%);
     }
   }
-
-  .nfc-kicker {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #0369a1;
-    margin: 0 0 1.1rem;
+  .hero__grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.6;
   }
-
-  .nfc-launch .headline {
-    color: #0b1220;
-    margin-bottom: 1.15rem;
+  .hero__inner {
+    position: relative;
   }
-
-  .nfc-lede {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #3d4a5c;
-    margin: 0 0 1.5rem;
-    max-width: 34rem;
+  .hero__inner .b-display {
+    max-width: 15ch;
   }
-
-  .nfc-meta {
-    list-style: none;
-    margin: 0 0 2rem;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .nfc-meta li {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: #0b1220;
-    background: rgba(3, 105, 161, 0.08);
-    border: 1px solid rgba(3, 105, 161, 0.16);
-    border-radius: 999px;
-    padding: 0.45rem 0.85rem;
-  }
-
-  .nfc-btn-primary,
-  .nfc-btn-ghost {
+  .hero__status {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.9rem 1.7rem;
-    border-radius: 980px;
-    white-space: nowrap;
-    transition:
-      background 0.25s,
-      border-color 0.25s,
-      transform 0.25s var(--ease-out),
-      box-shadow 0.25s;
+    gap: 0.6rem;
+    margin: 0 0 1.75rem;
+    padding: 0.45rem 0.9rem 0.45rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    background: rgba(34, 211, 238, 0.06);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--b-cyan-2);
   }
-
-  .nfc-btn-primary {
-    background: #0b1220;
-    color: #fff;
+  .hero__dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34d399;
   }
-  .nfc-btn-primary:hover {
-    background: #000;
-    transform: translateY(-1px);
-    box-shadow: 0 12px 28px rgba(11, 18, 32, 0.22);
+  .hero__dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid #34d399;
+    animation: ping 2s ease-out infinite;
   }
-
-  .nfc-btn-ghost {
-    background: transparent;
-    color: #0b1220;
-    border: 1.5px solid rgba(11, 18, 32, 0.22);
-  }
-  .nfc-btn-ghost:hover {
-    border-color: rgba(11, 18, 32, 0.55);
-    background: rgba(11, 18, 32, 0.04);
-  }
-
-  .nfc-launch-media {
+  .hero__proof {
     display: flex;
-    justify-content: center;
     align-items: center;
+    gap: 1rem;
+    margin-top: 2.75rem;
+    color: var(--b-fg-2);
+    font-size: 0.92rem;
+  }
+  .hero__proof p {
+    margin: 0;
+    max-width: 22rem;
+  }
+  .hero__proof strong {
+    color: var(--b-fg);
+  }
+  .hero__faces {
+    display: flex;
+    flex-shrink: 0;
+  }
+  .hero__faces img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+    border: 2px solid var(--b-ink);
+    margin-left: -10px;
+  }
+  .hero__faces img:first-child {
+    margin-left: 0;
   }
 
-  .nfc-launch-media picture,
-  .nfc-launch-media img {
-    width: min(100%, 28rem);
-    height: auto;
-    display: block;
+  /* Strip */
+  .strip {
+    border-block: 1px solid var(--b-line);
+    padding: 1.4rem 0;
+    background: var(--b-ink-2);
+  }
+  .strip .b-marquee__track {
+    gap: 3rem;
+    padding-right: 3rem;
+  }
+  .strip__name {
+    font-family: var(--f-display);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--b-fg-3);
+    white-space: nowrap;
+  }
+  .strip__name::after {
+    content: '✦';
+    margin-left: 3rem;
+    color: rgba(34, 211, 238, 0.45);
+    font-size: 0.7rem;
+    vertical-align: middle;
   }
 
-  .nfc-launch-media img {
-    border-radius: 1.5rem;
-    box-shadow: 0 28px 60px rgba(11, 18, 32, 0.16);
-    background: #eef2f6;
-  }
-
-  /* ——— Services ——— */
-  .services {
+  /* Pains */
+  .pains {
     display: grid;
-    gap: 0.85rem;
+    gap: 1rem;
   }
-
-  @media (min-width: 768px) {
-    .services {
+  @media (min-width: 900px) {
+    .pains {
       grid-template-columns: repeat(3, 1fr);
     }
   }
-
-  /* ——— Paths (due strade) ——— */
-  .paths {
-    display: grid;
-    gap: 0.85rem;
+  .pains__q {
+    font-family: var(--f-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--b-fg);
+    margin: 0 0 1.25rem;
   }
 
-  @media (min-width: 768px) {
-    .paths {
+  /* Pillars */
+  .pillars {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 720px) {
+    .pillars {
       grid-template-columns: repeat(2, 1fr);
     }
   }
-
-  .path-cell {
-    padding: clamp(1.75rem, 4vw, 2.75rem);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--home-line-soft);
-    border-radius: 1.25rem;
+  @media (min-width: 1100px) {
+    .pillars {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
-
-  .service-cell {
-    display: flex;
+  .pillar {
+    display: flex !important;
     flex-direction: column;
+    min-height: 320px;
+  }
+  .pillar__top {
+    display: flex;
     justify-content: space-between;
-    min-height: 240px;
-    padding: clamp(1.75rem, 4vw, 2.75rem);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--home-line-soft);
-    border-radius: 1.25rem;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .pillar__n {
+    font-size: 0.78rem;
+    color: var(--b-fg-3);
+  }
+  .pillar__kicker {
+    margin: 0 0 0.5rem;
+    font-size: 0.82rem;
+    color: var(--b-cyan);
+  }
+  .pillar .b-h3 {
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+  }
+  .pillar__short {
+    margin: 0.75rem 0 1.5rem;
+    flex: 1;
+  }
+  .pillar__go {
+    position: absolute;
+    right: 1.75rem;
+    bottom: 1.6rem;
+    font-size: 1.3rem;
+    color: var(--b-fg-3);
     transition:
-      background 0.35s var(--ease-out),
-      border-color 0.35s var(--ease-out),
-      transform 0.35s var(--ease-out);
+      transform 0.3s var(--b-ease),
+      color 0.3s;
   }
-
-  .service-cell:hover {
-    background: rgba(255, 255, 255, 0.055);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
-  }
-
-  .service-num {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--home-faint);
-    margin: 0 0 1rem;
-  }
-
-  .service-title {
-    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    margin: 0 0 0.65rem;
-    color: var(--home-text);
-    transition: transform 0.35s var(--ease-out);
-  }
-
-  .service-cell:hover .service-title {
+  .pillar:hover .pillar__go {
+    color: var(--b-cyan);
     transform: translateX(4px);
   }
+  .pillar .b-chips {
+    padding-right: 2rem;
+  }
 
-  .service-cta {
-    margin-top: 2.25rem;
+  /* Work */
+  .work-feat {
+    display: grid;
+    gap: 2rem;
+  }
+  .work-more {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  @media (min-width: 800px) {
+    .work-feat {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .work-more {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .work-more {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .work-cta {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  .work-marquee {
+    margin-top: clamp(4rem, 8vw, 6rem);
+  }
+
+  /* Story */
+  .story {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .story {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 5rem;
+    }
+  }
+  .story__p {
+    margin: 1.25rem 0 2rem;
+    max-width: 34rem;
+  }
+  .flow {
+    display: grid;
+    gap: 0;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border-radius: var(--b-radius);
+    border: 1px solid var(--b-line);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .flow__node {
+    display: grid;
+    gap: 0.25rem;
+    padding: 1.1rem 1.25rem;
+    border-radius: 16px;
+    border: 1px solid var(--b-line-2);
+    background: var(--b-ink-3);
+  }
+  .flow__node span {
+    font-size: 0.72rem;
+    color: var(--b-fg-3);
+  }
+  .flow__node b {
+    font-size: 1.05rem;
+  }
+  .flow__node em {
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--b-fg-2);
+  }
+  .flow__node .is-out {
+    color: #fca5a5;
+  }
+  .flow__node .is-ok {
+    color: #6ee7b7;
+  }
+  .flow__node.is-live {
+    border-color: rgba(34, 211, 238, 0.5);
+    box-shadow: 0 0 40px -10px var(--b-glow);
+  }
+  .flow__line {
+    position: relative;
+    height: 38px;
+    margin-left: 2rem;
+    width: 2px;
+    background: var(--b-line-2);
+    overflow: hidden;
+  }
+  .flow__line i {
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 14px;
+    background: var(--b-cyan);
+    box-shadow: 0 0 10px var(--b-cyan);
+    animation: flowDot 1.6s linear infinite;
+  }
+
+  /* Reasons */
+  .reasons {
+    display: grid;
+    gap: 2.5rem 2rem;
+  }
+  @media (min-width: 720px) {
+    .reasons {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .reasons {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .reason {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--b-line-2);
+  }
+  .reason__n {
+    font-size: 0.78rem;
+    color: var(--b-cyan);
+  }
+  .reason .b-h3 {
+    margin: 1.25rem 0 0.6rem;
+  }
+  .why__kpis {
+    margin-top: clamp(3.5rem, 7vw, 5rem);
+  }
+
+  /* AI */
+  .ai {
+    overflow: hidden;
+  }
+  .ai__orb {
+    left: -20rem;
+    bottom: -25rem;
+  }
+  .ai__inner {
+    position: relative;
+  }
+  .ai__grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (min-width: 900px) {
+    .ai__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .ai__tag {
+    margin: 0 0 1.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--b-cyan);
+  }
+  .ai__grid .b-h3 {
+    margin-bottom: 0.6rem;
+  }
+  .ai__link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Steps */
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .steps__time {
+    margin: 0 0 0.9rem;
+    font-size: 0.75rem;
+    color: var(--b-fg-3);
+  }
+
+  /* Quotes */
+  .quotes {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 900px) {
+    .quotes {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .quote {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .quote__stars {
+    color: var(--b-cyan);
+    letter-spacing: 0.2em;
+    font-size: 0.9rem;
+  }
+  .quote blockquote {
+    flex: 1;
+    margin: 1.25rem 0 1.75rem;
+    font-size: 1.08rem;
+    line-height: 1.6;
+    color: var(--b-fg);
+  }
+  .quote figcaption {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .quote img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+  }
+  .quote strong {
+    display: block;
     font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--home-muted);
-    transition: color 0.25s;
+  }
+  .quote small {
+    font-size: 0.82rem;
+    color: var(--b-fg-3);
   }
 
-  .service-cell:hover .service-cta {
-    color: var(--home-text);
-  }
-
-  .service-nfc {
-    margin-bottom: 0.85rem;
-    min-height: auto;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 1.5rem;
+  /* NFC */
+  .nfc {
+    display: grid !important;
+    gap: 2rem;
+    align-items: center;
+    overflow: hidden;
     background:
-      linear-gradient(120deg, rgba(3, 105, 161, 0.22) 0%, rgba(255, 255, 255, 0.05) 55%),
-      rgba(255, 255, 255, 0.04);
-    border-color: rgba(125, 211, 252, 0.38);
-    box-shadow: 0 0 0 1px rgba(3, 105, 161, 0.12);
+      radial-gradient(ellipse 60% 100% at 100% 50%, rgba(34, 211, 238, 0.12), transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
   }
-
-  .service-nfc .service-num {
-    color: #7dd3fc;
-  }
-
-  .service-nfc .service-cta {
-    margin-top: 0;
-    color: var(--home-text);
-    white-space: nowrap;
-  }
-
-  .service-nfc:hover {
-    background:
-      linear-gradient(120deg, rgba(3, 105, 161, 0.3) 0%, rgba(255, 255, 255, 0.07) 55%),
-      rgba(255, 255, 255, 0.05);
-    border-color: rgba(125, 211, 252, 0.55);
-  }
-
-  @media (max-width: 639px) {
-    .service-nfc {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .service-nfc .service-cta {
-      margin-top: 1.5rem;
+  @media (min-width: 900px) {
+    .nfc {
+      grid-template-columns: 1.3fr 0.7fr;
+      padding: clamp(2rem, 4vw, 3.5rem);
     }
   }
+  .nfc__title {
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  .nfc__btn {
+    margin-top: 1.75rem;
+  }
+  .nfc__img img {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    display: block;
+    margin-inline: auto;
+    border-radius: 20px;
+    transform: rotate(-3deg);
+    transition: transform 0.6s var(--b-ease);
+  }
+  .nfc:hover .nfc__img img {
+    transform: rotate(0deg) scale(1.03);
+  }
 
-  /* ——— Links / CTAs ——— */
-  .cta-row {
+  /* Quick */
+  .quick {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .cta-row-center {
-    justify-content: center;
-  }
-
-  .text-link {
-    display: inline-flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.55rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--home-secondary);
-    transition:
-      color 0.25s,
-      gap 0.25s;
+    gap: 1.25rem;
   }
-  .text-link:hover {
-    color: var(--home-text);
-    gap: 0.8rem;
+  .quick .b-h3 {
+    margin: 0;
+  }
+  .quick__btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
   }
 
-  .sl-btn-primary,
-  .sl-btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.9rem 1.7rem;
-    border-radius: 980px;
-    white-space: nowrap;
-    transition:
-      background 0.25s,
-      border-color 0.25s,
-      transform 0.25s var(--ease-out),
-      box-shadow 0.25s;
-  }
-
-  .sl-btn-primary {
-    background: #f5f5f7;
-    color: #000;
-  }
-  .sl-btn-primary:hover {
-    background: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  }
-
-  .sl-btn-secondary {
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--home-text);
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    backdrop-filter: blur(12px);
-  }
-  .sl-btn-secondary:hover {
-    border-color: rgba(255, 255, 255, 0.55);
-    background: rgba(255, 255, 255, 0.14);
-  }
-
-  /* ——— Motion ——— */
-  @keyframes heroKen {
+  @keyframes heroZoom {
     from {
       transform: scale(1.08);
     }
@@ -1306,64 +906,29 @@ import Layout from '../layouts/Layout.astro';
       transform: scale(1);
     }
   }
-
-  @keyframes riseIn {
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-  }
-
-  @keyframes scrollDot {
+  @keyframes ping {
     0% {
-      opacity: 0;
-      transform: translateY(0);
-    }
-    30% {
-      opacity: 1;
+      transform: scale(0.6);
+      opacity: 0.9;
     }
     100% {
+      transform: scale(1.6);
       opacity: 0;
-      transform: translateY(12px);
     }
   }
-
-  [data-reveal] {
-    opacity: 0;
-    transform: translate3d(0, 22px, 0);
-    transition:
-      opacity 0.85s var(--ease-out),
-      transform 0.85s var(--ease-out);
-    will-change: opacity, transform;
+  @keyframes flowDot {
+    from {
+      top: -14px;
+    }
+    to {
+      top: 38px;
+    }
   }
-
-  [data-reveal].is-visible {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .hero-img,
-    .hero-item,
-    .hero-scroll span {
-      animation: none !important;
-    }
-    .hero-img {
-      transform: none;
-    }
-    .hero-item {
-      opacity: 1 !important;
-      transform: none !important;
-    }
-    [data-reveal] {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
-    .flow-cell:hover,
-    .service-cell:hover,
-    .sl-btn-primary:hover {
-      transform: none;
+    .hero__bg img,
+    .hero__dot::after,
+    .flow__line i {
+      animation: none;
     }
   }
 </style>

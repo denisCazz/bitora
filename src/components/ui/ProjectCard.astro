@@ -1,0 +1,113 @@
+---
+import type { WorkItem } from '../../data/work';
+import { workKindLabels } from '../../data/work';
+import UiMock from './UiMock.astro';
+
+export interface Props {
+  item: WorkItem;
+  size?: 'md' | 'lg';
+}
+const { item, size = 'md' } = Astro.props;
+const host = item.siteUrl && item.siteUrl !== '#' ? item.siteUrl.replace(/^https?:\/\//, '') : 'bitora.it';
+---
+
+<a href={`/progetti/${item.slug}/`} class:list={['pc', `pc--${size}`]} data-kinds={item.kinds.join(' ')}>
+  <div class="pc__media">
+    {
+      item.shot ? (
+        <div class="b-browser">
+          <div class="b-browser__bar">
+            <i />
+            <i />
+            <i />
+            <span class="b-browser__url">{host}</span>
+          </div>
+          <img src={item.shot} alt={`Sito ${item.title} realizzato da Bitora`} width="1200" height="750" loading="lazy" decoding="async" />
+        </div>
+      ) : item.mock ? (
+        <UiMock variant={item.mock} label={item.mock === 'dashboard' ? `${item.slug.split('-')[0]}.app` : undefined} />
+      ) : (
+        <div class="pc__logo b-browser">
+          <img src={item.imageUrl} alt={item.title} loading="lazy" decoding="async" />
+        </div>
+      )
+    }
+  </div>
+  <div class="pc__meta">
+    <div class="pc__tags">
+      {item.kinds.map(k => <span class="b-chip">{workKindLabels[k]}</span>)}
+      {item.isWip && <span class="b-chip pc__wip">In corso</span>}
+    </div>
+    <h3 class="b-h3">{item.title}</h3>
+    <p class="b-small">{item.subtitle} · {item.location}</p>
+  </div>
+</a>
+
+<style>
+  .pc {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  .pc:hover {
+    opacity: 1;
+  }
+  .pc__media {
+    position: relative;
+    border-radius: 16px;
+    transition: transform 0.5s var(--b-ease);
+  }
+  .pc__media :global(.b-browser),
+  .pc__media :global(.phone) {
+    transition:
+      border-color 0.35s,
+      box-shadow 0.35s;
+  }
+  .pc:hover .pc__media {
+    transform: translateY(-6px);
+  }
+  .pc:hover .pc__media :global(.b-browser),
+  .pc:hover .pc__media :global(.phone) {
+    border-color: rgba(34, 211, 238, 0.45);
+    box-shadow:
+      0 0 0 1px rgba(34, 211, 238, 0.15),
+      0 40px 90px -30px rgba(34, 211, 238, 0.25);
+  }
+  .pc__media img {
+    transition: transform 1.2s var(--b-ease);
+  }
+  .pc:hover .pc__media img {
+    transform: scale(1.03);
+  }
+  .pc__logo img {
+    aspect-ratio: 16 / 10;
+    object-fit: contain;
+    padding: 18%;
+    background: #0d1015;
+  }
+  .pc__meta {
+    padding-top: 1.1rem;
+  }
+  .pc__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+  .pc__wip {
+    color: var(--b-cyan);
+    border-color: rgba(34, 211, 238, 0.35);
+  }
+  .pc .b-h3 {
+    transition: color 0.25s;
+  }
+  .pc:hover .b-h3 {
+    color: var(--b-cyan);
+  }
+  .pc .b-small {
+    margin-top: 0.35rem;
+  }
+  .pc--lg .b-h3 {
+    font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+  }
+</style>

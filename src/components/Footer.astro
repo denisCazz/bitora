@@ -1,302 +1,278 @@
 ﻿---
-const currentYear = new Date().getFullYear();
-const pathname = (Astro.url.pathname || '/').replace(/\/$/, '') || '/';
+import { pillars, whatsappLink, phoneDisplay, phoneHref, email } from '../data/services';
 
-const hideFooterCta = [
-  '/',
-  '/rapportini',
-  '/ticketing',
-  '/gestione-interventi',
-  '/siti-web-professionali',
-  '/e-commerce',
-  '/sistemi-aziendali',
-  '/richiedi-demo',
-  '/contattaci',
-  '/servizi',
-].includes(pathname);
+const year = new Date().getFullYear();
+const path = (Astro.url.pathname.replace(/\/$/, '') || '/') as string;
+const hideCta = path === '/contattaci' || path === '/richiedi-demo' || path.startsWith('/ops');
 
-type FooterCta = {
-  title: string;
-  body: string;
-  primaryHref: string;
-  primaryLabel: string;
-  whatsappText: string;
+const topicByPath: Record<string, string> = {
+  '/siti-web-professionali': 'sito',
+  '/e-commerce': 'ecommerce',
+  '/nfc-ecosystem': 'nfc',
+  '/sistemi-aziendali': 'sistemi',
+  '/app-mobile': 'app',
+  '/intelligenza-artificiale': 'ai',
 };
-
-const webCtaByPath: Record<string, FooterCta> = {
-  '/siti-web-professionali': {
-    title: 'Pronto a richiedere un preventivo per il tuo sito?',
-    body: 'Raccontaci obiettivi, tempi e vincoli. Ti rispondiamo con una proposta concreta.',
-    primaryHref: '/contattaci/?topic=sito',
-    primaryLabel: 'Richiedi un preventivo sito',
-    whatsappText: 'Ciao, vorrei un preventivo per un sito web.',
-  },
-  '/e-commerce': {
-    title: 'Pronto a richiedere un preventivo e-commerce?',
-    body: 'Catalogo, pagamenti, logistica e gestione ordini: partiamo dal tuo flusso reale.',
-    primaryHref: '/contattaci/?topic=ecommerce',
-    primaryLabel: 'Richiedi un preventivo e-commerce',
-    whatsappText: 'Ciao, vorrei un preventivo per un e-commerce.',
-  },
-  '/nfc-ecosystem': {
-    title: 'Vuoi valutare un progetto NFC?',
-    body: 'Raccontaci il caso d’uso e ti proponiamo un’architettura adatta.',
-    primaryHref: '/contattaci/?topic=nfc',
-    primaryLabel: 'Richiedi consulenza NFC',
-    whatsappText: 'Ciao, vorrei informazioni sulle soluzioni NFC.',
-  },
-  '/sistemi-aziendali': {
-    title: 'Vuoi digitalizzare un processo aziendale?',
-    body: 'Gestionali, CRM e strumenti su misura: partiamo dal tuo processo reale.',
-    primaryHref: '/contattaci/?topic=sistemi',
-    primaryLabel: 'Richiedi consulenza',
-    whatsappText: 'Ciao, vorrei informazioni sui sistemi aziendali su misura.',
-  },
-  '/bitora-crm': {
-    title: 'Vuoi provare Bitora CRM?',
-    body: 'Ti mostriamo il CRM con i tuoi dati: clienti, lead ed email integrate.',
-    primaryHref: '/contattaci/?topic=crm',
-    primaryLabel: 'Richiedi una demo',
-    whatsappText: 'Ciao, vorrei una demo di Bitora CRM.',
-  },
-};
-
-const defaultInfoCta: FooterCta = {
-  title: 'Hai un progetto da discutere?',
-  body: 'Scrivici: rispondiamo entro 24 ore con i prossimi passi utili.',
-  primaryHref: '/contattaci/',
-  primaryLabel: 'Contattaci',
-  whatsappText: 'Ciao, vorrei informazioni su Bitora.',
-};
-
-const footerCta = hideFooterCta ? null : (webCtaByPath[pathname] ?? defaultInfoCta);
-const whatsappHref = footerCta
-  ? `https://wa.me/393514979670?text=${encodeURIComponent(footerCta.whatsappText)}`
-  : '';
+const topic = topicByPath[path];
+const ctaHref = topic ? `/contattaci/?topic=${topic}` : '/contattaci/';
 ---
 
-{footerCta && (
-  <section class="relative py-14 px-6 md:px-12 bg-black border-t border-white/10">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
-        {footerCta.title}
-      </h2>
-      <p class="text-white/70 mb-7 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
-        {footerCta.body}
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a
-          href={footerCta.primaryHref}
-          data-track="cta_click"
-          data-track-location="footer_cta"
-          class="inline-flex items-center justify-center gap-2 bg-white text-black font-semibold rounded-full px-7 py-3.5 hover:bg-gray-100 transition-colors"
-        >
-          {footerCta.primaryLabel}
-          <span aria-hidden="true">→</span>
-        </a>
-        <a
-          href={whatsappHref}
-          data-track="whatsapp_click"
-          data-track-location="footer_cta"
-          class="inline-flex items-center justify-center gap-2 bg-[#1f8f4e] text-white font-semibold rounded-full px-7 py-3.5 hover:bg-[#22a358] transition-colors"
-        >
-          WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-)}
-
-<footer class="bg-black border-t border-white/10 text-white">
-  <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-16 md:py-20">
-    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr,1fr,1fr,1fr]">
-      <!-- Brand -->
-      <div class="space-y-6">
-        <a href="/" class="flex items-center gap-3">
-          <img src="/bitora.png" alt="Bitora" class="h-10 w-10 rounded-full object-cover" />
-          <span class="text-lg font-semibold tracking-tight"
-            >bitora<span class="text-white/55">.it</span></span
-          >
-        </a>
-        <p class="text-sm leading-relaxed text-white/60 max-w-xs">
-          Bitora di Denis Cazzulo. Piattaforme operative per assistenza tecnica, manutenzione e interventi sul territorio. Sede a Carmagnola (TO).
+{
+  !hideCta && (
+    <section class="fcta" aria-labelledby="fcta-title">
+      <div class="b-glow-orb fcta__orb" aria-hidden="true" />
+      <div class="b-shell fcta__inner" data-reveal>
+        <p class="b-eyebrow">Prossimo passo</p>
+        <h2 id="fcta-title" class="b-display">
+          Hai un’idea?
+          <br />
+          <span class="b-grad">Rendiamola reale.</span>
+        </h2>
+        <p class="b-lede">
+          Raccontaci in due minuti cosa ti serve. Entro 24 ore ricevi una risposta concreta: cosa fare,
+          in che ordine, quanto costa. Gratis e senza impegno.
         </p>
-        <p class="text-xs leading-relaxed text-white/55">
-          P.IVA 13359170019
-        </p>
-        <div class="space-y-3 text-sm">
-          <a
-            href="mailto:info@bitora.it"
-            class="flex items-center gap-2.5 text-white/50 hover:text-white transition-colors"
-          >
-            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor"
-              ><path
-                d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6h16ZM4 18V8.2l7.4 6.17a2 2 0 0 0 2.6 0L20 8.2V18H4Z"
-              ></path></svg
-            >
-            info@bitora.it
+        <div class="b-cta-row">
+          <a href={ctaHref} class="b-btn b-btn--primary b-btn--lg" data-track="cta_click" data-track-location="footer_cta">
+            Richiedi il preventivo gratuito <span class="b-arrow" aria-hidden="true">→</span>
           </a>
           <a
-            href="tel:+393514979670"
-            data-track="phone_click"
-            data-track-location="footer"
-            class="flex items-center gap-2.5 text-white/50 hover:text-white transition-colors"
-          >
-            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor"
-              ><path
-                d="M6.6 10.8c1.6 3.2 3.4 5 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.3c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1l-2 1.9Z"
-              ></path></svg
-            >
-            +39 351 497 9670
-          </a>
-          <a
-            href="https://wa.me/393514979670"
+            href={whatsappLink('Ciao Bitora, vorrei parlarvi di un progetto.')}
+            class="b-btn b-btn--wa b-btn--lg"
+            data-track="whatsapp_click"
+            data-track-location="footer_cta"
             target="_blank"
             rel="noopener"
+          >
+            Scrivici su WhatsApp
+          </a>
+        </div>
+        <ul class="fcta__proof">
+          <li>Risposta entro 24 ore</li>
+          <li>Preventivo chiaro, a fasi</li>
+          <li>Un unico referente</li>
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<footer class="ftr">
+  <div class="b-shell">
+    <div class="ftr__grid">
+      <div class="ftr__brand">
+        <a href="/" class="ftr__logo" aria-label="Bitora — home">
+          <img src="/bitora-mark.png" alt="" width="70" height="32" loading="lazy" />
+          <span>BITORA</span>
+        </a>
+        <p class="b-small">
+          Studio digitale a Carmagnola (TO). Siti, e-commerce, gestionali, app e AI per aziende del
+          Piemonte e di tutta Italia.
+        </p>
+        <div class="ftr__contacts">
+          <a href={`mailto:${email}`}>{email}</a>
+          <a href={phoneHref} data-track="phone_click" data-track-location="footer">{phoneDisplay}</a>
+          <a
+            href={whatsappLink('Ciao Bitora, vorrei informazioni.')}
             data-track="whatsapp_click"
             data-track-location="footer"
-            class="flex items-center gap-2.5 text-white/50 hover:text-white transition-colors"
-          >
-            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"
-              ><path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-              ></path></svg
-            >
-            WhatsApp
-          </a>
-        </div>
-        <div class="flex items-center gap-2.5 pt-1">
-          <a
-            href="https://www.instagram.com/bitorait/"
             target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 hover:text-white hover:border-white/30 transition-all"
+            rel="noopener">WhatsApp</a
           >
-            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"
-              ><path
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.881-.002 1.44 1.44 0 012.881.002z"
-              ></path></svg
-            >
-          </a>
-          <a
-            href="https://www.facebook.com/people/Bitora-Italia/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 hover:text-white hover:border-white/30 transition-all"
-          >
-            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"
-              ><path
-                d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.079v-3.47h3.046V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.515c-1.492 0-1.957.925-1.957 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.613 23.027 24 18.062 24 12.073z"
-              ></path></svg
-            >
-          </a>
         </div>
       </div>
 
-      <!-- Piattaforma -->
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 mb-6">Piattaforma</h4>
-        <ul class="space-y-3.5 text-sm">
-          <li>
-            <a href="/gestione-interventi/" class="text-white/55 hover:text-white transition-colors"
-              >Ecosistema</a
-            >
-          </li>
-          <li>
-            <a href="/rapportini/" class="text-white/55 hover:text-white transition-colors">Rapportini</a>
-          </li>
-          <li>
-            <a href="/ticketing/" class="text-white/55 hover:text-white transition-colors">Ticketing</a>
-          </li>
-          <li>
-            <a href="/richiedi-demo/" class="text-white/55 hover:text-white transition-colors"
-              >Richiedi demo</a
-            >
-          </li>
-          <li>
-            <a href="/sistemi-aziendali/" class="text-white/55 hover:text-white transition-colors"
-              >Sistemi aziendali</a
-            >
-          </li>
-          <li>
-            <a href="/tools/" class="text-white/55 hover:text-white transition-colors">Generatore QR</a>
-          </li>
-          <li>
-            <a
-              href="/tools/calcolatore-roi-gestionale/"
-              class="text-white/55 hover:text-white transition-colors">Calcolatore ROI</a
-            >
-          </li>
+      <nav aria-label="Soluzioni">
+        <h3>Soluzioni</h3>
+        <ul>
+          {
+            pillars.map(p => (
+              <li>
+                <a href={p.href}>{p.title}</a>
+              </li>
+            ))
+          }
+          <li><a href="https://shopnfc.bitora.it/" rel="noopener">Shop NFC</a></li>
         </ul>
-      </div>
+      </nav>
 
-      <!-- Servizi -->
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 mb-6">Servizi</h4>
-        <ul class="space-y-3.5 text-sm">
-          <li>
-            <a href="/servizi/" class="text-white/55 hover:text-white transition-colors">Panoramica</a>
-          </li>
-          <li>
-            <a href="/siti-web-professionali/" class="text-white/55 hover:text-white transition-colors"
-              >Siti web</a
-            >
-          </li>
-          <li>
-            <a href="/e-commerce/" class="text-white/55 hover:text-white transition-colors"
-              >E-commerce</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://shopnfc.bitora.it/"
-              rel="noopener noreferrer"
-              class="text-white/55 hover:text-white transition-colors"
-              >Shop NFC</a
-            >
-          </li>
-          <li>
-            <a href="/lavori/" class="text-white/55 hover:text-white transition-colors">Lavori</a>
-          </li>
-          <li>
-            <a href="/contattaci/" class="text-white/55 hover:text-white transition-colors">Contatti</a>
-          </li>
+      <nav aria-label="Piattaforme">
+        <h3>Piattaforme</h3>
+        <ul>
+          <li><a href="/gestione-interventi/">Gestione interventi</a></li>
+          <li><a href="/rapportini/">Rapportini digitali</a></li>
+          <li><a href="/ticketing/">Ticketing</a></li>
+          <li><a href="/bitora-crm/">Bitora CRM</a></li>
+          <li><a href="/richiedi-demo/">Richiedi demo</a></li>
+          <li><a href="/tools/calcolatore-roi-gestionale/">Calcolatore ROI</a></li>
+          <li><a href="/tools/">Generatore QR</a></li>
         </ul>
-      </div>
+      </nav>
 
-      <!-- Legale -->
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 mb-6">Legale</h4>
-        <ul class="space-y-3.5 text-sm">
-          <li>
-            <a href="/privacy-policy/" class="text-white/55 hover:text-white transition-colors"
-              >Privacy policy</a
-            >
-          </li>
-          <li>
-            <a href="/cookie-policy/" class="text-white/55 hover:text-white transition-colors"
-              >Cookie policy</a
-            >
-          </li>
+      <nav aria-label="Bitora">
+        <h3>Bitora</h3>
+        <ul>
+          <li><a href="/lavori/">Lavori</a></li>
+          <li><a href="/servizi/">Servizi e metodo</a></li>
+          <li><a href="/chi-siamo/">Chi siamo</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/contattaci/">Contatti</a></li>
+          <li><a href="https://www.instagram.com/bitorait/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.facebook.com/people/Bitora-Italia/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
         </ul>
-      </div>
+      </nav>
     </div>
 
-    <div
-      class="mt-14 pt-6 border-t border-white/[0.07] flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-white/55"
-    >
-      <p>
-        &copy; {currentYear}
-        <span class="text-white/70">Bitora di Denis Cazzulo</span>
-        · P.IVA 13359170019 ·
-        <span class="text-white/70">bitora.it</span>
-      </p>
-      <div class="flex items-center gap-5">
-        <a href="/privacy-policy/" class="hover:text-white/60 transition-colors">Privacy</a>
-        <a href="/cookie-policy/" class="hover:text-white/60 transition-colors">Cookie</a>
+    <p class="ftr__wordmark" aria-hidden="true">BITORA</p>
+
+    <div class="ftr__bottom">
+      <p>© {year} Bitora di Denis Cazzulo · P.IVA 13359170019 · Carmagnola (TO)</p>
+      <div>
+        <a href="/privacy-policy/">Privacy</a>
+        <a href="/cookie-policy/">Cookie</a>
       </div>
     </div>
   </div>
 </footer>
+
+<style>
+  .fcta {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--b-line);
+    padding-block: clamp(5rem, 12vw, 9rem);
+    background:
+      radial-gradient(ellipse 60% 80% at 85% 100%, rgba(34, 211, 238, 0.1), transparent 60%),
+      var(--b-ink);
+  }
+  .fcta__orb {
+    right: -12rem;
+    top: -10rem;
+  }
+  .fcta__inner {
+    position: relative;
+  }
+  .fcta__proof {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    margin: 2.25rem 0 0;
+    padding: 0;
+    color: var(--b-fg-3);
+    font-size: 0.9rem;
+  }
+  .fcta__proof li::before {
+    content: '✓';
+    color: var(--b-cyan);
+    margin-right: 0.5rem;
+  }
+
+  .ftr {
+    border-top: 1px solid var(--b-line);
+    background: var(--b-ink);
+    padding: clamp(3.5rem, 7vw, 5rem) 0 calc(1.5rem + 64px);
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .ftr {
+      padding-bottom: 1.5rem;
+    }
+  }
+  .ftr__grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .ftr__grid {
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    }
+  }
+  .ftr__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    color: var(--b-fg);
+    text-decoration: none;
+  }
+  .ftr__logo img {
+    height: 32px;
+    width: auto;
+  }
+  .ftr__logo span {
+    font-family: var(--f-display);
+    font-weight: 600;
+    letter-spacing: 0.32em;
+  }
+  .ftr__brand .b-small {
+    max-width: 22rem;
+  }
+  .ftr__contacts {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 1.5rem;
+  }
+  .ftr__contacts a,
+  .ftr ul a,
+  .ftr__bottom a {
+    color: var(--b-fg-2);
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: color 0.2s;
+  }
+  .ftr__contacts a:hover,
+  .ftr ul a:hover,
+  .ftr__bottom a:hover {
+    color: var(--b-cyan);
+    opacity: 1;
+  }
+  .ftr h3 {
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--b-fg-3);
+    margin: 0 0 1.1rem;
+  }
+  .ftr ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .ftr__wordmark {
+    margin: clamp(3rem, 6vw, 5rem) 0 0;
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: clamp(4rem, 19vw, 17rem);
+    line-height: 0.8;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: transparent;
+    background: linear-gradient(180deg, rgba(34, 211, 238, 0.16) 0%, rgba(255, 255, 255, 0.04) 55%, transparent 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    user-select: none;
+  }
+  .ftr__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--b-line);
+    font-size: 0.85rem;
+    color: var(--b-fg-3);
+  }
+  .ftr__bottom p {
+    margin: 0;
+  }
+  .ftr__bottom div {
+    display: flex;
+    gap: 1.25rem;
+  }
+</style>

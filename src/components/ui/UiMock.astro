@@ -1,0 +1,243 @@
+---
+import AccessMock from './AccessMock.astro';
+
+export interface Props {
+  variant?: 'dashboard' | 'phone' | 'access';
+  label?: string;
+  eager?: boolean;
+}
+const { variant = 'dashboard', label = 'app.bitora.it', eager = false } = Astro.props;
+const bars = [38, 62, 45, 80, 56, 92, 70, 84, 60, 98, 76, 88];
+---
+
+{
+  variant === 'access' ? (
+    <AccessMock eager={eager} />
+  ) : variant === 'dashboard' ? (
+    <div class="mock b-browser" aria-hidden="true">
+      <div class="b-browser__bar">
+        <i /><i /><i />
+        <span class="b-browser__url">{label}</span>
+      </div>
+      <div class="mock__body">
+        <aside class="mock__side">
+          <span class="is-on" />
+          <span />
+          <span />
+          <span />
+          <span />
+        </aside>
+        <div class="mock__main">
+          <div class="mock__kpis">
+            <div><b>128</b><small>Interventi</small></div>
+            <div><b>94%</b><small>Chiusi in SLA</small></div>
+            <div><b>12</b><small>Preventivi AI</small></div>
+          </div>
+          <div class="mock__chart">
+            {bars.map(h => <span style={`height:${h}%`} />)}
+          </div>
+          <div class="mock__rows">
+            <div><i class="ok" /><span /><em>Chiuso</em></div>
+            <div><i class="run" /><span /><em>In corso</em></div>
+            <div><i class="ok" /><span /><em>Firmato</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="phone" aria-hidden="true">
+      <div class="phone__screen">
+        <div class="phone__notch" />
+        <p class="phone__title">Ingressi</p>
+        <div class="phone__card is-main">
+          <small>Ingresso principale</small>
+          <b>Apri sbarra</b>
+          <span class="phone__btn" />
+        </div>
+        <div class="phone__card">
+          <small>Carraio nord</small>
+          <b>Disponibile</b>
+        </div>
+        <div class="phone__card">
+          <small>Registro</small>
+          <b>08:42 · M. Rossi</b>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .mock__body {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    aspect-ratio: 16 / 10;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 0%, rgba(34, 211, 238, 0.12), transparent 60%),
+      #0b0e12;
+  }
+  .mock__side {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 10px;
+    border-right: 1px solid var(--b-line);
+  }
+  .mock__side span {
+    height: 22px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .mock__side .is-on {
+    background: rgba(34, 211, 238, 0.35);
+  }
+  .mock__main {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 10px;
+    padding: 14px;
+    min-width: 0;
+  }
+  .mock__kpis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .mock__kpis div {
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--b-line);
+  }
+  .mock__kpis b {
+    display: block;
+    font-family: var(--f-display);
+    font-size: clamp(0.8rem, 1.6vw, 1.1rem);
+    color: var(--b-fg);
+  }
+  .mock__kpis small {
+    font-size: 9px;
+    color: var(--b-fg-3);
+  }
+  .mock__chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--b-line);
+    min-height: 0;
+  }
+  .mock__chart span {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(180deg, var(--b-cyan), rgba(34, 211, 238, 0.15));
+  }
+  .mock__rows {
+    display: grid;
+    gap: 5px;
+  }
+  .mock__rows div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .mock__rows i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+  .mock__rows .ok {
+    background: #34d399;
+  }
+  .mock__rows .run {
+    background: var(--b-cyan);
+  }
+  .mock__rows span {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .mock__rows em {
+    font-style: normal;
+    font-size: 9px;
+    color: var(--b-fg-3);
+  }
+
+  .phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 16 / 10;
+    background:
+      radial-gradient(circle at 50% 60%, rgba(34, 211, 238, 0.18), transparent 60%),
+      #0b0e12;
+    border-radius: 14px;
+    border: 1px solid var(--b-line-2);
+    overflow: hidden;
+  }
+  .phone__screen {
+    position: relative;
+    width: 34%;
+    height: 112%;
+    margin-top: 12%;
+    padding: 14% 8% 0;
+    border-radius: 28px;
+    border: 5px solid #1d232c;
+    background: #07090c;
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 6%;
+  }
+  .phone__notch {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    width: 34%;
+    height: 3.5%;
+    transform: translateX(-50%);
+    border-radius: 99px;
+    background: #1d232c;
+  }
+  .phone__title {
+    margin: 0;
+    font-family: var(--f-display);
+    font-size: clamp(0.6rem, 1.2vw, 0.85rem);
+    font-weight: 600;
+    color: var(--b-fg);
+  }
+  .phone__card {
+    padding: 8% 9%;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--b-line);
+  }
+  .phone__card small {
+    display: block;
+    font-size: clamp(6px, 0.8vw, 9px);
+    color: var(--b-fg-3);
+  }
+  .phone__card b {
+    display: block;
+    font-size: clamp(7px, 1vw, 11px);
+    color: var(--b-fg);
+  }
+  .phone__card.is-main {
+    background: rgba(34, 211, 238, 0.12);
+    border-color: rgba(34, 211, 238, 0.4);
+  }
+  .phone__btn {
+    display: block;
+    height: clamp(14px, 2.4vw, 26px);
+    margin-top: 8%;
+    border-radius: 99px;
+    background: var(--b-cyan);
+    box-shadow: 0 0 20px var(--b-glow);
+  }
+</style>

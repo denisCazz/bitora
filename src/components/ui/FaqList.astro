@@ -1,0 +1,54 @@
+---
+import FAQPageSchema from '../schema/FAQPage.astro';
+
+export interface Props {
+  items: { question: string; answer: string }[];
+  title?: string;
+  eyebrow?: string;
+}
+const { items, title = 'Domande frequenti', eyebrow = 'FAQ' } = Astro.props;
+---
+
+<section class="b-section b-section--line">
+  <div class="b-shell faq">
+    <div class="faq__head" data-reveal>
+      <p class="b-eyebrow">{eyebrow}</p>
+      <h2 class="b-h2">{title}</h2>
+      <p class="b-text faq__note">
+        Non trovi la risposta? <a class="b-link" href="/contattaci/">Chiedicelo</a>
+      </p>
+    </div>
+    <div class="b-faq" data-reveal data-reveal-delay="1">
+      {
+        items.map((item, i) => (
+          <details open={i === 0}>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+<FAQPageSchema items={items} />
+
+<style>
+  .faq {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 960px) {
+    .faq {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 5rem;
+    }
+    .faq__head {
+      position: sticky;
+      top: 110px;
+      align-self: start;
+    }
+  }
+  .faq__note {
+    margin-top: 1.5rem;
+  }
+</style>

@@ -3,6 +3,7 @@
   slug: string;
   title: string;
   subtitle: string;
+  client?: string;
   category: string;
   location: string;
   imageUrl: string;
@@ -156,6 +157,7 @@ export const caseStudies: CaseStudy[] = [
     id: 'garavella-7-gestionale',
     slug: 'garavella-7-gestionale',
     title: 'Gestionale Garavella 7',
+    client: 'Garavella 7',
     subtitle: 'Gestionale bar',
     category: 'Software • Food',
     location: 'Carmagnola (TO)',
@@ -210,6 +212,110 @@ export const caseStudies: CaseStudy[] = [
         url: 'https://garavella7.it',
       },
     ],
+  },
+
+  {
+    id: 'mistral-gestionale',
+    slug: 'mistral-gestionale',
+    title: 'Gestionale Mistral Impianti',
+    client: 'Mistral Impianti',
+    subtitle: 'Gestionale unificato con preventivi AI',
+    category: 'Software • AI',
+    location: 'Roreto di Cherasco (CN)',
+    imageUrl: '/mistral.jpg',
+    siteUrl: '#',
+    featured: true,
+    isWip: false,
+
+    clientDescription: `Mistral Impianti progetta, installa e manutiene impianti elettrici, speciali e antincendio dal 1988. Oltre al sito istituzionale, Bitora ha sviluppato il gestionale interno che usa ogni giorno l’ufficio tecnico e amministrativo.`,
+
+    problema: `Preventivi scritti partendo da zero, documenti e certificazioni sparsi tra cartelle, scadenze controllate a memoria, presenze e costi del personale su fogli separati, magazzino senza codici. Ogni informazione esisteva, ma nessuno strumento la teneva insieme.`,
+
+    soluzione: [
+      {
+        titolo: 'Preventivi generati con l’AI',
+        descrizione:
+          'L’AI prepara una bozza di preventivo partendo dai documenti aziendali e dai lavori simili già fatti. L’ufficio la rivede, la versiona e la esporta in PDF o Word con un clic.',
+      },
+      {
+        titolo: 'Archivio documenti interrogabile',
+        descrizione:
+          'Documenti caricati in cloud, testo estratto e indicizzato: si cerca per contenuto e si fanno domande in linguaggio naturale all’archivio, invece di aprire cartella per cartella.',
+      },
+      {
+        titolo: 'Scadenze, persone e magazzino',
+        descrizione:
+          'Scadenze lette da nomi file e cartelle con avvisi email automatici. Anagrafica dipendenti con presenze e costi, magazzino con codici EAN e scanner barcode da smartphone, rapportini con firma.',
+      },
+    ],
+
+    risultati: [
+      'Un solo gestionale per preventivi, documenti, scadenze, personale e magazzino',
+      'Bozze di preventivo pronte in pochi minuti invece che da scrivere da zero',
+      'Avvisi automatici sulle scadenze, senza controlli a memoria',
+      'Ruoli separati per amministrazione e operatori',
+    ],
+
+    tecnologie: ['Next.js', 'PostgreSQL', 'Prisma', 'OpenAI', 'RAG', 'Cloudflare R2', 'Scanner barcode'],
+
+    metricsPreview: ['Preventivi con AI', 'Archivio interrogabile'],
+
+    fonti: [],
+  },
+
+  {
+    id: 'accessi-aziendali-franchina',
+    slug: 'accessi-aziendali-franchina',
+    title: 'Automazione e centralizzazione accessi aziendali',
+    subtitle: 'Società Agricola Franchina',
+    client: 'Società Agricola Franchina',
+    category: 'Automazione • App • IoT',
+    location: 'Carmagnola (TO)',
+    imageUrl: '/work/franchina-logo.webp',
+    siteUrl: '#',
+    featured: true,
+    isWip: false,
+
+    clientDescription: `Società Agricola Franchina, Carmagnola (TO): più varchi carrabili controllati da sbarre FAAC, usati ogni giorno da dipendenti, collaboratori, trasportatori e fornitori con orari e permessi diversi.`,
+
+    problema: `Telecomandi da distribuire, recuperare e duplicare, nessuno storico di chi entra e quando, nessun modo di dare un accesso temporaneo a un fornitore senza consegnare un oggetto fisico. Ogni varco era un’isola, senza un punto unico di controllo.`,
+
+    soluzione: [
+      {
+        titolo: 'Centrale accessi unica',
+        descrizione:
+          'Da un unico pannello l’azienda decide chi entra, da quale varco e in quali orari, vede lo stato in linea di ogni sbarra e conserva il registro di ogni passaggio. Nuovi varchi e nuove sedi si aggiungono senza cambiare sistema.',
+      },
+      {
+        titolo: 'App aziendale per aprire da telefono',
+        descrizione:
+          'App iOS e Android: un tap e la sbarra si apre. Un modulo installato nella centralina riceve il comando in modo sicuro, mentre fotocellule e sicurezze restano quelle originali FAAC.',
+      },
+      {
+        titolo: 'Ruoli, giorni e orari',
+        descrizione:
+          'Amministratori, gestori e utenti con permessi diversi: ogni persona apre solo le sbarre abilitate, nei giorni e negli orari previsti. Inviti con link valido 7 giorni per gli accessi temporanei.',
+      },
+      {
+        titolo: 'Registro completo e backup',
+        descrizione:
+          'Ogni apertura viene registrata. Il gestore vede lo storico delle proprie sbarre, l’amministratore tutto. Backup giornaliero del database e procedura di ripristino documentata.',
+      },
+    ],
+
+    risultati: [
+      'Tutti i varchi governati da un unico pannello',
+      'Niente più telecomandi da gestire',
+      'Accessi temporanei per fornitori e ospiti in pochi secondi',
+      'Storico completo di ogni apertura',
+      'Distribuzione privata su iOS e Android',
+    ],
+
+    tecnologie: ['React Native', 'Expo', 'Node.js', 'PostgreSQL', 'MQTT', 'Shelly', 'FAAC', 'IoT'],
+
+    metricsPreview: ['Centrale accessi unica', 'App con ruoli e orari'],
+
+    fonti: [],
   },
 
   {

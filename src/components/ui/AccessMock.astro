@@ -1,0 +1,456 @@
+---
+export interface Props {
+  eager?: boolean;
+}
+const { eager = false } = Astro.props;
+const loading = eager ? 'eager' : 'lazy';
+
+const gates = [
+  { name: 'Ingresso principale', site: 'Via Oselle', state: 'on', label: 'In linea' },
+  { name: 'Carraio nord', site: 'Piazzale mezzi', state: 'on', label: 'In linea' },
+  { name: 'Magazzino', site: 'Area carico', state: 'off', label: 'Fuori fascia' },
+];
+const logs = [
+  { t: '08:42', who: 'M. Rossi', where: 'Ingresso principale', how: 'App' },
+  { t: '08:17', who: 'Trasporti Bianco', where: 'Carraio nord', how: 'Invito 7 gg' },
+  { t: '07:55', who: 'L. Ferrero', where: 'Magazzino', how: 'App' },
+];
+---
+
+<div class="am" role="img" aria-label="Centrale accessi e app di apertura varchi realizzate da Bitora per Società Agricola Franchina">
+  <img class="am__bg" src="/work/franchina-varco.webp" alt="" width="1200" height="686" loading={loading} decoding="async" />
+  <div class="am__shade"></div>
+
+  <div class="am__console">
+    <div class="am__head">
+      <img src="/work/franchina-logo.webp" alt="" width="256" height="250" loading={loading} decoding="async" />
+      <div>
+        <b>Centrale accessi</b>
+        <small>Società Agricola Franchina</small>
+      </div>
+      <span class="am__live"><i></i>Live</span>
+    </div>
+
+    <p class="am__label">Varchi</p>
+    <div class="am__gates">
+      {
+        gates.map(g => (
+          <div class="am__gate">
+            <div>
+              <b>{g.name}</b>
+              <small>{g.site}</small>
+            </div>
+            <span class:list={['am__state', `is-${g.state}`]}>{g.label}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="am__label">Registro aperture</p>
+    <div class="am__logs">
+      {
+        logs.map(l => (
+          <div class="am__log">
+            <em>{l.t}</em>
+            <span>
+              <b>{l.who}</b> · {l.where}
+            </span>
+            <small>{l.how}</small>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="am__phone">
+    <div class="am__screen">
+      <div class="am__notch"></div>
+      <div class="am__top">
+        <div>
+          <small>Ciao Marco</small>
+          <b>Le tue sbarre</b>
+        </div>
+        <span class="am__role">Gestore</span>
+      </div>
+      <div class="am__card">
+        <img src="/work/franchina-varco.webp" alt="" width="1200" height="686" loading={loading} decoding="async" />
+        <div class="am__glass">
+          <b>Ingresso principale</b>
+          <small>Puoi aprirla adesso</small>
+        </div>
+      </div>
+      <div class="am__hold">
+        <span>Tieni premuto per aprire</span>
+      </div>
+      <div class="am__mini">
+        <em>08:42</em> Aperta da te
+      </div>
+    </div>
+  </div>
+
+  <div class="am__toast"><i></i>Varco aperto · impulso 1 s</div>
+</div>
+
+<style>
+  .am {
+    --g: #10b981;
+    --g2: #34d399;
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid var(--b-line-2);
+    background: #050816;
+    container-type: inline-size;
+    color: #f8fafc;
+    font-family: var(--f-body);
+  }
+  .am__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% 40%;
+  }
+  .am__shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(5, 8, 22, 0.88) 0%, rgba(5, 8, 22, 0.5) 50%, rgba(5, 8, 22, 0.05) 100%),
+      linear-gradient(0deg, rgba(5, 8, 22, 0.6), transparent 45%);
+  }
+
+  .am__console {
+    position: absolute;
+    left: 4.5cqw;
+    top: 7cqw;
+    bottom: 7cqw;
+    width: 52cqw;
+    padding: 2.6cqw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1cqw;
+    border-radius: 2.2cqw;
+    background: rgba(15, 23, 42, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 3cqw 6cqw -2cqw rgba(0, 0, 0, 0.6);
+  }
+  .am__head {
+    display: flex;
+    align-items: center;
+    gap: 1.4cqw;
+  }
+  .am__head img {
+    width: 5.2cqw;
+    height: auto;
+    flex: none;
+  }
+  .am__head div {
+    flex: 1;
+    min-width: 0;
+  }
+  .am__head b {
+    display: block;
+    font-family: var(--f-display);
+    font-size: 2.1cqw;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .am__head small,
+  .am__gate small,
+  .am__log small {
+    display: block;
+    font-size: 1.25cqw;
+    color: rgba(226, 232, 240, 0.6);
+  }
+  .am__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6cqw;
+    padding: 0.5cqw 1.1cqw;
+    border-radius: 99px;
+    font-size: 1.2cqw;
+    font-weight: 600;
+    color: var(--g2);
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+  }
+  .am__live i,
+  .am__toast i {
+    width: 0.8cqw;
+    height: 0.8cqw;
+    border-radius: 50%;
+    background: var(--g2);
+    box-shadow: 0 0 1cqw var(--g2);
+    animation: am-pulse 1.8s ease-in-out infinite;
+  }
+  .am__label {
+    margin: 0.4cqw 0 0;
+    font-family: var(--f-mono);
+    font-size: 1.05cqw;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(226, 232, 240, 0.42);
+  }
+  .am__gates,
+  .am__logs {
+    display: grid;
+    gap: 0.7cqw;
+  }
+  .am__gate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1cqw;
+    padding: 1cqw 1.4cqw;
+    border-radius: 1.2cqw;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .am__gate b {
+    display: block;
+    font-size: 1.5cqw;
+    font-weight: 600;
+  }
+  .am__state {
+    font-size: 1.15cqw;
+    font-weight: 600;
+    padding: 0.35cqw 0.9cqw;
+    border-radius: 99px;
+  }
+  .am__state.is-on {
+    color: var(--g2);
+    background: rgba(16, 185, 129, 0.14);
+  }
+  .am__state.is-off {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.12);
+  }
+  .am__log {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.2cqw;
+    font-size: 1.3cqw;
+    color: rgba(226, 232, 240, 0.75);
+  }
+  .am__log em {
+    font-family: var(--f-mono);
+    font-style: normal;
+    color: rgba(226, 232, 240, 0.5);
+  }
+  .am__log b {
+    color: #f8fafc;
+    font-weight: 600;
+  }
+  .am__log span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .am__phone {
+    position: absolute;
+    right: 9cqw;
+    top: 5cqw;
+    width: 24cqw;
+    aspect-ratio: 9 / 18.5;
+    padding: 0.8cqw;
+    border-radius: 4.2cqw;
+    background: #1d232c;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 4cqw 8cqw -2cqw rgba(0, 0, 0, 0.8),
+      0 0 8cqw -2cqw rgba(16, 185, 129, 0.35);
+    transform: rotate(-3deg);
+  }
+  .am__screen {
+    position: relative;
+    height: 100%;
+    padding: 5.2cqw 1.8cqw 1.8cqw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4cqw;
+    border-radius: 3.5cqw;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 80% 0%, rgba(16, 185, 129, 0.22), transparent 55%),
+      #050816;
+  }
+  .am__notch {
+    position: absolute;
+    top: 1.2cqw;
+    left: 50%;
+    width: 7cqw;
+    height: 1.9cqw;
+    transform: translateX(-50%);
+    border-radius: 99px;
+    background: #000;
+  }
+  .am__top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.6cqw;
+  }
+  .am__top small {
+    display: block;
+    font-size: 1.15cqw;
+    color: rgba(226, 232, 240, 0.68);
+  }
+  .am__top b {
+    display: block;
+    font-size: 2.1cqw;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .am__role {
+    font-size: 0.95cqw;
+    font-weight: 700;
+    padding: 0.3cqw 0.8cqw;
+    border-radius: 99px;
+    color: #a5b4fc;
+    background: rgba(129, 140, 248, 0.16);
+  }
+  .am__card {
+    position: relative;
+    height: 15cqw;
+    border-radius: 2.2cqw;
+    overflow: hidden;
+  }
+  .am__card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 75% 50%;
+  }
+  .am__glass {
+    position: absolute;
+    left: 0.8cqw;
+    right: 0.8cqw;
+    bottom: 0.8cqw;
+    padding: 1cqw 1.2cqw;
+    border-radius: 1.5cqw;
+    background: rgba(15, 23, 42, 0.62);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .am__glass b {
+    display: block;
+    font-size: 1.35cqw;
+    font-weight: 700;
+  }
+  .am__glass small {
+    display: block;
+    font-size: 1.05cqw;
+    font-weight: 600;
+    color: var(--g2);
+  }
+  .am__hold {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 4.6cqw;
+    border-radius: 99px;
+    overflow: hidden;
+    background: rgba(16, 185, 129, 0.16);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+  }
+  .am__hold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--g), var(--g2));
+    transform-origin: left;
+    animation: am-hold 4s var(--b-ease) infinite;
+  }
+  .am__hold span {
+    position: relative;
+    font-size: 1.15cqw;
+    font-weight: 700;
+    color: #ecfdf5;
+  }
+  .am__mini {
+    margin-top: auto;
+    padding: 1cqw 1.2cqw;
+    border-radius: 1.4cqw;
+    font-size: 1.1cqw;
+    color: rgba(226, 232, 240, 0.7);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .am__mini em {
+    font-family: var(--f-mono);
+    font-style: normal;
+    color: var(--g2);
+    margin-right: 0.4cqw;
+  }
+
+  .am__toast {
+    position: absolute;
+    right: 4cqw;
+    bottom: 6cqw;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8cqw;
+    padding: 1cqw 1.6cqw;
+    border-radius: 99px;
+    font-size: 1.3cqw;
+    font-weight: 600;
+    background: rgba(5, 8, 22, 0.85);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    box-shadow: 0 1.5cqw 4cqw -1cqw rgba(0, 0, 0, 0.7);
+    animation: am-toast 4s var(--b-ease) infinite;
+  }
+
+  @keyframes am-pulse {
+    50% {
+      opacity: 0.35;
+    }
+  }
+  @keyframes am-hold {
+    0% {
+      transform: scaleX(0);
+    }
+    45%,
+    80% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(1);
+      opacity: 0;
+    }
+  }
+  @keyframes am-toast {
+    0%,
+    40% {
+      opacity: 0;
+      transform: translateY(1cqw);
+    }
+    50%,
+    85% {
+      opacity: 1;
+      transform: none;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .am__hold::before,
+    .am__toast,
+    .am__live i,
+    .am__toast i {
+      animation: none;
+    }
+    .am__hold::before {
+      transform: scaleX(1);
+    }
+  }
+</style>

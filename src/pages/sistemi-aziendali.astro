@@ -1,459 +1,89 @@
 ---
 export const prerender = true;
-import Layout from '../layouts/Layout.astro';
-import ProductUi from '../components/product/ProductUi.astro';
-import FAQ from '../components/FAQ.astro';
-import ServiceSchema from '../components/schema/Service.astro';
-import FAQPageSchema from '../components/schema/FAQPage.astro';
-import HowToSchema from '../components/schema/HowTo.astro';
-import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
-
-const faqItems = [
-  {
-    question: 'Quando conviene un software su misura invece di un SaaS?',
-    answer:
-      'Quando i tuoi processi sono il tuo vantaggio competitivo e un SaaS ti costringe ad adattarti al software. Se il flusso standard copre il 90% delle esigenze, un SaaS va benissimo: te lo diciamo noi, anche se significa non venderti nulla.',
-  },
-  {
-    question: 'Quanto costa un gestionale o CRM su misura?',
-    answer:
-      'Dipende da moduli, integrazioni e infrastruttura. Con l’audit gratuito definiamo una roadmap a fasi: parti dal modulo con più impatto e investi il resto solo se vedi risultati.',
-  },
-  {
-    question: 'Quanto tempo serve per partire?',
-    answer:
-      'Dopo l’analisi iniziale viene definita una roadmap con fasi, tempi e priorità. Lo sviluppo è organizzato per rilasci iterativi: il primo modulo operativo arriva molto prima del progetto completo.',
-  },
-  {
-    question: 'Si integra con gli strumenti che uso già?',
-    answer:
-      'Email, WhatsApp, fogli, gestionali esistenti, API esterne: la piattaforma può essere collegata agli strumenti attuali dopo una verifica tecnica di compatibilità.',
-  },
-  {
-    question: 'Posso accedere da mobile?',
-    answer:
-      'Sì: web app responsive o, se previsto dal progetto, app dedicata per operatori sul campo con firme, foto e lavoro offline.',
-  },
-  {
-    question: 'I dati sono al sicuro?',
-    answer:
-      'Autenticazione, permessi per ruolo, backup e gestione dei dati vengono progettati in funzione dei requisiti del progetto. Hosting in Italia o UE quando richiesto.',
-  },
-  {
-    question: 'E dopo il lancio?',
-    answer:
-      'Supporto, monitoraggio ed evoluzione inclusi nella roadmap. Il software cresce con l’azienda: nuovi moduli quando servono, non un progetto unico che invecchia.',
-  },
-];
-
-const modules = [
-  {
-    n: '01',
-    t: 'CRM',
-    d: 'Lead, clienti, pipeline e follow-up automatizzati. Nessun cliente perso nei fogli.',
-  },
-  {
-    n: '02',
-    t: 'Gestionale',
-    d: 'Ordini, magazzino, fatturazione, integrazione contabile. Dati unici, niente doppi inserimenti.',
-  },
-  {
-    n: '03',
-    t: 'CMMS',
-    d: 'Interventi, ticket, asset, ricambi e firme digitali. Il campo collegato all’ufficio.',
-  },
-];
-
-const signals = [
-  {
-    t: 'Dati duplicati',
-    d: 'Lo stesso cliente inserito in tre fogli diversi. Ogni aggiornamento diventa un rischio.',
-  },
-  {
-    t: 'Ore perse in copia-incolla',
-    d: 'Il team sposta dati tra strumenti invece di usarli. Ore pagate per lavoro meccanico.',
-  },
-  {
-    t: 'Richieste che spariscono',
-    d: 'Email, WhatsApp e telefono senza tracciamento. Le richieste si perdono e i clienti si lamentano.',
-  },
-  {
-    t: 'Report fatti a mano',
-    d: 'Per rispondere a “come sta andando?” servono ore di Excel. E i numeri non combaciano mai.',
-  },
-  {
-    t: 'Il SaaS non si adatta',
-    d: 'Stai piegando il tuo processo al software invece del contrario. Funzionalità mancanti o inutili.',
-  },
-  {
-    t: 'Dipendenza da una persona',
-    d: 'Il processo “è in testa” a qualcuno. Se quella persona è in ferie, tutto si ferma.',
-  },
-];
-
-const steps = [
-  {
-    n: '01',
-    t: 'Audit',
-    d: 'Analizziamo i processi esistenti e identifichiamo i colli di bottiglia. Gratuito, senza impegno.',
-  },
-  {
-    n: '02',
-    t: 'Mappa',
-    d: 'Disegniamo i flussi target con priorità e KPI misurabili. Roadmap e preventivo prima di scrivere codice.',
-  },
-  {
-    n: '03',
-    t: 'MVP',
-    d: 'Sviluppo per fasi con roadmap condivisa. Il primo modulo arriva in produzione appena è pronto.',
-  },
-  {
-    n: '04',
-    t: 'Evoluzione',
-    d: 'Rilasci frequenti, feedback, miglioramenti. Nuovi moduli quando servono davvero.',
-  },
-];
-
-const related = [
-  {
-    href: '/gestione-interventi/',
-    label: 'Ecosistema gestione interventi',
-    desc: 'Ticket, tecnici e rapportini digitali',
-  },
-  {
-    href: '/bitora-crm/',
-    label: 'Bitora CRM',
-    desc: 'CRM pronto all’uso per PMI',
-  },
-  {
-    href: '/blog/quanto-costa-crm-pmi/',
-    label: 'Quanto costa un CRM PMI',
-    desc: 'Guida prezzi e scelta 2026',
-  },
-  {
-    href: '/blog/gestionale-pmi-2026/',
-    label: 'Come scegliere un gestionale',
-    desc: 'Criteri e errori da evitare',
-  },
-  {
-    href: '/tools/calcolatore-roi-gestionale/',
-    label: 'Calcolatore ROI gestionale',
-    desc: 'Stima risparmio in pochi click',
-  },
-  {
-    href: '/servizi/',
-    label: 'Tutti i servizi Bitora',
-    desc: 'Siti, e-commerce e soluzioni tailormade',
-  },
-];
+import ServiceLanding from '../components/ui/ServiceLanding.astro';
 ---
 
-<Layout
-  title="Sistemi Aziendali su Misura | Gestionali, CRM, CMMS | Bitora"
-  description="Software gestionali, CRM, CMMS e strumenti aziendali su misura. Riduci lavoro manuale, integra processi, aumenta efficienza. Audit gratuito e roadmap a fasi."
-  image="/editorial/digital-process.png"
->
-  <div class="product-page">
-    <section class="prod-hero">
-      <div class="prod-hero-media" aria-hidden="true">
-        <img
-          src="/editorial/digital-process.png"
-          alt=""
-          class="prod-hero-img"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div class="prod-hero-scrim"></div>
-      </div>
-      <div class="shell prod-hero-copy">
-        <p class="eyebrow">Soluzioni tailormade · Sistemi aziendali</p>
-        <h1 class="display">
-          Software su misura<br />che lavora<br />come lavori tu.
-        </h1>
-        <p class="lede">
-          CRM, gestionali, CMMS e tool custom costruiti sul tuo processo. Integrati con email,
-          WhatsApp, fogli e API. Meno lavoro manuale, più controllo.
-        </p>
-        <div class="cta-row">
-          <a
-            href="/contattaci/?topic=sistemi"
-            class="sl-btn-primary"
-            data-track="cta_click"
-            data-track-location="sistemi_hero">Audit gratuito</a
-          >
-          <a href="#cosa" class="sl-btn-secondary">Cosa realizziamo</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="band" itemscope itemtype="https://schema.org/Question">
-      <div class="shell band-inner" data-reveal>
-        <p class="eyebrow">Risposta rapida</p>
-        <h2 class="headline" itemprop="name">Quando conviene un sistema aziendale su misura?</h2>
-        <p
-          class="body max-w-3xl"
-          itemprop="acceptedAnswer"
-          itemscope
-          itemtype="https://schema.org/Answer"
-        >
-          <span itemprop="text">
-            Quando i tuoi processi sono il tuo vantaggio e i software standard ti costringono ad
-            adattarti. Bitora parte da un audit gratuito del flusso reale e costruisce una roadmap a
-            fasi: prima il modulo con più impatto, poi il resto solo se vedi risultati.
-          </span>
-        </p>
-      </div>
-    </section>
-
-    <section id="cosa" class="band band-alt">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div class="lg:col-span-5" data-reveal>
-            <p class="eyebrow">Cosa costruiamo</p>
-            <h2 class="headline">Un sistema, non dieci tool scollegati.</h2>
-            <p class="body">
-              Centralizza dati, automatizza task ripetitivi, integra gli strumenti che usi già. Ogni
-              modulo è progettato sul tuo processo, non su un template.
-            </p>
-          </div>
-          <div class="lg:col-span-6 lg:col-start-7" data-reveal>
-            <ul class="border-t border-[var(--prod-line)]">
-              {
-                modules.map(item => (
-                  <li class="grid grid-cols-[2.5rem_1fr] gap-5 py-6 border-b border-[var(--prod-line-soft)]">
-                    <span class="text-sm font-bold tabular-nums text-[var(--prod-faint)] pt-1">
-                      {item.n}
-                    </span>
-                    <div>
-                      <h3 class="text-xl font-bold tracking-tight mb-1">{item.t}</h3>
-                      <p class="body-sm">{item.d}</p>
-                    </div>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch" data-reveal>
-          <figure
-            class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--prod-line-soft)] m-0"
-          >
-            <img
-              src="/editorial/crm.png"
-              alt="CRM con pipeline, contatti, attività e indicatori"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
-            >
-            </div>
-            <figcaption
-              class="absolute bottom-5 left-5 right-5 text-sm text-white/85 font-medium tracking-tight"
-            >
-              CRM e report leggibili per commerciale e direzione
-            </figcaption>
-          </figure>
-          <figure
-            class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--prod-line-soft)] m-0"
-          >
-            <img
-              src="/editorial/operations.png"
-              alt="Tecnico sul campo usa una piattaforma operativa da tablet"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
-            >
-            </div>
-            <figcaption
-              class="absolute bottom-5 left-5 right-5 text-sm text-white/85 font-medium tracking-tight"
-            >
-              Ufficio e operatori sul campo sempre allineati
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band-alt">
-      <div class="shell band-inner">
-        <header class="max-w-3xl mb-12" data-reveal>
-          <p class="eyebrow">I segnali</p>
-          <h2 class="headline">Se riconosci anche solo due di questi, ne parliamo.</h2>
-        </header>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3" data-reveal>
-          {
-            signals.map(item => (
-              <article class="feat-card">
-                <h3 class="text-lg font-bold tracking-tight mb-2">{item.t}</h3>
-                <p class="body-sm">{item.d}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section id="metodo" class="band">
-      <div class="shell band-inner">
-        <header class="max-w-3xl mb-12" data-reveal>
-          <p class="eyebrow">Come lavoriamo</p>
-          <h2 class="headline">Dall’audit al primo modulo operativo.</h2>
-        </header>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-3" data-reveal>
-          {
-            steps.map(s => (
-              <article class="feat-card min-h-[210px] flex flex-col justify-between">
-                <span
-                  class="block font-bold leading-none tabular-nums text-white/[0.14] mb-8"
-                  style="font-size:clamp(2.5rem,4vw,3.25rem)"
-                >
-                  {s.n}
-                </span>
-                <div>
-                  <h3 class="text-lg font-bold tracking-tight mb-1">{s.t}</h3>
-                  <p class="body-sm">{s.d}</p>
-                </div>
-              </article>
-            ))
-          }
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-3" data-reveal>
-          {
-            [
-              { t: 'Made in Italy', d: 'Sviluppo e supporto in Italia' },
-              { t: 'Privacy e consenso', d: 'Gestione cookie e dati personali' },
-              { t: 'Risposta 24h', d: 'Preventivo e audit iniziale' },
-              { t: 'Progetti pubblicati', d: 'Casi selezionati su bitora.it/lavori' },
-            ].map(b => (
-              <div class="feat-card">
-                <p class="font-semibold tracking-tight">{b.t}</p>
-                <p class="body-sm mt-1">{b.d}</p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="band band-alt">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-12 gap-12" data-reveal>
-          <div class="lg:col-span-4">
-            <p class="eyebrow">FAQ</p>
-            <h2 class="headline">FAQ sistemi aziendali</h2>
-            <p class="body">Risposte chiare su CRM, gestionali, CMMS e integrazioni.</p>
-          </div>
-          <div class="lg:col-span-7 lg:col-start-6">
-            <FAQ items={faqItems} tone="on-dark" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="shell band-inner">
-        <header class="max-w-3xl mb-10" data-reveal>
-          <p class="eyebrow">Approfondimenti</p>
-          <h2 class="headline">Pagine correlate</h2>
-        </header>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3" data-reveal>
-          {
-            related.map(link => (
-              <a href={link.href} class="feat-card group">
-                <h3 class="text-lg font-bold tracking-tight group-hover:translate-x-0.5 transition-transform">
-                  {link.label}
-                </h3>
-                <p class="body-sm mt-1">{link.desc}</p>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="band-cta">
-      <div class="shell band-cta-inner" data-reveal>
-        <p class="eyebrow">Inizia da qui</p>
-        <h2 class="display" style="font-size:clamp(2.4rem,6.5vw,4.5rem)">
-          Raccontaci il processo.<br />Prepariamo la roadmap.
-        </h2>
-        <p class="lede cta-lede">
-          Gestionali, CRM o CMMS: partiamo dal flusso reale e ti rispondiamo entro 24 ore.
-        </p>
-        <ol class="cta-steps">
-          <li>
-            <span class="cta-step-n">01</span>
-            <strong>2 minuti</strong>
-            <span class="cta-step-copy">Raccontaci processi e colli di bottiglia</span>
-          </li>
-          <li>
-            <span class="cta-step-n">02</span>
-            <strong>Entro 24 ore</strong>
-            <span class="cta-step-copy">Ti ricontattiamo noi</span>
-          </li>
-          <li>
-            <span class="cta-step-n">03</span>
-            <strong>Roadmap chiara</strong>
-            <span class="cta-step-copy">Priorità, tempi e primo modulo</span>
-          </li>
-        </ol>
-        <div class="cta-row" style="justify-content:center">
-          <a
-            href="/contattaci/?topic=sistemi"
-            class="sl-btn-primary sl-btn-lg"
-            data-track="cta_click"
-            data-track-location="sistemi_final"
-          >
-            Audit gratuito
-            <span aria-hidden="true">→</span>
-          </a>
-          <a
-            href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20informazioni%20sui%20sistemi%20aziendali%20su%20misura."
-            class="sl-btn-secondary"
-            data-track="whatsapp_click"
-            data-track-location="sistemi_final">Scrivici su WhatsApp</a
-          >
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <ProductUi />
-</Layout>
-
-<ServiceSchema
-  name="Sistemi Aziendali su Misura (CRM, Gestionali, CMMS)"
-  url="https://bitora.it/sistemi-aziendali/"
-  serviceType={['CRM', 'Gestionale', 'CMMS', 'Software su misura', 'Automazione']}
-  areaServed={['Carmagnola', 'Torino', 'Piemonte', 'Italia']}
-/>
-
-<HowToSchema
-  name="Come digitalizziamo processi aziendali"
-  description="Metodo Bitora: audit, mappa processi, MVP, rilascio iterativo."
-  steps={[
-    { name: 'Audit', text: 'Analisi processi esistenti e identificazione colli di bottiglia.' },
-    { name: 'Mappa', text: 'Mappa flussi target con priorità e KPI misurabili.' },
-    { name: 'MVP', text: 'Sviluppo per fasi con roadmap condivisa e rilascio iterativo.' },
-    { name: 'Evoluzione', text: 'Rilasci frequenti, raccolta feedback, miglioramenti continui.' },
-  ]}
-/>
-
-<FAQPageSchema items={faqItems} />
-
-<BreadcrumbListSchema
-  crumbs={[
-    { name: 'Home', item: 'https://bitora.it/' },
-    { name: 'Sistemi Aziendali', item: 'https://bitora.it/sistemi-aziendali/' },
+<ServiceLanding
+  pillar="software"
+  topic="sistemi"
+  seo={{
+    title: 'Gestionali e software su misura per PMI | Bitora',
+    description:
+      'Gestionali, CRM, magazzino, preventivi, interventi, ticket e rapportini su misura per aziende in Piemonte e in Italia. Il software si adatta al tuo processo, non il contrario.',
+  }}
+  hero={{
+    eyebrow: 'Gestionali su misura',
+    title: 'Il software costruito <span class="b-grad">sul tuo modo di lavorare</span>.',
+    lede: 'Basta Excel che esplodono, gruppi WhatsApp e informazioni nella testa di una sola persona. Creiamo gestionali, CRM e strumenti operativi che il tuo team usa davvero, da ufficio e da telefono.',
+    chips: ['CRM e preventivi', 'Magazzino con barcode', 'Interventi e rapportini', 'Accesso da smartphone'],
+  }}
+  ctaLabel="Prenota l’analisi gratuita"
+  signals={{
+    title: 'Il tuo processo <span class="b-accent">merita di meglio</span> se…',
+    items: [
+      { t: 'Dati duplicati ovunque', d: 'Lo stesso cliente in tre fogli diversi. Ogni aggiornamento è un rischio di errore.' },
+      { t: 'Ore perse in copia-incolla', d: 'Il team sposta dati tra strumenti invece di usarli. Ore pagate per lavoro meccanico.' },
+      { t: 'Richieste che spariscono', d: 'Email, telefono e WhatsApp senza traccia. Le richieste si perdono e i clienti si lamentano.' },
+      { t: 'Report fatti a mano', d: 'Per sapere “come stiamo andando” servono ore di Excel. E i numeri non tornano mai.' },
+      { t: 'Il software standard non si adatta', d: 'Paghi un abbonamento per funzioni che non usi, e ti mancano proprio quelle che ti servono.' },
+      { t: 'Tutto dipende da una persona', d: 'Il processo è nella testa di qualcuno. Se è in ferie, si ferma tutto.' },
+    ],
+  }}
+  deliverables={{
+    title: 'Moduli che <span class="b-accent">si incastrano</span> tra loro.',
+    lede: 'Partiamo dal modulo che fa risparmiare più tempo, lo mettiamo in produzione in poche settimane e poi aggiungiamo il resto quando serve.',
+    items: [
+      { t: 'CRM e preventivi', d: 'Clienti, opportunità, follow-up e preventivi in PDF. Con l’AI, bozze pronte in pochi minuti.' },
+      { t: 'Magazzino', d: 'Articoli con codici EAN, scanner barcode dalla fotocamera del telefono, movimenti e soglie di scorta.' },
+      { t: 'Interventi e rapportini', d: 'Pianificazione dei tecnici, rapportini digitali con foto e firma del cliente, PDF automatici.' },
+      { t: 'Ticketing e assistenza', d: 'Richieste dei clienti tracciate, assegnate e chiuse con tempi misurabili.' },
+      { t: 'Documenti e scadenze', d: 'Archivio in cloud con ricerca nel contenuto e avvisi automatici su certificazioni e scadenze.' },
+      { t: 'Personale e costi', d: 'Presenze, ferie, costi orari e accessori. Il quadro reale di quanto costa ogni lavoro.' },
+    ],
+  }}
+  feature={{
+    slug: 'mistral-gestionale',
+    eyebrow: 'Caso in evidenza',
+    title: 'Mistral Impianti',
+    text: 'Un’azienda di impianti elettrici e antincendio dal 1988 che oggi gestisce preventivi, documenti, scadenze, personale e magazzino da un’unica piattaforma, con l’AI che prepara le bozze dei preventivi.',
+    points: [
+      'Preventivi generati dall’AI ed esportati in PDF e Word',
+      'Archivio documenti interrogabile in linguaggio naturale',
+      'Avvisi automatici sulle scadenze',
+      'Magazzino con scanner barcode da smartphone',
+    ],
+  }}
+  formats={{
+    title: 'Oppure parti da una <span class="b-accent">piattaforma pronta</span>.',
+    items: [
+      {
+        t: 'Gestione interventi',
+        time: 'operativa in pochi giorni',
+        d: 'Ticket, tecnici, rapportini digitali e firme per chi fa assistenza e manutenzione.',
+        bullets: ['Pianificazione tecnici', 'Rapportini con firma', 'Storico per cliente e impianto'],
+      },
+      {
+        t: 'Su misura',
+        time: 'primo modulo in 3–6 settimane',
+        d: 'Il gestionale disegnato attorno ai tuoi processi, con i moduli che servono a te.',
+        bullets: ['Analisi dei processi gratuita', 'Moduli a scelta', 'Integrazioni con i tuoi strumenti', 'App per chi lavora fuori'],
+      },
+      {
+        t: 'Bitora CRM',
+        time: 'pronto all’uso',
+        d: 'CRM per PMI con clienti, lead, note e mappa geolocalizzata.',
+        bullets: ['Clienti e tag', 'Mappa clienti', 'Email integrate'],
+      },
+    ],
+  }}
+  projects={['mistral-gestionale', 'garavella-7-gestionale', 'accessi-aziendali-franchina']}
+  stack={['Next.js', 'React', 'PostgreSQL', 'Prisma', 'OpenAI', 'Cloudflare R2', 'PWA', 'Expo']}
+  faq={[
+    { question: 'Quando conviene un software su misura invece di un abbonamento?', answer: 'Quando i tuoi processi sono il tuo vantaggio competitivo e un software standard ti costringe ad adattarti. Se un prodotto esistente copre davvero le tue esigenze, te lo diciamo noi, anche se significa non venderti nulla.' },
+    { question: 'Quanto costa un gestionale su misura?', answer: 'Dipende da moduli e integrazioni. Con l’analisi gratuita definiamo una roadmap a fasi: parti dal modulo con più impatto e investi nel resto solo se vedi risultati.' },
+    { question: 'Quanto tempo serve per partire?', answer: 'Il primo modulo operativo arriva in 3–6 settimane. Poi rilasciamo per fasi, con il tuo team che usa e dà feedback mentre il software cresce.' },
+    { question: 'Si integra con quello che uso già?', answer: 'Sì: fogli Excel, gestionali di contabilità, email, WhatsApp e API esterne possono essere collegati dopo una verifica tecnica.' },
+    { question: 'Funziona da telefono e senza connessione?', answer: 'Sì: web app installabile su smartphone o app dedicata, con funzionamento offline per chi lavora in cantiere o dal cliente.' },
+    { question: 'I dati sono al sicuro e sono miei?', answer: 'Accessi per ruolo, backup giornalieri e hosting in Europa. Dati e codice sono di tua proprietà.' },
   ]}
 />

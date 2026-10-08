@@ -1,0 +1,100 @@
+---
+export interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+  primary?: { label: string; href: string; track?: string };
+  secondary?: { label: string; href: string };
+  chips?: string[];
+  crumbs?: { name: string; href: string }[];
+}
+const { eyebrow, title, lede, primary, secondary, chips = [], crumbs = [] } = Astro.props;
+---
+
+<section class="ph">
+  <div class="ph__grid b-grid-bg" aria-hidden="true"></div>
+  <div class="b-glow-orb ph__orb" aria-hidden="true"></div>
+  <div class="b-shell ph__inner">
+    {
+      crumbs.length > 0 && (
+        <nav class="ph__crumbs b-rise" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          {crumbs.map(c => (
+            <>
+              <span aria-hidden="true">/</span>
+              <a href={c.href}>{c.name}</a>
+            </>
+          ))}
+        </nav>
+      )
+    }
+    <p class="b-eyebrow b-rise" style="animation-delay:.05s">{eyebrow}</p>
+    <h1 class="b-h1 b-rise" style="animation-delay:.12s" set:html={title} />
+    {lede && <p class="b-lede b-rise" style="animation-delay:.22s">{lede}</p>}
+    {
+      (primary || secondary) && (
+        <div class="b-cta-row b-rise" style="animation-delay:.32s">
+          {primary && (
+            <a href={primary.href} class="b-btn b-btn--primary b-btn--lg" data-track="cta_click" data-track-location={primary.track ?? 'page_hero'}>
+              {primary.label} <span class="b-arrow" aria-hidden="true">→</span>
+            </a>
+          )}
+          {secondary && (
+            <a href={secondary.href} class="b-btn b-btn--ghost b-btn--lg">
+              {secondary.label}
+            </a>
+          )}
+        </div>
+      )
+    }
+    {
+      chips.length > 0 && (
+        <div class="b-chips ph__chips b-rise" style="animation-delay:.42s">
+          {chips.map(c => <span class="b-chip">{c}</span>)}
+        </div>
+      )
+    }
+    <slot />
+  </div>
+</section>
+
+<style>
+  .ph {
+    position: relative;
+    overflow: hidden;
+    padding: calc(72px + clamp(3.5rem, 9vw, 7rem)) 0 clamp(3.5rem, 7vw, 6rem);
+  }
+  .ph__grid {
+    position: absolute;
+    inset: 0;
+  }
+  .ph__orb {
+    top: -22rem;
+    right: -14rem;
+  }
+  .ph__inner {
+    position: relative;
+  }
+  .ph__inner :global(.b-h1) {
+    max-width: 62rem;
+  }
+  .ph__crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.82rem;
+    color: var(--b-fg-3);
+  }
+  .ph__crumbs a {
+    color: var(--b-fg-3);
+    text-decoration: none;
+  }
+  .ph__crumbs a:hover {
+    color: var(--b-fg);
+    opacity: 1;
+  }
+  .ph__chips {
+    margin-top: 2rem;
+  }
+</style>

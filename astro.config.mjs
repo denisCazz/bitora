@@ -10,7 +10,6 @@ const SITEMAP_EXCLUDE = new Set([
   'https://bitora.it/services/',
   'https://bitora.it/404/',
   'https://bitora.it/landing/',
-  'https://bitora.it/chi-siamo/',
   'https://bitora.it/tools/',
   'https://bitora.it/cmms/',
   'https://bitora.it/shop/',
@@ -33,6 +32,20 @@ export default defineConfig({
         return true;
       },
       customPages: ['https://bitora.it/blog/'],
+      serialize: item => {
+        const path = new URL(item.url).pathname;
+        const priority =
+          path === '/'
+            ? 1
+            : /^\/(siti-web-professionali|e-commerce|sistemi-aziendali|app-mobile|intelligenza-artificiale|nfc-ecosystem|servizi|contattaci)\/$/.test(path)
+              ? 0.9
+              : path.startsWith('/progetti/') || path === '/lavori/'
+                ? 0.7
+                : /privacy|cookie/.test(path)
+                  ? 0.2
+                  : 0.6;
+        return { ...item, lastmod: new Date().toISOString(), priority };
+      },
     }),
     react(),
     compressor({

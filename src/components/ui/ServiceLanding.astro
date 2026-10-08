@@ -1,0 +1,427 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from './PageHero.astro';
+import ProjectCard from './ProjectCard.astro';
+import FaqList from './FaqList.astro';
+import ServiceSchema from '../schema/Service.astro';
+import BreadcrumbListSchema from '../schema/BreadcrumbList.astro';
+import { getWorkBySlugs } from '../../data/work';
+import { pillars, type PillarId } from '../../data/services';
+
+interface Item {
+  t: string;
+  d: string;
+}
+
+export interface Props {
+  pillar: PillarId;
+  seo: { title: string; description: string; image?: string };
+  hero: { eyebrow: string; title: string; lede: string; chips?: string[] };
+  topic: string;
+  ctaLabel?: string;
+  signals: { title: string; items: Item[] };
+  deliverables: { title: string; lede?: string; items: Item[] };
+  formats?: { title: string; items: { t: string; time: string; d: string; bullets: string[] }[] };
+  feature?: { slug: string; eyebrow: string; title: string; text: string; points: string[] };
+  projects: string[];
+  steps?: (Item & { n: string })[];
+  stack?: string[];
+  faq: { question: string; answer: string }[];
+}
+
+const {
+  pillar,
+  seo,
+  hero,
+  topic,
+  ctaLabel = 'Richiedi il preventivo gratuito',
+  signals,
+  deliverables,
+  formats,
+  feature,
+  projects,
+  steps = [
+    { n: '01', t: 'Call conoscitiva', d: '30 minuti, gratis. Capiamo obiettivi, vincoli e priorità.' },
+    { n: '02', t: 'Proposta a fasi', d: 'Entro 48 ore: cosa facciamo, in che ordine, tempi e costi.' },
+    { n: '03', t: 'Sviluppo con anteprime', d: 'Vedi il lavoro crescere e dai feedback ogni settimana.' },
+    { n: '04', t: 'Lancio e supporto', d: 'Formazione, misurazione, manutenzione ed evoluzioni.' },
+  ],
+  stack = [],
+  faq,
+} = Astro.props;
+
+const current = pillars.find(p => p.id === pillar)!;
+const others = pillars.filter(p => p.id !== pillar);
+const work = getWorkBySlugs(projects);
+const featureWork = feature ? getWorkBySlugs([feature.slug])[0] : undefined;
+const ctaHref = `/contattaci/?topic=${topic}`;
+const pageUrl = `https://bitora.it${current.href}`;
+---
+
+<Layout title={seo.title} description={seo.description} image={seo.image}>
+  <ServiceSchema
+    name={current.title}
+    description={seo.description}
+    serviceType={current.title}
+    url={pageUrl}
+    image={seo.image ? `https://bitora.it${seo.image}` : undefined}
+    offerings={deliverables.items.map(i => i.t)}
+  />
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Servizi', item: 'https://bitora.it/servizi/' },
+      { name: current.title, item: pageUrl },
+    ]}
+  />
+
+  <PageHero
+    eyebrow={hero.eyebrow}
+    title={hero.title}
+    lede={hero.lede}
+    chips={hero.chips}
+    crumbs={[{ name: 'Servizi', href: '/servizi/' }, { name: current.title, href: current.href }]}
+    primary={{ label: ctaLabel, href: ctaHref, track: `${pillar}_hero` }}
+    secondary={{ label: 'Vedi i lavori', href: '#lavori' }}
+  />
+
+  <!-- Signals -->
+  <section class="b-section b-section--line">
+    <div class="b-shell">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">Ti riconosci?</p>
+        <h2 class="b-h2" set:html={signals.title} />
+      </div>
+      <div class="sl-grid sl-grid--3">
+        {
+          signals.items.map((s, i) => (
+            <article class="b-card" data-reveal data-reveal-delay={String((i % 3) + 1)}>
+              <span class="sl-x" aria-hidden="true">✕</span>
+              <h3 class="b-h3 sl-card-t">{s.t}</h3>
+              <p class="b-text">{s.d}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="b-section b-section--alt b-section--line">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Cosa ottieni</p>
+          <h2 class="b-h2" set:html={deliverables.title} />
+        </div>
+        {deliverables.lede && <p class="b-text">{deliverables.lede}</p>}
+      </div>
+      <div class="sl-grid sl-grid--3">
+        {
+          deliverables.items.map((s, i) => (
+            <article class="b-card b-card--hover" data-reveal data-reveal-delay={String((i % 3) + 1)}>
+              <span class="b-mono sl-n">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="b-h3 sl-card-t">{s.t}</h3>
+              <p class="b-text">{s.d}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {
+    feature && featureWork && (
+      <section class="b-section b-section--line">
+        <div class="b-shell sl-feature">
+          <div data-reveal>
+            <ProjectCard item={featureWork} size="lg" />
+          </div>
+          <div data-reveal data-reveal-delay="1">
+            <p class="b-eyebrow">{feature.eyebrow}</p>
+            <h2 class="b-h2">{feature.title}</h2>
+            <p class="b-lede">{feature.text}</p>
+            <ul class="b-checks sl-feature-list">
+              {feature.points.map(p => <li>{p}</li>)}
+            </ul>
+            <a href={`/progetti/${featureWork.slug}/`} class="b-link">
+              Leggi il caso completo <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    formats && (
+      <section class="b-section b-section--alt b-section--line">
+        <div class="b-shell">
+          <div class="b-head" data-reveal>
+            <p class="b-eyebrow">Formati</p>
+            <h2 class="b-h2" set:html={formats.title} />
+          </div>
+          <div class:list={['sl-grid', formats.items.length === 2 ? 'sl-grid--2' : 'sl-grid--3']}>
+            {formats.items.map((f, i) => (
+              <article class:list={['b-card', 'sl-format', { 'is-pop': i === 1 }]} data-reveal data-reveal-delay={String(i + 1)}>
+                {i === 1 && <span class="sl-pop">Il più richiesto</span>}
+                <h3 class="b-h3">{f.t}</h3>
+                <p class="b-mono sl-time">{f.time}</p>
+                <p class="b-text">{f.d}</p>
+                <ul class="b-checks sl-format-list">
+                  {f.bullets.map(b => <li>{b}</li>)}
+                </ul>
+                <a href={ctaHref} class:list={['b-btn', i === 1 ? 'b-btn--primary' : 'b-btn--ghost']} data-track="cta_click" data-track-location={`${pillar}_format`}>
+                  Chiedi un preventivo
+                </a>
+              </article>
+            ))}
+          </div>
+          <p class="b-small sl-format-note" data-reveal>
+            Ogni progetto è quotato su misura dopo la call gratuita: prezzo fisso per fase, nessun costo nascosto.
+          </p>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Work -->
+  {
+    work.length > 0 && (
+      <section class="b-section b-section--line" id="lavori">
+        <div class="b-shell">
+          <div class="b-head b-head--split" data-reveal>
+            <div>
+              <p class="b-eyebrow">Lavori</p>
+              <h2 class="b-h2">Esempi reali, <span class="b-accent">online</span>.</h2>
+            </div>
+            <a href="/lavori/" class="b-link sl-all">
+              Tutti i progetti <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class:list={['sl-work', { 'sl-work--4': work.length >= 4 }]}>
+            {work.map((w, i) => (
+              <div data-reveal data-reveal-delay={String((i % 4) + 1)}>
+                <ProjectCard item={w} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Process -->
+  <section class="b-section b-section--alt b-section--line">
+    <div class="b-shell">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">Come lavoriamo</p>
+        <h2 class="b-h2">Quattro passi. <span class="b-accent">Zero sorprese.</span></h2>
+      </div>
+      <ol class="b-steps sl-steps">
+        {
+          steps.map((s, i) => (
+            <li class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+              <span class="b-step__n">{s.n}</span>
+              <h3 class="b-h3 b-step__t">{s.t}</h3>
+              <p class="b-text">{s.d}</p>
+            </li>
+          ))
+        }
+      </ol>
+      {
+        stack.length > 0 && (
+          <div class="sl-stack" data-reveal>
+            <p class="b-mono">Tecnologie che usiamo</p>
+            <div class="b-chips">
+              {stack.map(s => (
+                <span class="b-chip">{s}</span>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <FaqList items={faq} />
+
+  <!-- Other pillars -->
+  <section class="b-section b-section--tight b-section--line">
+    <div class="b-shell">
+      <p class="b-eyebrow" data-reveal>Si collega anche a</p>
+      <div class="sl-others">
+        {
+          others.map((p, i) => (
+            <a href={p.href} class="b-card sl-other" data-reveal data-reveal-delay={String((i % 5) + 1)}>
+              <span class="b-mono">{p.n}</span>
+              <strong>{p.title}</strong>
+              <small>{p.kicker}</small>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sl-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 760px) {
+    .sl-grid--2,
+    .sl-grid--3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .sl-grid--3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .sl-x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    background: rgba(248, 113, 113, 0.1);
+    color: #fca5a5;
+    font-size: 0.75rem;
+  }
+  .sl-n {
+    font-size: 0.78rem;
+    color: var(--b-cyan);
+  }
+  .sl-card-t {
+    margin: 1.25rem 0 0.6rem;
+  }
+
+  .sl-feature {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .sl-feature {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4.5rem;
+    }
+  }
+  .sl-feature-list {
+    margin: 2rem 0;
+  }
+
+  .sl-format {
+    display: flex;
+    flex-direction: column;
+  }
+  .sl-format.is-pop {
+    border-color: rgba(34, 211, 238, 0.45);
+    background: linear-gradient(180deg, rgba(34, 211, 238, 0.07), rgba(255, 255, 255, 0.015));
+  }
+  .sl-pop {
+    position: absolute;
+    top: -0.7rem;
+    right: 1.5rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #001318;
+    background: var(--b-cyan);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+  }
+  .sl-time {
+    margin: 0.5rem 0 1rem;
+    font-size: 0.78rem;
+    color: var(--b-cyan);
+  }
+  .sl-format-list {
+    margin: 1.5rem 0 2rem;
+    flex: 1;
+  }
+  .sl-format-note {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .sl-all {
+    justify-self: start;
+  }
+  @media (min-width: 960px) {
+    .sl-all {
+      justify-self: end;
+    }
+  }
+  .sl-work {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 760px) {
+    .sl-work {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .sl-work {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .sl-work--4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .sl-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .sl-stack {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 3rem;
+  }
+  .sl-stack .b-mono {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--b-fg-3);
+  }
+
+  .sl-others {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  @media (min-width: 900px) {
+    .sl-others {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  .sl-other {
+    padding: 1.25rem !important;
+  }
+  .sl-other .b-mono {
+    font-size: 0.72rem;
+    color: var(--b-cyan);
+  }
+  .sl-other strong {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  .sl-other small {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--b-fg-3);
+  }
+</style>

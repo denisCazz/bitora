@@ -1,449 +1,89 @@
 ---
 export const prerender = true;
-import Layout from '../layouts/Layout.astro';
-import ProductUi from '../components/product/ProductUi.astro';
-import FAQ from '../components/FAQ.astro';
-import ServiceSchema from '../components/schema/Service.astro';
-import FAQPageSchema from '../components/schema/FAQPage.astro';
-import HowToSchema from '../components/schema/HowTo.astro';
-import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
-import ReviewsSchema from '../components/schema/Reviews.astro';
-import { getCaseStudyBySlug } from '../data/caseStudies';
-import { testimonials } from '../data/testimonials';
-
-const featuredCase = getCaseStudyBySlug('mistral-impianti');
-const proofCases = ['agriturismo-la-natura', 'sartoria-kristina', 'speedy-pizza']
-  .map(getCaseStudyBySlug)
-  .filter((cs): cs is NonNullable<typeof cs> => Boolean(cs));
-
-const caseBlurbs: Record<string, string> = {
-  'mistral-impianti':
-    "Oltre trent'anni di impiantistica tecnologica meritavano una presenza digitale all'altezza: sito vetrina ottimizzato per la ricerca locale e tessere NFC per condividere i contatti in fiera e sui cantieri.",
-  'agriturismo-la-natura':
-    'Sito multilanguage (IT/EN/FR) orientato alle prenotazioni: cucina di campagna, orari, mappa e contatto diretto via telefono e WhatsApp.',
-  'sartoria-kristina':
-    'Vetrina elegante con portfolio delle creazioni e recensioni in evidenza: la qualità artigiana si racconta online.',
-  'speedy-pizza':
-    'Menù digitale chiaro e veloce, con tessere NFC che portano i clienti dritti alla pagina delle recensioni.',
-};
-
-const proofQuotes = ['Mistral Impianti', 'Sartoria Kristina', 'Speedy Pizza']
-  .map(company => testimonials.find(t => t.company === company))
-  .filter((t): t is NonNullable<typeof t> => Boolean(t));
-
-const faqItems = [
-  {
-    question: 'Quanto costa un sito professionale?',
-    answer: 'Dipende da pagine, contenuti e integrazioni. Audit gratuito e preventivo chiaro.',
-  },
-  {
-    question: 'Quanto tempo serve?',
-    answer: 'Landing 7–14 giorni. Sito completo 2–6 settimane in base a contenuti e revisioni.',
-  },
-  {
-    question: 'Fate SEO tecnico?',
-    answer:
-      'Sì: struttura H1/H2, schema, performance, sitemap, contenuti per intent locali e nazionali.',
-  },
-  {
-    question: 'Mi insegnate ad aggiornarlo?',
-    answer: 'Sì: formazione e documentazione. CMS semplice o servizio gestito.',
-  },
-  {
-    question: 'Lo rendete accessibile?',
-    answer: 'Sì: WCAG AA. Contrasti, focus, semantica, alt text, prefers-reduced-motion.',
-  },
-  {
-    question: 'Hosting incluso?',
-    answer: 'Possibile: ti consigliamo soluzione adatta a budget e traffico.',
-  },
-  {
-    question: 'Fate manutenzione?',
-    answer: 'Sì: aggiornamenti, monitoraggio, backup, ottimizzazioni continue.',
-  },
-];
-
-const qualities = [
-  { n: '01', t: 'Performance reali', d: 'LCP < 2.5s, CLS controllato. Niente librerie pesanti inutili.' },
-  { n: '02', t: 'SEO tecnico', d: 'Schema, sitemap, OG, contenuti orientati a intent locali e nazionali.' },
-  { n: '03', t: 'Accessibilità', d: 'WCAG AA: contrasti, focus, semantica, screen reader.' },
-];
-
-const steps = [
-  { n: '01', t: 'Discovery', d: 'Brief, obiettivi, target, struttura.' },
-  { n: '02', t: 'Design', d: 'Wireframe, UI, prototipo, copy.' },
-  { n: '03', t: 'Sviluppo', d: 'Codice pulito, performance, SEO, test.' },
-  { n: '04', t: 'Lancio', d: 'Deploy, Analytics, Search Console, supporto.' },
-];
-
-const related = [
-  { href: '/e-commerce/', label: 'E-commerce Piemonte', desc: 'Negozi online chiavi in mano' },
-  { href: '/servizi/', label: 'Tutti i servizi Bitora', desc: 'Siti, e-commerce e soluzioni tailormade' },
-  { href: '/gestione-interventi/', label: 'Ecosistema gestione interventi', desc: 'Pratiche digitalizzate e rapportini' },
-  { href: '/lavori/', label: 'Case study', desc: 'Progetti reali con metriche' },
-];
+import ServiceLanding from '../components/ui/ServiceLanding.astro';
 ---
 
-<Layout
-  title="Realizzazione Siti Web in Piemonte | Bitora"
-  description="Realizziamo siti web professionali per PMI in Piemonte: veloci, mobile-first e ottimizzati SEO, con progetti reali e supporto in Italia. Preventivo gratuito."
-  image="/editorial/web-offer.png"
->
-  <div class="product-page">
-    <section class="prod-hero">
-      <div class="prod-hero-media" aria-hidden="true">
-        <img
-          src="/editorial/web-offer.png"
-          alt=""
-          class="prod-hero-img"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div class="prod-hero-scrim"></div>
-      </div>
-      <div class="shell prod-hero-copy">
-        <p class="eyebrow">Sviluppo web per PMI in Piemonte</p>
-        <h1 class="display">
-          Il sito giusto<br />porta clienti,<br />non solo visite.
-        </h1>
-        <p class="lede">
-          Progettiamo siti veloci, mobile-first e ottimizzati per la ricerca locale. Ogni progetto
-          parte dai tuoi obiettivi e si misura in contatti, recensioni e prenotazioni.
-        </p>
-        <div class="cta-row">
-          <a
-            href="/contattaci/?topic=sito"
-            class="sl-btn-primary"
-            data-track="cta_click"
-            data-track-location="siti_hero">Richiedi preventivo</a
-          >
-          <a href="#progetti" class="sl-btn-secondary">Guarda i progetti reali</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="cosa" class="band">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div class="lg:col-span-5" data-reveal>
-            <p class="eyebrow">Cos'è un sito professionale</p>
-            <h2 class="headline">Più di una vetrina. Un asset di business.</h2>
-            <p class="body">
-              Sviluppo web per PMI in Piemonte: siti veloci, indicizzati, mobile-first, con
-              contenuti chiari, CTA misurabili e supporto in Italia.
-            </p>
-          </div>
-          <div class="lg:col-span-6 lg:col-start-7" data-reveal>
-            <ul class="border-t border-[var(--prod-line)]">
-              {
-                qualities.map(item => (
-                  <li class="grid grid-cols-[2.5rem_1fr] gap-5 py-6 border-b border-[var(--prod-line-soft)]">
-                    <span class="text-sm font-bold tabular-nums text-[var(--prod-faint)] pt-1">
-                      {item.n}
-                    </span>
-                    <div>
-                      <h3 class="text-xl font-bold tracking-tight mb-1">{item.t}</h3>
-                      <p class="body-sm">{item.d}</p>
-                    </div>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band-alt">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch" data-reveal>
-          <figure class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--prod-line-soft)] m-0">
-            <img
-              src="/editorial/digital-process.png"
-              alt="Dal contenuto sparso a un percorso digitale ordinato"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <figcaption class="absolute bottom-5 left-5 right-5 text-sm text-white/85 font-medium tracking-tight">
-              Contenuti e richieste organizzati in un percorso chiaro
-            </figcaption>
-          </figure>
-          <figure class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--prod-line-soft)] m-0">
-            <img
-              src="/editorial/crm.png"
-              alt="Dashboard con contatti, attività e risultati"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <figcaption class="absolute bottom-5 left-5 right-5 text-sm text-white/85 font-medium tracking-tight">
-              Contatti e risultati misurati, non semplici visite
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section id="progetti" class="band">
-      <div class="shell band-inner">
-        <header class="max-w-3xl mb-12" data-reveal>
-          <p class="eyebrow">Progetti reali</p>
-          <h2 class="headline">Già online. Già scelti.</h2>
-          <p class="body">
-            Dall'impiantistica industriale alla ristorazione, dall'artigianato all'hospitality: siti
-            pensati per generare contatti, recensioni e prenotazioni.
-          </p>
-        </header>
-
-        {
-          featuredCase ? (
-            <article
-              class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-10"
-              data-reveal
-            >
-              <a
-                href="/progetti/mistral-impianti/"
-                class="lg:col-span-5 block overflow-hidden rounded-2xl border border-[var(--prod-line-soft)]"
-                aria-label="Apri il progetto Mistral Impianti"
-              >
-                <img
-                  src={featuredCase.imageUrl}
-                  alt="Mistral Impianti"
-                  class="w-full aspect-[4/3] object-cover"
-                  loading="lazy"
-                />
-              </a>
-              <div class="lg:col-span-7">
-                <p class="eyebrow">Progetto in evidenza</p>
-                <h3 class="text-2xl md:text-3xl font-bold tracking-tight mb-1">Mistral Impianti</h3>
-                <p class="body-sm mb-4">
-                  B2B · Impianti — {featuredCase.location}
-                </p>
-                <p class="body mb-5">{caseBlurbs[featuredCase.slug]}</p>
-                <blockquote class="border-l border-white/20 pl-4 text-[var(--prod-secondary)] italic mb-6">
-                  “La realizzazione del sito web è stata eseguita in modo puntuale, professionale e
-                  con elevata attenzione ai dettagli.”
-                  <cite class="not-italic block mt-2 text-xs font-semibold text-[var(--prod-muted)]">
-                    — Lello Bottero, CEO Mistral Impianti
-                  </cite>
-                </blockquote>
-                <div class="cta-row">
-                  <a href="/progetti/mistral-impianti/" class="sl-btn-primary">Vedi progetto</a>
-                  <a
-                    href="https://mistralimpianti.it"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="sl-btn-secondary">Visita mistralimpianti.it</a
-                  >
-                </div>
-              </div>
-            </article>
-          ) : null
-        }
-
-        <div class="grid md:grid-cols-3 gap-4" data-reveal>
-          {
-            proofCases.map(cs => (
-              <a
-                href={`/progetti/${cs.slug}/`}
-                class="group flex flex-col overflow-hidden rounded-2xl border border-[var(--prod-line-soft)] bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.045] transition-colors"
-              >
-                <img
-                  src={cs.imageUrl}
-                  alt={cs.title}
-                  class="w-full aspect-[16/10] object-cover"
-                  loading="lazy"
-                />
-                <div class="p-6 flex flex-col grow">
-                  <p class="text-xs font-semibold tracking-[0.16em] uppercase text-[var(--prod-faint)] mb-3">
-                    {cs.metricsPreview[0]}
-                  </p>
-                  <h3 class="text-lg font-bold tracking-tight mb-2">{cs.title}</h3>
-                  <p class="body-sm grow">{caseBlurbs[cs.slug] ?? cs.clientDescription.slice(0, 140)}</p>
-                  <span class="text-link mt-5">
-                    Vedi progetto
-                    <span aria-hidden="true">→</span>
-                  </span>
-                </div>
-              </a>
-            ))
-          }
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4 mt-4" data-reveal>
-          {
-            proofQuotes.map(t => (
-              <figure class="feat-card">
-                <blockquote class="body-sm italic">“{t.quote}”</blockquote>
-                <figcaption class="mt-5 text-sm font-semibold">
-                  {t.author} · {t.company}
-                  <span class="block body-sm font-normal mt-1">{t.role}</span>
-                </figcaption>
-              </figure>
-            ))
-          }
-        </div>
-
-        <div class="mt-10" data-reveal>
-          <a href="/lavori/" class="text-link">
-            Guarda tutti i progetti
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band-alt">
-      <div class="shell band-inner">
-        <header class="max-w-3xl mb-12" data-reveal>
-          <p class="eyebrow">Metodo</p>
-          <h2 class="headline">Dal brief al lancio in 4 step.</h2>
-        </header>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-3" data-reveal>
-          {
-            steps.map(s => (
-              <article class="feat-card min-h-[210px] flex flex-col justify-between">
-                <span
-                  class="block font-bold leading-none tabular-nums text-white/[0.14]"
-                  style="font-size:clamp(2.5rem,4vw,3.25rem)"
-                >
-                  {s.n}
-                </span>
-                <div>
-                  <h3 class="text-lg font-bold tracking-tight mb-1">{s.t}</h3>
-                  <p class="body-sm">{s.d}</p>
-                </div>
-              </article>
-            ))
-          }
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-3" data-reveal>
-          {
-            [
-              { t: 'Made in Italy', d: 'Sviluppo e supporto in Italia' },
-              { t: 'Privacy e consenso', d: 'Gestione cookie e dati personali' },
-              { t: 'Risposta 24h', d: 'Preventivo e audit iniziale' },
-              { t: 'Progetti pubblicati', d: 'Casi selezionati su bitora.it/lavori' },
-            ].map(b => (
-              <div class="feat-card">
-                <p class="font-semibold tracking-tight">{b.t}</p>
-                <p class="body-sm mt-1">{b.d}</p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="shell band-inner">
-        <div class="grid lg:grid-cols-12 gap-12" data-reveal>
-          <div class="lg:col-span-4">
-            <p class="eyebrow">FAQ</p>
-            <h2 class="headline">FAQ siti web</h2>
-            <p class="body">Risposte chiare su costi, tempi, SEO e supporto.</p>
-          </div>
-          <div class="lg:col-span-7 lg:col-start-6">
-            <FAQ items={faqItems} tone="on-dark" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band-alt">
-      <div class="shell band-inner">
-        <header class="max-w-3xl mb-10" data-reveal>
-          <p class="eyebrow">Approfondimenti</p>
-          <h2 class="headline">Pagine correlate</h2>
-        </header>
-        <div class="grid sm:grid-cols-2 gap-3" data-reveal>
-          {
-            related.map(link => (
-              <a href={link.href} class="feat-card group">
-                <h3 class="text-lg font-bold tracking-tight group-hover:translate-x-0.5 transition-transform">
-                  {link.label}
-                </h3>
-                <p class="body-sm mt-1">{link.desc}</p>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="band-cta">
-      <div class="shell band-cta-inner" data-reveal>
-        <p class="eyebrow">Inizia da qui</p>
-        <h2 class="display" style="font-size:clamp(2.4rem,6.5vw,4.5rem)">
-          Raccontaci il progetto.<br />Prepariamo il percorso.
-        </h2>
-        <p class="lede" style="margin-inline:auto;margin-bottom:2rem">
-          Sito vetrina o restyle: partiamo dagli obiettivi e ti rispondiamo entro 24 ore.
-        </p>
-        <div class="cta-row" style="justify-content:center">
-          <a
-            href="/contattaci/?topic=sito"
-            class="sl-btn-primary sl-btn-lg"
-            data-track="cta_click"
-            data-track-location="siti_final"
-          >
-            Richiedi un preventivo
-            <span aria-hidden="true">→</span>
-          </a>
-          <a
-            href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20parlarvi%20di%20un%20sito%20web."
-            class="sl-btn-whatsapp"
-            data-track="whatsapp_click"
-            data-track-location="siti_final">Scrivici su WhatsApp</a
-          >
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <ProductUi />
-</Layout>
-
-<ServiceSchema
-  name="Realizzazione Siti Web Professionali"
-  url="https://bitora.it/siti-web-professionali/"
-  serviceType={['Siti Web', 'Web Design', 'SEO Tecnico', 'Sviluppo Web']}
-  areaServed={['Carmagnola', 'Torino', 'Piemonte', 'Italia']}
-/>
-
-<HowToSchema
-  name="Come progettiamo un sito web professionale"
-  description="Metodo Bitora in 4 step: discovery, design, sviluppo, lancio."
-  steps={[
-    { name: 'Discovery', text: 'Brief, obiettivi, target, struttura informativa.' },
-    { name: 'Design', text: 'Wireframe, UI, prototipo navigabile, copy SEO.' },
-    {
-      name: 'Sviluppo',
-      text: 'Codice pulito, performance LCP < 2.5s, SEO tecnico, test cross-browser.',
-    },
-    { name: 'Lancio', text: 'Deploy, Analytics, Search Console, supporto post-lancio.' },
+<ServiceLanding
+  pillar="siti"
+  topic="sito"
+  seo={{
+    title: 'Siti web professionali a Carmagnola, Torino e Cuneo | Bitora',
+    description:
+      'Siti web su misura per attività e aziende in Piemonte: veloci, curati, ottimizzati per Google e pensati per portare chiamate, prenotazioni e richieste. Preventivo gratuito in 24 ore.',
+  }}
+  hero={{
+    eyebrow: 'Siti web professionali',
+    title: 'Un sito che <span class="b-grad">porta clienti</span>, non solo visite.',
+    lede: 'Progettiamo e sviluppiamo siti su misura per ristoranti, studi, artigiani e aziende. Veloci, belli da vedere su smartphone e scritti per far chiamare, prenotare e chiedere un preventivo.',
+    chips: ['Caricamento sotto 1 secondo', 'SEO locale incluso', 'WhatsApp e prenotazioni', 'Tuo al 100%'],
+  }}
+  ctaLabel="Preventivo sito gratuito"
+  signals={{
+    title: 'Il tuo sito attuale <span class="b-accent">ti sta facendo perdere clienti</span> se…',
+    items: [
+      { t: 'Su Google non ti trovano', d: 'Chi cerca il tuo servizio in zona trova i concorrenti. Il tuo sito è alla terza pagina, o non c’è.' },
+      { t: 'Da telefono è un disastro', d: 'Testi minuscoli, pulsanti irraggiungibili, caricamento lento. Il 70% delle visite arriva da smartphone.' },
+      { t: 'Non arriva nessuna richiesta', d: 'Le visite ci sono, ma nessuno chiama. Manca un percorso chiaro verso il contatto.' },
+      { t: 'Sembra fermo al 2015', d: 'Grafica datata e foto vecchie trasmettono un’immagine che non rispecchia la qualità del tuo lavoro.' },
+      { t: 'Aggiornarlo è un incubo', d: 'Per cambiare un orario o un prezzo devi chiamare qualcuno e aspettare giorni.' },
+      { t: 'Non sai se funziona', d: 'Nessun dato su visite, chiamate e richieste. Investimento al buio.' },
+    ],
+  }}
+  deliverables={{
+    title: 'Tutto quello che serve per <span class="b-accent">farti scegliere</span>.',
+    lede: 'Non vendiamo pagine: costruiamo un percorso che porta chi ti cerca fino al contatto. Design, testi, tecnica e misurazione nello stesso progetto.',
+    items: [
+      { t: 'Design su misura', d: 'Niente template: un’identità visiva che racconta la tua attività e ti distingue dai concorrenti.' },
+      { t: 'Testi che convertono', d: 'Ti aiutiamo a scrivere cosa fai, per chi e perché sceglierti. Chiaro, diretto, con le call to action giuste.' },
+      { t: 'Velocità estrema', d: 'Codice leggero e moderno: pagine che si aprono in meno di un secondo, anche con il 4G in montagna.' },
+      { t: 'SEO locale', d: 'Struttura, dati strutturati, Google Business Profile e contenuti per le ricerche nella tua zona.' },
+      { t: 'Contatto immediato', d: 'WhatsApp, chiamata, mappa, form e prenotazioni sempre a portata di pollice.' },
+      { t: 'Misurazione', d: 'Analytics e Search Console configurati: sai quante persone arrivano e quante ti contattano.' },
+    ],
+  }}
+  feature={{
+    slug: 'garavella-7',
+    eyebrow: 'Caso in evidenza',
+    title: 'Garavella 7, Carmagnola',
+    text: 'Un bar in piazza con un sito che racconta aperitivi e colazioni, e un menu online che si aggiorna da solo dal gestionale del magazzino.',
+    points: [
+      'Sito veloce, mobile-first e bilingue',
+      'Menu sempre allineato a quello che c’è al banco',
+      'WhatsApp, chiamata e indicazioni in un tap',
+      'SEO locale per le ricerche a Carmagnola',
+    ],
+  }}
+  formats={{
+    title: 'Scegli da dove <span class="b-accent">partire</span>.',
+    items: [
+      {
+        t: 'Landing page',
+        time: '1–2 settimane',
+        d: 'Una pagina potente per una campagna, un servizio o un’attività che parte ora.',
+        bullets: ['Copy orientato alla conversione', 'Form e WhatsApp', 'Pronta per Google Ads e Meta'],
+      },
+      {
+        t: 'Sito vetrina',
+        time: '2–4 settimane',
+        d: 'Il sito completo per attività e professionisti che vogliono farsi trovare e contattare.',
+        bullets: ['Fino a 8 pagine su misura', 'SEO locale e Google Business', 'Menu, gallery o portfolio', 'Formazione inclusa'],
+      },
+      {
+        t: 'Sito evoluto',
+        time: '4–8 settimane',
+        d: 'Per aziende con più servizi, lingue o integrazioni con gestionali e prenotazioni.',
+        bullets: ['Multilingua', 'Area riservata o blog', 'Integrazione con gestionale', 'Prenotazioni online'],
+      },
+    ],
+  }}
+  projects={['dalina', 'mistral-impianti', 'agriturismo-la-natura', 'sartoria-kristina']}
+  stack={['Astro', 'Next.js', 'Tailwind', 'Google Business Profile', 'Search Console', 'GA4', 'Umami']}
+  faq={[
+    { question: 'Quanto costa un sito professionale?', answer: 'Dipende da pagine, contenuti e integrazioni. Dopo una call gratuita ricevi un preventivo a prezzo fisso, diviso per fasi. Nessun costo nascosto.' },
+    { question: 'Quanto tempo serve?', answer: 'Una landing page in 1–2 settimane, un sito vetrina in 2–4 settimane, un sito evoluto in 4–8 settimane, in base ai contenuti e alle revisioni.' },
+    { question: 'Mi aiutate con testi e foto?', answer: 'Sì. Ti guidiamo nella scrittura dei testi e, se serve, organizziamo foto e contenuti. Partiamo da quello che hai e completiamo il resto.' },
+    { question: 'Posso aggiornarlo da solo?', answer: 'Sì: per menu, orari, news o prodotti prepariamo strumenti semplici e ti formiamo. Se preferisci, ci pensiamo noi con un servizio gestito.' },
+    { question: 'Hosting, dominio ed email sono inclusi?', answer: 'Possiamo occuparci di tutto noi, con hosting veloce e backup, oppure usare i tuoi servizi esistenti. Dominio e contenuti restano sempre intestati a te.' },
+    { question: 'Fate anche SEO e Google Business?', answer: 'Sì: SEO tecnico e locale sono inclusi in ogni sito, e configuriamo o ottimizziamo la scheda Google Business Profile per le ricerche in zona.' },
   ]}
-/>
-
-<FAQPageSchema items={faqItems} />
-
-<BreadcrumbListSchema
-  crumbs={[
-    { name: 'Home', item: 'https://bitora.it/' },
-    { name: 'Siti Web Professionali', item: 'https://bitora.it/siti-web-professionali/' },
-  ]}
-/>
-
-<ReviewsSchema
-  itemName="Bitora - Siti Web Professionali"
-  ratingValue={5}
-  reviewCount={proofQuotes.length}
-  reviews={proofQuotes.map(t => ({
-    author: `${t.author}, ${t.company}`,
-    body: t.quote,
-    rating: t.rating ?? 5,
-  }))}
 />

@@ -1,252 +1,151 @@
 ﻿---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
-import { getPublicCaseStudies } from '../data/caseStudies';
+import PageHero from '../components/ui/PageHero.astro';
+import ProjectCard from '../components/ui/ProjectCard.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
+import { getWork, workKindLabels, type WorkKind } from '../data/work';
 
-const projects = getPublicCaseStudies();
+const work = getWork().sort((a, b) => Number(a.isWip ?? false) - Number(b.isWip ?? false));
+const kinds = (Object.keys(workKindLabels) as WorkKind[]).filter(k => work.some(w => w.kinds.includes(k)));
+const live = work.filter(w => !w.isWip).length;
+const listSchema = {
+  '@type': 'ItemList',
+  '@id': 'https://bitora.it/lavori/#list',
+  name: 'Progetti realizzati da Bitora',
+  numberOfItems: work.length,
+  itemListElement: work.map((w, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://bitora.it/progetti/${w.slug}/`,
+    name: w.title,
+  })),
+};
 ---
 
 <Layout
-  title="Lavori e prototipi | Portfolio Bitora"
-  description="Progetti realizzati e prototipi software Bitora: siti web, e-commerce e piattaforme dimostrative per assistenza tecnica. Sede in Piemonte."
+  title="Lavori e progetti: siti, e-commerce, gestionali e app | Bitora"
+  description="Portfolio Bitora: siti web, e-commerce, gestionali su misura e app realizzati per attività e aziende in Piemonte. Progetti veri, online e in uso ogni giorno."
+  pageType="CollectionPage"
+  schema={[listSchema]}
 >
-  <main class="bg-black text-white overflow-x-hidden">
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Lavori', item: 'https://bitora.it/lavori/' },
+    ]}
+  />
+  <PageHero
+    eyebrow={`Lavori · ${live} progetti online`}
+    title='Progetti veri. <span class="b-grad">In uso ogni giorno.</span>'
+    lede="Bar, ristoranti, artigiani, consulenti, aziende di impianti ed e-commerce tecnici. Ogni progetto è nato da un problema concreto: ecco come l’abbiamo risolto."
+    crumbs={[{ name: 'Lavori', href: '/lavori/' }]}
+  />
 
-    <!-- HERO -->
-    <section class="pt-40 pb-20 px-8 md:px-16 lg:px-24 border-b border-white/[0.06]">
-      <div class="max-w-7xl mx-auto">
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/40 uppercase mb-7" data-reveal>Portfolio</p>
-        <h1 class="text-[clamp(3.5rem,10vw,9rem)] font-bold leading-[0.95] tracking-tight mb-14" data-reveal>
-          I nostri<br />lavori.
-        </h1>
-        <div class="flex flex-wrap gap-12 md:gap-20 border-t border-white/[0.08] pt-10" data-reveal>
-          <div>
-            <p class="text-4xl font-bold mb-1">{projects.length}</p>
-            <p class="text-xs uppercase tracking-[0.2em] text-white/55">Progetti</p>
-          </div>
-          <div>
-            <p class="text-4xl font-bold mb-1">100%</p>
-            <p class="text-xs uppercase tracking-[0.2em] text-white/55">Su misura</p>
-          </div>
-          <div>
-            <p class="text-4xl font-bold mb-1">0</p>
-            <p class="text-xs uppercase tracking-[0.2em] text-white/55">Template usati</p>
-          </div>
-          <div>
-            <p class="text-4xl font-bold mb-1">Demo</p>
-            <p class="text-xs uppercase tracking-[0.2em] text-white/55">Disponibile</p>
-          </div>
-        </div>
+  <section class="b-section b-section--line wk">
+    <div class="b-shell">
+      <div class="wk__filters" role="tablist" aria-label="Filtra per tipo di progetto">
+        <button type="button" class="wk__f is-on" data-filter="all" role="tab" aria-selected="true">
+          Tutti <span>{work.length}</span>
+        </button>
+        {
+          kinds.map(k => (
+            <button type="button" class="wk__f" data-filter={k} role="tab" aria-selected="false">
+              {workKindLabels[k]} <span>{work.filter(w => w.kinds.includes(k)).length}</span>
+            </button>
+          ))
+        }
       </div>
-    </section>
-
-    <!-- PROTOTIPI -->
-    <section class="border-b border-white/[0.06] bg-white/[0.02]">
-      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-20 md:py-28" data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-white/40 uppercase mb-6">Prototipi e soluzioni dimostrative</p>
-        <h2 class="text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight leading-[1.07] mb-4 max-w-3xl">
-          Piattaforma per la gestione dell’assistenza tecnica
-        </h2>
-        <p class="text-sm font-medium text-white/40 mb-6">Prototipo software Bitora · Demo disponibile</p>
-        <p class="text-base md:text-[1.05rem] text-white/58 leading-relaxed mb-8 max-w-[56ch]">
-          Prototipo modulare per la gestione di pratiche, assegnazioni, centri assistenza, tecnici e rapportini digitali. La piattaforma è pensata per essere configurata sui processi delle aziende che gestiscono interventi sul territorio.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-9">
-          {[
-            'Gestione pratiche',
-            'Stati di lavorazione',
-            'Assegnazione CAT',
-            'Assegnazione manutentori',
-            'Rapportini digitali',
-            'Firme e fotografie',
-            'Ricambi e PDF',
-            'Dashboard',
-          ].map((m) => (
-            <span class="text-xs font-semibold text-white/65 bg-white/[0.06] border border-white/10 rounded-full px-3.5 py-1.5 tracking-wide">
-              {m}
-            </span>
-          ))}
-        </div>
-        <div class="flex flex-wrap items-center gap-4">
-          <a
-            href="/gestione-interventi/"
-            class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-semibold rounded hover:bg-white/88 transition-colors"
-          >
-            Apri prototipo
-            <span aria-hidden="true">→</span>
-          </a>
-          <a
-            href="/richiedi-demo/"
-            class="inline-flex items-center gap-2 px-5 py-2.5 border border-white/25 text-white text-sm font-semibold rounded hover:border-white/60 hover:bg-white/[0.06] transition-all"
-          >
-            Richiedi una demo
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SHOP NFC — nuova branchia -->
-    <section class="border-b border-white/[0.06] bg-gradient-to-br from-sky-500/[0.12] via-white/[0.03] to-transparent">
-      <div class="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-20 md:py-28" data-reveal>
-        <p class="text-xs font-semibold tracking-[0.25em] text-sky-300 uppercase mb-6">Nuova branchia · Progetto Bitora</p>
-        <h2 class="text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight leading-[1.07] mb-4 max-w-3xl">
-          Shop NFC Bitora
-        </h2>
-        <p class="text-sm font-medium text-white/40 mb-6">Catalogo NFC · shopnfc.bitora.it</p>
-        <p class="text-base md:text-[1.05rem] text-white/58 leading-relaxed mb-8 max-w-[56ch]">
-          E-commerce Bitora per tag, tessere, braccialetti, tag industriali e lettori NFC. Programmazione inclusa e assistenza diretta, per aziende e professionisti.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-9">
-          {[
-            'Tessere NFC',
-            'Sticker e tag',
-            'Braccialetti',
-            'Lettori',
-            'Programmazione inclusa',
-          ].map((m) => (
-            <span class="text-xs font-semibold text-white/65 bg-white/[0.06] border border-white/10 rounded-full px-3.5 py-1.5 tracking-wide">
-              {m}
-            </span>
-          ))}
-        </div>
-        <div class="flex flex-wrap items-center gap-4">
-          <a
-            href="https://shopnfc.bitora.it/"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-semibold rounded hover:bg-white/88 transition-colors"
-            data-track="cta_click"
-            data-track-location="lavori_shopnfc"
-          >
-            Entra nello shop
-            <span aria-hidden="true">→</span>
-          </a>
-          <a
-            href="/nfc-ecosystem/"
-            class="inline-flex items-center gap-2 px-5 py-2.5 border border-white/25 text-white text-sm font-semibold rounded hover:border-white/60 hover:bg-white/[0.06] transition-all"
-          >
-            Soluzioni NFC su misura
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    {projects.map((p, i) => (
-      <article class="border-b border-white/[0.06]">
-        <div
-          class={
-            'max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-20 md:py-28 flex flex-col gap-12 md:gap-20 items-center ' +
-            (i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse')
-          }
-          data-reveal
-        >
-          <!-- image -->
-          <a
-            href={`/progetti/${p.slug}/`}
-            class="w-full md:w-[52%] flex-shrink-0 relative group rounded-2xl overflow-hidden bg-white/[0.03] block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-            aria-label={`Apri il progetto ${p.title}`}
-          >
-            <div class="aspect-[4/3] overflow-hidden">
-              <img
-                src={p.imageUrl}
-                alt={p.title}
-                class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                loading={i === 0 ? 'eager' : 'lazy'}
-                decoding="async"
-              />
+      <div class="wk__grid">
+        {
+          work.map((w, i) => (
+            <div class="wk__item" data-kinds={w.kinds.join(' ')} data-reveal data-reveal-delay={String((i % 3) + 1)}>
+              <ProjectCard item={w} />
             </div>
-            <span class="absolute top-4 left-4 flex flex-wrap gap-2">
-              <span class="text-xs font-semibold tracking-wider bg-black/65 backdrop-blur-sm text-white/60 border border-white/10 rounded-full px-3 py-1.5">
-                {p.category}
-              </span>
-              {p.isWip && (
-                <span class="text-xs font-semibold tracking-wider uppercase bg-white/90 text-black border border-white/20 rounded-full px-3 py-1.5">
-                  In corso
-                </span>
-              )}
-            </span>
-            <span class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 px-5 py-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span class="text-sm font-semibold text-white">Apri progetto</span>
-              <span class="text-white/80" aria-hidden="true">→</span>
-            </span>
-          </a>
-
-          <!-- text -->
-          <div class="flex-1 min-w-0 relative">
-            <span
-              aria-hidden="true"
-              class="absolute -top-6 right-0 text-[clamp(5rem,12vw,10rem)] font-bold leading-none text-white/[0.04] select-none pointer-events-none tabular-nums"
-            >
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <div class="relative">
-              <p class="text-xs font-semibold tracking-[0.2em] text-white/55 uppercase mb-4">{p.location}</p>
-              <h2 class="text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight leading-[1.07] mb-3">
-                <a
-                  href={`/progetti/${p.slug}/`}
-                  class="hover:text-white/80 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-sm"
-                >
-                  {p.title}
-                </a>
-              </h2>
-              <p class="text-sm font-medium text-white/40 mb-7">{p.subtitle}</p>
-              <p class="text-base md:text-[1.05rem] text-white/58 leading-relaxed mb-8 max-w-[38ch]">
-                {p.problema.slice(0, 210)}{p.problema.length > 210 ? '\u2026' : ''}
-              </p>
-              <div class="flex flex-wrap gap-2 mb-9">
-                {p.metricsPreview.map(m => (
-                  <span class="text-xs font-semibold text-white/65 bg-white/[0.06] border border-white/10 rounded-full px-3.5 py-1.5 tracking-wide">
-                    {m}
-                  </span>
-                ))}
-              </div>
-              <div class="flex flex-wrap items-center gap-4">
-                <a
-                  href={`/progetti/${p.slug}/`}
-                  class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-semibold rounded hover:bg-white/88 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                >
-                  Apri progetto
-                  <span aria-hidden="true">→</span>
-                </a>
-                {p.siteUrl && p.siteUrl !== '#' && (
-                  <a
-                    href={p.siteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 border border-white/25 text-white text-sm font-semibold rounded hover:border-white/60 hover:bg-white/[0.06] transition-all"
-                  >
-                    Visita il sito
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
-                  </a>
-                )}
-                <a href="/contattaci/" class="text-sm font-medium text-white/60 hover:text-white transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-white/60">
-                  Progetto simile?
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </article>
-    ))}
-
-  </main>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <script>
-  const _els = document.querySelectorAll('[data-reveal]');
-  const _obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('rv'); _obs.unobserve(e.target); }
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.wk__f');
+  const items = document.querySelectorAll<HTMLElement>('.wk__item');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter!;
+      buttons.forEach(b => {
+        const on = b === btn;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-selected', String(on));
+      });
+      items.forEach(it => {
+        const show = f === 'all' || (it.dataset.kinds || '').split(' ').includes(f);
+        it.hidden = !show;
+        if (show) it.classList.add('is-in');
+      });
     });
-  }, { threshold: 0.08 });
-  _els.forEach(el => _obs.observe(el));
+  });
 </script>
 
 <style>
-  [data-reveal] { opacity:0; transform:translateY(38px); transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); }
-  [data-reveal].rv { opacity:1; transform:translateY(0); }
-  @media (prefers-reduced-motion:reduce) { [data-reveal] { opacity:1!important;transform:none!important;transition:none!important; } }
+  .wk__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+  .wk__f {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--b-line-2);
+    background: transparent;
+    color: var(--b-fg-2);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+  .wk__f span {
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    color: var(--b-fg-3);
+  }
+  .wk__f:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    color: var(--b-fg);
+  }
+  .wk__f.is-on {
+    background: var(--b-cyan);
+    border-color: var(--b-cyan);
+    color: #001318;
+  }
+  .wk__f.is-on span {
+    color: rgba(0, 19, 24, 0.6);
+  }
+  .wk__grid {
+    display: grid;
+    gap: 3rem 2rem;
+  }
+  @media (min-width: 760px) {
+    .wk__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .wk__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .wk__item[hidden] {
+    display: none;
+  }
 </style>

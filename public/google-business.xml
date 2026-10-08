@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessInfo xmlns="http://www.google.com/localservices/businessinfo">
-  <name>Bitora - Web Design Carmagnola</name>
+  <name>Bitora - Studio digitale Carmagnola</name>
   <description>
-    Servizi professionali di web design, sviluppo siti web e ecosistemi digitali NFC 
-    per aziende di Carmagnola e provincia di Torino. Specializzati in landing page 
-    ad alta conversione e soluzioni innovative per il territorio piemontese.
+    Bitora è lo studio digitale di Carmagnola (TO): siti web, e-commerce, gestionali su misura,
+    app mobile iOS e Android, automazioni con intelligenza artificiale e soluzioni NFC per aziende
+    del Piemonte e di tutta Italia. Preventivo gratuito entro 24 ore.
   </description>
   <address>
     <locality>Carmagnola</locality>
@@ -19,6 +19,7 @@
   <categories>
     <category>Web Design Agency</category>
     <category>Website Developer</category>
+    <category>Software Company</category>
     <category>Digital Marketing Service</category>
     <category>Technology Company</category>
   </categories>
@@ -35,12 +36,14 @@
     <area>Piemonte</area>
   </serviceAreas>
   <services>
-    <service>Progettazione siti web</service>
-    <service>Landing page professionali</service>
-    <service>Tessere NFC smart</service>
-    <service>SEO locale</service>
+    <service>Siti web professionali</service>
     <service>E-commerce</service>
-    <service>Ecosistemi digitali</service>
+    <service>Gestionali e software su misura</service>
+    <service>App mobile iOS e Android</service>
+    <service>Intelligenza artificiale e automazioni</service>
+    <service>Controllo accessi e IoT</service>
+    <service>Tessere e tag NFC</service>
+    <service>SEO locale</service>
   </services>
   <contact>
     <phone>+39 3514979670</phone>

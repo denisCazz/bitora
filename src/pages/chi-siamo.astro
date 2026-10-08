@@ -1,360 +1,211 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
-import VideoHero from '../components/VideoHero.astro';
-import MediaShowcase from '../components/MediaShowcase.astro';
-import TrustBadges from '../components/TrustBadges.astro';
-import StatCounter from '../components/StatCounter.astro';
-import ClientLogos from '../components/ClientLogos.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import ShotMarquee from '../components/ui/ShotMarquee.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
-import { getCompletedCaseStudies } from '../data/caseStudies';
+import { getWork } from '../data/work';
 
-const publishedProjects = getCompletedCaseStudies().length;
+const live = getWork().filter(w => !w.isWip).length;
+
+const values = [
+  { t: 'Parliamo chiaro', d: 'Niente gergo, niente promesse gonfiate. Ti diciamo cosa serve, cosa no e quanto costa, anche quando la risposta è “non ti serve”.' },
+  { t: 'Costruiamo per durare', d: 'Codice pulito, documentato e tuo. Strumenti che puoi far crescere negli anni senza ricominciare da capo.' },
+  { t: 'Ci mettiamo la faccia', d: 'Chi progetta è chi sviluppa ed è chi ti risponde al telefono. Nessun passaggio di mano, nessun call center.' },
+  { t: 'Misuriamo', d: 'Ogni progetto ha un obiettivo concreto: richieste, ordini, ore risparmiate. Se non si misura, non è finito.' },
+];
+
+const stack = [
+  'Astro', 'Next.js', 'React', 'React Native', 'Expo', 'TypeScript', 'Tailwind', 'PostgreSQL', 'Prisma',
+  'OpenAI', 'Stripe', 'PayPal', 'Cloudflare', 'Docker', 'Coolify', 'MQTT',
+];
 ---
 
 <Layout
-  title="Chi Siamo | Bitora - Sistemi Digitali su Misura"
-  description="Bitora: sistemi digitali su misura per aziende e PMI. Sede a Carmagnola, Piemonte. Serviamo tutta Italia. Metodo Trust & Authority, risultati misurabili."
-  image="/editorial/web-offer.png"
-  noindex={true}
+  title="Chi siamo | Bitora, studio digitale a Carmagnola (TO)"
+  description="Bitora è lo studio digitale di Denis Cazzulo a Carmagnola (TO): siti, e-commerce, gestionali, app e AI per aziende del Piemonte e di tutta Italia, dal 2020."
+  pageType="AboutPage"
 >
-  <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
-    <VideoHero
-      variant="background"
-      eyebrow="Chi siamo"
-      title="Il partner digitale"
-      highlight="della tua azienda."
-      description="Sviluppiamo sistemi digitali su misura per PMI italiane. Sede a Carmagnola, copertura nazionale. Trasparenza, metodo, risultati."
-      primaryCta={{ label: 'Richiedi consulenza', href: '/contattaci/' }}
-      secondaryCta={{ label: 'Vedi i progetti', href: '/lavori/' }}
-      posterSrc="/editorial/web-offer.png"
-      videoLabel="Progettazione di esperienze digitali Bitora"
-    />
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Chi siamo', item: 'https://bitora.it/chi-siamo/' },
+    ]}
+  />
+  <PageHero
+    eyebrow="Chi siamo"
+    title='Un piccolo studio, <span class="b-grad">a Carmagnola</span>. Con grandi standard.'
+    lede="Bitora nasce nel 2020 con un’idea semplice: dare alle aziende del territorio strumenti digitali fatti su misura, con la qualità delle grandi agenzie e il rapporto diretto di una bottega."
+    crumbs={[{ name: 'Chi siamo', href: '/chi-siamo/' }]}
+    primary={{ label: 'Conosciamoci', href: '/contattaci/', track: 'about_hero' }}
+    secondary={{ label: 'Guarda i lavori', href: '/lavori/' }}
+  />
 
-    <!-- Stats -->
-    <section
-      class="py-16 md:py-20 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto">
-        <StatCounter
-          items={[
-            {
-              label: 'Progetti pubblicati',
-              value: String(publishedProjects),
-              number: publishedProjects,
-            },
-            { label: 'Risposta media', value: '24h', number: 24, suffix: 'h' },
-            { label: 'Fondazione', value: '2020', number: 2020 },
-            { label: 'Copertura', value: 'Italia' },
-          ]}
-        />
+  <section class="b-section b-section--line">
+    <div class="b-shell ab">
+      <div class="ab__card b-card" data-reveal>
+        <img src="/bitora-mark.png" alt="" width="140" height="64" loading="lazy" />
+        <dl>
+          <div><dt>Fondatore</dt><dd>Denis Cazzulo</dd></div>
+          <div><dt>Sede</dt><dd>Carmagnola (TO)</dd></div>
+          <div><dt>Attivi dal</dt><dd>2020</dd></div>
+          <div><dt>Progetti online</dt><dd>{live}+</dd></div>
+          <div><dt>P.IVA</dt><dd>13359170019</dd></div>
+        </dl>
       </div>
-    </section>
-
-    <!-- Fondatore -->
-    <section class="py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
-        <div class="lg:col-span-5">
-          <p
-            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-          >
-            Chi realizza e supporta
+      <div data-reveal data-reveal-delay="1">
+        <p class="b-eyebrow">La storia</p>
+        <h2 class="b-h2">Dal sito per il bar sotto casa al gestionale con l’AI.</h2>
+        <div class="ab__text">
+          <p class="b-text">
+            Bitora è l’attività di <strong>Denis Cazzulo</strong>, sviluppatore e progettista. È iniziata
+            con i siti per le attività di Carmagnola e dintorni: bar, ristoranti, artigiani,
+            professionisti. Lavorando a contatto con i titolari, è diventato chiaro che il sito era solo
+            la punta dell’iceberg.
           </p>
-          <h2
-            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-          >
-            Denis Cazzulo
-          </h2>
-          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Bitora è l’attività di Denis Cazzulo (P.IVA 13359170019), con sede a Carmagnola (TO).
-            Progetta e sviluppa piattaforme operative per assistenza tecnica, siti web ed e-commerce
-            su misura.
+          <p class="b-text">
+            Dietro c’erano magazzini gestiti a mano, rapportini di carta, preventivi riscritti ogni
+            volta, telecomandi da distribuire. Così Bitora è cresciuta: oggi progetta e sviluppa
+            e-commerce, gestionali, app iOS e Android e automazioni con l’intelligenza artificiale.
           </p>
-          <p class="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            Contatti diretti: info@bitora.it · +39 351 497 9670. Supporto e sviluppo restano in
-            Italia, senza intermediari opachi sul prodotto.
+          <p class="b-text">
+            Il metodo è rimasto lo stesso: ascoltare, capire il lavoro vero e costruire lo strumento
+            più semplice che risolve il problema. Poi restare, per farlo crescere.
           </p>
-        </div>
-        <div class="lg:col-span-7 rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/[0.03] p-8">
-          <ul class="space-y-4 text-slate-700 dark:text-slate-300">
-            <li>
-              <strong class="text-slate-950 dark:text-white">Ruolo:</strong> titolare, progettazione
-              e sviluppo delle piattaforme Bitora.
-            </li>
-            <li>
-              <strong class="text-slate-950 dark:text-white">Sede:</strong> Carmagnola, Torino,
-              Piemonte.
-            </li>
-            <li>
-              <strong class="text-slate-950 dark:text-white">Attività dal:</strong> 2020.
-            </li>
-            <li>
-              <strong class="text-slate-950 dark:text-white">Focus attuale:</strong> gestione
-              interventi, ticketing, rapportini digitali e servizi web complementari.
-            </li>
-          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Storia + Galleria -->
-    <section class="py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
-        <div class="lg:col-span-5 lg:sticky lg:top-28">
-          <p
-            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-          >
-            La storia
-          </p>
-          <h2
-            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-          >
-            Nati per costruire valore digitale.
-          </h2>
-          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Bitora nasce dall'idea di creare sistemi digitali su misura per le PMI italiane. Sede a
-            Carmagnola, nel cuore del Piemonte. Crediamo che ogni azienda meriti strumenti costruiti
-            sulle proprie esigenze.
-          </p>
-          <p class="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            Affianchiamo le imprese nel percorso di digitalizzazione con competenza, trasparenza e
-            risultati concreti. Niente pacchetti preconfezionati: solo soluzioni che funzionano.
-          </p>
-        </div>
-
-        <div class="lg:col-span-7">
-          <MediaShowcase
-            items={[
-              {
-                src: '/hero-atelier.jpg',
-                alt: 'Spazio di lavoro artigianale e curato',
-                caption: 'Approccio artigianale: ascoltiamo prima di progettare.',
-              },
-              {
-                src: '/editorial/web-offer.png',
-                alt: 'Esperienza digitale progettata per desktop e mobile',
-                caption: 'Design e sviluppo restano nello stesso progetto.',
-              },
-              {
-                src: '/editorial/digital-process.png',
-                alt: 'Roadmap da strumenti sparsi a sistema digitale',
-                caption: 'Roadmap chiare, priorità e risultati verificabili.',
-              },
-            ]}
-          />
-        </div>
+  <section class="b-section b-section--alt b-section--line">
+    <div class="b-shell">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">Come la pensiamo</p>
+        <h2 class="b-h2">Quattro regole che <span class="b-accent">non cambiamo</span>.</h2>
       </div>
-    </section>
+      <div class="vals">
+        {
+          values.map((v, i) => (
+            <article class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+              <span class="b-step__n">0{i + 1}</span>
+              <h3 class="b-h3 b-step__t">{v.t}</h3>
+              <p class="b-text">{v.d}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-    <!-- Metodo -->
-    <section
-      class="py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto">
-        <p
-          class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-        >
-          Metodo
+  <section class="b-section b-section--line">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Strumenti</p>
+          <h2 class="b-h2">Tecnologie moderne, <span class="b-accent">scelte con criterio</span>.</h2>
+        </div>
+        <p class="b-text">
+          Usiamo gli stessi strumenti delle aziende tech più avanzate, ma solo quando servono. Ogni
+          progetto gira su infrastruttura monitorata 24/7, con backup e avvisi automatici.
         </p>
-        <h2
-          class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white mb-12"
-        >
-          Come lavoriamo, in 4 step.
-        </h2>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {
-            [
-              {
-                n: '01',
-                t: 'Analisi',
-                d: 'Processi, pain point, obiettivi. Definiamo scope e priorità.',
-              },
-              {
-                n: '02',
-                t: 'Progettazione',
-                d: 'Architettura, UX e flussi. Niente sorprese in sviluppo.',
-              },
-              {
-                n: '03',
-                t: 'Sviluppo',
-                d: 'Iterativo con checkpoint. Vedi i progressi in tempo reale.',
-              },
-              { n: '04', t: 'Deploy', d: 'Go-live assistito, formazione e supporto post-lancio.' },
-            ].map((s, i) => (
-              <div
-                class="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-7 hover-lift reveal-on-scroll"
-                style={`transition-delay:${i * 80}ms`}
-              >
-                <p class="text-xs font-bold tracking-widest text-[color:var(--brand-cta)]">{s.n}</p>
-                <h3 class="mt-2 text-lg font-extrabold tracking-tight text-slate-950 dark:text-white">
-                  {s.t}
-                </h3>
-                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">{s.d}</p>
-              </div>
-            ))
-          }
-        </div>
       </div>
-    </section>
-
-    <!-- Valori -->
-    <section class="py-24 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12">
-        <div class="lg:col-span-4">
-          <p
-            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-          >
-            Valori
-          </p>
-          <h2
-            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-          >
-            Cosa ci guida ogni giorno.
-          </h2>
-        </div>
-
-        <div class="lg:col-span-8 grid sm:grid-cols-2 gap-6">
-          {
-            [
-              {
-                t: 'Risultati',
-                d: 'Non "bello", efficace. Ogni soluzione genera valore misurabile.',
-              },
-              {
-                t: 'Innovazione',
-                d: 'Tecnologie moderne: Astro, React, integrazioni API, automazioni.',
-              },
-              {
-                t: 'Partnership',
-                d: 'Non fornitori, partner. Supporto diretto, niente call center.',
-              },
-              {
-                t: 'Trasparenza',
-                d: 'Preventivi chiari, milestone visibili, comunicazione continua.',
-              },
-            ].map((v, i) => (
-              <div
-                class="rounded-3xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] glass-panel p-7 hover-lift reveal-on-scroll"
-                style={`transition-delay:${i * 80}ms`}
-              >
-                <h3 class="text-xl font-extrabold tracking-tight text-slate-950 dark:text-white">
-                  {v.t}
-                </h3>
-                <p class="mt-2 text-slate-600 dark:text-slate-300 leading-relaxed">{v.d}</p>
-              </div>
-            ))
-          }
-        </div>
+      <div class="b-chips ab__stack" data-reveal>
+        {stack.map(s => <span class="b-chip">{s}</span>)}
       </div>
-    </section>
+    </div>
+    <div class="ab__marquee" data-reveal>
+      <ShotMarquee reverse speed={80} />
+    </div>
+  </section>
 
-    <!-- Trust + clienti -->
-    <section
-      class="py-24 px-6 md:px-12 lg:px-20 bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-white/5"
-    >
-      <div class="max-w-6xl mx-auto">
-        <p
-          class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-        >
-          Garanzie
+  <section class="b-section b-section--alt b-section--line">
+    <div class="b-shell ab__local" data-reveal>
+      <div>
+        <p class="b-eyebrow">Dove siamo</p>
+        <h2 class="b-h2">Carmagnola, tra Torino e Cuneo.</h2>
+        <p class="b-lede">
+          Incontriamo volentieri i clienti di persona in provincia di Torino e Cuneo: Carmagnola,
+          Carignano, Racconigi, Bra, Savigliano, Cherasco e dintorni. Per il resto d’Italia lavoriamo
+          da remoto, con la stessa cura.
         </p>
-        <h2
-          class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white mb-10"
-        >
-          Trust & metodo, sempre.
-        </h2>
-        <TrustBadges />
-
-        <div class="mt-16">
-          <ClientLogos />
-        </div>
       </div>
-    </section>
-
-    <!-- Territorio -->
-    <section class="py-24 px-6 md:px-12 lg:px-20">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-6">
-          <p
-            class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-          >
-            Territorio
-          </p>
-          <h2
-            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-          >
-            Sede in Piemonte.<br />Serviamo tutta Italia.
-          </h2>
-          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Carmagnola (TO) come base operativa. Lavoriamo con clienti in tutta Italia tramite call,
-            demo, supporto remoto e visite quando serve.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-2">
-            {
-              [
-                'Carmagnola',
-                'Torino',
-                'Cuneo',
-                'Asti',
-                'Alessandria',
-                'Milano',
-                'Roma',
-                'Tutta Italia',
-              ].map(c => (
-                <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-sm font-medium">
-                  {c}
-                </span>
-              ))
-            }
-          </div>
-        </div>
-        <div class="lg:col-span-6">
-          <div class="media-frame relative overflow-hidden">
-            <img
-              src="/monviso.jpg"
-              alt="Carmagnola, Piemonte"
-              class="w-full h-full object-cover aspect-[16/10]"
-              loading="lazy"
-              data-parallax
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"
-            >
-            </div>
-            <div class="absolute bottom-5 left-5 right-5">
-              <div class="hero-panel rounded-2xl px-5 py-4">
-                <p class="text-white font-semibold">Carmagnola (TO)</p>
-                <p class="text-white/85 text-sm mt-1">Sede operativa · Piemonte · Italia</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+      <a href="/contattaci/" class="b-btn b-btn--primary b-btn--lg" data-track="cta_click" data-track-location="about_local">
+        Fissa un incontro <span class="b-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
 </Layout>
 
-<BreadcrumbListSchema
-  crumbs={[
-    { name: 'Home', item: 'https://bitora.it/' },
-    { name: 'Chi siamo', item: 'https://bitora.it/chi-siamo/' },
-  ]}
-/>
-
-<script>
-  const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
-  if (!prefersReduced) {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-parallax]'));
-    const onScroll = () => {
-      const y = window.scrollY || 0;
-      els.forEach(el => {
-        const r = el.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight) return;
-        el.style.transform = `translateY(${(y * 0.06).toFixed(1)}px) scale(1.04)`;
-      });
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+<style>
+  .ab {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
   }
-</script>
+  @media (min-width: 960px) {
+    .ab {
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 5rem;
+    }
+  }
+  .ab__card img {
+    display: block;
+    width: 140px;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+  .ab__card dl {
+    margin: 0;
+  }
+  .ab__card dl div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--b-line);
+    font-size: 0.92rem;
+  }
+  .ab__card dt {
+    color: var(--b-fg-3);
+  }
+  .ab__card dd {
+    margin: 0;
+    color: var(--b-fg);
+    font-weight: 500;
+  }
+  .ab__text {
+    display: grid;
+    gap: 1.1rem;
+    margin-top: 2rem;
+  }
+  .ab__text strong {
+    color: var(--b-fg);
+  }
+  .vals {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 760px) {
+    .vals {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .vals {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .ab__marquee {
+    margin-top: 4rem;
+  }
+  .ab__local {
+    display: grid;
+    gap: 2rem;
+    align-items: end;
+  }
+  @media (min-width: 960px) {
+    .ab__local {
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+    }
+  }
+</style>
