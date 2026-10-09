@@ -1,105 +1,207 @@
 ---
 export const prerender = false;
 import Layout from '../../layouts/Layout.astro';
-import RadarHub from '../../components/blog/RadarHub.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import ProjectCard from '../../components/ui/ProjectCard.astro';
+import BreadcrumbListSchema from '../../components/schema/BreadcrumbList.astro';
 import { listPublishedArticles } from '../../lib/editorial/articles';
-import { formatArticleDate } from '../../lib/editorial/format';
-import { getPublicCaseStudies } from '../../data/caseStudies';
 import { TOPIC_PILLARS } from '../../lib/editorial/topics';
+import { getWorkBySlugs } from '../../data/work';
+import { FOUNDER_ID, ORG_ID, SITE } from '../../data/seo';
 
 const articles = await listPublishedArticles();
-const grouped = new Map<string, typeof articles>();
-for (const article of articles) {
-  const list = grouped.get(article.category) ?? [];
-  list.push(article);
-  grouped.set(article.category, list);
-}
-const cases = getPublicCaseStudies()
-  .filter(cs =>
-    ['nfc', 'web', 'gestionali', 'ecommerce'].some(topic =>
-      cs.tecnologie
-        .join(' ')
-        .toLowerCase()
-        .includes(topic === 'web' ? 'seo' : topic)
-    )
-  )
-  .slice(0, 6);
+const [featured, ...rest] = articles;
+const topics = TOPIC_PILLARS.filter(p => articles.some(a => a.topic === p.id));
+const projects = getWorkBySlugs(['mistral-gestionale', 'garavella-7', 'accessi-aziendali-franchina']);
+
+const blogSchema = {
+  '@type': 'Blog',
+  '@id': `${SITE}/blog/#blog`,
+  name: 'Blog Bitora',
+  alternateName: 'Radar Bitora',
+  url: `${SITE}/blog/`,
+  description:
+    'Guide pratiche su siti web, SEO locale, e-commerce, gestionali, CRM, AI e NFC per PMI e attività locali, con costi, tempi e casi reali.',
+  inLanguage: 'it-IT',
+  publisher: { '@id': ORG_ID },
+  author: { '@id': FOUNDER_ID },
+  blogPost: articles.map(a => ({
+    '@type': 'BlogPosting',
+    '@id': `${SITE}/blog/${a.slug}/#article`,
+    headline: a.title,
+    url: `${SITE}/blog/${a.slug}/`,
+    ...(a.publishedAt ? { datePublished: a.publishedAt.toISOString() } : {}),
+  })),
+};
+
 ---
 
 <Layout
-  title="Radar Bitora | Blog su NFC, siti, AI e gestionali per PMI"
-  description="Il magazine Bitora: tendenze tech tradotte in casi reali su NFC, siti web, AI e gestionali. L’AI propone, un umano pubblica."
+  title="Blog Bitora: guide su siti web, SEO, e-commerce, gestionali e AI per PMI"
+  description="Guide pratiche per PMI e attività locali: quanto costa un sito, come scegliere un gestionale o un CRM, NFC per recensioni, AI applicata. Costi, tempi e casi reali."
+  pageType="CollectionPage"
+  schema={[blogSchema]}
 >
-  <main id="main-content">
-    <RadarHub articles={articles} />
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: `${SITE}/` },
+      { name: 'Blog', item: `${SITE}/blog/` },
+    ]}
+  />
 
-    <section class="px-6 md:px-12 lg:px-20 py-16 border-t border-gray-200 dark:border-white/5">
-      <h2 class="text-2xl md:text-4xl font-bold mb-8">Percorsi</h2>
-      <div class="grid gap-10">
-        {
-          [...grouped.entries()].map(([category, items]) => (
-            <div id={`percorso-${category.toLowerCase().replace(/\s+/g, '-')}`}>
-              <h3 class="text-sm uppercase tracking-[0.16em] text-gray-500 mb-4">{category}</h3>
-              <div class="grid md:grid-cols-2 gap-4">
-                {items.map(article => (
-                  <a
-                    href={`/blog/${article.slug}/`}
-                    class="rounded-2xl border border-gray-200 dark:border-white/10 p-5 hover:border-gray-400 dark:hover:border-white/30"
-                  >
-                    <p class="text-xs text-gray-500 mb-2">
-                      {formatArticleDate(article.publishedAt)} · {article.readTime}
-                    </p>
-                    <h4 class="text-xl font-bold mb-2">{article.title}</h4>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">{article.excerpt}</p>
-                  </a>
+  <PageHero
+    eyebrow={`Blog · ${articles.length} guide`}
+    title='Guide concrete per <span class="b-grad">vendere di più</span> e lavorare meno.'
+    lede="Costi veri, tempi realistici ed esempi dai nostri progetti. Niente fuffa: quello che diremmo a un cliente seduto al nostro tavolo."
+    crumbs={[{ name: 'Blog', href: '/blog/' }]}
+    primary={{ label: 'Fai una domanda', href: '/contattaci/', track: 'blog_hero' }}
+    secondary={{ label: 'Vedi i lavori', href: '/lavori/' }}
+  />
+
+  {
+    featured ? (
+      <section class="b-section b-section--tight">
+        <div class="b-shell">
+          <p class="b-eyebrow bl-label" data-reveal>
+            Ultima guida
+          </p>
+          <div data-reveal data-reveal-delay="1">
+            <PostCard article={featured} size="lg" eager />
+          </div>
+        </div>
+      </section>
+    ) : (
+      <section class="b-section">
+        <div class="b-shell">
+          <p class="b-lede">Le prime guide arrivano a breve. Nel frattempo, scrivici: rispondiamo entro 24 ore.</p>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    rest.length > 0 && (
+      <section class="b-section b-section--line" id="guide">
+        <div class="b-shell">
+          <div class="bl-head" data-reveal>
+            <h2 class="b-h2">Tutte le guide</h2>
+            {topics.length > 1 && (
+              <div class="bl-filters" role="toolbar" aria-label="Filtra per argomento">
+                <button type="button" class="b-chip bl-f is-on" data-f="all" aria-pressed="true">
+                  Tutte
+                </button>
+                {topics.map(t => (
+                  <button type="button" class="b-chip bl-f" data-f={t.id} aria-pressed="false">
+                    {t.label}
+                  </button>
                 ))}
               </div>
+            )}
+          </div>
+          <div class="bl-grid">
+            {rest.map((a, i) => (
+              <div class="bl-item" data-topic={a.topic} data-reveal data-reveal-delay={String((i % 3) + 1)}>
+                <PostCard article={a} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="b-section b-section--alt">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Dalla teoria ai progetti</p>
+          <h2 class="b-h2">Quello che scriviamo, <span class="b-accent">lo facciamo</span>.</h2>
+        </div>
+        <a href="/lavori/" class="b-link">Tutti i lavori →</a>
+      </div>
+      <div class="bl-grid">
+        {
+          projects.map((p, i) => (
+            <div data-reveal data-reveal-delay={String(i + 1)}>
+              <ProjectCard item={p} />
             </div>
           ))
         }
-        {
-          articles.length === 0 && (
-            <p class="text-gray-500">Radar in calibratura. I segnali pubblicati appariranno qui.</p>
-          )
-        }
       </div>
-    </section>
-
-    <section class="px-6 md:px-12 lg:px-20 py-16 border-t border-gray-200 dark:border-white/5">
-      <h2 class="text-2xl md:text-4xl font-bold mb-4">Casi reali</h2>
-      <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
-        Ogni articolo deve tornare a un lavoro fatto. Questi sono i ponti.
-      </p>
-      <div class="grid md:grid-cols-3 gap-4">
-        {
-          (cases.length ? cases : getPublicCaseStudies().slice(0, 6)).map(cs => (
-            <a
-              href={`/progetti/${cs.slug}/`}
-              class="rounded-2xl border border-gray-200 dark:border-white/10 p-5"
-            >
-              <p class="text-xs uppercase tracking-[0.16em] text-gray-500">{cs.category}</p>
-              <h3 class="text-lg font-bold mt-2">{cs.title}</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">{cs.subtitle}</p>
-            </a>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="px-6 md:px-12 lg:px-20 py-16">
-      <h2 class="text-2xl font-bold mb-6">Esplora per pilastro</h2>
-      <div class="flex flex-wrap gap-3">
-        {
-          TOPIC_PILLARS.map(pillar => (
-            <a
-              href={pillar.href}
-              class="px-4 py-2 rounded-full border border-gray-200 dark:border-white/10 text-sm"
-            >
-              {pillar.label}
-            </a>
-          ))
-        }
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('.bl-f')];
+  const items = [...document.querySelectorAll<HTMLElement>('.bl-item')];
+  buttons.forEach(btn =>
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.f;
+      buttons.forEach(b => {
+        const on = b === btn;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+      items.forEach(el => {
+        el.hidden = f !== 'all' && el.dataset.topic !== f;
+      });
+      window.bitoraTrack?.('blog_filter', { label: f });
+    })
+  );
+</script>
+
+<style>
+  .bl-label {
+    margin-bottom: 1.25rem;
+  }
+  .bl-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .bl-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .bl-f {
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.85rem;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+  .bl-f:hover {
+    border-color: var(--b-line-2);
+    color: var(--b-fg);
+  }
+  .bl-f.is-on {
+    background: var(--b-cyan);
+    border-color: var(--b-cyan);
+    color: var(--b-ink);
+  }
+  .bl-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (min-width: 720px) {
+    .bl-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .bl-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .bl-item[hidden] {
+    display: none;
+  }
+</style>

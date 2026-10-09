@@ -100,7 +100,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 - ROI mensile: ${report.roiMonthly}
 - Payback: ${report.payback}`;
 
-    await Promise.all([
+    const [reportResult, adminResult] = await Promise.all([
       resend.emails.send({
         from: mailFrom,
         to: email,
@@ -126,6 +126,9 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         headers: { 'Idempotency-Key': `${idempotencyKey}-admin` },
       }),
     ]);
+
+    if (reportResult.error) throw reportResult.error;
+    if (adminResult.error) console.error('Errore notifica ROI admin:', adminResult.error);
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,

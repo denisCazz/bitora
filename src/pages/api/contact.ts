@@ -165,7 +165,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       siteUrl,
     });
 
-    await Promise.all([
+    const [adminResult, customerResult] = await Promise.all([
       resend.emails.send({
         from: mailFrom,
         to: mailTo,
@@ -187,6 +187,9 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         headers: { 'Idempotency-Key': `${idempotencyKey}-reply` },
       }),
     ]);
+
+    if (adminResult.error) throw adminResult.error;
+    if (customerResult.error) console.error('Errore conferma cliente:', customerResult.error);
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,

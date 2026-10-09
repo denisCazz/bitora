@@ -108,7 +108,7 @@ export async function submitBlogLead(
     .filter(Boolean)
     .join('\n');
 
-  await Promise.all([
+  const [adminResult, customerResult] = await Promise.all([
     resend.emails.send({
       from: mailFrom,
       to: mailTo,
@@ -152,6 +152,9 @@ export async function submitBlogLead(
       headers: { 'Idempotency-Key': `${idempotencyKey}-reply` },
     }),
   ]);
+
+  if (adminResult.error) console.error('Errore notifica lead blog:', adminResult.error);
+  if (customerResult.error) console.error('Errore conferma lead blog:', customerResult.error);
 
   return { ok: true };
 }

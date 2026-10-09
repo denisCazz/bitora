@@ -1,13 +1,14 @@
 ---
 import EditorialImage from '../EditorialImage.astro';
-import FAQ from '../FAQ.astro';
 import LeadCapture from './LeadCapture.astro';
+import Cover from './Cover.astro';
 import type { PublicArticle } from '../../lib/editorial/articles';
 import { ctaHrefWithArticle, ctaSpec } from '../../lib/editorial/cta';
 import { formatArticleDate } from '../../lib/editorial/format';
 import { sanitizeRichText } from '../../lib/editorial/sanitize';
 import { DEFAULT_STAGES } from '../../lib/editorial/topics';
-import '../../styles/radar.css';
+import { getWorkBySlugs } from '../../data/work';
+import { workKindLabels } from '../../data/work';
 
 interface Props {
   article: PublicArticle;
@@ -17,129 +18,115 @@ interface Props {
 const { article, preview = false } = Astro.props;
 const stages = article.content.stages.length ? article.content.stages : DEFAULT_STAGES;
 const spec = ctaSpec(article.ctaVariant, article.topic, article.category);
-const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ? block.items : []));
+const caseWork = getWorkBySlugs(
+  article.content.blocks.flatMap(block => (block.type === 'case' ? [block.slug] : []))
+);
+const published = article.publishedAt ?? article.createdAt;
+const updated = article.updatedAt;
+const showUpdated = updated.getTime() - published.getTime() > 86_400_000;
 ---
 
 {
   preview && (
-    <p class="bg-amber-100 text-amber-950 text-sm px-4 py-2 text-center">
-      Anteprima bozza · non indicizzata · non pubblica
-    </p>
+    <p class="ar-preview">Anteprima bozza · non indicizzata · non pubblica</p>
   )
 }
 
-<div class="signal-journey bg-white dark:bg-black text-gray-900 dark:text-white">
-  <section class="px-6 md:px-12 lg:px-20 pt-24 md:pt-28 pb-10">
-    <a href="/blog/" class="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white"
-      >← Radar Bitora</a
-    >
-    <div class="flex flex-wrap items-center gap-3 mt-6 mb-4">
-      <span class="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/10 rounded-full"
-        >{article.category}</span
-      >
-      <span class="text-sm text-gray-500"
-        >{formatArticleDate(article.publishedAt || article.createdAt)}</span
-      >
-      {article.readTime && <span class="text-sm text-gray-500">· {article.readTime}</span>}
-      {
-        article.generatedByAi && (
-          <span class="text-sm text-gray-500">· Bozza assistita da AI, revisionata</span>
-        )
-      }
-    </div>
-    <h1 class="max-w-4xl text-3xl md:text-5xl font-bold tracking-tight leading-[1.12]">
-      {article.title}
-    </h1>
-    <p class="max-w-3xl mt-5 text-lg text-gray-600 dark:text-gray-400">
-      {article.abstract || article.excerpt}
-    </p>
-  </section>
+<div class="ar-progress" aria-hidden="true"><span data-progress></span></div>
 
-  <div class="px-6 md:px-12 lg:px-20 pb-24 grid lg:grid-cols-[200px_minmax(0,1fr)] gap-10">
-    <aside class="journey-rail hidden lg:block">
-      <p class="text-[11px] uppercase tracking-[0.16em] text-gray-500 mb-4">Percorso</p>
-      <ol class="space-y-5">
-        {
-          stages.map((stage, index) => (
-            <li>
-              <a class="journey-node" href={`#stage-${stage.id}`} data-stage-link={stage.id}>
-                <span class="dot" />
-                <span>
-                  <small class="block text-[11px] text-gray-400">0{index + 1}</small>
+<article class="ar">
+  <header class="ar-hero">
+    <div class="ar-hero__grid b-grid-bg" aria-hidden="true"></div>
+    <div class="b-glow-orb ar-hero__orb" aria-hidden="true"></div>
+    <div class="b-shell ar-hero__inner">
+      <nav class="ar-crumbs b-rise" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/blog/">Blog</a>
+        <span aria-hidden="true">/</span>
+        <span>{article.category}</span>
+      </nav>
+      <h1 class="b-h1 ar-title b-rise" style="animation-delay:.08s">{article.title}</h1>
+      <p class="b-lede ar-lede b-rise" style="animation-delay:.16s">{article.abstract || article.excerpt}</p>
+      <div class="ar-byline b-rise" style="animation-delay:.24s">
+        <img src="/bitora-mark.png" alt="" width="294" height="135" />
+        <div>
+          <p><a href="/chi-siamo/" rel="author">Denis Cazzulo</a> · Bitora</p>
+          <p class="ar-byline__meta">
+            <time datetime={published.toISOString()}>{formatArticleDate(published)}</time>
+            {article.readTime && <span> · {article.readTime} di lettura</span>}
+            {showUpdated && (
+              <span>
+                {' '}
+                · aggiornato il <time datetime={updated.toISOString()}>{formatArticleDate(updated)}</time>
+              </span>
+            )}
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="b-shell ar-cover b-rise" style="animation-delay:.3s">
+    <Cover src={article.coverImage} alt={article.coverAlt} topic={article.topic} eager />
+  </div>
+
+  <div class="b-shell ar-layout">
+    <aside class="ar-rail">
+      <div class="ar-rail__sticky">
+        <p class="b-eyebrow">In questa guida</p>
+        <ol class="ar-toc">
+          {
+            stages.map((stage, index) => (
+              <li>
+                <a href={`#stage-${stage.id}`} data-stage-link={stage.id}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
                   {stage.label}
-                </span>
-              </a>
-            </li>
-          ))
-        }
-      </ol>
-      <div class="mt-8 text-xs text-gray-500" data-depth>Profondità 0%</div>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="ar-depth" data-depth>Letto 0%</p>
+        <div class="ar-rail__cta">
+          <p>Hai un caso simile?</p>
+          <a class="b-btn b-btn--primary b-btn--sm" href={ctaHrefWithArticle(spec.href, article.slug)}>{spec.label}</a>
+        </div>
+      </div>
     </aside>
 
-    <div class="max-w-3xl space-y-10" data-journey-root data-article-slug={article.slug}>
+    <div class="ar-body" data-journey-root data-article-slug={article.slug}>
       {
         article.content.blocks.map(block => {
           if (block.type === 'signal') {
             return (
-              <section
-                id="stage-signal"
-                data-stage="signal"
-                class="reveal-on-scroll rounded-3xl border border-gray-200 dark:border-white/10 p-6 md:p-8 bg-gray-50 dark:bg-white/[0.03]"
-              >
-                <div class="flex items-center gap-4 mb-4">
-                  <div class="signal-ring" data-signal-ring style="--p: 0">
+              <section id="stage-signal" data-stage="signal" class="ar-signal">
+                <div class="ar-signal__top">
+                  <div class="ar-ring" data-signal-ring style="--p: 0">
                     <span>{block.seconds ?? 60}s</span>
                   </div>
-                  <p class="text-xs uppercase tracking-[0.16em] text-gray-500">
-                    Apertura in un minuto
-                  </p>
+                  <p class="b-eyebrow">In sintesi</p>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold mb-3">{block.heading}</h2>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{block.body}</p>
+                <h2 class="ar-signal__h">{block.heading}</h2>
+                <p>{block.body}</p>
               </section>
             );
           }
           if (block.type === 'heading') {
-            if (block.level === 3) {
-              return (
-                <h3
-                  id={block.stageId ? `stage-${block.stageId}` : undefined}
-                  data-stage={block.stageId}
-                  class="text-xl font-bold"
-                >
-                  {block.text}
-                </h3>
-              );
-            }
+            const Tag = block.level === 3 ? 'h3' : 'h2';
             return (
-              <h2
-                id={block.stageId ? `stage-${block.stageId}` : undefined}
-                data-stage={block.stageId}
-                class="text-2xl md:text-3xl font-bold"
-              >
+              <Tag id={block.stageId ? `stage-${block.stageId}` : undefined} data-stage={block.stageId}>
                 {block.text}
-              </h2>
+              </Tag>
             );
           }
           if (block.type === 'paragraph') {
-            return (
-              <p
-                data-stage={block.stageId}
-                class="text-gray-600 dark:text-gray-400 leading-relaxed"
-                set:html={sanitizeRichText(block.html)}
-              />
-            );
+            return <p data-stage={block.stageId} set:html={sanitizeRichText(block.html)} />;
           }
           if (block.type === 'list') {
             const ListTag = block.ordered ? 'ol' : 'ul';
             return (
-              <ListTag
-                data-stage={block.stageId}
-                class:list={[
-                  block.ordered ? 'list-decimal' : 'list-disc',
-                  'pl-6 space-y-2 text-gray-600 dark:text-gray-400',
-                ]}
-              >
+              <ListTag data-stage={block.stageId} class="ar-list">
                 {block.items.map(item => (
                   <li set:html={sanitizeRichText(item)} />
                 ))}
@@ -147,36 +134,23 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
             );
           }
           if (block.type === 'image') {
+            if (block.src === article.coverImage) return null;
             return (
               <div data-stage={block.stageId}>
-                <EditorialImage
-                  src={block.src}
-                  alt={block.alt}
-                  caption={block.caption}
-                  eyebrow={block.eyebrow}
-                />
+                <EditorialImage src={block.src} alt={block.alt} caption={block.caption} eyebrow={block.eyebrow} />
               </div>
             );
           }
           if (block.type === 'proof') {
             return (
-              <details
-                data-stage={block.stageId || 'proof'}
-                id="stage-proof"
-                class="rounded-2xl border border-gray-200 dark:border-white/10 p-5"
-              >
-                <summary class="cursor-pointer font-semibold">{block.title}</summary>
-                <p class="mt-3 text-gray-600 dark:text-gray-400">{block.body}</p>
+              <details data-stage={block.stageId || 'proof'} id="stage-proof" class="ar-proof">
+                <summary>{block.title}</summary>
+                <p>{block.body}</p>
                 {block.sources?.length ? (
-                  <ul class="mt-3 space-y-1 text-sm">
+                  <ul>
                     {block.sources.map(source => (
                       <li>
-                        <a
-                          class="underline"
-                          href={source.url}
-                          rel="nofollow noopener"
-                          target="_blank"
-                        >
+                        <a href={source.url} rel="nofollow noopener" target="_blank">
                           {source.title}
                         </a>
                       </li>
@@ -187,65 +161,55 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
             );
           }
           if (block.type === 'case') {
-            const cs = article.cases.find(item => item.slug === block.slug);
+            const w = caseWork.find(item => item.slug === block.slug);
+            const cs = w ?? article.cases.find(item => item.slug === block.slug);
             return (
-              <a
-                data-stage={block.stageId || 'field'}
-                id="stage-field"
-                href={`/progetti/${block.slug}/`}
-                class="block rounded-3xl border border-gray-200 dark:border-white/10 p-6 hover:border-gray-400 dark:hover:border-white/30"
-              >
-                <p class="text-xs uppercase tracking-[0.16em] text-gray-500 mb-2">Sul campo</p>
-                <h3 class="text-xl font-bold">{cs?.title ?? block.slug}</h3>
-                <p class="text-sm text-gray-500 mt-1">{cs?.subtitle}</p>
-                <p class="mt-3 text-gray-600 dark:text-gray-400">{block.lesson}</p>
+              <a data-stage={block.stageId || 'field'} id="stage-field" href={`/progetti/${block.slug}/`} class="ar-case">
+                {w?.shot && (
+                  <img src={w.shot} alt={`Progetto ${w.title}`} width="1200" height="750" loading="lazy" decoding="async" />
+                )}
+                <div>
+                  <p class="b-eyebrow">Caso reale</p>
+                  <p class="ar-case__t">{cs?.title ?? block.slug}</p>
+                  <p class="ar-case__s">
+                    {w ? w.kinds.map(k => workKindLabels[k]).join(' · ') : cs?.subtitle}
+                    {cs?.location ? ` · ${cs.location}` : ''}
+                  </p>
+                  <p>{block.lesson}</p>
+                  <span class="ar-case__go">Guarda il progetto →</span>
+                </div>
               </a>
             );
           }
           if (block.type === 'quote') {
             return (
-              <blockquote
-                data-stage={block.stageId}
-                class="border-l-2 border-gray-900 dark:border-white pl-4 text-xl font-medium"
-              >
-                {block.text}
-                {block.attribution && (
-                  <cite class="block text-sm text-gray-500 mt-2 not-italic">
-                    {block.attribution}
-                  </cite>
-                )}
+              <blockquote data-stage={block.stageId} class="ar-quote">
+                <p>{block.text}</p>
+                {block.attribution && <cite>{block.attribution}</cite>}
               </blockquote>
             );
           }
           if (block.type === 'demo') {
             return (
-              <div
-                data-stage={block.stageId || 'field'}
-                class="rounded-3xl border border-gray-200 dark:border-white/10 p-6"
-              >
-                <p class="text-xs uppercase tracking-[0.16em] text-gray-500 mb-2">Micro-demo</p>
-                <h3 class="text-xl font-bold mb-2">{block.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">{block.body}</p>
+              <div data-stage={block.stageId || 'field'} class="ar-box">
+                <p class="b-eyebrow">Prova tu</p>
+                <p class="ar-box__t">{block.title}</p>
+                <p>{block.body}</p>
                 {block.kind === 'nfc-tap' ? (
-                  <button type="button" class="nfc-stage w-full text-left" data-nfc-demo>
-                    <div>
-                      <p class="font-medium">Tap la tessera</p>
-                      <p class="text-sm text-gray-500" data-nfc-label>
-                        Avvicina il telefono o clicca
-                      </p>
-                    </div>
-                    <div class="relative">
-                      <div class="nfc-card">
+                  <button type="button" class="nfc-stage" data-nfc-demo>
+                    <span>
+                      <b>Tocca la tessera</b>
+                      <small data-nfc-label>Avvicina il telefono o clicca</small>
+                    </span>
+                    <span class="nfc-pair">
+                      <span class="nfc-card">
                         <span class="nfc-waves" />
-                      </div>
-                      <div class="nfc-phone absolute right-0 top-0" />
-                    </div>
+                      </span>
+                      <span class="nfc-phone" />
+                    </span>
                   </button>
                 ) : (
-                  <a
-                    class="btn-primary inline-flex"
-                    href={ctaHrefWithArticle(spec.href, article.slug)}
-                  >
+                  <a class="b-btn b-btn--primary" href={ctaHrefWithArticle(spec.href, article.slug)}>
                     Prova lo strumento
                   </a>
                 )}
@@ -254,21 +218,17 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
           }
           if (block.type === 'diagnostic') {
             return (
-              <form data-stage={block.stageId || 'act'} class="space-y-5" data-diagnostic>
-                <h3 class="text-xl font-bold">Diagnostico rapido</h3>
+              <form data-stage={block.stageId || 'act'} class="ar-box ar-diag" data-diagnostic>
+                <p class="b-eyebrow">Check rapido</p>
+                <p class="ar-box__t">Dove sei oggi?</p>
                 {block.questions.map(question => (
-                  <fieldset class="rounded-2xl border border-gray-200 dark:border-white/10 p-4">
-                    <legend class="font-medium px-1">{question.prompt}</legend>
-                    <div class="grid gap-2 mt-3">
+                  <fieldset>
+                    <legend>{question.prompt}</legend>
+                    <div class="ar-diag__opts">
                       {question.options.map(option => (
-                        <label class="flex gap-2 items-center text-sm">
-                          <input
-                            type="radio"
-                            name={question.id}
-                            value={option.id}
-                            data-cta={option.cta || ''}
-                          />
-                          {option.label}
+                        <label class="b-choice">
+                          <input type="radio" name={question.id} value={option.id} data-cta={option.cta || ''} />
+                          <span>{option.label}</span>
                         </label>
                       ))}
                     </div>
@@ -280,27 +240,32 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
           if (block.type === 'cta') {
             const local = ctaSpec(block.variant, article.topic, article.category);
             return (
-              <section
-                data-stage={block.stageId || 'act'}
-                id="stage-act"
-                class="rounded-3xl border border-gray-200 dark:border-white/10 p-6 text-center"
-              >
-                <h3 class="text-xl font-bold mb-2">{block.headline}</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-5">{block.body}</p>
-                <a
-                  class="btn-primary inline-flex"
-                  href={ctaHrefWithArticle(local.href, article.slug)}
-                >
-                  {local.label}
-                </a>
+              <section data-stage={block.stageId || 'act'} id="stage-act" class="ar-cta">
+                <p class="ar-cta__t">{block.headline}</p>
+                <p>{block.body}</p>
+                <div class="b-cta-row">
+                  <a class="b-btn b-btn--primary" href={ctaHrefWithArticle(local.href, article.slug)}>
+                    {local.label} →
+                  </a>
+                  <a class="b-btn b-btn--ghost" href={local.secondaryHref}>
+                    {local.secondaryLabel}
+                  </a>
+                </div>
               </section>
             );
           }
           if (block.type === 'faq') {
             return (
               <div data-stage={block.stageId}>
-                <h2 class="text-2xl font-bold mb-4">Domande frequenti</h2>
-                <FAQ items={block.items} />
+                <h2>Domande frequenti</h2>
+                <div class="b-faq">
+                  {block.items.map(item => (
+                    <details>
+                      <summary>{item.question}</summary>
+                      <p>{item.answer}</p>
+                    </details>
+                  ))}
+                </div>
               </div>
             );
           }
@@ -310,15 +275,15 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
 
       {
         article.sources.length > 0 && (
-          <section>
-            <h2 class="text-xl font-bold mb-3">Fonti</h2>
-            <ul class="space-y-2 text-sm">
+          <section class="ar-sources">
+            <p class="b-eyebrow">Fonti</p>
+            <ul>
               {article.sources.map(source => (
                 <li>
-                  <a class="underline" href={source.url} rel="nofollow noopener" target="_blank">
+                  <a href={source.url} rel="nofollow noopener" target="_blank">
                     {source.title}
                   </a>
-                  {source.domain && <span class="text-gray-500"> · {source.domain}</span>}
+                  {source.domain && <span> · {source.domain}</span>}
                 </li>
               ))}
             </ul>
@@ -326,27 +291,18 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
         )
       }
 
+      {
+        article.generatedByAi && (
+          <p class="ar-note">
+            Bozza preparata con il supporto dell’intelligenza artificiale, verificata e pubblicata da una persona del team Bitora.
+          </p>
+        )
+      }
+
       <LeadCapture article={article} />
     </div>
   </div>
-</div>
-
-{
-  faqItems.length > 0 && (
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: faqItems.map(item => ({
-          '@type': 'Question',
-          name: item.question,
-          acceptedAnswer: { '@type': 'Answer', text: item.answer },
-        })),
-      })}
-    />
-  )
-}
+</article>
 
 <script>
   const root = document.querySelector('[data-journey-root]');
@@ -357,12 +313,14 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
     const nodes = [...document.querySelectorAll('[data-stage]')];
     const links = [...document.querySelectorAll('[data-stage-link]')];
     const depthEl = document.querySelector('[data-depth]');
+    const bar = document.querySelector('[data-progress]') as HTMLElement | null;
     let maxDepth = 0;
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
           const stage = entry.target.getAttribute('data-stage');
+          if (!links.some(link => link.getAttribute('data-stage-link') === stage)) return;
           links.forEach(link => {
             link.classList.toggle('is-active', link.getAttribute('data-stage-link') === stage);
           });
@@ -373,14 +331,14 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
     nodes.forEach(node => observer.observe(node));
 
     const onScroll = () => {
-      const total = root.scrollHeight - window.innerHeight;
-      const passed = Math.min(
-        1,
-        Math.max(0, (window.scrollY - (root as HTMLElement).offsetTop) / Math.max(total, 1))
-      );
+      const el = root as HTMLElement;
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      const total = el.offsetHeight - window.innerHeight * 0.6;
+      const passed = Math.min(1, Math.max(0, (window.scrollY - top + window.innerHeight * 0.4) / Math.max(total, 1)));
       const pct = Math.round(passed * 100);
+      if (bar) bar.style.transform = `scaleX(${passed})`;
       if (pct > maxDepth) maxDepth = pct;
-      if (depthEl) depthEl.textContent = `Profondità ${maxDepth}%`;
+      if (depthEl) depthEl.textContent = `Letto ${maxDepth}%`;
       if (maxDepth >= 90) window.bitoraTrack?.('blog_complete', { label: slug, value: maxDepth });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -395,16 +353,14 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
         if (p < 100) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
-    }
+    } else ring?.style.setProperty('--p', '100');
 
     document.querySelector('[data-nfc-demo]')?.addEventListener('click', event => {
       const button = event.currentTarget as HTMLElement;
       button.classList.toggle('is-tapped');
       const label = button.querySelector('[data-nfc-label]');
       if (label)
-        label.textContent = button.classList.contains('is-tapped')
-          ? 'Scheda aperta'
-          : 'Avvicina il telefono o clicca';
+        label.textContent = button.classList.contains('is-tapped') ? 'Scheda aperta' : 'Avvicina il telefono o clicca';
       window.bitoraTrack?.('blog_demo', { label: slug, custom: 'nfc-tap' });
     });
 
@@ -421,16 +377,602 @@ const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ?
       event.preventDefault();
       const form = event.currentTarget as HTMLFormElement;
       const status = form.querySelector('[data-lead-status]') as HTMLElement | null;
-      const payload = new FormData(form);
-      const response = await fetch(form.action, { method: 'POST', body: payload });
-      const json = await response.json().catch(() => ({ ok: false }));
+      const submit = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      if (submit) submit.disabled = true;
+      const response = await fetch(form.action, { method: 'POST', body: new FormData(form) }).catch(() => null);
+      const json = response ? await response.json().catch(() => ({ ok: false })) : { ok: false };
+      if (submit) submit.disabled = false;
       if (status) {
-        status.classList.remove('hidden');
-        status.textContent = json.ok
-          ? 'Richiesta inviata. Ti ricontattiamo a breve.'
-          : json.error || 'Invio non riuscito';
+        status.hidden = false;
+        status.classList.toggle('is-ok', Boolean(json.ok));
+        status.textContent = json.ok ? 'Richiesta inviata. Ti ricontattiamo entro 24 ore.' : json.error || 'Invio non riuscito, riprova o scrivici su WhatsApp.';
       }
-      if (json.ok) window.bitoraTrack?.('lead_form_submit', { label: slug, location: 'blog' });
+      if (json.ok) {
+        form.reset();
+        window.bitoraTrack?.('lead_form_submit', { label: slug, location: 'blog' });
+      }
     });
   }
 </script>
+
+<style>
+  .ar-preview {
+    position: relative;
+    z-index: 60;
+    margin: 72px 0 0;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #451a03;
+    background: #fcd34d;
+  }
+  .ar-progress {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 70;
+    height: 2px;
+    pointer-events: none;
+  }
+  .ar-progress span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--b-cyan-deep), var(--b-cyan));
+    box-shadow: 0 0 12px var(--b-glow);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .ar-hero {
+    position: relative;
+    overflow: hidden;
+    padding: calc(72px + clamp(2.5rem, 6vw, 4.5rem)) 0 clamp(2rem, 4vw, 3rem);
+  }
+  .ar-hero__grid {
+    position: absolute;
+    inset: 0;
+    mask-image: radial-gradient(ellipse 70% 80% at 50% 0%, #000 30%, transparent 75%);
+  }
+  .ar-hero__orb {
+    top: -22rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .ar-hero__inner {
+    position: relative;
+    max-width: 920px;
+    text-align: center;
+  }
+  .ar-crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+    font-family: var(--f-mono);
+    font-size: 0.78rem;
+    color: var(--b-fg-3);
+  }
+  .ar-crumbs a {
+    color: var(--b-fg-2);
+    text-decoration: none;
+  }
+  .ar-crumbs a:hover {
+    color: var(--b-cyan);
+  }
+  .ar-crumbs span:last-child {
+    color: var(--b-cyan);
+  }
+  .ar-title {
+    margin: 0 auto;
+    font-size: clamp(2rem, 4.6vw, 3.6rem);
+    text-wrap: balance;
+  }
+  .ar-lede {
+    max-width: 720px;
+    margin: 1.4rem auto 0;
+    text-wrap: pretty;
+  }
+  .ar-byline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 2rem;
+    padding: 0.6rem 1.1rem 0.6rem 0.6rem;
+    border-radius: 99px;
+    border: 1px solid var(--b-line);
+    background: rgba(255, 255, 255, 0.03);
+    text-align: left;
+  }
+  .ar-byline img {
+    width: 42px;
+    height: 42px;
+    padding: 9px 5px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: var(--b-ink-3);
+    border: 1px solid var(--b-line-2);
+  }
+  .ar-byline p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .ar-byline a {
+    color: var(--b-fg);
+    text-decoration: none;
+  }
+  .ar-byline a:hover {
+    color: var(--b-cyan);
+  }
+  .ar-byline__meta {
+    font-weight: 400 !important;
+    font-size: 0.8rem !important;
+    color: var(--b-fg-3);
+  }
+
+  .ar-cover {
+    max-width: 1120px;
+  }
+  .ar-cover :global(.bc) {
+    border-radius: var(--b-radius);
+    border: 1px solid var(--b-line-2);
+    box-shadow: 0 60px 120px -50px rgba(34, 211, 238, 0.25);
+  }
+
+  .ar-layout {
+    display: grid;
+    gap: 3rem;
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(4rem, 8vw, 7rem);
+  }
+  @media (min-width: 1080px) {
+    .ar-layout {
+      grid-template-columns: 240px minmax(0, 720px);
+      justify-content: center;
+      gap: 4.5rem;
+    }
+  }
+  .ar-rail {
+    display: none;
+  }
+  @media (min-width: 1080px) {
+    .ar-rail {
+      display: block;
+    }
+  }
+  .ar-rail__sticky {
+    position: sticky;
+    top: 110px;
+  }
+  .ar-toc {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.25rem;
+    border-left: 1px solid var(--b-line);
+  }
+  .ar-toc a {
+    display: flex;
+    gap: 0.7rem;
+    padding: 0.45rem 0 0.45rem 1rem;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    color: var(--b-fg-3);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+  }
+  .ar-toc a span {
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    padding-top: 0.15rem;
+  }
+  .ar-toc a:hover,
+  .ar-toc a.is-active {
+    color: var(--b-fg);
+  }
+  .ar-toc a.is-active {
+    border-left-color: var(--b-cyan);
+  }
+  .ar-toc a.is-active span {
+    color: var(--b-cyan);
+  }
+  .ar-depth {
+    margin: 1.2rem 0 0;
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    color: var(--b-fg-3);
+  }
+  .ar-rail__cta {
+    margin-top: 2rem;
+    padding: 1.2rem;
+    border-radius: 16px;
+    border: 1px solid var(--b-line);
+    background: var(--b-ink-2);
+  }
+  .ar-rail__cta p {
+    margin: 0 0 0.8rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .ar-body {
+    min-width: 0;
+    font-size: 1.075rem;
+    line-height: 1.75;
+    color: var(--b-fg-2);
+  }
+  .ar-body > :global(* + *) {
+    margin-top: 1.4rem;
+  }
+  .ar-body :global(h2),
+  .ar-body :global(h3) {
+    color: var(--b-fg);
+    font-family: var(--f-display);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    scroll-margin-top: 100px;
+  }
+  .ar-body > :global(h2) {
+    margin-top: 3.2rem;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+  }
+  .ar-body > :global(h3) {
+    margin-top: 2.4rem;
+    font-size: 1.3rem;
+  }
+  .ar-body :global(p) {
+    margin-bottom: 0;
+  }
+  .ar-body :global(strong) {
+    color: var(--b-fg);
+  }
+  .ar-body :global(p a),
+  .ar-body :global(li a) {
+    color: var(--b-cyan);
+    text-decoration: underline;
+    text-decoration-color: rgba(34, 211, 238, 0.4);
+    text-underline-offset: 3px;
+  }
+  .ar-list {
+    padding-left: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.7rem;
+  }
+  .ar-list > :global(li) {
+    position: relative;
+    padding-left: 1.6rem;
+  }
+  ul.ar-list > :global(li)::before {
+    content: '';
+    position: absolute;
+    left: 0.2rem;
+    top: 0.72em;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--b-cyan);
+    box-shadow: 0 0 10px var(--b-glow);
+  }
+  ol.ar-list {
+    counter-reset: ar;
+  }
+  ol.ar-list > :global(li) {
+    counter-increment: ar;
+    padding-left: 2.2rem;
+  }
+  ol.ar-list > :global(li)::before {
+    content: counter(ar, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    color: var(--b-cyan);
+  }
+
+  .ar-signal {
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    border-radius: var(--b-radius);
+    border: 1px solid rgba(34, 211, 238, 0.28);
+    background:
+      radial-gradient(ellipse 80% 120% at 100% 0%, rgba(34, 211, 238, 0.12), transparent 60%),
+      var(--b-ink-2);
+  }
+  .ar-signal__top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .ar-signal__top .b-eyebrow {
+    margin: 0;
+  }
+  .ar-signal .ar-signal__h {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  }
+  .ar-ring {
+    --p: 0;
+    display: grid;
+    place-items: center;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 50%;
+    background: conic-gradient(var(--b-cyan) calc(var(--p) * 1%), rgba(255, 255, 255, 0.08) 0);
+  }
+  .ar-ring span {
+    display: grid;
+    place-items: center;
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+    background: var(--b-ink-2);
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    color: var(--b-fg);
+  }
+
+  .ar-proof {
+    border-radius: 16px;
+    border: 1px solid var(--b-line);
+    background: var(--b-ink-2);
+    padding: 1.1rem 1.3rem;
+  }
+  .ar-proof summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--b-fg);
+  }
+  .ar-proof ul {
+    margin: 0.8rem 0 0;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+  }
+  .ar-proof a {
+    color: var(--b-cyan);
+  }
+
+  .ar-case {
+    display: grid;
+    gap: 1.25rem;
+    padding: 1.1rem;
+    border-radius: var(--b-radius);
+    border: 1px solid var(--b-line);
+    background: var(--b-ink-2);
+    color: inherit;
+    text-decoration: none;
+    transition:
+      border-color 0.3s,
+      transform 0.4s var(--b-ease);
+  }
+  .ar-case:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+    border-color: rgba(34, 211, 238, 0.4);
+  }
+  @media (min-width: 640px) {
+    .ar-case:has(img) {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+    }
+  }
+  .ar-case img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--b-line);
+  }
+  .ar-case .b-eyebrow {
+    margin: 0 0 0.4rem;
+  }
+  .ar-case p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  .ar-case__t {
+    font-family: var(--f-display);
+    font-size: 1.2rem !important;
+    color: var(--b-fg);
+  }
+  .ar-case__s {
+    margin: 0.2rem 0 0.6rem !important;
+    font-size: 0.8rem !important;
+    color: var(--b-fg-3);
+  }
+  .ar-case__go {
+    display: inline-block;
+    margin-top: 0.7rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--b-cyan);
+  }
+
+  .ar-quote {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    border-left: 3px solid var(--b-cyan);
+  }
+  .ar-quote p {
+    margin: 0;
+    font-family: var(--f-display);
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+    line-height: 1.4;
+    color: var(--b-fg);
+  }
+  .ar-quote cite {
+    display: block;
+    margin-top: 0.7rem;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--b-fg-3);
+  }
+
+  .ar-box {
+    padding: clamp(1.4rem, 3vw, 2rem);
+    border-radius: var(--b-radius);
+    border: 1px solid var(--b-line);
+    background: var(--b-ink-2);
+  }
+  .ar-box .b-eyebrow {
+    margin: 0 0 0.4rem;
+  }
+  .ar-box p {
+    margin: 0 0 1rem;
+  }
+  .ar-box__t {
+    font-family: var(--f-display);
+    font-size: 1.25rem;
+    color: var(--b-fg);
+    margin-bottom: 0.5rem !important;
+  }
+  .ar-diag fieldset {
+    margin: 1.2rem 0 0;
+    padding: 0;
+    border: 0;
+  }
+  .ar-diag legend {
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    color: var(--b-fg);
+  }
+  .ar-diag__opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .ar-cta {
+    padding: clamp(1.6rem, 4vw, 2.6rem);
+    border-radius: var(--b-radius);
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    background:
+      radial-gradient(ellipse 70% 120% at 0% 100%, rgba(34, 211, 238, 0.16), transparent 60%),
+      var(--b-ink-3);
+  }
+  .ar-cta p {
+    margin: 0 0 1.2rem;
+  }
+  .ar-cta__t {
+    font-family: var(--f-display);
+    font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+    line-height: 1.2;
+    color: var(--b-fg);
+    margin-bottom: 0.6rem !important;
+  }
+
+  .ar-sources {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--b-line);
+    font-size: 0.9rem;
+  }
+  .ar-sources ul {
+    margin: 0.6rem 0 0;
+    padding-left: 1.1rem;
+  }
+  .ar-sources a {
+    color: var(--b-fg);
+  }
+  .ar-note {
+    font-size: 0.82rem;
+    color: var(--b-fg-3);
+  }
+
+  .nfc-stage {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 1.4rem;
+    border-radius: 16px;
+    border: 1px solid var(--b-line-2);
+    background: var(--b-ink-3);
+    color: var(--b-fg);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .nfc-stage b,
+  .nfc-stage small {
+    display: block;
+  }
+  .nfc-stage small {
+    color: var(--b-fg-3);
+    font-size: 0.85rem;
+  }
+  .nfc-pair {
+    position: relative;
+    display: block;
+    width: 8.5rem;
+    height: 4.6rem;
+  }
+  .nfc-card {
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    width: 6.6rem;
+    height: 4.2rem;
+    border-radius: 0.7rem;
+    overflow: hidden;
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    background: linear-gradient(135deg, #0b1218, #13202a);
+  }
+  .nfc-card::after {
+    content: '';
+    position: absolute;
+    inset: 22% 24%;
+    border: 2px solid var(--b-cyan);
+    border-radius: 0.4rem;
+    opacity: 0.7;
+  }
+  .nfc-phone {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2.4rem;
+    height: 4.6rem;
+    border-radius: 0.55rem;
+    border: 2px solid #cbd5e1;
+    background: #020617;
+    transform: translateX(10px);
+    transition: transform 0.6s var(--b-ease);
+  }
+  .nfc-stage.is-tapped .nfc-phone {
+    transform: translateX(-26px);
+  }
+  .nfc-waves {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    width: 1.4rem;
+    height: 1.4rem;
+    border: 2px solid var(--b-cyan);
+    border-radius: 50%;
+    opacity: 0;
+  }
+  .nfc-stage.is-tapped .nfc-waves {
+    animation: nfc-ripple 0.9s ease-out;
+  }
+  @keyframes nfc-ripple {
+    from {
+      transform: translateY(-50%) scale(0.4);
+      opacity: 0.9;
+    }
+    to {
+      transform: translateY(-50%) scale(1.8);
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nfc-phone,
+    .nfc-waves {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

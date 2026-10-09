@@ -2,9 +2,11 @@
 export const prerender = false;
 import Layout from '../../layouts/Layout.astro';
 import SignalJourney from '../../components/blog/SignalJourney.astro';
-import ArticleSchema from '../../components/schema/Article.astro';
-import { getArticleBySlug } from '../../lib/editorial/articles';
+import PostCard from '../../components/blog/PostCard.astro';
+import BreadcrumbListSchema from '../../components/schema/BreadcrumbList.astro';
+import { getArticleBySlug, listPublishedArticles } from '../../lib/editorial/articles';
 import { isAuthenticated } from '../../lib/ops/auth';
+import { FOUNDER_ID, ORG_ID, SITE } from '../../data/seo';
 
 const slug = Astro.params.slug ?? '';
 const preview = Astro.url.searchParams.get('preview') === '1';
@@ -18,31 +20,134 @@ if (!article) {
   return new Response(null, { status: 404, statusText: 'Not Found' });
 }
 
-const siteOrigin = (Astro.site?.origin ?? 'https://bitora.it').replace(/\/$/, '');
-const canonical = `${siteOrigin}/blog/${article.slug}/`;
+const canonical = `${SITE}/blog/${article.slug}/`;
 const isPreview = article.status !== 'PUBLISHED';
+const cover = article.coverImage ? `${SITE}${article.coverImage}` : `${SITE}/og-bitora.jpg`;
+
+const others = isPreview ? [] : (await listPublishedArticles()).filter(a => a.slug !== article.slug);
+const related = [...others.filter(a => a.topic === article.topic), ...others.filter(a => a.topic !== article.topic)].slice(0, 3);
+
+const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ? block.items : []));
+const plainText = article.content.blocks
+  .map(b =>
+    b.type === 'paragraph'
+      ? b.html.replace(/<[^>]+>/g, ' ')
+      : b.type === 'list'
+        ? b.items.join(' ')
+        : b.type === 'signal'
+          ? `${b.heading} ${b.body}`
+          : b.type === 'heading'
+            ? b.text
+            : ''
+  )
+  .join(' ');
+const wordCount = plainText.split(/\s+/).filter(Boolean).length;
+
+const schema = isPreview
+  ? []
+  : [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${canonical}#article`,
+        headline: article.title,
+        description: article.seoDescription,
+        abstract: article.abstract || article.excerpt,
+        url: canonical,
+        image: { '@type': 'ImageObject', url: cover, width: 1280, height: 720 },
+        ...(article.publishedAt ? { datePublished: article.publishedAt.toISOString() } : {}),
+        dateModified: article.updatedAt.toISOString(),
+        inLanguage: 'it-IT',
+        articleSection: article.category,
+        wordCount,
+        author: { '@id': FOUNDER_ID },
+        publisher: { '@id': ORG_ID },
+        isPartOf: { '@id': `${SITE}/blog/#blog` },
+        mainEntityOfPage: { '@id': `${canonical}#webpage` },
+        about: article.cases.length
+          ? article.cases.map(cs => ({ '@id': `${SITE}/progetti/${cs.slug}/#project` }))
+          : undefined,
+        ...(article.sources.length ? { citation: article.sources.map(s => s.url) } : {}),
+      },
+      ...(faqItems.length
+        ? [
+            {
+              '@type': 'FAQPage',
+              '@id': `${canonical}#faq`,
+              mainEntity: faqItems.map(item => ({
+                '@type': 'Question',
+                name: item.question,
+                acceptedAnswer: { '@type': 'Answer', text: item.answer },
+              })),
+            },
+          ]
+        : []),
+    ];
 ---
 
 <Layout
   title={article.seoTitle}
   description={article.seoDescription}
   image={article.coverImage ?? undefined}
+  imageAlt={article.coverAlt ?? article.title}
   noindex={isPreview}
+  ogType="article"
+  publishedTime={article.publishedAt?.toISOString()}
+  modifiedTime={article.updatedAt.toISOString()}
+  section={article.category}
+  schema={schema}
 >
   {
     !isPreview && (
-      <ArticleSchema
-        headline={article.title}
-        description={article.seoDescription}
-        url={canonical}
-        image={article.coverImage ? `${siteOrigin}${article.coverImage}` : undefined}
-        datePublished={article.publishedAt?.toISOString()}
-        dateModified={article.updatedAt.toISOString()}
-        authorName="Bitora"
+      <BreadcrumbListSchema
+        crumbs={[
+          { name: 'Home', item: `${SITE}/` },
+          { name: 'Blog', item: `${SITE}/blog/` },
+          { name: article.title, item: canonical },
+        ]}
       />
     )
   }
-  <main id="main-content">
-    <SignalJourney article={article} preview={isPreview} />
-  </main>
+  <SignalJourney article={article} preview={isPreview} />
+
+  {
+    related.length > 0 && (
+      <section class="b-section b-section--line">
+        <div class="b-shell">
+          <div class="b-head b-head--split" data-reveal>
+            <div>
+              <p class="b-eyebrow">Continua a leggere</p>
+              <h2 class="b-h2">Altre guide utili.</h2>
+            </div>
+            <a href="/blog/" class="b-link">
+              Tutte le guide →
+            </a>
+          </div>
+          <div class="rel">
+            {related.map((a, i) => (
+              <div data-reveal data-reveal-delay={String(i + 1)}>
+                <PostCard article={a} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 </Layout>
+
+<style>
+  .rel {
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (min-width: 720px) {
+    .rel {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .rel {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

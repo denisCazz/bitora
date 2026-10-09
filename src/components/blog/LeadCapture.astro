@@ -4,26 +4,21 @@ import { ctaHrefWithArticle, ctaSpec } from '../../lib/editorial/cta';
 
 interface Props {
   article: PublicArticle;
-  answers?: string;
 }
 
 const { article } = Astro.props;
 const spec = ctaSpec(article.ctaVariant, article.topic, article.category);
 const href = ctaHrefWithArticle(spec.href, article.slug);
+const utm = (key: string, fallback: string) => Astro.url.searchParams.get(key) ?? fallback;
 ---
 
-<form
-  class="lead-capture mt-10 p-6 md:p-8 rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/[0.03]"
-  method="POST"
-  action="/api/blog/lead/"
-  data-track-form="blog_lead"
->
-  <p class="text-xs uppercase tracking-[0.16em] text-gray-500 mb-2">Fine del percorso</p>
-  <h2 class="text-2xl font-bold mb-2">{spec.magnet}</h2>
-  <p class="text-gray-600 dark:text-gray-400 mb-6">
-    Nome, email e consenso. Ti rispondiamo noi, non una sequenza automatica infinita.
-  </p>
-  <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+<form class="lc" method="POST" action="/api/blog/lead/" data-track-form="blog_lead" id="richiedi">
+  <div class="lc__glow" aria-hidden="true"></div>
+  <p class="b-eyebrow">Gratis, senza impegno</p>
+  <p class="lc__t">{spec.magnet}</p>
+  <p class="lc__d">Lasciaci un contatto: te lo prepariamo noi, su misura per la tua attività. Ti risponde una persona entro 24 ore, niente sequenze automatiche.</p>
+
+  <input type="text" name="_gotcha" class="lc__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
   <input type="hidden" name="articleId" value={article.id} />
   <input type="hidden" name="articleSlug" value={article.slug} />
   <input type="hidden" name="cta" value={spec.variant} />
@@ -31,73 +26,126 @@ const href = ctaHrefWithArticle(spec.href, article.slug);
   <input type="hidden" name="magnet" value={spec.magnet} />
   <input type="hidden" name="answers" value="" data-diagnostic-output />
   <input type="hidden" name="landingPage" value={Astro.url.pathname} />
-  <input
-    type="hidden"
-    name="utm_source"
-    value={Astro.url.searchParams.get('utm_source') ?? 'blog'}
-  />
-  <input
-    type="hidden"
-    name="utm_medium"
-    value={Astro.url.searchParams.get('utm_medium') ?? 'article'}
-  />
-  <input
-    type="hidden"
-    name="utm_campaign"
-    value={Astro.url.searchParams.get('utm_campaign') ?? article.slug}
-  />
-  <div class="grid gap-3 md:grid-cols-2">
-    <label class="grid gap-1 text-sm">
-      Nome
-      <input
-        required
-        name="name"
-        class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
-      />
+  <input type="hidden" name="utm_source" value={utm('utm_source', 'blog')} />
+  <input type="hidden" name="utm_medium" value={utm('utm_medium', 'article')} />
+  <input type="hidden" name="utm_campaign" value={utm('utm_campaign', article.slug)} />
+
+  <div class="lc__grid">
+    <label class="b-field">
+      <span class="b-label">Nome *</span>
+      <input class="b-input" required name="name" autocomplete="name" placeholder="Mario Rossi" />
     </label>
-    <label class="grid gap-1 text-sm">
-      Email
-      <input
-        required
-        type="email"
-        name="email"
-        class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
-      />
+    <label class="b-field">
+      <span class="b-label">Email *</span>
+      <input class="b-input" required type="email" name="email" autocomplete="email" placeholder="nome@azienda.it" />
     </label>
-    <label class="grid gap-1 text-sm">
-      Telefono
-      <input
-        name="phone"
-        class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
-      />
+    <label class="b-field">
+      <span class="b-label">Telefono</span>
+      <input class="b-input" type="tel" name="phone" autocomplete="tel" placeholder="+39…" />
     </label>
-    <label class="grid gap-1 text-sm">
-      Azienda
-      <input
-        name="company"
-        class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
-      />
+    <label class="b-field">
+      <span class="b-label">Azienda</span>
+      <input class="b-input" name="company" autocomplete="organization" placeholder="Nome attività" />
     </label>
   </div>
-  <label class="grid gap-1 text-sm mt-3">
-    Cosa ti serve
-    <textarea
-      name="message"
-      rows="3"
-      class="rounded-xl border border-gray-300 dark:border-white/15 bg-white dark:bg-black px-3 py-2"
-    ></textarea>
+  <label class="b-field lc__msg">
+    <span class="b-label">Cosa ti serve</span>
+    <textarea class="b-input" name="message" rows="3" placeholder="Due righe sulla tua situazione…"></textarea>
   </label>
-  <label class="flex gap-2 items-start text-sm mt-4">
-    <input required type="checkbox" name="consent" value="1" class="mt-1" />
-    <span>
-      Acconsento al trattamento dei dati secondo la
-      <a class="underline" href="/privacy-policy/">privacy policy</a>.
-    </span>
+  <label class="lc__consent">
+    <input required type="checkbox" name="consent" value="1" />
+    <span>Acconsento al trattamento dei dati secondo la <a href="/privacy-policy/">privacy policy</a>.</span>
   </label>
-  <div class="flex flex-wrap gap-3 mt-6">
-    <button class="btn-primary" type="submit">Invia e ricevi {spec.magnet.toLowerCase()}</button>
-    <a class="btn-secondary" href={href}>{spec.label}</a>
-    <a class="text-sm underline self-center" href={spec.secondaryHref}>{spec.secondaryLabel}</a>
+  <div class="b-cta-row lc__actions">
+    <button class="b-btn b-btn--primary" type="submit">Richiedi gratis →</button>
+    <a class="b-btn b-btn--ghost" href={href}>{spec.label}</a>
   </div>
-  <p class="lead-status text-sm mt-4 hidden" data-lead-status></p>
+  <p class="lc__status" data-lead-status hidden role="status"></p>
 </form>
+
+<style>
+  .lc {
+    position: relative;
+    overflow: hidden;
+    margin-top: 3.5rem !important;
+    padding: clamp(1.6rem, 4vw, 2.6rem);
+    border-radius: var(--b-radius);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    background: var(--b-ink-2);
+  }
+  .lc__glow {
+    position: absolute;
+    right: -10rem;
+    top: -10rem;
+    width: 24rem;
+    height: 24rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 65%);
+    pointer-events: none;
+  }
+  .lc > :not(.lc__glow, .lc__hp) {
+    position: relative;
+  }
+  .lc .b-eyebrow {
+    margin: 0 0 0.5rem;
+  }
+  .lc__t {
+    margin: 0 !important;
+    font-family: var(--f-display);
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--b-fg);
+  }
+  .lc__d {
+    margin: 0.8rem 0 1.6rem !important;
+    max-width: 560px;
+    font-size: 0.98rem;
+  }
+  .lc__hp {
+    position: absolute !important;
+    left: -9999px;
+  }
+  .lc__grid {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .lc__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .lc__msg {
+    margin-top: 1rem;
+  }
+  .lc__consent {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    margin-top: 1.1rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .lc__consent input {
+    margin-top: 0.2rem;
+    accent-color: var(--b-cyan);
+  }
+  .lc__consent a {
+    color: var(--b-cyan);
+  }
+  .lc__actions {
+    margin-top: 1.5rem;
+  }
+  .lc__actions .b-btn {
+    white-space: normal;
+    text-align: center;
+  }
+  .lc__status {
+    margin: 1rem 0 0 !important;
+    font-size: 0.9rem;
+    color: #fca5a5;
+  }
+  .lc__status.is-ok {
+    color: #6ee7b7;
+  }
+</style>

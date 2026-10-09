@@ -92,7 +92,7 @@ const quote = testimonials.find(t => t.company === 'Mistral Impianti');
               </div>
             </div>
           ) : (
-            <form id="contact-form" action="/api/contact" method="POST" novalidate>
+            <form id="contact-form" action="/api/contact/" method="POST" novalidate>
               <input type="text" name="_gotcha" class="ct__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
               <fieldset class="ct__fs">
@@ -226,7 +226,7 @@ const quote = testimonials.find(t => t.company === 'Mistral Impianti');
     if (document.referrer) data.set('referrer', document.referrer);
 
     try {
-      const res = await fetch('/api/contact', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      const res = await fetch('/api/contact/', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
       const isJson = (res.headers.get('content-type') || '').includes('application/json');
       const payload = isJson ? await res.json().catch(() => null) : null;
       if (res.ok && payload?.ok) {

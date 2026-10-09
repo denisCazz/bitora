@@ -1,0 +1,126 @@
+---
+import type { PublicArticle } from '../../lib/editorial/articles';
+import { formatArticleDate } from '../../lib/editorial/format';
+import Cover from './Cover.astro';
+
+export interface Props {
+  article: PublicArticle;
+  size?: 'md' | 'lg';
+  eager?: boolean;
+}
+const { article, size = 'md', eager = false } = Astro.props;
+const Heading = size === 'lg' ? 'h2' : 'h3';
+---
+
+<a href={`/blog/${article.slug}/`} class:list={['pcard', `pcard--${size}`]} data-topic={article.topic}>
+  <div class="pcard__media">
+    <Cover src={article.coverImage} alt={article.coverAlt} topic={article.topic} eager={eager} />
+    <span class="pcard__cat">{article.category}</span>
+  </div>
+  <div class="pcard__body">
+    <p class="pcard__meta">
+      <time datetime={article.publishedAt?.toISOString()}>{formatArticleDate(article.publishedAt)}</time>
+      {article.readTime && <span>· {article.readTime}</span>}
+    </p>
+    <Heading class:list={['pcard__title', size === 'lg' ? 'b-h2' : 'b-h3']}>{article.title}</Heading>
+    <p class="pcard__excerpt">{size === 'lg' ? article.abstract || article.excerpt : article.excerpt}</p>
+    <span class="pcard__go">Leggi <span aria-hidden="true">→</span></span>
+  </div>
+</a>
+
+<style>
+  .pcard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    border-radius: var(--b-radius);
+    border: 1px solid var(--b-line);
+    background: var(--b-ink-2);
+    overflow: hidden;
+    transition:
+      border-color 0.35s,
+      transform 0.5s var(--b-ease),
+      box-shadow 0.35s;
+  }
+  .pcard:hover {
+    opacity: 1;
+    transform: translateY(-4px);
+    border-color: rgba(34, 211, 238, 0.4);
+    box-shadow: 0 40px 90px -40px rgba(34, 211, 238, 0.3);
+  }
+  .pcard:hover :global(.bc img) {
+    transform: scale(1.04);
+  }
+  .pcard__media {
+    position: relative;
+  }
+  .pcard__cat {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 99px;
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--b-fg);
+    background: rgba(5, 6, 7, 0.72);
+    border: 1px solid var(--b-line-2);
+    backdrop-filter: blur(10px);
+  }
+  .pcard__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1.4rem 1.5rem 1.6rem;
+  }
+  .pcard__meta {
+    margin: 0;
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    color: var(--b-fg-3);
+  }
+  .pcard__title {
+    margin: 0;
+    transition: color 0.25s;
+  }
+  .pcard:hover .pcard__title {
+    color: var(--b-cyan);
+  }
+  .pcard__excerpt {
+    margin: 0;
+    color: var(--b-fg-2);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+  .pcard__go {
+    margin-top: auto;
+    padding-top: 0.6rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--b-cyan);
+  }
+
+  @media (min-width: 900px) {
+    .pcard--lg {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+    }
+    .pcard--lg .pcard__media :global(.bc),
+    .pcard--lg .pcard__media :global(.bc img) {
+      height: 100%;
+    }
+    .pcard--lg .pcard__body {
+      justify-content: center;
+      padding: 2.5rem 2.75rem;
+      gap: 1rem;
+    }
+    .pcard--lg .pcard__excerpt {
+      font-size: 1.05rem;
+    }
+  }
+</style>

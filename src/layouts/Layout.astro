@@ -18,6 +18,9 @@ export interface Props {
   pageType?: PageType;
   ogType?: 'website' | 'article';
   schema?: Record<string, unknown>[];
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
 }
 
 const {
@@ -29,6 +32,9 @@ const {
   pageType = 'WebPage',
   ogType = 'website',
   schema = [],
+  publishedTime,
+  modifiedTime,
+  section,
 } = Astro.props;
 const siteOrigin = (Astro.site?.origin ?? 'https://bitora.it').replace(/\/$/, '');
 const pathname = Astro.url.pathname || '/';
@@ -191,6 +197,17 @@ const graph = {
         <>
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
+        </>
+      )
+    }
+    {
+      ogType === 'article' && (
+        <>
+          {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+          {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+          {section && <meta property="article:section" content={section} />}
+          <meta property="article:author" content="https://bitora.it/chi-siamo/" />
+          <meta name="author" content="Denis Cazzulo" />
         </>
       )
     }

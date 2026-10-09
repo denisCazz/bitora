@@ -512,7 +512,7 @@ import Layout from '../../layouts/Layout.astro';
           };
 
           try {
-            const res = await fetch('/api/roi-report', {
+            const res = await fetch('/api/roi-report/', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
               body: JSON.stringify(payload),
