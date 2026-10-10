@@ -19,6 +19,7 @@ const utm = (key: string, fallback: string) => Astro.url.searchParams.get(key) ?
   <p class="lc__d">Lasciaci un contatto: te lo prepariamo noi, su misura per la tua attività. Ti risponde una persona entro 24 ore, niente sequenze automatiche.</p>
 
   <input type="text" name="_gotcha" class="lc__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <input type="hidden" name="_ts" value="" />
   <input type="hidden" name="articleId" value={article.id} />
   <input type="hidden" name="articleSlug" value={article.slug} />
   <input type="hidden" name="cta" value={spec.variant} />

@@ -23,7 +23,7 @@
     "db:validate": "prisma validate",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
-    "test:unit": "tsx --test src/lib/editorial/editorial.test.ts"
+    "test:unit": "tsx --test src/lib/editorial/editorial.test.ts src/lib/spamGuard.test.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.5",

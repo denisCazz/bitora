@@ -34,6 +34,7 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
 
         <form id="demo-form" action="/api/contact/" method="POST" class="space-y-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-10">
           <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="_ts" id="form_ts" value="" />
           <input type="hidden" name="argomento" value="demo-gestione-interventi" />
           <input type="hidden" name="form_type" value="demo" />
           <input type="hidden" name="landing_page" id="landing_page" value="" />
@@ -186,6 +187,7 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
       const el = document.getElementById(id) as HTMLInputElement | null;
       if (el) el.value = value;
     };
+    set('form_ts', String(Date.now()));
     set('landing_page', window.location.href);
     set('referrer', document.referrer || '');
     set('utm_source', getParam('utm_source'));

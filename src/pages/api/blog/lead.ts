@@ -1,23 +1,41 @@
 import type { APIRoute } from 'astro';
 import { submitBlogLead } from '../../../lib/editorial/leads';
-import { isLeadRateLimited } from '../../../lib/editorial/leads';
+import { checkSubmission, logBlocked } from '../../../lib/spamGuard';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request, clientAddress }) => {
-  const ip = clientAddress || request.headers.get('x-forwarded-for') || 'unknown';
-  if (isLeadRateLimited(String(ip))) {
-    return new Response(
-      JSON.stringify({ ok: false, error: 'Troppi tentativi. Riprova tra un minuto.' }),
-      {
-        status: 429,
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
-  }
+const json = (body: unknown, status: number) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  });
 
+export const POST: APIRoute = async ({ request, clientAddress }) => {
   const data = await request.formData();
   const pick = (key: string) => String(data.get(key) || '').trim();
+
+  if (pick('_gotcha')) return json({ ok: true }, 200);
+
+  const name = pick('name') || pick('nome');
+  const email = pick('email');
+  const company = pick('company') || pick('azienda');
+  const message = pick('message') || pick('messaggio');
+
+  const guard = checkSubmission({
+    request,
+    clientAddress,
+    timestamp: pick('_ts'),
+    name,
+    email,
+    texts: [message, company],
+  });
+  if (!guard.ok) {
+    logBlocked('blog-lead', guard, email);
+    return guard.rateLimited
+      ? json({ ok: false, error: 'Troppi tentativi. Riprova più tardi.' }, 429)
+      : json({ ok: true }, 200);
+  }
+
   let answers: unknown;
   try {
     answers = pick('answers') ? JSON.parse(pick('answers')) : undefined;
@@ -26,11 +44,11 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   }
 
   const result = await submitBlogLead({
-    name: pick('name') || pick('nome'),
-    email: pick('email'),
+    name,
+    email,
     phone: pick('phone') || pick('telefono'),
-    company: pick('company') || pick('azienda'),
-    message: pick('message') || pick('messaggio'),
+    company,
+    message,
     consent: data.get('consent') === '1' || data.get('consent') === 'on',
     articleId: pick('articleId') || undefined,
     articleSlug: pick('articleSlug') || undefined,
@@ -48,11 +66,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     gclid: pick('gclid'),
     fbclid: pick('fbclid'),
     honeypot: pick('_gotcha'),
-    ip: String(ip),
+    ip: guard.ip,
   });
 
-  return new Response(JSON.stringify(result), {
-    status: result.ok ? 200 : 400,
-    headers: { 'Content-Type': 'application/json' },
-  });
+  return json(result, result.ok ? 200 : 400);
 };
