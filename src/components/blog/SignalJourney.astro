@@ -373,6 +373,8 @@ const showUpdated = updated.getTime() - published.getTime() > 86_400_000;
     });
 
     const leadForm = document.querySelector('[data-track-form="blog_lead"]');
+    const leadTs = leadForm?.querySelector('[name="_ts"]') as HTMLInputElement | null;
+    if (leadTs) leadTs.value = String(Date.now());
     leadForm?.addEventListener('submit', async event => {
       event.preventDefault();
       const form = event.currentTarget as HTMLFormElement;

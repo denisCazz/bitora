@@ -489,6 +489,7 @@ import Layout from '../../layouts/Layout.astro';
         const successEl = document.getElementById('roi-form-success');
         const submitBtn = document.getElementById('roi-submit-btn');
         const submitLabel = document.getElementById('roi-submit-label');
+        const loadedAt = Date.now();
 
         form.addEventListener('submit', async e => {
           e.preventDefault();
@@ -509,6 +510,7 @@ import Layout from '../../layouts/Layout.astro';
             roiMonthly: (document.getElementById('roi-roiMonthly') as HTMLInputElement).value,
             payback: (document.getElementById('roi-payback') as HTMLInputElement).value,
             _gotcha: (form.querySelector('[name="_gotcha"]') as HTMLInputElement).value,
+            _ts: loadedAt,
           };
 
           try {

@@ -3,6 +3,7 @@ import { Resend } from 'resend';
 import crypto from 'node:crypto';
 import { renderRoiReportEmail } from '../../emails/roiReport';
 import { renderAdminEmail } from '../../emails/adminNotification';
+import { checkSubmission, logBlocked } from '../../lib/spamGuard';
 
 export const prerender = false;
 
@@ -10,33 +11,7 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
-const RATE_LIMIT_WINDOW = 60_000;
-const RATE_LIMIT_MAX = 3;
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
-
-  if (!entry || now > entry.resetAt) {
-    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
-    return false;
-  }
-
-  entry.count++;
-  return entry.count > RATE_LIMIT_MAX;
-}
-
 export const POST: APIRoute = async ({ request, clientAddress }) => {
-  const ip = clientAddress || request.headers.get('x-forwarded-for') || 'unknown';
-
-  if (isRateLimited(ip)) {
-    return new Response(
-      JSON.stringify({ ok: false, error: 'Troppi tentativi. Riprova tra un minuto.' }),
-      { status: 429, headers: { 'Content-Type': 'application/json' } }
-    );
-  }
-
   const apiKey = import.meta.env.RESEND_API_KEY ?? process.env.RESEND_API_KEY;
   const mailFrom = import.meta.env.MAIL_FROM ?? process.env.MAIL_FROM;
   const mailTo = import.meta.env.MAIL_TO ?? process.env.MAIL_TO;
@@ -74,6 +49,27 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         headers: { 'Content-Type': 'application/json' },
       });
     }
+
+    const guard = checkSubmission({
+      request,
+      clientAddress,
+      timestamp: body._ts as string | number | undefined,
+      name: nome,
+      email,
+    });
+    if (!guard.ok) {
+      logBlocked('roi-report', guard, email);
+      return guard.rateLimited
+        ? new Response(JSON.stringify({ ok: false, error: 'Troppi tentativi. Riprova più tardi.' }), {
+            status: 429,
+            headers: { 'Content-Type': 'application/json' },
+          })
+        : new Response(JSON.stringify({ ok: true }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+          });
+    }
+    const ip = guard.ip;
 
     const report = {
       savedHours: String(body.savedHours ?? '—'),
