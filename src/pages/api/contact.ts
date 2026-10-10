@@ -99,6 +99,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       timestamp: pick(data, '_ts'),
       name: nome,
       email,
+      phone: telefono,
       texts: [messaggio, azienda, ruolo, esigenza, strumentiAttuali],
     });
     if (!guard.ok) {

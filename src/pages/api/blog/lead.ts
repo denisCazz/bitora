@@ -27,6 +27,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     timestamp: pick('_ts'),
     name,
     email,
+    phone: pick('phone') || pick('telefono'),
     texts: [message, company],
   });
   if (!guard.ok) {

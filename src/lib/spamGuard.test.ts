@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { checkSubmission } from './spamGuard';
+import { checkSubmission, isPlausiblePhone } from './spamGuard';
 
 let ipCounter = 0;
 const req = (headers: Record<string, string> = { origin: 'https://bitora.it' }) =>
@@ -64,4 +64,51 @@ test('limita invii ripetuti dalla stessa email', () => {
   const third = send();
   assert.equal(third.ok, false);
   assert.ok(!third.ok && third.rateLimited);
+});
+
+test('blocca lo schema "Robertbeata" (IP noto, telefono casuale, domanda sul prezzo)', () => {
+  const base = { timestamp: ago(20_000), name: 'Robertbeata', email: 'dstewen@t-online.de' };
+  const blockedIp = checkSubmission({
+    request: req({ origin: 'https://bitora.it', 'x-forwarded-for': '80.94.95.202' }),
+    ...base,
+  });
+  assert.equal(blockedIp.reason, 'blocked-ip');
+  const badPhone = checkSubmission({ request: req(), ...base, phone: '82665632744' });
+  assert.equal(badPhone.reason, 'bad-phone');
+  const price = checkSubmission({
+    request: req(),
+    ...base,
+    texts: ['Hi, I wanted to know your price.'],
+  });
+  assert.equal(price.ok, false);
+});
+
+test('riconosce telefoni plausibili', () => {
+  for (const p of [
+    '333 123 4567',
+    '+39 333 1234567',
+    '011 1234567',
+    '+49 30 123456',
+    '0049301234',
+  ]) {
+    assert.equal(isPlausiblePhone(p), true, p);
+  }
+  for (const p of ['82665632744', '87474919667', '123', 'chiamami']) {
+    assert.equal(isPlausiblePhone(p), false, p);
+  }
+});
+
+test('limite per IP anche cambiando email', () => {
+  const ip = '9.9.9.9';
+  const results: boolean[] = [];
+  for (let i = 0; i < 6; i++) {
+    const r = checkSubmission({
+      request: req({ origin: 'https://bitora.it', 'x-real-ip': ip }),
+      timestamp: ago(20_000),
+      name: 'Utente',
+      email: `u${i}@example.it`,
+    });
+    results.push(r.ok);
+  }
+  assert.equal(results.filter(Boolean).length, 3);
 });

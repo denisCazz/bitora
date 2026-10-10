@@ -15,7 +15,14 @@ const SPAM_PATTERNS: RegExp[] = [
   /\b(dear|hello)\s+(sir|madam|business owner|website owner)\b/i,
   /\bwe\s+(are|can)\s+(a|an)?\s*(offshore|outsourc)/i,
   /\[url=|<a\s+href|\[link=/i,
+  /\b(know|ask(ed)?\s+about|wrote\s+about)\s+(your|the)\s+(the\s+)?prices?\b/i,
+  /\bquer[ií]a\s+saber\s+(tu|su)\s+precio/i,
+  /\bwollte\s+(ihren|deinen)\s+preis/i,
+  /\bvoulais\s+conna[iî]tre\s+votre\s+prix/i,
+  /\bqueria\s+saber\s+o\s+seu\s+pre[cç]o/i,
 ];
+
+const DEFAULT_BLOCKED_IP_PREFIXES = ['80.94.95.'];
 
 const URL_PATTERN = /(https?:\/\/|www\.)\S+/gi;
 const NON_LATIN =
@@ -25,8 +32,12 @@ const ipHits = new Map<string, number[]>();
 const emailHits = new Map<string, number[]>();
 let globalHits: number[] = [];
 
+const ipDailyHits = new Map<string, number[]>();
+
 const IP_WINDOW_MS = 10 * 60_000;
 const IP_MAX = 3;
+const IP_DAY_WINDOW_MS = 24 * 60 * 60_000;
+const IP_DAY_MAX = 5;
 const EMAIL_WINDOW_MS = 60 * 60_000;
 const EMAIL_MAX = 2;
 const GLOBAL_WINDOW_MS = 60 * 60_000;
@@ -38,6 +49,7 @@ export type SpamCheckInput = {
   timestamp?: string | number | null;
   name?: string;
   email?: string;
+  phone?: string;
   texts?: Array<string | undefined>;
 };
 
@@ -54,6 +66,24 @@ export function getClientIp(request: Request, clientAddress?: string): string {
   const forwarded = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
   if (forwarded) return forwarded;
   return clientAddress || 'unknown';
+}
+
+function isBlockedIp(ip: string): boolean {
+  const extra = (process.env.SPAM_BLOCKED_IPS || '')
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean);
+  return [...DEFAULT_BLOCKED_IP_PREFIXES, ...extra].some(prefix => ip.startsWith(prefix));
+}
+
+/** Accepts Italian numbers (3xx mobile, 0x landline) and explicit international ones (+ / 00). */
+export function isPlausiblePhone(phone: string): boolean {
+  const compact = phone.replace(/[\s().\-/]/g, '');
+  if (!/^\+?\d+$/.test(compact)) return false;
+  const digits = compact.replace(/^\+/, '');
+  if (digits.length < 6 || digits.length > 15) return false;
+  if (compact.startsWith('+') || digits.startsWith('00')) return true;
+  return /^[03]/.test(digits);
 }
 
 function hostOf(value: string | null): string | null {
@@ -114,6 +144,7 @@ export function checkSubmission(input: SpamCheckInput): SpamCheckResult {
   const ip = getClientIp(input.request, input.clientAddress);
   const now = Date.now();
 
+  if (isBlockedIp(ip)) return { ok: false, ip, reason: 'blocked-ip' };
   if (!isAllowedOrigin(input.request)) return { ok: false, ip, reason: 'bad-origin' };
 
   const ts = Number(input.timestamp);
@@ -128,8 +159,14 @@ export function checkSubmission(input: SpamCheckInput): SpamCheckResult {
   );
   if (reason) return { ok: false, ip, reason };
 
+  const phone = (input.phone || '').trim();
+  if (phone && !isPlausiblePhone(phone)) return { ok: false, ip, reason: 'bad-phone' };
+
   if (hitLimit(ipHits, ip, IP_WINDOW_MS, IP_MAX, now)) {
     return { ok: false, ip, reason: 'ip-rate-limit', rateLimited: true };
+  }
+  if (hitLimit(ipDailyHits, ip, IP_DAY_WINDOW_MS, IP_DAY_MAX, now)) {
+    return { ok: false, ip, reason: 'ip-daily-limit', rateLimited: true };
   }
   const email = (input.email || '').trim().toLowerCase();
   if (email && hitLimit(emailHits, email, EMAIL_WINDOW_MS, EMAIL_MAX, now)) {
