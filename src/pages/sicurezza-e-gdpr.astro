@@ -1,0 +1,597 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import FaqList from '../components/ui/FaqList.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
+import { whatsappLink } from '../data/services';
+
+const infraPillars = [
+  {
+    n: '01',
+    kicker: 'Data Residency UE',
+    title: 'Server e database in Unione Europea',
+    desc: 'Tutti i siti, gli e-commerce e i software gestionali che realizziamo sono ospitati in data center certificati situati nell’Unione Europea (Germania e Italia), pienamente soggetti alla giurisdizione europea e al GDPR.',
+    bullets: ['Data center certificati ISO/IEC 27001', 'Giurisdizione 100% UE', 'Nessun trasferimento opaco extra-UE'],
+  },
+  {
+    n: '02',
+    kicker: 'Isolamento dati',
+    title: 'Ambienti e database dedicati per cliente',
+    desc: 'Ogni progetto aziendale vive in un ambiente containerizzato indipendente con il proprio database isolato. I dati della tua azienda non vengono mai mescolati nella stessa banca dati di altri clienti.',
+    bullets: ['Database dedicato per azienda', 'Container isolati', 'Ruoli e permessi separati'],
+  },
+  {
+    n: '03',
+    kicker: 'Rete & Crittografia',
+    title: 'Protezione Cloudflare, WAF e TLS 1.3',
+    desc: 'Ogni comunicazione tra browser, app mobile e server è cifrata end-to-end tramite HTTPS/TLS. La rete è protetta a monte da firewall applicativo (WAF) Cloudflare contro attacchi DDoS, bot malevoli e tentativi di intrusione.',
+    bullets: ['Crittografia TLS/HTTPS ovunque', 'Firewall WAF & protezione DDoS', 'Password e segreti cifrati'],
+  },
+  {
+    n: '04',
+    kicker: 'Continuità operativa',
+    title: 'Monitoraggio 24/7 e backup giornalieri',
+    desc: 'Il nostro sistema di controllo verifica 24 ore su 24 lo stato dei server, dei domini e dei certificati di sicurezza, inviando alert in tempo reale. Eseguiamo backup automatici giornalieri cifrati per garantire il ripristino rapido.',
+    bullets: ['Watchdog uptime e SSL attivo 24/7', 'Backup automatici giornalieri', 'Procedure di Disaster Recovery'],
+  },
+];
+
+const legalGuarantees = [
+  {
+    title: 'Referente unico diretto, zero sub-appalti opachi',
+    desc: 'Bitora è un prodotto di Denis Cazzulo. Chi progetta l’architettura e scrive il codice è chi gestisce l’infrastruttura. Non passiamo credenziali, database o documenti aziendali a catene di fornitori esterni o sviluppatori terzi non autorizzati.',
+  },
+  {
+    title: 'Accordo di Riservatezza (NDA) fin dal primo contatto',
+    desc: 'Sappiamo che per costruire un gestionale, un e-commerce B2B o un’automazione serve condividere processi interni, listini e dati sensibili. Sottoscriviamo volentieri un Accordo di Non Divulgazione (NDA) già in fase di analisi e preventivo.',
+  },
+  {
+    title: 'Privacy by Design e by Default (Art. 25 GDPR)',
+    desc: 'Progettiamo ogni software seguendo il principio di minimizzazione dei dati: raccogliamo solo ciò che serve davvero al processo lavorativo, con accessi profilati per ruolo (titolare, amministrazione, tecnici sul campo) e tracciamento delle operazioni critiche.',
+  },
+  {
+    title: 'Trasparenza, controllo ed esercizio dei diritti',
+    desc: 'I dati inseriti nel tuo gestionale o raccolti dal tuo sito restano sotto il tuo pieno controllo. Garantiamo assistenza immediata per esportazione in formati standard, rettifica, limitazione o cancellazione definitiva su richiesta.',
+  },
+];
+
+const aiGuarantees = [
+  {
+    tag: 'Zero Training',
+    title: 'I tuoi dati non addestrano modelli pubblici',
+    desc: 'Documenti aziendali, preventivi, anagrafiche clienti, listini e conversazioni elaborati tramite le nostre integrazioni AI non vengono mai usati per addestrare modelli di intelligenza artificiale pubblici.',
+  },
+  {
+    tag: 'Solo Opt-in & API Business',
+    title: 'Attivazione su richiesta con canali Enterprise',
+    desc: 'Le funzioni di intelligenza artificiale vengono attivate solo se richieste esplicitamente dal cliente e utilizzano esclusivamente API Business con policy di zero-retention o elaborazione dedicata.',
+  },
+  {
+    tag: 'Human-in-the-loop',
+    title: 'L’AI prepara, le persone decidono',
+    desc: 'Progettiamo assistenti e automazioni che preparano bozze di preventivi, ricerche o report, lasciando sempre al tuo team la revisione e la conferma finale prima di qualsiasi invio o azione critica.',
+  },
+];
+
+const gdprFaqs = [
+  {
+    question: 'Chi c’è dietro Bitora e chi ha accesso tecnico ai dati?',
+    answer:
+      'Bitora è un prodotto e uno studio digitale di Denis Cazzulo (P.IVA 13359170019), con sede a Carmagnola (TO). L’accesso amministrativo all’infrastruttura è strettamente limitato a Denis Cazzulo, protetto da chiavi crittografiche SSH, autenticazione a più fattori (2FA/TOTP) e connessioni cifrate.',
+  },
+  {
+    question: 'Dove vengono salvati i dati dei gestionali, delle app e dei siti web?',
+    answer:
+      'Tutti i database e i server applicativi risiedono in data center situati nell’Unione Europea (Germania e Italia), conformi al Regolamento UE 2016/679 (GDPR) e dotati di certificazioni di sicurezza internazionali (ISO/IEC 27001).',
+  },
+  {
+    question: 'Possiamo firmare un NDA prima di mostrarvi i nostri file o flussi di lavoro?',
+    answer:
+      'Certamente. Anche prima della call di approfondimento o della stesura del preventivo possiamo sottoscrivere un Accordo di Riservatezza (NDA) bilaterale, così puoi condividere listini, documenti tecnici o procedure interne con la massima serenità.',
+  },
+  {
+    question: 'Se usiamo l’Intelligenza Artificiale nel gestionale, i nostri documenti finiscono online?',
+    answer:
+      'Assolutamente no. Quando integriamo funzionalità AI (ad esempio per preparare bozze di preventivi o interrogare manuali tecnici), utilizziamo API Business configurate per non addestrare mai i modelli sui dati del cliente e limitiamo l’accesso ai soli documenti autorizzati.',
+  },
+  {
+    question: 'Come sono protetti i dati in caso di guasto o imprevisto?',
+    answer:
+      'Ogni ambiente è monitorato 24/7 dal nostro sistema automatico che controlla raggiungibilità, certificati SSL e stato dei servizi. Inoltre eseguiamo backup giornalieri automatici e cifrati su storage separato, per garantire continuità operativa e ripristino rapido.',
+  },
+  {
+    question: 'A chi posso scrivere per domande sulla privacy o sul trattamento dei dati?',
+    answer:
+      'Puoi contattare direttamente Denis Cazzulo scrivendo a privacy@bitora.it o info@bitora.it, oppure chiamando il +39 351 497 9670. Rispondiamo personalmente entro 24 ore lavorative.',
+  },
+];
+---
+
+<Layout
+  title="Sicurezza dei Dati e Conformità GDPR | Bitora di Denis Cazzulo"
+  description="Bitora, un prodotto di Denis Cazzulo, tratta e protegge i dati dei clienti secondo il GDPR: server in Unione Europea, database isolati, backup cifrati, NDA e AI sicura."
+  pageType="WebPage"
+>
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Sicurezza e GDPR', item: 'https://bitora.it/sicurezza-e-gdpr/' },
+    ]}
+  />
+
+  <PageHero
+    eyebrow="Sicurezza, Privacy & Conformità GDPR"
+    title='I dati della tua azienda sono <span class="b-grad">al sicuro</span>.'
+    lede="Bitora è un prodotto di Denis Cazzulo. Progettiamo e gestiamo siti web, e-commerce, software gestionali, app e intelligenza artificiale trattando i dati dei clienti nel pieno rispetto del GDPR (Regolamento UE 2016/679), con server in Unione Europea e responsabilità diretta."
+    crumbs={[{ name: 'Sicurezza e GDPR', href: '/sicurezza-e-gdpr/' }]}
+    primary={{ label: 'Parla con Denis o richiedi un NDA', href: '/contattaci/', track: 'gdpr_hero_cta' }}
+    secondary={{ label: 'Informativa Privacy del sito', href: '/privacy-policy/' }}
+    chips={[
+      'Conforme GDPR (UE 2016/679)',
+      'Server in Unione Europea',
+      'Database isolati per cliente',
+      'NDA e riservatezza garantita',
+      'Zero training AI sui tuoi dati',
+    ]}
+  />
+
+  <!-- IDENTITÀ E IMPEGNO DIRETTO -->
+  <section class="b-section b-section--line">
+    <div class="b-shell id-grid">
+      <div class="b-card id-card" data-reveal>
+        <div class="id-card__badge">
+          <span class="id-card__dot" aria-hidden="true"></span>
+          Garanzia di titolarità e trasparenza
+        </div>
+        <h2 class="b-h3 id-card__title">Bitora — un prodotto di Denis Cazzulo</h2>
+        <p class="b-small id-card__sub">
+          Identità giuridica chiara, sede in Italia e un unico professionista responsabile dall’architettura alla messa online.
+        </p>
+        <dl class="id-card__dl">
+          <div>
+            <dt>Prodotto e studio</dt>
+            <dd>Bitora di Denis Cazzulo</dd>
+          </div>
+          <div>
+            <dt>Responsabile diretto</dt>
+            <dd>Denis Cazzulo</dd>
+          </div>
+          <div>
+            <dt>Partita IVA</dt>
+            <dd>13359170019</dd>
+          </div>
+          <div>
+            <dt>Sede</dt>
+            <dd>Carmagnola (TO), Italia — UE</dd>
+          </div>
+          <div>
+            <dt>Normativa applicata</dt>
+            <dd>GDPR (Reg. UE 2016/679) · D.Lgs. 196/2003</dd>
+          </div>
+          <div>
+            <dt>Contatto Privacy</dt>
+            <dd><a href="mailto:privacy@bitora.it">privacy@bitora.it</a></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div data-reveal data-reveal-delay="1">
+        <p class="b-eyebrow">Perché puoi fidarti</p>
+        <h2 class="b-h2">
+          La sicurezza nasce da <span class="b-accent">chi ha le chiavi</span> dei tuoi sistemi.
+        </h2>
+        <div class="id-copy">
+          <p class="b-text">
+            Quando affidi a un partner esterno il sito web, l’e-commerce o il software gestionale della tua azienda, gli stai affidando anagrafiche clienti, ordini, preventivi, rapportini di lavoro e informazioni commerciali preziose.
+          </p>
+          <p class="b-text">
+            Con <strong>Bitora — un prodotto di Denis Cazzulo</strong> hai una garanzia rara nel settore digitale: <strong>non esistono catene di sub-appalto, call center o sviluppatori anonimi</strong> che si passano le credenziali del tuo progetto. Chi progetta il software è la stessa persona che configura i server, protegge i database e ti risponde al telefono.
+          </p>
+          <p class="b-text">
+            Ogni progetto viene sviluppato e mantenuto secondo i principi del <strong>Regolamento Generale sulla Protezione dei Dati (GDPR — Regolamento UE 2016/679)</strong>: minimizzazione dei dati raccolti, crittografia moderna, isolamento degli ambienti e massima riservatezza professionale.
+          </p>
+        </div>
+
+        <div class="b-kpis id-kpis">
+          <div class="b-kpi">
+            <div class="b-kpi__v">100% UE</div>
+            <div class="b-kpi__l">Residenza server e database</div>
+          </div>
+          <div class="b-kpi">
+            <div class="b-kpi__v">24/7</div>
+            <div class="b-kpi__l">Monitoraggio SSL e uptime</div>
+          </div>
+          <div class="b-kpi">
+            <div class="b-kpi__v">0%</div>
+            <div class="b-kpi__l">Dati ceduti o usati per training AI</div>
+          </div>
+          <div class="b-kpi">
+            <div class="b-kpi__v">1 : 1</div>
+            <div class="b-kpi__l">Referente diretto (Denis Cazzulo)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 PILASTRI INFRASTRUTTURALI -->
+  <section class="b-section b-section--alt b-section--line" id="infrastruttura">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Infrastruttura e protezione tecnica</p>
+          <h2 class="b-h2">
+            Quattro livelli di difesa <br />per <span class="b-grad">ogni progetto</span>.
+          </h2>
+        </div>
+        <p class="b-text">
+          Che si tratti di un sito aziendale, di un portale e-commerce o di un gestionale con app per i tecnici in cantiere, applichiamo gli stessi standard di sicurezza enterprise.
+        </p>
+      </div>
+
+      <div class="infra-grid">
+        {
+          infraPillars.map((item, i) => (
+            <article class="b-card infra-card" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+              <div class="infra-card__top">
+                <span class="b-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </span>
+                <span class="b-mono infra-card__n">{item.n}</span>
+              </div>
+              <p class="infra-card__kicker">{item.kicker}</p>
+              <h3 class="b-h3">{item.title}</h3>
+              <p class="b-text infra-card__desc">{item.desc}</p>
+              <ul class="b-checks infra-card__list">
+                {item.bullets.map(b => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANZIE LEGALI E RISERVATEZZA B2B -->
+  <section class="b-section b-section--line" id="garanzie-clienti">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Impegno verso il cliente</p>
+          <h2 class="b-h2">
+            Riservatezza contrattuale e <span class="b-accent">conformità GDPR</span>.
+          </h2>
+        </div>
+        <p class="b-text">
+          La sicurezza tecnica non basta senza regole chiare su chi può vedere i dati, come vengono trattati e quali tutele hai prima, durante e dopo lo sviluppo.
+        </p>
+      </div>
+
+      <div class="legal-grid">
+        {
+          legalGuarantees.map((g, i) => (
+            <article class="b-card legal-card" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+              <span class="b-mono legal-card__num">GARANZIA 0{i + 1}</span>
+              <h3 class="b-h3 legal-card__title">{g.title}</h3>
+              <p class="b-text">{g.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- INTELLIGENZA ARTIFICIALE E PRIVACY -->
+  <section class="b-section b-section--alt b-section--line ai-sec" id="ai-privacy">
+    <div class="b-glow-orb ai-sec__orb" aria-hidden="true"></div>
+    <div class="b-shell ai-sec__inner">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">Intelligenza Artificiale & Riservatezza</p>
+        <h2 class="b-h2">
+          L’AI lavora per la tua azienda, <br />
+          <span class="b-accent">senza mai esporre i tuoi segreti</span>.
+        </h2>
+        <p class="b-lede">
+          Molte aziende temono che usare l’intelligenza artificiale significhi regalare i propri listini o documenti a modelli pubblici. Con Bitora questo non avviene mai.
+        </p>
+      </div>
+
+      <div class="ai-sec__grid">
+        {
+          aiGuarantees.map((a, i) => (
+            <article class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+              <p class="b-mono ai-sec__tag">{a.tag}</p>
+              <h3 class="b-h3 ai-sec__title">{a.title}</h3>
+              <p class="b-text">{a.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST TECNICA RIASSUNTIVA -->
+  <section class="b-section b-section--line">
+    <div class="b-shell">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">Riepilogo delle misure</p>
+        <h2 class="b-h2">Cosa applichiamo di serie su <span class="b-grad">tutti i sistemi Bitora</span>.</h2>
+      </div>
+
+      <div class="b-card matrix" data-reveal>
+        <div class="matrix__col">
+          <h3 class="b-h3">Protezione dei dati in transito e a riposo</h3>
+          <ul class="b-checks">
+            <li>Protocollo HTTPS/TLS 1.3 obbligatorio con HSTS Preload attivo</li>
+            <li>Password utenti protette con hashing crittografico irreversibile</li>
+            <li>Variabili d’ambiente, chiavi API e token custoditi fuori dal codice sorgente</li>
+            <li>Protezione perimetrale Cloudflare con mitigazione DDoS e filtro bot</li>
+          </ul>
+        </div>
+        <div class="matrix__col">
+          <h3 class="b-h3">Governance, accessi e continuità</h3>
+          <ul class="b-checks">
+            <li>Accesso server riservato a Denis Cazzulo tramite chiavi SSH e 2FA (TOTP)</li>
+            <li>Controllo accessi basato sui ruoli (RBAC) nei gestionali e nelle app</li>
+            <li>Consenso cookie granulare conforme a Google Consent Mode v2</li>
+            <li>Monitoraggio automatico certificati TLS, scadenze domini e stato database</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="b-card direct-banner" data-reveal>
+        <div>
+          <p class="b-eyebrow">Domande specifiche o necessità di un NDA?</p>
+          <h3 class="b-h3 direct-banner__title">
+            Parla direttamente con Denis Cazzulo prima di condividere qualsiasi dato.
+          </h3>
+          <p class="b-text">
+            Se la tua azienda ha requisiti specifici di conformità, necessita di firmare un accordo di riservatezza preventivo o vuole conoscere nel dettaglio l’architettura per un nuovo software, scrivici o chiamaci senza impegno.
+          </p>
+        </div>
+        <div class="direct-banner__actions">
+          <a href="/contattaci/" class="b-btn b-btn--primary" data-track="cta_click" data-track-location="gdpr_direct_banner">
+            Contattaci in riservatezza <span class="b-arrow" aria-hidden="true">→</span>
+          </a>
+          <a
+            href={whatsappLink('Ciao Denis, vorrei informazioni su sicurezza dati e GDPR per un progetto con Bitora.')}
+            class="b-btn b-btn--wa"
+            data-track="whatsapp_click"
+            data-track-location="gdpr_direct_banner"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp diretto
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FaqList
+    eyebrow="Domande frequenti su GDPR e Sicurezza"
+    title="Tutto chiaro, nero su bianco."
+    items={gdprFaqs}
+  />
+</Layout>
+
+<style>
+  .id-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (min-width: 960px) {
+    .id-grid {
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 4.5rem;
+    }
+  }
+  .id-card {
+    background:
+      radial-gradient(ellipse 80% 60% at 100% 0%, rgba(34, 211, 238, 0.1), transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+    border-color: rgba(34, 211, 238, 0.25);
+  }
+  .id-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.38rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    background: rgba(52, 211, 153, 0.08);
+    color: #6ee7b7;
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .id-card__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 10px #34d399;
+  }
+  .id-card__title {
+    margin-bottom: 0.5rem;
+  }
+  .id-card__sub {
+    margin-bottom: 1.5rem;
+  }
+  .id-card__dl {
+    margin: 0;
+  }
+  .id-card__dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-top: 1px solid var(--b-line);
+    font-size: 0.9rem;
+  }
+  .id-card__dl dt {
+    color: var(--b-fg-3);
+  }
+  .id-card__dl dd {
+    margin: 0;
+    color: var(--b-fg);
+    font-weight: 500;
+    text-align: right;
+  }
+  .id-card__dl a {
+    color: var(--b-cyan);
+    text-decoration: none;
+  }
+  .id-card__dl a:hover {
+    text-decoration: underline;
+  }
+
+  .id-copy {
+    display: grid;
+    gap: 1.15rem;
+    margin-top: 1.75rem;
+  }
+  .id-copy strong {
+    color: var(--b-fg);
+  }
+  .id-kpis {
+    margin-top: 2.75rem;
+  }
+
+  .infra-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+  @media (min-width: 800px) {
+    .infra-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .infra-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .infra-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .infra-card__n {
+    font-size: 0.78rem;
+    color: var(--b-fg-3);
+  }
+  .infra-card__kicker {
+    margin: 0 0 0.45rem;
+    font-size: 0.8rem;
+    font-family: var(--f-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--b-cyan);
+  }
+  .infra-card__desc {
+    margin: 0.75rem 0 1.5rem;
+    flex: 1;
+  }
+  .infra-card__list {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--b-line);
+  }
+
+  .legal-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+  @media (min-width: 800px) {
+    .legal-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .legal-card__num {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--b-cyan);
+    margin-bottom: 0.9rem;
+  }
+  .legal-card__title {
+    margin-bottom: 0.75rem;
+  }
+
+  .ai-sec {
+    overflow: hidden;
+  }
+  .ai-sec__orb {
+    right: -18rem;
+    bottom: -22rem;
+  }
+  .ai-sec__inner {
+    position: relative;
+  }
+  .ai-sec__grid {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 900px) {
+    .ai-sec__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .ai-sec__tag {
+    margin: 0 0 1.25rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--b-cyan);
+  }
+  .ai-sec__title {
+    margin-bottom: 0.65rem;
+  }
+
+  .matrix {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 860px) {
+    .matrix {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.5rem;
+    }
+  }
+  .matrix__col h3 {
+    margin-bottom: 1.25rem;
+  }
+
+  .direct-banner {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 1.75rem;
+    align-items: center;
+    background:
+      radial-gradient(ellipse 60% 100% at 100% 50%, rgba(34, 211, 238, 0.1), transparent 65%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+  }
+  @media (min-width: 900px) {
+    .direct-banner {
+      grid-template-columns: 1.35fr auto;
+      gap: 3rem;
+    }
+  }
+  .direct-banner__title {
+    margin-bottom: 0.65rem;
+  }
+  .direct-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+</style>

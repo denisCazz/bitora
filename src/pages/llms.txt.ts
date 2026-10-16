@@ -59,6 +59,7 @@ ${quotes.map(t => `- "${t.quote}" (${t.author}, ${t.company})`).join('\n')}
 - [Tutti i servizi e il metodo](${SITE}/servizi/)
 - [Lavori](${SITE}/lavori/)
 - [Chi siamo](${SITE}/chi-siamo/)
+- [Sicurezza e Conformità GDPR](${SITE}/sicurezza-e-gdpr/)
 - [Preventivo gratuito](${SITE}/contattaci/)
 - [Blog](${SITE}/blog/)
 - [Sitemap](${SITE}/sitemap-index.xml)

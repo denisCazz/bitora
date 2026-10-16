@@ -385,6 +385,46 @@ const steps = [
     </div>
   </section>
 
+  <!-- TRUST & GDPR -->
+  <section class="b-section b-section--tight b-section--line" aria-labelledby="home-trust-title">
+    <div class="b-shell">
+      <div class="b-card trust-box" data-reveal>
+        <div class="trust-box__main">
+          <div class="trust-box__badge">
+            <span class="trust-box__shield" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </span>
+            <span>Garanzia di Sicurezza & Conformità GDPR</span>
+          </div>
+          <h2 id="home-trust-title" class="b-h2 trust-box__title">
+            I dati della tua azienda sono <span class="b-accent">protetti in Europa</span>.
+          </h2>
+          <p class="b-text trust-box__desc">
+            <strong>Bitora è un prodotto di Denis Cazzulo</strong> (P.IVA 13359170019) e tratta i dati dei clienti secondo il <strong>Regolamento Europeo GDPR (UE 2016/679)</strong>. Nessun sub-appalto opaco: usiamo server in Unione Europea, database isolati per singolo cliente, accordi di riservatezza (NDA) e API AI che non addestrano mai modelli pubblici sui tuoi documenti.
+          </p>
+          <div class="b-chips trust-box__chips">
+            <span class="b-chip">Server 100% UE</span>
+            <span class="b-chip">Database isolati per cliente</span>
+            <span class="b-chip">Cloudflare WAF & TLS 1.3</span>
+            <span class="b-chip">NDA fin dal preventivo</span>
+            <span class="b-chip">Zero training AI sui tuoi dati</span>
+          </div>
+        </div>
+        <div class="trust-box__side">
+          <a href="/sicurezza-e-gdpr/" class="b-btn b-btn--primary" data-track="cta_click" data-track-location="home_gdpr_trust">
+            Tutte le garanzie per i clienti <span class="b-arrow" aria-hidden="true">→</span>
+          </a>
+          <p class="b-small trust-box__note">
+            Referente unico diretto: <strong>Denis Cazzulo</strong> · Carmagnola (TO)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <FaqList items={faq} />
 
   <section class="b-section b-section--tight b-section--line">
@@ -879,6 +919,77 @@ const steps = [
   }
   .nfc:hover .nfc__img img {
     transform: rotate(0deg) scale(1.03);
+  }
+
+  /* Trust & GDPR */
+  .trust-box {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    border-color: rgba(34, 211, 238, 0.25);
+    background:
+      radial-gradient(ellipse 65% 95% at 0% 0%, rgba(34, 211, 238, 0.1), transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+  }
+  @media (min-width: 960px) {
+    .trust-box {
+      grid-template-columns: 1.35fr auto;
+      gap: 3.5rem;
+      padding: clamp(2rem, 4vw, 3.25rem);
+    }
+  }
+  .trust-box__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.4rem 0.85rem 0.4rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    background: rgba(52, 211, 153, 0.08);
+    color: #6ee7b7;
+    font-family: var(--f-mono);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .trust-box__shield {
+    display: inline-flex;
+    width: 1.1rem;
+    height: 1.1rem;
+    color: #34d399;
+  }
+  .trust-box__shield svg {
+    width: 100%;
+    height: 100%;
+  }
+  .trust-box__title {
+    font-size: clamp(1.55rem, 2.8vw, 2.35rem);
+    margin-bottom: 0.9rem;
+  }
+  .trust-box__desc {
+    max-width: 48rem;
+  }
+  .trust-box__desc strong {
+    color: var(--b-fg);
+  }
+  .trust-box__chips {
+    margin-top: 1.4rem;
+  }
+  .trust-box__side {
+    display: grid;
+    gap: 0.85rem;
+    justify-items: start;
+  }
+  @media (min-width: 960px) {
+    .trust-box__side {
+      justify-items: end;
+      text-align: right;
+    }
+  }
+  .trust-box__note strong {
+    color: var(--b-fg-2);
   }
 
   /* Quick */
