@@ -18,6 +18,13 @@ const SITEMAP_EXCLUDE = new Set([
   'https://bitora.it/progetti/kristina/',
   'https://bitora.it/progetti/wine-cafe/',
   'https://bitora.it/progetti/myzone/',
+  'https://bitora.it/automazioni/',
+  'https://bitora.it/formazione/',
+  'https://bitora.it/piemonte/',
+  'https://bitora.it/siti-web/',
+  'https://bitora.it/gestionali/',
+  'https://bitora.it/casi-studio/',
+  'https://bitora.it/contatti/',
 ]);
 
 // https://astro.build/config
@@ -38,7 +45,6 @@ export default defineConfig({
         'https://bitora.it/blog/gestionale-pmi-2026/',
         'https://bitora.it/blog/web-design-carmagnola-2025/',
         'https://bitora.it/blog/tessere-nfc-ristoranti/',
-        'https://bitora.it/blog/ai-siti-pmi-senza-hype/',
       ],
       serialize: item => {
         const path = new URL(item.url).pathname;
@@ -91,6 +97,14 @@ export default defineConfig({
     '/tessere-nfc-torino/': '/nfc-ecosystem/',
     '/progetti/wine-cafe/': '/lavori/',
     '/progetti/myzone/': '/lavori/',
+    // Legacy ai.bitora.it paths (prerendered fallback does not run middleware)
+    '/automazioni/': '/intelligenza-artificiale/',
+    '/formazione/': '/intelligenza-artificiale/',
+    '/piemonte/': '/intelligenza-artificiale/',
+    '/siti-web/': '/siti-web-professionali/',
+    '/gestionali/': '/sistemi-aziendali/',
+    '/casi-studio/': '/lavori/',
+    '/contatti/': '/contattaci/',
   },
   // Production fix: prevent false-positive CSRF blocks behind proxies/CDNs
   // (e.g. apex vs www, https termination). If you later ensure correct

@@ -71,6 +71,13 @@ const bannedPaths = [
   '/tools/',
   '/progetti/wine-cafe/',
   '/progetti/myzone/',
+  '/automazioni/',
+  '/formazione/',
+  '/piemonte/',
+  '/siti-web/',
+  '/gestionali/',
+  '/casi-studio/',
+  '/contatti/',
 ];
 let urlCount = 0;
 
