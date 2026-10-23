@@ -1,6 +1,7 @@
 ﻿---
 export const prerender = false;
 import Layout from '../layouts/Layout.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 import { testimonials } from '../data/testimonials';
 import { whatsappLink, phoneDisplay, phoneHref, email } from '../data/services';
 
@@ -42,6 +43,12 @@ const quote = testimonials.find(t => t.company === 'Mistral Impianti');
   description="Raccontaci il tuo progetto: sito web, e-commerce, gestionale, app o AI. Rispondiamo entro 24 ore con una proposta concreta. Telefono, WhatsApp o modulo online."
   pageType="ContactPage"
 >
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Contatti', item: 'https://bitora.it/contattaci/' },
+    ]}
+  />
   <section class="ct">
     <div class="ct__grid-bg b-grid-bg" aria-hidden="true"></div>
     <div class="b-glow-orb ct__orb" aria-hidden="true"></div>

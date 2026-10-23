@@ -2,12 +2,19 @@
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import QRCodeGenerator from '../components/tools/QRCodeGenerator';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 ---
 
 <Layout
   title="Generatore QR Code gratuito | Bitora"
   description="Generatore di QR code gratuito: colori, logo al centro e stili diversi. Esporta in PNG trasparente o JPG. Tutto nel browser, senza registrazione."
 >
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Generatore QR Code', item: 'https://bitora.it/tools/' },
+    ]}
+  />
   <main class="bg-black text-white overflow-x-hidden">
     <section class="relative min-h-[55vh] flex flex-col justify-center items-center text-center px-8 pt-28 pb-16 border-b border-white/[0.06]">
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true">

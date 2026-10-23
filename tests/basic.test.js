@@ -6,7 +6,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Bitora.it web and e-commerce positioning', () => {
   test('homepage loads with websites and e-commerce positioning', async ({ page }) => {
     await page.goto('/');
-    await expect(page).toHaveTitle(/Siti Web ed E-commerce per PMI in Piemonte/i);
+    await expect(page).toHaveTitle(/Siti web ed e-commerce in Piemonte/i);
     await expect(page.locator('#site-header')).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Navigazione principale' })).toBeVisible();
     await expect(page.locator('#main-content')).toBeVisible();

@@ -1,6 +1,7 @@
 import { getPublicCaseStudies } from '../../data/caseStudies';
 import { getPrisma, isDatabaseConfigured } from '../db';
 import { ctaSpec } from './cta';
+import { SEED_ARTICLES, type SeedArticle } from './seedArticles';
 import { parseArticleContent } from './validate';
 import { isPublicStatus } from './state';
 import type { ArticleContent, ArticleStatus, CtaVariant } from './types';
@@ -70,20 +71,65 @@ function mapArticle(article: Article & { sources?: Source[] }): PublicArticle {
   };
 }
 
+function mapSeedArticle(article: SeedArticle): PublicArticle {
+  const publishedAt = article.publishedAt ? new Date(article.publishedAt) : null;
+  return {
+    id: `seed-${article.slug}`,
+    slug: article.slug,
+    title: article.title,
+    excerpt: article.excerpt,
+    category: article.category,
+    topic: article.topic,
+    status: article.status,
+    angle: article.angle,
+    abstract: article.abstract,
+    seoTitle: article.seoTitle,
+    seoDescription: article.seoDescription,
+    coverImage: article.coverImage,
+    coverAlt: article.coverAlt,
+    readTime: article.readTime,
+    ctaVariant: ctaSpec(article.ctaVariant, article.topic, article.category).variant,
+    caseStudySlugs: article.caseStudySlugs,
+    visualHints: article.visualHints,
+    content: parseArticleContent(article.content),
+    publishedAt,
+    updatedAt: publishedAt ?? new Date(0),
+    createdAt: publishedAt ?? new Date(0),
+    generatedByAi: Boolean(article.generatedByAi),
+    sources: article.sources.map(source => ({
+      title: source.title,
+      url: source.url,
+      excerpt: null,
+      domain: null,
+    })),
+    cases: getPublicCaseStudies().filter(cs => article.caseStudySlugs.includes(cs.slug)),
+  };
+}
+
+function publishedSeedArticles(): PublicArticle[] {
+  return SEED_ARTICLES.filter(article => article.status === 'PUBLISHED').map(mapSeedArticle);
+}
+
 export async function listPublishedArticles(): Promise<PublicArticle[]> {
-  if (!isDatabaseConfigured()) return [];
-  const rows = await getPrisma().article.findMany({
-    where: { status: 'PUBLISHED' },
-    include: { sources: true },
-    orderBy: [{ publishedAt: 'desc' }, { createdAt: 'desc' }],
-  });
-  return rows.flatMap(row => {
-    try {
-      return [mapArticle(row)];
-    } catch {
-      return [];
-    }
-  });
+  if (!isDatabaseConfigured()) return publishedSeedArticles();
+  try {
+    const rows = await getPrisma().article.findMany({
+      where: { status: 'PUBLISHED' },
+      include: { sources: true },
+      orderBy: [{ publishedAt: 'desc' }, { createdAt: 'desc' }],
+    });
+    const mapped = rows.flatMap(row => {
+      try {
+        return [mapArticle(row)];
+      } catch {
+        return [];
+      }
+    });
+    return mapped.length ? mapped : publishedSeedArticles();
+  } catch (error) {
+    console.error('listPublishedArticles', error);
+    return publishedSeedArticles();
+  }
 }
 
 export async function listPublishedByCategory(): Promise<Record<string, PublicArticle[]>> {
@@ -100,17 +146,29 @@ export async function getArticleBySlug(
   slug: string,
   options: { preview?: boolean; allowStatuses?: ArticleStatus[] } = {}
 ): Promise<PublicArticle | null> {
-  if (!isDatabaseConfigured()) return null;
-  const article = await getPrisma().article.findUnique({
-    where: { slug },
-    include: { sources: true },
-  });
-  if (!article) return null;
-  if (options.preview && options.allowStatuses?.includes(article.status as ArticleStatus)) {
-    return mapArticle(article);
+  if (isDatabaseConfigured()) {
+    try {
+      const article = await getPrisma().article.findUnique({
+        where: { slug },
+        include: { sources: true },
+      });
+      if (article) {
+        if (options.preview && options.allowStatuses?.includes(article.status as ArticleStatus)) {
+          return mapArticle(article);
+        }
+        if (isPublicStatus(article.status as ArticleStatus)) return mapArticle(article);
+        return null;
+      }
+    } catch (error) {
+      console.error('getArticleBySlug', error);
+    }
   }
-  if (!isPublicStatus(article.status as ArticleStatus)) return null;
-  return mapArticle(article);
+
+  const seed = SEED_ARTICLES.find(article => article.slug === slug);
+  if (!seed) return null;
+  if (options.preview && options.allowStatuses?.includes(seed.status)) return mapSeedArticle(seed);
+  if (seed.status === 'PUBLISHED') return mapSeedArticle(seed);
+  return null;
 }
 
 export async function countEditorialStats() {

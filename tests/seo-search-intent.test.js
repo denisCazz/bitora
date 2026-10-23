@@ -16,11 +16,11 @@ test.describe('Organic search intent', () => {
   test('homepage prioritizes websites and e-commerce for Piedmont SMEs', async ({ page }) => {
     await expectSearchPage(page, {
       path: '/',
-      title: 'Siti Web ed E-commerce per PMI in Piemonte | Bitora',
+      title: 'Siti web ed e-commerce in Piemonte | Bitora, Carmagnola (TO)',
       description:
-        'Bitora realizza siti web ed e-commerce su misura per PMI in Piemonte: SEO, performance, integrazioni e supporto. Guarda i progetti e richiedi un preventivo.',
+        'Siti web ed e-commerce B2B in Piemonte: Carmagnola, Carignano, Racconigi e Torino. Gestionali, app e AI su misura. Preventivo gratuito in 24 ore.',
       canonical: 'https://bitora.it/',
-      h1: 'Siti web ed e-commerce su misura per PMI',
+      h1: 'Siti web ed e-commerce',
     });
 
     const primaryCta = page.locator('a[data-track="cta_click"][data-track-location="home_hero"]');
@@ -60,11 +60,11 @@ test.describe('Organic search intent', () => {
   test('website service page targets Italian development intent in Piedmont', async ({ page }) => {
     await expectSearchPage(page, {
       path: '/siti-web-professionali/',
-      title: 'Realizzazione Siti Web in Piemonte | Bitora',
+      title: 'Realizzazione siti web a Carmagnola, Carignano e Racconigi | Bitora',
       description:
-        'Realizziamo siti web professionali per PMI in Piemonte: veloci, mobile-first e ottimizzati SEO, con progetti reali e supporto in Italia. Preventivo gratuito.',
+        'Realizzazione siti web a Carmagnola, Carignano, Racconigi e in Piemonte: veloci, ottimizzati SEO e pensati per portare chiamate, prenotazioni e richieste. Preventivo gratuito in 24 ore.',
       canonical: 'https://bitora.it/siti-web-professionali/',
-      h1: 'Il sito giusto porta clienti, non solo visite.',
+      h1: 'porta clienti',
     });
 
     await expect(page.getByText(/sviluppo web per PMI in Piemonte/i).first()).toBeVisible();
@@ -74,11 +74,11 @@ test.describe('Organic search intent', () => {
   test('e-commerce page covers B2B and B2C intent in Piedmont', async ({ page }) => {
     await expectSearchPage(page, {
       path: '/e-commerce/',
-      title: 'Realizzazione E-commerce in Piemonte | B2B e B2C | Bitora',
+      title: 'E-commerce B2B in Piemonte | Negozi online B2B e B2C | Bitora',
       description:
-        'Realizziamo e-commerce B2B e B2C in Piemonte con WooCommerce, Shopify o sviluppo custom: cataloghi, pagamenti e integrazioni. Preventivo gratuito.',
+        'E-commerce B2B in Piemonte per produttori e distributori: listini per cliente, cataloghi riservati, pagamenti e integrazioni gestionali. Anche shop B2C. Preventivo gratuito.',
       canonical: 'https://bitora.it/e-commerce/',
-      h1: 'Il tuo e-commerce B2B o B2C, chiavi in mano.',
+      h1: 'E-commerce B2B in Piemonte',
     });
 
     await expect(page.getByRole('heading', { name: /vendita online per aziende/i })).toBeVisible();

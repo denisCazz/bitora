@@ -69,7 +69,7 @@ const graph = {
             description: metaDescription,
             image: ogImage,
             type: pageType,
-            dateModified: new Date().toISOString().slice(0, 10),
+            dateModified: (modifiedTime ?? publishedTime)?.slice(0, 10),
           }),
         ]),
     ...schema,

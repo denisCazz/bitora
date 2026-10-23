@@ -24,11 +24,10 @@ const SPECS: Record<CtaVariant, Omit<CtaSpec, 'variant' | 'magnet'>> = {
     secondaryLabel: 'Ecosistema interventi',
   },
   nfc: {
-    href: '/contattaci/?topic=nfc',
-    label: 'Consulenza NFC',
-    secondaryHref:
-      'https://shopnfc.bitora.it/?utm_source=blog&utm_medium=cta&utm_campaign=editorial',
-    secondaryLabel: 'Shop NFC',
+    href: 'https://shopnfc.bitora.it/?utm_source=bitora&utm_medium=blog&utm_campaign=editorial',
+    label: 'Acquista su Shop NFC',
+    secondaryHref: '/contattaci/?topic=nfc',
+    secondaryLabel: 'Fornitura personalizzata',
   },
   roi: {
     href: '/tools/calcolatore-roi-gestionale/',

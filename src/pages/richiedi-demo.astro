@@ -1,6 +1,7 @@
 ﻿---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 
 const inviato = Astro.url.searchParams.get('inviato') === '1';
 ---
@@ -9,6 +10,12 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
   title="Richiedi una demo della piattaforma Bitora"
   description="Compila un breve questionario per richiedere una demo della piattaforma Bitora: ticket, tecnici, rapportini e controllo operativo."
 >
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Richiedi una demo', item: 'https://bitora.it/richiedi-demo/' },
+    ]}
+  />
   <div class="bg-black text-white overflow-x-hidden">
     <section class="pt-32 pb-12 px-8 md:px-16 lg:px-24">
       <div class="max-w-3xl">

@@ -2,6 +2,7 @@
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import EditorialImage from '../components/EditorialImage.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 ---
 
 <Layout
@@ -9,6 +10,13 @@ import EditorialImage from '../components/EditorialImage.astro';
   description="Web app CRM professionale (Next.js + Supabase) per PMI, freelance e agenzie: gestione clienti ordinata, email integrate, licenze per utente, export CSV, SMTP personalizzato e API lead."
   image="/editorial/crm.png"
 >
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Servizi', item: 'https://bitora.it/servizi/' },
+      { name: 'Bitora CRM', item: 'https://bitora.it/bitora-crm/' },
+    ]}
+  />
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <!-- Hero -->
     <section class="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">

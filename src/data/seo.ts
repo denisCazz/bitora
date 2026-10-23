@@ -53,7 +53,11 @@ export const knowsAbout = [
   'Google Business Profile',
 ];
 
-export const sameAs = ['https://www.instagram.com/bitorait/', 'https://www.facebook.com/people/Bitora-Italia/'];
+export const sameAs = [
+  'https://shopnfc.bitora.it/',
+  'https://www.instagram.com/bitorait/',
+  'https://www.facebook.com/people/Bitora-Italia/',
+];
 
 export function organizationNode() {
   return {
@@ -64,7 +68,7 @@ export function organizationNode() {
     alternateName: ['Bitora Italia', 'Bitora Studio Digitale'],
     slogan: 'Siti che vendono. Software che lavora per te.',
     description:
-      'Bitora è lo studio digitale di Carmagnola (TO) che progetta e sviluppa siti web, e-commerce, gestionali su misura, app mobile iOS e Android, automazioni con intelligenza artificiale e soluzioni NFC per aziende del Piemonte e di tutta Italia.',
+      'Bitora è lo studio digitale di Carmagnola (TO) che progetta e sviluppa siti web ed e-commerce, gestionali su misura, app mobile iOS e Android, automazioni con intelligenza artificiale e soluzioni NFC per aziende del Piemonte e di tutta Italia.',
     url: `${SITE}/`,
     logo: { '@type': 'ImageObject', url: `${SITE}/bitora.png`, width: 500, height: 500 },
     image: `${SITE}/og-bitora.jpg`,
@@ -151,7 +155,7 @@ export function webPageNode(opts: {
   description: string;
   image: string;
   type?: PageType;
-  dateModified: string;
+  dateModified?: string;
 }) {
   return {
     '@type': opts.type ?? 'WebPage',
@@ -164,6 +168,6 @@ export function webPageNode(opts: {
     about: { '@id': ORG_ID },
     publisher: { '@id': ORG_ID },
     primaryImageOfPage: { '@type': 'ImageObject', url: opts.image },
-    dateModified: opts.dateModified,
+    ...(opts.dateModified ? { dateModified: opts.dateModified } : {}),
   };
 }

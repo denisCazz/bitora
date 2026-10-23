@@ -176,9 +176,16 @@ const topic = item.kinds.includes('software') ? 'sistemi' : item.kinds.includes(
           <h2 class="b-h3">Ti serve qualcosa di simile?</h2>
           <p class="b-text">Raccontaci il tuo caso: ti rispondiamo entro 24 ore con un’idea concreta.</p>
         </div>
-        <a href={`/contattaci/?topic=${topic}`} class="b-btn b-btn--primary" data-track="cta_click" data-track-location="case_study">
-          Parliamone <span class="b-arrow" aria-hidden="true">→</span>
-        </a>
+        <div class="b-cta-row">
+          {item.kinds.includes('nfc') && (
+            <a href="https://shopnfc.bitora.it/" rel="noopener" class="b-btn b-btn--ghost" data-track="cta_click" data-track-location="case_study_shopnfc">
+              Vai a Shop NFC <span class="b-arrow" aria-hidden="true">↗</span>
+            </a>
+          )}
+          <a href={`/contattaci/?topic=${topic}`} class="b-btn b-btn--primary" data-track="cta_click" data-track-location="case_study">
+            Parliamone <span class="b-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>

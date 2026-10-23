@@ -1,7 +1,7 @@
 import { defineMiddleware } from 'astro:middleware';
 import { isAuthenticated, isOpsRoute, isPublicOpsPath } from './lib/ops/auth';
 
-const HIDDEN_PUBLIC_PREFIXES = ['/landing', '/chi-siamo'];
+const HIDDEN_PUBLIC_PREFIXES = ['/landing'];
 
 function isHiddenPublicPath(path: string) {
   const normalized = path.replace(/\/$/, '') || '/';

@@ -12,7 +12,7 @@ export const homeFaq = [
   {
     question: 'Lavorate solo in Piemonte?',
     answer:
-      'Abbiamo sede a Carmagnola (TO) e molti clienti tra Torino e Cuneo, dove possiamo incontrarci di persona. Lavoriamo comunque con aziende di tutta Italia da remoto.',
+      'Abbiamo sede a Carmagnola (TO) e lavoriamo ogni settimana con attività di Carignano, Racconigi, Villastellone e della provincia di Torino e Cuneo, dove possiamo incontrarci di persona. Lavoriamo comunque con aziende di tutta Italia da remoto.',
   },
   {
     question: 'Dopo il lancio chi mi segue?',

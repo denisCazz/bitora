@@ -4,6 +4,7 @@ import { pillars, whatsappLink } from '../data/services';
 const path = (Astro.url.pathname.replace(/\/$/, '') || '/') as string;
 
 const navLinks = [
+  { name: 'Shop NFC', url: 'https://shopnfc.bitora.it/', external: true, track: 'header_nav_shopnfc' },
   { name: 'Lavori', url: '/lavori/' },
   { name: 'Metodo', url: '/servizi/#metodo' },
   { name: 'Chi siamo', url: '/chi-siamo/' },
@@ -101,7 +102,13 @@ const solutionsActive =
       </div>
       {
         navLinks.map(l => (
-          <a href={l.url} class:list={['hdr__link', { 'is-active': isActive(l.url) }]}>
+          <a
+            href={l.url}
+            rel={l.external ? 'noopener' : undefined}
+            data-track={l.track ? 'cta_click' : undefined}
+            data-track-location={l.track}
+            class:list={['hdr__link', { 'is-active': !l.external && isActive(l.url), 'hdr__link--nfc': l.external }]}
+          >
             {l.name}
           </a>
         ))
@@ -147,7 +154,7 @@ const solutionsActive =
         }
       </div>
       <div class="mob__links">
-        {navLinks.map(l => <a href={l.url}>{l.name}</a>)}
+        {navLinks.map(l => <a href={l.url} rel={l.external ? 'noopener' : undefined} data-track={l.track ? 'cta_click' : undefined} data-track-location={l.track ? `${l.track}_mobile` : undefined}>{l.name}</a>)}
         <a href="/gestione-interventi/">Piattaforme</a>
         <a href="/contattaci/">Contatti</a>
       </div>
@@ -271,6 +278,15 @@ const solutionsActive =
     opacity: 1;
     color: var(--b-fg);
     background: rgba(255, 255, 255, 0.06);
+  }
+  .hdr__link--nfc {
+    color: var(--b-cyan-2);
+    border: 1px solid rgba(34, 211, 238, 0.28);
+    background: rgba(34, 211, 238, 0.06);
+  }
+  .hdr__link--nfc:hover {
+    border-color: rgba(34, 211, 238, 0.55);
+    background: rgba(34, 211, 238, 0.14);
   }
 
   .hdr__group {

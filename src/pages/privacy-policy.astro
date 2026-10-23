@@ -1,12 +1,19 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 ---
 
 <Layout
   title="Privacy Policy - Bitora.it"
   description="Informativa sulla privacy di Bitora.it: come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali in conformità al GDPR."
 >
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Privacy Policy', item: 'https://bitora.it/privacy-policy/' },
+    ]}
+  />
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <!-- Header -->
     <header

@@ -1,12 +1,19 @@
 ---
 export const prerender = true;
 import Layout from '../../layouts/Layout.astro';
+import BreadcrumbListSchema from '../../components/schema/BreadcrumbList.astro';
 ---
 
 <Layout
   title="Calcolatore ROI Gestionale Professionale per le Aziende | Bitora"
   description="Calcola il ROI di un gestionale professionale per le aziende in base a rapportini, operatori, tempi e costi operativi."
 >
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Calcolatore ROI gestionale', item: 'https://bitora.it/tools/calcolatore-roi-gestionale/' },
+    ]}
+  />
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <section
       class="relative py-20 md:py-28 px-6 md:px-12 border-b border-gray-200 dark:border-white/5 overflow-hidden"

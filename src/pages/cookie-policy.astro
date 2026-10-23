@@ -1,12 +1,19 @@
 ---
 export const prerender = true;
 import Layout from '../layouts/Layout.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 ---
 
 <Layout
   title="Cookie Policy - Bitora.it"
   description="Informazioni sui cookie utilizzati da Bitora.it, come vengono utilizzati e come gestire le tue preferenze sui cookie."
 >
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'Cookie Policy', item: 'https://bitora.it/cookie-policy/' },
+    ]}
+  />
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <!-- Header -->
     <header

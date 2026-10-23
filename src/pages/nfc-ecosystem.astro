@@ -13,18 +13,18 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
 ---
 
 <Layout
-  title="Tessere NFC | Biglietti da Visita Smart per Bar, Ristoranti, Professionisti | Bitora"
-  description="Tessere NFC programmate su misura: recensioni Google, contatti, menu digitali. Per bar, ristoranti, professionisti. Pellicola intercambiabile. Molto richieste in Piemonte."
+  title="Shop NFC e Tessere NFC | Recensioni Google, Menu e Biglietti Smart | Bitora"
+  description="Acquista tessere, espositori e tag NFC su Shop NFC Bitora: recensioni Google con un tap, contatti e menu digitali per bar, ristoranti e professionisti. Programmazione inclusa."
   image="/editorial/nfc-restaurant.png"
 >
   <main class="bg-white dark:bg-black text-gray-900 dark:text-white overflow-x-hidden">
     <VideoHero
-      eyebrow="Tessere NFC"
-      title="Biglietti da visita"
+      eyebrow="Shop NFC Bitora"
+      title="Biglietti e tessere NFC"
       highlight="smart (1 tap)."
-      description="Recensioni Google, contatti, menu digitale e link utili. Programmazione inclusa, pellicola intercambiabile e aggiornamenti inclusi nella proposta."
-      primaryCta={{ label: 'Richiedi informazioni', href: '/contattaci/?topic=nfc' }}
-      secondaryCta={{ label: 'Come funziona', href: '#come-funziona' }}
+      description="Recensioni Google, contatti, menu digitale e link utili. Ordina online su Shop NFC Bitora o richiedi una fornitura su misura con programmazione inclusa."
+      primaryCta={{ label: 'Vai a Shop NFC Bitora →', href: 'https://shopnfc.bitora.it/' }}
+      secondaryCta={{ label: 'Preventivo su misura', href: '/contattaci/?topic=nfc' }}
       posterSrc="/editorial/nfc-restaurant.png"
       videoLabel="Tessera NFC in uso"
       images={[
@@ -112,6 +112,37 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
       </div>
     </section>
 
+    <section class="py-16 px-6 md:px-12 lg:px-20 border-b border-gray-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto rounded-3xl border border-cyan-500/30 bg-cyan-500/[0.06] p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold tracking-widest uppercase text-cyan-400 mb-2">Catalogo online · shopnfc.bitora.it</p>
+          <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white">
+            Acquista direttamente su Shop NFC Bitora
+          </h2>
+          <p class="mt-3 text-base md:text-lg text-slate-600 dark:text-slate-300">
+            Tessere per recensioni Google, espositori da banco, adesivi NTAG213/215/216, braccialetti e lettori NFC. Disponibili da 10 a 100.000 pezzi con spedizione rapida in tutta Italia.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-4 shrink-0">
+          <a
+            href="https://shopnfc.bitora.it/"
+            rel="noopener"
+            data-track="cta_click"
+            data-track-location="nfc_page_banner"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-cyan-400 text-slate-950 font-bold text-sm hover:bg-cyan-300 transition-colors"
+          >
+            Apri Shop NFC →
+          </a>
+          <a
+            href="/contattaci/?topic=nfc"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/20 text-white font-semibold text-sm hover:border-white/50 transition-colors"
+          >
+            Richiedi fornitura B2B
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Prima/Dopo rimosso: evitiamo blocchi ridondanti -->
 
     <section class="py-24 px-6 md:px-12 lg:px-20">
@@ -151,6 +182,11 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
                 question: 'Cosa posso inserire nel tap?',
                 answer:
                   'Recensioni, contatti, WhatsApp, menu digitale, sito, social, PDF, link multipli.',
+              },
+              {
+                question: 'Dove posso acquistare tessere, espositori o tag NFC?',
+                answer:
+                  'Direttamente online su Shop NFC Bitora (shopnfc.bitora.it) per ordini rapidi da 10 a 100.000 pezzi, oppure contattandoci per forniture B2B personalizzate.',
               },
               {
                 question: 'Quanto tempo serve?',
@@ -234,6 +270,10 @@ import ServiceRelatedLinks from '../components/ServiceRelatedLinks.astro';
     {
       question: 'Cosa posso inserire nel tap?',
       answer: 'Recensioni, contatti, WhatsApp, menu digitale, sito, social, PDF, link multipli.',
+    },
+    {
+      question: 'Dove posso acquistare tessere, espositori o tag NFC?',
+      answer: 'Direttamente online su Shop NFC Bitora (shopnfc.bitora.it) per ordini rapidi da 10 a 100.000 pezzi, oppure contattandoci per forniture B2B personalizzate.',
     },
     {
       question: 'Quanto tempo serve?',

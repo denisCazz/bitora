@@ -31,7 +31,15 @@ export default defineConfig({
         if (page.includes('/ops/')) return false;
         return true;
       },
-      customPages: ['https://bitora.it/blog/'],
+      customPages: [
+        'https://bitora.it/blog/',
+        'https://bitora.it/blog/quanto-costa-crm-pmi/',
+        'https://bitora.it/blog/quanto-costa-sito-web-pmi/',
+        'https://bitora.it/blog/gestionale-pmi-2026/',
+        'https://bitora.it/blog/web-design-carmagnola-2025/',
+        'https://bitora.it/blog/tessere-nfc-ristoranti/',
+        'https://bitora.it/blog/ai-siti-pmi-senza-hype/',
+      ],
       serialize: item => {
         const path = new URL(item.url).pathname;
         const priority =
@@ -39,7 +47,7 @@ export default defineConfig({
             ? 1
             : /^\/(siti-web-professionali|e-commerce|sistemi-aziendali|app-mobile|intelligenza-artificiale|nfc-ecosystem|servizi|contattaci)\/$/.test(path)
               ? 0.9
-              : path.startsWith('/progetti/') || path === '/lavori/'
+              : path.startsWith('/progetti/') || path === '/lavori/' || path.startsWith('/blog/')
                 ? 0.7
                 : /privacy|cookie/.test(path)
                   ? 0.2
