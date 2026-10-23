@@ -3,12 +3,38 @@ import { isAuthenticated, isOpsRoute, isPublicOpsPath } from './lib/ops/auth';
 
 const HIDDEN_PUBLIC_PREFIXES = ['/landing'];
 
+const AI_SUBDOMAIN_REDIRECTS: Record<string, string> = {
+  '/': 'https://bitora.it/intelligenza-artificiale/',
+  '/automazioni': 'https://bitora.it/intelligenza-artificiale/',
+  '/formazione': 'https://bitora.it/intelligenza-artificiale/',
+  '/piemonte': 'https://bitora.it/intelligenza-artificiale/',
+  '/siti-web': 'https://bitora.it/siti-web-professionali/',
+  '/gestionali': 'https://bitora.it/sistemi-aziendali/',
+  '/casi-studio': 'https://bitora.it/lavori/',
+  '/contatti': 'https://bitora.it/contattaci/?topic=ai',
+};
+
 function isHiddenPublicPath(path: string) {
   const normalized = path.replace(/\/$/, '') || '/';
   return HIDDEN_PUBLIC_PREFIXES.some(prefix => normalized === prefix || normalized.startsWith(`${prefix}/`));
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
+  const host = (context.request.headers.get('x-forwarded-host') || context.request.headers.get('host') || context.url.hostname)
+    .split(',')[0]
+    .trim()
+    .toLowerCase()
+    .replace(/:\d+$/, '');
+
+  if (host === 'ai.bitora.it' || host === 'www.ai.bitora.it') {
+    const cleanPath = context.url.pathname.replace(/\/$/, '') || '/';
+    const target = AI_SUBDOMAIN_REDIRECTS[cleanPath] ?? 'https://bitora.it/intelligenza-artificiale/';
+    return new Response(null, {
+      status: 301,
+      headers: { Location: target },
+    });
+  }
+
   const path = context.url.pathname;
   const ops = isOpsRoute(path);
   const hiddenPublic = isHiddenPublicPath(path);

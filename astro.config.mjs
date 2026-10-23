@@ -98,6 +98,7 @@ export default defineConfig({
     allowedDomains: [
       { hostname: 'bitora.it', protocol: 'https' },
       { hostname: 'www.bitora.it', protocol: 'https' },
+      { hostname: 'ai.bitora.it', protocol: 'https' },
     ],
   },
   compressHTML: true,
