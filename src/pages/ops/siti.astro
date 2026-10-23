@@ -48,7 +48,9 @@ function hostLabel(url: string): string {
         <span class:list={['ops-dot', snapshot.downCount ? 'down' : undefined]}></span>
         Online
       </p>
-      <h2>{snapshot.sites.length ? `${snapshot.upCount}/${tracked.length}` : `${tracked.length}`}</h2>
+      <h2>
+        {snapshot.sites.length ? `${snapshot.upCount}/${tracked.length}` : `${tracked.length}`}
+      </h2>
       <p class="ops-muted">Ultimo check {formatRelative(snapshot.checkedAt)}</p>
     </div>
     <div class="ops-card">
@@ -66,25 +68,23 @@ function hostLabel(url: string): string {
       </p>
       <h2>{`${clientsWithUmami}/${clientSites.length}`}</h2>
       <p class="ops-muted">
-        {
-          clientsMissingUmami
-            ? `${clientsMissingUmami} ${clientsMissingUmami === 1 ? 'sito cliente senza script' : 'siti clienti senza script'}`
-            : 'Tutti i siti clienti hanno lo script'
-        }
+        {clientsMissingUmami
+          ? `${clientsMissingUmami} ${clientsMissingUmami === 1 ? 'sito cliente senza script' : 'siti clienti senza script'}`
+          : 'Tutti i siti clienti hanno lo script'}
       </p>
     </div>
   </div>
 
-  {
-    errore && errorMessages[errore] && (
-      <div class="ops-note" style="margin: 0 0 22px;" role="alert">
-        {errorMessages[errore]}
-      </div>
-    )
-  }
+  {errore && errorMessages[errore] && (
+    <div class="ops-note" style="margin: 0 0 22px;" role="alert">
+      {errorMessages[errore]}
+    </div>
+  )}
 
   <section class="ops-card" style="margin-bottom: 22px;" id="modulo">
-    <h2 class="ops-section-title">{editing ? 'Modifica dominio tracciato' : 'Nuovo dominio da tracciare'}</h2>
+    <h2 class="ops-section-title">
+      {editing ? 'Modifica dominio tracciato' : 'Nuovo dominio da tracciare'}
+    </h2>
     <p class="ops-muted" style="margin: 0 0 14px;">
       Cambia URL, nome o gruppo dei siti già in elenco, oppure aggiungi un dominio da monitorare.
     </p>
@@ -115,13 +115,11 @@ function hostLabel(url: string): string {
         <label>
           Gruppo
           <select name="group">
-            {
-              MONITOR_GROUPS.map(group => (
-                <option value={group} selected={(editing?.group ?? 'clienti') === group}>
-                  {MONITOR_GROUP_LABELS[group]}
-                </option>
-              ))
-            }
+            {MONITOR_GROUPS.map(group => (
+              <option value={group} selected={(editing?.group ?? 'clienti') === group}>
+                {MONITOR_GROUP_LABELS[group]}
+              </option>
+            ))}
           </select>
         </label>
       </div>
@@ -155,26 +153,27 @@ function hostLabel(url: string): string {
         </label>
       </div>
       <div class="ops-form-actions">
-        <button class="ops-btn" type="submit">{editing ? 'Salva dominio' : 'Aggiungi sito'}</button>
-        {
-          editing && (
-            <a class="ops-btn ghost" href="/ops/siti/">
-              Annulla
-            </a>
-          )
-        }
+        <button class="ops-btn" type="submit">
+          {editing ? 'Salva dominio' : 'Aggiungi sito'}
+        </button>
+        {editing && (
+          <a class="ops-btn ghost" href="/ops/siti/">
+            Annulla
+          </a>
+        )}
       </div>
     </form>
   </section>
 
   <form method="POST" action="/api/ops/check/" style="margin-bottom: 18px;">
-    <button class="ops-btn" type="submit">Aggiorna stato</button>
+    <button class="ops-btn" type="submit">
+      Aggiorna stato
+    </button>
   </form>
 
-  {
-    groups
-      .filter(group => rows.some(row => row.site.group === group.id))
-      .map(group => (
+  {groups
+    .filter(group => rows.some(row => row.site.group === group.id))
+    .map(group => (
       <section style="margin-bottom: 28px;">
         <h2 style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin: 0 0 12px;">
           {group.label}
@@ -270,8 +269,7 @@ function hostLabel(url: string): string {
           </table>
         </div>
       </section>
-    ))
-  }
+    ))}
 
   <section class="ops-card">
     <h2>Finestra di manutenzione globale</h2>
@@ -286,14 +284,14 @@ function hostLabel(url: string): string {
       <input type="hidden" name="resourceId" value="*" />
       <input type="number" name="hours" value="1" min="1" max="168" aria-label="Ore" />
       <input type="text" name="reason" placeholder="Motivo manutenzione" maxlength="200" />
-      <button class="ops-btn" type="submit">Silenzia alert</button>
-      {
-        state.maintenance['*'] && (
-          <button class="ops-btn ghost" name="action" value="clear" type="submit">
-            Termina manutenzione
-          </button>
-        )
-      }
+      <button class="ops-btn" type="submit">
+        Silenzia alert
+      </button>
+      {state.maintenance['*'] && (
+        <button class="ops-btn ghost" name="action" value="clear" type="submit">
+          Termina manutenzione
+        </button>
+      )}
     </form>
   </section>
 </OpsLayout>

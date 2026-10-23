@@ -215,7 +215,11 @@ export function importVaultEntries(
   return { imported, updated, available: entries.length };
 }
 
-export function mergeVaultSeed(force = false): { imported: number; updated: number; available: number } {
+export function mergeVaultSeed(force = false): {
+  imported: number;
+  updated: number;
+  available: number;
+} {
   return importVaultEntries(loadSeedFile(), force);
 }
 

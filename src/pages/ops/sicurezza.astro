@@ -34,13 +34,11 @@ const errorMessages: Record<string, string> = {
       </p>
       <h2>{enabled ? 'Attivo' : 'Da configurare'}</h2>
       <p class="ops-muted">
-        {
-          fromEnv
-            ? 'Secret letto da OPS_TOTP_SECRET.'
-            : enabledAt
-              ? `Configurato ${formatClock(enabledAt)}.`
-              : 'Al prossimo login verrà chiesto di scansionare il QR.'
-        }
+        {fromEnv
+          ? 'Secret letto da OPS_TOTP_SECRET.'
+          : enabledAt
+            ? `Configurato ${formatClock(enabledAt)}.`
+            : 'Al prossimo login verrà chiesto di scansionare il QR.'}
       </p>
     </div>
     <div class="ops-card">
@@ -53,87 +51,93 @@ const errorMessages: Record<string, string> = {
     </div>
   </div>
 
-  {
-    errore && errorMessages[errore] && (
-      <div class="ops-note" style="margin: 0 0 22px;" role="alert">
-        {errorMessages[errore]}
-      </div>
-    )
-  }
+  {errore && errorMessages[errore] && (
+    <div class="ops-note" style="margin: 0 0 22px;" role="alert">
+      {errorMessages[errore]}
+    </div>
+  )}
 
-  {
-    backupCodes.length > 0 && (
-      <section class="ops-card" style="margin-bottom: 22px;">
-        <h2 class="ops-section-title">Salva questi codici ora</h2>
-        <p class="ops-muted" style="margin-bottom: 14px;">
-          Non verranno più mostrati. Mettili nel gestore password o in un posto offline.
-        </p>
-        <ul class="ops-backup-codes">
-          {backupCodes.map(code => (
-            <li>{code}</li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
+  {backupCodes.length > 0 && (
+    <section class="ops-card" style="margin-bottom: 22px;">
+      <h2 class="ops-section-title">Salva questi codici ora</h2>
+      <p class="ops-muted" style="margin-bottom: 14px;">
+        Non verranno più mostrati. Mettili nel gestore password o in un posto offline.
+      </p>
+      <ul class="ops-backup-codes">
+        {backupCodes.map(code => (
+          <li>{code}</li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   <section class="ops-card" style="margin-bottom: 22px;">
     <h2 class="ops-section-title">Come funziona</h2>
     <p class="ops-muted">
       L’accesso a ops richiede la password e un codice a 6 cifre da Google Authenticator, Authy o
-      Password di iCloud. OAuth2 (Google/GitHub) per un solo admin aggiunge un provider esterno senza
-      un secondo fattore vero: l’authenticator è più adatto a questa area.
+      Password di iCloud. OAuth2 (Google/GitHub) per un solo admin aggiunge un provider esterno
+      senza un secondo fattore vero: l’authenticator è più adatto a questa area.
     </p>
   </section>
 
-  {
-    enabled && (
-      <section class="ops-card" style="margin-bottom: 22px;">
-        <h2 class="ops-section-title">Nuovi codici di recupero</h2>
-        <p class="ops-muted" style="margin-bottom: 14px;">
-          Invalida i codici precedenti e ne genera altri otto.
-        </p>
-        <form class="ops-form" method="POST" action="/api/ops/totp/" autocomplete="off">
-          <input type="hidden" name="action" value="backup" />
-          <label>
-            Codice authenticator
-            <input name="code" inputmode="numeric" autocomplete="one-time-code" required maxlength="16" />
-          </label>
-          <div class="ops-form-actions">
-            <button class="ops-btn" type="submit">Genera nuovi codici</button>
-          </div>
-        </form>
-      </section>
-    )
-  }
+  {enabled && (
+    <section class="ops-card" style="margin-bottom: 22px;">
+      <h2 class="ops-section-title">Nuovi codici di recupero</h2>
+      <p class="ops-muted" style="margin-bottom: 14px;">
+        Invalida i codici precedenti e ne genera altri otto.
+      </p>
+      <form class="ops-form" method="POST" action="/api/ops/totp/" autocomplete="off">
+        <input type="hidden" name="action" value="backup" />
+        <label>
+          Codice authenticator
+          <input
+            name="code"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            required
+            maxlength="16"
+          />
+        </label>
+        <div class="ops-form-actions">
+          <button class="ops-btn" type="submit">
+            Genera nuovi codici
+          </button>
+        </div>
+      </form>
+    </section>
+  )}
 
-  {
-    enabled && !fromEnv && (
-      <section class="ops-card">
-        <h2 class="ops-section-title">Reimposta authenticator</h2>
-        <p class="ops-muted" style="margin-bottom: 14px;">
-          Scollega l’app attuale. Al login successivo dovrai scansionare un nuovo QR. Le sessioni
-          aperte verranno chiuse.
-        </p>
-        <form class="ops-form" method="POST" action="/api/ops/totp/" autocomplete="off">
-          <input type="hidden" name="action" value="reset" />
-          <label>
-            Codice authenticator
-            <input name="code" inputmode="numeric" autocomplete="one-time-code" required maxlength="16" />
-          </label>
-          <div class="ops-form-actions">
-            <button
-              class="ops-btn ghost"
-              type="submit"
-              onclick="return confirm('Reimpostare l’authenticator? Dovrai configurarlo di nuovo al prossimo accesso.')"
-            >
-              Reimposta
-            </button>
-          </div>
-        </form>
-      </section>
-    )
-  }
+  {enabled && !fromEnv && (
+    <section class="ops-card">
+      <h2 class="ops-section-title">Reimposta authenticator</h2>
+      <p class="ops-muted" style="margin-bottom: 14px;">
+        Scollega l’app attuale. Al login successivo dovrai scansionare un nuovo QR. Le sessioni
+        aperte verranno chiuse.
+      </p>
+      <form class="ops-form" method="POST" action="/api/ops/totp/" autocomplete="off">
+        <input type="hidden" name="action" value="reset" />
+        <label>
+          Codice authenticator
+          <input
+            name="code"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            required
+            maxlength="16"
+          />
+        </label>
+        <div class="ops-form-actions">
+          <button
+            class="ops-btn ghost"
+            type="submit"
+            onclick="return confirm('Reimpostare l’authenticator? Dovrai configurarlo di nuovo al prossimo accesso.')"
+          >
+            Reimposta
+          </button>
+        </div>
+      </form>
+    </section>
+  )}
 </OpsLayout>
 
 <style is:global>

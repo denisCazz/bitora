@@ -32,7 +32,7 @@ for (const [slug, url] of targets) {
   const page = await context.newPage();
   try {
     await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
-    await page.waitForTimeout(slug === "barbara-toffano" ? 6000 : 1500);
+    await page.waitForTimeout(slug === 'barbara-toffano' ? 6000 : 1500);
     await page.evaluate(() => {
       const consent = /^(accett|accetto|accetta|accept|ok|ho capito|rifiuta)/i;
       for (const btn of document.querySelectorAll('button, a[role="button"]')) {
@@ -45,11 +45,17 @@ for (const [slug, url] of targets) {
     await page.waitForTimeout(800);
     await page.evaluate(() => {
       window.scrollTo(0, 0);
-      for (const el of document.querySelectorAll('[id*="cookie" i], [class*="cookie" i], [id*="consent" i], [class*="consent" i]')) {
+      for (const el of document.querySelectorAll(
+        '[id*="cookie" i], [class*="cookie" i], [id*="consent" i], [class*="consent" i]'
+      )) {
         if (getComputedStyle(el).position === 'fixed') el.remove();
       }
     });
-    await page.screenshot({ path: new URL(`${slug}.jpg`, outDir).pathname, type: 'jpeg', quality: 82 });
+    await page.screenshot({
+      path: new URL(`${slug}.jpg`, outDir).pathname,
+      type: 'jpeg',
+      quality: 82,
+    });
     console.log('ok', slug);
   } catch (err) {
     console.log('fail', slug, err.message.split('\n')[0]);

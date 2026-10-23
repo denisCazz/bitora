@@ -9,15 +9,41 @@ import { getWork } from '../data/work';
 const live = getWork().filter(w => !w.isWip).length;
 
 const values = [
-  { t: 'Parliamo chiaro', d: 'Niente gergo, niente promesse gonfiate. Ti diciamo cosa serve, cosa no e quanto costa, anche quando la risposta è “non ti serve”.' },
-  { t: 'Costruiamo per durare', d: 'Codice pulito, documentato e tuo. Strumenti che puoi far crescere negli anni senza ricominciare da capo.' },
-  { t: 'Ci mettiamo la faccia', d: 'Chi progetta è chi sviluppa ed è chi ti risponde al telefono. Nessun passaggio di mano, nessun call center.' },
-  { t: 'Misuriamo', d: 'Ogni progetto ha un obiettivo concreto: richieste, ordini, ore risparmiate. Se non si misura, non è finito.' },
+  {
+    t: 'Parliamo chiaro',
+    d: 'Niente gergo, niente promesse gonfiate. Ti diciamo cosa serve, cosa no e quanto costa, anche quando la risposta è “non ti serve”.',
+  },
+  {
+    t: 'Costruiamo per durare',
+    d: 'Codice pulito, documentato e tuo. Strumenti che puoi far crescere negli anni senza ricominciare da capo.',
+  },
+  {
+    t: 'Ci mettiamo la faccia',
+    d: 'Chi progetta è chi sviluppa ed è chi ti risponde al telefono. Nessun passaggio di mano, nessun call center.',
+  },
+  {
+    t: 'Misuriamo',
+    d: 'Ogni progetto ha un obiettivo concreto: richieste, ordini, ore risparmiate. Se non si misura, non è finito.',
+  },
 ];
 
 const stack = [
-  'Astro', 'Next.js', 'React', 'React Native', 'Expo', 'TypeScript', 'Tailwind', 'PostgreSQL', 'Prisma',
-  'OpenAI', 'Stripe', 'PayPal', 'Cloudflare', 'Docker', 'Coolify', 'MQTT',
+  'Astro',
+  'Next.js',
+  'React',
+  'React Native',
+  'Expo',
+  'TypeScript',
+  'Tailwind',
+  'PostgreSQL',
+  'Prisma',
+  'OpenAI',
+  'Stripe',
+  'PayPal',
+  'Cloudflare',
+  'Docker',
+  'Coolify',
+  'MQTT',
 ];
 ---
 
@@ -46,11 +72,26 @@ const stack = [
       <div class="ab__card b-card" data-reveal>
         <img src="/bitora-mark.png" alt="" width="140" height="64" loading="lazy" />
         <dl>
-          <div><dt>Fondatore</dt><dd>Denis Cazzulo</dd></div>
-          <div><dt>Sede</dt><dd>Carmagnola (TO)</dd></div>
-          <div><dt>Attivi dal</dt><dd>2020</dd></div>
-          <div><dt>Progetti online</dt><dd>{live}+</dd></div>
-          <div><dt>P.IVA</dt><dd>13359170019</dd></div>
+          <div>
+            <dt>Fondatore</dt>
+            <dd>Denis Cazzulo</dd>
+          </div>
+          <div>
+            <dt>Sede</dt>
+            <dd>Carmagnola (TO)</dd>
+          </div>
+          <div>
+            <dt>Attivi dal</dt>
+            <dd>2020</dd>
+          </div>
+          <div>
+            <dt>Progetti online</dt>
+            <dd>{live}+</dd>
+          </div>
+          <div>
+            <dt>P.IVA</dt>
+            <dd>13359170019</dd>
+          </div>
         </dl>
       </div>
       <div data-reveal data-reveal-delay="1">
@@ -58,10 +99,10 @@ const stack = [
         <h2 class="b-h2">Dal sito per il bar sotto casa al gestionale con l’AI.</h2>
         <div class="ab__text">
           <p class="b-text">
-            Bitora è l’attività di <strong>Denis Cazzulo</strong>, sviluppatore e progettista. È iniziata
-            con i siti per le attività di Carmagnola e dintorni: bar, ristoranti, artigiani,
-            professionisti. Lavorando a contatto con i titolari, è diventato chiaro che il sito era solo
-            la punta dell’iceberg.
+            Bitora è l’attività di <strong>Denis Cazzulo</strong>, sviluppatore e progettista. È
+            iniziata con i siti per le attività di Carmagnola e dintorni: bar, ristoranti,
+            artigiani, professionisti. Lavorando a contatto con i titolari, è diventato chiaro che
+            il sito era solo la punta dell’iceberg.
           </p>
           <p class="b-text">
             Dietro c’erano magazzini gestiti a mano, rapportini di carta, preventivi riscritti ogni
@@ -81,18 +122,18 @@ const stack = [
     <div class="b-shell">
       <div class="b-head" data-reveal>
         <p class="b-eyebrow">Come la pensiamo</p>
-        <h2 class="b-h2">Quattro regole che <span class="b-accent">non cambiamo</span>.</h2>
+        <h2 class="b-h2">
+          Quattro regole che <span class="b-accent">non cambiamo</span>.
+        </h2>
       </div>
       <div class="vals">
-        {
-          values.map((v, i) => (
-            <article class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
-              <span class="b-step__n">0{i + 1}</span>
-              <h3 class="b-h3 b-step__t">{v.t}</h3>
-              <p class="b-text">{v.d}</p>
-            </article>
-          ))
-        }
+        {values.map((v, i) => (
+          <article class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+            <span class="b-step__n">0{i + 1}</span>
+            <h3 class="b-h3 b-step__t">{v.t}</h3>
+            <p class="b-text">{v.d}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -102,7 +143,9 @@ const stack = [
       <div class="b-head b-head--split" data-reveal>
         <div>
           <p class="b-eyebrow">Strumenti</p>
-          <h2 class="b-h2">Tecnologie moderne, <span class="b-accent">scelte con criterio</span>.</h2>
+          <h2 class="b-h2">
+            Tecnologie moderne, <span class="b-accent">scelte con criterio</span>.
+          </h2>
         </div>
         <p class="b-text">
           Usiamo gli stessi strumenti delle aziende tech più avanzate, ma solo quando servono. Ogni
@@ -110,7 +153,9 @@ const stack = [
         </p>
       </div>
       <div class="b-chips ab__stack" data-reveal>
-        {stack.map(s => <span class="b-chip">{s}</span>)}
+        {stack.map(s => (
+          <span class="b-chip">{s}</span>
+        ))}
       </div>
     </div>
     <div class="ab__marquee" data-reveal>
@@ -125,12 +170,20 @@ const stack = [
         <h2 class="b-h2">Carmagnola, tra Torino e Cuneo.</h2>
         <p class="b-lede">
           Incontriamo volentieri i clienti di persona in provincia di Torino e Cuneo: Carmagnola,
-          Carignano, Racconigi, Bra, Savigliano, Cherasco e dintorni. Per il resto d’Italia lavoriamo
-          da remoto, con la stessa cura.
+          Carignano, Racconigi, Bra, Savigliano, Cherasco e dintorni. Per il resto d’Italia
+          lavoriamo da remoto, con la stessa cura.
         </p>
       </div>
-      <a href="/contattaci/" class="b-btn b-btn--primary b-btn--lg" data-track="cta_click" data-track-location="about_local">
-        Fissa un incontro <span class="b-arrow" aria-hidden="true">→</span>
+      <a
+        href="/contattaci/"
+        class="b-btn b-btn--primary b-btn--lg"
+        data-track="cta_click"
+        data-track-location="about_local"
+      >
+        Fissa un incontro{' '}
+        <span class="b-arrow" aria-hidden="true">
+          →
+        </span>
       </a>
     </div>
   </section>

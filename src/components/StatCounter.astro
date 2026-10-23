@@ -14,28 +14,26 @@ const { items } = Astro.props;
 ---
 
 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-  {
-    items.map((it, i) => (
-      <div class="text-center reveal-on-scroll" style={`transition-delay:${i * 100}ms`}>
-        <p
-          class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
-          data-count={it.number ?? ''}
-          data-suffix={it.suffix ?? ''}
-        >
-          {it.value}
-        </p>
-        <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-          {it.label}
-        </p>
-        <div class="mt-4 h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden max-w-[140px] mx-auto">
-          <div
-            class="bar-fill h-full bg-[color:var(--brand-cta)] rounded-full transition-all duration-1000 ease-out"
-            data-width={92}
-          />
-        </div>
+  {items.map((it, i) => (
+    <div class="text-center reveal-on-scroll" style={`transition-delay:${i * 100}ms`}>
+      <p
+        class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+        data-count={it.number ?? ''}
+        data-suffix={it.suffix ?? ''}
+      >
+        {it.value}
+      </p>
+      <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+        {it.label}
+      </p>
+      <div class="mt-4 h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden max-w-[140px] mx-auto">
+        <div
+          class="bar-fill h-full bg-[color:var(--brand-cta)] rounded-full transition-all duration-1000 ease-out"
+          data-width={92}
+        />
       </div>
-    ))
-  }
+    </div>
+  ))}
 </div>
 
 <script>

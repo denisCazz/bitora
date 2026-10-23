@@ -5,25 +5,23 @@ const path = (Astro.url.pathname.replace(/\/$/, '') || '/') as string;
 const hidden = path.startsWith('/ops') || path === '/contattaci' || path === '/richiedi-demo';
 ---
 
-{
-  !hidden && (
-    <div class="stk" role="navigation" aria-label="Contatti rapidi">
-      <a
-        href={whatsappLink('Ciao Bitora, ho visitato il sito e vorrei informazioni.')}
-        class="stk__wa"
-        data-track="whatsapp_click"
-        data-track-location="sticky_bar"
-        target="_blank"
-        rel="noopener"
-      >
-        WhatsApp
-      </a>
-      <a href="/contattaci/" class="stk__cta" data-track="cta_click" data-track-location="sticky_bar">
-        Preventivo gratuito →
-      </a>
-    </div>
-  )
-}
+{!hidden && (
+  <div class="stk" role="navigation" aria-label="Contatti rapidi">
+    <a
+      href={whatsappLink('Ciao Bitora, ho visitato il sito e vorrei informazioni.')}
+      class="stk__wa"
+      data-track="whatsapp_click"
+      data-track-location="sticky_bar"
+      target="_blank"
+      rel="noopener"
+    >
+      WhatsApp
+    </a>
+    <a href="/contattaci/" class="stk__cta" data-track="cta_click" data-track-location="sticky_bar">
+      Preventivo gratuito →
+    </a>
+  </div>
+)}
 
 <style>
   .stk {

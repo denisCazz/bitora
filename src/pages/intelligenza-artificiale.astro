@@ -15,30 +15,71 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
     eyebrow: 'AI & automazioni',
     title: 'L’AI che fa il lavoro noioso. <span class="b-grad">Il tuo team fa il resto.</span>',
     lede: 'Portiamo l’intelligenza artificiale dentro i tuoi processi: preventivi, documenti, assistenza, ricerca clienti e contenuti. Niente demo da fiera: strumenti collegati ai tuoi dati, che fanno risparmiare ore ogni settimana.',
-    chips: ['Assistenti sui documenti', 'Preventivi automatici', 'Lead generation', 'Automazioni email'],
+    chips: [
+      'Assistenti sui documenti',
+      'Preventivi automatici',
+      'Lead generation',
+      'Automazioni email',
+    ],
   }}
   ctaLabel="Scopri cosa automatizzare"
   signals={{
     title: 'Dove l’AI <span class="b-accent">ti restituisce ore</span>.',
     items: [
-      { t: 'Preventivi da zero ogni volta', d: 'Ore a ricopiare descrizioni, voci e prezzi da lavori simili già fatti.' },
-      { t: 'Documenti introvabili', d: 'Manuali, certificazioni e procedure sparsi in cartelle. Trovare una risposta richiede mezz’ora.' },
-      { t: 'Sempre le stesse domande', d: 'Clienti e colleghi chiedono le stesse cose. Qualcuno deve rispondere ogni volta.' },
-      { t: 'Ricerca clienti manuale', d: 'Ore su Google e Maps per trovare aziende da contattare, una per una.' },
-      { t: 'Contenuti che non escono mai', d: 'Il blog e i social restano fermi perché nessuno ha tempo di scrivere.' },
-      { t: 'Email e report ripetitivi', d: 'Promemoria, solleciti e riepiloghi scritti a mano ogni settimana.' },
+      {
+        t: 'Preventivi da zero ogni volta',
+        d: 'Ore a ricopiare descrizioni, voci e prezzi da lavori simili già fatti.',
+      },
+      {
+        t: 'Documenti introvabili',
+        d: 'Manuali, certificazioni e procedure sparsi in cartelle. Trovare una risposta richiede mezz’ora.',
+      },
+      {
+        t: 'Sempre le stesse domande',
+        d: 'Clienti e colleghi chiedono le stesse cose. Qualcuno deve rispondere ogni volta.',
+      },
+      {
+        t: 'Ricerca clienti manuale',
+        d: 'Ore su Google e Maps per trovare aziende da contattare, una per una.',
+      },
+      {
+        t: 'Contenuti che non escono mai',
+        d: 'Il blog e i social restano fermi perché nessuno ha tempo di scrivere.',
+      },
+      {
+        t: 'Email e report ripetitivi',
+        d: 'Promemoria, solleciti e riepiloghi scritti a mano ogni settimana.',
+      },
     ],
   }}
   deliverables={{
     title: 'AI <span class="b-accent">dentro</span> i tuoi strumenti, non accanto.',
     lede: 'Ogni soluzione usa i tuoi dati, rispetta i permessi del tuo team e lascia sempre a una persona l’ultima parola.',
     items: [
-      { t: 'Assistente sui documenti', d: 'Fai una domanda in italiano e ricevi la risposta presa da manuali, schede e procedure, con la fonte.' },
-      { t: 'Preventivi e offerte', d: 'Bozze generate da documenti e storico lavori, da rivedere ed esportare in PDF o Word.' },
-      { t: 'Assistenza clienti', d: 'Risposte immediate alle domande frequenti, con passaggio a una persona quando serve.' },
-      { t: 'Lead finder', d: 'Ricerca e qualificazione automatica di potenziali clienti per settore e zona.' },
-      { t: 'Contenuti editoriali', d: 'Ricerca trend, bozze di articoli e immagini, con revisione umana prima della pubblicazione.' },
-      { t: 'Automazioni', d: 'Email, avvisi su scadenze, report periodici e flussi tra i tuoi strumenti che girano da soli.' },
+      {
+        t: 'Assistente sui documenti',
+        d: 'Fai una domanda in italiano e ricevi la risposta presa da manuali, schede e procedure, con la fonte.',
+      },
+      {
+        t: 'Preventivi e offerte',
+        d: 'Bozze generate da documenti e storico lavori, da rivedere ed esportare in PDF o Word.',
+      },
+      {
+        t: 'Assistenza clienti',
+        d: 'Risposte immediate alle domande frequenti, con passaggio a una persona quando serve.',
+      },
+      {
+        t: 'Lead finder',
+        d: 'Ricerca e qualificazione automatica di potenziali clienti per settore e zona.',
+      },
+      {
+        t: 'Contenuti editoriali',
+        d: 'Ricerca trend, bozze di articoli e immagini, con revisione umana prima della pubblicazione.',
+      },
+      {
+        t: 'Automazioni',
+        d: 'Email, avvisi su scadenze, report periodici e flussi tra i tuoi strumenti che girano da soli.',
+      },
     ],
   }}
   feature={{
@@ -66,7 +107,12 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
         t: 'Primo automatismo',
         time: '2–4 settimane',
         d: 'Mettiamo in produzione il caso con più impatto e misuriamo il tempo risparmiato.',
-        bullets: ['Collegato ai tuoi dati', 'Formazione del team', 'Misurazione dei risultati', 'Revisione umana prevista'],
+        bullets: [
+          'Collegato ai tuoi dati',
+          'Formazione del team',
+          'Misurazione dei risultati',
+          'Revisione umana prevista',
+        ],
       },
       {
         t: 'AI nel gestionale',
@@ -77,12 +123,40 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
     ],
   }}
   projects={['mistral-gestionale', 'garavella-7-gestionale']}
-  stack={['OpenAI', 'Embeddings e RAG', 'Tavily', 'Next.js', 'PostgreSQL', 'Resend', 'Cron e webhook']}
+  stack={[
+    'OpenAI',
+    'Embeddings e RAG',
+    'Tavily',
+    'Next.js',
+    'PostgreSQL',
+    'Resend',
+    'Cron e webhook',
+  ]}
   faq={[
-    { question: 'I miei dati finiscono ad addestrare l’AI?', answer: 'No. Usiamo API professionali che non usano i tuoi dati per l’addestramento. Documenti e database restano sui tuoi server o su cloud europei.' },
-    { question: 'L’AI sbaglia?', answer: 'Può succedere: per questo progettiamo ogni flusso con una persona che controlla prima dell’invio, e mostriamo sempre le fonti usate.' },
-    { question: 'Quanto costa usarla ogni mese?', answer: 'I costi di utilizzo dei modelli sono di solito contenuti, da pochi euro a qualche decina al mese per una PMI. Te li stimiamo prima di partire.' },
-    { question: 'Serve avere un gestionale fatto da voi?', answer: 'No. Possiamo collegarci ai tuoi strumenti esistenti, a cartelle di documenti, email o fogli di calcolo.' },
-    { question: 'Da dove conviene iniziare?', answer: 'Dal processo più ripetitivo e misurabile. Con l’audit individuiamo il caso con il ritorno più rapido.' },
+    {
+      question: 'I miei dati finiscono ad addestrare l’AI?',
+      answer:
+        'No. Usiamo API professionali che non usano i tuoi dati per l’addestramento. Documenti e database restano sui tuoi server o su cloud europei.',
+    },
+    {
+      question: 'L’AI sbaglia?',
+      answer:
+        'Può succedere: per questo progettiamo ogni flusso con una persona che controlla prima dell’invio, e mostriamo sempre le fonti usate.',
+    },
+    {
+      question: 'Quanto costa usarla ogni mese?',
+      answer:
+        'I costi di utilizzo dei modelli sono di solito contenuti, da pochi euro a qualche decina al mese per una PMI. Te li stimiamo prima di partire.',
+    },
+    {
+      question: 'Serve avere un gestionale fatto da voi?',
+      answer:
+        'No. Possiamo collegarci ai tuoi strumenti esistenti, a cartelle di documenti, email o fogli di calcolo.',
+    },
+    {
+      question: 'Da dove conviene iniziare?',
+      answer:
+        'Dal processo più ripetitivo e misurabile. Con l’audit individuiamo il caso con il ritorno più rapido.',
+    },
   ]}
 />

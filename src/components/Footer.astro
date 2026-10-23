@@ -17,45 +17,51 @@ const topic = topicByPath[path];
 const ctaHref = topic ? `/contattaci/?topic=${topic}` : '/contattaci/';
 ---
 
-{
-  !hideCta && (
-    <section class="fcta" aria-labelledby="fcta-title">
-      <div class="b-glow-orb fcta__orb" aria-hidden="true" />
-      <div class="b-shell fcta__inner" data-reveal>
-        <p class="b-eyebrow">Prossimo passo</p>
-        <h2 id="fcta-title" class="b-display">
-          Hai un’idea?
-          <br />
-          <span class="b-grad">Rendiamola reale.</span>
-        </h2>
-        <p class="b-lede">
-          Raccontaci in due minuti cosa ti serve. Entro 24 ore ricevi una risposta concreta: cosa fare,
-          in che ordine, quanto costa. Gratis e senza impegno.
-        </p>
-        <div class="b-cta-row">
-          <a href={ctaHref} class="b-btn b-btn--primary b-btn--lg" data-track="cta_click" data-track-location="footer_cta">
-            Richiedi il preventivo gratuito <span class="b-arrow" aria-hidden="true">→</span>
-          </a>
-          <a
-            href={whatsappLink('Ciao Bitora, vorrei parlarvi di un progetto.')}
-            class="b-btn b-btn--wa b-btn--lg"
-            data-track="whatsapp_click"
-            data-track-location="footer_cta"
-            target="_blank"
-            rel="noopener"
-          >
-            Scrivici su WhatsApp
-          </a>
-        </div>
-        <ul class="fcta__proof">
-          <li>Risposta entro 24 ore</li>
-          <li>Preventivo chiaro, a fasi</li>
-          <li>Un unico referente</li>
-        </ul>
+{!hideCta && (
+  <section class="fcta" aria-labelledby="fcta-title">
+    <div class="b-glow-orb fcta__orb" aria-hidden="true" />
+    <div class="b-shell fcta__inner" data-reveal>
+      <p class="b-eyebrow">Prossimo passo</p>
+      <h2 id="fcta-title" class="b-display">
+        Hai un’idea?
+        <br />
+        <span class="b-grad">Rendiamola reale.</span>
+      </h2>
+      <p class="b-lede">
+        Raccontaci in due minuti cosa ti serve. Entro 24 ore ricevi una risposta concreta: cosa
+        fare, in che ordine, quanto costa. Gratis e senza impegno.
+      </p>
+      <div class="b-cta-row">
+        <a
+          href={ctaHref}
+          class="b-btn b-btn--primary b-btn--lg"
+          data-track="cta_click"
+          data-track-location="footer_cta"
+        >
+          Richiedi il preventivo gratuito{' '}
+          <span class="b-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
+        <a
+          href={whatsappLink('Ciao Bitora, vorrei parlarvi di un progetto.')}
+          class="b-btn b-btn--wa b-btn--lg"
+          data-track="whatsapp_click"
+          data-track-location="footer_cta"
+          target="_blank"
+          rel="noopener"
+        >
+          Scrivici su WhatsApp
+        </a>
       </div>
-    </section>
-  )
-}
+      <ul class="fcta__proof">
+        <li>Risposta entro 24 ore</li>
+        <li>Preventivo chiaro, a fasi</li>
+        <li>Un unico referente</li>
+      </ul>
+    </div>
+  </section>
+)}
 
 <footer class="ftr">
   <div class="b-shell">
@@ -71,68 +77,119 @@ const ctaHref = topic ? `/contattaci/?topic=${topic}` : '/contattaci/';
         </p>
         <div class="ftr__contacts">
           <a href={`mailto:${email}`}>{email}</a>
-          <a href={phoneHref} data-track="phone_click" data-track-location="footer">{phoneDisplay}</a>
+          <a href={phoneHref} data-track="phone_click" data-track-location="footer">
+            {phoneDisplay}
+          </a>
           <a
             href={whatsappLink('Ciao Bitora, vorrei informazioni.')}
             data-track="whatsapp_click"
             data-track-location="footer"
             target="_blank"
-            rel="noopener">WhatsApp</a
+            rel="noopener"
           >
+            WhatsApp
+          </a>
         </div>
       </div>
 
       <nav aria-label="Soluzioni">
         <h3>Soluzioni</h3>
         <ul>
-          {
-            pillars.map(p => (
-              <li>
-                <a href={p.href}>{p.title}</a>
-              </li>
-            ))
-          }
-          <li><a href="https://shopnfc.bitora.it/" rel="noopener">Shop NFC</a></li>
+          {pillars.map(p => (
+            <li>
+              <a href={p.href}>{p.title}</a>
+            </li>
+          ))}
+          <li>
+            <a href="https://shopnfc.bitora.it/" rel="noopener">
+              Shop NFC
+            </a>
+          </li>
         </ul>
       </nav>
 
       <nav aria-label="Piattaforme">
         <h3>Piattaforme</h3>
         <ul>
-          <li><a href="/gestione-interventi/">Gestione interventi</a></li>
-          <li><a href="/rapportini/">Rapportini digitali</a></li>
-          <li><a href="/ticketing/">Ticketing</a></li>
-          <li><a href="/bitora-crm/">Bitora CRM</a></li>
-          <li><a href="/richiedi-demo/">Richiedi demo</a></li>
-          <li><a href="/tools/calcolatore-roi-gestionale/">Calcolatore ROI</a></li>
-          <li><a href="/tools/">Generatore QR</a></li>
+          <li>
+            <a href="/gestione-interventi/">Gestione interventi</a>
+          </li>
+          <li>
+            <a href="/rapportini/">Rapportini digitali</a>
+          </li>
+          <li>
+            <a href="/ticketing/">Ticketing</a>
+          </li>
+          <li>
+            <a href="/bitora-crm/">Bitora CRM</a>
+          </li>
+          <li>
+            <a href="/richiedi-demo/">Richiedi demo</a>
+          </li>
+          <li>
+            <a href="/tools/calcolatore-roi-gestionale/">Calcolatore ROI</a>
+          </li>
+          <li>
+            <a href="/tools/">Generatore QR</a>
+          </li>
         </ul>
       </nav>
 
       <nav aria-label="Bitora">
         <h3>Bitora</h3>
         <ul>
-          <li><a href="/lavori/">Lavori</a></li>
-          <li><a href="/servizi/">Servizi e metodo</a></li>
-          <li><a href="/chi-siamo/">Chi siamo</a></li>
-          <li><a href="/sicurezza-e-gdpr/">Sicurezza e GDPR</a></li>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/contattaci/">Contatti</a></li>
-          <li><a href="https://www.instagram.com/bitorait/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          <li><a href="https://www.facebook.com/people/Bitora-Italia/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li>
+            <a href="/lavori/">Lavori</a>
+          </li>
+          <li>
+            <a href="/servizi/">Servizi e metodo</a>
+          </li>
+          <li>
+            <a href="/chi-siamo/">Chi siamo</a>
+          </li>
+          <li>
+            <a href="/sicurezza-e-gdpr/">Sicurezza e GDPR</a>
+          </li>
+          <li>
+            <a href="/blog/">Blog</a>
+          </li>
+          <li>
+            <a href="/contattaci/">Contatti</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/bitorait/" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/people/Bitora-Italia/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Facebook
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
 
-    <p class="ftr__wordmark" aria-hidden="true">BITORA</p>
+    <p class="ftr__wordmark" aria-hidden="true">
+      BITORA
+    </p>
 
     <div class="ftr__bottom">
-      <p>© {year} Bitora — un prodotto di Denis Cazzulo · P.IVA 13359170019 · Carmagnola (TO) · Dati trattati secondo il GDPR</p>
+      <p>
+        © {year} Bitora — un prodotto di Denis Cazzulo · P.IVA 13359170019 · Carmagnola (TO) · Dati
+        trattati secondo il GDPR
+      </p>
       <div>
         <a href="/sicurezza-e-gdpr/">Sicurezza & GDPR</a>
         <a href="/privacy-policy/">Privacy</a>
         <a href="/cookie-policy/">Cookie</a>
-        <a href="/cookie-policy/" data-cookie-settings>Preferenze cookie</a>
+        <a href="/cookie-policy/" data-cookie-settings>
+          Preferenze cookie
+        </a>
       </div>
     </div>
   </div>
@@ -255,7 +312,12 @@ const ctaHref = topic ? `/contattaci/?topic=${topic}` : '/contattaci/';
     letter-spacing: -0.02em;
     text-align: center;
     color: transparent;
-    background: linear-gradient(180deg, rgba(34, 211, 238, 0.16) 0%, rgba(255, 255, 255, 0.04) 55%, transparent 95%);
+    background: linear-gradient(
+      180deg,
+      rgba(34, 211, 238, 0.16) 0%,
+      rgba(255, 255, 255, 0.04) 55%,
+      transparent 95%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     user-select: none;

@@ -13,7 +13,11 @@ import { FOUNDER_ID, ORG_ID, SITE } from '../../data/seo';
 const articles = await listPublishedArticles();
 const [featured, ...rest] = articles;
 const topics = TOPIC_PILLARS.filter(p => articles.some(a => a.topic === p.id));
-const projects = getWorkBySlugs(['mistral-gestionale', 'garavella-7', 'accessi-aziendali-franchina']);
+const projects = getWorkBySlugs([
+  'mistral-gestionale',
+  'garavella-7',
+  'accessi-aziendali-franchina',
+]);
 
 const blogSchema = {
   '@type': 'Blog',
@@ -34,7 +38,6 @@ const blogSchema = {
     ...(a.publishedAt ? { datePublished: a.publishedAt.toISOString() } : {}),
   })),
 };
-
 ---
 
 <Layout
@@ -59,75 +62,80 @@ const blogSchema = {
     secondary={{ label: 'Vedi i lavori', href: '/lavori/' }}
   />
 
-  {
-    featured ? (
-      <section class="b-section b-section--tight">
-        <div class="b-shell">
-          <p class="b-eyebrow bl-label" data-reveal>
-            Ultima guida
-          </p>
-          <div data-reveal data-reveal-delay="1">
-            <PostCard article={featured} size="lg" eager />
-          </div>
+  {featured ? (
+    <section class="b-section b-section--tight">
+      <div class="b-shell">
+        <p class="b-eyebrow bl-label" data-reveal>
+          Ultima guida
+        </p>
+        <div data-reveal data-reveal-delay="1">
+          <PostCard article={featured} size="lg" eager />
         </div>
-      </section>
-    ) : (
-      <section class="b-section">
-        <div class="b-shell">
-          <p class="b-lede">Le prime guide arrivano a breve. Nel frattempo, scrivici: rispondiamo entro 24 ore.</p>
-        </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  ) : (
+    <section class="b-section">
+      <div class="b-shell">
+        <p class="b-lede">
+          Le prime guide arrivano a breve. Nel frattempo, scrivici: rispondiamo entro 24 ore.
+        </p>
+      </div>
+    </section>
+  )}
 
-  {
-    rest.length > 0 && (
-      <section class="b-section b-section--line" id="guide">
-        <div class="b-shell">
-          <div class="bl-head" data-reveal>
-            <h2 class="b-h2">Tutte le guide</h2>
-            {topics.length > 1 && (
-              <div class="bl-filters" role="toolbar" aria-label="Filtra per argomento">
-                <button type="button" class="b-chip bl-f is-on" data-f="all" aria-pressed="true">
-                  Tutte
+  {rest.length > 0 && (
+    <section class="b-section b-section--line" id="guide">
+      <div class="b-shell">
+        <div class="bl-head" data-reveal>
+          <h2 class="b-h2">Tutte le guide</h2>
+          {topics.length > 1 && (
+            <div class="bl-filters" role="toolbar" aria-label="Filtra per argomento">
+              <button type="button" class="b-chip bl-f is-on" data-f="all" aria-pressed="true">
+                Tutte
+              </button>
+              {topics.map(t => (
+                <button type="button" class="b-chip bl-f" data-f={t.id} aria-pressed="false">
+                  {t.label}
                 </button>
-                {topics.map(t => (
-                  <button type="button" class="b-chip bl-f" data-f={t.id} aria-pressed="false">
-                    {t.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-          <div class="bl-grid">
-            {rest.map((a, i) => (
-              <div class="bl-item" data-topic={a.topic} data-reveal data-reveal-delay={String((i % 3) + 1)}>
-                <PostCard article={a} />
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
-      </section>
-    )
-  }
+        <div class="bl-grid">
+          {rest.map((a, i) => (
+            <div
+              class="bl-item"
+              data-topic={a.topic}
+              data-reveal
+              data-reveal-delay={String((i % 3) + 1)}
+            >
+              <PostCard article={a} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="b-section b-section--alt">
     <div class="b-shell">
       <div class="b-head b-head--split" data-reveal>
         <div>
           <p class="b-eyebrow">Dalla teoria ai progetti</p>
-          <h2 class="b-h2">Quello che scriviamo, <span class="b-accent">lo facciamo</span>.</h2>
+          <h2 class="b-h2">
+            Quello che scriviamo, <span class="b-accent">lo facciamo</span>.
+          </h2>
         </div>
-        <a href="/lavori/" class="b-link">Tutti i lavori →</a>
+        <a href="/lavori/" class="b-link">
+          Tutti i lavori →
+        </a>
       </div>
       <div class="bl-grid">
-        {
-          projects.map((p, i) => (
-            <div data-reveal data-reveal-delay={String(i + 1)}>
-              <ProjectCard item={p} />
-            </div>
-          ))
-        }
+        {projects.map((p, i) => (
+          <div data-reveal data-reveal-delay={String(i + 1)}>
+            <ProjectCard item={p} />
+          </div>
+        ))}
       </div>
     </div>
   </section>

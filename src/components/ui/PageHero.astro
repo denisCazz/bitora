@@ -15,45 +15,55 @@ const { eyebrow, title, lede, primary, secondary, chips = [], crumbs = [] } = As
   <div class="ph__grid b-grid-bg" aria-hidden="true"></div>
   <div class="b-glow-orb ph__orb" aria-hidden="true"></div>
   <div class="b-shell ph__inner">
-    {
-      crumbs.length > 0 && (
-        <nav class="ph__crumbs b-rise" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          {crumbs.map(c => (
-            <>
-              <span aria-hidden="true">/</span>
-              <a href={c.href}>{c.name}</a>
-            </>
-          ))}
-        </nav>
-      )
-    }
-    <p class="b-eyebrow b-rise" style="animation-delay:.05s">{eyebrow}</p>
+    {crumbs.length > 0 && (
+      <nav class="ph__crumbs b-rise" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        {crumbs.map(c => (
+          <>
+            <span aria-hidden="true">/</span>
+            <a href={c.href}>{c.name}</a>
+          </>
+        ))}
+      </nav>
+    )}
+    <p class="b-eyebrow b-rise" style="animation-delay:.05s">
+      {eyebrow}
+    </p>
     <h1 class="b-h1 b-rise" style="animation-delay:.12s" set:html={title} />
-    {lede && <p class="b-lede b-rise" style="animation-delay:.22s">{lede}</p>}
-    {
-      (primary || secondary) && (
-        <div class="b-cta-row b-rise" style="animation-delay:.32s">
-          {primary && (
-            <a href={primary.href} class="b-btn b-btn--primary b-btn--lg" data-track="cta_click" data-track-location={primary.track ?? 'page_hero'}>
-              {primary.label} <span class="b-arrow" aria-hidden="true">→</span>
-            </a>
-          )}
-          {secondary && (
-            <a href={secondary.href} class="b-btn b-btn--ghost b-btn--lg">
-              {secondary.label}
-            </a>
-          )}
-        </div>
-      )
-    }
-    {
-      chips.length > 0 && (
-        <div class="b-chips ph__chips b-rise" style="animation-delay:.42s">
-          {chips.map(c => <span class="b-chip">{c}</span>)}
-        </div>
-      )
-    }
+    {lede && (
+      <p class="b-lede b-rise" style="animation-delay:.22s">
+        {lede}
+      </p>
+    )}
+    {(primary || secondary) && (
+      <div class="b-cta-row b-rise" style="animation-delay:.32s">
+        {primary && (
+          <a
+            href={primary.href}
+            class="b-btn b-btn--primary b-btn--lg"
+            data-track="cta_click"
+            data-track-location={primary.track ?? 'page_hero'}
+          >
+            {primary.label}{' '}
+            <span class="b-arrow" aria-hidden="true">
+              →
+            </span>
+          </a>
+        )}
+        {secondary && (
+          <a href={secondary.href} class="b-btn b-btn--ghost b-btn--lg">
+            {secondary.label}
+          </a>
+        )}
+      </div>
+    )}
+    {chips.length > 0 && (
+      <div class="b-chips ph__chips b-rise" style="animation-delay:.42s">
+        {chips.map(c => (
+          <span class="b-chip">{c}</span>
+        ))}
+      </div>
+    )}
     <slot />
   </div>
 </section>

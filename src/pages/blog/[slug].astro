@@ -24,8 +24,13 @@ const canonical = `${SITE}/blog/${article.slug}/`;
 const isPreview = article.status !== 'PUBLISHED';
 const cover = article.coverImage ? `${SITE}${article.coverImage}` : `${SITE}/og-bitora.jpg`;
 
-const others = isPreview ? [] : (await listPublishedArticles()).filter(a => a.slug !== article.slug);
-const related = [...others.filter(a => a.topic === article.topic), ...others.filter(a => a.topic !== article.topic)].slice(0, 3);
+const others = isPreview
+  ? []
+  : (await listPublishedArticles()).filter(a => a.slug !== article.slug);
+const related = [
+  ...others.filter(a => a.topic === article.topic),
+  ...others.filter(a => a.topic !== article.topic),
+].slice(0, 3);
 
 const faqItems = article.content.blocks.flatMap(block => (block.type === 'faq' ? block.items : []));
 const plainText = article.content.blocks
@@ -96,43 +101,39 @@ const schema = isPreview
   section={article.category}
   schema={schema}
 >
-  {
-    !isPreview && (
-      <BreadcrumbListSchema
-        crumbs={[
-          { name: 'Home', item: `${SITE}/` },
-          { name: 'Blog', item: `${SITE}/blog/` },
-          { name: article.title, item: canonical },
-        ]}
-      />
-    )
-  }
+  {!isPreview && (
+    <BreadcrumbListSchema
+      crumbs={[
+        { name: 'Home', item: `${SITE}/` },
+        { name: 'Blog', item: `${SITE}/blog/` },
+        { name: article.title, item: canonical },
+      ]}
+    />
+  )}
   <SignalJourney article={article} preview={isPreview} />
 
-  {
-    related.length > 0 && (
-      <section class="b-section b-section--line">
-        <div class="b-shell">
-          <div class="b-head b-head--split" data-reveal>
-            <div>
-              <p class="b-eyebrow">Continua a leggere</p>
-              <h2 class="b-h2">Altre guide utili.</h2>
-            </div>
-            <a href="/blog/" class="b-link">
-              Tutte le guide →
-            </a>
+  {related.length > 0 && (
+    <section class="b-section b-section--line">
+      <div class="b-shell">
+        <div class="b-head b-head--split" data-reveal>
+          <div>
+            <p class="b-eyebrow">Continua a leggere</p>
+            <h2 class="b-h2">Altre guide utili.</h2>
           </div>
-          <div class="rel">
-            {related.map((a, i) => (
-              <div data-reveal data-reveal-delay={String(i + 1)}>
-                <PostCard article={a} />
-              </div>
-            ))}
-          </div>
+          <a href="/blog/" class="b-link">
+            Tutte le guide →
+          </a>
         </div>
-      </section>
-    )
-  }
+        <div class="rel">
+          {related.map((a, i) => (
+            <div data-reveal data-reveal-delay={String(i + 1)}>
+              <PostCard article={a} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </Layout>
 
 <style>

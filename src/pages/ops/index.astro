@@ -36,16 +36,13 @@ const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : un
         Stato siti
       </p>
       <h2>
-        {
-          snapshot.sites.length
-            ? `${snapshot.upCount}/${snapshot.sites.length} online`
-            : `${trackedSites.length} siti da controllare`
-        }
+        {snapshot.sites.length
+          ? `${snapshot.upCount}/${snapshot.sites.length} online`
+          : `${trackedSites.length} siti da controllare`}
       </h2>
       <p class="ops-muted">
-        Uptime HTTP dei siti clienti e dell’infrastruttura Bitora. Ultimo check: {
-          formatRelative(lastCheck)
-        }.
+        Uptime HTTP dei siti clienti e dell’infrastruttura Bitora. Ultimo check:{' '}
+        {formatRelative(lastCheck)}.
       </p>
     </a>
     <a class="ops-card" href="/ops/vps/">
@@ -54,29 +51,25 @@ const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : un
         Monitoraggio VPS
       </p>
       <h2>
-        {
-          snapshot.vpsIssues.length
-            ? `${snapshot.vpsIssues.length} ${snapshot.vpsIssues.length === 1 ? 'segnalazione' : 'segnalazioni'}`
-            : 'Risorse nella norma'
-        }
+        {snapshot.vpsIssues.length
+          ? `${snapshot.vpsIssues.length} ${snapshot.vpsIssues.length === 1 ? 'segnalazione' : 'segnalazioni'}`
+          : 'Risorse nella norma'}
       </h2>
       <p class="ops-muted">Load, RAM e disco del runtime, più metriche host se l’agent è attivo.</p>
     </a>
     <a class="ops-card" href="/ops/password/">
-      <p class="ops-pill"><span class="ops-dot"></span> Password</p>
+      <p class="ops-pill">
+        <span class="ops-dot"></span> Password
+      </p>
       <h2>
-        {
-          vault.count
-            ? `${vault.count} ${vault.count === 1 ? 'credenziale' : 'credenziali'}`
-            : 'Nessuna credenziale'
-        }
+        {vault.count
+          ? `${vault.count} ${vault.count === 1 ? 'credenziale' : 'credenziali'}`
+          : 'Nessuna credenziale'}
       </h2>
       <p class="ops-muted">
-        {
-          vault.projects
-            ? `${vault.projects} ${vault.projects === 1 ? 'progetto' : 'progetti'} con accessi, database e API.`
-            : 'Casseforte per progetto: login, database e chiavi API.'
-        }
+        {vault.projects
+          ? `${vault.projects} ${vault.projects === 1 ? 'progetto' : 'progetti'} con accessi, database e API.`
+          : 'Casseforte per progetto: login, database e chiavi API.'}
       </p>
     </a>
     <a class="ops-card" href="/ops/scadenze/">
@@ -85,15 +78,13 @@ const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : un
         Scadenziario
       </p>
       <h2>
-        {
-          deadlines.overdue
-            ? `${deadlines.overdue} ${deadlines.overdue === 1 ? 'scaduta' : 'scadute'}`
-            : deadlines.week
-              ? `${deadlines.week} in settimana`
-              : deadlines.open
-                ? `${deadlines.open} ${deadlines.open === 1 ? 'scadenza aperta' : 'scadenze aperte'}`
-                : 'Nessuna scadenza'
-        }
+        {deadlines.overdue
+          ? `${deadlines.overdue} ${deadlines.overdue === 1 ? 'scaduta' : 'scadute'}`
+          : deadlines.week
+            ? `${deadlines.week} in settimana`
+            : deadlines.open
+              ? `${deadlines.open} ${deadlines.open === 1 ? 'scadenza aperta' : 'scadenze aperte'}`
+              : 'Nessuna scadenza'}
       </h2>
       <p class="ops-muted">
         Domini, hosting, contratti, licenze e fatture. Alert Telegram in arrivo.
@@ -108,7 +99,9 @@ const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : un
       <p class="ops-muted">Certificati, domini, backup, container e ultimo deploy.</p>
     </a>
     <a class="ops-card" href="/ops/editoriale/">
-      <p class="ops-pill"><span class="ops-dot"></span> Editoriale</p>
+      <p class="ops-pill">
+        <span class="ops-dot"></span> Editoriale
+      </p>
       <h2>Radar blog</h2>
       <p class="ops-muted">Trend, bozze AI, pubblicazione manuale e lead del magazine.</p>
     </a>
@@ -118,40 +111,44 @@ const deadlineHealth = deadlines.overdue ? 'down' : deadlines.week ? 'warn' : un
           class:list={[
             'ops-dot',
             state.incidents.some(incident => !incident.resolvedAt) ? 'down' : undefined,
-          ]}></span>
+          ]}
+        ></span>
         Incidenti
       </p>
       <h2>{state.incidents.filter(incident => !incident.resolvedAt).length} aperti</h2>
       <p class="ops-muted">Timeline, durata, presa in carico e note operative.</p>
     </a>
     <a class="ops-card" href="/ops/storico/">
-      <p class="ops-pill"><span class="ops-dot"></span> Storico</p>
+      <p class="ops-pill">
+        <span class="ops-dot"></span> Storico
+      </p>
       <h2>{state.history.length} rilevazioni</h2>
       <p class="ops-muted">Uptime e latenza fino a 30 giorni.</p>
     </a>
   </div>
 
   <form method="POST" action="/api/ops/check/" style="margin-top: 22px;">
-    <button class="ops-btn" type="submit">Esegui check ora</button>
+    <button class="ops-btn" type="submit">
+      Esegui check ora
+    </button>
   </form>
 
   <div class="ops-note">
-    <strong style="color:#fff">Cron Coolify</strong> (ogni 5 minuti), con header di autenticazione:<br
-    />
+    <strong style="color:#fff">Cron Coolify</strong> (ogni 5 minuti), con header di autenticazione:
+    <br />
     <code>
       curl -fsS -X POST -H "Authorization: Bearer $OPS_CRON_SECRET" https://bitora.it/api/ops/cron/
     </code>
-    <br />Watchdog separato (ogni 10 minuti):
+    <br />
+    Watchdog separato (ogni 10 minuti):
     <code>
       curl -fsS -X POST -H "Authorization: Bearer $OPS_CRON_SECRET"
       https://bitora.it/api/ops/watchdog/
     </code>
-    {
-      !state.lastCronAt && (
-        <p style="margin: 10px 0 0">
-          Nessun cron registrato finora: finché non gira, gli alert email non partono da soli.
-        </p>
-      )
-    }
+    {!state.lastCronAt && (
+      <p style="margin: 10px 0 0">
+        Nessun cron registrato finora: finché non gira, gli alert email non partono da soli.
+      </p>
+    )}
   </div>
 </OpsLayout>

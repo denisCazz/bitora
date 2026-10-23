@@ -39,7 +39,9 @@ const nav = [
     />
   </head>
   <body class="ops-body">
-    <a href="#ops-main" class="ops-skip">Vai al contenuto</a>
+    <a href="#ops-main" class="ops-skip">
+      Vai al contenuto
+    </a>
     <div class="ops-shell">
       <aside class="ops-sidebar">
         <a href="/ops/" class="ops-brand">
@@ -50,16 +52,14 @@ const nav = [
           </span>
         </a>
         <nav aria-label="Strumenti interni">
-          {
-            nav.map(item => (
-              <a
-                href={item.href}
-                class:list={['ops-nav-link', normalized === item.href && 'is-active']}
-              >
-                {item.label}
-              </a>
-            ))
-          }
+          {nav.map(item => (
+            <a
+              href={item.href}
+              class:list={['ops-nav-link', normalized === item.href && 'is-active']}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
         <div class="ops-sidebar-foot">
           <form method="POST" action="/api/ops/logout/">

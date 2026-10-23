@@ -44,10 +44,13 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     if (!isValidEmail(email)) {
-      return new Response(JSON.stringify({ ok: false, error: 'Inserisci un indirizzo email valido' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return new Response(
+        JSON.stringify({ ok: false, error: 'Inserisci un indirizzo email valido' }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
     }
 
     const guard = checkSubmission({
@@ -60,10 +63,13 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     if (!guard.ok) {
       logBlocked('roi-report', guard, email);
       return guard.rateLimited
-        ? new Response(JSON.stringify({ ok: false, error: 'Troppi tentativi. Riprova più tardi.' }), {
-            status: 429,
-            headers: { 'Content-Type': 'application/json' },
-          })
+        ? new Response(
+            JSON.stringify({ ok: false, error: 'Troppi tentativi. Riprova più tardi.' }),
+            {
+              status: 429,
+              headers: { 'Content-Type': 'application/json' },
+            }
+          )
         : new Response(JSON.stringify({ ok: true }), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },

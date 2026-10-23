@@ -24,22 +24,28 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
           Richiedi una demo della piattaforma.
         </h1>
         <p class="text-white/65 text-lg leading-relaxed">
-          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una configurazione dimostrativa costruita intorno al tuo processo.
+          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una
+          configurazione dimostrativa costruita intorno al tuo processo.
         </p>
       </div>
     </section>
 
     <section class="pb-24 px-8 md:px-16 lg:px-24">
       <div class="max-w-3xl">
-        {
-          inviato && (
-            <div class="mb-8 p-6 rounded-2xl bg-green-500/10 border border-green-500/30 text-green-400">
-              <p class="font-medium">Richiesta inviata. Ti contatteremo entro 24 ore per fissare la demo.</p>
-            </div>
-          )
-        }
+        {inviato && (
+          <div class="mb-8 p-6 rounded-2xl bg-green-500/10 border border-green-500/30 text-green-400">
+            <p class="font-medium">
+              Richiesta inviata. Ti contatteremo entro 24 ore per fissare la demo.
+            </p>
+          </div>
+        )}
 
-        <form id="demo-form" action="/api/contact/" method="POST" class="space-y-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-10">
+        <form
+          id="demo-form"
+          action="/api/contact/"
+          method="POST"
+          class="space-y-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-10"
+        >
           <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
           <input type="hidden" name="_ts" id="form_ts" value="" />
           <input type="hidden" name="argomento" value="demo-gestione-interventi" />
@@ -56,107 +62,252 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
 
           <div class="grid md:grid-cols-2 gap-6">
             <div>
-              <label for="nome" class="block text-sm font-medium text-white/80 mb-2">Nome e cognome *</label>
-              <input type="text" id="nome" name="nome" required minlength="2" autocomplete="name"
-                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none" placeholder="Mario Rossi" />
+              <label for="nome" class="block text-sm font-medium text-white/80 mb-2">
+                Nome e cognome *
+              </label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                required
+                minlength="2"
+                autocomplete="name"
+                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none"
+                placeholder="Mario Rossi"
+              />
             </div>
             <div>
-              <label for="azienda" class="block text-sm font-medium text-white/80 mb-2">Azienda *</label>
-              <input type="text" id="azienda" name="azienda" required minlength="2"
-                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none" placeholder="Nome azienda" />
-            </div>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email aziendale *</label>
-              <input type="email" id="email" name="email" required autocomplete="email"
-                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none" placeholder="nome@azienda.it" />
-            </div>
-            <div>
-              <label for="telefono" class="block text-sm font-medium text-white/80 mb-2">Telefono *</label>
-              <input type="tel" id="telefono" name="telefono" required autocomplete="tel"
-                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none" placeholder="+39 ..." />
-            </div>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label for="ruolo" class="block text-sm font-medium text-white/80 mb-2">Ruolo *</label>
-              <select id="ruolo" name="ruolo" required class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none">
-                <option value="" class="bg-zinc-900">Seleziona...</option>
-                <option value="titolare" class="bg-zinc-900">Titolare / Amministratore</option>
-                <option value="responsabile-assistenza" class="bg-zinc-900">Responsabile assistenza</option>
-                <option value="operations" class="bg-zinc-900">Operations / Coordinamento</option>
-                <option value="altro" class="bg-zinc-900">Altro</option>
-              </select>
-            </div>
-            <div>
-              <label for="tecnici" class="block text-sm font-medium text-white/80 mb-2">Numero tecnici *</label>
-              <select id="tecnici" name="tecnici" required class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none">
-                <option value="" class="bg-zinc-900">Seleziona...</option>
-                <option value="1-4" class="bg-zinc-900">1–4</option>
-                <option value="5-10" class="bg-zinc-900">5–10</option>
-                <option value="11-25" class="bg-zinc-900">11–25</option>
-                <option value="26+" class="bg-zinc-900">26+</option>
-              </select>
+              <label for="azienda" class="block text-sm font-medium text-white/80 mb-2">
+                Azienda *
+              </label>
+              <input
+                type="text"
+                id="azienda"
+                name="azienda"
+                required
+                minlength="2"
+                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none"
+                placeholder="Nome azienda"
+              />
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 gap-6">
             <div>
-              <label for="interventi_mensili" class="block text-sm font-medium text-white/80 mb-2">Interventi mensili *</label>
-              <select id="interventi_mensili" name="interventi_mensili" required class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none">
-                <option value="" class="bg-zinc-900">Seleziona...</option>
-                <option value="fino-50" class="bg-zinc-900">Fino a 50</option>
-                <option value="50-150" class="bg-zinc-900">50–150</option>
-                <option value="150-400" class="bg-zinc-900">150–400</option>
-                <option value="400+" class="bg-zinc-900">Oltre 400</option>
+              <label for="email" class="block text-sm font-medium text-white/80 mb-2">
+                Email aziendale *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none"
+                placeholder="nome@azienda.it"
+              />
+            </div>
+            <div>
+              <label for="telefono" class="block text-sm font-medium text-white/80 mb-2">
+                Telefono *
+              </label>
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                required
+                autocomplete="tel"
+                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none"
+                placeholder="+39 ..."
+              />
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="ruolo" class="block text-sm font-medium text-white/80 mb-2">
+                Ruolo *
+              </label>
+              <select
+                id="ruolo"
+                name="ruolo"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none"
+              >
+                <option value="" class="bg-zinc-900">
+                  Seleziona...
+                </option>
+                <option value="titolare" class="bg-zinc-900">
+                  Titolare / Amministratore
+                </option>
+                <option value="responsabile-assistenza" class="bg-zinc-900">
+                  Responsabile assistenza
+                </option>
+                <option value="operations" class="bg-zinc-900">
+                  Operations / Coordinamento
+                </option>
+                <option value="altro" class="bg-zinc-900">
+                  Altro
+                </option>
               </select>
             </div>
             <div>
-              <label for="strumenti_attuali" class="block text-sm font-medium text-white/80 mb-2">Strumenti attuali *</label>
-              <select id="strumenti_attuali" name="strumenti_attuali" required class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none">
-                <option value="" class="bg-zinc-900">Seleziona...</option>
-                <option value="excel-whatsapp" class="bg-zinc-900">Excel / WhatsApp / carta</option>
-                <option value="software-parziale" class="bg-zinc-900">Software parziale</option>
-                <option value="gestionale-esistente" class="bg-zinc-900">Gestionale esistente</option>
-                <option value="misto" class="bg-zinc-900">Misto</option>
+              <label for="tecnici" class="block text-sm font-medium text-white/80 mb-2">
+                Numero tecnici *
+              </label>
+              <select
+                id="tecnici"
+                name="tecnici"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none"
+              >
+                <option value="" class="bg-zinc-900">
+                  Seleziona...
+                </option>
+                <option value="1-4" class="bg-zinc-900">
+                  1–4
+                </option>
+                <option value="5-10" class="bg-zinc-900">
+                  5–10
+                </option>
+                <option value="11-25" class="bg-zinc-900">
+                  11–25
+                </option>
+                <option value="26+" class="bg-zinc-900">
+                  26+
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="interventi_mensili" class="block text-sm font-medium text-white/80 mb-2">
+                Interventi mensili *
+              </label>
+              <select
+                id="interventi_mensili"
+                name="interventi_mensili"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none"
+              >
+                <option value="" class="bg-zinc-900">
+                  Seleziona...
+                </option>
+                <option value="fino-50" class="bg-zinc-900">
+                  Fino a 50
+                </option>
+                <option value="50-150" class="bg-zinc-900">
+                  50–150
+                </option>
+                <option value="150-400" class="bg-zinc-900">
+                  150–400
+                </option>
+                <option value="400+" class="bg-zinc-900">
+                  Oltre 400
+                </option>
+              </select>
+            </div>
+            <div>
+              <label for="strumenti_attuali" class="block text-sm font-medium text-white/80 mb-2">
+                Strumenti attuali *
+              </label>
+              <select
+                id="strumenti_attuali"
+                name="strumenti_attuali"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none"
+              >
+                <option value="" class="bg-zinc-900">
+                  Seleziona...
+                </option>
+                <option value="excel-whatsapp" class="bg-zinc-900">
+                  Excel / WhatsApp / carta
+                </option>
+                <option value="software-parziale" class="bg-zinc-900">
+                  Software parziale
+                </option>
+                <option value="gestionale-esistente" class="bg-zinc-900">
+                  Gestionale esistente
+                </option>
+                <option value="misto" class="bg-zinc-900">
+                  Misto
+                </option>
               </select>
             </div>
           </div>
 
           <div>
-            <label for="esigenza" class="block text-sm font-medium text-white/80 mb-2">Esigenza principale *</label>
-            <select id="esigenza" name="esigenza" required class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none">
-              <option value="" class="bg-zinc-900">Seleziona...</option>
-              <option value="ticket-pratiche" class="bg-zinc-900">Gestione ticket e pratiche</option>
-              <option value="rapportini" class="bg-zinc-900">Rapportini digitali</option>
-              <option value="rete-centri" class="bg-zinc-900">Rete centri assistenza</option>
-              <option value="controllo-tempi" class="bg-zinc-900">Controllo tempi e KPI</option>
-              <option value="tutto" class="bg-zinc-900">Piattaforma completa</option>
+            <label for="esigenza" class="block text-sm font-medium text-white/80 mb-2">
+              Esigenza principale *
+            </label>
+            <select
+              id="esigenza"
+              name="esigenza"
+              required
+              class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white focus:border-white/30 focus:outline-none"
+            >
+              <option value="" class="bg-zinc-900">
+                Seleziona...
+              </option>
+              <option value="ticket-pratiche" class="bg-zinc-900">
+                Gestione ticket e pratiche
+              </option>
+              <option value="rapportini" class="bg-zinc-900">
+                Rapportini digitali
+              </option>
+              <option value="rete-centri" class="bg-zinc-900">
+                Rete centri assistenza
+              </option>
+              <option value="controllo-tempi" class="bg-zinc-900">
+                Controllo tempi e KPI
+              </option>
+              <option value="tutto" class="bg-zinc-900">
+                Piattaforma completa
+              </option>
             </select>
           </div>
 
           <div>
-            <label for="messaggio" class="block text-sm font-medium text-white/80 mb-2">Note (opzionale)</label>
-            <textarea id="messaggio" name="messaggio" rows="4" minlength="0"
+            <label for="messaggio" class="block text-sm font-medium text-white/80 mb-2">
+              Note (opzionale)
+            </label>
+            <textarea
+              id="messaggio"
+              name="messaggio"
+              rows="4"
+              minlength="0"
               class="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10 text-white placeholder-white/40 focus:border-white/30 focus:outline-none resize-none"
-              placeholder="Descrivi brevemente il tuo processo attuale..."></textarea>
+              placeholder="Descrivi brevemente il tuo processo attuale..."
+            ></textarea>
           </div>
 
           <div class="flex items-start gap-3">
-            <input type="checkbox" id="privacy" name="privacy" required class="mt-1 w-4 h-4 rounded border-white/20 bg-white/5" />
+            <input
+              type="checkbox"
+              id="privacy"
+              name="privacy"
+              required
+              class="mt-1 w-4 h-4 rounded border-white/20 bg-white/5"
+            />
             <label for="privacy" class="text-sm text-white/65">
-              Ho letto e accetto la <a href="/privacy-policy/" class="text-white underline" target="_blank">Privacy Policy</a>. I dati saranno usati per rispondere alla richiesta di demo. *
+              Ho letto e accetto la{' '}
+              <a href="/privacy-policy/" class="text-white underline" target="_blank">
+                Privacy Policy
+              </a>
+              . I dati saranno usati per rispondere alla richiesta di demo. *
             </label>
           </div>
 
           <p class="text-sm text-white/45 leading-relaxed">
-            La demo è conoscitiva e non comporta alcun impegno. Le funzionalità e i costi vengono definiti dopo l’analisi del processo aziendale.
+            La demo è conoscitiva e non comporta alcun impegno. Le funzionalità e i costi vengono
+            definiti dopo l’analisi del processo aziendale.
           </p>
 
-          <div id="form-error" class="hidden p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm"></div>
+          <div
+            id="form-error"
+            class="hidden p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm"
+          ></div>
 
           <button type="submit" id="submit-btn" class="sl-btn-primary disabled:opacity-60">
             <span id="submit-label">Invia richiesta demo</span>
@@ -169,11 +320,21 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
 
 <style>
   .sl-btn-primary {
-    display:inline-flex;align-items:center;gap:.5rem;
-    background:#fff;color:#000;font-weight:600;font-size:.875rem;
-    padding:.75rem 1.75rem;border-radius:4px;transition:background .2s;white-space:nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+    white-space: nowrap;
   }
-  .sl-btn-primary:hover{background:#e5e5e5;}
+  .sl-btn-primary:hover {
+    background: #e5e5e5;
+  }
 </style>
 
 <script>
@@ -216,9 +377,13 @@ const inviato = Astro.url.searchParams.get('inviato') === '1';
     const submitLabel = document.getElementById('submit-label');
     const errorEl = document.getElementById('form-error');
 
-    form?.addEventListener('focusin', () => {
-      w.bitoraTrack?.('demo_form_start', { location: 'richiedi-demo' });
-    }, { once: true });
+    form?.addEventListener(
+      'focusin',
+      () => {
+        w.bitoraTrack?.('demo_form_start', { location: 'richiedi-demo' });
+      },
+      { once: true }
+    );
 
     form?.addEventListener('submit', async e => {
       e.preventDefault();

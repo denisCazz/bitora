@@ -42,7 +42,11 @@ const messages: Record<string, string> = {
 };
 
 const title =
-  step === 'setup' ? 'Configura authenticator' : step === 'otp' ? 'Codice authenticator' : 'Area privata';
+  step === 'setup'
+    ? 'Configura authenticator'
+    : step === 'otp'
+      ? 'Codice authenticator'
+      : 'Area privata';
 ---
 
 <!doctype html>
@@ -65,106 +69,100 @@ const title =
       <p class="kicker">Bitora Ops</p>
       <h1>{title}</h1>
       <p class="lede">
-        {
-          step === 'setup'
-            ? 'Password corretta. Collega Google Authenticator, Authy o le Password di iCloud.'
-            : step === 'otp'
-              ? 'Inserisci il codice a 6 cifre dell’app authenticator.'
-              : 'Strumenti interni: stato siti, VPS e alert. Accesso con password e authenticator.'
-        }
+        {step === 'setup'
+          ? 'Password corretta. Collega Google Authenticator, Authy o le Password di iCloud.'
+          : step === 'otp'
+            ? 'Inserisci il codice a 6 cifre dell’app authenticator.'
+            : 'Strumenti interni: stato siti, VPS e alert. Accesso con password e authenticator.'}
       </p>
-      {
-        errore && messages[errore] && (
-          <p class="error" role="alert">
-            {messages[errore]}
-          </p>
-        )
-      }
-      {
-        !configured ? (
-          <p class="error" role="alert">
-            Imposta <code>OPS_PASSWORD</code> e <code>OPS_CRON_SECRET</code> per attivare l’area.
-          </p>
-        ) : step === 'setup' ? (
-          <form method="POST" action="/api/ops/login/" autocomplete="off">
-            <input type="hidden" name="next" value={next} />
-            <div class="qr-wrap" id="totp-qr" data-otpauth={setupOtpauth}></div>
-            <p class="hint">Oppure inserisci la chiave manualmente:</p>
-            <p class="secret">{formatTotpSecret(setupSecret)}</p>
-            <label for="code">Codice a 6 cifre</label>
-            <input
-              id="code"
-              name="code"
-              inputmode="numeric"
-              autocomplete="one-time-code"
-              pattern={'[0-9]{6}'}
-              maxlength="8"
-              required
-              autofocus
-            />
-            <button name="action" value="setup" type="submit">Attiva authenticator</button>
-            <button class="ghost" name="action" value="cancel" type="submit" formnovalidate>
-              Annulla
-            </button>
-          </form>
-        ) : step === 'otp' ? (
-          <form method="POST" action="/api/ops/login/">
-            <input type="hidden" name="next" value={next} />
-            <label for="code">Codice authenticator</label>
-            <input
-              id="code"
-              name="code"
-              inputmode="numeric"
-              autocomplete="one-time-code"
-              maxlength="16"
-              required
-              autofocus
-              placeholder="123456"
-            />
-            <p class="hint">Puoi anche usare un codice di recupero.</p>
-            <button name="action" value="otp" type="submit">Verifica</button>
-            <button class="ghost" name="action" value="cancel" type="submit" formnovalidate>
-              Usa un’altra sessione
-            </button>
-          </form>
-        ) : (
-          <form method="POST" action="/api/ops/login/">
-            <input type="hidden" name="next" value={next} />
-            <label for="password">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              required
-              autofocus
-            />
-            <button type="submit">Continua</button>
-          </form>
-        )
-      }
+      {errore && messages[errore] && (
+        <p class="error" role="alert">
+          {messages[errore]}
+        </p>
+      )}
+      {!configured ? (
+        <p class="error" role="alert">
+          Imposta <code>OPS_PASSWORD</code> e <code>OPS_CRON_SECRET</code> per attivare l’area.
+        </p>
+      ) : step === 'setup' ? (
+        <form method="POST" action="/api/ops/login/" autocomplete="off">
+          <input type="hidden" name="next" value={next} />
+          <div class="qr-wrap" id="totp-qr" data-otpauth={setupOtpauth}></div>
+          <p class="hint">Oppure inserisci la chiave manualmente:</p>
+          <p class="secret">{formatTotpSecret(setupSecret)}</p>
+          <label for="code">Codice a 6 cifre</label>
+          <input
+            id="code"
+            name="code"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            pattern={'[0-9]{6}'}
+            maxlength="8"
+            required
+            autofocus
+          />
+          <button name="action" value="setup" type="submit">
+            Attiva authenticator
+          </button>
+          <button class="ghost" name="action" value="cancel" type="submit" formnovalidate>
+            Annulla
+          </button>
+        </form>
+      ) : step === 'otp' ? (
+        <form method="POST" action="/api/ops/login/">
+          <input type="hidden" name="next" value={next} />
+          <label for="code">Codice authenticator</label>
+          <input
+            id="code"
+            name="code"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            maxlength="16"
+            required
+            autofocus
+            placeholder="123456"
+          />
+          <p class="hint">Puoi anche usare un codice di recupero.</p>
+          <button name="action" value="otp" type="submit">
+            Verifica
+          </button>
+          <button class="ghost" name="action" value="cancel" type="submit" formnovalidate>
+            Usa un’altra sessione
+          </button>
+        </form>
+      ) : (
+        <form method="POST" action="/api/ops/login/">
+          <input type="hidden" name="next" value={next} />
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+            autofocus
+          />
+          <button type="submit">Continua</button>
+        </form>
+      )}
     </main>
-    {
-      step === 'setup' && (
-        <script>
-          import QRCodeStyling from 'qr-code-styling';
-          const el = document.getElementById('totp-qr');
-          const data = el?.dataset.otpauth;
-          if (el && data) {
-            const qr = new QRCodeStyling({
-              width: 200,
-              height: 200,
-              type: 'svg',
-              data,
-              dotsOptions: { color: '#111111', type: 'square' },
-              backgroundOptions: { color: '#ffffff' },
-              qrOptions: { errorCorrectionLevel: 'M' },
-            });
-            qr.append(el);
-          }
-        </script>
-      )
-    }
+    {step === 'setup' && <script>
+      import QRCodeStyling from 'qr-code-styling';
+      const el = document.getElementById('totp-qr');
+      const data = el?.dataset.otpauth;
+      if (el && data) {
+        const qr = new QRCodeStyling({
+          width: 200,
+          height: 200,
+          type: 'svg',
+          data,
+          dotsOptions: { color: '#111111', type: 'square' },
+          backgroundOptions: { color: '#ffffff' },
+          qrOptions: { errorCorrectionLevel: 'M' },
+        });
+        qr.append(el);
+      }
+    </script>}
   </body>
 </html>
 

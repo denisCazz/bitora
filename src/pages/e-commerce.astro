@@ -15,30 +15,72 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
     eyebrow: 'E-commerce B2B e B2C · Piemonte',
     title: 'E-commerce B2B in Piemonte, <span class="b-grad">chiavi in mano</span>.',
     lede: 'Realizziamo e-commerce B2B e B2C per aziende in Piemonte e in Italia: catalogo chiaro, listini per cliente, checkout veloce e integrazione con il gestionale. A Carmagnola, Carignano, Torino e oltre.',
-    chips: ['E-commerce B2B Piemonte', 'Listini per cliente', 'Cataloghi riservati', 'Google Shopping'],
+    chips: [
+      'E-commerce B2B Piemonte',
+      'Listini per cliente',
+      'Cataloghi riservati',
+      'Google Shopping',
+    ],
   }}
   ctaLabel="Preventivo e-commerce gratuito"
   signals={{
-    title: 'Vendere online è difficile <span class="b-accent">quando lo strumento è sbagliato</span>.',
+    title:
+      'Vendere online è difficile <span class="b-accent">quando lo strumento è sbagliato</span>.',
     items: [
-      { t: 'Carrelli abbandonati', d: 'Checkout lungo, costi di spedizione a sorpresa, pagamenti limitati. Il cliente arriva in fondo e se ne va.' },
-      { t: 'Catalogo ingestibile', d: 'Centinaia di prodotti, varianti e compatibilità da aggiornare a mano su piattaforme rigide.' },
-      { t: 'Ordini su più canali', d: 'Telefono, email, WhatsApp e sito: ordini sparsi e giacenze che non tornano mai.' },
-      { t: 'Commissioni che mangiano margine', d: 'Marketplace e piattaforme che trattengono percentuali su ogni vendita.' },
-      { t: 'Rivenditori trattati come privati', d: 'Nessun listino dedicato, nessun riordino rapido, preventivi fatti a mano.' },
-      { t: 'Invisibile su Google', d: 'Le schede prodotto non compaiono nelle ricerche né su Google Shopping.' },
+      {
+        t: 'Carrelli abbandonati',
+        d: 'Checkout lungo, costi di spedizione a sorpresa, pagamenti limitati. Il cliente arriva in fondo e se ne va.',
+      },
+      {
+        t: 'Catalogo ingestibile',
+        d: 'Centinaia di prodotti, varianti e compatibilità da aggiornare a mano su piattaforme rigide.',
+      },
+      {
+        t: 'Ordini su più canali',
+        d: 'Telefono, email, WhatsApp e sito: ordini sparsi e giacenze che non tornano mai.',
+      },
+      {
+        t: 'Commissioni che mangiano margine',
+        d: 'Marketplace e piattaforme che trattengono percentuali su ogni vendita.',
+      },
+      {
+        t: 'Rivenditori trattati come privati',
+        d: 'Nessun listino dedicato, nessun riordino rapido, preventivi fatti a mano.',
+      },
+      {
+        t: 'Invisibile su Google',
+        d: 'Le schede prodotto non compaiono nelle ricerche né su Google Shopping.',
+      },
     ],
   }}
   deliverables={{
     title: 'Un e-commerce che <span class="b-accent">lavora mentre dormi</span>.',
     lede: 'Dalla scheda prodotto alla consegna: progettiamo l’intero flusso di vendita e lo colleghiamo ai tuoi strumenti.',
     items: [
-      { t: 'Catalogo intelligente', d: 'Categorie, filtri, varianti e ricerca per modello o codice. Il cliente trova il prodotto giusto in pochi secondi.' },
-      { t: 'Checkout senza attriti', d: 'Pochi passaggi, pagamenti con carta, PayPal, Apple Pay e bonifico. Costi chiari fin dall’inizio.' },
-      { t: 'Area B2B', d: 'Accessi approvati, listini per cliente, riordini e preventivi per rivenditori e installatori.' },
-      { t: 'Spedizioni e ordini', d: 'Calcolo costi, etichette, tracking e notifiche automatiche al cliente.' },
-      { t: 'Integrazioni', d: 'Sincronizzazione con gestionale, fornitori e magazzino via API. Prezzi e giacenze sempre aggiornati.' },
-      { t: 'SEO prodotto', d: 'Dati strutturati, Google Merchant Center e schede ottimizzate per le ricerche di prodotto.' },
+      {
+        t: 'Catalogo intelligente',
+        d: 'Categorie, filtri, varianti e ricerca per modello o codice. Il cliente trova il prodotto giusto in pochi secondi.',
+      },
+      {
+        t: 'Checkout senza attriti',
+        d: 'Pochi passaggi, pagamenti con carta, PayPal, Apple Pay e bonifico. Costi chiari fin dall’inizio.',
+      },
+      {
+        t: 'Area B2B',
+        d: 'Accessi approvati, listini per cliente, riordini e preventivi per rivenditori e installatori.',
+      },
+      {
+        t: 'Spedizioni e ordini',
+        d: 'Calcolo costi, etichette, tracking e notifiche automatiche al cliente.',
+      },
+      {
+        t: 'Integrazioni',
+        d: 'Sincronizzazione con gestionale, fornitori e magazzino via API. Prezzi e giacenze sempre aggiornati.',
+      },
+      {
+        t: 'SEO prodotto',
+        d: 'Dati strutturati, Google Merchant Center e schede ottimizzate per le ricerche di prodotto.',
+      },
     ],
   }}
   feature={{
@@ -66,24 +108,66 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
         t: 'E-commerce su misura',
         time: '4–8 settimane',
         d: 'Catalogo ampio, filtri avanzati e integrazione con i tuoi strumenti.',
-        bullets: ['Catalogo illimitato', 'Ricerca per modello/codice', 'Integrazione gestionale', 'Google Shopping'],
+        bullets: [
+          'Catalogo illimitato',
+          'Ricerca per modello/codice',
+          'Integrazione gestionale',
+          'Google Shopping',
+        ],
       },
       {
         t: 'B2B & multi-canale',
         time: '6–12 settimane',
         d: 'Per produttori e distributori che vendono a privati e rivenditori.',
-        bullets: ['Listini per cliente', 'Area rivenditori', 'API e sincronizzazioni', 'Multilingua'],
+        bullets: [
+          'Listini per cliente',
+          'Area rivenditori',
+          'API e sincronizzazioni',
+          'Multilingua',
+        ],
       },
     ],
   }}
   projects={['ricambixstufe', 'barbara-toffano']}
-  stack={['Next.js', 'PostgreSQL', 'Stripe', 'PayPal', 'Cloudflare R2', 'Google Merchant Center', 'Resend']}
+  stack={[
+    'Next.js',
+    'PostgreSQL',
+    'Stripe',
+    'PayPal',
+    'Cloudflare R2',
+    'Google Merchant Center',
+    'Resend',
+  ]}
   faq={[
-    { question: 'Realizzate e-commerce B2B in Piemonte?', answer: 'Sì. Per produttori e distributori in Piemonte e in Italia: accessi approvati, cataloghi riservati, listini per cliente, preventivi, riordini e integrazioni con gestionali tramite API.' },
-    { question: 'Quanto costa un e-commerce?', answer: 'Dipende da catalogo, integrazioni e funzioni. Dopo la call gratuita ricevi un preventivo modulare a prezzo fisso: parti dall’essenziale e aggiungi il resto quando serve.' },
-    { question: 'Shopify, WooCommerce o su misura?', answer: 'Ti consigliamo la soluzione più adatta, anche se non è la più costosa. Per cataloghi tecnici, B2B e integrazioni complesse lo sviluppo su misura evita commissioni e limiti.' },
-    { question: 'Quanto tempo serve per il lancio?', answer: 'Da 3–4 settimane per uno shop essenziale a 6–12 settimane per progetti B2B con integrazioni.' },
-    { question: 'Gestite pagamenti, spedizioni e fatture?', answer: 'Sì: Stripe, PayPal, bonifico, corrieri nazionali e ritiro in negozio. Possiamo collegare la fatturazione al tuo gestionale.' },
-    { question: 'Mi seguite anche dopo?', answer: 'Sì: monitoraggio, aggiornamenti, nuove funzioni e ottimizzazione delle conversioni. Non spariamo al lancio.' },
+    {
+      question: 'Realizzate e-commerce B2B in Piemonte?',
+      answer:
+        'Sì. Per produttori e distributori in Piemonte e in Italia: accessi approvati, cataloghi riservati, listini per cliente, preventivi, riordini e integrazioni con gestionali tramite API.',
+    },
+    {
+      question: 'Quanto costa un e-commerce?',
+      answer:
+        'Dipende da catalogo, integrazioni e funzioni. Dopo la call gratuita ricevi un preventivo modulare a prezzo fisso: parti dall’essenziale e aggiungi il resto quando serve.',
+    },
+    {
+      question: 'Shopify, WooCommerce o su misura?',
+      answer:
+        'Ti consigliamo la soluzione più adatta, anche se non è la più costosa. Per cataloghi tecnici, B2B e integrazioni complesse lo sviluppo su misura evita commissioni e limiti.',
+    },
+    {
+      question: 'Quanto tempo serve per il lancio?',
+      answer:
+        'Da 3–4 settimane per uno shop essenziale a 6–12 settimane per progetti B2B con integrazioni.',
+    },
+    {
+      question: 'Gestite pagamenti, spedizioni e fatture?',
+      answer:
+        'Sì: Stripe, PayPal, bonifico, corrieri nazionali e ritiro in negozio. Possiamo collegare la fatturazione al tuo gestionale.',
+    },
+    {
+      question: 'Mi seguite anche dopo?',
+      answer:
+        'Sì: monitoraggio, aggiornamenti, nuove funzioni e ottimizzazione delle conversioni. Non spariamo al lancio.',
+    },
   ]}
 />

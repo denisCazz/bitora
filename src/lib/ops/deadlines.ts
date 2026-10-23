@@ -1,9 +1,4 @@
-import type {
-  DeadlineCategory,
-  DeadlineRecurrence,
-  OpsDeadline,
-  OpsState,
-} from './store';
+import type { DeadlineCategory, DeadlineRecurrence, OpsDeadline, OpsState } from './store';
 
 export const DEADLINE_CATEGORIES = [
   'dominio',
@@ -27,7 +22,11 @@ export const DEADLINE_CATEGORY_LABELS: Record<DeadlineCategory, string> = {
   altro: 'Altro',
 };
 
-export const DEADLINE_RECURRENCES = ['none', 'monthly', 'yearly'] as const satisfies readonly DeadlineRecurrence[];
+export const DEADLINE_RECURRENCES = [
+  'none',
+  'monthly',
+  'yearly',
+] as const satisfies readonly DeadlineRecurrence[];
 
 export const DEADLINE_RECURRENCE_LABELS: Record<DeadlineRecurrence, string> = {
   none: 'Nessuna',
@@ -73,7 +72,9 @@ export function isDueOn(value: string): boolean {
   const month = Number(match[2]);
   const day = Number(match[3]);
   const date = new Date(Date.UTC(year, month - 1, day));
-  return date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day;
+  return (
+    date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day
+  );
 }
 
 export function daysUntil(dueOn: string, today = todayRome()): number | null {
@@ -109,7 +110,11 @@ export function addMonths(dueOn: string, months: number): string {
   return `${nextYear}-${String(nextMonth).padStart(2, '0')}-${String(nextDay).padStart(2, '0')}`;
 }
 
-export function advanceDueOn(dueOn: string, recurrence: DeadlineRecurrence, today = todayRome()): string {
+export function advanceDueOn(
+  dueOn: string,
+  recurrence: DeadlineRecurrence,
+  today = todayRome()
+): string {
   if (recurrence === 'none') return dueOn;
   const step = recurrence === 'monthly' ? 1 : 12;
   let next = addMonths(dueOn, step);
@@ -146,7 +151,9 @@ export function collectDeadlineViews(state: OpsState, today = todayRome()): Dead
   const items: DeadlineView[] = state.deadlines.map(deadline => viewFromManual(deadline, today));
   const covered = new Set(
     items
-      .filter(item => !item.doneAt && (item.category === 'dominio' || item.category === 'certificato'))
+      .filter(
+        item => !item.doneAt && (item.category === 'dominio' || item.category === 'certificato')
+      )
       .map(item => `${item.category}:${(item.title || item.client || '').toLowerCase()}`)
   );
 

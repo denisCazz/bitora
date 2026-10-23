@@ -8,26 +8,12 @@ interface Props {
   class?: string;
 }
 
-const {
-  src,
-  alt,
-  caption,
-  eyebrow,
-  loading = 'lazy',
-  class: className = '',
-} = Astro.props;
+const { src, alt, caption, eyebrow, loading = 'lazy', class: className = '' } = Astro.props;
 ---
 
 <figure class:list={['editorial-visual', className]}>
   <div class="editorial-visual__frame">
-    <img
-      src={src}
-      alt={alt}
-      width="1024"
-      height="576"
-      loading={loading}
-      decoding="async"
-    />
+    <img src={src} alt={alt} width="1024" height="576" loading={loading} decoding="async" />
     {eyebrow && <span class="editorial-visual__eyebrow">{eyebrow}</span>}
   </div>
   {caption && <figcaption>{caption}</figcaption>}

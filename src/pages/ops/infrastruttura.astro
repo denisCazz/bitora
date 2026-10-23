@@ -20,51 +20,52 @@ const telegramStatus = Astro.url.searchParams.get('telegram');
 
 <OpsLayout title="Infrastruttura | Bitora Ops" heading="Infrastruttura">
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px;">
-    {
-      coolifyUrl && (
-        <a class="ops-btn ghost" href={coolifyUrl} target="_blank" rel="noreferrer">
-          Apri dashboard Coolify
-        </a>
-      )
-    }
+    {coolifyUrl && (
+      <a class="ops-btn ghost" href={coolifyUrl} target="_blank" rel="noreferrer">
+        Apri dashboard Coolify
+      </a>
+    )}
     <form method="POST" action="/api/ops/test-alert/">
-      <button class="ops-btn ghost" type="submit">Invia test Telegram</button>
+      <button class="ops-btn ghost" type="submit">
+        Invia test Telegram
+      </button>
     </form>
   </div>
-  {
-    telegramStatus && (
-      <div class="ops-note" style="margin:0 0 22px;">
-        {telegramStatus === 'ok'
-          ? 'Messaggio Telegram inviato.'
-          : 'Invio fallito: controlla token e chat ID in Coolify.'}
-      </div>
-    )
-  }
+  {telegramStatus && (
+    <div class="ops-note" style="margin:0 0 22px;">
+      {telegramStatus === 'ok'
+        ? 'Messaggio Telegram inviato.'
+        : 'Invio fallito: controlla token e chat ID in Coolify.'}
+    </div>
+  )}
   <section style="margin-bottom:28px;">
     <h2 class="ops-section-title">Certificati TLS</h2>
     <div class="ops-table-wrap">
       <table class="ops-table">
-        <thead
-          ><tr><th>Host</th><th>Scadenza</th><th>Giorni</th><th>Issuer</th><th>Stato</th></tr
-          ></thead
-        >
+        <thead>
+          <tr>
+            <th>Host</th>
+            <th>Scadenza</th>
+            <th>Giorni</th>
+            <th>Issuer</th>
+            <th>Stato</th>
+          </tr>
+        </thead>
         <tbody>
-          {
-            certificates.map(cert => (
-              <tr>
-                <td>{cert.hostname}</td>
-                <td>{formatClock(cert.validTo)}</td>
-                <td>{cert.daysRemaining ?? '—'}</td>
-                <td>{cert.issuer ?? '—'}</td>
-                <td>
-                  {cert.error ??
-                    (cert.daysRemaining != null && cert.daysRemaining < 21
-                      ? 'in scadenza'
-                      : 'valido')}
-                </td>
-              </tr>
-            ))
-          }
+          {certificates.map(cert => (
+            <tr>
+              <td>{cert.hostname}</td>
+              <td>{formatClock(cert.validTo)}</td>
+              <td>{cert.daysRemaining ?? '—'}</td>
+              <td>{cert.issuer ?? '—'}</td>
+              <td>
+                {cert.error ??
+                  (cert.daysRemaining != null && cert.daysRemaining < 21
+                    ? 'in scadenza'
+                    : 'valido')}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
@@ -74,22 +75,25 @@ const telegramStatus = Astro.url.searchParams.get('telegram');
     <h2 class="ops-section-title">Domini</h2>
     <div class="ops-table-wrap">
       <table class="ops-table">
-        <thead
-          ><tr><th>Dominio</th><th>Scadenza</th><th>Giorni</th><th>Registrar</th><th>RDAP</th></tr
-          ></thead
-        >
+        <thead>
+          <tr>
+            <th>Dominio</th>
+            <th>Scadenza</th>
+            <th>Giorni</th>
+            <th>Registrar</th>
+            <th>RDAP</th>
+          </tr>
+        </thead>
         <tbody>
-          {
-            domains.map(domain => (
-              <tr>
-                <td>{domain.domain}</td>
-                <td>{formatClock(domain.expiresAt)}</td>
-                <td>{domain.daysRemaining ?? '—'}</td>
-                <td>{domain.registrar ?? '—'}</td>
-                <td>{domain.error ?? formatRelative(domain.checkedAt)}</td>
-              </tr>
-            ))
-          }
+          {domains.map(domain => (
+            <tr>
+              <td>{domain.domain}</td>
+              <td>{formatClock(domain.expiresAt)}</td>
+              <td>{domain.daysRemaining ?? '—'}</td>
+              <td>{domain.registrar ?? '—'}</td>
+              <td>{domain.error ?? formatRelative(domain.checkedAt)}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
@@ -97,80 +101,76 @@ const telegramStatus = Astro.url.searchParams.get('telegram');
 
   <section style="margin-bottom:28px;">
     <h2 class="ops-section-title">Backup</h2>
-    {
-      backups.length ? (
-        <div class="ops-table-wrap">
-          <table class="ops-table">
-            <thead>
+    {backups.length ? (
+      <div class="ops-table-wrap">
+        <table class="ops-table">
+          <thead>
+            <tr>
+              <>
+                <th>Nome</th>
+                <th>Ultimo file</th>
+                <th>Dimensione</th>
+                <th>Restore verificato</th>
+                <th>Stato</th>
+              </>
+            </tr>
+          </thead>
+          <tbody>
+            {backups.map(backup => (
               <tr>
-                <>
-                  <th>Nome</th>
-                  <th>Ultimo file</th>
-                  <th>Dimensione</th>
-                  <th>Restore verificato</th>
-                  <th>Stato</th>
-                </>
+                <td>{backup.name}</td>
+                <td>{formatRelative(backup.lastBackupAt)}</td>
+                <td>{formatBytes(backup.sizeBytes)}</td>
+                <td>{formatRelative(backup.restoreVerifiedAt)}</td>
+                <td>{backup.ok ? 'ok' : backup.detail || 'errore'}</td>
               </tr>
-            </thead>
-            <tbody>
-              {backups.map(backup => (
-                <tr>
-                  <td>{backup.name}</td>
-                  <td>{formatRelative(backup.lastBackupAt)}</td>
-                  <td>{formatBytes(backup.sizeBytes)}</td>
-                  <td>{formatRelative(backup.restoreVerifiedAt)}</td>
-                  <td>{backup.ok ? 'ok' : backup.detail || 'errore'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div class="ops-note">
-          Configura agent con{' '}
-          <code>OPS_BACKUP_PATHS="postgres=/backup/postgres,files=/backup/files"</code>. Crea file{' '}
-          <code>.restore-verified</code> nella cartella dopo un test restore.
-        </div>
-      )
-    }
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <div class="ops-note">
+        Configura agent con{' '}
+        <code>OPS_BACKUP_PATHS="postgres=/backup/postgres,files=/backup/files"</code>. Crea file{' '}
+        <code>.restore-verified</code> nella cartella dopo un test restore.
+      </div>
+    )}
   </section>
 
   <section>
     <h2 class="ops-section-title">Container e deploy</h2>
-    {
-      services.length ? (
-        <div class="ops-table-wrap">
-          <table class="ops-table">
-            <thead>
+    {services.length ? (
+      <div class="ops-table-wrap">
+        <table class="ops-table">
+          <thead>
+            <tr>
+              <>
+                <th>Container</th>
+                <th>Stato</th>
+                <th>Immagine/versione</th>
+                <th>Avviato</th>
+                <th>Restart</th>
+              </>
+            </tr>
+          </thead>
+          <tbody>
+            {services.map(service => (
               <tr>
-                <>
-                  <th>Container</th>
-                  <th>Stato</th>
-                  <th>Immagine/versione</th>
-                  <th>Avviato</th>
-                  <th>Restart</th>
-                </>
+                <td>{service.name}</td>
+                <td>{service.status}</td>
+                <td>{service.image ?? '—'}</td>
+                <td>{formatRelative(service.createdAt)}</td>
+                <td>{service.restartCount ?? '—'}</td>
               </tr>
-            </thead>
-            <tbody>
-              {services.map(service => (
-                <tr>
-                  <td>{service.name}</td>
-                  <td>{service.status}</td>
-                  <td>{service.image ?? '—'}</td>
-                  <td>{formatRelative(service.createdAt)}</td>
-                  <td>{service.restartCount ?? '—'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div class="ops-note">
-          Nessun container ricevuto. Agent deve poter eseguire <code>docker ps</code> e{' '}
-          <code>docker inspect</code>.
-        </div>
-      )
-    }
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <div class="ops-note">
+        Nessun container ricevuto. Agent deve poter eseguire <code>docker ps</code> e{' '}
+        <code>docker inspect</code>.
+      </div>
+    )}
   </section>
 </OpsLayout>

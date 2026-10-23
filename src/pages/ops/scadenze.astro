@@ -114,21 +114,23 @@ const errorMessages: Record<string, string> = {
       <p class="ops-muted">Finestra operativa del mese.</p>
     </div>
     <div class="ops-card">
-      <p class="ops-pill"><span class="ops-dot"></span> Aperte</p>
+      <p class="ops-pill">
+        <span class="ops-dot"></span> Aperte
+      </p>
       <h2>{summary.open}</h2>
       <p class="ops-muted">
-        {fonte === 'infra' ? 'Domini e certificati dal monitoraggio.' : 'Solo le scadenze che inserisci tu.'}
+        {fonte === 'infra'
+          ? 'Domini e certificati dal monitoraggio.'
+          : 'Solo le scadenze che inserisci tu.'}
       </p>
     </div>
   </div>
 
-  {
-    errore && errorMessages[errore] && (
-      <div class="ops-note" style="margin: 0 0 22px;" role="alert">
-        {errorMessages[errore]}
-      </div>
-    )
-  }
+  {errore && errorMessages[errore] && (
+    <div class="ops-note" style="margin: 0 0 22px;" role="alert">
+      {errorMessages[errore]}
+    </div>
+  )}
 
   <section class="ops-card" style="margin-bottom: 28px;" id="modulo">
     <h2 class="ops-section-title">{editing ? 'Modifica scadenza' : 'Nuova scadenza'}</h2>
@@ -149,13 +151,11 @@ const errorMessages: Record<string, string> = {
         <label>
           Categoria
           <select name="category">
-            {
-              DEADLINE_CATEGORIES.map(category => (
-                <option value={category} selected={editing?.category === category}>
-                  {DEADLINE_CATEGORY_LABELS[category]}
-                </option>
-              ))
-            }
+            {DEADLINE_CATEGORIES.map(category => (
+              <option value={category} selected={editing?.category === category}>
+                {DEADLINE_CATEGORY_LABELS[category]}
+              </option>
+            ))}
           </select>
         </label>
         <label>
@@ -185,13 +185,11 @@ const errorMessages: Record<string, string> = {
         <label>
           Ricorrenza
           <select name="recurrence">
-            {
-              DEADLINE_RECURRENCES.map(recurrence => (
-                <option value={recurrence} selected={(editing?.recurrence ?? 'none') === recurrence}>
-                  {DEADLINE_RECURRENCE_LABELS[recurrence]}
-                </option>
-              ))
-            }
+            {DEADLINE_RECURRENCES.map(recurrence => (
+              <option value={recurrence} selected={(editing?.recurrence ?? 'none') === recurrence}>
+                {DEADLINE_RECURRENCE_LABELS[recurrence]}
+              </option>
+            ))}
           </select>
         </label>
         <label>
@@ -206,24 +204,32 @@ const errorMessages: Record<string, string> = {
         </label>
         <label>
           Note
-          <input name="notes" maxlength="1000" placeholder="Opzionale" value={editing?.notes ?? ''} />
+          <input
+            name="notes"
+            maxlength="1000"
+            placeholder="Opzionale"
+            value={editing?.notes ?? ''}
+          />
         </label>
       </div>
       <div class="ops-form-actions">
-        <button class="ops-btn" type="submit">{editing ? 'Salva modifiche' : 'Aggiungi scadenza'}</button>
-        {
-          editing && (
-            <a class="ops-btn ghost" href={filterHref()}>
-              Annulla
-            </a>
-          )
-        }
+        <button class="ops-btn" type="submit">
+          {editing ? 'Salva modifiche' : 'Aggiungi scadenza'}
+        </button>
+        {editing && (
+          <a class="ops-btn ghost" href={filterHref()}>
+            Annulla
+          </a>
+        )}
       </div>
     </form>
   </section>
 
   <div class="ops-filters" aria-label="Fonte">
-    <a href={filterHref(stato, categoria, 'manuale')} class:list={[fonte === 'manuale' && 'is-active']}>
+    <a
+      href={filterHref(stato, categoria, 'manuale')}
+      class:list={[fonte === 'manuale' && 'is-active']}
+    >
       Le mie ({mine.filter(item => !item.doneAt).length})
     </a>
     <a href={filterHref(stato, categoria, 'infra')} class:list={[fonte === 'infra' && 'is-active']}>
@@ -231,135 +237,128 @@ const errorMessages: Record<string, string> = {
     </a>
   </div>
   <div class="ops-filters" aria-label="Filtri scadenze">
-    {
-      filters.map(filter => (
-        <a href={filterHref(filter.id, categoria)} class:list={[stato === filter.id && 'is-active']}>
-          {filter.label}
-        </a>
-      ))
-    }
+    {filters.map(filter => (
+      <a href={filterHref(filter.id, categoria)} class:list={[stato === filter.id && 'is-active']}>
+        {filter.label}
+      </a>
+    ))}
   </div>
   <div class="ops-filters" aria-label="Categorie">
-    <a href={filterHref(stato, '')} class:list={[!categoria && 'is-active']}>Tutte</a>
-    {
-      DEADLINE_CATEGORIES.map(category => (
-        <a
-          href={filterHref(stato, category)}
-          class:list={[categoria === category && 'is-active']}
-        >
-          {DEADLINE_CATEGORY_LABELS[category]}
-        </a>
-      ))
-    }
+    <a href={filterHref(stato, '')} class:list={[!categoria && 'is-active']}>
+      Tutte
+    </a>
+    {DEADLINE_CATEGORIES.map(category => (
+      <a href={filterHref(stato, category)} class:list={[categoria === category && 'is-active']}>
+        {DEADLINE_CATEGORY_LABELS[category]}
+      </a>
+    ))}
   </div>
 
-  {
-    rows.length ? (
-      <div class="ops-table-wrap">
-        <table class="ops-table">
-          <thead>
+  {rows.length ? (
+    <div class="ops-table-wrap">
+      <table class="ops-table">
+        <thead>
+          <tr>
+            <th>Stato</th>
+            <th>Titolo</th>
+            <th>Categoria</th>
+            <th>Cliente</th>
+            <th>Scadenza</th>
+            <th>Importo</th>
+            <th>Fonte</th>
+            <th>Gestione</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(item => (
             <tr>
-              <th>Stato</th>
-              <th>Titolo</th>
-              <th>Categoria</th>
-              <th>Cliente</th>
-              <th>Scadenza</th>
-              <th>Importo</th>
-              <th>Fonte</th>
-              <th>Gestione</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map(item => (
-              <tr>
-                <td>
-                  <span class="ops-pill">
-                    <span
-                      class:list={[
-                        'ops-dot',
-                        item.urgency === 'overdue' && 'down',
-                        (item.urgency === 'week' || item.urgency === 'month') && 'warn',
-                      ]}
-                    />
-                    {daysLabel(item)}
-                  </span>
-                </td>
-                <td class="ops-wrap">
-                  {item.title}
-                  {item.notes ? <div class="ops-muted">{item.notes}</div> : null}
-                </td>
-                <td>{DEADLINE_CATEGORY_LABELS[item.category]}</td>
-                <td>{item.client ?? '—'}</td>
-                <td>
-                  {formatDate(item.dueOn)}
-                  {item.recurrence !== 'none' ? ` · ${DEADLINE_RECURRENCE_LABELS[item.recurrence]}` : ''}
-                </td>
-                <td>{formatEuro(item.amount)}</td>
-                <td>{item.source === 'manual' ? 'manuale' : 'monitoraggio'}</td>
-                <td class="ops-wrap">
-                  {item.editable ? (
-                    <div class="ops-row-actions">
-                      {item.doneAt ? (
-                        <form method="POST" action="/api/ops/deadline/">
-                          <input type="hidden" name="id" value={item.id} />
-                          <input type="hidden" name="action" value="reopen" />
-                          <button class="ops-btn ghost" type="submit">
-                            Riapri
-                          </button>
-                        </form>
-                      ) : (
-                        <form method="POST" action="/api/ops/deadline/">
-                          <input type="hidden" name="id" value={item.id} />
-                          <input type="hidden" name="action" value="complete" />
-                          <button class="ops-btn ghost" type="submit">
-                            {item.recurrence === 'none' ? 'Completa' : 'Rinnova'}
-                          </button>
-                        </form>
-                      )}
-                      <a class="ops-link" href={editHref(item.id)}>
-                        Modifica
-                      </a>
+              <td>
+                <span class="ops-pill">
+                  <span
+                    class:list={[
+                      'ops-dot',
+                      item.urgency === 'overdue' && 'down',
+                      (item.urgency === 'week' || item.urgency === 'month') && 'warn',
+                    ]}
+                  />
+                  {daysLabel(item)}
+                </span>
+              </td>
+              <td class="ops-wrap">
+                {item.title}
+                {item.notes ? <div class="ops-muted">{item.notes}</div> : null}
+              </td>
+              <td>{DEADLINE_CATEGORY_LABELS[item.category]}</td>
+              <td>{item.client ?? '—'}</td>
+              <td>
+                {formatDate(item.dueOn)}
+                {item.recurrence !== 'none'
+                  ? ` · ${DEADLINE_RECURRENCE_LABELS[item.recurrence]}`
+                  : ''}
+              </td>
+              <td>{formatEuro(item.amount)}</td>
+              <td>{item.source === 'manual' ? 'manuale' : 'monitoraggio'}</td>
+              <td class="ops-wrap">
+                {item.editable ? (
+                  <div class="ops-row-actions">
+                    {item.doneAt ? (
                       <form method="POST" action="/api/ops/deadline/">
                         <input type="hidden" name="id" value={item.id} />
-                        <input type="hidden" name="action" value="delete" />
-                        <button
-                          class="ops-link"
-                          type="submit"
-                          style="background:none;border:0;padding:0;font:inherit;cursor:pointer;"
-                          onclick="return confirm('Eliminare questa scadenza?')"
-                        >
-                          Elimina
+                        <input type="hidden" name="action" value="reopen" />
+                        <button class="ops-btn ghost" type="submit">
+                          Riapri
                         </button>
                       </form>
-                    </div>
-                  ) : (
-                    <a class="ops-link" href="/ops/infrastruttura/">
-                      Infrastruttura
+                    ) : (
+                      <form method="POST" action="/api/ops/deadline/">
+                        <input type="hidden" name="id" value={item.id} />
+                        <input type="hidden" name="action" value="complete" />
+                        <button class="ops-btn ghost" type="submit">
+                          {item.recurrence === 'none' ? 'Completa' : 'Rinnova'}
+                        </button>
+                      </form>
+                    )}
+                    <a class="ops-link" href={editHref(item.id)}>
+                      Modifica
                     </a>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    ) : (
-      <div class="ops-card">
-        <p class="ops-muted">
-          {
-            fonte === 'infra'
-              ? 'Nessuna scadenza di infrastruttura in questo filtro. Domini e certificati arrivano dal monitoraggio.'
-              : 'Nessuna scadenza in questo filtro. Aggiungine una dal modulo sopra.'
-          }
-        </p>
-      </div>
-    )
-  }
+                    <form method="POST" action="/api/ops/deadline/">
+                      <input type="hidden" name="id" value={item.id} />
+                      <input type="hidden" name="action" value="delete" />
+                      <button
+                        class="ops-link"
+                        type="submit"
+                        style="background:none;border:0;padding:0;font:inherit;cursor:pointer;"
+                        onclick="return confirm('Eliminare questa scadenza?')"
+                      >
+                        Elimina
+                      </button>
+                    </form>
+                  </div>
+                ) : (
+                  <a class="ops-link" href="/ops/infrastruttura/">
+                    Infrastruttura
+                  </a>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <div class="ops-card">
+      <p class="ops-muted">
+        {fonte === 'infra'
+          ? 'Nessuna scadenza di infrastruttura in questo filtro. Domini e certificati arrivano dal monitoraggio.'
+          : 'Nessuna scadenza in questo filtro. Aggiungine una dal modulo sopra.'}
+      </p>
+    </div>
+  )}
 
   <div class="ops-note">
     Le scadenze ricorrenti, una volta rinnovate, slittano al periodo successivo. Il cron invia un
     promemoria Telegram quando manca il numero di giorni impostato, e ogni giorno se è già scaduta.
-    Domini e certificati TLS restano nel filtro Infrastruttura; per gestirli da qui crea una scadenza
-    manuale con lo stesso nome.
+    Domini e certificati TLS restano nel filtro Infrastruttura; per gestirli da qui crea una
+    scadenza manuale con lo stesso nome.
   </div>
 </OpsLayout>

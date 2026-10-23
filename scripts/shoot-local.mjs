@@ -6,7 +6,9 @@ const page = await browser.newPage({ viewport: { width: Number(width), height: 9
 const errors = [];
 page.on('pageerror', e => errors.push(e.message));
 page.on('console', m => m.type() === 'error' && errors.push(m.text()));
-await page.goto(`http://localhost:${process.env.PORT || 4322}${path}`, { waitUntil: 'networkidle' });
+await page.goto(`http://localhost:${process.env.PORT || 4322}${path}`, {
+  waitUntil: 'networkidle',
+});
 await page.evaluate(async () => {
   for (let y = 0; y < document.body.scrollHeight; y += 600) {
     window.scrollTo(0, y);

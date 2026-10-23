@@ -31,7 +31,11 @@ export const areaServed = [
   city('Moncalieri'),
   city('Bra'),
   city('Cuneo'),
-  { '@type': 'AdministrativeArea', name: 'Piemonte', sameAs: 'https://www.wikidata.org/wiki/Q1216' },
+  {
+    '@type': 'AdministrativeArea',
+    name: 'Piemonte',
+    sameAs: 'https://www.wikidata.org/wiki/Q1216',
+  },
   { '@type': 'Country', name: 'Italia', sameAs: 'https://www.wikidata.org/wiki/Q38' },
 ];
 
@@ -147,7 +151,8 @@ export function websiteNode() {
   };
 }
 
-export type PageType = 'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage' | 'ItemPage' | 'FAQPage';
+export type PageType =
+  'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage' | 'ItemPage' | 'FAQPage';
 
 export function webPageNode(opts: {
   url: string;

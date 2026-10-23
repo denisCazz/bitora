@@ -39,7 +39,9 @@ export const POST: APIRoute = async ({ request }) => {
   if (action === 'update') {
     const fields = readTrackedSiteFields(form);
     if (!fields) return redirectToList({ errore: 'dati' });
-    return updateTrackedSite(id, fields) ? redirectToList() : redirectToList({ errore: 'mancante' });
+    return updateTrackedSite(id, fields)
+      ? redirectToList()
+      : redirectToList({ errore: 'mancante' });
   }
 
   if (action === 'delete') {

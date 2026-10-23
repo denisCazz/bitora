@@ -19,7 +19,10 @@ const fallbackByTopic: Record<string, string> = {
 
 const { src, alt, topic = 'web', eager = false, class: className } = Astro.props;
 const image = src || fallbackByTopic[topic] || '/editorial/web-offer.png';
-const webp = image.startsWith('/editorial/') && image.endsWith('.png') ? image.replace(/\.png$/, '.webp') : null;
+const webp =
+  image.startsWith('/editorial/') && image.endsWith('.png')
+    ? image.replace(/\.png$/, '.webp')
+    : null;
 ---
 
 <picture class:list={['bc', className]}>

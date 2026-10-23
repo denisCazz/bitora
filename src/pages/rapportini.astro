@@ -92,11 +92,26 @@ const features = [
 ];
 
 const moduli = [
-  { t: 'Pianificazione interventi', d: 'Calendario per organizzare appuntamenti e attività future.' },
-  { t: 'Assegnazione lavori', d: 'Distribuzione degli interventi ai tecnici o operatori disponibili.' },
-  { t: 'Notifiche e scadenze', d: 'Promemoria per manutenzioni, appuntamenti, documenti e attività da completare.' },
-  { t: 'Magazzino ricambi', d: 'Gestione dei ricambi disponibili e registrazione dei materiali usati in intervento.' },
-  { t: 'Invio documentazione', d: 'Invio di rapportini, PDF e documenti a clienti o uffici amministrativi.' },
+  {
+    t: 'Pianificazione interventi',
+    d: 'Calendario per organizzare appuntamenti e attività future.',
+  },
+  {
+    t: 'Assegnazione lavori',
+    d: 'Distribuzione degli interventi ai tecnici o operatori disponibili.',
+  },
+  {
+    t: 'Notifiche e scadenze',
+    d: 'Promemoria per manutenzioni, appuntamenti, documenti e attività da completare.',
+  },
+  {
+    t: 'Magazzino ricambi',
+    d: 'Gestione dei ricambi disponibili e registrazione dei materiali usati in intervento.',
+  },
+  {
+    t: 'Invio documentazione',
+    d: 'Invio di rapportini, PDF e documenti a clienti o uffici amministrativi.',
+  },
   { t: 'Preventivi', d: 'Creazione e gestione di preventivi collegati a clienti e interventi.' },
 ];
 
@@ -163,16 +178,26 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
       <div class="shell prod-hero-copy">
         <p class="eyebrow">Gestione rapportini digitali</p>
         <h1 class="display">
-          Rapportini digitali,<br />interventi documentati
+          Rapportini digitali,
+          <br />
+          interventi documentati
         </h1>
         <p class="lede">
-          Una piattaforma per compilare, firmare, archiviare e consultare i rapporti di intervento da smartphone, tablet e computer.
+          Una piattaforma per compilare, firmare, archiviare e consultare i rapporti di intervento
+          da smartphone, tablet e computer.
         </p>
         <div class="cta-row">
-          <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="rapportini_hero"
-            >Richiedi una demo</a
+          <a
+            href="/richiedi-demo/"
+            class="sl-btn-primary"
+            data-track="cta_click"
+            data-track-location="rapportini_hero"
           >
-          <a href="#funzionalita" class="sl-btn-secondary">Scopri le funzionalità</a>
+            Richiedi una demo
+          </a>
+          <a href="#funzionalita" class="sl-btn-secondary">
+            Scopri le funzionalità
+          </a>
         </div>
       </div>
     </section>
@@ -183,18 +208,27 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-16" data-reveal>
           <div class="lg:col-span-5">
             <p class="eyebrow">Il valore</p>
-            <h2 class="headline">Dal foglio sparso<br />al processo aziendale</h2>
+            <h2 class="headline">
+              Dal foglio sparso
+              <br />
+              al processo aziendale
+            </h2>
             <p class="body mb-5">
-              Il tecnico registra direttamente sul dispositivo tutte le informazioni relative al lavoro eseguito. L’azienda riceve un documento ordinato, leggibile e collegato allo storico del cliente.
+              Il tecnico registra direttamente sul dispositivo tutte le informazioni relative al
+              lavoro eseguito. L’azienda riceve un documento ordinato, leggibile e collegato allo
+              storico del cliente.
             </p>
             <p class="body-sm">
-              Al termine, la piattaforma può archiviare il rapporto e generare un documento PDF pronto per essere consultato, inviato o conservato.
+              Al termine, la piattaforma può archiviare il rapporto e generare un documento PDF
+              pronto per essere consultato, inviato o conservato.
             </p>
           </div>
           <div class="lg:col-span-6 lg:col-start-7">
-            <p class="eyebrow" style="margin-bottom:1rem">Cosa registra il tecnico</p>
+            <p class="eyebrow" style="margin-bottom:1rem">
+              Cosa registra il tecnico
+            </p>
             <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3">
-              {campi.map((c) => (
+              {campi.map(c => (
                 <li class="flex gap-3 text-sm text-[var(--prod-secondary)] leading-snug">
                   <span class="text-[var(--prod-faint)] mt-0.5 shrink-0">—</span>
                   <span>{c}</span>
@@ -212,9 +246,14 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-14 items-start" data-reveal>
           <div class="lg:col-span-5">
             <p class="eyebrow">Dashboard Rapportini</p>
-            <h2 class="headline">Il centro operativo<br />della piattaforma dimostrativa</h2>
+            <h2 class="headline">
+              Il centro operativo
+              <br />
+              della piattaforma dimostrativa
+            </h2>
             <p class="body mb-7">
-              Dashboard dimostrativa del modulo Rapportini. L’utente può creare nuovi documenti, consultare lo storico, visualizzare dati riepilogativi e accedere ai moduli operativi.
+              Dashboard dimostrativa del modulo Rapportini. L’utente può creare nuovi documenti,
+              consultare lo storico, visualizzare dati riepilogativi e accedere ai moduli operativi.
             </p>
             <ul class="space-y-3 text-sm text-[var(--prod-secondary)]">
               {[
@@ -223,7 +262,7 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
                 'Totale rapportini e distribuzione per tipologia',
                 'Export PDF, installazione PWA e tema grafico',
                 'Accessi differenziati per ruolo',
-              ].map((line) => (
+              ].map(line => (
                 <li class="flex gap-3">
                   <span class="text-[var(--prod-faint)]">→</span>
                   <span>{line}</span>
@@ -234,8 +273,12 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
           <div class="lg:col-span-7">
             <div class="ui-frame" aria-hidden="true">
               <div class="ui-chrome">
-                <span class="ui-dot"></span><span class="ui-dot"></span><span class="ui-dot"></span>
-                <span class="ml-3 text-xs text-[var(--prod-faint)] tracking-wide">Bitora Service Demo · Dashboard Rapportini</span>
+                <span class="ui-dot"></span>
+                <span class="ui-dot"></span>
+                <span class="ui-dot"></span>
+                <span class="ml-3 text-xs text-[var(--prod-faint)] tracking-wide">
+                  Bitora Service Demo · Dashboard Rapportini
+                </span>
               </div>
               <div class="p-5 md:p-7">
                 <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -244,13 +287,12 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
                     <p class="text-lg font-semibold tracking-tight">Panoramica interventi</p>
                   </div>
                   <div class="flex gap-2">
-                    <span class="px-3.5 py-1.5 text-xs font-semibold rounded-full bg-[#f5f5f7] text-black"
-                      >+ Nuovo rapportino</span
-                    >
-                    <span
-                      class="px-3.5 py-1.5 text-xs font-semibold rounded-full border border-white/20 text-[var(--prod-secondary)]"
-                      >Cerca</span
-                    >
+                    <span class="px-3.5 py-1.5 text-xs font-semibold rounded-full bg-[#f5f5f7] text-black">
+                      + Nuovo rapportino
+                    </span>
+                    <span class="px-3.5 py-1.5 text-xs font-semibold rounded-full border border-white/20 text-[var(--prod-secondary)]">
+                      Cerca
+                    </span>
                   </div>
                 </div>
                 <div class="grid grid-cols-3 gap-3 mb-6">
@@ -258,31 +300,40 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
                     { l: 'Rapportini', v: '248' },
                     { l: 'Questo mese', v: '37' },
                     { l: 'Con firma', v: '96%' },
-                  ].map((s) => (
+                  ].map(s => (
                     <div class="rounded-xl border border-white/[0.08] bg-white/[0.03] p-4">
-                      <p class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-2">{s.l}</p>
+                      <p class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-2">
+                        {s.l}
+                      </p>
                       <p class="text-2xl font-bold tabular-nums tracking-tight">{s.v}</p>
                     </div>
                   ))}
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
-                  {['Manutenzione', 'Installazione', 'Assistenza', 'Garanzia', 'Altro'].map((t, i) => (
-                    <div class="rounded-xl border border-white/[0.06] p-3">
-                      <div class="h-14 flex items-end gap-1 mb-2">
-                        <div class="flex-1 bg-white/10 rounded-sm" style={`height:${35 + i * 12}%`}></div>
-                        <div class="flex-1 bg-white/25 rounded-sm" style={`height:${50 + ((i * 17) % 40)}%`}
-                        ></div>
+                  {['Manutenzione', 'Installazione', 'Assistenza', 'Garanzia', 'Altro'].map(
+                    (t, i) => (
+                      <div class="rounded-xl border border-white/[0.06] p-3">
+                        <div class="h-14 flex items-end gap-1 mb-2">
+                          <div
+                            class="flex-1 bg-white/10 rounded-sm"
+                            style={`height:${35 + i * 12}%`}
+                          ></div>
+                          <div
+                            class="flex-1 bg-white/25 rounded-sm"
+                            style={`height:${50 + ((i * 17) % 40)}%`}
+                          ></div>
+                        </div>
+                        <p class="text-[10px] text-[var(--prod-faint)] truncate">{t}</p>
                       </div>
-                      <p class="text-[10px] text-[var(--prod-faint)] truncate">{t}</p>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
                 <div class="rounded-xl border border-white/[0.08] divide-y divide-white/[0.06] overflow-hidden">
                   {[
                     { id: 'R-1042', c: 'Rossi Impianti', t: 'Manutenzione', s: 'Firmato' },
                     { id: 'R-1041', c: 'Bianchi Srl', t: 'Assistenza', s: 'In bozza' },
                     { id: 'R-1040', c: 'Verde Clima', t: 'Installazione', s: 'PDF pronto' },
-                  ].map((r) => (
+                  ].map(r => (
                     <div class="grid grid-cols-4 gap-2 px-4 py-3 text-xs">
                       <span class="text-[var(--prod-faint)] font-mono">{r.id}</span>
                       <span class="text-[var(--prod-text)] truncate">{r.c}</span>
@@ -308,22 +359,27 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
           <p class="eyebrow">Come funziona</p>
           <h2 class="headline max-w-3xl">Cinque passaggi, dal campo all’archivio</h2>
           <div class="flow-rail mt-2">
-            {
-              flowChips.flatMap((chip, i) =>
-                i < flowChips.length - 1
-                  ? [
-                      <span class="flow-chip">{chip}</span>,
-                      <span class="flow-arrow" aria-hidden="true">→</span>,
-                    ]
-                  : [<span class="flow-chip">{chip}</span>]
-              )
-            }
+            {flowChips.flatMap((chip, i) =>
+              i < flowChips.length - 1
+                ? [
+                    <span class="flow-chip">{chip}</span>,
+                    <span class="flow-arrow" aria-hidden="true">
+                      →
+                    </span>,
+                  ]
+                : [<span class="flow-chip">{chip}</span>]
+            )}
           </div>
         </div>
-        <div class="grid md:grid-cols-2 xl:grid-cols-5 gap-px bg-[var(--prod-line-soft)] rounded-2xl overflow-hidden" data-reveal>
-          {steps.map((s) => (
+        <div
+          class="grid md:grid-cols-2 xl:grid-cols-5 gap-px bg-[var(--prod-line-soft)] rounded-2xl overflow-hidden"
+          data-reveal
+        >
+          {steps.map(s => (
             <div class="step-cell flex flex-col">
-              <span class="text-3xl font-bold text-white/10 tabular-nums mb-4 tracking-tight">{s.n}</span>
+              <span class="text-3xl font-bold text-white/10 tabular-nums mb-4 tracking-tight">
+                {s.n}
+              </span>
               <h3 class="text-base font-bold mb-2.5 leading-snug tracking-tight">{s.t}</h3>
               <p class="text-sm text-[var(--prod-muted)] leading-relaxed">{s.d}</p>
             </div>
@@ -339,11 +395,12 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
           <p class="eyebrow">Nucleo principale</p>
           <h2 class="headline">Funzionalità del nucleo principale</h2>
           <p class="body mt-4">
-            Compilazione rapportini, archivio, firme, fotografie, generazione PDF, ricerca e gestione utenti. Non tutte le funzioni aggiuntive sono presenti in ogni configurazione.
+            Compilazione rapportini, archivio, firme, fotografie, generazione PDF, ricerca e
+            gestione utenti. Non tutte le funzioni aggiuntive sono presenti in ogni configurazione.
           </p>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5" data-reveal>
-          {features.map((f) => (
+          {features.map(f => (
             <div class="feat-card">
               <svg
                 class="w-5 h-5 text-[var(--prod-muted)] mb-4"
@@ -352,7 +409,12 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={f.icon}></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d={f.icon}
+                ></path>
               </svg>
               <h3 class="text-[0.95rem] font-bold mb-2 tracking-tight">{f.t}</h3>
               <p class="text-sm text-[var(--prod-muted)] leading-relaxed">{f.d}</p>
@@ -370,30 +432,40 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
             <p class="eyebrow">Moduli configurabili o aggiuntivi</p>
             <h2 class="headline">Modulare, non monolitica</h2>
             <p class="body">
-              La piattaforma può essere ampliata con moduli aggiuntivi in base alle necessità organizzative e operative del cliente.
+              La piattaforma può essere ampliata con moduli aggiuntivi in base alle necessità
+              organizzative e operative del cliente.
             </p>
           </div>
         </div>
         <ul class="border-t border-[var(--prod-line-soft)]" data-reveal>
           {moduli.map((m, i) => (
             <li class="border-b border-[var(--prod-line-soft)] py-6 md:py-7 grid md:grid-cols-12 gap-2 md:gap-8 items-baseline">
-              <span class="md:col-span-1 text-[var(--prod-faint)] text-sm font-bold tabular-nums">0{i + 1}</span>
+              <span class="md:col-span-1 text-[var(--prod-faint)] text-sm font-bold tabular-nums">
+                0{i + 1}
+              </span>
               <h3 class="md:col-span-4 text-lg font-bold tracking-tight">{m.t}</h3>
-              <p class="md:col-span-7 text-[var(--prod-muted)] text-sm md:text-base leading-relaxed">{m.d}</p>
+              <p class="md:col-span-7 text-[var(--prod-muted)] text-sm md:text-base leading-relaxed">
+                {m.d}
+              </p>
             </li>
           ))}
         </ul>
         <p class="mt-10 text-sm text-[var(--prod-faint)]" data-reveal>
           Si collega naturalmente al
-          <a href="/ticketing/" class="text-[var(--prod-secondary)] underline underline-offset-4 hover:text-white"
-            >ticketing</a
+          <a
+            href="/ticketing/"
+            class="text-[var(--prod-secondary)] underline underline-offset-4 hover:text-white"
           >
+            ticketing
+          </a>
           e all’
           <a
             href="/gestione-interventi/"
             class="text-[var(--prod-secondary)] underline underline-offset-4 hover:text-white"
-            >ecosistema completo</a
-          >.
+          >
+            ecosistema completo
+          </a>
+          .
         </p>
       </div>
     </section>
@@ -404,16 +476,20 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-16" data-reveal>
           <div class="lg:col-span-5">
             <p class="eyebrow">Vantaggi</p>
-            <h2 class="headline">Non solo meno carta:<br />più controllo sul lavoro</h2>
+            <h2 class="headline">
+              Non solo meno carta:
+              <br />
+              più controllo sul lavoro
+            </h2>
             <p class="body">
-              Ogni intervento diventa un dato consultabile. L’azienda può sapere chi ha eseguito il lavoro,
-              quando, presso quale cliente, quali ricambi sono stati utilizzati e quale è stato l’esito,
-              senza cercare informazioni tra moduli cartacei, chat ed email.
+              Ogni intervento diventa un dato consultabile. L’azienda può sapere chi ha eseguito il
+              lavoro, quando, presso quale cliente, quali ricambi sono stati utilizzati e quale è
+              stato l’esito, senza cercare informazioni tra moduli cartacei, chat ed email.
             </p>
           </div>
           <div class="lg:col-span-6 lg:col-start-7">
             <ul class="grid sm:grid-cols-2 gap-2.5">
-              {vantaggi.map((v) => (
+              {vantaggi.map(v => (
                 <li class="rounded-xl border border-[var(--prod-line-soft)] bg-black/40 px-4 py-3.5 text-sm text-[var(--prod-secondary)]">
                   {v}
                 </li>
@@ -432,7 +508,7 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
           <h2 class="headline">Pensata per chi lavora sul campo</h2>
         </div>
         <div class="flex flex-wrap gap-2.5" data-reveal>
-          {destinatari.map((d) => (
+          {destinatari.map(d => (
             <span class="status-pill">{d}</span>
           ))}
         </div>
@@ -447,19 +523,21 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
             <p class="eyebrow">Personalizzazione</p>
             <h2 class="headline">Adattata ai vostri processi</h2>
             <p class="body mb-5">
-              Ogni azienda gestisce gli interventi in modo diverso. Per questo la piattaforma può essere
-              configurata con campi, modelli di rapportino, ruoli, stati, moduli e flussi operativi
-              personalizzati.
+              Ogni azienda gestisce gli interventi in modo diverso. Per questo la piattaforma può
+              essere configurata con campi, modelli di rapportino, ruoli, stati, moduli e flussi
+              operativi personalizzati.
             </p>
             <p class="body-sm">
-              Bitora trasforma il rapporto di intervento da documento isolato a parte integrante di un
-              processo aziendale organizzato e controllabile.
+              Bitora trasforma il rapporto di intervento da documento isolato a parte integrante di
+              un processo aziendale organizzato e controllabile.
             </p>
           </div>
           <div class="lg:col-span-5 lg:col-start-8">
-            <p class="eyebrow" style="margin-bottom:1rem">Moduli configurabili</p>
+            <p class="eyebrow" style="margin-bottom:1rem">
+              Moduli configurabili
+            </p>
             <ul class="space-y-0">
-              {integrazioni.map((i) => (
+              {integrazioni.map(i => (
                 <li class="flex gap-3 text-[var(--prod-secondary)] text-sm border-b border-[var(--prod-line-soft)] py-3">
                   <span class="text-[var(--prod-faint)]">+</span>
                   <span>Integrazione con {i}</span>
@@ -467,7 +545,8 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
               ))}
             </ul>
             <p class="text-xs text-[var(--prod-faint)] mt-5 leading-relaxed">
-              Le integrazioni e i moduli vengono valutati e configurati in base ai processi e agli strumenti già utilizzati dall’azienda.
+              Le integrazioni e i moduli vengono valutati e configurati in base ai processi e agli
+              strumenti già utilizzati dall’azienda.
             </p>
           </div>
         </div>
@@ -482,19 +561,25 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
           Vuoi digitalizzare i rapportini della tua azienda?
         </h2>
         <p class="lede" style="margin-inline:auto;margin-bottom:2.5rem;text-align:center">
-          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una configurazione dimostrativa costruita intorno al tuo processo.
+          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una
+          configurazione dimostrativa costruita intorno al tuo processo.
         </p>
         <div class="cta-row" style="justify-content:center">
           <a
             href="/richiedi-demo/"
             class="sl-btn-primary"
             data-track="cta_click"
-            data-track-location="rapportini_final">Richiedi una demo</a
+            data-track-location="rapportini_final"
           >
-          <a href="/contattaci/" class="sl-btn-secondary">Parla con Bitora</a>
+            Richiedi una demo
+          </a>
+          <a href="/contattaci/" class="sl-btn-secondary">
+            Parla con Bitora
+          </a>
         </div>
         <p class="text-xs text-[var(--prod-faint)] mt-10 max-w-xl mx-auto leading-relaxed text-center">
-          Le interfacce mostrate appartengono a un ambiente dimostrativo. Funzionalità, moduli, campi e flussi possono variare in base alla configurazione scelta per il progetto.
+          Le interfacce mostrate appartengono a un ambiente dimostrativo. Funzionalità, moduli,
+          campi e flussi possono variare in base alla configurazione scelta per il progetto.
         </p>
       </div>
     </section>
@@ -521,7 +606,6 @@ const flowChips = ['Intervento', 'Compilazione', 'Foto e ricambi', 'Firma', 'PDF
       },
     })}
   />
-
   <BreadcrumbListSchema
     crumbs={[
       { name: 'Home', item: 'https://bitora.it/' },

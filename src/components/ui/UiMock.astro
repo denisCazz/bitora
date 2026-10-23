@@ -10,62 +10,85 @@ const { variant = 'dashboard', label = 'app.bitora.it', eager = false } = Astro.
 const bars = [38, 62, 45, 80, 56, 92, 70, 84, 60, 98, 76, 88];
 ---
 
-{
-  variant === 'access' ? (
-    <AccessMock eager={eager} />
-  ) : variant === 'dashboard' ? (
-    <div class="mock b-browser" aria-hidden="true">
-      <div class="b-browser__bar">
-        <i /><i /><i />
-        <span class="b-browser__url">{label}</span>
-      </div>
-      <div class="mock__body">
-        <aside class="mock__side">
-          <span class="is-on" />
-          <span />
-          <span />
-          <span />
-          <span />
-        </aside>
-        <div class="mock__main">
-          <div class="mock__kpis">
-            <div><b>128</b><small>Interventi</small></div>
-            <div><b>94%</b><small>Chiusi in SLA</small></div>
-            <div><b>12</b><small>Preventivi AI</small></div>
+{variant === 'access' ? (
+  <AccessMock eager={eager} />
+) : variant === 'dashboard' ? (
+  <div class="mock b-browser" aria-hidden="true">
+    <div class="b-browser__bar">
+      <i />
+      <i />
+      <i />
+      <span class="b-browser__url">{label}</span>
+    </div>
+    <div class="mock__body">
+      <aside class="mock__side">
+        <span class="is-on" />
+        <span />
+        <span />
+        <span />
+        <span />
+      </aside>
+      <div class="mock__main">
+        <div class="mock__kpis">
+          <div>
+            <b>128</b>
+            <small>Interventi</small>
           </div>
-          <div class="mock__chart">
-            {bars.map(h => <span style={`height:${h}%`} />)}
+          <div>
+            <b>94%</b>
+            <small>Chiusi in SLA</small>
           </div>
-          <div class="mock__rows">
-            <div><i class="ok" /><span /><em>Chiuso</em></div>
-            <div><i class="run" /><span /><em>In corso</em></div>
-            <div><i class="ok" /><span /><em>Firmato</em></div>
+          <div>
+            <b>12</b>
+            <small>Preventivi AI</small>
+          </div>
+        </div>
+        <div class="mock__chart">
+          {bars.map(h => (
+            <span style={`height:${h}%`} />
+          ))}
+        </div>
+        <div class="mock__rows">
+          <div>
+            <i class="ok" />
+            <span />
+            <em>Chiuso</em>
+          </div>
+          <div>
+            <i class="run" />
+            <span />
+            <em>In corso</em>
+          </div>
+          <div>
+            <i class="ok" />
+            <span />
+            <em>Firmato</em>
           </div>
         </div>
       </div>
     </div>
-  ) : (
-    <div class="phone" aria-hidden="true">
-      <div class="phone__screen">
-        <div class="phone__notch" />
-        <p class="phone__title">Ingressi</p>
-        <div class="phone__card is-main">
-          <small>Ingresso principale</small>
-          <b>Apri sbarra</b>
-          <span class="phone__btn" />
-        </div>
-        <div class="phone__card">
-          <small>Carraio nord</small>
-          <b>Disponibile</b>
-        </div>
-        <div class="phone__card">
-          <small>Registro</small>
-          <b>08:42 · M. Rossi</b>
-        </div>
+  </div>
+) : (
+  <div class="phone" aria-hidden="true">
+    <div class="phone__screen">
+      <div class="phone__notch" />
+      <p class="phone__title">Ingressi</p>
+      <div class="phone__card is-main">
+        <small>Ingresso principale</small>
+        <b>Apri sbarra</b>
+        <span class="phone__btn" />
+      </div>
+      <div class="phone__card">
+        <small>Carraio nord</small>
+        <b>Disponibile</b>
+      </div>
+      <div class="phone__card">
+        <small>Registro</small>
+        <b>08:42 · M. Rossi</b>
       </div>
     </div>
-  )
-}
+  </div>
+)}
 
 <style>
   .mock__body {
@@ -73,8 +96,7 @@ const bars = [38, 62, 45, 80, 56, 92, 70, 84, 60, 98, 76, 88];
     grid-template-columns: 44px 1fr;
     aspect-ratio: 16 / 10;
     background:
-      radial-gradient(ellipse 70% 60% at 80% 0%, rgba(34, 211, 238, 0.12), transparent 60%),
-      #0b0e12;
+      radial-gradient(ellipse 70% 60% at 80% 0%, rgba(34, 211, 238, 0.12), transparent 60%), #0b0e12;
   }
   .mock__side {
     display: flex;
@@ -175,8 +197,7 @@ const bars = [38, 62, 45, 80, 56, 92, 70, 84, 60, 98, 76, 88];
     align-items: center;
     aspect-ratio: 16 / 10;
     background:
-      radial-gradient(circle at 50% 60%, rgba(34, 211, 238, 0.18), transparent 60%),
-      #0b0e12;
+      radial-gradient(circle at 50% 60%, rgba(34, 211, 238, 0.18), transparent 60%), #0b0e12;
     border-radius: 14px;
     border: 1px solid var(--b-line-2);
     overflow: hidden;

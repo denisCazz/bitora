@@ -20,7 +20,9 @@ if (!article) return new Response(null, { status: 404 });
 
 <OpsLayout title={`Anteprima · ${article.title}`} heading="Anteprima">
   <p class="ops-muted">
-    <a class="ops-link" href={`/ops/editoriale/articoli/${id}/`}>Torna all’editor</a>
+    <a class="ops-link" href={`/ops/editoriale/articoli/${id}/`}>
+      Torna all’editor
+    </a>
   </p>
   <div style="margin-top:24px;border-radius:24px;overflow:hidden;background:#fff;color:#111">
     <SignalJourney article={article} preview />

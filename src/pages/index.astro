@@ -13,13 +13,20 @@ import { homeFaq as faq } from '../data/faq';
 const work = getWork();
 const liveProjects = work.filter(w => !w.isWip).length;
 const featured = getWorkBySlugs(['garavella-7', 'mistral-gestionale']);
-const more = getWorkBySlugs(['ricambixstufe', 'accessi-aziendali-franchina', 'dalina', 'sartoria-kristina']);
+const more = getWorkBySlugs([
+  'ricambixstufe',
+  'accessi-aziendali-franchina',
+  'dalina',
+  'sartoria-kristina',
+]);
 
 const quotes = ['Mistral Impianti', 'Sartoria Kristina', 'Speedy Pizza', 'Bar Chantilly Carmagnola']
   .map(c => testimonials.find(t => t.company === c))
   .filter((t): t is NonNullable<typeof t> => Boolean(t));
 
-const month = new Intl.DateTimeFormat('it-IT', { month: 'long', year: 'numeric' }).format(new Date());
+const month = new Intl.DateTimeFormat('it-IT', { month: 'long', year: 'numeric' }).format(
+  new Date()
+);
 
 const pains = [
   {
@@ -56,12 +63,31 @@ const reasons = [
 ];
 
 const steps = [
-  { n: '01', t: 'Call conoscitiva', time: '30 min · gratis', d: 'Ci racconti obiettivi e problemi. Ti diciamo subito se e come possiamo aiutarti.' },
-  { n: '02', t: 'Proposta chiara', time: 'entro 48 ore', d: 'Cosa facciamo, in che ordine, con che tempi e costi. Diviso in fasi, senza sorprese.' },
-  { n: '03', t: 'Sviluppo visibile', time: 'anteprime settimanali', d: 'Vedi il progetto crescere online e dai feedback mentre lo costruiamo.' },
-  { n: '04', t: 'Lancio e crescita', time: 'supporto continuo', d: 'Formazione, misurazione e miglioramenti. Non spariamo dopo la consegna.' },
+  {
+    n: '01',
+    t: 'Call conoscitiva',
+    time: '30 min · gratis',
+    d: 'Ci racconti obiettivi e problemi. Ti diciamo subito se e come possiamo aiutarti.',
+  },
+  {
+    n: '02',
+    t: 'Proposta chiara',
+    time: 'entro 48 ore',
+    d: 'Cosa facciamo, in che ordine, con che tempi e costi. Diviso in fasi, senza sorprese.',
+  },
+  {
+    n: '03',
+    t: 'Sviluppo visibile',
+    time: 'anteprime settimanali',
+    d: 'Vedi il progetto crescere online e dai feedback mentre lo costruiamo.',
+  },
+  {
+    n: '04',
+    t: 'Lancio e crescita',
+    time: 'supporto continuo',
+    d: 'Formazione, misurazione e miglioramenti. Non spariamo dopo la consegna.',
+  },
 ];
-
 ---
 
 <Layout
@@ -73,7 +99,14 @@ const steps = [
     <div class="hero__bg" aria-hidden="true">
       <picture>
         <source srcset="/hero-bitora.webp" type="image/webp" />
-        <img src="/hero-bitora.jpg" alt="" width="1920" height="1074" fetchpriority="high" decoding="async" />
+        <img
+          src="/hero-bitora.jpg"
+          alt=""
+          width="1920"
+          height="1074"
+          fetchpriority="high"
+          decoding="async"
+        />
       </picture>
       <div class="hero__scrim"></div>
       <div class="hero__grid b-grid-bg"></div>
@@ -85,26 +118,42 @@ const steps = [
         Disponibili per nuovi progetti · {month}
       </p>
       <h1 class="b-display b-rise" style="animation-delay:.1s">
-        Siti web ed e-commerce<br />
+        Siti web ed e-commerce
+        <br />
         che <span class="b-grad">vendono.</span>
       </h1>
       <p class="b-lede b-rise" style="animation-delay:.22s">
         Studio digitale a Carmagnola: siti web, e-commerce B2B, gestionali, app e AI per aziende di
-        Carignano, Racconigi, Torino e di tutta Italia. Un unico referente, dal primo schizzo al supporto dopo il lancio.
+        Carignano, Racconigi, Torino e di tutta Italia. Un unico referente, dal primo schizzo al
+        supporto dopo il lancio.
       </p>
       <div class="b-cta-row b-rise" style="animation-delay:.34s">
-        <a href="/contattaci/?topic=sito" class="b-btn b-btn--primary b-btn--lg" data-track="cta_click" data-track-location="home_hero">
-          Preventivo gratuito in 24h <span class="b-arrow" aria-hidden="true">→</span>
+        <a
+          href="/contattaci/?topic=sito"
+          class="b-btn b-btn--primary b-btn--lg"
+          data-track="cta_click"
+          data-track-location="home_hero"
+        >
+          Preventivo gratuito in 24h{' '}
+          <span class="b-arrow" aria-hidden="true">
+            →
+          </span>
         </a>
-        <a href="#lavori" class="b-btn b-btn--ghost b-btn--lg">Guarda i lavori</a>
+        <a href="#lavori" class="b-btn b-btn--ghost b-btn--lg">
+          Guarda i lavori
+        </a>
       </div>
       <div class="hero__proof b-rise" style="animation-delay:.46s">
         <div class="hero__faces" aria-hidden="true">
-          {
-            ['/logo_garavella.png', '/mistral.jpg', '/sartoria_kristina.png', '/logo_dalina.png', '/logo_natura.png'].map(src => (
-              <img src={src} alt="" width="36" height="36" loading="lazy" />
-            ))
-          }
+          {[
+            '/logo_garavella.png',
+            '/mistral.jpg',
+            '/sartoria_kristina.png',
+            '/logo_dalina.png',
+            '/logo_natura.png',
+          ].map(src => (
+            <img src={src} alt="" width="36" height="36" loading="lazy" />
+          ))}
         </div>
         <p>
           <strong>{liveProjects}+ progetti online</strong> per attività e aziende tra Torino e Cuneo
@@ -116,15 +165,13 @@ const steps = [
   <!-- CLIENT STRIP -->
   <section class="strip" aria-label="Alcuni clienti">
     <div class="b-marquee" style="--b-marquee-speed:45s">
-      {
-        [0, 1].map(copy => (
-          <div class="b-marquee__track" aria-hidden={copy === 1 ? 'true' : undefined}>
-            {clientLogos.map(c => (
-              <span class="strip__name">{c.name}</span>
-            ))}
-          </div>
-        ))
-      }
+      {[0, 1].map(copy => (
+        <div class="b-marquee__track" aria-hidden={copy === 1 ? 'true' : undefined}>
+          {clientLogos.map(c => (
+            <span class="strip__name">{c.name}</span>
+          ))}
+        </div>
+      ))}
     </div>
   </section>
 
@@ -133,17 +180,18 @@ const steps = [
     <div class="b-shell">
       <div class="b-head" data-reveal>
         <p class="b-eyebrow">Ti suona familiare?</p>
-        <h2 class="b-h2">Il digitale dovrebbe farti guadagnare tempo e clienti. <span class="b-accent">Non il contrario.</span></h2>
+        <h2 class="b-h2">
+          Il digitale dovrebbe farti guadagnare tempo e clienti.{' '}
+          <span class="b-accent">Non il contrario.</span>
+        </h2>
       </div>
       <div class="pains">
-        {
-          pains.map((p, i) => (
-            <article class="b-card pains__card" data-reveal data-reveal-delay={String(i + 1)}>
-              <p class="pains__q">{p.q}</p>
-              <p class="b-text">{p.a}</p>
-            </article>
-          ))
-        }
+        {pains.map((p, i) => (
+          <article class="b-card pains__card" data-reveal data-reveal-delay={String(i + 1)}>
+            <p class="pains__q">{p.q}</p>
+            <p class="b-text">{p.a}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -154,35 +202,53 @@ const steps = [
       <div class="b-head b-head--split" data-reveal>
         <div>
           <p class="b-eyebrow">Cosa facciamo</p>
-          <h2 class="b-h2">Tutto il tuo digitale. <br />Da un solo studio.</h2>
+          <h2 class="b-h2">
+            Tutto il tuo digitale. <br />
+            Da un solo studio.
+          </h2>
         </div>
         <p class="b-text">
-          Puoi partire da un sito e arrivare a un gestionale con app e AI, senza cambiare fornitore e
-          senza ricominciare da capo. Ogni pezzo è progettato per collegarsi al successivo.
+          Puoi partire da un sito e arrivare a un gestionale con app e AI, senza cambiare fornitore
+          e senza ricominciare da capo. Ogni pezzo è progettato per collegarsi al successivo.
         </p>
       </div>
       <div class="pillars">
-        {
-          pillars.map((p, i) => (
-            <a href={p.href} class="b-card pillar" data-reveal data-reveal-delay={String((i % 3) + 1)}>
-              <div class="pillar__top">
-                <span class="b-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d={p.icon} />
-                  </svg>
-                </span>
-                <span class="b-mono pillar__n">{p.n}</span>
-              </div>
-              <p class="pillar__kicker">{p.kicker}</p>
-              <h3 class="b-h3">{p.title}</h3>
-              <p class="b-text pillar__short">{p.short}</p>
-              <div class="b-chips">
-                {p.bullets.map(b => <span class="b-chip">{b}</span>)}
-              </div>
-              <span class="pillar__go" aria-hidden="true">→</span>
-            </a>
-          ))
-        }
+        {pillars.map((p, i) => (
+          <a
+            href={p.href}
+            class="b-card pillar"
+            data-reveal
+            data-reveal-delay={String((i % 3) + 1)}
+          >
+            <div class="pillar__top">
+              <span class="b-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d={p.icon} />
+                </svg>
+              </span>
+              <span class="b-mono pillar__n">{p.n}</span>
+            </div>
+            <p class="pillar__kicker">{p.kicker}</p>
+            <h3 class="b-h3">{p.title}</h3>
+            <p class="b-text pillar__short">{p.short}</p>
+            <div class="b-chips">
+              {p.bullets.map(b => (
+                <span class="b-chip">{b}</span>
+              ))}
+            </div>
+            <span class="pillar__go" aria-hidden="true">
+              →
+            </span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -193,7 +259,9 @@ const steps = [
       <div class="b-head b-head--split" data-reveal>
         <div>
           <p class="b-eyebrow">Lavori</p>
-          <h2 class="b-h2">Progetti veri. <span class="b-accent">Online adesso.</span></h2>
+          <h2 class="b-h2">
+            Progetti veri. <span class="b-accent">Online adesso.</span>
+          </h2>
         </div>
         <p class="b-text">
           Dal bar in piazza all’azienda di impianti con 35 anni di storia: ogni progetto parte da un
@@ -201,13 +269,26 @@ const steps = [
         </p>
       </div>
       <div class="work-feat">
-        {featured.map((w, i) => <div data-reveal data-reveal-delay={String(i + 1)}><ProjectCard item={w} size="lg" /></div>)}
+        {featured.map((w, i) => (
+          <div data-reveal data-reveal-delay={String(i + 1)}>
+            <ProjectCard item={w} size="lg" />
+          </div>
+        ))}
       </div>
       <div class="work-more">
-        {more.map((w, i) => <div data-reveal data-reveal-delay={String((i % 4) + 1)}><ProjectCard item={w} /></div>)}
+        {more.map((w, i) => (
+          <div data-reveal data-reveal-delay={String((i % 4) + 1)}>
+            <ProjectCard item={w} />
+          </div>
+        ))}
       </div>
       <div class="work-cta" data-reveal>
-        <a href="/lavori/" class="b-btn b-btn--ghost">Vedi tutti i {work.length} progetti <span class="b-arrow" aria-hidden="true">→</span></a>
+        <a href="/lavori/" class="b-btn b-btn--ghost">
+          Vedi tutti i {work.length} progetti{' '}
+          <span class="b-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
       </div>
     </div>
     <div class="work-marquee" data-reveal>
@@ -220,7 +301,9 @@ const steps = [
     <div class="b-shell story">
       <div data-reveal>
         <p class="b-eyebrow">Il nostro vantaggio</p>
-        <h2 class="b-h2">Quando sito e gestionale <span class="b-grad">si parlano</span>, succedono cose.</h2>
+        <h2 class="b-h2">
+          Quando sito e gestionale <span class="b-grad">si parlano</span>, succedono cose.
+        </h2>
         <p class="b-lede">
           Da Garavella 7, a Carmagnola, se un ingrediente finisce in magazzino i piatti che lo usano
           spariscono da soli dal menu sul sito. Nessuno deve ricordarsi di aggiornarlo.
@@ -229,7 +312,9 @@ const steps = [
           È questo che intendiamo con “software che lavora per te”: strumenti collegati che tolgono
           lavoro invece di aggiungerne.
         </p>
-        <a href="/progetti/garavella-7-gestionale/" class="b-link">Leggi il caso Garavella 7 <span aria-hidden="true">→</span></a>
+        <a href="/progetti/garavella-7-gestionale/" class="b-link">
+          Leggi il caso Garavella 7 <span aria-hidden="true">→</span>
+        </a>
       </div>
       <div class="flow" data-reveal data-reveal-delay="1" aria-hidden="true">
         <div class="flow__node">
@@ -237,13 +322,17 @@ const steps = [
           <b>Spritz Aperol</b>
           <em class="is-out">Scorte: 0</em>
         </div>
-        <div class="flow__line"><i></i></div>
+        <div class="flow__line">
+          <i></i>
+        </div>
         <div class="flow__node">
           <span class="b-mono">Gestionale</span>
           <b>Menu aggiornato</b>
           <em>2 voci nascoste</em>
         </div>
-        <div class="flow__line"><i></i></div>
+        <div class="flow__line">
+          <i></i>
+        </div>
         <div class="flow__node is-live">
           <span class="b-mono">garavella7.it</span>
           <b>Menu online</b>
@@ -258,24 +347,37 @@ const steps = [
     <div class="b-shell">
       <div class="b-head" data-reveal>
         <p class="b-eyebrow">Perché Bitora</p>
-        <h2 class="b-h2">Uno studio piccolo, <br />di proposito.</h2>
+        <h2 class="b-h2">
+          Uno studio piccolo, <br />
+          di proposito.
+        </h2>
       </div>
       <div class="reasons">
-        {
-          reasons.map((r, i) => (
-            <div class="reason" data-reveal data-reveal-delay={String(i + 1)}>
-              <span class="b-mono reason__n">0{i + 1}</span>
-              <h3 class="b-h3">{r.t}</h3>
-              <p class="b-text">{r.d}</p>
-            </div>
-          ))
-        }
+        {reasons.map((r, i) => (
+          <div class="reason" data-reveal data-reveal-delay={String(i + 1)}>
+            <span class="b-mono reason__n">0{i + 1}</span>
+            <h3 class="b-h3">{r.t}</h3>
+            <p class="b-text">{r.d}</p>
+          </div>
+        ))}
       </div>
       <div class="b-kpis why__kpis" data-reveal>
-        <div class="b-kpi"><div class="b-kpi__v">{liveProjects}+</div><div class="b-kpi__l">Progetti pubblicati</div></div>
-        <div class="b-kpi"><div class="b-kpi__v">24h</div><div class="b-kpi__l">Tempo di risposta</div></div>
-        <div class="b-kpi"><div class="b-kpi__v">2020</div><div class="b-kpi__l">Attivi dal</div></div>
-        <div class="b-kpi"><div class="b-kpi__v">100%</div><div class="b-kpi__l">Sviluppato in Italia</div></div>
+        <div class="b-kpi">
+          <div class="b-kpi__v">{liveProjects}+</div>
+          <div class="b-kpi__l">Progetti pubblicati</div>
+        </div>
+        <div class="b-kpi">
+          <div class="b-kpi__v">24h</div>
+          <div class="b-kpi__l">Tempo di risposta</div>
+        </div>
+        <div class="b-kpi">
+          <div class="b-kpi__v">2020</div>
+          <div class="b-kpi__l">Attivi dal</div>
+        </div>
+        <div class="b-kpi">
+          <div class="b-kpi__v">100%</div>
+          <div class="b-kpi__l">Sviluppato in Italia</div>
+        </div>
       </div>
     </div>
   </section>
@@ -286,31 +388,51 @@ const steps = [
     <div class="b-shell ai__inner">
       <div class="b-head" data-reveal>
         <p class="b-eyebrow">AI & automazioni</p>
-        <h2 class="b-h2">Intelligenza artificiale <span class="b-accent">concreta</span>. <br />Non slide.</h2>
+        <h2 class="b-h2">
+          Intelligenza artificiale <span class="b-accent">concreta</span>. <br />
+          Non slide.
+        </h2>
         <p class="b-lede">
-          Usiamo l’AI dove fa risparmiare ore misurabili, collegata ai tuoi dati e ai tuoi documenti.
+          Usiamo l’AI dove fa risparmiare ore misurabili, collegata ai tuoi dati e ai tuoi
+          documenti.
         </p>
       </div>
       <div class="ai__grid">
         <article class="b-card" data-reveal data-reveal-delay="1">
           <p class="b-mono ai__tag">Preventivi</p>
           <h3 class="b-h3">Bozza pronta in minuti</h3>
-          <p class="b-text">L’AI legge documenti e lavori passati e prepara il preventivo. L’ufficio rivede ed esporta in PDF.</p>
-          <a href="/progetti/mistral-gestionale/" class="b-link ai__link">Caso Mistral Impianti →</a>
+          <p class="b-text">
+            L’AI legge documenti e lavori passati e prepara il preventivo. L’ufficio rivede ed
+            esporta in PDF.
+          </p>
+          <a href="/progetti/mistral-gestionale/" class="b-link ai__link">
+            Caso Mistral Impianti →
+          </a>
         </article>
         <article class="b-card" data-reveal data-reveal-delay="2">
           <p class="b-mono ai__tag">Assistenti</p>
           <h3 class="b-h3">Chiedi ai tuoi documenti</h3>
-          <p class="b-text">Manuali, schede tecniche, procedure: il team fa una domanda e ottiene la risposta con la fonte.</p>
+          <p class="b-text">
+            Manuali, schede tecniche, procedure: il team fa una domanda e ottiene la risposta con la
+            fonte.
+          </p>
         </article>
         <article class="b-card" data-reveal data-reveal-delay="3">
           <p class="b-mono ai__tag">Crescita</p>
           <h3 class="b-h3">Lead e contenuti automatici</h3>
-          <p class="b-text">Ricerca di potenziali clienti, articoli del blog e report che si preparano da soli, con te che approvi.</p>
+          <p class="b-text">
+            Ricerca di potenziali clienti, articoli del blog e report che si preparano da soli, con
+            te che approvi.
+          </p>
         </article>
       </div>
       <div data-reveal>
-        <a href="/intelligenza-artificiale/" class="b-btn b-btn--ghost">Scopri cosa può fare l’AI per te <span class="b-arrow" aria-hidden="true">→</span></a>
+        <a href="/intelligenza-artificiale/" class="b-btn b-btn--ghost">
+          Scopri cosa può fare l’AI per te{' '}
+          <span class="b-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -321,21 +443,23 @@ const steps = [
       <div class="b-head b-head--split" data-reveal>
         <div>
           <p class="b-eyebrow">Come lavoriamo</p>
-          <h2 class="b-h2">Dalla prima call al lancio, <span class="b-accent">senza sorprese.</span></h2>
+          <h2 class="b-h2">
+            Dalla prima call al lancio, <span class="b-accent">senza sorprese.</span>
+          </h2>
         </div>
-        <p class="b-text">Sai sempre cosa stiamo facendo, quanto manca e quanto costa. Il primo passo è gratuito.</p>
+        <p class="b-text">
+          Sai sempre cosa stiamo facendo, quanto manca e quanto costa. Il primo passo è gratuito.
+        </p>
       </div>
       <ol class="b-steps steps">
-        {
-          steps.map((s, i) => (
-            <li class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
-              <span class="b-step__n">{s.n}</span>
-              <h3 class="b-h3 b-step__t">{s.t}</h3>
-              <p class="steps__time b-mono">{s.time}</p>
-              <p class="b-text">{s.d}</p>
-            </li>
-          ))
-        }
+        {steps.map((s, i) => (
+          <li class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+            <span class="b-step__n">{s.n}</span>
+            <h3 class="b-h3 b-step__t">{s.t}</h3>
+            <p class="steps__time b-mono">{s.time}</p>
+            <p class="b-text">{s.d}</p>
+          </li>
+        ))}
       </ol>
     </div>
   </section>
@@ -345,24 +469,28 @@ const steps = [
     <div class="b-shell">
       <div class="b-head" data-reveal>
         <p class="b-eyebrow">Dicono di noi</p>
-        <h2 class="b-h2">Clienti che ci <span class="b-accent">consigliano</span>.</h2>
+        <h2 class="b-h2">
+          Clienti che ci <span class="b-accent">consigliano</span>.
+        </h2>
       </div>
       <div class="quotes">
-        {
-          quotes.map((t, i) => (
-            <figure class="b-card quote" data-reveal data-reveal-delay={String((i % 2) + 1)}>
-              <div class="quote__stars" aria-label="5 stelle su 5">★★★★★</div>
-              <blockquote>“{t.quote}”</blockquote>
-              <figcaption>
-                <img src={t.image} alt="" width="44" height="44" loading="lazy" />
-                <span>
-                  <strong>{t.author}</strong>
-                  <small>{t.role} · {t.company}</small>
-                </span>
-              </figcaption>
-            </figure>
-          ))
-        }
+        {quotes.map((t, i) => (
+          <figure class="b-card quote" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+            <div class="quote__stars" aria-label="5 stelle su 5">
+              ★★★★★
+            </div>
+            <blockquote>“{t.quote}”</blockquote>
+            <figcaption>
+              <img src={t.image} alt="" width="44" height="44" loading="lazy" />
+              <span>
+                <strong>{t.author}</strong>
+                <small>
+                  {t.role} · {t.company}
+                </small>
+              </span>
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>
@@ -370,16 +498,41 @@ const steps = [
   <!-- SHOP NFC -->
   <section id="shop-nfc" class="b-section b-section--tight b-section--line">
     <div class="b-shell">
-      <a href="https://shopnfc.bitora.it/" class="b-card nfc" rel="noopener" data-track="cta_click" data-track-location="home_shopnfc" data-reveal>
+      <a
+        href="https://shopnfc.bitora.it/"
+        class="b-card nfc"
+        rel="noopener"
+        data-track="cta_click"
+        data-track-location="home_shopnfc"
+        data-reveal
+      >
         <div>
           <p class="b-eyebrow">Novità · Shop NFC Bitora</p>
-          <h2 class="b-h2 nfc__title">Shop NFC Bitora: tessere, tag e lettori. <br /><span class="b-accent">Programmazione inclusa.</span></h2>
-          <p class="b-text">Recensioni Google con un tap, biglietti da visita smart, espositori da tavolo e tag industriali. Da 10 a 100.000 pezzi su shopnfc.bitora.it, spediti in tutta Italia.</p>
-          <span class="b-btn b-btn--light nfc__btn">Entra nello Shop NFC <span class="b-arrow" aria-hidden="true">→</span></span>
+          <h2 class="b-h2 nfc__title">
+            Shop NFC Bitora: tessere, tag e lettori. <br />
+            <span class="b-accent">Programmazione inclusa.</span>
+          </h2>
+          <p class="b-text">
+            Recensioni Google con un tap, biglietti da visita smart, espositori da tavolo e tag
+            industriali. Da 10 a 100.000 pezzi su shopnfc.bitora.it, spediti in tutta Italia.
+          </p>
+          <span class="b-btn b-btn--light nfc__btn">
+            Entra nello Shop NFC{' '}
+            <span class="b-arrow" aria-hidden="true">
+              →
+            </span>
+          </span>
         </div>
         <picture class="nfc__img">
           <source srcset="/shop-nfc-products.webp" type="image/webp" />
-          <img src="/shop-nfc-products.jpg" alt="Tessere, tag, braccialetto e lettore NFC Bitora" width="1024" height="1024" loading="lazy" decoding="async" />
+          <img
+            src="/shop-nfc-products.jpg"
+            alt="Tessere, tag, braccialetto e lettore NFC Bitora"
+            width="1024"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
         </picture>
       </a>
     </div>
@@ -392,7 +545,14 @@ const steps = [
         <div class="trust-box__main">
           <div class="trust-box__badge">
             <span class="trust-box__shield" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 <path d="m9 12 2 2 4-4" />
               </svg>
@@ -403,7 +563,11 @@ const steps = [
             I dati della tua azienda sono <span class="b-accent">protetti in Europa</span>.
           </h2>
           <p class="b-text trust-box__desc">
-            <strong>Bitora è un prodotto di Denis Cazzulo</strong> (P.IVA 13359170019) e tratta i dati dei clienti secondo il <strong>Regolamento Europeo GDPR (UE 2016/679)</strong>. Nessun sub-appalto opaco: usiamo server in Unione Europea, database isolati per singolo cliente, accordi di riservatezza (NDA) e API AI che non addestrano mai modelli pubblici sui tuoi documenti.
+            <strong>Bitora è un prodotto di Denis Cazzulo</strong> (P.IVA 13359170019) e tratta i
+            dati dei clienti secondo il <strong>Regolamento Europeo GDPR (UE 2016/679)</strong>.
+            Nessun sub-appalto opaco: usiamo server in Unione Europea, database isolati per singolo
+            cliente, accordi di riservatezza (NDA) e API AI che non addestrano mai modelli pubblici
+            sui tuoi documenti.
           </p>
           <div class="b-chips trust-box__chips">
             <span class="b-chip">Server 100% UE</span>
@@ -414,8 +578,16 @@ const steps = [
           </div>
         </div>
         <div class="trust-box__side">
-          <a href="/sicurezza-e-gdpr/" class="b-btn b-btn--primary" data-track="cta_click" data-track-location="home_gdpr_trust">
-            Tutte le garanzie per i clienti <span class="b-arrow" aria-hidden="true">→</span>
+          <a
+            href="/sicurezza-e-gdpr/"
+            class="b-btn b-btn--primary"
+            data-track="cta_click"
+            data-track-location="home_gdpr_trust"
+          >
+            Tutte le garanzie per i clienti{' '}
+            <span class="b-arrow" aria-hidden="true">
+              →
+            </span>
           </a>
           <p class="b-small trust-box__note">
             Referente unico diretto: <strong>Denis Cazzulo</strong> · Carmagnola (TO)
@@ -431,8 +603,24 @@ const steps = [
     <div class="b-shell quick" data-reveal>
       <p class="b-h3">Preferisci parlarne a voce?</p>
       <div class="quick__btns">
-        <a href="tel:+393514979670" class="b-btn b-btn--ghost" data-track="phone_click" data-track-location="home_quick">Chiama +39 351 497 9670</a>
-        <a href={whatsappLink('Ciao Bitora, vorrei fissare una call conoscitiva.')} class="b-btn b-btn--wa" data-track="whatsapp_click" data-track-location="home_quick" target="_blank" rel="noopener">WhatsApp</a>
+        <a
+          href="tel:+393514979670"
+          class="b-btn b-btn--ghost"
+          data-track="phone_click"
+          data-track-location="home_quick"
+        >
+          Chiama +39 351 497 9670
+        </a>
+        <a
+          href={whatsappLink('Ciao Bitora, vorrei fissare una call conoscitiva.')}
+          class="b-btn b-btn--wa"
+          data-track="whatsapp_click"
+          data-track-location="home_quick"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp
+        </a>
       </div>
     </div>
   </section>
@@ -467,8 +655,20 @@ const steps = [
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(5, 6, 7, 0.96) 0%, rgba(5, 6, 7, 0.8) 38%, rgba(5, 6, 7, 0.2) 70%, rgba(5, 6, 7, 0.1) 100%),
-      linear-gradient(180deg, rgba(5, 6, 7, 0.4) 0%, transparent 25%, transparent 70%, var(--b-ink) 100%);
+      linear-gradient(
+        90deg,
+        rgba(5, 6, 7, 0.96) 0%,
+        rgba(5, 6, 7, 0.8) 38%,
+        rgba(5, 6, 7, 0.2) 70%,
+        rgba(5, 6, 7, 0.1) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(5, 6, 7, 0.4) 0%,
+        transparent 25%,
+        transparent 70%,
+        var(--b-ink) 100%
+      );
   }
   @media (max-width: 900px) {
     .hero__bg img {
@@ -476,7 +676,12 @@ const steps = [
       opacity: 0.55;
     }
     .hero__scrim {
-      background: linear-gradient(180deg, rgba(5, 6, 7, 0.6) 0%, rgba(5, 6, 7, 0.75) 50%, var(--b-ink) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(5, 6, 7, 0.6) 0%,
+        rgba(5, 6, 7, 0.75) 50%,
+        var(--b-ink) 100%
+      );
     }
   }
   .hero__grid {

@@ -78,7 +78,15 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     if (formType === 'demo') {
-      if (!azienda || !telefono || !ruolo || !tecnici || !interventiMensili || !strumentiAttuali || !esigenza) {
+      if (
+        !azienda ||
+        !telefono ||
+        !ruolo ||
+        !tecnici ||
+        !interventiMensili ||
+        !strumentiAttuali ||
+        !esigenza
+      ) {
         return new Response(
           JSON.stringify({ ok: false, error: 'Compila tutti i campi obbligatori della demo' }),
           { status: 400, headers: { 'Content-Type': 'application/json' } }

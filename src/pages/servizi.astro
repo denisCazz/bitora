@@ -6,18 +6,54 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 import { pillars } from '../data/services';
 
 const method = [
-  { n: '01', t: 'Ascolto', d: 'Call gratuita di 30 minuti. Obiettivi, problemi, vincoli e budget. Se non siamo la scelta giusta, te lo diciamo.' },
-  { n: '02', t: 'Proposta a fasi', d: 'Entro 48 ore: cosa fare prima, cosa dopo, tempi e prezzo fisso per ogni fase.' },
-  { n: '03', t: 'Design e sviluppo', d: 'Anteprime online ogni settimana. Vedi il progetto crescere e lo correggi mentre nasce.' },
-  { n: '04', t: 'Lancio', d: 'Test, migrazione, SEO, tracciamento e formazione del team. Niente lanci al buio.' },
-  { n: '05', t: 'Crescita', d: 'Manutenzione, misurazione e nuove funzioni. Il progetto evolve con l’azienda.' },
+  {
+    n: '01',
+    t: 'Ascolto',
+    d: 'Call gratuita di 30 minuti. Obiettivi, problemi, vincoli e budget. Se non siamo la scelta giusta, te lo diciamo.',
+  },
+  {
+    n: '02',
+    t: 'Proposta a fasi',
+    d: 'Entro 48 ore: cosa fare prima, cosa dopo, tempi e prezzo fisso per ogni fase.',
+  },
+  {
+    n: '03',
+    t: 'Design e sviluppo',
+    d: 'Anteprime online ogni settimana. Vedi il progetto crescere e lo correggi mentre nasce.',
+  },
+  {
+    n: '04',
+    t: 'Lancio',
+    d: 'Test, migrazione, SEO, tracciamento e formazione del team. Niente lanci al buio.',
+  },
+  {
+    n: '05',
+    t: 'Crescita',
+    d: 'Manutenzione, misurazione e nuove funzioni. Il progetto evolve con l’azienda.',
+  },
 ];
 
 const platforms = [
-  { t: 'Shop NFC Bitora', d: 'Tessere recensioni Google, tag industriali, espositori e lettori NFC pronti all’uso.', href: 'https://shopnfc.bitora.it/' },
-  { t: 'Gestione interventi', d: 'Ticket, tecnici e rapportini per chi fa assistenza.', href: '/gestione-interventi/' },
-  { t: 'Rapportini digitali', d: 'Schede intervento con foto, firma e PDF automatico.', href: '/rapportini/' },
-  { t: 'Ticketing', d: 'Richieste dei clienti tracciate dall’apertura alla chiusura.', href: '/ticketing/' },
+  {
+    t: 'Shop NFC Bitora',
+    d: 'Tessere recensioni Google, tag industriali, espositori e lettori NFC pronti all’uso.',
+    href: 'https://shopnfc.bitora.it/',
+  },
+  {
+    t: 'Gestione interventi',
+    d: 'Ticket, tecnici e rapportini per chi fa assistenza.',
+    href: '/gestione-interventi/',
+  },
+  {
+    t: 'Rapportini digitali',
+    d: 'Schede intervento con foto, firma e PDF automatico.',
+    href: '/rapportini/',
+  },
+  {
+    t: 'Ticketing',
+    d: 'Richieste dei clienti tracciate dall’apertura alla chiusura.',
+    href: '/ticketing/',
+  },
   { t: 'Bitora CRM', d: 'Clienti, lead e note con mappa geolocalizzata.', href: '/bitora-crm/' },
 ];
 ---
@@ -44,26 +80,26 @@ const platforms = [
 
   <section class="b-section b-section--line">
     <div class="b-shell srv">
-      {
-        pillars.map((p, i) => (
-          <a href={p.href} class="srv__row" data-reveal data-reveal-delay={String((i % 2) + 1)}>
-            <span class="b-mono srv__n">{p.n}</span>
-            <div class="srv__main">
-              <p class="srv__kicker">{p.kicker}</p>
-              <h2 class="b-h2 srv__title">{p.title}</h2>
+      {pillars.map((p, i) => (
+        <a href={p.href} class="srv__row" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+          <span class="b-mono srv__n">{p.n}</span>
+          <div class="srv__main">
+            <p class="srv__kicker">{p.kicker}</p>
+            <h2 class="b-h2 srv__title">{p.title}</h2>
+          </div>
+          <div class="srv__side">
+            <p class="b-text">{p.short}</p>
+            <div class="b-chips">
+              {p.bullets.map(b => (
+                <span class="b-chip">{b}</span>
+              ))}
             </div>
-            <div class="srv__side">
-              <p class="b-text">{p.short}</p>
-              <div class="b-chips">
-                {p.bullets.map(b => (
-                  <span class="b-chip">{b}</span>
-                ))}
-              </div>
-            </div>
-            <span class="srv__go" aria-hidden="true">→</span>
-          </a>
-        ))
-      }
+          </div>
+          <span class="srv__go" aria-hidden="true">
+            →
+          </span>
+        </a>
+      ))}
     </div>
   </section>
 
@@ -72,23 +108,23 @@ const platforms = [
       <div class="b-head b-head--split" data-reveal>
         <div>
           <p class="b-eyebrow">Metodo</p>
-          <h2 class="b-h2">Come lavoriamo, <span class="b-accent">passo per passo</span>.</h2>
+          <h2 class="b-h2">
+            Come lavoriamo, <span class="b-accent">passo per passo</span>.
+          </h2>
         </div>
         <p class="b-text">
-          Ogni progetto segue lo stesso percorso trasparente, che si tratti di una landing page o di un
-          gestionale con app. Sai sempre a che punto siamo e cosa succede dopo.
+          Ogni progetto segue lo stesso percorso trasparente, che si tratti di una landing page o di
+          un gestionale con app. Sai sempre a che punto siamo e cosa succede dopo.
         </p>
       </div>
       <ol class="mth">
-        {
-          method.map((m, i) => (
-            <li class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
-              <span class="b-step__n">{m.n}</span>
-              <h3 class="b-h3 b-step__t">{m.t}</h3>
-              <p class="b-text">{m.d}</p>
-            </li>
-          ))
-        }
+        {method.map((m, i) => (
+          <li class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+            <span class="b-step__n">{m.n}</span>
+            <h3 class="b-h3 b-step__t">{m.t}</h3>
+            <p class="b-text">{m.d}</p>
+          </li>
+        ))}
       </ol>
     </div>
   </section>
@@ -97,19 +133,21 @@ const platforms = [
     <div class="b-shell">
       <div class="b-head" data-reveal>
         <p class="b-eyebrow">Piattaforme pronte</p>
-        <h2 class="b-h2">Vuoi partire <span class="b-accent">subito</span>?</h2>
-        <p class="b-lede">Piattaforme già sviluppate e collaudate, configurate sulla tua azienda in pochi giorni.</p>
+        <h2 class="b-h2">
+          Vuoi partire <span class="b-accent">subito</span>?
+        </h2>
+        <p class="b-lede">
+          Piattaforme già sviluppate e collaudate, configurate sulla tua azienda in pochi giorni.
+        </p>
       </div>
       <div class="plt">
-        {
-          platforms.map((p, i) => (
-            <a href={p.href} class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
-              <h3 class="b-h3">{p.t}</h3>
-              <p class="b-text plt__d">{p.d}</p>
-              <span class="b-mono plt__go">Scopri →</span>
-            </a>
-          ))
-        }
+        {platforms.map((p, i) => (
+          <a href={p.href} class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+            <h3 class="b-h3">{p.t}</h3>
+            <p class="b-text plt__d">{p.d}</p>
+            <span class="b-mono plt__go">Scopri →</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>

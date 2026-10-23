@@ -163,12 +163,10 @@ export default function QRCodeGenerator() {
   const labelClass = 'block text-sm font-medium text-white/60 mb-2';
   const selectClass =
     'w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors appearance-none cursor-pointer';
-  const cardClass =
-    'space-y-5 p-4 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10';
+  const cardClass = 'space-y-5 p-4 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10';
   const headingClass = 'text-lg font-semibold text-white';
   const subLabelClass = 'text-sm font-medium text-white/60';
-  const colorRowClass =
-    'flex items-center justify-between gap-3 p-3 rounded-xl bg-white/[0.05]';
+  const colorRowClass = 'flex items-center justify-between gap-3 p-3 rounded-xl bg-white/[0.05]';
   const colorInputClass =
     'w-20 sm:w-24 rounded-lg border border-white/10 bg-white/5 px-2 py-1.5 text-xs sm:text-sm text-white font-mono text-center';
 
@@ -371,9 +369,7 @@ export default function QRCodeGenerator() {
               <p className={`${subLabelClass} mb-2`}>Stile angoli</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs text-white/40 mb-1.5">
-                    Esterno
-                  </label>
+                  <label className="block text-xs text-white/40 mb-1.5">Esterno</label>
                   <select
                     value={cornerSquareStyle}
                     onChange={e => setCornerSquareStyle(e.target.value as CornerSquareType)}
@@ -387,9 +383,7 @@ export default function QRCodeGenerator() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs text-white/40 mb-1.5">
-                    Interno
-                  </label>
+                  <label className="block text-xs text-white/40 mb-1.5">Interno</label>
                   <select
                     value={cornerDotStyle}
                     onChange={e => setCornerDotStyle(e.target.value as CornerDotType)}
@@ -430,16 +424,12 @@ export default function QRCodeGenerator() {
                       alt="Logo"
                       className="h-16 w-16 object-contain rounded-lg"
                     />
-                    <span className="text-sm text-green-400">
-                      Logo caricato ✓
-                    </span>
+                    <span className="text-sm text-green-400">Logo caricato ✓</span>
                   </div>
                 ) : (
                   <div className="text-center">
                     <span className="text-3xl">📁</span>
-                    <p className="mt-2 text-sm text-white/50">
-                      Clicca per caricare un logo
-                    </p>
+                    <p className="mt-2 text-sm text-white/50">Clicca per caricare un logo</p>
                     <p className="text-xs text-white/30 mt-1">PNG, JPG, SVG</p>
                   </div>
                 )}
@@ -529,11 +519,11 @@ export default function QRCodeGenerator() {
               </button>
             </div>
 
-              <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10">
+            <div className="p-4 rounded-xl bg-white/[0.04] border border-white/10">
               <p className="text-sm text-white/50">
-                <strong className="text-white/70">Suggerimento:</strong> Usa il formato PNG per sfondi trasparenti (ideale
-                per stampe su materiali colorati). Il JPG include sempre uno sfondo pieno — perfetto
-                per uso digitale.
+                <strong className="text-white/70">Suggerimento:</strong> Usa il formato PNG per
+                sfondi trasparenti (ideale per stampe su materiali colorati). Il JPG include sempre
+                uno sfondo pieno — perfetto per uso digitale.
               </p>
             </div>
           </div>
@@ -543,9 +533,7 @@ export default function QRCodeGenerator() {
       <div className="flex flex-col items-center gap-6 order-first lg:order-none">
         <div className="lg:sticky lg:top-28 w-full flex justify-center">
           <div className="p-4 sm:p-6 rounded-3xl bg-white/[0.04] border border-white/10 shadow-2xl w-full max-w-xs sm:max-w-sm">
-            <p className="text-sm font-medium text-white/40 mb-4 text-center">
-              Anteprima
-            </p>
+            <p className="text-sm font-medium text-white/40 mb-4 text-center">Anteprima</p>
             <div
               ref={qrRef}
               className="flex items-center justify-center rounded-2xl overflow-hidden mx-auto [&>canvas]:!w-full [&>canvas]:!h-auto"

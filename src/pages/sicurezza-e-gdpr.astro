@@ -12,7 +12,11 @@ const infraPillars = [
     kicker: 'Data Residency UE',
     title: 'Server e database in Unione Europea',
     desc: 'Tutti i siti, gli e-commerce e i software gestionali che realizziamo sono ospitati in data center certificati situati nell’Unione Europea (Germania e Italia), pienamente soggetti alla giurisdizione europea e al GDPR.',
-    bullets: ['Data center certificati ISO/IEC 27001', 'Giurisdizione 100% UE', 'Nessun trasferimento opaco extra-UE'],
+    bullets: [
+      'Data center certificati ISO/IEC 27001',
+      'Giurisdizione 100% UE',
+      'Nessun trasferimento opaco extra-UE',
+    ],
   },
   {
     n: '02',
@@ -26,14 +30,22 @@ const infraPillars = [
     kicker: 'Rete & Crittografia',
     title: 'Protezione Cloudflare, WAF e TLS 1.3',
     desc: 'Ogni comunicazione tra browser, app mobile e server è cifrata end-to-end tramite HTTPS/TLS. La rete è protetta a monte da firewall applicativo (WAF) Cloudflare contro attacchi DDoS, bot malevoli e tentativi di intrusione.',
-    bullets: ['Crittografia TLS/HTTPS ovunque', 'Firewall WAF & protezione DDoS', 'Password e segreti cifrati'],
+    bullets: [
+      'Crittografia TLS/HTTPS ovunque',
+      'Firewall WAF & protezione DDoS',
+      'Password e segreti cifrati',
+    ],
   },
   {
     n: '04',
     kicker: 'Continuità operativa',
     title: 'Monitoraggio 24/7 e backup giornalieri',
     desc: 'Il nostro sistema di controllo verifica 24 ore su 24 lo stato dei server, dei domini e dei certificati di sicurezza, inviando alert in tempo reale. Eseguiamo backup automatici giornalieri cifrati per garantire il ripristino rapido.',
-    bullets: ['Watchdog uptime e SSL attivo 24/7', 'Backup automatici giornalieri', 'Procedure di Disaster Recovery'],
+    bullets: [
+      'Watchdog uptime e SSL attivo 24/7',
+      'Backup automatici giornalieri',
+      'Procedure di Disaster Recovery',
+    ],
   },
 ];
 
@@ -91,7 +103,8 @@ const gdprFaqs = [
       'Certamente. Anche prima della call di approfondimento o della stesura del preventivo possiamo sottoscrivere un Accordo di Riservatezza (NDA) bilaterale, così puoi condividere listini, documenti tecnici o procedure interne con la massima serenità.',
   },
   {
-    question: 'Se usiamo l’Intelligenza Artificiale nel gestionale, i nostri documenti finiscono online?',
+    question:
+      'Se usiamo l’Intelligenza Artificiale nel gestionale, i nostri documenti finiscono online?',
     answer:
       'Assolutamente no. Quando integriamo funzionalità AI (ad esempio per preparare bozze di preventivi o interrogare manuali tecnici), utilizziamo API Business configurate per non addestrare mai i modelli sui dati del cliente e limitiamo l’accesso ai soli documenti autorizzati.',
   },
@@ -125,7 +138,11 @@ const gdprFaqs = [
     title='I dati della tua azienda sono <span class="b-grad">al sicuro</span>.'
     lede="Bitora è un prodotto di Denis Cazzulo. Progettiamo e gestiamo siti web, e-commerce, software gestionali, app e intelligenza artificiale trattando i dati dei clienti nel pieno rispetto del GDPR (Regolamento UE 2016/679), con server in Unione Europea e responsabilità diretta."
     crumbs={[{ name: 'Sicurezza e GDPR', href: '/sicurezza-e-gdpr/' }]}
-    primary={{ label: 'Parla con Denis o richiedi un NDA', href: '/contattaci/', track: 'gdpr_hero_cta' }}
+    primary={{
+      label: 'Parla con Denis o richiedi un NDA',
+      href: '/contattaci/',
+      track: 'gdpr_hero_cta',
+    }}
     secondary={{ label: 'Informativa Privacy del sito', href: '/privacy-policy/' }}
     chips={[
       'Conforme GDPR (UE 2016/679)',
@@ -146,7 +163,8 @@ const gdprFaqs = [
         </div>
         <h2 class="b-h3 id-card__title">Bitora — un prodotto di Denis Cazzulo</h2>
         <p class="b-small id-card__sub">
-          Identità giuridica chiara, sede in Italia e un unico professionista responsabile dall’architettura alla messa online.
+          Identità giuridica chiara, sede in Italia e un unico professionista responsabile
+          dall’architettura alla messa online.
         </p>
         <dl class="id-card__dl">
           <div>
@@ -171,7 +189,9 @@ const gdprFaqs = [
           </div>
           <div>
             <dt>Contatto Privacy</dt>
-            <dd><a href="mailto:privacy@bitora.it">privacy@bitora.it</a></dd>
+            <dd>
+              <a href="mailto:privacy@bitora.it">privacy@bitora.it</a>
+            </dd>
           </div>
         </dl>
       </div>
@@ -183,13 +203,24 @@ const gdprFaqs = [
         </h2>
         <div class="id-copy">
           <p class="b-text">
-            Quando affidi a un partner esterno il sito web, l’e-commerce o il software gestionale della tua azienda, gli stai affidando anagrafiche clienti, ordini, preventivi, rapportini di lavoro e informazioni commerciali preziose.
+            Quando affidi a un partner esterno il sito web, l’e-commerce o il software gestionale
+            della tua azienda, gli stai affidando anagrafiche clienti, ordini, preventivi,
+            rapportini di lavoro e informazioni commerciali preziose.
           </p>
           <p class="b-text">
-            Con <strong>Bitora — un prodotto di Denis Cazzulo</strong> hai una garanzia rara nel settore digitale: <strong>non esistono catene di sub-appalto, call center o sviluppatori anonimi</strong> che si passano le credenziali del tuo progetto. Chi progetta il software è la stessa persona che configura i server, protegge i database e ti risponde al telefono.
+            Con <strong>Bitora — un prodotto di Denis Cazzulo</strong> hai una garanzia rara nel
+            settore digitale:{' '}
+            <strong>non esistono catene di sub-appalto, call center o sviluppatori anonimi</strong>{' '}
+            che si passano le credenziali del tuo progetto. Chi progetta il software è la stessa
+            persona che configura i server, protegge i database e ti risponde al telefono.
           </p>
           <p class="b-text">
-            Ogni progetto viene sviluppato e mantenuto secondo i principi del <strong>Regolamento Generale sulla Protezione dei Dati (GDPR — Regolamento UE 2016/679)</strong>: minimizzazione dei dati raccolti, crittografia moderna, isolamento degli ambienti e massima riservatezza professionale.
+            Ogni progetto viene sviluppato e mantenuto secondo i principi del{' '}
+            <strong>
+              Regolamento Generale sulla Protezione dei Dati (GDPR — Regolamento UE 2016/679)
+            </strong>
+            : minimizzazione dei dati raccolti, crittografia moderna, isolamento degli ambienti e
+            massima riservatezza professionale.
           </p>
         </div>
 
@@ -222,37 +253,44 @@ const gdprFaqs = [
         <div>
           <p class="b-eyebrow">Infrastruttura e protezione tecnica</p>
           <h2 class="b-h2">
-            Quattro livelli di difesa <br />per <span class="b-grad">ogni progetto</span>.
+            Quattro livelli di difesa <br />
+            per <span class="b-grad">ogni progetto</span>.
           </h2>
         </div>
         <p class="b-text">
-          Che si tratti di un sito aziendale, di un portale e-commerce o di un gestionale con app per i tecnici in cantiere, applichiamo gli stessi standard di sicurezza enterprise.
+          Che si tratti di un sito aziendale, di un portale e-commerce o di un gestionale con app
+          per i tecnici in cantiere, applichiamo gli stessi standard di sicurezza enterprise.
         </p>
       </div>
 
       <div class="infra-grid">
-        {
-          infraPillars.map((item, i) => (
-            <article class="b-card infra-card" data-reveal data-reveal-delay={String((i % 2) + 1)}>
-              <div class="infra-card__top">
-                <span class="b-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                </span>
-                <span class="b-mono infra-card__n">{item.n}</span>
-              </div>
-              <p class="infra-card__kicker">{item.kicker}</p>
-              <h3 class="b-h3">{item.title}</h3>
-              <p class="b-text infra-card__desc">{item.desc}</p>
-              <ul class="b-checks infra-card__list">
-                {item.bullets.map(b => (
-                  <li>{b}</li>
-                ))}
-              </ul>
-            </article>
-          ))
-        }
+        {infraPillars.map((item, i) => (
+          <article class="b-card infra-card" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+            <div class="infra-card__top">
+              <span class="b-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </span>
+              <span class="b-mono infra-card__n">{item.n}</span>
+            </div>
+            <p class="infra-card__kicker">{item.kicker}</p>
+            <h3 class="b-h3">{item.title}</h3>
+            <p class="b-text infra-card__desc">{item.desc}</p>
+            <ul class="b-checks infra-card__list">
+              {item.bullets.map(b => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -268,20 +306,19 @@ const gdprFaqs = [
           </h2>
         </div>
         <p class="b-text">
-          La sicurezza tecnica non basta senza regole chiare su chi può vedere i dati, come vengono trattati e quali tutele hai prima, durante e dopo lo sviluppo.
+          La sicurezza tecnica non basta senza regole chiare su chi può vedere i dati, come vengono
+          trattati e quali tutele hai prima, durante e dopo lo sviluppo.
         </p>
       </div>
 
       <div class="legal-grid">
-        {
-          legalGuarantees.map((g, i) => (
-            <article class="b-card legal-card" data-reveal data-reveal-delay={String((i % 2) + 1)}>
-              <span class="b-mono legal-card__num">GARANZIA 0{i + 1}</span>
-              <h3 class="b-h3 legal-card__title">{g.title}</h3>
-              <p class="b-text">{g.desc}</p>
-            </article>
-          ))
-        }
+        {legalGuarantees.map((g, i) => (
+          <article class="b-card legal-card" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+            <span class="b-mono legal-card__num">GARANZIA 0{i + 1}</span>
+            <h3 class="b-h3 legal-card__title">{g.title}</h3>
+            <p class="b-text">{g.desc}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -297,20 +334,19 @@ const gdprFaqs = [
           <span class="b-accent">senza mai esporre i tuoi segreti</span>.
         </h2>
         <p class="b-lede">
-          Molte aziende temono che usare l’intelligenza artificiale significhi regalare i propri listini o documenti a modelli pubblici. Con Bitora questo non avviene mai.
+          Molte aziende temono che usare l’intelligenza artificiale significhi regalare i propri
+          listini o documenti a modelli pubblici. Con Bitora questo non avviene mai.
         </p>
       </div>
 
       <div class="ai-sec__grid">
-        {
-          aiGuarantees.map((a, i) => (
-            <article class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
-              <p class="b-mono ai-sec__tag">{a.tag}</p>
-              <h3 class="b-h3 ai-sec__title">{a.title}</h3>
-              <p class="b-text">{a.desc}</p>
-            </article>
-          ))
-        }
+        {aiGuarantees.map((a, i) => (
+          <article class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+            <p class="b-mono ai-sec__tag">{a.tag}</p>
+            <h3 class="b-h3 ai-sec__title">{a.title}</h3>
+            <p class="b-text">{a.desc}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -320,7 +356,9 @@ const gdprFaqs = [
     <div class="b-shell">
       <div class="b-head" data-reveal>
         <p class="b-eyebrow">Riepilogo delle misure</p>
-        <h2 class="b-h2">Cosa applichiamo di serie su <span class="b-grad">tutti i sistemi Bitora</span>.</h2>
+        <h2 class="b-h2">
+          Cosa applichiamo di serie su <span class="b-grad">tutti i sistemi Bitora</span>.
+        </h2>
       </div>
 
       <div class="b-card matrix" data-reveal>
@@ -351,15 +389,27 @@ const gdprFaqs = [
             Parla direttamente con Denis Cazzulo prima di condividere qualsiasi dato.
           </h3>
           <p class="b-text">
-            Se la tua azienda ha requisiti specifici di conformità, necessita di firmare un accordo di riservatezza preventivo o vuole conoscere nel dettaglio l’architettura per un nuovo software, scrivici o chiamaci senza impegno.
+            Se la tua azienda ha requisiti specifici di conformità, necessita di firmare un accordo
+            di riservatezza preventivo o vuole conoscere nel dettaglio l’architettura per un nuovo
+            software, scrivici o chiamaci senza impegno.
           </p>
         </div>
         <div class="direct-banner__actions">
-          <a href="/contattaci/" class="b-btn b-btn--primary" data-track="cta_click" data-track-location="gdpr_direct_banner">
-            Contattaci in riservatezza <span class="b-arrow" aria-hidden="true">→</span>
+          <a
+            href="/contattaci/"
+            class="b-btn b-btn--primary"
+            data-track="cta_click"
+            data-track-location="gdpr_direct_banner"
+          >
+            Contattaci in riservatezza{' '}
+            <span class="b-arrow" aria-hidden="true">
+              →
+            </span>
           </a>
           <a
-            href={whatsappLink('Ciao Denis, vorrei informazioni su sicurezza dati e GDPR per un progetto con Bitora.')}
+            href={whatsappLink(
+              'Ciao Denis, vorrei informazioni su sicurezza dati e GDPR per un progetto con Bitora.'
+            )}
             class="b-btn b-btn--wa"
             data-track="whatsapp_click"
             data-track-location="gdpr_direct_banner"

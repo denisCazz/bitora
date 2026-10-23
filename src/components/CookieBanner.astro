@@ -23,29 +23,56 @@ const toggles = [
     <div class="ck__text">
       <p class="ck__title">Cookie, in breve.</p>
       <p>
-        Usiamo cookie tecnici per far funzionare il sito e, solo se accetti, cookie di analisi e marketing (Google Analytics,
-        Google Ads, Meta Pixel). <a href="/cookie-policy/">Cookie policy</a> · <a href="/privacy-policy/">Privacy</a>
+        Usiamo cookie tecnici per far funzionare il sito e, solo se accetti, cookie di analisi e
+        marketing (Google Analytics, Google Ads, Meta Pixel).{' '}
+        <a href="/cookie-policy/">Cookie policy</a> · <a href="/privacy-policy/">Privacy</a>
       </p>
     </div>
     <div class="ck__actions">
-      <button type="button" id="cookie-settings-btn" class="ck__link">Personalizza</button>
-      <button type="button" id="cookie-reject" class="b-btn b-btn--ghost b-btn--sm">Rifiuta</button>
-      <button type="button" id="cookie-accept" class="b-btn b-btn--primary b-btn--sm">Accetta</button>
+      <button type="button" id="cookie-settings-btn" class="ck__link">
+        Personalizza
+      </button>
+      <button type="button" id="cookie-reject" class="b-btn b-btn--ghost b-btn--sm">
+        Rifiuta
+      </button>
+      <button type="button" id="cookie-accept" class="b-btn b-btn--primary b-btn--sm">
+        Accetta
+      </button>
     </div>
   </div>
 </div>
 
-<div id="cookie-settings-modal" class="ckm" role="dialog" aria-modal="true" aria-labelledby="ckm-title" hidden>
+<div
+  id="cookie-settings-modal"
+  class="ckm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="ckm-title"
+  hidden
+>
   <div class="ckm__panel">
     <div class="ckm__head">
-      <p id="ckm-title" class="ckm__title">Preferenze cookie</p>
+      <p id="ckm-title" class="ckm__title">
+        Preferenze cookie
+      </p>
       <button type="button" id="close-cookie-settings" class="ckm__close" aria-label="Chiudi">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          ><path d="M6 6l12 12M18 6 6 18"></path></svg
+        <svg
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
         >
+          <path d="M6 6l12 12M18 6 6 18"></path>
+        </svg>
       </button>
     </div>
-    <p class="ckm__lede">Scegli cosa attivare. Puoi cambiare idea quando vuoi da "Preferenze cookie" in fondo alla pagina.</p>
+    <p class="ckm__lede">
+      Scegli cosa attivare. Puoi cambiare idea quando vuoi da "Preferenze cookie" in fondo alla
+      pagina.
+    </p>
 
     <div class="ckm__rows">
       <div class="ckm__row">
@@ -55,26 +82,30 @@ const toggles = [
         </div>
         <span class="ckm__always">Sempre attivi</span>
       </div>
-      {
-        toggles.map(t => (
-          <label class="ckm__row" for={t.id}>
-            <div>
-              <p class="ckm__row-t">{t.title}</p>
-              <p>{t.text}</p>
-            </div>
-            <span class="ckm__switch">
-              <input type="checkbox" id={t.id} />
-              <span aria-hidden="true" />
-            </span>
-          </label>
-        ))
-      }
+      {toggles.map(t => (
+        <label class="ckm__row" for={t.id}>
+          <div>
+            <p class="ckm__row-t">{t.title}</p>
+            <p>{t.text}</p>
+          </div>
+          <span class="ckm__switch">
+            <input type="checkbox" id={t.id} />
+            <span aria-hidden="true" />
+          </span>
+        </label>
+      ))}
     </div>
 
     <div class="ckm__foot">
-      <button type="button" id="cookie-reject-modal" class="b-btn b-btn--ghost b-btn--sm">Rifiuta tutti</button>
-      <button type="button" id="save-cookie-settings" class="b-btn b-btn--light b-btn--sm">Salva scelte</button>
-      <button type="button" id="cookie-accept-modal" class="b-btn b-btn--primary b-btn--sm">Accetta tutti</button>
+      <button type="button" id="cookie-reject-modal" class="b-btn b-btn--ghost b-btn--sm">
+        Rifiuta tutti
+      </button>
+      <button type="button" id="save-cookie-settings" class="b-btn b-btn--light b-btn--sm">
+        Salva scelte
+      </button>
+      <button type="button" id="cookie-accept-modal" class="b-btn b-btn--primary b-btn--sm">
+        Accetta tutti
+      </button>
     </div>
   </div>
 </div>

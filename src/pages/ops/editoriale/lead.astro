@@ -26,24 +26,20 @@ const leads = isDatabaseConfigured()
         </tr>
       </thead>
       <tbody>
-        {
-          leads.map(lead => (
-            <tr>
-              <td>{formatClock(lead.createdAt)}</td>
-              <td>{lead.name}</td>
-              <td>{lead.email}</td>
-              <td>{lead.cta}</td>
-              <td class="ops-wrap">{lead.article?.title || lead.articleSlug || '—'}</td>
-            </tr>
-          ))
-        }
-        {
-          leads.length === 0 && (
-            <tr>
-              <td colspan="5">Nessun lead dal magazine.</td>
-            </tr>
-          )
-        }
+        {leads.map(lead => (
+          <tr>
+            <td>{formatClock(lead.createdAt)}</td>
+            <td>{lead.name}</td>
+            <td>{lead.email}</td>
+            <td>{lead.cta}</td>
+            <td class="ops-wrap">{lead.article?.title || lead.articleSlug || '—'}</td>
+          </tr>
+        ))}
+        {leads.length === 0 && (
+          <tr>
+            <td colspan="5">Nessun lead dal magazine.</td>
+          </tr>
+        )}
       </tbody>
     </table>
   </div>

@@ -462,8 +462,8 @@
 <script>
   const els = document.querySelectorAll('.product-page [data-reveal]');
   const obs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
+    entries => {
+      entries.forEach(e => {
         if (e.isIntersecting) {
           e.target.classList.add('is-visible');
           obs.unobserve(e.target);
@@ -472,5 +472,5 @@
     },
     { threshold: 0.12 }
   );
-  els.forEach((el) => obs.observe(el));
+  els.forEach(el => obs.observe(el));
 </script>

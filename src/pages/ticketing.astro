@@ -264,16 +264,26 @@ const flowChips = [
       <div class="shell prod-hero-copy">
         <p class="eyebrow">Gestione pratiche · Ticketing operativo</p>
         <h1 class="display">
-          Ogni pratica sotto controllo,<br />dall’apertura alla chiusura
+          Ogni pratica sotto controllo,
+          <br />
+          dall’apertura alla chiusura
         </h1>
         <p class="lede">
-          Una piattaforma per registrare, assegnare e monitorare le richieste di assistenza, mantenendo operatori, centri assistenza e tecnici allineati.
+          Una piattaforma per registrare, assegnare e monitorare le richieste di assistenza,
+          mantenendo operatori, centri assistenza e tecnici allineati.
         </p>
         <div class="cta-row">
-          <a href="/richiedi-demo/" class="sl-btn-primary" data-track="cta_click" data-track-location="ticketing_hero"
-            >Richiedi una demo</a
+          <a
+            href="/richiedi-demo/"
+            class="sl-btn-primary"
+            data-track="cta_click"
+            data-track-location="ticketing_hero"
           >
-          <a href="#come-funziona" class="sl-btn-secondary">Scopri come funziona</a>
+            Richiedi una demo
+          </a>
+          <a href="#come-funziona" class="sl-btn-secondary">
+            Scopri come funziona
+          </a>
         </div>
       </div>
     </section>
@@ -283,18 +293,20 @@ const flowChips = [
       <div class="shell band-inner">
         <div class="max-w-3xl mb-12" data-reveal>
           <p class="eyebrow">Il messaggio</p>
-          <h2 class="headline">
-            Ogni segnalazione diventa una pratica tracciabile
-          </h2>
+          <h2 class="headline">Ogni segnalazione diventa una pratica tracciabile</h2>
           <p class="body">
-            L’operatore seleziona il cliente, descrive il problema, assegna il centro assistenza o il tecnico e aggiorna lo stato fino alla conclusione. Non è un help desk informatico: è una piattaforma per pratiche di assistenza tecnica, manutenzioni e post-vendita.
+            L’operatore seleziona il cliente, descrive il problema, assegna il centro assistenza o
+            il tecnico e aggiorna lo stato fino alla conclusione. Non è un help desk informatico: è
+            una piattaforma per pratiche di assistenza tecnica, manutenzioni e post-vendita.
           </p>
         </div>
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-16" data-reveal>
           <div class="lg:col-span-6">
-            <p class="eyebrow" style="margin-bottom:1rem">Cosa contiene una pratica</p>
+            <p class="eyebrow" style="margin-bottom:1rem">
+              Cosa contiene una pratica
+            </p>
             <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
-              {contenutiPratica.map((c) => (
+              {contenutiPratica.map(c => (
                 <li class="flex gap-3 text-sm text-[var(--prod-secondary)]">
                   <span class="text-[var(--prod-faint)]">—</span>
                   <span>{c}</span>
@@ -303,9 +315,11 @@ const flowChips = [
             </ul>
           </div>
           <div class="lg:col-span-5 lg:col-start-8">
-            <p class="eyebrow" style="margin-bottom:1rem">In ogni momento sapete</p>
+            <p class="eyebrow" style="margin-bottom:1rem">
+              In ogni momento sapete
+            </p>
             <ul class="space-y-0">
-              {visibilita.map((v) => (
+              {visibilita.map(v => (
                 <li class="flex gap-3 text-sm text-[var(--prod-secondary)] border-b border-[var(--prod-line-soft)] py-3">
                   <span class="text-[var(--prod-faint)]">→</span>
                   <span>{v}</span>
@@ -326,8 +340,8 @@ const flowChips = [
             <h2 class="headline">Nuova pratica in pochi passaggi</h2>
             <p class="body mb-7">
               L’operatore registra la richiesta in pochi passaggi, seleziona il cliente, descrive il
-              problema e può assegnare immediatamente la pratica al centro assistenza competente. Da quel
-              momento ogni aggiornamento rimane archiviato e consultabile.
+              problema e può assegnare immediatamente la pratica al centro assistenza competente. Da
+              quel momento ogni aggiornamento rimane archiviato e consultabile.
             </p>
             <ul class="space-y-3 text-sm text-[var(--prod-secondary)] mb-8">
               {[
@@ -336,7 +350,7 @@ const flowChips = [
                 'Descrivere il problema segnalato',
                 'Assegnare la pratica a un CAT',
                 'Impostare lo stato iniziale e le note',
-              ].map((line) => (
+              ].map(line => (
                 <li class="flex gap-3">
                   <span class="text-[var(--prod-faint)]">→</span>
                   <span>{line}</span>
@@ -344,17 +358,21 @@ const flowChips = [
               ))}
             </ul>
             <p class="body-sm">
-              <strong class="text-[var(--prod-secondary)] font-semibold">CAT</strong> = Centro Assistenza
-              Tecnica: riceve o coordina la pratica. Il
-              <strong class="text-[var(--prod-secondary)] font-semibold">manutentore</strong> è chi esegue
-              materialmente l’intervento.
+              <strong class="text-[var(--prod-secondary)] font-semibold">CAT</strong> = Centro
+              Assistenza Tecnica: riceve o coordina la pratica. Il
+              <strong class="text-[var(--prod-secondary)] font-semibold">manutentore</strong> è chi
+              esegue materialmente l’intervento.
             </p>
           </div>
           <div class="lg:col-span-7">
             <div class="ui-frame" aria-hidden="true">
               <div class="ui-chrome">
-                <span class="ui-dot"></span><span class="ui-dot"></span><span class="ui-dot"></span>
-                <span class="ml-3 text-xs text-[var(--prod-faint)] tracking-wide">Pratiche · Nuova pratica</span>
+                <span class="ui-dot"></span>
+                <span class="ui-dot"></span>
+                <span class="ui-dot"></span>
+                <span class="ml-3 text-xs text-[var(--prod-faint)] tracking-wide">
+                  Pratiche · Nuova pratica
+                </span>
               </div>
               <div class="p-5 md:p-8">
                 <div class="flex items-center justify-between mb-6 gap-4">
@@ -364,43 +382,43 @@ const flowChips = [
                 <div class="space-y-4">
                   <div class="grid md:grid-cols-2 gap-4">
                     <div>
-                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
-                        >Cliente</span
-                      >
+                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block">
+                        Cliente
+                      </span>
                       <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm">
                         Rossi Impianti Srl
                       </div>
                     </div>
                     <div>
-                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
-                        >Tipo intervento</span
-                      >
+                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block">
+                        Tipo intervento
+                      </span>
                       <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm">
                         Manutenzione
                       </div>
                     </div>
                   </div>
                   <div>
-                    <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
-                      >Descrizione problema</span
-                    >
+                    <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block">
+                      Descrizione problema
+                    </span>
                     <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-3 text-sm text-[var(--prod-secondary)] min-h-[72px]">
                       Caldaia in blocco dopo intervento precedente. Cliente segnala rumore anomalo.
                     </div>
                   </div>
                   <div class="grid md:grid-cols-2 gap-4">
                     <div>
-                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
-                        >Centro assistenza (CAT)</span
-                      >
+                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block">
+                        Centro assistenza (CAT)
+                      </span>
                       <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm">
                         CAT Nord-Ovest
                       </div>
                     </div>
                     <div>
-                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
-                        >Stato</span
-                      >
+                      <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block">
+                        Stato
+                      </span>
                       <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm flex items-center gap-2">
                         <span class="status-dot" style="background:#60a5fa"></span>
                         Ricevuta
@@ -408,26 +426,28 @@ const flowChips = [
                     </div>
                   </div>
                   <div>
-                    <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block"
-                      >Note per gli operatori</span
-                    >
+                    <span class="text-[10px] uppercase tracking-wider text-[var(--prod-faint)] mb-1.5 block">
+                      Note per gli operatori
+                    </span>
                     <div class="rounded-lg border border-white/15 bg-white/[0.04] px-3 py-2.5 text-sm text-[var(--prod-muted)]">
                       Preferenza intervento entro 48 ore · accesso cortile
                     </div>
                   </div>
                   <div class="flex flex-wrap gap-3 pt-2">
-                    <span class="px-4 py-2 text-xs font-semibold rounded-full bg-[#f5f5f7] text-black"
-                      >Crea pratica</span
-                    >
-                    <span class="px-4 py-2 text-xs font-semibold rounded-full border border-white/20 text-[var(--prod-muted)]"
-                      >Annulla</span
-                    >
+                    <span class="px-4 py-2 text-xs font-semibold rounded-full bg-[#f5f5f7] text-black">
+                      Crea pratica
+                    </span>
+                    <span class="px-4 py-2 text-xs font-semibold rounded-full border border-white/20 text-[var(--prod-muted)]">
+                      Annulla
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
             <p class="text-xs text-[var(--prod-faint)] mt-4">
-              Esempio di apertura di una nuova pratica. L’operatore associa il cliente, descrive la richiesta, assegna il centro assistenza e imposta lo stato iniziale. Interfaccia dimostrativa: i dati sono illustrativi.
+              Esempio di apertura di una nuova pratica. L’operatore associa il cliente, descrive la
+              richiesta, assegna il centro assistenza e imposta lo stato iniziale. Interfaccia
+              dimostrativa: i dati sono illustrativi.
             </p>
           </div>
         </div>
@@ -441,22 +461,27 @@ const flowChips = [
           <p class="eyebrow">Come funziona</p>
           <h2 class="headline max-w-3xl">Sei passaggi, dalla segnalazione alla chiusura</h2>
           <div class="flow-rail mt-2">
-            {
-              flowChips.flatMap((chip, i) =>
-                i < flowChips.length - 1
-                  ? [
-                      <span class="flow-chip">{chip}</span>,
-                      <span class="flow-arrow" aria-hidden="true">→</span>,
-                    ]
-                  : [<span class="flow-chip">{chip}</span>]
-              )
-            }
+            {flowChips.flatMap((chip, i) =>
+              i < flowChips.length - 1
+                ? [
+                    <span class="flow-chip">{chip}</span>,
+                    <span class="flow-arrow" aria-hidden="true">
+                      →
+                    </span>,
+                  ]
+                : [<span class="flow-chip">{chip}</span>]
+            )}
           </div>
         </div>
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-px bg-[var(--prod-line-soft)] rounded-2xl overflow-hidden" data-reveal>
-          {steps.map((s) => (
+        <div
+          class="grid md:grid-cols-2 xl:grid-cols-3 gap-px bg-[var(--prod-line-soft)] rounded-2xl overflow-hidden"
+          data-reveal
+        >
+          {steps.map(s => (
             <div class="step-cell">
-              <span class="text-3xl font-bold text-white/10 tabular-nums mb-4 block tracking-tight">{s.n}</span>
+              <span class="text-3xl font-bold text-white/10 tabular-nums mb-4 block tracking-tight">
+                {s.n}
+              </span>
               <h3 class="text-base font-bold mb-2.5 tracking-tight">{s.t}</h3>
               <p class="text-sm text-[var(--prod-muted)] leading-relaxed">{s.d}</p>
             </div>
@@ -473,14 +498,16 @@ const flowChips = [
             <p class="eyebrow">Stati della pratica</p>
             <h2 class="headline">Esempio di configurazione degli stati</h2>
             <p class="body mb-4">
-              Lo stato della pratica può mostrare se la richiesta è stata ricevuta, assegnata, presa in carico, sospesa in attesa di ricambi o completata.
+              Lo stato della pratica può mostrare se la richiesta è stata ricevuta, assegnata, presa
+              in carico, sospesa in attesa di ricambi o completata.
             </p>
             <p class="body-sm">
-              Gli stati mostrati rappresentano un esempio configurativo. Denominazioni, ordine e regole di avanzamento possono essere adattati al processo dell’azienda.
+              Gli stati mostrati rappresentano un esempio configurativo. Denominazioni, ordine e
+              regole di avanzamento possono essere adattati al processo dell’azienda.
             </p>
           </div>
           <div class="lg:col-span-7 space-y-2.5">
-            {stati.map((s) => (
+            {stati.map(s => (
               <div class="rounded-xl border border-[var(--prod-line-soft)] bg-black/30 p-5 flex gap-4 items-start">
                 <span class="status-dot mt-1.5 shrink-0" style={`background:${s.c}`}></span>
                 <div>
@@ -502,7 +529,7 @@ const flowChips = [
           <h2 class="headline">Cosa gestisce la piattaforma</h2>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5" data-reveal>
-          {features.map((f) => (
+          {features.map(f => (
             <div class="feat-card">
               <svg
                 class="w-5 h-5 text-[var(--prod-muted)] mb-4"
@@ -511,7 +538,12 @@ const flowChips = [
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={f.icon}></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d={f.icon}
+                ></path>
               </svg>
               <h3 class="text-[0.95rem] font-bold mb-2 tracking-tight">{f.t}</h3>
               <p class="text-sm text-[var(--prod-muted)] leading-relaxed">{f.d}</p>
@@ -529,27 +561,32 @@ const flowChips = [
             <p class="eyebrow">Ecosistema</p>
             <h2 class="headline">Collegata ai rapportini digitali</h2>
             <p class="body mb-5">
-              Il ticket rappresenta l’intera richiesta di assistenza. Il rapportino rappresenta il singolo
-              intervento svolto dal tecnico. Quando il tecnico conclude l’intervento, il rapportino digitale
-              può essere collegato alla pratica.
+              Il ticket rappresenta l’intera richiesta di assistenza. Il rapportino rappresenta il
+              singolo intervento svolto dal tecnico. Quando il tecnico conclude l’intervento, il
+              rapportino digitale può essere collegato alla pratica.
             </p>
             <p class="body-sm mb-8">
-              L’azienda dispone così, in un unico punto, della richiesta iniziale, delle attività svolte,
-              dei ricambi utilizzati, delle fotografie, delle firme e del documento finale. Una pratica può
-              avere più rapportini quando servono più interventi.
+              L’azienda dispone così, in un unico punto, della richiesta iniziale, delle attività
+              svolte, dei ricambi utilizzati, delle fotografie, delle firme e del documento finale.
+              Una pratica può avere più rapportini quando servono più interventi.
             </p>
             <div class="cta-row">
-              <a href="/rapportini/" class="sl-btn-secondary">Vai ai rapportini</a>
+              <a href="/rapportini/" class="sl-btn-secondary">
+                Vai ai rapportini
+              </a>
               <a
                 href="/gestione-interventi/"
                 class="text-sm text-[var(--prod-muted)] hover:text-white underline underline-offset-4 self-center"
-                >Vedi l’ecosistema</a
               >
+                Vedi l’ecosistema
+              </a>
             </div>
           </div>
           <div class="lg:col-span-6 lg:col-start-7">
             <div class="rounded-2xl border border-[var(--prod-line-soft)] bg-black/40 p-6 md:p-8">
-              <p class="eyebrow" style="margin-bottom:1.25rem">Flusso collegato</p>
+              <p class="eyebrow" style="margin-bottom:1.25rem">
+                Flusso collegato
+              </p>
               <ol class="space-y-0">
                 {flussoRapportini.map((step, i) => (
                   <li class="flex gap-4 items-start">
@@ -575,16 +612,20 @@ const flowChips = [
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-16" data-reveal>
           <div class="lg:col-span-5">
             <p class="eyebrow">Vantaggi</p>
-            <h2 class="headline">Meno richieste perse,<br />più controllo sull’assistenza</h2>
+            <h2 class="headline">
+              Meno richieste perse,
+              <br />
+              più controllo sull’assistenza
+            </h2>
             <p class="body">
-              Ogni pratica conserva il proprio storico. L’azienda può sapere quando è stata aperta, chi
-              l’ha presa in carico, a quale centro assistenza è stata assegnata, quali attività sono state
-              eseguite e perché è stata chiusa.
+              Ogni pratica conserva il proprio storico. L’azienda può sapere quando è stata aperta,
+              chi l’ha presa in carico, a quale centro assistenza è stata assegnata, quali attività
+              sono state eseguite e perché è stata chiusa.
             </p>
           </div>
           <div class="lg:col-span-6 lg:col-start-7">
             <ul class="grid sm:grid-cols-2 gap-2.5">
-              {vantaggi.map((v) => (
+              {vantaggi.map(v => (
                 <li class="rounded-xl border border-[var(--prod-line-soft)] bg-white/[0.02] px-4 py-3.5 text-sm text-[var(--prod-secondary)]">
                   {v}
                 </li>
@@ -603,7 +644,7 @@ const flowChips = [
           <h2 class="headline">Pensata per aziende che coordinano assistenza e interventi</h2>
         </div>
         <div class="flex flex-wrap gap-2.5" data-reveal>
-          {destinatari.map((d) => (
+          {destinatari.map(d => (
             <span class="status-pill">{d}</span>
           ))}
         </div>
@@ -618,25 +659,29 @@ const flowChips = [
             <p class="eyebrow">Personalizzazione</p>
             <h2 class="headline">Configurata sul vostro modo di lavorare</h2>
             <p class="body mb-5">
-              Il software viene adattato al modo in cui l’azienda lavora realmente. Stati, ruoli, campi,
-              assegnazioni e flussi possono essere configurati per rappresentare il processo di assistenza
-              già utilizzato.
+              Il software viene adattato al modo in cui l’azienda lavora realmente. Stati, ruoli,
+              campi, assegnazioni e flussi possono essere configurati per rappresentare il processo
+              di assistenza già utilizzato.
             </p>
             <p class="body-sm">
-              Bitora trasforma ogni richiesta di assistenza in un processo tracciabile, assegnabile e
-              controllabile, dalla prima segnalazione fino alla chiusura dell’intervento.
+              Bitora trasforma ogni richiesta di assistenza in un processo tracciabile, assegnabile
+              e controllabile, dalla prima segnalazione fino alla chiusura dell’intervento.
             </p>
           </div>
           <div class="lg:col-span-5 lg:col-start-8">
-            <p class="eyebrow" style="margin-bottom:1rem">Configurabile</p>
+            <p class="eyebrow" style="margin-bottom:1rem">
+              Configurabile
+            </p>
             <ul class="flex flex-wrap gap-2 mb-10">
-              {config.map((c) => (
+              {config.map(c => (
                 <span class="status-pill">{c}</span>
               ))}
             </ul>
-            <p class="eyebrow" style="margin-bottom:1rem">Moduli configurabili</p>
+            <p class="eyebrow" style="margin-bottom:1rem">
+              Moduli configurabili
+            </p>
             <ul class="space-y-2.5">
-              {moduli.map((m) => (
+              {moduli.map(m => (
                 <li class="flex gap-3 text-sm text-[var(--prod-secondary)]">
                   <span class="text-[var(--prod-faint)]">+</span>
                   <span>{m}</span>
@@ -644,7 +689,8 @@ const flowChips = [
               ))}
             </ul>
             <p class="text-xs text-[var(--prod-faint)] mt-5 leading-relaxed">
-              Le integrazioni e i moduli vengono valutati e configurati in base ai processi e agli strumenti già utilizzati dall’azienda.
+              Le integrazioni e i moduli vengono valutati e configurati in base ai processi e agli
+              strumenti già utilizzati dall’azienda.
             </p>
           </div>
         </div>
@@ -659,19 +705,25 @@ const flowChips = [
           Vuoi sapere sempre a che punto si trova ogni pratica?
         </h2>
         <p class="lede" style="margin-inline:auto;margin-bottom:2.5rem;text-align:center">
-          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una configurazione dimostrativa costruita intorno al tuo processo.
+          Raccontaci come gestisci oggi richieste, tecnici e rapportini. Ti mostreremo una
+          configurazione dimostrativa costruita intorno al tuo processo.
         </p>
         <div class="cta-row" style="justify-content:center">
           <a
             href="/richiedi-demo/"
             class="sl-btn-primary"
             data-track="cta_click"
-            data-track-location="ticketing_final">Richiedi una demo</a
+            data-track-location="ticketing_final"
           >
-          <a href="/contattaci/" class="sl-btn-secondary">Parla con Bitora</a>
+            Richiedi una demo
+          </a>
+          <a href="/contattaci/" class="sl-btn-secondary">
+            Parla con Bitora
+          </a>
         </div>
         <p class="text-xs text-[var(--prod-faint)] mt-10 max-w-xl mx-auto leading-relaxed text-center">
-          Le interfacce mostrate appartengono a un ambiente dimostrativo. Funzionalità, moduli, campi e flussi possono variare in base alla configurazione scelta per il progetto.
+          Le interfacce mostrate appartengono a un ambiente dimostrativo. Funzionalità, moduli,
+          campi e flussi possono variare in base alla configurazione scelta per il progetto.
         </p>
       </div>
     </section>
@@ -698,7 +750,6 @@ const flowChips = [
       },
     })}
   />
-
   <BreadcrumbListSchema
     crumbs={[
       { name: 'Home', item: 'https://bitora.it/' },

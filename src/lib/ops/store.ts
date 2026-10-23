@@ -113,14 +113,7 @@ export interface ServiceReport {
 }
 
 export type DeadlineCategory =
-  | 'dominio'
-  | 'hosting'
-  | 'certificato'
-  | 'contratto'
-  | 'fattura'
-  | 'licenza'
-  | 'fiscale'
-  | 'altro';
+  'dominio' | 'hosting' | 'certificato' | 'contratto' | 'fattura' | 'licenza' | 'fiscale' | 'altro';
 
 export type DeadlineRecurrence = 'none' | 'monthly' | 'yearly';
 

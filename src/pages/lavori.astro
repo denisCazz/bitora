@@ -7,7 +7,9 @@ import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 import { getWork, workKindLabels, type WorkKind } from '../data/work';
 
 const work = getWork().sort((a, b) => Number(a.isWip ?? false) - Number(b.isWip ?? false));
-const kinds = (Object.keys(workKindLabels) as WorkKind[]).filter(k => work.some(w => w.kinds.includes(k)));
+const kinds = (Object.keys(workKindLabels) as WorkKind[]).filter(k =>
+  work.some(w => w.kinds.includes(k))
+);
 const live = work.filter(w => !w.isWip).length;
 const listSchema = {
   '@type': 'ItemList',
@@ -48,22 +50,23 @@ const listSchema = {
         <button type="button" class="wk__f is-on" data-filter="all" role="tab" aria-selected="true">
           Tutti <span>{work.length}</span>
         </button>
-        {
-          kinds.map(k => (
-            <button type="button" class="wk__f" data-filter={k} role="tab" aria-selected="false">
-              {workKindLabels[k]} <span>{work.filter(w => w.kinds.includes(k)).length}</span>
-            </button>
-          ))
-        }
+        {kinds.map(k => (
+          <button type="button" class="wk__f" data-filter={k} role="tab" aria-selected="false">
+            {workKindLabels[k]} <span>{work.filter(w => w.kinds.includes(k)).length}</span>
+          </button>
+        ))}
       </div>
       <div class="wk__grid">
-        {
-          work.map((w, i) => (
-            <div class="wk__item" data-kinds={w.kinds.join(' ')} data-reveal data-reveal-delay={String((i % 3) + 1)}>
-              <ProjectCard item={w} />
-            </div>
-          ))
-        }
+        {work.map((w, i) => (
+          <div
+            class="wk__item"
+            data-kinds={w.kinds.join(' ')}
+            data-reveal
+            data-reveal-delay={String((i % 3) + 1)}
+          >
+            <ProjectCard item={w} />
+          </div>
+        ))}
       </div>
     </div>
   </section>

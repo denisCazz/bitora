@@ -8,38 +8,55 @@ export interface Props {
   size?: 'md' | 'lg';
 }
 const { item, size = 'md' } = Astro.props;
-const host = item.siteUrl && item.siteUrl !== '#' ? item.siteUrl.replace(/^https?:\/\//, '') : 'bitora.it';
+const host =
+  item.siteUrl && item.siteUrl !== '#' ? item.siteUrl.replace(/^https?:\/\//, '') : 'bitora.it';
 ---
 
-<a href={`/progetti/${item.slug}/`} class:list={['pc', `pc--${size}`]} data-kinds={item.kinds.join(' ')}>
+<a
+  href={`/progetti/${item.slug}/`}
+  class:list={['pc', `pc--${size}`]}
+  data-kinds={item.kinds.join(' ')}
+>
   <div class="pc__media">
-    {
-      item.shot ? (
-        <div class="b-browser">
-          <div class="b-browser__bar">
-            <i />
-            <i />
-            <i />
-            <span class="b-browser__url">{host}</span>
-          </div>
-          <img src={item.shot} alt={`Sito ${item.title} realizzato da Bitora`} width="1200" height="750" loading="lazy" decoding="async" />
+    {item.shot ? (
+      <div class="b-browser">
+        <div class="b-browser__bar">
+          <i />
+          <i />
+          <i />
+          <span class="b-browser__url">{host}</span>
         </div>
-      ) : item.mock ? (
-        <UiMock variant={item.mock} label={item.mock === 'dashboard' ? `${item.slug.split('-')[0]}.app` : undefined} />
-      ) : (
-        <div class="pc__logo b-browser">
-          <img src={item.imageUrl} alt={item.title} loading="lazy" decoding="async" />
-        </div>
-      )
-    }
+        <img
+          src={item.shot}
+          alt={`Sito ${item.title} realizzato da Bitora`}
+          width="1200"
+          height="750"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    ) : item.mock ? (
+      <UiMock
+        variant={item.mock}
+        label={item.mock === 'dashboard' ? `${item.slug.split('-')[0]}.app` : undefined}
+      />
+    ) : (
+      <div class="pc__logo b-browser">
+        <img src={item.imageUrl} alt={item.title} loading="lazy" decoding="async" />
+      </div>
+    )}
   </div>
   <div class="pc__meta">
     <div class="pc__tags">
-      {item.kinds.map(k => <span class="b-chip">{workKindLabels[k]}</span>)}
+      {item.kinds.map(k => (
+        <span class="b-chip">{workKindLabels[k]}</span>
+      ))}
       {item.isWip && <span class="b-chip pc__wip">In corso</span>}
     </div>
     <h3 class="b-h3">{item.title}</h3>
-    <p class="b-small">{item.subtitle} · {item.location}</p>
+    <p class="b-small">
+      {item.subtitle} · {item.location}
+    </p>
   </div>
 </a>
 

@@ -85,7 +85,13 @@ function plainText(events: OpsAlertEvent[]): string {
   return events
     .map(event => {
       const icon =
-        event.kind === 'recovery' ? '✅' : event.kind === 'reminder' ? '⏰' : event.kind === 'deadline' ? '📅' : '🚨';
+        event.kind === 'recovery'
+          ? '✅'
+          : event.kind === 'reminder'
+            ? '⏰'
+            : event.kind === 'deadline'
+              ? '📅'
+              : '🚨';
       return `${icon} ${event.title}: ${event.detail}`;
     })
     .join('\n');

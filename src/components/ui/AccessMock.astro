@@ -17,48 +17,65 @@ const logs = [
 ];
 ---
 
-<div class="am" role="img" aria-label="Centrale accessi e app di apertura varchi realizzate da Bitora per Società Agricola Franchina">
-  <img class="am__bg" src="/work/franchina-varco.webp" alt="" width="1200" height="686" loading={loading} decoding="async" />
+<div
+  class="am"
+  role="img"
+  aria-label="Centrale accessi e app di apertura varchi realizzate da Bitora per Società Agricola Franchina"
+>
+  <img
+    class="am__bg"
+    src="/work/franchina-varco.webp"
+    alt=""
+    width="1200"
+    height="686"
+    loading={loading}
+    decoding="async"
+  />
   <div class="am__shade"></div>
 
   <div class="am__console">
     <div class="am__head">
-      <img src="/work/franchina-logo.webp" alt="" width="256" height="250" loading={loading} decoding="async" />
+      <img
+        src="/work/franchina-logo.webp"
+        alt=""
+        width="256"
+        height="250"
+        loading={loading}
+        decoding="async"
+      />
       <div>
         <b>Centrale accessi</b>
         <small>Società Agricola Franchina</small>
       </div>
-      <span class="am__live"><i></i>Live</span>
+      <span class="am__live">
+        <i></i>Live
+      </span>
     </div>
 
     <p class="am__label">Varchi</p>
     <div class="am__gates">
-      {
-        gates.map(g => (
-          <div class="am__gate">
-            <div>
-              <b>{g.name}</b>
-              <small>{g.site}</small>
-            </div>
-            <span class:list={['am__state', `is-${g.state}`]}>{g.label}</span>
+      {gates.map(g => (
+        <div class="am__gate">
+          <div>
+            <b>{g.name}</b>
+            <small>{g.site}</small>
           </div>
-        ))
-      }
+          <span class:list={['am__state', `is-${g.state}`]}>{g.label}</span>
+        </div>
+      ))}
     </div>
 
     <p class="am__label">Registro aperture</p>
     <div class="am__logs">
-      {
-        logs.map(l => (
-          <div class="am__log">
-            <em>{l.t}</em>
-            <span>
-              <b>{l.who}</b> · {l.where}
-            </span>
-            <small>{l.how}</small>
-          </div>
-        ))
-      }
+      {logs.map(l => (
+        <div class="am__log">
+          <em>{l.t}</em>
+          <span>
+            <b>{l.who}</b> · {l.where}
+          </span>
+          <small>{l.how}</small>
+        </div>
+      ))}
     </div>
   </div>
 
@@ -73,7 +90,14 @@ const logs = [
         <span class="am__role">Gestore</span>
       </div>
       <div class="am__card">
-        <img src="/work/franchina-varco.webp" alt="" width="1200" height="686" loading={loading} decoding="async" />
+        <img
+          src="/work/franchina-varco.webp"
+          alt=""
+          width="1200"
+          height="686"
+          loading={loading}
+          decoding="async"
+        />
         <div class="am__glass">
           <b>Ingresso principale</b>
           <small>Puoi aprirla adesso</small>
@@ -88,7 +112,9 @@ const logs = [
     </div>
   </div>
 
-  <div class="am__toast"><i></i>Varco aperto · impulso 1 s</div>
+  <div class="am__toast">
+    <i></i>Varco aperto · impulso 1 s
+  </div>
 </div>
 
 <style>
@@ -117,7 +143,12 @@ const logs = [
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(5, 8, 22, 0.88) 0%, rgba(5, 8, 22, 0.5) 50%, rgba(5, 8, 22, 0.05) 100%),
+      linear-gradient(
+        90deg,
+        rgba(5, 8, 22, 0.88) 0%,
+        rgba(5, 8, 22, 0.5) 50%,
+        rgba(5, 8, 22, 0.05) 100%
+      ),
       linear-gradient(0deg, rgba(5, 8, 22, 0.6), transparent 45%);
   }
 
@@ -277,8 +308,7 @@ const logs = [
     border-radius: 3.5cqw;
     overflow: hidden;
     background:
-      radial-gradient(circle at 80% 0%, rgba(16, 185, 129, 0.22), transparent 55%),
-      #050816;
+      radial-gradient(circle at 80% 0%, rgba(16, 185, 129, 0.22), transparent 55%), #050816;
   }
   .am__notch {
     position: absolute;

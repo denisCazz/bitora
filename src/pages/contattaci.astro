@@ -32,7 +32,13 @@ const services = [
   { v: 'altro', l: 'Non lo so ancora' },
 ];
 
-const budgets = ['Da definire', 'Fino a 2.000 €', '2.000 – 5.000 €', '5.000 – 15.000 €', 'Oltre 15.000 €'];
+const budgets = [
+  'Da definire',
+  'Fino a 2.000 €',
+  '2.000 – 5.000 €',
+  '5.000 – 15.000 €',
+  'Oltre 15.000 €',
+];
 const timings = ['Il prima possibile', 'Entro 1–2 mesi', 'Entro 6 mesi', 'Sto valutando'];
 
 const quote = testimonials.find(t => t.company === 'Mistral Impianti');
@@ -55,127 +61,261 @@ const quote = testimonials.find(t => t.company === 'Mistral Impianti');
     <div class="b-shell ct__inner">
       <div class="ct__intro">
         <p class="b-eyebrow b-rise">Contatti · Preventivo gratuito</p>
-        <h1 class="b-h1 b-rise" style="animation-delay:.1s">Parliamo del tuo <span class="b-grad">progetto</span>.</h1>
+        <h1 class="b-h1 b-rise" style="animation-delay:.1s">
+          Parliamo del tuo <span class="b-grad">progetto</span>.
+        </h1>
         <p class="b-lede b-rise" style="animation-delay:.2s">
-          Due minuti per raccontarci cosa ti serve. Entro 24 ore lavorative ti rispondiamo con domande
-          mirate o con una prima proposta. Nessun impegno.
+          Due minuti per raccontarci cosa ti serve. Entro 24 ore lavorative ti rispondiamo con
+          domande mirate o con una prima proposta. Nessun impegno.
         </p>
 
         <ol class="ct__next b-rise" style="animation-delay:.3s">
-          <li><span>1</span><div><strong>Ci scrivi</strong><small>Form, WhatsApp o telefono</small></div></li>
-          <li><span>2</span><div><strong>Call di 30 minuti</strong><small>Gratuita, anche di persona in Piemonte</small></div></li>
-          <li><span>3</span><div><strong>Proposta in 48 ore</strong><small>Fasi, tempi e prezzo fisso</small></div></li>
+          <li>
+            <span>1</span>
+            <div>
+              <strong>Ci scrivi</strong>
+              <small>Form, WhatsApp o telefono</small>
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>
+              <strong>Call di 30 minuti</strong>
+              <small>Gratuita, anche di persona in Piemonte</small>
+            </div>
+          </li>
+          <li>
+            <span>3</span>
+            <div>
+              <strong>Proposta in 48 ore</strong>
+              <small>Fasi, tempi e prezzo fisso</small>
+            </div>
+          </li>
         </ol>
 
         <div class="ct__direct b-rise" style="animation-delay:.4s">
-          <a href={whatsappLink('Ciao Bitora, vorrei un preventivo.')} class="b-btn b-btn--wa" data-track="whatsapp_click" data-track-location="contattaci" target="_blank" rel="noopener">WhatsApp</a>
-          <a href={phoneHref} class="b-btn b-btn--ghost" data-track="phone_click" data-track-location="contattaci">{phoneDisplay}</a>
-          <a href={`mailto:${email}`} class="b-btn b-btn--ghost">{email}</a>
+          <a
+            href={whatsappLink('Ciao Bitora, vorrei un preventivo.')}
+            class="b-btn b-btn--wa"
+            data-track="whatsapp_click"
+            data-track-location="contattaci"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp
+          </a>
+          <a
+            href={phoneHref}
+            class="b-btn b-btn--ghost"
+            data-track="phone_click"
+            data-track-location="contattaci"
+          >
+            {phoneDisplay}
+          </a>
+          <a href={`mailto:${email}`} class="b-btn b-btn--ghost">
+            {email}
+          </a>
         </div>
 
-        {
-          quote && (
-            <figure class="ct__quote b-rise" style="animation-delay:.5s">
-              <blockquote>“{quote.quote}”</blockquote>
-              <figcaption>
-                <img src={quote.image} alt="" width="40" height="40" loading="lazy" />
-                <span><strong>{quote.author}</strong> · {quote.role}, {quote.company}</span>
-              </figcaption>
-            </figure>
-          )
-        }
+        {quote && (
+          <figure class="ct__quote b-rise" style="animation-delay:.5s">
+            <blockquote>“{quote.quote}”</blockquote>
+            <figcaption>
+              <img src={quote.image} alt="" width="40" height="40" loading="lazy" />
+              <span>
+                <strong>{quote.author}</strong> · {quote.role}, {quote.company}
+              </span>
+            </figcaption>
+          </figure>
+        )}
       </div>
 
       <div class="ct__card b-rise" style="animation-delay:.2s">
-        {
-          inviato ? (
-            <div class="ct__ok" role="status">
-              <span class="ct__ok-icon" aria-hidden="true">✓</span>
-              <h2 class="b-h2">Richiesta ricevuta.</h2>
-              <p class="b-text">Grazie! Ti rispondiamo entro 24 ore lavorative. Se è urgente, scrivici su WhatsApp.</p>
-              <div class="b-cta-row">
-                <a href={whatsappLink('Ciao, ho appena inviato una richiesta dal sito.')} class="b-btn b-btn--wa" target="_blank" rel="noopener">WhatsApp</a>
-                <a href="/lavori/" class="b-btn b-btn--ghost">Guarda i lavori</a>
+        {inviato ? (
+          <div class="ct__ok" role="status">
+            <span class="ct__ok-icon" aria-hidden="true">
+              ✓
+            </span>
+            <h2 class="b-h2">Richiesta ricevuta.</h2>
+            <p class="b-text">
+              Grazie! Ti rispondiamo entro 24 ore lavorative. Se è urgente, scrivici su WhatsApp.
+            </p>
+            <div class="b-cta-row">
+              <a
+                href={whatsappLink('Ciao, ho appena inviato una richiesta dal sito.')}
+                class="b-btn b-btn--wa"
+                target="_blank"
+                rel="noopener"
+              >
+                WhatsApp
+              </a>
+              <a href="/lavori/" class="b-btn b-btn--ghost">
+                Guarda i lavori
+              </a>
+            </div>
+          </div>
+        ) : (
+          <form id="contact-form" action="/api/contact/" method="POST" novalidate>
+            <input
+              type="text"
+              name="_gotcha"
+              class="ct__hp"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+            <input type="hidden" name="_ts" value="" />
+
+            <fieldset class="ct__fs">
+              <legend class="b-label">Di cosa hai bisogno?</legend>
+              <div class="ct__choices">
+                {services.map(s => (
+                  <label class="b-choice">
+                    <input
+                      type="radio"
+                      name="argomento"
+                      value={s.v}
+                      checked={preselected === s.v}
+                    />
+                    <span>{s.l}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <div class="ct__row">
+              <div class="b-field">
+                <label class="b-label" for="nome">
+                  Nome e cognome *
+                </label>
+                <input
+                  class="b-input"
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  required
+                  minlength="2"
+                  autocomplete="name"
+                  placeholder="Mario Rossi"
+                />
+                <p id="nome-error" class="ct__err" hidden>
+                  Inserisci almeno 2 caratteri
+                </p>
+              </div>
+              <div class="b-field">
+                <label class="b-label" for="azienda">
+                  Azienda
+                </label>
+                <input
+                  class="b-input"
+                  type="text"
+                  id="azienda"
+                  name="azienda"
+                  autocomplete="organization"
+                  placeholder="Nome attività"
+                />
               </div>
             </div>
-          ) : (
-            <form id="contact-form" action="/api/contact/" method="POST" novalidate>
-              <input type="text" name="_gotcha" class="ct__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-              <input type="hidden" name="_ts" value="" />
 
-              <fieldset class="ct__fs">
-                <legend class="b-label">Di cosa hai bisogno?</legend>
-                <div class="ct__choices">
-                  {services.map(s => (
-                    <label class="b-choice">
-                      <input type="radio" name="argomento" value={s.v} checked={preselected === s.v} />
-                      <span>{s.l}</span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-
-              <div class="ct__row">
-                <div class="b-field">
-                  <label class="b-label" for="nome">Nome e cognome *</label>
-                  <input class="b-input" type="text" id="nome" name="nome" required minlength="2" autocomplete="name" placeholder="Mario Rossi" />
-                  <p id="nome-error" class="ct__err" hidden>Inserisci almeno 2 caratteri</p>
-                </div>
-                <div class="b-field">
-                  <label class="b-label" for="azienda">Azienda</label>
-                  <input class="b-input" type="text" id="azienda" name="azienda" autocomplete="organization" placeholder="Nome attività" />
-                </div>
-              </div>
-
-              <div class="ct__row">
-                <div class="b-field">
-                  <label class="b-label" for="email">Email *</label>
-                  <input class="b-input" type="email" id="email" name="email" required autocomplete="email" placeholder="nome@azienda.it" />
-                  <p id="email-error" class="ct__err" hidden>Inserisci un indirizzo email valido</p>
-                </div>
-                <div class="b-field">
-                  <label class="b-label" for="telefono">Telefono</label>
-                  <input class="b-input" type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="+39 …" />
-                </div>
-              </div>
-
-              <div class="ct__row">
-                <div class="b-field">
-                  <label class="b-label" for="budget">Budget indicativo</label>
-                  <select class="b-input" id="budget" name="budget">
-                    {budgets.map(b => <option value={b}>{b}</option>)}
-                  </select>
-                </div>
-                <div class="b-field">
-                  <label class="b-label" for="tempi">Tempistiche</label>
-                  <select class="b-input" id="tempi" name="tempi">
-                    {timings.map(t => <option value={t}>{t}</option>)}
-                  </select>
-                </div>
-              </div>
-
+            <div class="ct__row">
               <div class="b-field">
-                <label class="b-label" for="messaggio">Raccontaci il progetto *</label>
-                <textarea class="b-input" id="messaggio" name="messaggio" rows="5" required minlength="10" placeholder="Cosa fai, cosa vorresti ottenere, cosa non funziona oggi…"></textarea>
-                <p id="messaggio-error" class="ct__err" hidden>Scrivi almeno 10 caratteri</p>
+                <label class="b-label" for="email">
+                  Email *
+                </label>
+                <input
+                  class="b-input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="nome@azienda.it"
+                />
+                <p id="email-error" class="ct__err" hidden>
+                  Inserisci un indirizzo email valido
+                </p>
               </div>
+              <div class="b-field">
+                <label class="b-label" for="telefono">
+                  Telefono
+                </label>
+                <input
+                  class="b-input"
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  autocomplete="tel"
+                  placeholder="+39 …"
+                />
+              </div>
+            </div>
 
-              <label class="ct__privacy">
-                <input type="checkbox" id="privacy" name="privacy" required />
-                <span>Ho letto la <a href="/privacy-policy/" target="_blank">privacy policy</a> e acconsento al trattamento dei dati per ricevere una risposta. *</span>
+            <div class="ct__row">
+              <div class="b-field">
+                <label class="b-label" for="budget">
+                  Budget indicativo
+                </label>
+                <select class="b-input" id="budget" name="budget">
+                  {budgets.map(b => (
+                    <option value={b}>{b}</option>
+                  ))}
+                </select>
+              </div>
+              <div class="b-field">
+                <label class="b-label" for="tempi">
+                  Tempistiche
+                </label>
+                <select class="b-input" id="tempi" name="tempi">
+                  {timings.map(t => (
+                    <option value={t}>{t}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div class="b-field">
+              <label class="b-label" for="messaggio">
+                Raccontaci il progetto *
               </label>
-              <p id="privacy-error" class="ct__err" hidden>Serve il consenso per poterti rispondere</p>
+              <textarea
+                class="b-input"
+                id="messaggio"
+                name="messaggio"
+                rows="5"
+                required
+                minlength="10"
+                placeholder="Cosa fai, cosa vorresti ottenere, cosa non funziona oggi…"
+              ></textarea>
+              <p id="messaggio-error" class="ct__err" hidden>
+                Scrivi almeno 10 caratteri
+              </p>
+            </div>
 
-              <div id="form-error" class="ct__form-err" role="alert" hidden></div>
+            <label class="ct__privacy">
+              <input type="checkbox" id="privacy" name="privacy" required />
+              <span>
+                Ho letto la{' '}
+                <a href="/privacy-policy/" target="_blank">
+                  privacy policy
+                </a>{' '}
+                e acconsento al trattamento dei dati per ricevere una risposta. *
+              </span>
+            </label>
+            <p id="privacy-error" class="ct__err" hidden>
+              Serve il consenso per poterti rispondere
+            </p>
 
-              <button type="submit" id="submit-btn" class="b-btn b-btn--primary b-btn--lg ct__submit">
-                <span id="submit-label">Invia la richiesta</span>
-                <span class="b-arrow" aria-hidden="true">→</span>
-              </button>
-              <p class="b-small ct__fine">Risposta entro 24 ore lavorative · Nessuno spam, mai.</p>
-            </form>
-          )
-        }
+            <div id="form-error" class="ct__form-err" role="alert" hidden></div>
+
+            <button type="submit" id="submit-btn" class="b-btn b-btn--primary b-btn--lg ct__submit">
+              <span id="submit-label">Invia la richiesta</span>
+              <span class="b-arrow" aria-hidden="true">
+                →
+              </span>
+            </button>
+            <p class="b-small ct__fine">Risposta entro 24 ore lavorative · Nessuno spam, mai.</p>
+          </form>
+        )}
       </div>
     </div>
   </section>
@@ -198,7 +338,10 @@ const quote = testimonials.find(t => t.company === 'Mistral Impianti');
     const checks: [string, boolean][] = [
       ['nome', (f.elements.namedItem('nome') as HTMLInputElement).value.trim().length >= 2],
       ['email', isEmail((f.elements.namedItem('email') as HTMLInputElement).value.trim())],
-      ['messaggio', (f.elements.namedItem('messaggio') as HTMLTextAreaElement).value.trim().length >= 10],
+      [
+        'messaggio',
+        (f.elements.namedItem('messaggio') as HTMLTextAreaElement).value.trim().length >= 10,
+      ],
       ['privacy', (f.elements.namedItem('privacy') as HTMLInputElement).checked],
     ];
     let ok = true;
@@ -229,7 +372,15 @@ const quote = testimonials.find(t => t.company === 'Mistral Impianti');
     ].join('\n');
     data.set('messaggio', `${String(data.get('messaggio') || '').trim()}\n\n${extras}`);
     const params = new URLSearchParams(window.location.search);
-    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'].forEach(k => {
+    [
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_content',
+      'utm_term',
+      'gclid',
+      'fbclid',
+    ].forEach(k => {
       const v = params.get(k);
       if (v) data.set(k, v);
     });
@@ -237,7 +388,11 @@ const quote = testimonials.find(t => t.company === 'Mistral Impianti');
     if (document.referrer) data.set('referrer', document.referrer);
 
     try {
-      const res = await fetch('/api/contact/', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      const res = await fetch('/api/contact/', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
       const isJson = (res.headers.get('content-type') || '').includes('application/json');
       const payload = isJson ? await res.json().catch(() => null) : null;
       if (res.ok && payload?.ok) {
@@ -248,7 +403,9 @@ const quote = testimonials.find(t => t.company === 'Mistral Impianti');
         window.location.href = '/contattaci/?inviato=1';
         return;
       }
-      errorEl.textContent = (payload?.error || "Errore durante l'invio. Riprova o scrivici su WhatsApp.") + (res.status ? ` (HTTP ${res.status})` : '');
+      errorEl.textContent =
+        (payload?.error || "Errore durante l'invio. Riprova o scrivici su WhatsApp.") +
+        (res.status ? ` (HTTP ${res.status})` : '');
       errorEl.hidden = false;
     } catch {
       errorEl.textContent = 'Errore di connessione. Riprova o scrivici su WhatsApp.';

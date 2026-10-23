@@ -15,30 +15,71 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
     eyebrow: 'Gestionali su misura',
     title: 'Il software costruito <span class="b-grad">sul tuo modo di lavorare</span>.',
     lede: 'Basta Excel che esplodono, gruppi WhatsApp e informazioni nella testa di una sola persona. Creiamo gestionali, CRM e strumenti operativi che il tuo team usa davvero, da ufficio e da telefono.',
-    chips: ['CRM e preventivi', 'Magazzino con barcode', 'Interventi e rapportini', 'Accesso da smartphone'],
+    chips: [
+      'CRM e preventivi',
+      'Magazzino con barcode',
+      'Interventi e rapportini',
+      'Accesso da smartphone',
+    ],
   }}
   ctaLabel="Prenota l’analisi gratuita"
   signals={{
     title: 'Il tuo processo <span class="b-accent">merita di meglio</span> se…',
     items: [
-      { t: 'Dati duplicati ovunque', d: 'Lo stesso cliente in tre fogli diversi. Ogni aggiornamento è un rischio di errore.' },
-      { t: 'Ore perse in copia-incolla', d: 'Il team sposta dati tra strumenti invece di usarli. Ore pagate per lavoro meccanico.' },
-      { t: 'Richieste che spariscono', d: 'Email, telefono e WhatsApp senza traccia. Le richieste si perdono e i clienti si lamentano.' },
-      { t: 'Report fatti a mano', d: 'Per sapere “come stiamo andando” servono ore di Excel. E i numeri non tornano mai.' },
-      { t: 'Il software standard non si adatta', d: 'Paghi un abbonamento per funzioni che non usi, e ti mancano proprio quelle che ti servono.' },
-      { t: 'Tutto dipende da una persona', d: 'Il processo è nella testa di qualcuno. Se è in ferie, si ferma tutto.' },
+      {
+        t: 'Dati duplicati ovunque',
+        d: 'Lo stesso cliente in tre fogli diversi. Ogni aggiornamento è un rischio di errore.',
+      },
+      {
+        t: 'Ore perse in copia-incolla',
+        d: 'Il team sposta dati tra strumenti invece di usarli. Ore pagate per lavoro meccanico.',
+      },
+      {
+        t: 'Richieste che spariscono',
+        d: 'Email, telefono e WhatsApp senza traccia. Le richieste si perdono e i clienti si lamentano.',
+      },
+      {
+        t: 'Report fatti a mano',
+        d: 'Per sapere “come stiamo andando” servono ore di Excel. E i numeri non tornano mai.',
+      },
+      {
+        t: 'Il software standard non si adatta',
+        d: 'Paghi un abbonamento per funzioni che non usi, e ti mancano proprio quelle che ti servono.',
+      },
+      {
+        t: 'Tutto dipende da una persona',
+        d: 'Il processo è nella testa di qualcuno. Se è in ferie, si ferma tutto.',
+      },
     ],
   }}
   deliverables={{
     title: 'Moduli che <span class="b-accent">si incastrano</span> tra loro.',
     lede: 'Partiamo dal modulo che fa risparmiare più tempo, lo mettiamo in produzione in poche settimane e poi aggiungiamo il resto quando serve.',
     items: [
-      { t: 'CRM e preventivi', d: 'Clienti, opportunità, follow-up e preventivi in PDF. Con l’AI, bozze pronte in pochi minuti.' },
-      { t: 'Magazzino', d: 'Articoli con codici EAN, scanner barcode dalla fotocamera del telefono, movimenti e soglie di scorta.' },
-      { t: 'Interventi e rapportini', d: 'Pianificazione dei tecnici, rapportini digitali con foto e firma del cliente, PDF automatici.' },
-      { t: 'Ticketing e assistenza', d: 'Richieste dei clienti tracciate, assegnate e chiuse con tempi misurabili.' },
-      { t: 'Documenti e scadenze', d: 'Archivio in cloud con ricerca nel contenuto e avvisi automatici su certificazioni e scadenze.' },
-      { t: 'Personale e costi', d: 'Presenze, ferie, costi orari e accessori. Il quadro reale di quanto costa ogni lavoro.' },
+      {
+        t: 'CRM e preventivi',
+        d: 'Clienti, opportunità, follow-up e preventivi in PDF. Con l’AI, bozze pronte in pochi minuti.',
+      },
+      {
+        t: 'Magazzino',
+        d: 'Articoli con codici EAN, scanner barcode dalla fotocamera del telefono, movimenti e soglie di scorta.',
+      },
+      {
+        t: 'Interventi e rapportini',
+        d: 'Pianificazione dei tecnici, rapportini digitali con foto e firma del cliente, PDF automatici.',
+      },
+      {
+        t: 'Ticketing e assistenza',
+        d: 'Richieste dei clienti tracciate, assegnate e chiuse con tempi misurabili.',
+      },
+      {
+        t: 'Documenti e scadenze',
+        d: 'Archivio in cloud con ricerca nel contenuto e avvisi automatici su certificazioni e scadenze.',
+      },
+      {
+        t: 'Personale e costi',
+        d: 'Presenze, ferie, costi orari e accessori. Il quadro reale di quanto costa ogni lavoro.',
+      },
     ],
   }}
   feature={{
@@ -60,13 +101,22 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
         t: 'Gestione interventi',
         time: 'operativa in pochi giorni',
         d: 'Ticket, tecnici, rapportini digitali e firme per chi fa assistenza e manutenzione.',
-        bullets: ['Pianificazione tecnici', 'Rapportini con firma', 'Storico per cliente e impianto'],
+        bullets: [
+          'Pianificazione tecnici',
+          'Rapportini con firma',
+          'Storico per cliente e impianto',
+        ],
       },
       {
         t: 'Su misura',
         time: 'primo modulo in 3–6 settimane',
         d: 'Il gestionale disegnato attorno ai tuoi processi, con i moduli che servono a te.',
-        bullets: ['Analisi dei processi gratuita', 'Moduli a scelta', 'Integrazioni con i tuoi strumenti', 'App per chi lavora fuori'],
+        bullets: [
+          'Analisi dei processi gratuita',
+          'Moduli a scelta',
+          'Integrazioni con i tuoi strumenti',
+          'App per chi lavora fuori',
+        ],
       },
       {
         t: 'Bitora CRM',
@@ -79,11 +129,35 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
   projects={['mistral-gestionale', 'garavella-7-gestionale', 'accessi-aziendali-franchina']}
   stack={['Next.js', 'React', 'PostgreSQL', 'Prisma', 'OpenAI', 'Cloudflare R2', 'PWA', 'Expo']}
   faq={[
-    { question: 'Quando conviene un software su misura invece di un abbonamento?', answer: 'Quando i tuoi processi sono il tuo vantaggio competitivo e un software standard ti costringe ad adattarti. Se un prodotto esistente copre davvero le tue esigenze, te lo diciamo noi, anche se significa non venderti nulla.' },
-    { question: 'Quanto costa un gestionale su misura?', answer: 'Dipende da moduli e integrazioni. Con l’analisi gratuita definiamo una roadmap a fasi: parti dal modulo con più impatto e investi nel resto solo se vedi risultati.' },
-    { question: 'Quanto tempo serve per partire?', answer: 'Il primo modulo operativo arriva in 3–6 settimane. Poi rilasciamo per fasi, con il tuo team che usa e dà feedback mentre il software cresce.' },
-    { question: 'Si integra con quello che uso già?', answer: 'Sì: fogli Excel, gestionali di contabilità, email, WhatsApp e API esterne possono essere collegati dopo una verifica tecnica.' },
-    { question: 'Funziona da telefono e senza connessione?', answer: 'Sì: web app installabile su smartphone o app dedicata, con funzionamento offline per chi lavora in cantiere o dal cliente.' },
-    { question: 'I dati sono al sicuro e sono miei?', answer: 'Accessi per ruolo, backup giornalieri e hosting in Europa. Dati e codice sono di tua proprietà.' },
+    {
+      question: 'Quando conviene un software su misura invece di un abbonamento?',
+      answer:
+        'Quando i tuoi processi sono il tuo vantaggio competitivo e un software standard ti costringe ad adattarti. Se un prodotto esistente copre davvero le tue esigenze, te lo diciamo noi, anche se significa non venderti nulla.',
+    },
+    {
+      question: 'Quanto costa un gestionale su misura?',
+      answer:
+        'Dipende da moduli e integrazioni. Con l’analisi gratuita definiamo una roadmap a fasi: parti dal modulo con più impatto e investi nel resto solo se vedi risultati.',
+    },
+    {
+      question: 'Quanto tempo serve per partire?',
+      answer:
+        'Il primo modulo operativo arriva in 3–6 settimane. Poi rilasciamo per fasi, con il tuo team che usa e dà feedback mentre il software cresce.',
+    },
+    {
+      question: 'Si integra con quello che uso già?',
+      answer:
+        'Sì: fogli Excel, gestionali di contabilità, email, WhatsApp e API esterne possono essere collegati dopo una verifica tecnica.',
+    },
+    {
+      question: 'Funziona da telefono e senza connessione?',
+      answer:
+        'Sì: web app installabile su smartphone o app dedicata, con funzionamento offline per chi lavora in cantiere o dal cliente.',
+    },
+    {
+      question: 'I dati sono al sicuro e sono miei?',
+      answer:
+        'Accessi per ruolo, backup giornalieri e hosting in Europa. Dati e codice sono di tua proprietà.',
+    },
   ]}
 />

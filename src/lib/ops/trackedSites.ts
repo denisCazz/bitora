@@ -143,7 +143,9 @@ export function readTrackedSiteFields(form: FormData): TrackedSiteFields | null 
   };
 }
 
-export function resolveTrackedSites(state: Pick<OpsState, 'trackedSites' | 'removedSiteIds'>): MonitoredSite[] {
+export function resolveTrackedSites(
+  state: Pick<OpsState, 'trackedSites' | 'removedSiteIds'>
+): MonitoredSite[] {
   return resolveTrackedSiteViews(state);
 }
 

@@ -23,7 +23,8 @@ const related = [
 const hasSite = item.siteUrl && item.siteUrl !== '#';
 const pageUrl = `https://bitora.it/progetti/${item.slug}/`;
 const ogImage = item.og;
-const clip = (t: string, n = 158) => (t.length <= n ? t : `${t.slice(0, t.lastIndexOf(' ', n - 1))}…`);
+const clip = (t: string, n = 158) =>
+  t.length <= n ? t : `${t.slice(0, t.lastIndexOf(' ', n - 1))}…`;
 const client = item.client ?? item.title;
 const metaDescription = clip(
   `${item.title}${client !== item.title ? ` per ${client}` : ''}, ${item.location}. Caso studio Bitora: ${item.soluzione.map(s => s.titolo).join(' · ')}.`
@@ -51,11 +52,21 @@ const projectSchema = {
   },
   ...(hasSite ? { sameAs: item.siteUrl } : {}),
 };
-const topic = item.kinds.includes('software') ? 'sistemi' : item.kinds.includes('app') ? 'app' : item.kinds.includes('ecommerce') ? 'ecommerce' : 'sito';
+const topic = item.kinds.includes('software')
+  ? 'sistemi'
+  : item.kinds.includes('app')
+    ? 'app'
+    : item.kinds.includes('ecommerce')
+      ? 'ecommerce'
+      : 'sito';
 ---
 
 <Layout
-  title={item.client && item.client !== item.title ? `${item.title} · ${item.client} | Bitora` : `${item.title}: ${item.subtitle} | Bitora`}
+  title={
+    item.client && item.client !== item.title
+      ? `${item.title} · ${item.client} | Bitora`
+      : `${item.title}: ${item.subtitle} | Bitora`
+  }
   description={metaDescription}
   image={ogImage}
   imageAlt={`${item.title}, progetto realizzato da Bitora`}
@@ -74,39 +85,52 @@ const topic = item.kinds.includes('software') ? 'sistemi' : item.kinds.includes(
   <section class="cs-hero">
     <div class="b-glow-orb cs-hero__orb" aria-hidden="true"></div>
     <div class="b-shell cs-hero__inner">
-      <a href="/lavori/" class="cs-back b-rise">← Tutti i lavori</a>
+      <a href="/lavori/" class="cs-back b-rise">
+        ← Tutti i lavori
+      </a>
       <div class="b-chips b-rise" style="animation-delay:.05s">
-        {item.kinds.map(k => <span class="b-chip">{workKindLabels[k]}</span>)}
+        {item.kinds.map(k => (
+          <span class="b-chip">{workKindLabels[k]}</span>
+        ))}
         <span class="b-chip">{item.location}</span>
         {item.isWip && <span class="b-chip cs-wip">In corso</span>}
       </div>
-      <h1 class="b-display cs-title b-rise" style="animation-delay:.12s">{item.title}</h1>
-      <p class="b-lede b-rise" style="animation-delay:.2s">{item.subtitle}</p>
-      {
-        hasSite && (
-          <div class="b-cta-row b-rise" style="animation-delay:.28s">
-            <a href={item.siteUrl} target="_blank" rel="noopener" class="b-btn b-btn--light">
-              Visita il sito <span class="b-arrow" aria-hidden="true">↗</span>
-            </a>
-          </div>
-        )
-      }
+      <h1 class="b-display cs-title b-rise" style="animation-delay:.12s">
+        {item.title}
+      </h1>
+      <p class="b-lede b-rise" style="animation-delay:.2s">
+        {item.subtitle}
+      </p>
+      {hasSite && (
+        <div class="b-cta-row b-rise" style="animation-delay:.28s">
+          <a href={item.siteUrl} target="_blank" rel="noopener" class="b-btn b-btn--light">
+            Visita il sito{' '}
+            <span class="b-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+        </div>
+      )}
       <div class="cs-media b-rise" style="animation-delay:.36s">
-        {
-          item.shot ? (
-            <div class="b-browser">
-              <div class="b-browser__bar">
-                <i />
-                <i />
-                <i />
-                <span class="b-browser__url">{item.siteUrl.replace(/^https?:\/\//, '')}</span>
-              </div>
-              <img src={item.shot} alt={`Homepage del sito ${item.title}`} width="1200" height="750" fetchpriority="high" />
+        {item.shot ? (
+          <div class="b-browser">
+            <div class="b-browser__bar">
+              <i />
+              <i />
+              <i />
+              <span class="b-browser__url">{item.siteUrl.replace(/^https?:\/\//, '')}</span>
             </div>
-          ) : (
-            <UiMock variant={item.mock ?? 'dashboard'} eager />
-          )
-        }
+            <img
+              src={item.shot}
+              alt={`Homepage del sito ${item.title}`}
+              width="1200"
+              height="750"
+              fetchpriority="high"
+            />
+          </div>
+        ) : (
+          <UiMock variant={item.mock ?? 'dashboard'} eager />
+        )}
       </div>
     </div>
   </section>
@@ -115,13 +139,27 @@ const topic = item.kinds.includes('software') ? 'sistemi' : item.kinds.includes(
     <div class="b-shell cs-body">
       <aside class="cs-aside" data-reveal>
         <dl>
-          <div><dt>Cliente</dt><dd>{item.title}</dd></div>
-          <div><dt>Settore</dt><dd>{item.category}</dd></div>
-          <div><dt>Luogo</dt><dd>{item.location}</dd></div>
-          <div><dt>Servizi</dt><dd>{item.kinds.map(k => workKindLabels[k]).join(', ')}</dd></div>
+          <div>
+            <dt>Cliente</dt>
+            <dd>{item.title}</dd>
+          </div>
+          <div>
+            <dt>Settore</dt>
+            <dd>{item.category}</dd>
+          </div>
+          <div>
+            <dt>Luogo</dt>
+            <dd>{item.location}</dd>
+          </div>
+          <div>
+            <dt>Servizi</dt>
+            <dd>{item.kinds.map(k => workKindLabels[k]).join(', ')}</dd>
+          </div>
         </dl>
         <div class="b-chips">
-          {item.tecnologie.map(t => <span class="b-chip">{t}</span>)}
+          {item.tecnologie.map(t => (
+            <span class="b-chip">{t}</span>
+          ))}
         </div>
       </aside>
       <div class="cs-main">
@@ -144,15 +182,13 @@ const topic = item.kinds.includes('software') ? 'sistemi' : item.kinds.includes(
         <h2 class="b-h2">Cosa abbiamo costruito.</h2>
       </div>
       <div class="cs-sol">
-        {
-          item.soluzione.map((s, i) => (
-            <article class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
-              <span class="b-step__n">{String(i + 1).padStart(2, '0')}</span>
-              <h3 class="b-h3 b-step__t">{s.titolo}</h3>
-              <p class="b-text">{s.descrizione}</p>
-            </article>
-          ))
-        }
+        {item.soluzione.map((s, i) => (
+          <article class="b-card" data-reveal data-reveal-delay={String(i + 1)}>
+            <span class="b-step__n">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="b-h3 b-step__t">{s.titolo}</h3>
+            <p class="b-text">{s.descrizione}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -164,7 +200,9 @@ const topic = item.kinds.includes('software') ? 'sistemi' : item.kinds.includes(
         <h2 class="b-h2">Cosa è cambiato.</h2>
       </div>
       <ul class="b-checks cs-res__list" data-reveal data-reveal-delay="1">
-        {item.risultati.map(r => <li>{r}</li>)}
+        {item.risultati.map(r => (
+          <li>{r}</li>
+        ))}
       </ul>
     </div>
   </section>
@@ -174,41 +212,58 @@ const topic = item.kinds.includes('software') ? 'sistemi' : item.kinds.includes(
       <div class="b-card cs-cta" data-reveal>
         <div>
           <h2 class="b-h3">Ti serve qualcosa di simile?</h2>
-          <p class="b-text">Raccontaci il tuo caso: ti rispondiamo entro 24 ore con un’idea concreta.</p>
+          <p class="b-text">
+            Raccontaci il tuo caso: ti rispondiamo entro 24 ore con un’idea concreta.
+          </p>
         </div>
         <div class="b-cta-row">
           {item.kinds.includes('nfc') && (
-            <a href="https://shopnfc.bitora.it/" rel="noopener" class="b-btn b-btn--ghost" data-track="cta_click" data-track-location="case_study_shopnfc">
-              Vai a Shop NFC <span class="b-arrow" aria-hidden="true">↗</span>
+            <a
+              href="https://shopnfc.bitora.it/"
+              rel="noopener"
+              class="b-btn b-btn--ghost"
+              data-track="cta_click"
+              data-track-location="case_study_shopnfc"
+            >
+              Vai a Shop NFC{' '}
+              <span class="b-arrow" aria-hidden="true">
+                ↗
+              </span>
             </a>
           )}
-          <a href={`/contattaci/?topic=${topic}`} class="b-btn b-btn--primary" data-track="cta_click" data-track-location="case_study">
-            Parliamone <span class="b-arrow" aria-hidden="true">→</span>
+          <a
+            href={`/contattaci/?topic=${topic}`}
+            class="b-btn b-btn--primary"
+            data-track="cta_click"
+            data-track-location="case_study"
+          >
+            Parliamone{' '}
+            <span class="b-arrow" aria-hidden="true">
+              →
+            </span>
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  {
-    related.length > 0 && (
-      <section class="b-section b-section--line">
-        <div class="b-shell">
-          <div class="b-head" data-reveal>
-            <p class="b-eyebrow">Altri lavori</p>
-            <h2 class="b-h2">Continua a guardare.</h2>
-          </div>
-          <div class="cs-rel">
-            {related.map((w, i) => (
-              <div data-reveal data-reveal-delay={String(i + 1)}>
-                <ProjectCard item={w} />
-              </div>
-            ))}
-          </div>
+  {related.length > 0 && (
+    <section class="b-section b-section--line">
+      <div class="b-shell">
+        <div class="b-head" data-reveal>
+          <p class="b-eyebrow">Altri lavori</p>
+          <h2 class="b-h2">Continua a guardare.</h2>
         </div>
-      </section>
-    )
-  }
+        <div class="cs-rel">
+          {related.map((w, i) => (
+            <div data-reveal data-reveal-delay={String(i + 1)}>
+              <ProjectCard item={w} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </Layout>
 
 <style>

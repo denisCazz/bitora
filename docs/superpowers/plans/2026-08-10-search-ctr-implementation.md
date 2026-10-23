@@ -192,7 +192,9 @@ Use this metadata and hero in `src/pages/index.astro`:
       <div class="shell hero-copy">
         <p class="eyebrow hero-item">Siti web · E-commerce · Piemonte</p>
         <h1 class="display hero-item">
-          Siti web ed e-commerce<br />su misura per PMI
+          Siti web ed e-commerce
+          <br />
+          su misura per PMI
         </h1>
         <p class="lede hero-item">
           Progettiamo esperienze veloci, credibili e misurabili: dal sito vetrina al negozio online,
@@ -203,9 +205,13 @@ Use this metadata and hero in `src/pages/index.astro`:
             href="/contattaci/?topic=sito"
             class="sl-btn-primary"
             data-track="cta_click"
-            data-track-location="home_hero">Richiedi un preventivo</a
+            data-track-location="home_hero"
           >
-          <a href="/lavori/" class="sl-btn-secondary">Guarda i progetti</a>
+            Richiedi un preventivo
+          </a>
+          <a href="/lavori/" class="sl-btn-secondary">
+            Guarda i progetti
+          </a>
         </div>
         <p class="hero-alt hero-item">
           Cerchi una piattaforma operativa?
@@ -217,8 +223,8 @@ Use this metadata and hero in `src/pages/index.astro`:
         <span></span>
       </a>
     </section>
-  </div></Layout
->
+  </div>
+</Layout>
 ```
 
 - [ ] **Step 8: Replace the homepage problem, process, audience, offer, and final CTA copy**
@@ -229,7 +235,9 @@ Keep the existing wrappers and classes, but replace the content and arrays with 
 <!-- PROBLEMA -->
 <p class="eyebrow">Il punto di partenza</p>
 <h2 class="headline">
-  Un sito deve essere<br />chiaro, veloce e<br />
+  Un sito deve essere
+  <br />
+  chiaro, veloce e<br />
   <span class="text-secondary">capace di convertire.</span>
 </h2>
 <p class="body-lg" data-reveal data-reveal-delay="1">
@@ -261,7 +269,11 @@ Keep the existing wrappers and classes, but replace the content and arrays with 
 ```astro
 <!-- FLUSSO -->
 <p class="eyebrow">Come lavoriamo</p>
-<h2 class="headline">Dal brief<br />al lancio.</h2>
+<h2 class="headline">
+  Dal brief
+  <br />
+  al lancio.
+</h2>
 <p class="body-lg" style="margin-top:1rem;max-width:40rem">
   Strategia, contenuti, sviluppo e misurazione restano nello stesso progetto, con un referente unico
   e obiettivi verificabili.
@@ -291,7 +303,9 @@ Use this audience content:
 ```astro
 <p class="eyebrow">Per chi</p>
 <h2 class="display-sm">
-  PMI che vogliono<br />crescere online.
+  PMI che vogliono
+  <br />
+  crescere online.
 </h2>
 <p class="lede audience-lede">
   Per aziende che cercano una presenza digitale credibile, più richieste qualificate e strumenti
@@ -301,8 +315,10 @@ Use this audience content:
   href="/contattaci/?topic=sito"
   class="sl-btn-primary"
   data-track="cta_click"
-  data-track-location="home_audience">Parlaci del progetto</a
+  data-track-location="home_audience"
 >
+  Parlaci del progetto
+</a>
 ```
 
 Use this offer content:
@@ -310,7 +326,9 @@ Use this offer content:
 ```astro
 <p class="eyebrow">Metodo</p>
 <h2 class="headline">
-  Un progetto chiaro.<br />Nessun pacchetto standard.
+  Un progetto chiaro.
+  <br />
+  Nessun pacchetto standard.
 </h2>
 <p class="body-lg offer-copy">
   Definiamo insieme obiettivi, contenuti, funzionalità e tempi. Il preventivo separa ciò che serve
@@ -320,8 +338,10 @@ Use this offer content:
   href="/contattaci/"
   class="sl-btn-primary"
   data-track="cta_click"
-  data-track-location="home_offer">Richiedi un confronto</a
+  data-track-location="home_offer"
 >
+  Richiedi un confronto
+</a>
 ```
 
 ```javascript
@@ -338,7 +358,9 @@ Use this final CTA copy and links:
 ```astro
 <p class="eyebrow">Inizia da qui</p>
 <h2 class="display-cta">
-  Raccontaci il progetto.<br />Prepariamo il percorso.
+  Raccontaci il progetto.
+  <br />
+  Prepariamo il percorso.
 </h2>
 <p class="lede cta-lede">
   Sito vetrina, e-commerce o restyle: partiamo dagli obiettivi e ti rispondiamo entro 24 ore.
@@ -349,15 +371,24 @@ Use this final CTA copy and links:
 <ol class="cta-steps">
   <li>
     <span class="cta-step-n">1</span>
-    <div><strong>2 minuti</strong><span>Raccontaci azienda e obiettivi</span></div>
+    <div>
+      <strong>2 minuti</strong>
+      <span>Raccontaci azienda e obiettivi</span>
+    </div>
   </li>
   <li>
     <span class="cta-step-n">2</span>
-    <div><strong>Entro 24 ore</strong><span>Ti ricontattiamo noi</span></div>
+    <div>
+      <strong>Entro 24 ore</strong>
+      <span>Ti ricontattiamo noi</span>
+    </div>
   </li>
   <li>
     <span class="cta-step-n">3</span>
-    <div><strong>Proposta chiara</strong><span>Priorità, tempi e prossimi passi</span></div>
+    <div>
+      <strong>Proposta chiara</strong>
+      <span>Priorità, tempi e prossimi passi</span>
+    </div>
   </li>
 </ol>
 ```
@@ -376,8 +407,10 @@ Use this final CTA copy and links:
   href="https://wa.me/393514979670?text=Ciao%2C%20vorrei%20parlarvi%20di%20un%20sito%20web%20o%20e-commerce."
   class="sl-btn-whatsapp"
   data-track="whatsapp_click"
-  data-track-location="home_final">Scrivici su WhatsApp</a
+  data-track-location="home_final"
 >
+  Scrivici su WhatsApp
+</a>
 ```
 
 Remove the homepage `SoftwareApplication` JSON-LD block because the same entity is already described on `/gestione-interventi/`.
@@ -571,9 +604,7 @@ Insert:
 >
   <div class="max-w-6xl mx-auto">
     <div class="max-w-3xl">
-      <p
-        class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3"
-      >
+      <p class="text-sm font-semibold tracking-widest uppercase text-slate-500 dark:text-slate-400 mb-3">
         E-commerce B2B
       </p>
       <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white">
@@ -586,43 +617,39 @@ Insert:
     </div>
 
     <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        [
-          {
-            title: 'Cataloghi riservati',
-            text: 'Prodotti, assortimenti e contenuti visibili in base al cliente o al gruppo.',
-          },
-          {
-            title: 'Listini per cliente',
-            text: 'Prezzi, sconti, quantità minime e condizioni commerciali differenziate.',
-          },
-          {
-            title: 'Preventivi e riordini',
-            text: 'Richieste di offerta, ordini ricorrenti e storico acquisti nello stesso flusso.',
-          },
-          {
-            title: 'Accessi aziendali',
-            text: 'Account approvati, ruoli, referenti e indirizzi multipli per ogni cliente.',
-          },
-          {
-            title: 'Pagamenti e fatture',
-            text: 'Bonifico, carte, condizioni concordate e collegamenti alla fatturazione.',
-          },
-          {
-            title: 'Integrazioni gestionali',
-            text: 'Sincronizzazione di prodotti, disponibilità, clienti e ordini tramite API.',
-          },
-        ].map(item => (
-          <article class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6">
-            <h3 class="text-lg font-extrabold tracking-tight text-slate-950 dark:text-white">
-              {item.title}
-            </h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-              {item.text}
-            </p>
-          </article>
-        ))
-      }
+      {[
+        {
+          title: 'Cataloghi riservati',
+          text: 'Prodotti, assortimenti e contenuti visibili in base al cliente o al gruppo.',
+        },
+        {
+          title: 'Listini per cliente',
+          text: 'Prezzi, sconti, quantità minime e condizioni commerciali differenziate.',
+        },
+        {
+          title: 'Preventivi e riordini',
+          text: 'Richieste di offerta, ordini ricorrenti e storico acquisti nello stesso flusso.',
+        },
+        {
+          title: 'Accessi aziendali',
+          text: 'Account approvati, ruoli, referenti e indirizzi multipli per ogni cliente.',
+        },
+        {
+          title: 'Pagamenti e fatture',
+          text: 'Bonifico, carte, condizioni concordate e collegamenti alla fatturazione.',
+        },
+        {
+          title: 'Integrazioni gestionali',
+          text: 'Sincronizzazione di prodotti, disponibilità, clienti e ordini tramite API.',
+        },
+      ].map(item => (
+        <article class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6">
+          <h3 class="text-lg font-extrabold tracking-tight text-slate-950 dark:text-white">
+            {item.title}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.text}</p>
+        </article>
+      ))}
     </div>
 
     <p class="mt-8 text-sm text-slate-500 dark:text-slate-400">

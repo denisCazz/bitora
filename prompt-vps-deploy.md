@@ -17,13 +17,13 @@ Configura il deploy VPS per il mio progetto con le seguenti specifiche:
 
 > **Nota importante sulle differenze:**
 >
-> | | Static (SSG) | Server (SSR) |
-> |---|---|---|
-> | **Astro** | `output: 'static'` — genera HTML puro, servibile con nginx/caddy senza Node runtime. Non richiede adapter. | `output: 'server'` — richiede `@astrojs/node` adapter in modo `standalone`. Entry point: `node ./dist/server/entry.mjs` |
-> | **Next.js** | `output: 'export'` in `next.config.js` — genera HTML puro in `out/`, servibile con nginx/caddy. | Default o `output: 'standalone'` — richiede Node runtime. Entry point: `node server.js` (standalone) o `next start` |
-> | **Dockerfile** | Lo stage finale può essere **nginx/caddy** (nessun Node runtime necessario). Copia solo i file statici. | Lo stage finale deve essere **node:alpine**. Copia `node_modules` di produzione + build output. |
-> | **Healthcheck** | Healthcheck HTTP su file statico (es. `curl -f http://localhost/index.html`) | Healthcheck HTTP su endpoint live (es. `curl -f http://localhost:PORT/`) |
-> | **Port** | Definita dal web server (80/443) | Definita dall'app Node (`PORT` env var, tipicamente 3000 o 4321) |
+> |                 | Static (SSG)                                                                                               | Server (SSR)                                                                                                            |
+> | --------------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+> | **Astro**       | `output: 'static'` — genera HTML puro, servibile con nginx/caddy senza Node runtime. Non richiede adapter. | `output: 'server'` — richiede `@astrojs/node` adapter in modo `standalone`. Entry point: `node ./dist/server/entry.mjs` |
+> | **Next.js**     | `output: 'export'` in `next.config.js` — genera HTML puro in `out/`, servibile con nginx/caddy.            | Default o `output: 'standalone'` — richiede Node runtime. Entry point: `node server.js` (standalone) o `next start`     |
+> | **Dockerfile**  | Lo stage finale può essere **nginx/caddy** (nessun Node runtime necessario). Copia solo i file statici.    | Lo stage finale deve essere **node:alpine**. Copia `node_modules` di produzione + build output.                         |
+> | **Healthcheck** | Healthcheck HTTP su file statico (es. `curl -f http://localhost/index.html`)                               | Healthcheck HTTP su endpoint live (es. `curl -f http://localhost:PORT/`)                                                |
+> | **Port**        | Definita dal web server (80/443)                                                                           | Definita dall'app Node (`PORT` env var, tipicamente 3000 o 4321)                                                        |
 
 ---
 
@@ -39,6 +39,7 @@ Stage 4 (runtime):   Immagine minimale con solo ciò che serve per eseguire
 ```
 
 **Requisiti:**
+
 - Base image: `node:XX-alpine` (sostituisci XX con la versione Node scelta)
 - **Utente non-root** per sicurezza (crea gruppo + utente dedicato, assegna ownership)
 - Installa `curl` per healthcheck (solo se servono healthcheck HTTP)
@@ -251,8 +252,8 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run check    # Type checking / diagnostics
-      - run: npm run lint      # Prettier + ESLint
+      - run: npm run check # Type checking / diagnostics
+      - run: npm run lint # Prettier + ESLint
 
   build:
     runs-on: ubuntu-latest
@@ -328,6 +329,7 @@ Disallow: /*?*
 ### 9. Dipendenze chiave per il deploy
 
 **Astro SSR:**
+
 ```
 @astrojs/node          # Adapter Node standalone
 astro-compressor       # Gzip + Brotli compression
@@ -337,6 +339,7 @@ lightningcss           # CSS minification (devDependency)
 ```
 
 **Next.js:**
+
 ```
 # Next.js ha compressione e ottimizzazione built-in
 # Per standalone mode non servono dipendenze aggiuntive
@@ -365,10 +368,11 @@ next-sitemap           # Sitemap automatico (opzionale)
 ## Come usare questo prompt
 
 Copia questo prompt e compilalo sostituendo:
+
 1. **Framework** e **modalità output** nella sezione 1
 2. **Porta** dell'applicazione (4321 per Astro, 3000 per Next.js)
 3. **Dominio** nel robots.txt e nella sitemap
 4. **Comandi specifici** del framework negli script package.json
 5. **Entry point** nel CMD del Dockerfile
 
-Poi passa il prompt all'AI chiedendo: *"Configura il deploy VPS per il mio progetto seguendo queste specifiche"*.
+Poi passa il prompt all'AI chiedendo: _"Configura il deploy VPS per il mio progetto seguendo queste specifiche"_.

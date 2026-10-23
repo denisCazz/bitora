@@ -30,14 +30,21 @@ function parseRemindDays(raw: string): number {
   return Math.min(365, Math.max(0, Math.round(n)));
 }
 
-function readFields(form: FormData): Omit<OpsDeadline, 'id' | 'createdAt' | 'updatedAt' | 'doneAt'> | null {
+function readFields(
+  form: FormData
+): Omit<OpsDeadline, 'id' | 'createdAt' | 'updatedAt' | 'doneAt'> | null {
   const title = String(form.get('title') || '')
     .trim()
     .slice(0, MAX_TITLE);
   const category = String(form.get('category') || 'altro');
   const dueOn = String(form.get('dueOn') || '').trim();
   const recurrence = String(form.get('recurrence') || 'none');
-  if (!title || !isDeadlineCategory(category) || !isDueOn(dueOn) || !isDeadlineRecurrence(recurrence)) {
+  if (
+    !title ||
+    !isDeadlineCategory(category) ||
+    !isDueOn(dueOn) ||
+    !isDeadlineRecurrence(recurrence)
+  ) {
     return null;
   }
 

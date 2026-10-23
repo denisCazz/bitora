@@ -4,22 +4,42 @@ import Layout from '../layouts/Layout.astro';
 import { pillars } from '../data/services';
 ---
 
-<Layout title="Pagina non trovata | Bitora" description="La pagina richiesta non esiste. Ecco da dove ripartire." noindex={true}>
+<Layout
+  title="Pagina non trovata | Bitora"
+  description="La pagina richiesta non esiste. Ecco da dove ripartire."
+  noindex={true}
+>
   <section class="nf">
     <div class="nf__bg b-grid-bg" aria-hidden="true"></div>
     <div class="b-glow-orb nf__orb" aria-hidden="true"></div>
     <div class="b-shell nf__inner">
-      <p class="nf__code b-outline" aria-hidden="true">404</p>
-      <h1 class="b-h1">Questa pagina <span class="b-grad">non esiste</span>.</h1>
+      <p class="nf__code b-outline" aria-hidden="true">
+        404
+      </p>
+      <h1 class="b-h1">
+        Questa pagina <span class="b-grad">non esiste</span>.
+      </h1>
       <p class="b-lede">Forse è stata spostata. Riparti da qui:</p>
       <div class="b-cta-row">
-        <a href="/" class="b-btn b-btn--primary">Torna alla home</a>
-        <a href="/contattaci/" class="b-btn b-btn--ghost">Contattaci</a>
+        <a href="/" class="b-btn b-btn--primary">
+          Torna alla home
+        </a>
+        <a href="/contattaci/" class="b-btn b-btn--ghost">
+          Contattaci
+        </a>
       </div>
       <div class="nf__links">
-        {pillars.map(p => <a href={p.href} class="b-chip">{p.title}</a>)}
-        <a href="/lavori/" class="b-chip">Lavori</a>
-        <a href="/blog/" class="b-chip">Blog</a>
+        {pillars.map(p => (
+          <a href={p.href} class="b-chip">
+            {p.title}
+          </a>
+        ))}
+        <a href="/lavori/" class="b-chip">
+          Lavori
+        </a>
+        <a href="/blog/" class="b-chip">
+          Blog
+        </a>
       </div>
     </div>
   </section>

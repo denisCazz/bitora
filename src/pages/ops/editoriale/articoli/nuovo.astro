@@ -39,7 +39,9 @@ const emptyContent = JSON.stringify(
       <label>
         Topic
         <select name="topic">
-          {TOPIC_PILLARS.map(pillar => <option value={pillar.id}>{pillar.label}</option>)}
+          {TOPIC_PILLARS.map(pillar => (
+            <option value={pillar.id}>{pillar.label}</option>
+          ))}
         </select>
       </label>
       <label>
@@ -73,7 +75,9 @@ const emptyContent = JSON.stringify(
       <label>
         CTA
         <select name="ctaVariant">
-          {CTA_VARIANTS.map(variant => <option value={variant}>{variant}</option>)}
+          {CTA_VARIANTS.map(variant => (
+            <option value={variant}>{variant}</option>
+          ))}
         </select>
       </label>
     </div>
@@ -98,7 +102,9 @@ const emptyContent = JSON.stringify(
       <textarea name="sources" rows="5">[]</textarea>
     </label>
     <div class="ops-form-actions">
-      <button class="ops-btn" type="submit">Salva bozza</button>
+      <button class="ops-btn" type="submit">
+        Salva bozza
+      </button>
     </div>
   </form>
 </OpsLayout>

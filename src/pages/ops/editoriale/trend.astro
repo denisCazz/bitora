@@ -29,45 +29,43 @@ const trends = isDatabaseConfigured()
         </tr>
       </thead>
       <tbody>
-        {
-          trends.map(trend => (
-            <tr>
-              <td class="ops-wrap">
-                <a class="ops-link" href={trend.url} target="_blank" rel="noreferrer">
-                  {trend.title}
-                </a>
-                <div class="ops-muted">{trend.excerpt.slice(0, 160)}</div>
-                {trend.articles[0] && (
-                  <div>
-                    <a class="ops-link" href={`/ops/editoriale/articoli/${trend.articles[0].id}/`}>
-                      Bozza: {trend.articles[0].title}
-                    </a>
-                  </div>
-                )}
-              </td>
-              <td>{trend.topic}</td>
-              <td>{trend.score.toFixed(2)}</td>
-              <td>{trend.status}</td>
-              <td>
-                <form method="POST" action="/api/ops/editorial/trend/">
-                  <input type="hidden" name="id" value={trend.id} />
-                  <button class="ops-btn ghost" name="status" value="DISMISSED">
-                    Scarta
-                  </button>
-                </form>
-              </td>
-            </tr>
-          ))
-        }
-        {
-          trends.length === 0 && (
-            <tr>
-              <td colspan="5">Nessun trend. Lancia una scansione dalla dashboard.</td>
-            </tr>
-          )
-        }
+        {trends.map(trend => (
+          <tr>
+            <td class="ops-wrap">
+              <a class="ops-link" href={trend.url} target="_blank" rel="noreferrer">
+                {trend.title}
+              </a>
+              <div class="ops-muted">{trend.excerpt.slice(0, 160)}</div>
+              {trend.articles[0] && (
+                <div>
+                  <a class="ops-link" href={`/ops/editoriale/articoli/${trend.articles[0].id}/`}>
+                    Bozza: {trend.articles[0].title}
+                  </a>
+                </div>
+              )}
+            </td>
+            <td>{trend.topic}</td>
+            <td>{trend.score.toFixed(2)}</td>
+            <td>{trend.status}</td>
+            <td>
+              <form method="POST" action="/api/ops/editorial/trend/">
+                <input type="hidden" name="id" value={trend.id} />
+                <button class="ops-btn ghost" name="status" value="DISMISSED">
+                  Scarta
+                </button>
+              </form>
+            </td>
+          </tr>
+        ))}
+        {trends.length === 0 && (
+          <tr>
+            <td colspan="5">Nessun trend. Lancia una scansione dalla dashboard.</td>
+          </tr>
+        )}
       </tbody>
     </table>
   </div>
-  <p class="ops-muted" style="margin-top:12px">Aggiornato: {formatClock(trends[0]?.createdAt)}</p>
+  <p class="ops-muted" style="margin-top:12px">
+    Aggiornato: {formatClock(trends[0]?.createdAt)}
+  </p>
 </OpsLayout>

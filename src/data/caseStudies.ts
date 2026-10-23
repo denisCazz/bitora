@@ -256,7 +256,15 @@ export const caseStudies: CaseStudy[] = [
       'Ruoli separati per amministrazione e operatori',
     ],
 
-    tecnologie: ['Next.js', 'PostgreSQL', 'Prisma', 'OpenAI', 'RAG', 'Cloudflare R2', 'Scanner barcode'],
+    tecnologie: [
+      'Next.js',
+      'PostgreSQL',
+      'Prisma',
+      'OpenAI',
+      'RAG',
+      'Cloudflare R2',
+      'Scanner barcode',
+    ],
 
     metricsPreview: ['Preventivi con AI', 'Archivio interrogabile'],
 
@@ -360,7 +368,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [],
   },
 
-{
+  {
     id: 'mistral-impianti',
     slug: 'mistral-impianti',
     title: 'Mistral Impianti',
@@ -409,7 +417,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [{ testo: 'Sito ufficiale Mistral Impianti', url: 'https://mistralimpianti.it' }],
   },
 
-{
+  {
     id: 'ricambixstufe',
     slug: 'ricambixstufe',
     title: 'RicambiXStufe',
@@ -463,7 +471,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [{ testo: 'Sito ufficiale RicambiXStufe', url: 'https://ricambixstufe.it' }],
   },
 
-{
+  {
     id: 'sergio-contegiacomo',
     slug: 'sergio-contegiacomo',
     title: 'Sergio Contegiacomo',
@@ -516,7 +524,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [{ testo: 'Sito ufficiale Sergio Contegiacomo', url: 'https://sergiocontegiacomo.it' }],
   },
 
-{
+  {
     id: 'simone-contegiacomo',
     slug: 'simone-contegiacomo',
     title: 'Simone Contegiacomo',
@@ -536,7 +544,7 @@ export const caseStudies: CaseStudy[] = [
       {
         titolo: 'Sito personal brand',
         descrizione:
-          "Progettato un sito che valorizza la storia di famiglia, i pilastri (integrità, innovazione, territorio) e il posizionamento di Simone verso nuovi orizzonti finanziari, con CTA chiare per contatto e approfondimento.",
+          'Progettato un sito che valorizza la storia di famiglia, i pilastri (integrità, innovazione, territorio) e il posizionamento di Simone verso nuovi orizzonti finanziari, con CTA chiare per contatto e approfondimento.',
       },
       {
         titolo: 'Contenuti e strumenti verticali',
@@ -571,7 +579,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [{ testo: 'Sito ufficiale Simone Contegiacomo', url: 'https://simonecontegiacomo.it' }],
   },
 
-{
+  {
     id: 'sartoria-kristina',
     slug: 'sartoria-kristina',
     title: 'Sartoria Kristina',
@@ -620,7 +628,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [{ testo: 'Sartist - Portale Sartorie', url: 'https://sartist.it' }],
   },
 
-{
+  {
     id: 'speedy-pizza',
     slug: 'speedy-pizza',
     title: 'Speedy Pizza',
@@ -663,7 +671,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [{ testo: 'Sito ufficiale Speedy Pizza', url: 'https://speedy-pizza.it' }],
   },
 
-{
+  {
     id: 'bar-chantilly',
     slug: 'bar-chantilly',
     title: 'Bar Tabacchi Chantilly',
@@ -708,7 +716,7 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
 
-{
+  {
     id: 'agriturismo-la-natura',
     slug: 'agriturismo-la-natura',
     title: 'Agriturismo La Natura',
@@ -728,7 +736,7 @@ export const caseStudies: CaseStudy[] = [
       {
         titolo: 'Sito vetrina orientato alle prenotazioni',
         descrizione:
-          "Bitora ha realizzato un sito che presenta cucina, luogo e info pratiche (orari, prezzi, mappa) con call-to-action dirette per chiamare o prenotare su WhatsApp.",
+          'Bitora ha realizzato un sito che presenta cucina, luogo e info pratiche (orari, prezzi, mappa) con call-to-action dirette per chiamare o prenotare su WhatsApp.',
       },
       {
         titolo: 'Esperienza multilanguage e mobile-first',
@@ -760,7 +768,7 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
 
-{
+  {
     id: 'barbara-toffano',
     slug: 'barbara-toffano',
     title: 'Barbara Toffano',
@@ -815,7 +823,7 @@ export const caseStudies: CaseStudy[] = [
     fonti: [{ testo: 'Sito ufficiale Barbara Toffano', url: 'https://barbaratoffano.it' }],
   },
 
-{
+  {
     id: 'wine-cafe',
     slug: 'wine-cafe',
     title: 'Bar Wine Café',
@@ -861,7 +869,7 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
 
-{
+  {
     id: 'myzone',
     slug: 'myzone',
     title: 'MyZone',
