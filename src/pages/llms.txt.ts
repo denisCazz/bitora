@@ -36,6 +36,8 @@ ${pillars.map(p => `- [${p.title}](${abs(p.href)}): ${p.short} (${p.bullets.join
 
 ## Piattaforme pronte
 
+- [E-commerce B2B su misura](${SITE}/e-commerce-b2b/): portali e-commerce B2B con listini per cliente, cataloghi riservati P.IVA, riordino rapido e integrazione gestionale
+- [Automazione Sbarre e Varchi Aziendali da App](${SITE}/progetti/accessi-aziendali-franchina/): applicazione aziendale su misura per aprire e automatizzare sbarre e cancelli esistenti senza token e senza abbonamenti
 - [Gestione interventi](${SITE}/gestione-interventi/): piattaforma per assistenza tecnica e manutenzioni
 - [Rapportini digitali](${SITE}/rapportini/): rapporti di intervento da smartphone con firma e PDF
 - [Ticketing e pratiche](${SITE}/ticketing/): richieste, ticket e pratiche digitalizzate

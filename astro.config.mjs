@@ -51,7 +51,7 @@ export default defineConfig({
         const priority =
           path === '/'
             ? 1
-            : /^\/(siti-web-professionali|e-commerce|sistemi-aziendali|app-mobile|intelligenza-artificiale|nfc-ecosystem|servizi|contattaci)\/$/.test(
+            : /^\/(siti-web-professionali|e-commerce|e-commerce-b2b|sistemi-aziendali|app-mobile|intelligenza-artificiale|nfc-ecosystem|servizi|contattaci)\/$/.test(
                   path
                 )
               ? 0.9

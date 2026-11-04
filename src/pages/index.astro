@@ -3,6 +3,7 @@ export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ui/ProjectCard.astro';
 import ShotMarquee from '../components/ui/ShotMarquee.astro';
+import AccessMock from '../components/ui/AccessMock.astro';
 import FaqList from '../components/ui/FaqList.astro';
 import { pillars, whatsappLink } from '../data/services';
 import { getWork, getWorkBySlugs } from '../data/work';
@@ -12,13 +13,40 @@ import { homeFaq as faq } from '../data/faq';
 
 const work = getWork();
 const liveProjects = work.filter(w => !w.isWip).length;
-const featured = getWorkBySlugs(['garavella-7', 'mistral-gestionale']);
+const featured = getWorkBySlugs(['accessi-aziendali-franchina', 'garavella-7']);
 const more = getWorkBySlugs([
+  'shopnfc',
   'ricambixstufe',
-  'accessi-aziendali-franchina',
+  'mistral-gestionale',
+  'planner-tropini',
+  'tropini-service',
+  'garavella-7-gestionale',
+  'eva-service-hd',
   'dalina',
-  'sartoria-kristina',
 ]);
+
+const franchinaSteps = [
+  {
+    n: '01',
+    t: 'Teniamo le tue sbarre attuali',
+    d: 'Non cambi motori, sbarre né fotocellule. Ci colleghiamo all’impianto che hai già (FAAC o altre marche) in poche ore.',
+  },
+  {
+    n: '02',
+    t: 'Ti diamo la tua App aziendale',
+    d: 'Un’app con il nome della tua azienda su iPhone e Android: dipendenti e responsabili aprono la sbarra con un tocco.',
+  },
+  {
+    n: '03',
+    t: 'Automatizzi orari e fornitori',
+    d: 'Imposti giorni e fasce orarie per ogni persona, aperture automatiche e link temporanei per corrieri e trasportatori.',
+  },
+  {
+    n: '04',
+    t: 'Zero token, zero abbonamenti',
+    d: 'L’app e la centrale sono tue: non compri pacchetti di gettoni per far entrare gli ospiti e non paghi canoni per utente.',
+  },
+];
 
 const quotes = ['Mistral Impianti', 'Sartoria Kristina', 'Speedy Pizza', 'Bar Chantilly Carmagnola']
   .map(c => testimonials.find(t => t.company === c))
@@ -146,17 +174,25 @@ const steps = [
       <div class="hero__proof b-rise" style="animation-delay:.46s">
         <div class="hero__faces" aria-hidden="true">
           {[
+            '/work/franchina-logo.webp',
             '/logo_garavella.png',
             '/mistral.jpg',
-            '/sartoria_kristina.png',
+            '/logo_tropini.png',
             '/logo_dalina.png',
-            '/logo_natura.png',
           ].map(src => (
             <img src={src} alt="" width="36" height="36" loading="lazy" />
           ))}
         </div>
         <p>
           <strong>{liveProjects}+ progetti online</strong> per attività e aziende tra Torino e Cuneo
+          ·{' '}
+          <a href="/e-commerce-b2b/" class="hero__inline-link">
+            E-commerce B2B
+          </a>{' '}
+          ·{' '}
+          <a href="/gestione-interventi/" class="hero__inline-link">
+            Software per interventi
+          </a>
         </p>
       </div>
     </div>
@@ -293,6 +329,122 @@ const steps = [
     </div>
     <div class="work-marquee" data-reveal>
       <ShotMarquee />
+    </div>
+  </section>
+
+  <!-- SBARRE FRANCHINA PROMOTIONAL SPOTLIGHT -->
+  <section class="b-section b-section--alt b-section--line franchina-spot" id="sbarre-franchina">
+    <div class="b-glow-orb franchina-spot__orb" aria-hidden="true"></div>
+    <div class="b-shell franchina-spot__inner">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Caso in evidenza · Sbarre Franchina (Carmagnola)</p>
+          <h2 class="b-h2">
+            La tua App per comandare e automatizzare le <span class="b-grad">sbarre aziendali</span>
+            . <span class="b-accent">Senza token e senza abbonamenti.</span>
+          </h2>
+        </div>
+        <p class="b-text">
+          Per <strong>Società Agricola Franchina</strong> abbiamo eliminato i telecomandi fisici e
+          portato tutte le sbarre FAAC su un’unica applicazione aziendale. E la cosa più importante?
+          Qualsiasi azienda può avere la propria app per aprire e automatizzare i varchi,{' '}
+          <strong>senza comprare gettoni a consumo né pagare abbonamenti per utente</strong>.
+        </p>
+      </div>
+
+      <div class="franchina-spot__grid">
+        <div class="franchina-spot__visual" data-reveal>
+          <AccessMock />
+          <div class="b-chips franchina-spot__chips">
+            <span class="b-chip">Zero token da acquistare</span>
+            <span class="b-chip">Zero canoni mensili per utente</span>
+            <span class="b-chip">Impianto esistente mantenuto</span>
+            <span class="b-chip">Inviti gratuiti per fornitori</span>
+          </div>
+        </div>
+
+        <div class="franchina-spot__steps" data-reveal data-reveal-delay="1">
+          <p class="b-mono franchina-spot__kicker">Come lo facciamo, passo dopo passo</p>
+          <ol class="franchina-spot__list">
+            {franchinaSteps.map(s => (
+              <li class="b-card franchina-spot__step">
+                <span class="b-mono franchina-spot__n">{s.n}</span>
+                <div>
+                  <h3 class="b-h3">{s.t}</h3>
+                  <p class="b-text">{s.d}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <div class="b-cta-row franchina-spot__ctas">
+            <a
+              href="/progetti/accessi-aziendali-franchina/"
+              class="b-btn b-btn--primary"
+              data-track="cta_click"
+              data-track-location="home_franchina_case"
+            >
+              Scopri il lavoro passo dopo passo{' '}
+              <span class="b-arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+            <a
+              href="/contattaci/?topic=sbarre"
+              class="b-btn b-btn--ghost"
+              data-track="cta_click"
+              data-track-location="home_franchina_quote"
+            >
+              Voglio l’App per le sbarre della mia azienda
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E-COMMERCE B2B LEAD BANNER -->
+  <section class="b-section b-section--tight b-section--line" id="ecommerce-b2b-home">
+    <div class="b-shell">
+      <div class="b-card b2b-home" data-reveal>
+        <div class="b2b-home__copy">
+          <p class="b-eyebrow">Richiesta più cercata su Google · E-commerce B2B</p>
+          <h2 class="b-h2 b2b-home__title">
+            Produci, distribuisci o vendi a <span class="b-grad">partite IVA e rivenditori</span>?
+          </h2>
+          <p class="b-text">
+            Realizziamo portali <strong>E-commerce B2B su misura</strong> con listini personalizzati
+            per cliente, cataloghi riservati, riordino rapido da codice e sincronizzazione con il
+            tuo gestionale — senza commissioni sulle vendite.
+          </p>
+          <div class="b-chips b2b-home__chips">
+            <span class="b-chip">Listini dedicati per cliente</span>
+            <span class="b-chip">Area riservata P.IVA</span>
+            <span class="b-chip">Cataloghi tecnici & ricambi</span>
+            <span class="b-chip">Zero commissioni</span>
+          </div>
+        </div>
+        <div class="b2b-home__actions">
+          <a
+            href="/e-commerce-b2b/"
+            class="b-btn b-btn--primary b-btn--lg"
+            data-track="cta_click"
+            data-track-location="home_b2b_landing"
+          >
+            Vai alla pagina E-commerce B2B{' '}
+            <span class="b-arrow" aria-hidden="true">
+              →
+            </span>
+          </a>
+          <a
+            href="/contattaci/?topic=ecommerce-b2b"
+            class="b-btn b-btn--ghost"
+            data-track="cta_click"
+            data-track-location="home_b2b_quote"
+          >
+            Richiedi studio e preventivo B2B
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -738,6 +890,14 @@ const steps = [
   .hero__proof strong {
     color: var(--b-fg);
   }
+  .hero__inline-link {
+    color: var(--b-cyan-2);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hero__inline-link:hover {
+    color: #fff;
+  }
   .hero__faces {
     display: flex;
     flex-shrink: 0;
@@ -889,6 +1049,99 @@ const steps = [
   }
   .work-marquee {
     margin-top: clamp(4rem, 8vw, 6rem);
+  }
+
+  /* Sbarre Franchina Spotlight */
+  .franchina-spot {
+    overflow: hidden;
+  }
+  .franchina-spot__orb {
+    right: -18rem;
+    top: -14rem;
+  }
+  .franchina-spot__inner {
+    position: relative;
+  }
+  .franchina-spot__grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  @media (min-width: 980px) {
+    .franchina-spot__grid {
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+  }
+  .franchina-spot__chips {
+    margin-top: 1.25rem;
+  }
+  .franchina-spot__kicker {
+    margin: 0 0 1rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--b-cyan);
+  }
+  .franchina-spot__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+  .franchina-spot__step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.15rem 1.35rem;
+  }
+  .franchina-spot__n {
+    font-size: 0.8rem;
+    color: var(--b-cyan);
+    padding-top: 0.15rem;
+  }
+  .franchina-spot__step .b-h3 {
+    font-size: 1.08rem;
+    margin-bottom: 0.3rem;
+  }
+  .franchina-spot__step .b-text {
+    font-size: 0.94rem;
+  }
+  .franchina-spot__ctas {
+    margin-top: 1.5rem;
+  }
+
+  /* E-commerce B2B Home Banner */
+  .b2b-home {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    border-color: rgba(34, 211, 238, 0.35);
+    background:
+      radial-gradient(ellipse 65% 90% at 100% 0%, rgba(34, 211, 238, 0.12), transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+    padding: clamp(1.75rem, 4vw, 3rem);
+  }
+  @media (min-width: 960px) {
+    .b2b-home {
+      grid-template-columns: 1.35fr auto;
+      gap: 3rem;
+    }
+  }
+  .b2b-home__title {
+    font-size: clamp(1.55rem, 2.8vw, 2.35rem);
+    margin-bottom: 0.85rem;
+  }
+  .b2b-home__chips {
+    margin-top: 1.25rem;
+  }
+  .b2b-home__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   /* Story */

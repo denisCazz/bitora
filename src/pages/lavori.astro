@@ -3,6 +3,7 @@ export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import ProjectCard from '../components/ui/ProjectCard.astro';
+import AccessMock from '../components/ui/AccessMock.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 import { getWork, workKindLabels, type WorkKind } from '../data/work';
 
@@ -23,11 +24,19 @@ const listSchema = {
     name: w.title,
   })),
 };
+
+const franchinaHighlights = [
+  '1. Partiamo dalle sbarre e dai cancelli che l’azienda ha già (FAAC e altri marchi)',
+  '2. Installiamo un modulo sicuro nella centralina senza cambiare motori o fotocellule',
+  '3. Consegniamo l’App aziendale su iPhone e Android per aprire con un tocco',
+  '4. Orari automatici, inviti temporanei per fornitori e storico completo delle aperture',
+  '5. Zero token da comprare e zero abbonamenti mensili per utente',
+];
 ---
 
 <Layout
-  title="Lavori e progetti: siti, e-commerce, gestionali e app | Bitora"
-  description="Portfolio Bitora: siti web, e-commerce, gestionali su misura e app realizzati per attività e aziende in Piemonte. Progetti veri, online e in uso ogni giorno."
+  title="Lavori e progetti: siti, e-commerce B2B, gestionali e app | Bitora"
+  description="Portfolio aggiornato Bitora: automazione sbarre aziendali da app senza abbonamenti, e-commerce B2B, gestionali su misura, planner tecnici e siti web in Piemonte."
   pageType="CollectionPage"
   schema={[listSchema]}
 >
@@ -39,10 +48,71 @@ const listSchema = {
   />
   <PageHero
     eyebrow={`Lavori · ${live} progetti online`}
-    title='Progetti veri. <span class="b-grad">In uso ogni giorno.</span>'
-    lede="Bar, ristoranti, artigiani, consulenti, aziende di impianti ed e-commerce tecnici. Ogni progetto è nato da un problema concreto: ecco come l’abbiamo risolto."
+    title='Lavori e progetti veri. <span class="b-grad">In uso ogni giorno.</span>'
+    lede="Dall’app per comandare e automatizzare le sbarre aziendali senza abbonamenti agli e-commerce B2B, dai gestionali con AI ai siti per aziende e locali del territorio: ecco gli ultimi lavori realizzati."
     crumbs={[{ name: 'Lavori', href: '/lavori/' }]}
+    primary={{
+      label: 'Caso Sbarre Franchina',
+      href: '/progetti/accessi-aziendali-franchina/',
+      track: 'lavori_hero_franchina',
+    }}
+    secondary={{ label: 'E-commerce B2B', href: '/e-commerce-b2b/' }}
   />
+
+  <!-- FEATURED SPOTLIGHT: SBARRE FRANCHINA -->
+  <section class="b-section b-section--alt b-section--line wk-spot">
+    <div class="b-shell">
+      <div class="b-card wk-spot__card" data-reveal>
+        <div class="wk-spot__copy">
+          <div class="b-chips wk-spot__badges">
+            <span class="b-chip wk-spot__badge-main">Caso in primo piano · Sbarre Franchina</span>
+            <span class="b-chip">Zero token</span>
+            <span class="b-chip">Zero abbonamenti</span>
+          </div>
+          <h2 class="b-h2 wk-spot__title">
+            La tua applicazione aziendale per comandare e automatizzare le sbarre.
+          </h2>
+          <p class="b-text wk-spot__desc">
+            Per <strong>Società Agricola Franchina</strong> (Carmagnola) abbiamo trasformato i
+            varchi carrabili FAAC in un sistema gestito interamente da smartphone e pannello
+            centrale. Abbiamo spiegato <strong>passo dopo passo</strong> cosa abbiamo fatto per far
+            capire a ogni azienda che può avere la propria app per aprire e automatizzare sbarre e
+            cancelli —{' '}
+            <strong>senza dover comprare token a consumo né pagare canoni mensili</strong>.
+          </p>
+          <ul class="b-checks wk-spot__checks">
+            {franchinaHighlights.map(h => (
+              <li>{h}</li>
+            ))}
+          </ul>
+          <div class="b-cta-row">
+            <a
+              href="/progetti/accessi-aziendali-franchina/"
+              class="b-btn b-btn--primary"
+              data-track="cta_click"
+              data-track-location="lavori_spotlight_franchina"
+            >
+              Leggi passo passo cosa abbiamo fatto{' '}
+              <span class="b-arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+            <a
+              href="/contattaci/?topic=sbarre"
+              class="b-btn b-btn--ghost"
+              data-track="cta_click"
+              data-track-location="lavori_spotlight_quote"
+            >
+              Richiedi info per le sbarre della tua azienda
+            </a>
+          </div>
+        </div>
+        <div class="wk-spot__media">
+          <AccessMock />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="b-section b-section--line wk">
     <div class="b-shell">
@@ -93,6 +163,41 @@ const listSchema = {
 </script>
 
 <style>
+  .wk-spot__card {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+    border-color: rgba(34, 211, 238, 0.38);
+    background:
+      radial-gradient(ellipse 70% 90% at 0% 0%, rgba(34, 211, 238, 0.14), transparent 65%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+    padding: clamp(1.75rem, 4vw, 3.25rem);
+  }
+  @media (min-width: 980px) {
+    .wk-spot__card {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3.5rem;
+    }
+  }
+  .wk-spot__badges {
+    margin-bottom: 1.25rem;
+  }
+  .wk-spot__badge-main {
+    border-color: rgba(34, 211, 238, 0.45);
+    background: rgba(34, 211, 238, 0.12);
+    color: var(--b-cyan-2);
+  }
+  .wk-spot__title {
+    font-size: clamp(1.65rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  .wk-spot__desc strong {
+    color: var(--b-fg);
+  }
+  .wk-spot__checks {
+    margin: 1.5rem 0 0;
+  }
+
   .wk__filters {
     display: flex;
     flex-wrap: wrap;

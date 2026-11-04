@@ -1,0 +1,312 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import ProjectCard from '../components/ui/ProjectCard.astro';
+import FaqList from '../components/ui/FaqList.astro';
+import B2bEcommerceLeadSection from '../components/ui/B2bEcommerceLeadSection.astro';
+import ServiceSchema from '../components/schema/Service.astro';
+import FAQPageSchema from '../components/schema/FAQPage.astro';
+import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
+import { getWorkBySlugs } from '../data/work';
+
+const b2bProjects = getWorkBySlugs(['ricambixstufe', 'shopnfc', 'accessi-aziendali-franchina']);
+
+const pains = [
+  {
+    t: 'Ordini sparsi tra WhatsApp, telefono ed email',
+    d: 'Il tuo ufficio commerciale passa ore a ricopiare codici articolo, controllare disponibilità e rispondere “quanto mi fai di sconto su questo?”.',
+  },
+  {
+    t: 'Listini Excel mandati a mano e mai aggiornati',
+    d: 'Ogni cliente o rivenditore ha il suo sconto, ma gestire file PDF o fogli diversi porta a errori di prezzo e margini bruciati.',
+  },
+  {
+    t: 'Cataloghi tecnici difficili da navigare',
+    d: 'Se vendi ricambi, componenti o forniture con centinaia di varianti e compatibilità, un e-commerce pensato per le magliette non funziona.',
+  },
+  {
+    t: 'Rivenditori che ordinano fuori orario (o dai concorrenti)',
+    d: 'Installatori, officine e negozianti fanno gli ordini la sera. Se da te devono aspettare il preventivo del lunedì mattina, comprano altrove.',
+  },
+  {
+    t: 'Giacenze disallineate col magazzino',
+    d: 'Vendere merce esaurita a un cliente B2B significa ritardi in cantiere, telefonate di reclamo e storni amministrativi.',
+  },
+  {
+    t: 'Commissioni inutili sui tuoi stessi clienti',
+    d: 'I marketplace trattengono dal 10% al 20% anche sui clienti abituali e non ti lasciano il controllo del rapporto commerciale.',
+  },
+];
+
+const sectors = [
+  {
+    n: '01',
+    t: 'Ricambi, termoidraulica e impiantistica',
+    d: 'Ricerca per codice articolo, esploso, marca e modello compatibile. Ideale per chi rifornisce manutentori, CAT e installatori.',
+  },
+  {
+    n: '02',
+    t: 'Produttori agricoli, food & beverage e mangimistica',
+    d: 'Vendita a bancali, sacchi o cartoni con multipli d’imballo, ordine minimo, gestione lotti e riordino periodico per scuderie, ristoranti e negozi.',
+  },
+  {
+    n: '03',
+    t: 'Grossisti, distributori e forniture aziendali',
+    d: 'Listini a scaglioni da 10 a 100.000 pezzi, area riservata dealer, preventivi rapidi e spedizioni sincronizzate con i corrieri.',
+  },
+  {
+    n: '04',
+    t: 'Aziende che vendono sia B2B che B2C',
+    d: 'Un unico catalogo con doppia anima: prezzo di listino e pagamento immediato per i privati, prezzi netti e condizioni dedicate per le Partite IVA.',
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Qual è la differenza tra un e-commerce B2B e un e-commerce normale?',
+    answer:
+      'In un e-commerce B2B ogni azienda cliente può avere il proprio listino personalizzato o la propria fascia di sconto, vede i prezzi IVA esclusa, ordina con multipli di imballo o minimo d’ordine, può riordinare in pochi secondi da tabella o codice SKU e pagare con le condizioni concordate (bonifico, Ri.Ba., 30/60 giorni o carta).',
+  },
+  {
+    question: 'Posso nascondere i prezzi a chi non è registrato e approvato?',
+    answer:
+      'Sì. Puoi scegliere se mostrare il catalogo senza prezzi finché l’ufficio non approva la Partita IVA del cliente, oppure mostrare il prezzo di listino pubblico ai privati e attivare i listini scontati solo dopo il login B2B.',
+  },
+  {
+    question: 'Si collega al mio gestionale di magazzino e fatturazione?',
+    answer:
+      'Sì: colleghiamo il portale B2B ai principali gestionali ed ERP tramite API, scambio tracciati o sincronizzazione automatica, così prodotti, giacenze, listini e ordini restano sempre allineati.',
+  },
+  {
+    question: 'Quanto costa realizzare un e-commerce B2B?',
+    answer:
+      'Ogni progetto viene quotato a prezzo fisso dopo una call e un’analisi gratuita del tuo catalogo. Lavoriamo per fasi: puoi partire con il portale B2B essenziale in 4–6 settimane e aggiungere integrazioni avanzate quando il canale sta già lavorando.',
+  },
+  {
+    question: 'Ci sono commissioni sulle vendite o canoni per numero di clienti B2B?',
+    answer:
+      'No. Il codice e il database sono di tua proprietà: non tratteniamo alcuna percentuale sul tuo fatturato e puoi abilitare tutti i clienti B2B, rivenditori e agenti che desideri.',
+  },
+  {
+    question: 'Seguite aziende in Piemonte e in tutta Italia?',
+    answer:
+      'Sì: abbiamo sede a Carmagnola (Torino) e incontriamo di persona le aziende in Piemonte, seguendo contemporaneamente clienti B2B in tutta Italia con referente tecnico diretto.',
+  },
+];
+---
+
+<Layout
+  title="Sviluppo E-commerce B2B su misura in Piemonte e Italia | Bitora"
+  description="Realizziamo piattaforme E-commerce B2B per produttori, grossisti e distributori: listini per cliente, cataloghi riservati P.IVA, riordino rapido e integrazione gestionale. Preventivo in 24h."
+  image="/editorial/ecommerce.png"
+>
+  <ServiceSchema
+    name="Sviluppo E-commerce B2B su misura"
+    description="Progettazione e sviluppo di portali e-commerce B2B e B2B/B2C con listini riservati per cliente, riordino rapido, preventivi e sincronizzazione gestionale."
+    serviceType="E-commerce B2B"
+    url="https://bitora.it/e-commerce-b2b/"
+    image="https://bitora.it/editorial/ecommerce.png"
+    offerings={[
+      'Listini personalizzati per cliente e fascia di sconto',
+      'Area riservata B2B con approvazione Partita IVA',
+      'Catalogo tecnico ricercabile per codice, modello e compatibilità',
+      'Riordino rapido tabellare, minimo d’ordine (MOQ) e preventivi PDF',
+      'Sincronizzazione con gestionale, magazzino e corrieri',
+    ]}
+  />
+  <FAQPageSchema items={faqItems} />
+  <BreadcrumbListSchema
+    crumbs={[
+      { name: 'Home', item: 'https://bitora.it/' },
+      { name: 'E-commerce', item: 'https://bitora.it/e-commerce/' },
+      { name: 'E-commerce B2B', item: 'https://bitora.it/e-commerce-b2b/' },
+    ]}
+  />
+
+  <PageHero
+    eyebrow="E-commerce B2B · Produttori, Grossisti, Ricambi e Distributori"
+    title='Il portale <span class="b-grad">E-commerce B2B</span> che fa ordinare i tuoi clienti da soli.'
+    lede="Basta ordini dettati al telefono, listini Excel mandati via mail ed errori sui codici articolo. Costruiamo il tuo portale B2B su misura con listini dedicati per ogni Partita IVA, riordino rapido in 30 secondi e collegamento al tuo gestionale — senza commissioni."
+    chips={[
+      'Listini personalizzati per P.IVA',
+      'Catalogo riservato o B2B + B2C',
+      'Riordino rapido da codice',
+      'Integrazione gestionale & corrieri',
+      'Zero commissioni sul venduto',
+    ]}
+    crumbs={[
+      { name: 'Servizi', href: '/servizi/' },
+      { name: 'E-commerce', href: '/e-commerce/' },
+      { name: 'E-commerce B2B', href: '/e-commerce-b2b/' },
+    ]}
+    primary={{
+      label: 'Configura e chiedi preventivo B2B',
+      href: '#preventivo-b2b',
+      track: 'ecommerce_b2b_hero_form',
+    }}
+    secondary={{ label: 'Vedi l’anteprima portale B2B', href: '#vendita-b2b' }}
+  />
+
+  <!-- KPI STRIP -->
+  <section class="b-section b-section--tight b-section--line">
+    <div class="b-shell">
+      <div class="b-kpis" data-reveal>
+        <div class="b-kpi">
+          <div class="b-kpi__v">0%</div>
+          <div class="b-kpi__l">Commissioni Bitora sulle tue vendite B2B</div>
+        </div>
+        <div class="b-kpi">
+          <div class="b-kpi__v">24/7</div>
+          <div class="b-kpi__l">Raccolta ordini e preventivi da rivenditori e installatori</div>
+        </div>
+        <div class="b-kpi">
+          <div class="b-kpi__v">4–8 sett.</div>
+          <div class="b-kpi__l">Tempo medio per andare online col primo rilascio</div>
+        </div>
+        <div class="b-kpi">
+          <div class="b-kpi__v">100%</div>
+          <div class="b-kpi__l">Codice, dominio e anagrafiche di tua proprietà</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINS -->
+  <section class="b-section b-section--alt b-section--line">
+    <div class="b-shell">
+      <div class="b-head" data-reveal>
+        <p class="b-eyebrow">Perché le aziende passano a un portale B2B</p>
+        <h2 class="b-h2">
+          Quanto tempo perde oggi il tuo ufficio <span class="b-accent">per ogni ordine</span>?
+        </h2>
+      </div>
+      <div class="b2b-pains">
+        {pains.map((p, i) => (
+          <article class="b-card" data-reveal data-reveal-delay={String((i % 3) + 1)}>
+            <span class="b2b-pains__x" aria-hidden="true">
+              ✕
+            </span>
+            <h3 class="b-h3 b2b-pains__t">{p.t}</h3>
+            <p class="b-text">{p.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- B2B INTERACTIVE MOCKUP + CAPABILITIES + EMBEDDED LEAD FORM -->
+  <B2bEcommerceLeadSection showLandingLink={false} formIdPrefix="b2b-landing" />
+
+  <!-- SECTORS -->
+  <section class="b-section b-section--line">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Per chi lo progettiamo</p>
+          <h2 class="b-h2">
+            Costruito sulle <span class="b-accent">regole vere</span> del commercio tra aziende.
+          </h2>
+        </div>
+        <p class="b-text">
+          Ogni settore B2B ha le proprie regole: chi vende per codice tecnico, chi vende a bancali,
+          chi lavora con reti di installatori e CAT. Adattiamo il software al tuo listino, non il
+          contrario.
+        </p>
+      </div>
+      <div class="b2b-sectors">
+        {sectors.map((s, i) => (
+          <article class="b-card" data-reveal data-reveal-delay={String((i % 2) + 1)}>
+            <span class="b-mono b2b-sectors__n">{s.n}</span>
+            <h3 class="b-h3 b2b-sectors__t">{s.t}</h3>
+            <p class="b-text">{s.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REAL B2B PROJECTS -->
+  <section class="b-section b-section--alt b-section--line">
+    <div class="b-shell">
+      <div class="b-head b-head--split" data-reveal>
+        <div>
+          <p class="b-eyebrow">Casi reali Bitora</p>
+          <h2 class="b-h2">
+            E-commerce B2B e piattaforme aziendali <span class="b-accent">già in produzione</span>.
+          </h2>
+        </div>
+        <a href="/lavori/" class="b-link">
+          Vedi tutti i lavori →
+        </a>
+      </div>
+      <div class="b2b-projects">
+        {b2bProjects.map((w, i) => (
+          <div data-reveal data-reveal-delay={String(i + 1)}>
+            <ProjectCard item={w} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FaqList items={faqItems} />
+</Layout>
+
+<style>
+  .b2b-pains {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 760px) {
+    .b2b-pains {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .b2b-pains {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .b2b-pains__x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    background: rgba(248, 113, 113, 0.12);
+    color: #fca5a5;
+    font-size: 0.75rem;
+  }
+  .b2b-pains__t {
+    margin: 1.15rem 0 0.55rem;
+  }
+
+  .b2b-sectors {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 760px) {
+    .b2b-sectors {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .b2b-sectors__n {
+    font-size: 0.78rem;
+    color: var(--b-cyan);
+  }
+  .b2b-sectors__t {
+    margin: 1rem 0 0.5rem;
+  }
+
+  .b2b-projects {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 900px) {
+    .b2b-projects {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -8,6 +8,7 @@ const hideCta = path === '/contattaci' || path === '/richiedi-demo' || path.star
 const topicByPath: Record<string, string> = {
   '/siti-web-professionali': 'sito',
   '/e-commerce': 'ecommerce',
+  '/e-commerce-b2b': 'ecommerce-b2b',
   '/nfc-ecosystem': 'nfc',
   '/sistemi-aziendali': 'sistemi',
   '/app-mobile': 'app',
@@ -100,6 +101,12 @@ const ctaHref = topic ? `/contattaci/?topic=${topic}` : '/contattaci/';
               <a href={p.href}>{p.title}</a>
             </li>
           ))}
+          <li>
+            <a href="/e-commerce-b2b/">E-commerce B2B</a>
+          </li>
+          <li>
+            <a href="/progetti/accessi-aziendali-franchina/">App Sbarre & Varchi</a>
+          </li>
           <li>
             <a href="https://shopnfc.bitora.it/" rel="noopener">
               Shop NFC

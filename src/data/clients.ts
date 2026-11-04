@@ -10,11 +10,10 @@ export interface ClientLogo {
 
 export const clientLogos: ClientLogo[] = [
   {
-    name: "D'Alina",
-    logo: '/logo_dalina.png',
+    name: 'Società Agricola Franchina',
+    logo: '/work/franchina-logo.webp',
     tier: 'premium',
-    url: 'https://ristorantedalina.it',
-    location: 'Sommariva del Bosco',
+    location: 'Carmagnola',
   },
   {
     name: 'Garavella 7',
@@ -22,12 +21,6 @@ export const clientLogos: ClientLogo[] = [
     tier: 'premium',
     url: 'https://garavella7.it',
     location: 'Carmagnola',
-  },
-  {
-    name: 'Tropini Service',
-    logo: '/logo_tropini.png',
-    tier: 'premium',
-    location: 'Cavallermaggiore',
   },
   {
     name: 'Mistral Impianti',
@@ -42,6 +35,19 @@ export const clientLogos: ClientLogo[] = [
     tier: 'premium',
     url: 'https://ricambixstufe.it',
     location: 'Italia',
+  },
+  {
+    name: 'Tropini Service',
+    logo: '/logo_tropini.png',
+    tier: 'premium',
+    location: 'Cavallermaggiore',
+  },
+  {
+    name: "D'Alina",
+    logo: '/logo_dalina.png',
+    tier: 'premium',
+    url: 'https://ristorantedalina.it',
+    location: 'Sommariva del Bosco',
   },
   {
     name: 'Sartoria Kristina',
@@ -91,11 +97,5 @@ export const clientLogos: ClientLogo[] = [
     tier: 'gold',
     url: 'https://lanaturasavigliano.it',
     location: 'Savigliano',
-  },
-  {
-    name: 'Bar Wine Café',
-    logo: '/wine.png',
-    tier: 'gold',
-    location: 'Carmagnola',
   },
 ];

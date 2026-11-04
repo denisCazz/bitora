@@ -13,6 +13,7 @@ const samplePages = [
   '/richiedi-demo/',
   '/siti-web-professionali/',
   '/e-commerce/',
+  '/e-commerce-b2b/',
   '/lavori/',
 ];
 
