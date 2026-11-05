@@ -3,6 +3,7 @@ export const prerender = true;
 import Layout from '../../layouts/Layout.astro';
 import ProjectCard from '../../components/ui/ProjectCard.astro';
 import UiMock from '../../components/ui/UiMock.astro';
+import FranchinaPromo from '../../components/ui/FranchinaPromo.astro';
 import BreadcrumbListSchema from '../../components/schema/BreadcrumbList.astro';
 import { getPublicCaseStudies } from '../../data/caseStudies';
 import { getWork, workKindLabels, type WorkItem } from '../../data/work';
@@ -52,13 +53,16 @@ const projectSchema = {
   },
   ...(hasSite ? { sameAs: item.siteUrl } : {}),
 };
-const topic = item.kinds.includes('software')
-  ? 'sistemi'
-  : item.kinds.includes('app')
-    ? 'app'
-    : item.kinds.includes('ecommerce')
-      ? 'ecommerce'
-      : 'sito';
+const isFranchina = item.slug === 'accessi-aziendali-franchina';
+const topic = isFranchina
+  ? 'sbarre'
+  : item.kinds.includes('software')
+    ? 'sistemi'
+    : item.kinds.includes('app')
+      ? 'app'
+      : item.kinds.includes('ecommerce')
+        ? 'ecommerce'
+        : 'sito';
 ---
 
 <Layout
@@ -108,6 +112,29 @@ const topic = item.kinds.includes('software')
             <span class="b-arrow" aria-hidden="true">
               ↗
             </span>
+          </a>
+        </div>
+      )}
+      {isFranchina && (
+        <div class="b-cta-row b-rise" style="animation-delay:.28s">
+          <a
+            href="#passo-dopo-passo"
+            class="b-btn b-btn--primary"
+            data-track="cta_click"
+            data-track-location="franchina_hero_steps"
+          >
+            Guarda il lavoro passo dopo passo{' '}
+            <span class="b-arrow" aria-hidden="true">
+              ↓
+            </span>
+          </a>
+          <a
+            href="/contattaci/?topic=sbarre"
+            class="b-btn b-btn--ghost"
+            data-track="cta_click"
+            data-track-location="franchina_hero_quote"
+          >
+            Voglio l’App per le sbarre della mia azienda →
           </a>
         </div>
       )}
@@ -206,6 +233,8 @@ const topic = item.kinds.includes('software')
       </ul>
     </div>
   </section>
+
+  {isFranchina && <FranchinaPromo />}
 
   <section class="b-section b-section--tight b-section--line">
     <div class="b-shell">

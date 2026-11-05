@@ -43,8 +43,10 @@ test.describe('Organic search intent', () => {
 
     for (let i = 0; i < count; i++) {
       const data = JSON.parse((await scripts.nth(i).textContent()) || '{}');
-      if (data['@type'] === 'ProfessionalService') {
-        professionalService = data;
+      const nodes = Array.isArray(data['@graph']) ? data['@graph'] : [data];
+      const match = nodes.find(n => n && n['@type'] === 'ProfessionalService');
+      if (match) {
+        professionalService = match;
         break;
       }
     }
@@ -85,5 +87,31 @@ test.describe('Organic search intent', () => {
     await expect(page.getByText(/cataloghi riservati/i).first()).toBeVisible();
     await expect(page.getByText(/listini per cliente/i).first()).toBeVisible();
     await expect(page.getByText(/integrazioni gestionali/i).first()).toBeVisible();
+  });
+
+  test('dedicated e-commerce B2B landing page exposes lead capture form and B2B value', async ({
+    page,
+  }) => {
+    await expectSearchPage(page, {
+      path: '/e-commerce-b2b/',
+      title: 'Sviluppo E-commerce B2B su misura in Piemonte e Italia | Bitora',
+      description:
+        'Realizziamo piattaforme E-commerce B2B per produttori, grossisti e distributori: listini per cliente, cataloghi riservati P.IVA, riordino rapido e integrazione gestionale. Preventivo in 24h.',
+      canonical: 'https://bitora.it/e-commerce-b2b/',
+      h1: 'E-commerce B2B',
+    });
+
+    await expect(page.locator('#b2b-landing-form')).toBeVisible();
+    await expect(page.getByText(/zero commissioni/i).first()).toBeVisible();
+  });
+
+  test('Sbarre Franchina case study exposes step-by-step promotional walkthrough without tokens or subscriptions', async ({
+    page,
+  }) => {
+    await page.goto('/progetti/accessi-aziendali-franchina/');
+    await expect(page.locator('h1')).toContainText(/accessi aziendali/i);
+    await expect(page.locator('#passo-dopo-passo')).toBeVisible();
+    await expect(page.locator('#zero-token')).toBeVisible();
+    await expect(page.getByText(/senza comprare token e senza abbonamenti/i).first()).toBeVisible();
   });
 });

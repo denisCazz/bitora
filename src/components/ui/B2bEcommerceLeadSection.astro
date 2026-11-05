@@ -1,0 +1,952 @@
+---
+import { whatsappLink, phoneDisplay, phoneHref } from '../../data/services';
+
+export interface Props {
+  showLandingLink?: boolean;
+  formIdPrefix?: string;
+}
+
+const { showLandingLink = false, formIdPrefix = 'b2b' } = Astro.props;
+
+const b2bCapabilities = [
+  {
+    tag: 'Listini & Sconti',
+    title: 'Listini per cliente, categoria o quantità',
+    desc: 'Ogni cliente con Partita IVA vede solo i propri prezzi netti, gli sconti per fascia (rivenditore, installatore, distributore, VIP) e gli scaglioni per quantità.',
+  },
+  {
+    tag: 'Accesso Riservato',
+    title: 'Cataloghi riservati o ibridi B2B + B2C',
+    desc: 'Puoi nascondere i prezzi al pubblico e abilitare solo i clienti approvati, oppure vendere nello stesso sito sia ai privati (listino pubblico) sia alle aziende (listino B2B).',
+  },
+  {
+    tag: 'Ordini Veloci',
+    title: 'Riordino in 30 secondi e carrello da codice',
+    desc: 'Vista tabellare per ordinare decine di righe senza aprire ogni scheda, ricerca per codice articolo o compatibilità, ordine minimo (MOQ), multipli di imballo e riordino storico in un clic.',
+  },
+  {
+    tag: 'Pagamenti & Preventivi',
+    title: 'Bonifico, Ri.Ba., dilazioni 30/60gg o carta',
+    desc: 'Ogni cliente usa solo i metodi di pagamento autorizzati per la sua anagrafica, oppure trasforma il carrello in una richiesta di preventivo PDF per l’ufficio commerciale.',
+  },
+  {
+    tag: 'Zero Errori',
+    title: 'Integrazioni gestionali, magazzino e corrieri',
+    desc: 'Sincronizziamo giacenze, listini, ordini e fatturazione con il tuo gestionale o ERP via API e automatizziamo etichette e tracking con i corrieri (SpedirePRO, BRT, GLS, DHL).',
+  },
+  {
+    tag: '100% Tuo',
+    title: 'Zero commissioni sul venduto',
+    desc: 'Nessuna percentuale trattenuta sugli ordini dei tuoi clienti e nessun limite sul numero di articoli o di agenti commerciali collegati.',
+  },
+];
+
+const targetOptions = [
+  'Solo aziende / P.IVA (B2B puro)',
+  'Sia aziende (B2B) che privati (B2C)',
+  'Rete rivenditori, installatori o agenti',
+];
+
+const catalogOptions = [
+  'Fino a 200 articoli',
+  'Da 200 a 2.500 articoli',
+  'Oltre 2.500 codici / ricambi tecnici',
+];
+
+const featureChips = [
+  'Listini personalizzati per cliente',
+  'Cataloghi riservati con approvazione P.IVA',
+  'Riordino rapido e multipli d’imballo',
+  'Integrazioni gestionali / magazzino',
+  'Richiesta preventivo dal carrello',
+  'Pagamenti B2B (Bonifico, 30/60gg, Carta)',
+];
+---
+
+<!-- B2B CAPABILITIES & PORTAL PREVIEW -->
+<section class="b-section b-section--line b2b-sec" id="vendita-b2b">
+  <div class="b-shell">
+    <div class="b-head b-head--split" data-reveal>
+      <div>
+        <p class="b-eyebrow">Soluzione dedicata · E-commerce B2B</p>
+        <h2 class="b-h2">
+          Vendita online per aziende: <span class="b-grad">il tuo portale B2B</span> che raccoglie
+          ordini e lead H24.
+        </h2>
+      </div>
+      <p class="b-text">
+        Un e-commerce B2B non è un normale negozio online con il campo Partita IVA: serve a togliere
+        telefonate, file Excel e preventivi manuali al tuo ufficio, facendo ordinare rivenditori,
+        installatori e aziende clienti in totale autonomia con i propri{' '}
+        <strong>listini per cliente</strong>, <strong>cataloghi riservati</strong> e{' '}
+        <strong>integrazioni gestionali</strong>.
+      </p>
+    </div>
+
+    <!-- Interactive B2B Portal Mockup -->
+    <div class="b2b-mock b-card" data-reveal aria-label="Anteprima portale E-commerce B2B Bitora">
+      <div class="b2b-mock__topbar">
+        <div class="b2b-mock__dots" aria-hidden="true">
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+        <span class="b-mono b2b-mock__url">b2b.tuaazienda.it/ordini-rapidi</span>
+        <span class="b2b-mock__customer">
+          <i></i>Idrotermica Rossi S.r.l. · <strong>Listino Installatori (-35%)</strong>
+        </span>
+      </div>
+
+      <div class="b2b-mock__body">
+        <div class="b2b-mock__main">
+          <div class="b2b-mock__toolbar">
+            <div class="b2b-mock__search">
+              <span class="b-mono">🔍 Cerca per codice SKU, modello o compatibilità…</span>
+            </div>
+            <div class="b-chips">
+              <span class="b-chip">Disponibili subito</span>
+              <span class="b-chip">Riordino frequente</span>
+              <span class="b-chip">Importa CSV</span>
+            </div>
+          </div>
+
+          <div class="b2b-mock__table" role="region" aria-label="Esempio righe ordine B2B">
+            <div class="b2b-mock__row b2b-mock__row--head b-mono">
+              <span>Codice / Articolo</span>
+              <span>Disponibilità</span>
+              <span>Listino / Tuo netto</span>
+              <span>Quantità (MOQ)</span>
+            </div>
+            <div class="b2b-mock__row">
+              <div>
+                <strong>MTR-2040 · Motoriduttore 2 RPM</strong>
+                <small>Compatibile serie Pro / Pellet · Imballo da 5 pz</small>
+              </div>
+              <span class="b2b-mock__stock is-ok">140 pz in pronta consegna</span>
+              <div>
+                <s class="b2b-mock__old">€ 68,00</s>
+                <strong class="b2b-mock__net">€ 44,20</strong>
+                <small>IVA escl.</small>
+              </div>
+              <span class="b2b-mock__qty">10 pz</span>
+            </div>
+            <div class="b2b-mock__row">
+              <div>
+                <strong>SCH-8910 · Scheda elettronica controllo</strong>
+                <small>Ricambio originale · Garanzia B2B 24 mesi</small>
+              </div>
+              <span class="b2b-mock__stock is-ok">42 pz disponibili</span>
+              <div>
+                <s class="b2b-mock__old">€ 145,00</s>
+                <strong class="b2b-mock__net">€ 94,25</strong>
+                <small>IVA escl.</small>
+              </div>
+              <span class="b2b-mock__qty">4 pz</span>
+            </div>
+            <div class="b2b-mock__row">
+              <div>
+                <strong>KIT-GUARN · Kit guarnizioni alta temperatura</strong>
+                <small>Sconto extra volume applicato (≥ 20 pz)</small>
+              </div>
+              <span class="b2b-mock__stock is-ok">310 pz disponibili</span>
+              <div>
+                <s class="b2b-mock__old">€ 19,00</s>
+                <strong class="b2b-mock__net">€ 11,40</strong>
+                <small>IVA escl.</small>
+              </div>
+              <span class="b2b-mock__qty">25 pz</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="b2b-mock__summary">
+          <p class="b-mono b2b-mock__sum-kicker">Riepilogo ordine B2B</p>
+          <div class="b2b-mock__sum-line">
+            <span>Subtotale listino</span>
+            <s>€ 1.735,00</s>
+          </div>
+          <div class="b2b-mock__sum-line is-discount">
+            <span>Sconto riservato (-35%)</span>
+            <strong>- € 629,00</strong>
+          </div>
+          <div class="b2b-mock__sum-line is-total">
+            <span>Totale netto B2B</span>
+            <strong>€ 1.106,00</strong>
+          </div>
+          <p class="b2b-mock__terms">
+            Condizione attiva: <strong>Bonifico / Ri.Ba. 60 gg D.F.F.M.</strong> · Spedizione
+            corriere espresso tracciata
+          </p>
+          <div class="b2b-mock__btns">
+            <span class="b2b-mock__btn-primary">Conferma ordine B2B →</span>
+            <span class="b2b-mock__btn-ghost">Scarica preventivo PDF</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="b2b-grid">
+      {b2bCapabilities.map((item, i) => (
+        <article class="b-card b-card--hover" data-reveal data-reveal-delay={String((i % 3) + 1)}>
+          <span class="b-mono b2b-grid__tag">{item.tag}</span>
+          <h3 class="b-h3 b2b-grid__title">{item.title}</h3>
+          <p class="b-text">{item.desc}</p>
+        </article>
+      ))}
+    </div>
+
+    {showLandingLink && (
+      <div class="b2b-sec__more" data-reveal>
+        <a href="/e-commerce-b2b/" class="b-btn b-btn--ghost">
+          Approfondisci nella pagina dedicata E-commerce B2B{' '}
+          <span class="b-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- EMBEDDED B2B LEAD CAPTURE & CONFIGURATOR -->
+<section class="b-section b-section--alt b-section--line b2b-lead" id="preventivo-b2b">
+  <div class="b-glow-orb b2b-lead__orb" aria-hidden="true"></div>
+  <div class="b-shell b2b-lead__inner">
+    <div class="b2b-lead__intro" data-reveal>
+      <p class="b-eyebrow">Configura e richiedi fattibilità · Risposta in 24h</p>
+      <h2 class="b-h2">
+        Trasforma il tuo catalogo in una <span class="b-grad">macchina di ordini B2B</span>.
+      </h2>
+      <p class="b-lede">
+        Seleziona in 30 secondi come vendi oggi e cosa ti serve: ricevi entro 24 ore lavorative
+        un’analisi concreta con architettura consigliata, tempi di rilascio e preventivo a prezzo
+        fisso per fasi.
+      </p>
+
+      <ul class="b-checks b2b-lead__promises">
+        <li>
+          <strong>Studio gratuito sul tuo catalogo</strong>: analizziamo listini, varianti, codici e
+          regole commerciali prima di scrivere una riga di codice.
+        </li>
+        <li>
+          <strong>Partenza graduale a fasi</strong>: puoi lanciare prima il catalogo B2B con ordini
+          e listini riservati, e collegare il gestionale nella fase successiva.
+        </li>
+        <li>
+          <strong>Zero canoni a percentuale</strong>: il portale e i dati dei tuoi clienti aziendali
+          sono di tua proprietà al 100%.
+        </li>
+      </ul>
+
+      <div class="b2b-lead__direct">
+        <p class="b-small">Preferisci parlarne subito con chi sviluppa il progetto?</p>
+        <div class="b-cta-row">
+          <a
+            href={whatsappLink(
+              'Ciao Bitora, vorrei parlare di un progetto E-commerce B2B per la mia azienda.'
+            )}
+            class="b-btn b-btn--wa"
+            target="_blank"
+            rel="noopener"
+            data-track="whatsapp_click"
+            data-track-location="b2b_lead_section"
+          >
+            Scrivici su WhatsApp
+          </a>
+          <a
+            href={phoneHref}
+            class="b-btn b-btn--ghost"
+            data-track="phone_click"
+            data-track-location="b2b_lead_section"
+          >
+            Chiama {phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-card b2b-lead__card" data-reveal data-reveal-delay="1">
+      <div id={`${formIdPrefix}-ok`} class="b2b-lead__ok" role="status" hidden>
+        <span class="b2b-lead__ok-icon" aria-hidden="true">
+          ✓
+        </span>
+        <h3 class="b-h2">Richiesta E-commerce B2B ricevuta!</h3>
+        <p class="b-text">
+          Grazie! Abbiamo ricevuto la configurazione del tuo progetto B2B. Ti ricontatteremo entro
+          24 ore lavorative con una prima analisi su misura.
+        </p>
+        <div class="b-cta-row">
+          <a
+            href={whatsappLink(
+              'Ciao Bitora, ho appena inviato la richiesta per il mio E-commerce B2B dal sito.'
+            )}
+            class="b-btn b-btn--wa"
+            target="_blank"
+            rel="noopener"
+          >
+            Anticipaci dettagli su WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <form
+        id={`${formIdPrefix}-form`}
+        class="b2b-form"
+        action="/api/contact/"
+        method="POST"
+        novalidate
+      >
+        <input
+          type="text"
+          name="_gotcha"
+          class="b2b-form__hp"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        />
+        <input type="hidden" name="_ts" value="" />
+        <input type="hidden" name="argomento" value="e-commerce-b2b" />
+        <input type="hidden" name="form_type" value="ecommerce-b2b" />
+
+        <fieldset class="b2b-form__fs">
+          <legend class="b-label">1. A chi vuoi vendere online?</legend>
+          <div class="b2b-form__choices">
+            {targetOptions.map((opt, idx) => (
+              <label class="b-choice">
+                <input type="radio" name="b2b_target" value={opt} checked={idx === 0} />
+                <span>{opt}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="b2b-form__fs">
+          <legend class="b-label">2. Quanti articoli o codici hai a catalogo?</legend>
+          <div class="b2b-form__choices b2b-form__choices--3">
+            {catalogOptions.map((opt, idx) => (
+              <label class="b-choice">
+                <input type="radio" name="b2b_catalogo" value={opt} checked={idx === 1} />
+                <span>{opt}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="b2b-form__fs">
+          <legend class="b-label">3. Quali funzioni B2B ti interessano? (anche più di una)</legend>
+          <div class="b2b-form__choices b2b-form__choices--2">
+            {featureChips.map((chip, idx) => (
+              <label class="b-choice">
+                <input type="checkbox" name="b2b_funzioni" value={chip} checked={idx < 2} />
+                <span>{chip}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <div class="b2b-form__row">
+          <div class="b-field">
+            <label class="b-label" for={`${formIdPrefix}-nome`}>
+              Nome e cognome *
+            </label>
+            <input
+              class="b-input"
+              type="text"
+              id={`${formIdPrefix}-nome`}
+              name="nome"
+              required
+              minlength="2"
+              autocomplete="name"
+              placeholder="Mario Rossi"
+            />
+            <p id={`${formIdPrefix}-nome-err`} class="b2b-form__err" hidden>
+              Inserisci il tuo nome
+            </p>
+          </div>
+          <div class="b-field">
+            <label class="b-label" for={`${formIdPrefix}-azienda`}>
+              Azienda / Settore *
+            </label>
+            <input
+              class="b-input"
+              type="text"
+              id={`${formIdPrefix}-azienda`}
+              name="azienda"
+              required
+              minlength="2"
+              autocomplete="organization"
+              placeholder="Es. Rossi Ricambi S.r.l."
+            />
+            <p id={`${formIdPrefix}-azienda-err`} class="b2b-form__err" hidden>
+              Inserisci il nome dell’azienda
+            </p>
+          </div>
+        </div>
+
+        <div class="b2b-form__row">
+          <div class="b-field">
+            <label class="b-label" for={`${formIdPrefix}-email`}>
+              Email aziendale *
+            </label>
+            <input
+              class="b-input"
+              type="email"
+              id={`${formIdPrefix}-email`}
+              name="email"
+              required
+              autocomplete="email"
+              placeholder="nome@azienda.it"
+            />
+            <p id={`${formIdPrefix}-email-err`} class="b2b-form__err" hidden>
+              Inserisci un’email valida
+            </p>
+          </div>
+          <div class="b-field">
+            <label class="b-label" for={`${formIdPrefix}-telefono`}>
+              Telefono / WhatsApp *
+            </label>
+            <input
+              class="b-input"
+              type="tel"
+              id={`${formIdPrefix}-telefono`}
+              name="telefono"
+              required
+              autocomplete="tel"
+              placeholder="+39 3..."
+            />
+            <p id={`${formIdPrefix}-telefono-err`} class="b2b-form__err" hidden>
+              Inserisci un recapito telefonico
+            </p>
+          </div>
+        </div>
+
+        <div class="b-field">
+          <label class="b-label" for={`${formIdPrefix}-note`}>
+            Dettagli sul progetto o gestionale usato (opzionale)
+          </label>
+          <textarea
+            class="b-input"
+            id={`${formIdPrefix}-note`}
+            name="messaggio"
+            rows="3"
+            placeholder="Es. Vendiamo ricambi a installatori, usiamo Danea / Fatture in Cloud / TeamSystem e vorremmo listini riservati…"
+          ></textarea>
+        </div>
+
+        <label class="b2b-form__privacy">
+          <input type="checkbox" id={`${formIdPrefix}-privacy`} name="privacy" required />
+          <span>
+            Ho letto la{' '}
+            <a href="/privacy-policy/" target="_blank">
+              privacy policy
+            </a>{' '}
+            e acconsento al trattamento dei dati per ricevere l’analisi e il preventivo gratuito. *
+          </span>
+        </label>
+        <p id={`${formIdPrefix}-privacy-err`} class="b2b-form__err" hidden>
+          Accetta l’informativa privacy per inviare la richiesta
+        </p>
+
+        <div id={`${formIdPrefix}-form-err`} class="b2b-form__alert" role="alert" hidden></div>
+
+        <button
+          type="submit"
+          id={`${formIdPrefix}-submit`}
+          class="b-btn b-btn--primary b-btn--lg b2b-form__submit"
+        >
+          <span id={`${formIdPrefix}-submit-label`}>
+            Richiedi analisi e preventivo E-commerce B2B
+          </span>
+          <span class="b-arrow" aria-hidden="true">
+            →
+          </span>
+        </button>
+        <p class="b-small b2b-form__fine">
+          Gratuito e senza impegno · Risposta entro 24h lavorative da Denis Cazzulo
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ formIdPrefix }}>
+  const form = document.getElementById(`${formIdPrefix}-form`);
+  const okBox = document.getElementById(`${formIdPrefix}-ok`);
+  const submitBtn = document.getElementById(`${formIdPrefix}-submit`);
+  const submitLabel = document.getElementById(`${formIdPrefix}-submit-label`);
+  const alertEl = document.getElementById(`${formIdPrefix}-form-err`);
+
+  const tsInput = form?.querySelector('[name="_ts"]');
+  if (tsInput) tsInput.value = String(Date.now());
+
+  const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  function validateB2b() {
+    if (!form) return false;
+    const nome = form.elements.namedItem('nome')?.value?.trim() || '';
+    const azienda = form.elements.namedItem('azienda')?.value?.trim() || '';
+    const email = form.elements.namedItem('email')?.value?.trim() || '';
+    const telefono = form.elements.namedItem('telefono')?.value?.trim() || '';
+    const privacy = Boolean(form.elements.namedItem('privacy')?.checked);
+
+    const rules = [
+      ['nome', nome.length >= 2],
+      ['azienda', azienda.length >= 2],
+      ['email', isEmail(email)],
+      ['telefono', telefono.length >= 6],
+      ['privacy', privacy],
+    ];
+    let valid = true;
+    for (const [key, ok] of rules) {
+      const errEl = document.getElementById(`${formIdPrefix}-${key}-err`);
+      if (errEl) errEl.hidden = ok;
+      if (!ok) valid = false;
+    }
+    return valid;
+  }
+
+  form?.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!form || !submitBtn || !alertEl || !validateB2b()) return;
+
+    submitBtn.disabled = true;
+    if (submitLabel) submitLabel.textContent = 'Invio richiesta in corso…';
+    alertEl.hidden = true;
+
+    const data = new FormData(form);
+    const target = data.get('b2b_target') || '-';
+    const catalogo = data.get('b2b_catalogo') || '-';
+    const funzioni = data.getAll('b2b_funzioni').join(', ') || '-';
+    const note = String(data.get('messaggio') || '').trim();
+
+    const fullMessage = [
+      note ? `Note cliente: ${note}` : 'Richiesta consulenza e preventivo E-commerce B2B',
+      `Target vendita: ${target}`,
+      `Dimensione catalogo: ${catalogo}`,
+      `Funzioni B2B richieste: ${funzioni}`,
+    ].join('\n');
+
+    data.set('messaggio', fullMessage);
+
+    const params = new URLSearchParams(window.location.search);
+    [
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_content',
+      'utm_term',
+      'gclid',
+      'fbclid',
+    ].forEach(k => {
+      const v = params.get(k);
+      if (v) data.set(k, v);
+    });
+    data.set('landing_page', window.location.pathname);
+    if (document.referrer) data.set('referrer', document.referrer);
+
+    try {
+      const res = await fetch('/api/contact/', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      const payload = await res.json().catch(() => null);
+      if (res.ok && payload?.ok) {
+        window.bitoraTrack?.('lead_form_submit', {
+          location: window.location.pathname,
+          argomento: 'e-commerce-b2b',
+        });
+        form.hidden = true;
+        if (okBox) okBox.hidden = false;
+        return;
+      }
+      alertEl.textContent =
+        payload?.error || 'Errore durante l’invio. Riprova o scrivici direttamente su WhatsApp.';
+      alertEl.hidden = false;
+    } catch {
+      alertEl.textContent = 'Errore di connessione. Riprova o scrivici su WhatsApp.';
+      alertEl.hidden = false;
+    } finally {
+      submitBtn.disabled = false;
+      if (submitLabel) {
+        submitLabel.textContent = 'Richiedi analisi e preventivo E-commerce B2B';
+      }
+    }
+  });
+</script>
+
+<style>
+  .b2b-mock {
+    padding: 0 !important;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    border-color: rgba(34, 211, 238, 0.35);
+    background: #090c10;
+    box-shadow: 0 40px 100px -40px rgba(34, 211, 238, 0.22);
+  }
+  .b2b-mock__topbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: #12171f;
+    border-bottom: 1px solid var(--b-line);
+    font-size: 0.8rem;
+  }
+  .b2b-mock__dots {
+    display: flex;
+    gap: 6px;
+  }
+  .b2b-mock__dots i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .b2b-mock__url {
+    color: var(--b-fg-3);
+    font-size: 0.76rem;
+  }
+  .b2b-mock__customer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    color: #a7f3d0;
+    font-size: 0.76rem;
+  }
+  .b2b-mock__customer i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34d399;
+  }
+  .b2b-mock__body {
+    display: grid;
+    gap: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+  @media (min-width: 980px) {
+    .b2b-mock__body {
+      grid-template-columns: 1.45fr 0.55fr;
+      align-items: start;
+    }
+  }
+  .b2b-mock__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .b2b-mock__search {
+    flex: 1;
+    min-width: 240px;
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--b-line-2);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--b-fg-3);
+    font-size: 0.78rem;
+  }
+  .b2b-mock__table {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .b2b-mock__row {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--b-line);
+    align-items: center;
+    font-size: 0.86rem;
+  }
+  @media (min-width: 720px) {
+    .b2b-mock__row {
+      grid-template-columns: 1.6fr 1fr 0.9fr auto;
+    }
+  }
+  .b2b-mock__row--head {
+    background: transparent;
+    border: none;
+    padding: 0 0.5rem 0.25rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--b-fg-3);
+  }
+  @media (max-width: 719px) {
+    .b2b-mock__row--head {
+      display: none;
+    }
+  }
+  .b2b-mock__row strong {
+    display: block;
+    color: var(--b-fg);
+  }
+  .b2b-mock__row small {
+    display: block;
+    color: var(--b-fg-3);
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
+  }
+  .b2b-mock__stock {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #6ee7b7;
+  }
+  .b2b-mock__old {
+    color: var(--b-fg-3);
+    font-size: 0.75rem;
+    margin-right: 0.35rem;
+  }
+  .b2b-mock__net {
+    display: inline !important;
+    color: var(--b-cyan-2) !important;
+    font-size: 0.98rem;
+  }
+  .b2b-mock__qty {
+    padding: 0.35rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.08);
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--b-fg);
+    text-align: center;
+  }
+
+  .b2b-mock__summary {
+    padding: 1.25rem;
+    border-radius: 16px;
+    background: rgba(34, 211, 238, 0.05);
+    border: 1px solid rgba(34, 211, 238, 0.25);
+    display: grid;
+    gap: 0.7rem;
+  }
+  .b2b-mock__sum-kicker {
+    margin: 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--b-cyan);
+  }
+  .b2b-mock__sum-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--b-fg-2);
+  }
+  .b2b-mock__sum-line.is-discount strong {
+    color: #6ee7b7;
+  }
+  .b2b-mock__sum-line.is-total {
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--b-line-2);
+    font-size: 1.05rem;
+    color: var(--b-fg);
+  }
+  .b2b-mock__terms {
+    margin: 0.25rem 0;
+    font-size: 0.76rem;
+    color: var(--b-fg-3);
+    line-height: 1.45;
+  }
+  .b2b-mock__terms strong {
+    color: var(--b-fg-2);
+  }
+  .b2b-mock__btns {
+    display: grid;
+    gap: 0.45rem;
+  }
+  .b2b-mock__btn-primary,
+  .b2b-mock__btn-ghost {
+    display: block;
+    text-align: center;
+    padding: 0.65rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .b2b-mock__btn-primary {
+    background: var(--b-cyan);
+    color: #001318;
+  }
+  .b2b-mock__btn-ghost {
+    border: 1px solid var(--b-line-2);
+    color: var(--b-fg-2);
+  }
+
+  .b2b-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 760px) {
+    .b2b-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .b2b-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .b2b-grid__tag {
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--b-cyan);
+  }
+  .b2b-grid__title {
+    margin: 1rem 0 0.55rem;
+  }
+  .b2b-sec__more {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+
+  /* Lead Capture Section */
+  .b2b-lead {
+    overflow: hidden;
+  }
+  .b2b-lead__orb {
+    left: -18rem;
+    bottom: -18rem;
+  }
+  .b2b-lead__inner {
+    position: relative;
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (min-width: 1024px) {
+    .b2b-lead__inner {
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 4rem;
+    }
+    .b2b-lead__intro {
+      position: sticky;
+      top: 104px;
+    }
+  }
+  .b2b-lead__promises {
+    margin: 2rem 0;
+  }
+  .b2b-lead__promises strong {
+    color: var(--b-fg);
+  }
+  .b2b-lead__direct {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--b-line);
+  }
+  .b2b-lead__card {
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+    border-color: rgba(34, 211, 238, 0.35);
+    background: linear-gradient(180deg, rgba(16, 20, 26, 0.95), rgba(10, 12, 16, 0.95));
+  }
+  .b2b-form {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .b2b-form__hp {
+    position: absolute;
+    left: -9999px;
+  }
+  .b2b-form__fs {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .b2b-form__fs legend {
+    margin-bottom: 0.65rem;
+  }
+  .b2b-form__choices {
+    display: grid;
+    gap: 0.5rem;
+  }
+  @media (min-width: 640px) {
+    .b2b-form__choices--2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .b2b-form__choices--3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .b2b-form__row {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .b2b-form__row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .b2b-form__err {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #fca5a5;
+  }
+  .b2b-form__privacy {
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+    font-size: 0.84rem;
+    color: var(--b-fg-3);
+    line-height: 1.5;
+  }
+  .b2b-form__privacy input {
+    margin-top: 0.2rem;
+    width: 1.05rem;
+    height: 1.05rem;
+    accent-color: var(--b-cyan);
+    flex-shrink: 0;
+  }
+  .b2b-form__privacy a {
+    color: var(--b-fg);
+  }
+  .b2b-form__alert {
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    background: rgba(248, 113, 113, 0.1);
+    color: #fecaca;
+    font-size: 0.88rem;
+  }
+  .b2b-form__submit {
+    width: 100%;
+  }
+  .b2b-form__fine {
+    text-align: center;
+  }
+  .b2b-lead__ok {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .b2b-lead__ok-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.75rem;
+    height: 3.75rem;
+    margin-bottom: 1.25rem;
+    border-radius: 50%;
+    background: rgba(34, 211, 238, 0.14);
+    border: 1px solid rgba(34, 211, 238, 0.45);
+    color: var(--b-cyan);
+    font-size: 1.5rem;
+  }
+  .b2b-lead__ok .b-cta-row {
+    justify-content: center;
+  }
+</style>

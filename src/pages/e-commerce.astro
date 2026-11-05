@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 import ServiceLanding from '../components/ui/ServiceLanding.astro';
+import B2bEcommerceLeadSection from '../components/ui/B2bEcommerceLeadSection.astro';
 ---
 
 <ServiceLanding
@@ -128,7 +129,7 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
       },
     ],
   }}
-  projects={['ricambixstufe', 'barbara-toffano']}
+  projects={['ricambixstufe', 'shopnfc', 'barbara-toffano']}
   stack={[
     'Next.js',
     'PostgreSQL',
@@ -170,4 +171,6 @@ import ServiceLanding from '../components/ui/ServiceLanding.astro';
         'Sì: monitoraggio, aggiornamenti, nuove funzioni e ottimizzazione delle conversioni. Non spariamo al lancio.',
     },
   ]}
-/>
+>
+  <B2bEcommerceLeadSection showLandingLink={true} formIdPrefix="ecom-b2b" />
+</ServiceLanding>

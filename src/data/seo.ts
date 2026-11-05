@@ -72,7 +72,7 @@ export function organizationNode() {
     alternateName: ['Bitora Italia', 'Bitora Studio Digitale'],
     slogan: 'Siti che vendono. Software che lavora per te.',
     description:
-      'Bitora è lo studio digitale di Carmagnola (TO) che progetta e sviluppa siti web ed e-commerce, gestionali su misura, app mobile iOS e Android, automazioni con intelligenza artificiale e soluzioni NFC per aziende del Piemonte e di tutta Italia.',
+      'Bitora è lo studio digitale di Carmagnola (TO) che progetta e sviluppa siti web ed e-commerce B2B, gestionali su misura, piattaforme per interventi, ticket e rapportini, app mobile iOS e Android, automazioni con intelligenza artificiale e soluzioni NFC per aziende del Piemonte e di tutta Italia.',
     url: `${SITE}/`,
     logo: { '@type': 'ImageObject', url: `${SITE}/bitora.png`, width: 500, height: 500 },
     image: `${SITE}/og-bitora.jpg`,

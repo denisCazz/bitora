@@ -1,0 +1,414 @@
+---
+import { whatsappLink } from '../../data/services';
+
+const walkthroughSteps = [
+  {
+    n: 'Passo 01',
+    kicker: 'Nessun cantiere, nessun cambio sbarra',
+    title: 'Partiamo dalle sbarre e dai cancelli che hai già',
+    desc: 'Non devi sostituire i motori, le sbarre, i lampeggianti o le fotocellule di sicurezza. Facciamo un sopralluogo sui tuoi varchi attuali (FAAC o di qualsiasi altra marca) e manteniamo intatto tutto l’impianto esistente, compresi i vecchi telecomandi se vuoi tenerli di scorta.',
+    highlight: 'Impianto originale mantenuto al 100%',
+  },
+  {
+    n: 'Passo 02',
+    kicker: 'Un ponte tra il varco e il telefono',
+    title: 'Installiamo un piccolo modulo nella centralina',
+    desc: 'Dentro la scatola di comando della sbarra colleghiamo un piccolo dispositivo sicuro che riceve il segnale di apertura. In poche ore ogni varco della tua azienda — ingresso principale, piazzale carico/scarico, magazzino o seconda sede — entra in comunicazione con un unico pannello centrale.',
+    highlight: 'Installazione pulita in poche ore',
+  },
+  {
+    n: 'Passo 03',
+    kicker: 'Su iPhone e Android, con il tuo marchio',
+    title: 'Consegniamo alla tua azienda la sua App personale',
+    desc: 'Realizziamo l’applicazione con il nome e il logo della tua azienda per gli smartphone di titolari, responsabili e dipendenti. Chi apre l’app vede subito le sbarre a cui è autorizzato e le apre con un semplice tocco sullo schermo — sia quando arriva in auto davanti al varco, sia a distanza dall’ufficio.',
+    highlight: 'La tua App aziendale su iOS e Android',
+  },
+  {
+    n: 'Passo 04',
+    kicker: 'Regole, turni e fornitori in autonomia',
+    title: 'Decidi chi entra, in quali orari e automatizzi le aperture',
+    desc: 'Dal pannello decidi tu le regole senza dipendere da nessuno: puoi abilitare un dipendente solo dal lunedì al venerdì tra le 07:00 e le 19:00, programmare aperture o chiusure automatiche, oppure inviare su WhatsApp o via email un link temporaneo a un corriere o fornitore valido solo per qualche ora o per 7 giorni.',
+    highlight: 'Inviti illimitati e fasce orarie automatiche',
+  },
+  {
+    n: 'Passo 05',
+    kicker: 'Tutto tuo, per sempre',
+    title: 'Controlli lo storico di ogni passaggio senza pagare token o abbonamenti',
+    desc: 'Ogni volta che una sbarra si apre, il sistema registra chi l’ha aperta, da quale varco e a che ora. E la differenza più grande è economica: l’applicazione è della tua azienda. Non devi comprare pacchetti di “token” o gettoni per mandare inviti ai fornitori e non paghi canoni mensili per ogni dipendente aggiunto.',
+    highlight: 'Zero token da comprare · Zero abbonamenti',
+  },
+];
+
+const comparisons = [
+  {
+    mode: 'Telecomandi fisici tradizionali',
+    tone: 'bad',
+    points: [
+      'Costi continui per comprare e duplicare telecomandi',
+      'Se un telecomando va perso o non viene restituito, chiunque può entrare',
+      'Impossibile limitare l’accesso per giorni o fasce orarie',
+      'Nessuno storico di chi ha aperto il varco e quando',
+    ],
+  },
+  {
+    mode: 'Sistemi cloud a token o abbonamento',
+    tone: 'warn',
+    points: [
+      'Devi acquistare pacchetti di “token” o crediti per ogni invito o accesso temporaneo',
+      'Canone mensile o annuale che cresce con il numero di dipendenti e varchi',
+      'App generica di terze parti, con funzioni bloccate dietro piani più costosi',
+      'Se smetti di pagare il canone o finisci i token, il servizio si blocca',
+    ],
+  },
+  {
+    mode: 'La tua App Sbarre su misura Bitora',
+    tone: 'good',
+    badge: 'Scelta da Franchina',
+    points: [
+      'Zero token da comprare: mandi tutti gli inviti temporanei che vuoi, gratis',
+      'Zero abbonamenti per utente: aggiungi dipendenti, collaboratori e fornitori senza limiti',
+      'La tua App aziendale con il tuo logo su iPhone e Android',
+      'Comandi le sbarre con un tocco e le automatizzi per orari, turni e sedi',
+    ],
+  },
+];
+
+const useCases = [
+  {
+    title: 'Aziende agricole e poli logistici',
+    desc: 'Più varchi carrabili, mezzi pesanti, stagionali e fornitori che consegnano a orari diversi.',
+  },
+  {
+    title: 'Stabilimenti, officine e magazzini',
+    desc: 'Accessi separati per personale, clienti e corrieri, con apertura anche a distanza dall’ufficio.',
+  },
+  {
+    title: 'Flotte, piazzali e parcheggi aziendali',
+    desc: 'Permessi legati ai turni di lavoro e revoca immediata in un clic quando cambia il personale.',
+  },
+  {
+    title: 'Strutture ricettive, agriturismi e campeggi',
+    desc: 'Link di accesso valido solo per i giorni del soggiorno dell’ospite, senza consegnare badge o chiavi.',
+  },
+];
+---
+
+<!-- STEP BY STEP PROMOTIONAL WALKTHROUGH -->
+<section class="b-section b-section--line fp-steps" id="passo-dopo-passo">
+  <div class="b-shell">
+    <div class="b-head b-head--split" data-reveal>
+      <div>
+        <p class="b-eyebrow">Dietro le quinte · Senza tecnicismi</p>
+        <h2 class="b-h2">
+          Cosa abbiamo fatto per le <span class="b-grad">Sbarre Franchina</span>, passo dopo passo.
+        </h2>
+      </div>
+      <p class="b-text">
+        Tante aziende pensano che per aprire sbarre e cancelli dal telefono serva cambiare tutto
+        l’impianto o legarsi a costosi sistemi a gettoni. Ecco come l’abbiamo realizzato in modo
+        semplice, concreto e definitivo.
+      </p>
+    </div>
+
+    <div class="fp-timeline">
+      {walkthroughSteps.map((step, i) => (
+        <article class="b-card fp-step" data-reveal data-reveal-delay={String((i % 3) + 1)}>
+          <div class="fp-step__side">
+            <span class="b-mono fp-step__num">{step.n}</span>
+            <span class="b-chip fp-step__badge">{step.highlight}</span>
+          </div>
+          <div class="fp-step__body">
+            <p class="fp-step__kicker">{step.kicker}</p>
+            <h3 class="b-h3 fp-step__title">{step.title}</h3>
+            <p class="b-text">{step.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- WHY NO TOKENS / NO SUBSCRIPTIONS -->
+<section class="b-section b-section--alt b-section--line" id="zero-token">
+  <div class="b-shell">
+    <div class="b-head" data-reveal>
+      <p class="b-eyebrow">Il vero vantaggio per la tua azienda</p>
+      <h2 class="b-h2">
+        Comanda e automatizza le tue sbarre. <br />
+        <span class="b-accent">Senza comprare token e senza abbonamenti.</span>
+      </h2>
+      <p class="b-lede">
+        Molti produttori ti vendono l’apertura da smartphone, ma ti chiedono di acquistare pacchetti
+        di token per ogni ospite o un abbonamento per ogni dipendente. Con Bitora l’applicazione è
+        tua: paghi la realizzazione e la usi senza limiti.
+      </p>
+    </div>
+
+    <div class="fp-compare">
+      {comparisons.map((col, i) => (
+        <article
+          class:list={['b-card', 'fp-col', `fp-col--${col.tone}`]}
+          data-reveal
+          data-reveal-delay={String(i + 1)}
+        >
+          {col.badge && <span class="fp-col__ribbon">{col.badge}</span>}
+          <h3 class="b-h3 fp-col__title">{col.mode}</h3>
+          <ul class="fp-col__list">
+            {col.points.map(pt => (
+              <li>{pt}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- SPONSOR / FOR OTHER COMPANIES -->
+<section class="b-section b-section--line" id="per-la-tua-azienda">
+  <div class="b-shell">
+    <div class="b-head b-head--split" data-reveal>
+      <div>
+        <p class="b-eyebrow">Anche per la tua realtà</p>
+        <h2 class="b-h2">
+          Anche la tua azienda può avere <span class="b-grad">la sua applicazione</span> per sbarre
+          e varchi.
+        </h2>
+      </div>
+      <p class="b-text">
+        Che tu abbia una sola sbarra all’ingresso o dieci varchi distribuiti su più sedi, possiamo
+        collegarci al tuo impianto attuale e darti un’applicazione su misura per aprirli,
+        programmarli e automatizzarli.
+      </p>
+    </div>
+
+    <div class="fp-uses">
+      {useCases.map((u, i) => (
+        <article class="b-card" data-reveal data-reveal-delay={String((i % 4) + 1)}>
+          <span class="b-mono fp-uses__n">0{i + 1}</span>
+          <h3 class="b-h3 fp-uses__t">{u.title}</h3>
+          <p class="b-text">{u.desc}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="b-card fp-promo-banner" data-reveal>
+      <div class="fp-promo-banner__copy">
+        <span class="b-chip fp-promo-banner__chip">
+          Sopralluogo e studio di fattibilità gratuiti
+        </span>
+        <h3 class="b-h2 fp-promo-banner__title">
+          Vuoi portare le sbarre della tua azienda su smartphone,{' '}
+          <span class="b-accent">senza canoni</span>?
+        </h3>
+        <p class="b-text">
+          Raccontaci quante sbarre o cancelli hai e come gestisci oggi dipendenti e fornitori. Ti
+          spieghiamo in modo chiaro come collegarli e quanto costa avere la tua applicazione
+          aziendale chiavi in mano.
+        </p>
+      </div>
+      <div class="fp-promo-banner__actions">
+        <a
+          href="/contattaci/?topic=sbarre"
+          class="b-btn b-btn--primary b-btn--lg"
+          data-track="cta_click"
+          data-track-location="franchina_promo_cta"
+        >
+          Richiedi preventivo per i tuoi varchi{' '}
+          <span class="b-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
+        <a
+          href={whatsappLink(
+            'Ciao Bitora, ho visto il lavoro fatto per le Sbarre Franchina e vorrei informazioni per automatizzare i varchi della mia azienda senza abbonamenti.'
+          )}
+          class="b-btn b-btn--wa b-btn--lg"
+          target="_blank"
+          rel="noopener"
+          data-track="whatsapp_click"
+          data-track-location="franchina_promo_wa"
+        >
+          Chiedi info su WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fp-timeline {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .fp-step {
+    display: grid;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  @media (min-width: 860px) {
+    .fp-step {
+      grid-template-columns: 260px 1fr;
+      gap: 2.5rem;
+    }
+  }
+  .fp-step__side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  @media (min-width: 860px) {
+    .fp-step__side {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  .fp-step__num {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--b-cyan);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .fp-step__badge {
+    border-color: rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.08);
+    color: var(--b-cyan-2);
+  }
+  .fp-step__kicker {
+    margin: 0 0 0.35rem;
+    font-size: 0.85rem;
+    color: var(--b-fg-3);
+  }
+  .fp-step__title {
+    margin-bottom: 0.65rem;
+  }
+
+  .fp-compare {
+    display: grid;
+    gap: 1.25rem;
+  }
+  @media (min-width: 960px) {
+    .fp-compare {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .fp-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .fp-col--good {
+    border-color: rgba(34, 211, 238, 0.5);
+    background:
+      radial-gradient(ellipse 80% 80% at 50% 0%, rgba(34, 211, 238, 0.14), transparent 65%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+    box-shadow: 0 30px 80px -35px rgba(34, 211, 238, 0.25);
+  }
+  .fp-col__ribbon {
+    position: absolute;
+    top: -0.75rem;
+    right: 1.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    background: var(--b-cyan);
+    color: #001318;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .fp-col__title {
+    margin-bottom: 1.25rem;
+  }
+  .fp-col__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+  .fp-col__list li {
+    position: relative;
+    padding-left: 1.75rem;
+    font-size: 0.96rem;
+    line-height: 1.55;
+    color: var(--b-fg-2);
+  }
+  .fp-col__list li::before {
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    font-weight: 700;
+  }
+  .fp-col--bad .fp-col__list li::before {
+    content: '✕';
+    color: #f87171;
+  }
+  .fp-col--warn .fp-col__list li::before {
+    content: '!';
+    color: #fbbf24;
+  }
+  .fp-col--good .fp-col__list li {
+    color: var(--b-fg);
+  }
+  .fp-col--good .fp-col__list li::before {
+    content: '✓';
+    color: var(--b-cyan);
+  }
+
+  .fp-uses {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (min-width: 760px) {
+    .fp-uses {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .fp-uses {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .fp-uses__n {
+    font-size: 0.78rem;
+    color: var(--b-cyan);
+  }
+  .fp-uses__t {
+    margin: 1rem 0 0.5rem;
+  }
+
+  .fp-promo-banner {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    border-color: rgba(34, 211, 238, 0.4);
+    background:
+      radial-gradient(ellipse 70% 90% at 0% 50%, rgba(34, 211, 238, 0.14), transparent 65%),
+      linear-gradient(120deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+    padding: clamp(1.75rem, 4vw, 3.25rem);
+  }
+  @media (min-width: 960px) {
+    .fp-promo-banner {
+      grid-template-columns: 1.3fr auto;
+      gap: 3rem;
+    }
+  }
+  .fp-promo-banner__chip {
+    margin-bottom: 1rem;
+    border-color: rgba(52, 211, 153, 0.4);
+    background: rgba(52, 211, 153, 0.1);
+    color: #6ee7b7;
+  }
+  .fp-promo-banner__title {
+    font-size: clamp(1.5rem, 2.8vw, 2.3rem);
+    margin-bottom: 0.85rem;
+  }
+  .fp-promo-banner__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+</style>

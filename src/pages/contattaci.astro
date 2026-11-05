@@ -10,12 +10,14 @@ const topic = Astro.url.searchParams.get('topic') || '';
 const topicMap: Record<string, string> = {
   sito: 'siti-web',
   ecommerce: 'e-commerce',
+  'ecommerce-b2b': 'e-commerce-b2b',
   sistemi: 'gestionali-crm',
   crm: 'gestionali-crm',
   cmms: 'gestione-interventi',
   interventi: 'gestione-interventi',
   demo: 'demo-gestione-interventi',
   app: 'app-mobile',
+  sbarre: 'sbarre-accessi',
   ai: 'intelligenza-artificiale',
   nfc: 'nfc',
 };
@@ -23,7 +25,9 @@ const preselected = topicMap[topic] ?? '';
 
 const services = [
   { v: 'siti-web', l: 'Sito web' },
-  { v: 'e-commerce', l: 'E-commerce' },
+  { v: 'e-commerce-b2b', l: 'E-commerce B2B' },
+  { v: 'e-commerce', l: 'E-commerce B2C' },
+  { v: 'sbarre-accessi', l: 'App sbarre / varchi' },
   { v: 'gestionali-crm', l: 'Gestionale / CRM' },
   { v: 'gestione-interventi', l: 'Interventi e rapportini' },
   { v: 'app-mobile', l: 'App mobile' },
