@@ -390,62 +390,6 @@ export const caseStudies: CaseStudy[] = [
   },
 
   {
-    id: 'planner-tropini',
-    slug: 'planner-tropini',
-    title: 'Planner Tropini Service',
-    client: 'Tropini Service',
-    subtitle: 'Pianificazione giri tecnici su mappa e controllo costi',
-    category: 'Software • Field Service',
-    location: 'Cavallermaggiore (CN) · Piemonte',
-    imageUrl: '/logo_tropini.png',
-    siteUrl: '#',
-    featured: true,
-    isWip: false,
-
-    clientDescription: `Per Tropini Service, centro assistenza stufe a pellet e a legna con oltre 4.000 impianti seguiti in Piemonte, Bitora ha sviluppato Planner Tropini: la piattaforma operativa per organizzare i giri giornalieri dei tecnici sul territorio, ridurre i chilometri a vuoto e tenere sotto controllo agenda e costi.`,
-
-    problema: `Pianificare decine di manutenzioni e interventi urgenti sparsi tra i comuni di Cuneo, Torino e Asti significava incrociare a mano indirizzi, urgenze, disponibilità dei tecnici e distanze stradali, con il rischio di fare avanti e indietro nella stessa zona in giorni diversi.`,
-
-    soluzione: [
-      {
-        titolo: 'Mappa clienti e proposta automatica delle giornate',
-        descrizione:
-          'Tutti i clienti sono geolocalizzati su mappa con indicatori di urgenza e stato. Il sistema raggruppa automaticamente gli interventi vicini tra loro e propone le giornate di lavoro ottimali partendo dal punto di partenza di ciascun tecnico.',
-      },
-      {
-        titolo: 'Percorsi, calendario protetto e costi carburante reali',
-        descrizione:
-          'Le giornate proposte si consultano in tabella con cliente, telefono e indirizzo sulla stessa riga. Una volta confermata, la giornata finisce in agenda ed è protetta da modifiche accidentali, mentre i costi di trasferta vengono calcolati con il prezzo carburante pubblico aggiornato.',
-      },
-      {
-        titolo: 'Assistente operativo sui dati reali',
-        descrizione:
-          'Un assistente integrato interroga direttamente anagrafiche, storico giri, appuntamenti e riepilogo economico per rispondere in pochi secondi alle domande dell’ufficio.',
-      },
-    ],
-
-    risultati: [
-      'Giri tecnici ottimizzati per vicinanza geografica tra Cuneo, Torino e Piemonte',
-      'Calcolo automatico di chilometri, tempi di percorrenza e costo carburante per giro',
-      'Agenda confermata condivisa tra ufficio e tecnici con tracciamento di chi è in uscita',
-      'Riduzione drastica del tempo speso in ufficio per incastrare gli appuntamenti',
-    ],
-
-    tecnologie: [
-      'Next.js',
-      'PostgreSQL',
-      'Prisma',
-      'Geolocalizzazione & Routing',
-      'Agenda tecnici',
-      'Assistente AI',
-    ],
-
-    metricsPreview: ['Giri tecnici su mappa', 'Ottimizzazione percorsi'],
-
-    fonti: [],
-  },
-
-  {
     id: 'tropini-service',
     slug: 'tropini-service',
     title: 'Tropini Service',
@@ -496,55 +440,6 @@ export const caseStudies: CaseStudy[] = [
     ],
 
     metricsPreview: ['Diagnosi guidata in 4 passi', 'Area admin clienti integrata'],
-
-    fonti: [],
-  },
-
-  {
-    id: 'eva-service-hd',
-    slug: 'eva-service-hd',
-    title: 'Eva Service HD',
-    client: 'Eva Service',
-    subtitle: 'Piattaforma ticketing, pratiche e rete CAT',
-    category: 'Software • Assistenza Tecnica',
-    location: 'Italia',
-    imageUrl: '/logo_eva.png',
-    siteUrl: '#',
-    featured: true,
-    isWip: false,
-
-    clientDescription: `Eva Service HD è la piattaforma web sviluppata da Bitora per coordinare l’apertura delle pratiche di assistenza tecnica, lo smistamento verso i Centri Assistenza Tecnica (CAT) sul territorio e il monitoraggio degli stati di avanzamento fino alla risoluzione.`,
-
-    problema: `Quando le segnalazioni di guasto o manutenzione passano tra amministrazione centrale, centri assistenza territoriali e tecnici esterni tramite email e telefonate, diventa difficile sapere quali pratiche sono in attesa di ricambi, quali sono assegnate e quali sono chiuse.`,
-
-    soluzione: [
-      {
-        titolo: 'Gestione centralizzata di pratiche e stati',
-        descrizione:
-          'Ogni richiesta di assistenza viene registrata con dati impianto, cliente, priorità e cronologia completa dei passaggi, eliminando i fili di email sparsi.',
-      },
-      {
-        titolo: 'Area dedicata per Centri Assistenza (CAT) e utenti',
-        descrizione:
-          'Ogni CAT accede con il proprio profilo, visualizza solo le pratiche assegnate alla propria zona, aggiorna lo stato dell’intervento e allega note e documentazione.',
-      },
-      {
-        titolo: 'Controllo operativo in tempo reale',
-        descrizione:
-          'La sede centrale vede in un colpo d’occhio il carico di lavoro di ogni centro assistenza, le pratiche urgenti e i tempi di chiusura.',
-      },
-    ],
-
-    risultati: [
-      'Flusso unico tra sede centrale e rete di Centri Assistenza Tecnica (CAT)',
-      'Tracciabilità completa di ogni pratica dall’apertura alla chiusura',
-      'Accessi profilati per amministratori, operatori e singoli CAT',
-      'Riduzione delle telefonate di sollecito e verifica stato pratica',
-    ],
-
-    tecnologie: ['Next.js', 'PostgreSQL', 'Prisma', 'Gestione CAT', 'Ticketing B2B', 'Ruoli'],
-
-    metricsPreview: ['Coordinamento rete CAT', 'Tracciamento pratiche'],
 
     fonti: [],
   },
