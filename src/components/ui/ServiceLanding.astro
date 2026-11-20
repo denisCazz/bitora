@@ -16,7 +16,13 @@ interface Item {
 export interface Props {
   pillar: PillarId;
   seo: { title: string; description: string; image?: string };
-  hero: { eyebrow: string; title: string; lede: string; chips?: string[] };
+  hero: {
+    eyebrow: string;
+    title: string;
+    lede: string;
+    chips?: string[];
+    secondary?: { label: string; href: string };
+  };
   topic: string;
   ctaLabel?: string;
   signals: { title: string; items: Item[] };
@@ -97,7 +103,7 @@ const pageUrl = `https://bitora.it${current.href}`;
       { name: current.title, href: current.href },
     ]}
     primary={{ label: ctaLabel, href: ctaHref, track: `${pillar}_hero` }}
-    secondary={{ label: 'Vedi i lavori', href: '#lavori' }}
+    secondary={hero.secondary ?? { label: 'Vedi i lavori', href: '#lavori' }}
   />
 
   <!-- Signals -->

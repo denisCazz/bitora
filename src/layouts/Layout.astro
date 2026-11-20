@@ -120,9 +120,13 @@ const graph = {
     <title>{title}</title>
     <meta name="robots" content={robotsContent} />
     <meta name="description" content={metaDescription} />
-    <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="it-IT" href={canonicalUrl} />
-    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+    {!noindex && (
+      <>
+        <link rel="canonical" href={canonicalUrl} />
+        <link rel="alternate" hreflang="it-IT" href={canonicalUrl} />
+        <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+      </>
+    )}
 
     <meta name="geo.region" content="IT-TO" />
     <meta name="geo.placename" content="Carmagnola, Torino" />

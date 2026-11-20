@@ -1,3 +1,4 @@
+import type { APIContext } from 'astro';
 import { defineMiddleware } from 'astro:middleware';
 import { isAuthenticated, isOpsRoute, isPublicOpsPath } from './lib/ops/auth';
 
@@ -21,16 +22,18 @@ function isHiddenPublicPath(path: string) {
   );
 }
 
+function requestHost(context: APIContext) {
+  // Prerendered pages have no real request headers at build time.
+  const raw = context.isPrerendered
+    ? context.url.hostname
+    : context.request.headers.get('x-forwarded-host') ||
+      context.request.headers.get('host') ||
+      context.url.hostname;
+  return raw.split(',')[0].trim().toLowerCase().replace(/:\d+$/, '');
+}
+
 export const onRequest = defineMiddleware(async (context, next) => {
-  const host = (
-    context.request.headers.get('x-forwarded-host') ||
-    context.request.headers.get('host') ||
-    context.url.hostname
-  )
-    .split(',')[0]
-    .trim()
-    .toLowerCase()
-    .replace(/:\d+$/, '');
+  const host = requestHost(context);
 
   if (host === 'ai.bitora.it' || host === 'www.ai.bitora.it') {
     const cleanPath = context.url.pathname.replace(/\/$/, '') || '/';

@@ -3,6 +3,8 @@
   slug: string;
   title: string;
   subtitle: string;
+  /** Title tag override (max ~60 caratteri, " | Bitora" incluso). */
+  seoTitle?: string;
   client?: string;
   category: string;
   location: string;
@@ -36,6 +38,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'accessi-aziendali-franchina',
     slug: 'accessi-aziendali-franchina',
+    seoTitle: 'App per sbarre e accessi aziendali: Franchina | Bitora',
     title: 'Automazione e centralizzazione accessi aziendali',
     subtitle: 'Società Agricola Franchina · App sbarre senza token né abbonamenti',
     client: 'Società Agricola Franchina',
@@ -160,6 +163,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'ricambixstufe',
     slug: 'ricambixstufe',
+    seoTitle: 'RicambiXStufe: e-commerce B2B ricambi stufe | Bitora',
     title: 'RicambiXStufe',
     subtitle: 'E-commerce verticale e B2B per ricambi stufe',
     category: 'E-commerce • B2B',
@@ -275,6 +279,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'garavella-7',
     slug: 'garavella-7',
+    seoTitle: 'Garavella 7: sito e menu digitale live | Bitora',
     title: 'Garavella 7',
     subtitle: 'Sito web, menu digitale live e promozioni',
     category: 'Food & Beverage',
@@ -392,6 +397,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'tropini-service',
     slug: 'tropini-service',
+    seoTitle: 'Tropini Service: sito e diagnosi stufe online | Bitora',
     title: 'Tropini Service',
     subtitle: 'Sito interattivo diagnosi stufe e area admin clienti',
     category: 'B2B & Privati • Assistenza tecnica',

@@ -16,7 +16,7 @@ test.describe('Organic search intent', () => {
   test('homepage prioritizes websites and e-commerce for Piedmont SMEs', async ({ page }) => {
     await expectSearchPage(page, {
       path: '/',
-      title: 'Siti web ed e-commerce in Piemonte | Bitora, Carmagnola (TO)',
+      title: 'Web agency a Carmagnola: siti web ed e-commerce | Bitora',
       description:
         'Siti web ed e-commerce B2B in Piemonte: Carmagnola, Carignano, Racconigi e Torino. Gestionali, app e AI su misura. Preventivo gratuito in 24 ore.',
       canonical: 'https://bitora.it/',
@@ -62,9 +62,9 @@ test.describe('Organic search intent', () => {
   test('website service page targets Italian development intent in Piedmont', async ({ page }) => {
     await expectSearchPage(page, {
       path: '/siti-web-professionali/',
-      title: 'Realizzazione siti web a Carmagnola, Carignano e Racconigi | Bitora',
+      title: 'Realizzazione siti web Carmagnola e Carignano | Bitora',
       description:
-        'Realizzazione siti web a Carmagnola, Carignano, Racconigi e in Piemonte: veloci, ottimizzati SEO e pensati per portare chiamate, prenotazioni e richieste. Preventivo gratuito in 24 ore.',
+        'Realizzazione siti web a Carmagnola, Carignano e Racconigi: veloci, ottimizzati SEO e pensati per portare chiamate e richieste. Preventivo gratuito in 24 ore.',
       canonical: 'https://bitora.it/siti-web-professionali/',
       h1: 'porta clienti',
     });
@@ -73,20 +73,21 @@ test.describe('Organic search intent', () => {
     await expect(page.getByRole('link', { name: /progetti reali/i }).first()).toBeVisible();
   });
 
-  test('e-commerce page covers B2B and B2C intent in Piedmont', async ({ page }) => {
+  test('e-commerce page targets local shop intent and links to the B2B page', async ({ page }) => {
     await expectSearchPage(page, {
       path: '/e-commerce/',
-      title: 'E-commerce B2B in Piemonte | Negozi online B2B e B2C | Bitora',
+      title: 'Realizzazione e-commerce a Carmagnola e Carignano | Bitora',
       description:
-        'E-commerce B2B in Piemonte per produttori e distributori: listini per cliente, cataloghi riservati, pagamenti e integrazioni gestionali. Anche shop B2C. Preventivo gratuito.',
+        'Realizzazione e-commerce e negozi online a Carmagnola, Carignano e in Piemonte: catalogo, pagamenti, spedizioni e gestionale collegato. Preventivo gratuito.',
       canonical: 'https://bitora.it/e-commerce/',
-      h1: 'E-commerce B2B in Piemonte',
+      h1: 'Realizzazione e-commerce',
     });
 
     await expect(page.getByRole('heading', { name: /vendita online per aziende/i })).toBeVisible();
-    await expect(page.getByText(/cataloghi riservati/i).first()).toBeVisible();
-    await expect(page.getByText(/listini per cliente/i).first()).toBeVisible();
-    await expect(page.getByText(/integrazioni gestionali/i).first()).toBeVisible();
+    await expect(page.getByRole('link', { name: /e-commerce B2B per aziende/i })).toHaveAttribute(
+      'href',
+      '/e-commerce-b2b/'
+    );
   });
 
   test('dedicated e-commerce B2B landing page exposes lead capture form and B2B value', async ({
@@ -94,9 +95,9 @@ test.describe('Organic search intent', () => {
   }) => {
     await expectSearchPage(page, {
       path: '/e-commerce-b2b/',
-      title: 'Sviluppo E-commerce B2B su misura in Piemonte e Italia | Bitora',
+      title: 'E-commerce B2B Piemonte: portali su misura | Bitora',
       description:
-        'Realizziamo piattaforme E-commerce B2B per produttori, grossisti e distributori: listini per cliente, cataloghi riservati P.IVA, riordino rapido e integrazione gestionale. Preventivo in 24h.',
+        'E-commerce B2B in Piemonte per produttori, grossisti e distributori: listini per cliente, catalogo riservato P.IVA, riordino rapido e gestionale collegato.',
       canonical: 'https://bitora.it/e-commerce-b2b/',
       h1: 'E-commerce B2B',
     });

@@ -12,8 +12,21 @@ if (!url) {
 
 const prisma = new PrismaClient({ adapter: new PrismaPg({ connectionString: url }) });
 
+// SEED_ONLY=slug-a,slug-b limits the seed to those articles, so existing ones
+// edited from /ops/editoriale are not overwritten by the upsert below.
+const only = (process.env.SEED_ONLY ?? '')
+  .split(',')
+  .map(s => s.trim())
+  .filter(Boolean);
+const articles = only.length ? SEED_ARTICLES.filter(a => only.includes(a.slug)) : SEED_ARTICLES;
+const unknown = only.filter(slug => !SEED_ARTICLES.some(a => a.slug === slug));
+if (unknown.length) {
+  console.error(`SEED_ONLY: slug sconosciuti: ${unknown.join(', ')}`);
+  process.exit(1);
+}
+
 async function main() {
-  for (const article of SEED_ARTICLES) {
+  for (const article of articles) {
     const saved = await prisma.article.upsert({
       where: { slug: article.slug },
       update: {
@@ -88,7 +101,7 @@ async function main() {
     }
   }
 
-  console.log(`Seed editoriale: ${SEED_ARTICLES.length} articoli`);
+  console.log(`Seed editoriale: ${articles.length} articoli`);
 }
 
 main()

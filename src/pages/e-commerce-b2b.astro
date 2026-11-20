@@ -6,7 +6,6 @@ import ProjectCard from '../components/ui/ProjectCard.astro';
 import FaqList from '../components/ui/FaqList.astro';
 import B2bEcommerceLeadSection from '../components/ui/B2bEcommerceLeadSection.astro';
 import ServiceSchema from '../components/schema/Service.astro';
-import FAQPageSchema from '../components/schema/FAQPage.astro';
 import BreadcrumbListSchema from '../components/schema/BreadcrumbList.astro';
 import { getWorkBySlugs } from '../data/work';
 
@@ -97,8 +96,8 @@ const faqItems = [
 ---
 
 <Layout
-  title="Sviluppo E-commerce B2B su misura in Piemonte e Italia | Bitora"
-  description="Realizziamo piattaforme E-commerce B2B per produttori, grossisti e distributori: listini per cliente, cataloghi riservati P.IVA, riordino rapido e integrazione gestionale. Preventivo in 24h."
+  title="E-commerce B2B Piemonte: portali su misura | Bitora"
+  description="E-commerce B2B in Piemonte per produttori, grossisti e distributori: listini per cliente, catalogo riservato P.IVA, riordino rapido e gestionale collegato."
   image="/editorial/ecommerce.png"
 >
   <ServiceSchema
@@ -115,7 +114,6 @@ const faqItems = [
       'Sincronizzazione con gestionale, magazzino e corrieri',
     ]}
   />
-  <FAQPageSchema items={faqItems} />
   <BreadcrumbListSchema
     crumbs={[
       { name: 'Home', item: 'https://bitora.it/' },

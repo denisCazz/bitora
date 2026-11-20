@@ -67,9 +67,10 @@ const topic = isFranchina
 
 <Layout
   title={
-    item.client && item.client !== item.title
+    item.seoTitle ??
+    (item.client && item.client !== item.title
       ? `${item.title} · ${item.client} | Bitora`
-      : `${item.title}: ${item.subtitle} | Bitora`
+      : `${item.title}: ${item.subtitle} | Bitora`)
   }
   description={metaDescription}
   image={ogImage}

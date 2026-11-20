@@ -1,54 +1,14 @@
-﻿User-agent: *
+# Bitora: crawler di ricerca e crawler AI (GPTBot, OAI-SearchBot, ChatGPT-User,
+# ClaudeBot, Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User,
+# Google-Extended, Applebot-Extended, Bingbot...) sono benvenuti.
+# Un unico gruppo "*" vale per tutti: un gruppo con nome sostituirebbe queste
+# regole per quel bot, quindi non aggiungerne senza ripetere i Disallow.
+User-agent: *
 Allow: /
 Disallow: /ops/
 Disallow: /admin/
 Disallow: /api/
 Disallow: /landing/
-
-# AI crawlers and answer engines: welcome
-User-agent: GPTBot
-Allow: /
-Disallow: /ops/
-
-User-agent: OAI-SearchBot
-Allow: /
-Disallow: /ops/
-
-User-agent: ChatGPT-User
-Allow: /
-Disallow: /ops/
-
-User-agent: ClaudeBot
-Allow: /
-Disallow: /ops/
-
-User-agent: Claude-SearchBot
-Allow: /
-Disallow: /ops/
-
-User-agent: Claude-User
-Allow: /
-Disallow: /ops/
-
-User-agent: PerplexityBot
-Allow: /
-Disallow: /ops/
-
-User-agent: Perplexity-User
-Allow: /
-Disallow: /ops/
-
-User-agent: Google-Extended
-Allow: /
-Disallow: /ops/
-
-User-agent: Applebot-Extended
-Allow: /
-Disallow: /ops/
-
-User-agent: Bingbot
-Allow: /
-Disallow: /ops/
 
 Sitemap: https://bitora.it/sitemap-index.xml
 Sitemap: https://bitora.it/blog/sitemap.xml
