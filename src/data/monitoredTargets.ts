@@ -58,27 +58,11 @@ export const monitoredSites: MonitoredSite[] = [
     group: 'infrastruttura',
   },
   {
-    id: 'rapportini',
-    name: 'Bitora Rapportini',
-    url: 'https://rapportini.bitora.it/',
-    group: 'gestionali',
-    healthUrl: 'https://rapportini.bitora.it/api/auth/session',
-    healthStatuses: [200, 401],
-  },
-  {
     id: 'mistral-gestionale',
     name: 'Gestionale Mistral',
     url: 'https://mistral.bitora.it/',
     group: 'gestionali',
     healthUrl: 'https://mistral.bitora.it/api/auth/session',
-    healthStatuses: [200],
-  },
-  {
-    id: 'eva-service',
-    name: 'Eva Service HD',
-    url: 'https://evaservice-hd.bitora.it/',
-    group: 'gestionali',
-    healthUrl: 'https://evaservice-hd.bitora.it/api/auth/session',
     healthStatuses: [200],
   },
   {
