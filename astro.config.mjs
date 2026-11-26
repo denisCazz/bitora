@@ -4,7 +4,6 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
-import compressor from 'astro-compressor';
 
 const SITEMAP_EXCLUDE = new Set([
   'https://bitora.it/services/',
@@ -60,14 +59,12 @@ export default defineConfig({
                 : /privacy|cookie/.test(path)
                   ? 0.2
                   : 0.6;
-        return { ...item, lastmod: new Date().toISOString(), priority };
+        // No lastmod: a build timestamp on every URL tells Google nothing and
+        // teaches it to ignore lastmod for this site.
+        return { ...item, priority };
       },
     }),
     react(),
-    compressor({
-      gzip: true,
-      brotli: true,
-    }),
   ],
   // Canonical production origin (affects sitemap, etc.)
   site: 'https://bitora.it/',
@@ -128,16 +125,8 @@ export default defineConfig({
   },
   publicDir: './public',
   outDir: './dist',
-  server: {
-    headers: {
-      'Cache-Control': 'public, max-age=31536000, immutable',
-      'X-Content-Type-Options': 'nosniff',
-      'X-Frame-Options': 'DENY',
-      'X-XSS-Protection': '1; mode=block',
-      'Referrer-Policy': 'strict-origin-when-cross-origin',
-      'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
-    },
-  },
+  // Production response headers (security, cache, www -> apex) live in
+  // server.mjs: `server.headers` here only applies to `astro dev`/`preview`.
   vite: {
     server: {
       // Dev-only: allow POSTs when accessing via non-localhost hostnames/tunnels.
@@ -152,7 +141,8 @@ export default defineConfig({
     },
     build: {
       cssMinify: 'lightningcss',
-      minify: 'terser',
+      // esbuild: output within ~1-2% of terser at a fraction of the CPU/RAM.
+      minify: 'esbuild',
     },
     ssr: {
       noExternal: ['react-icons'],

@@ -42,7 +42,7 @@ COPY --from=build /app/dist ./dist
 COPY --from=build /app/generated ./generated
 COPY --from=build /app/prisma ./prisma
 COPY --from=build /app/prisma.config.ts ./prisma.config.ts
-COPY package.json ./
+COPY package.json server.mjs ./
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 # The entrypoint starts as root only to repair persistent-volume permissions,
@@ -55,8 +55,9 @@ ENV PORT=4321
 ENV NODE_ENV=production
 EXPOSE 4321
 
-HEALTHCHECK --interval=10s --timeout=5s --start-period=30s --retries=3 \
-  CMD curl -f http://127.0.0.1:${PORT:-4321}/ || exit 1
+# /healthz is answered by server.mjs without rendering a page.
+HEALTHCHECK --interval=10s --timeout=5s --start-period=40s --retries=3 \
+  CMD curl -fsS http://127.0.0.1:${PORT:-4321}/healthz || exit 1
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["node", "./dist/server/entry.mjs"]
+CMD ["node", "./server.mjs"]

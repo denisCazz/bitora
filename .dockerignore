@@ -13,3 +13,5 @@ docs
 coverage
 .vscode
 .github
+prompt-vps-deploy.md
+.claude
