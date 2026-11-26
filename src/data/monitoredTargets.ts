@@ -58,14 +58,6 @@ export const monitoredSites: MonitoredSite[] = [
     group: 'infrastruttura',
   },
   {
-    id: 'mistral-gestionale',
-    name: 'Gestionale Mistral',
-    url: 'https://mistral.bitora.it/',
-    group: 'gestionali',
-    healthUrl: 'https://mistral.bitora.it/api/auth/session',
-    healthStatuses: [200],
-  },
-  {
     id: 'garavella-gestionale',
     name: 'Gestionale Garavella 7',
     url: 'https://gestionalegaravella7.bitora.it/',
