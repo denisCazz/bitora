@@ -395,62 +395,6 @@ export const caseStudies: CaseStudy[] = [
   },
 
   {
-    id: 'tropini-service',
-    slug: 'tropini-service',
-    seoTitle: 'Tropini Service: sito e diagnosi stufe online | Bitora',
-    title: 'Tropini Service',
-    subtitle: 'Sito interattivo diagnosi stufe e area admin clienti',
-    category: 'B2B & Privati • Assistenza tecnica',
-    location: 'Cavallermaggiore (CN)',
-    imageUrl: '/logo_tropini.png',
-    siteUrl: '#',
-    featured: true,
-    isWip: false,
-
-    clientDescription: `Tropini Service di Gianfranco Tropini è un centro di assistenza tecnica specializzato in stufe a pellet e a legna a Cavallermaggiore (CN). Da oltre vent'anni opera sul territorio piemontese con oltre 4.000 impianti seguiti, ricambi originali e intervento rapido su Extraflame, Eva Calor e decine di altri marchi.`,
-
-    problema: `Chi chiama per una stufa bloccata spesso non sa comunicare subito tipo di apparecchio, sintomo e comune di intervento, mentre in ufficio le richieste telefoniche e via mail andavano ricopiate a mano nell’anagrafica dei clienti e nello storico interventi.`,
-
-    soluzione: [
-      {
-        titolo: 'Percorso guidato di richiesta in 4 passi',
-        descrizione:
-          'Sul sito il cliente indica in pochi secondi il tipo di stufa (pellet o legna), il problema (non parte, si spegne, fumo, codice errore, ricambio o manutenzione) e clicca la propria zona sulla mappa interattiva del Piemonte prima di chiamare o inviare la richiesta.',
-      },
-      {
-        titolo: 'Area admin clienti e storico interventi integrata',
-        descrizione:
-          'Ogni richiesta inviata dal sito viene abbinata automaticamente al cliente già presente (per numero di telefono o email) oppure crea una nuova scheda cliente con l’intervento già aperto e pronto da programmare in officina.',
-      },
-      {
-        titolo: 'SEO locale e contatto immediato per tutto il Piemonte',
-        descrizione:
-          'Se il cliente sceglie di telefonare su cellulare o fisso, il riepilogo di stufa, problema e comune resta visibile sullo schermo così da guidare la chiamata in modo chiaro e veloce.',
-      },
-    ],
-
-    risultati: [
-      'Richieste di assistenza già qualificate con tipo stufa, sintomo e comune',
-      'Anagrafica clienti e storico interventi alimentati automaticamente dal sito',
-      'Mappa interattiva del Piemonte per verificare subito la copertura di zona',
-      'Passaggio diretto tra sito pubblico e gestione operativa d’officina',
-    ],
-
-    tecnologie: [
-      'Astro',
-      'Node.js',
-      'PostgreSQL',
-      'Area Admin Clienti',
-      'Mappa Piemonte interattiva',
-      'SEO locale',
-    ],
-
-    metricsPreview: ['Diagnosi guidata in 4 passi', 'Area admin clienti integrata'],
-
-    fonti: [],
-  },
-
-  {
     id: 'dalina',
     slug: 'dalina',
     title: "D'Alina",

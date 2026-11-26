@@ -37,12 +37,6 @@ export const clientLogos: ClientLogo[] = [
     location: 'Italia',
   },
   {
-    name: 'Tropini Service',
-    logo: '/logo_tropini.png',
-    tier: 'premium',
-    location: 'Cavallermaggiore',
-  },
-  {
     name: "D'Alina",
     logo: '/logo_dalina.png',
     tier: 'premium',

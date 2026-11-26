@@ -32,7 +32,6 @@ const meta: Record<string, WorkMeta> = {
   'garavella-7-gestionale': { mock: 'dashboard', kinds: ['software'] },
   'garavella-7': { shot: '/work/garavella-7.webp', kinds: ['siti'] },
   'mistral-gestionale': { mock: 'dashboard', kinds: ['software'] },
-  'tropini-service': { kinds: ['siti', 'software'] },
   dalina: { shot: '/work/dalina.webp', kinds: ['siti'] },
   'simone-contegiacomo': { shot: '/work/simone-contegiacomo.webp', kinds: ['siti'] },
   'sergio-contegiacomo': { shot: '/work/sergio-contegiacomo.webp', kinds: ['siti', 'nfc'] },

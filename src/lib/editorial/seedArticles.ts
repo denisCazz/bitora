@@ -328,7 +328,7 @@ export const SEED_ARTICLES: SeedArticle[] = [
     coverAlt: 'Passaggio da documenti sparsi a un gestionale organizzato',
     readTime: '8 min',
     ctaVariant: 'roi',
-    caseStudySlugs: ['garavella-7-gestionale', 'tropini-service'],
+    caseStudySlugs: ['garavella-7-gestionale', 'mistral-gestionale'],
     visualHints: ['processo', 'magazzino'],
     publishedAt: '2026-03-15T08:00:00.000Z',
     sources: [{ title: 'Sistemi aziendali Bitora', url: 'https://bitora.it/sistemi-aziendali/' }],

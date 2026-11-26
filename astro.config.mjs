@@ -17,6 +17,7 @@ const SITEMAP_EXCLUDE = new Set([
   'https://bitora.it/progetti/kristina/',
   'https://bitora.it/progetti/wine-cafe/',
   'https://bitora.it/progetti/myzone/',
+  'https://bitora.it/progetti/tropini-service/',
   'https://bitora.it/automazioni/',
   'https://bitora.it/formazione/',
   'https://bitora.it/piemonte/',
@@ -94,6 +95,7 @@ export default defineConfig({
     '/tessere-nfc-torino/': '/nfc-ecosystem/',
     '/progetti/wine-cafe/': '/lavori/',
     '/progetti/myzone/': '/lavori/',
+    '/progetti/tropini-service/': '/lavori/',
     // Legacy ai.bitora.it paths (prerendered fallback does not run middleware)
     '/automazioni/': '/intelligenza-artificiale/',
     '/formazione/': '/intelligenza-artificiale/',
