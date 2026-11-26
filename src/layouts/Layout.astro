@@ -12,6 +12,13 @@ import {
   websiteNode,
   type PageType,
 } from '../data/seo';
+// Self-hosted fonts: bundled by Vite into /assets/ (immutable cache), no
+// render-blocking request to Google and no visitor IP sent to a third party.
+import '@fontsource-variable/geist/wght.css';
+import '@fontsource-variable/unbounded/wght.css';
+import '@fontsource/geist-mono/400.css';
+import '@fontsource/geist-mono/500.css';
+import geistLatin from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
 import '../styles/global.css';
 import '../styles/brand.css';
 
@@ -179,12 +186,7 @@ const graph = {
     <link rel="apple-touch-icon" href="/bitora.png" />
     <meta name="theme-color" content="#050607" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Unbounded:wght@500;600;700&display=swap"
-    />
+    <link rel="preload" href={geistLatin} as="font" type="font/woff2" crossorigin />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 

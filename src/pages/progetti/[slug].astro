@@ -27,8 +27,12 @@ const ogImage = item.og;
 const clip = (t: string, n = 158) =>
   t.length <= n ? t : `${t.slice(0, t.lastIndexOf(' ', n - 1))}…`;
 const client = item.client ?? item.title;
+const descriptionBase = `${item.title}${client !== item.title ? ` per ${client}` : ''}, ${item.location}. Caso studio Bitora: ${item.soluzione.map(s => s.titolo).join(' · ')}.`;
+// Short descriptions get the subtitle too, so Google has enough text to show.
 const metaDescription = clip(
-  `${item.title}${client !== item.title ? ` per ${client}` : ''}, ${item.location}. Caso studio Bitora: ${item.soluzione.map(s => s.titolo).join(' · ')}.`
+  descriptionBase.length >= 120
+    ? descriptionBase
+    : `${item.title} (${item.subtitle}), ${item.location}. Caso studio Bitora: ${item.soluzione.map(s => s.titolo).join(' · ')}.`
 );
 const projectSchema = {
   '@type': 'CreativeWork',

@@ -16,8 +16,8 @@
   --b-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --b-radius: 22px;
   --b-shell: min(1240px, calc(100% - 2.5rem));
-  --f-display: 'Unbounded', 'Geist', system-ui, sans-serif;
-  --f-body: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-display: 'Unbounded Variable', 'Unbounded', 'Geist Variable', 'Geist', system-ui, sans-serif;
+  --f-body: 'Geist Variable', 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
 
